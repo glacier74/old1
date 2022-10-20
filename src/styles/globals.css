@@ -1,0 +1,9 @@
+@import "@heyforms/ui/style.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply antialiased;
+}
