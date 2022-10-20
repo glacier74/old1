@@ -1,32 +1,41 @@
 import { Form, Input } from '@heyforms/ui'
-import { Trans, useTranslation } from 'react-i18next'
-import { AuthPage } from '@/components/page'
+import { useTranslation } from 'react-i18next'
+import { CommonPage } from '@/components/page'
+import { useEffect } from 'react'
+import { useStoreContext } from '@/store'
+import { isEmpty } from '@nily/utils'
+import { useRouter } from 'next/router'
+import { AuthService } from '@/service'
 
 const ConfirmEmail = (): JSX.Element => {
   const { t } = useTranslation()
-  const email = 'example@google.com'
+  const router = useRouter()
+  const { state } = useStoreContext()
 
-  // TODO - redirect to login if email is null
+  async function handleFinish(values: StringMap) {
+    await AuthService.verify(state.authEmail!, values.code)
+    router.replace('/')
+  }
 
-  async function handleFinish() {}
+  useEffect(() => {
+    if (isEmpty(state.authEmail)) {
+      router.replace('/login')
+    }
+  }, [])
 
   return (
-    <AuthPage
+    <CommonPage
       seo={{
         title: t('confirmEmail.title')
       }}
     >
       <div>
         <div>
-          <h1 className="mt-6 text-center text-3xl font-bold text-slate-900">
+          <h1 className="text-center text-3xl font-bold text-slate-900">
             {t('confirmEmail.heading')}
           </h1>
           <p className="mt-2 text-center text-sm text-slate-600">
-            <Trans i18nKey="resetPassword.description">
-              We've sent you an email with a 6-digit verification code, please check your inbox at{' '}
-              {/* @ts-ignore */}
-              <span className="font-medium text-slate-700">{{ email }}</span>
-            </Trans>
+            {t('resetPassword.description')} <span className="font-medium text-slate-700">{ state.authEmail }</span>
           </p>
         </div>
 
@@ -51,7 +60,7 @@ const ConfirmEmail = (): JSX.Element => {
           </div>
         </div>
       </div>
-    </AuthPage>
+    </CommonPage>
   )
 }
 

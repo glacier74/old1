@@ -1,22 +1,35 @@
 import { Form, Input } from '@heyforms/ui'
 import { Trans, useTranslation } from 'react-i18next'
-import { AuthPage } from '@/components/page'
+import { CommonPage } from '@/components/page'
 import { SocialLogin } from '@/components/auth'
+import { useRouter } from 'next/router'
+import { useStoreContext } from '@/store'
+import { AuthService } from '@/service'
 
 const SignUp = (): JSX.Element => {
   const { t } = useTranslation()
+  const router = useRouter()
+  const { dispatch } = useStoreContext()
 
-  async function handleFinish() {}
+  async function handleFinish(values: StringMap) {
+    await AuthService.signUp(values.name, values.email, values.password)
+
+    dispatch({
+      type: 'setAuthEmail',
+      payload: values.email
+    })
+    router.push('/confirm-email')
+  }
 
   return (
-    <AuthPage
+    <CommonPage
       seo={{
         title: t('signUp.title')
       }}
     >
       <div>
         <div>
-          <h1 className="mt-6 text-center text-3xl font-bold text-slate-900">
+          <h1 className="text-center text-3xl font-bold text-slate-900">
             {t('signUp.heading')}
           </h1>
           <p className="mt-2 text-center text-sm text-slate-600">{t('signUp.description')}</p>
@@ -82,25 +95,7 @@ const SignUp = (): JSX.Element => {
                 <div className="mt-6">
                   <p className="text-sm text-slate-500">
                     <Trans i18nKey="signUp.agreeWith">
-                      By signing up, you agree to our{' '}
-                      <a
-                        href="https://heyform.net/help/terms-conditions"
-                        className="font-medium text-slate-700 underline"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        terms of service
-                      </a>{' '}
-                      and{' '}
-                      <a
-                        href="https://heyform.net/help/privacy-policy"
-                        className="font-medium text-slate-700 underline"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        privacy policy
-                      </a>
-                      .
+                      By signing up, you agree to our <a href="https://heyform.net/help/terms-conditions" className="font-medium text-slate-700 underline" target="_blank" rel="noreferrer">terms of service</a> and <a href="https://heyform.net/help/privacy-policy" className="font-medium text-slate-700 underline" target="_blank" rel="noreferrer">privacy policy </a>.
                     </Trans>
                   </p>
                 </div>
@@ -109,7 +104,7 @@ const SignUp = (): JSX.Element => {
           </div>
         </div>
       </div>
-    </AuthPage>
+    </CommonPage>
   )
 }
 

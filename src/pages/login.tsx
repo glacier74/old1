@@ -1,30 +1,51 @@
 import { Checkbox, Form, Input } from '@heyforms/ui'
 import { Trans, useTranslation } from 'react-i18next'
-import { AuthPage } from '@/components/page'
+import { CommonPage } from '@/components/page'
 import { SocialLogin } from '@/components/auth'
+import { AuthService } from '@/service'
+import { useRouter } from 'next/router'
+import { useStoreContext } from '@/store'
 
 const Login = (): JSX.Element => {
   const { t } = useTranslation()
+  const router = useRouter()
+  const { dispatch } = useStoreContext()
 
-  async function handleFinish() {}
+  async function handleFinish(values: StringMap) {
+    try {
+      await AuthService.login(values.email, values.password)
+      router.replace('/')
+    } catch (err: any) {
+      if (err.error === 'email_not_verified') {
+        return redirectConfirmEmail(values.email)
+      }
+
+      throw new Error(err.message)
+    }
+  }
+
+  function redirectConfirmEmail(email: string) {
+    dispatch({
+      type: 'setAuthEmail',
+      payload: email
+    })
+    router.push('/confirm-email')
+  }
 
   return (
-    <AuthPage
+    <CommonPage
       seo={{
         title: t('login.title')
       }}
     >
       <div>
         <div>
-          <h1 className="mt-6 text-center text-3xl font-bold text-slate-900">
+          <h1 className="text-center text-3xl font-bold text-slate-900">
             {t('login.heading')}
           </h1>
           <p className="mt-2 text-center text-sm text-slate-600">
             <Trans i18nKey="login.description">
-              Log in to your account or{' '}
-              <a href="/sign-up" className="font-medium text-blue-700 hover:text-blue-800">
-                create an account
-              </a>
+              Log in to your account or <a href="/sign-up" className="font-medium text-blue-700 hover:text-blue-800">create an account</a>
             </Trans>
           </p>
         </div>
@@ -90,7 +111,7 @@ const Login = (): JSX.Element => {
           </div>
         </div>
       </div>
-    </AuthPage>
+    </CommonPage>
   )
 }
 

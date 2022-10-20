@@ -1,6 +1,6 @@
 import { Form, Input } from '@heyforms/ui'
 import { useTranslation } from 'react-i18next'
-import { AuthPage } from '@/components/page'
+import { CommonPage } from '@/components/page'
 
 const ForgotPassword = (): JSX.Element => {
   const { t } = useTranslation()
@@ -8,14 +8,14 @@ const ForgotPassword = (): JSX.Element => {
   async function handleFinish() {}
 
   return (
-    <AuthPage
+    <CommonPage
       seo={{
         title: t('forgotPassword.title')
       }}
     >
       <div>
         <div>
-          <h1 className="mt-6 text-center text-3xl font-bold text-slate-900">
+          <h1 className="text-center text-3xl font-bold text-slate-900">
             {t('forgotPassword.heading')}
           </h1>
           <p className="mt-2 text-center text-sm text-slate-600">
@@ -50,7 +50,7 @@ const ForgotPassword = (): JSX.Element => {
           </div>
         </div>
       </div>
-    </AuthPage>
+    </CommonPage>
   )
 }
 

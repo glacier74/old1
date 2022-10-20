@@ -4,7 +4,9 @@ import { IconBrandGithub, IconBrandGoogle, IconBrandTwitter } from '@tabler/icon
 export const SocialLogin = () => {
   const { t } = useTranslation()
 
-  function handleRedirect(type: string) {}
+  function handleRedirect(type: string) {
+    console.log(type)
+  }
 
   function handleGoogle() {
     handleRedirect('google')

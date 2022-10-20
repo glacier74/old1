@@ -22,8 +22,7 @@ i18n.use(initReactI18next).init({
     // https://react.i18next.com/latest/trans-component#trans-props
     transSupportBasicHtmlNodes: true,
     transKeepBasicHtmlNodesFor: ['br', 'strong', 'b', 'i', 'a']
-  },
-  debug: true
+  }
 })
 
 export default i18n

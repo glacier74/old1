@@ -1,6 +1,6 @@
 import { Form, Input } from '@heyforms/ui'
 import { Trans, useTranslation } from 'react-i18next'
-import { AuthPage } from '@/components/page'
+import { CommonPage } from '@/components/page'
 import { isValid } from '@hpnp/utils/helper'
 import { useState } from 'react'
 
@@ -18,20 +18,20 @@ const ResetPassword = (): JSX.Element => {
   async function handleFinish() {}
 
   return (
-    <AuthPage
+    <CommonPage
       seo={{
         title: t('resetPassword.title')
       }}
     >
       <div>
         <div>
-          <h1 className="mt-6 text-center text-3xl font-bold text-slate-900">
+          <h1 className="text-center text-3xl font-bold text-slate-900">
             {t('resetPassword.heading')}
           </h1>
           <p className="mt-2 text-center text-sm text-slate-600">
             <Trans i18nKey="resetPassword.description">
-              {/* @ts-ignore */}
               We've sent you an email with a 6-digit verification code, please check your inbox at{' '}
+              {/* @ts-ignore */}
               <span className="font-medium text-slate-700">{{ email }}</span>
             </Trans>
           </p>
@@ -91,7 +91,7 @@ const ResetPassword = (): JSX.Element => {
           </div>
         </div>
       </div>
-    </AuthPage>
+    </CommonPage>
   )
 }
 
