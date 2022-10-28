@@ -1,4 +1,4 @@
-import { axios } from '@/utils'
+import { axios } from '@/utils/axios'
 
 export class AuthService {
   static async login(email: string, password: string) {
@@ -35,5 +35,9 @@ export class AuthService {
       code,
       password
     })
+  }
+
+  static async logout() {
+    await axios.post('/logout')
   }
 }

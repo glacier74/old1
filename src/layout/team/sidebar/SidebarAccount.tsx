@@ -1,19 +1,23 @@
 import { Avatar, Dropdown, Menus } from '@heyforms/ui'
 import type { FC } from 'react'
-import { useTranslation } from 'react-i18next'
-import { useStoreContext } from '@/store'
+import { useTranslation } from 'next-i18next'
+import { useStore } from '@/store'
+import { AuthService } from '@/service'
+import { useRouter } from 'next/router'
 
-export const Account: FC = () => {
-  const { t } = useTranslation()
-  const { state } = useStoreContext()
+export const SidebarAccount: FC = () => {
+  const { t } = useTranslation('team')
+  const router = useRouter()
+  const { user } = useStore()
 
-  function handleMenuClick(name?: any) {
+  async function handleMenuClick(name?: any) {
     switch (name) {
       case 'accountSettings':
         break
 
       case 'logout':
-        window.location.href = '/logout'
+        await AuthService.logout()
+        router.replace('/login')
         break
     }
   }
@@ -39,11 +43,11 @@ export const Account: FC = () => {
       >
         <div className="flex items-center cursor-pointer">
           <div>
-            <Avatar className="inline-block h-8 w-8" src={state.user?.avatar} circular rounded />
+            <Avatar className="inline-block h-8 w-8" src={user?.avatar} circular rounded />
           </div>
           <div className="ml-3">
             <p className="text-sm font-medium text-slate-700 truncate group-hover:text-slate-900">
-              {state.user?.name}
+              {user?.name}
             </p>
             <p className="text-xs text-slate-500 group-hover:text-slate-700">
               {t('sidebar.viewProfile')}

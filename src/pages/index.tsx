@@ -1,45 +1,36 @@
-import { NextPageContext } from 'next'
-import { isValid, isValidArray } from '@nily/utils'
-import { TeamService } from '@/service'
+import { isLoggedIn, withTranslations } from '@/utils'
+import { BaseLayout, TeamRedirect } from '@/layout'
 
-const Home = (): JSX.Element => {
-  return <div>Home Page</div>
+interface HomeProps {
+  isLoggedIn: boolean
 }
 
-const browserIdCookieName = process.env.NEXT_PUBLIC_BROWSER_ID_COOKIE_NAME!
-const tokenCookieName = process.env.NEXT_PUBLIC_TOKEN_COOKIE_NAME!
+const Home = ({ isLoggedIn }: HomeProps): JSX.Element => {
+  /**
+   * 如果用户已经登录，拉取 user 和 teams 信息
+   * 如果 token 过期，请求 /logout 接口退出登录
+   * 如果 teams 为空，重定向到 /onboarding 页面
+   */
+  if (isLoggedIn) {
+    return <TeamRedirect />
+  }
 
-export async function getServerSideProps(context: NextPageContext) {
-  const req: any = context.req
-  const cookies = req.cookies
+  return (
+    <BaseLayout seo={{ title: 'Home' }}>
+      <div>Home Page</div>
+    </BaseLayout>
+  )
+}
 
-  if (isValid(cookies[browserIdCookieName]) && isValid(cookies[tokenCookieName])) {
-    const teams = await TeamService.teams({
-      headers: req.headers
-    })
-
-    if (!isValidArray(teams)) {
-      return {
-        redirect: {
-          destination: '/products/create',
-          permanent: false
-        }
-      }
-    }
-
-    const productId = teams[0].products[0].id
-
+export const getServerSideProps = withTranslations(
+  async context => {
     return {
-      redirect: {
-        destination: `/product/${productId}`,
-        permanent: false
+      props: {
+        isLoggedIn: isLoggedIn(context.req.cookies)
       }
     }
-  }
-
-  return {
-    props: {}
-  }
-}
+  },
+  ['home']
+)
 
 export default Home

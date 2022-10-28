@@ -1,14 +1,24 @@
-import { useTranslation } from 'react-i18next'
-import { TeamPage } from '@/components/page'
+import { useTranslation } from 'next-i18next'
+import { TeamLayout } from '@/layout'
+import { withTranslations } from '@/utils'
 
 const ProductSettings = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('team')
 
   return (
-    <TeamPage seo={{ title: t('product.title') }}>
+    <TeamLayout seo={{ title: t('team.title') }}>
       <div>Product</div>
-    </TeamPage>
+    </TeamLayout>
   )
 }
+
+export const getServerSideProps = withTranslations(
+  async context => {
+    return {
+      props: {}
+    }
+  },
+  ['team']
+)
 
 export default ProductSettings

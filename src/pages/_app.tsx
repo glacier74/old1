@@ -1,19 +1,13 @@
-import '@/styles/globals.scss'
-import { AppProps } from 'next/app'
-import { Suspense, useMemo, useReducer } from 'react'
+import type { AppProps } from 'next/app'
+import { Suspense } from 'react'
 import Head from 'next/head'
-import '@/locales'
-import { StoreReducer, StoreContext } from '@/store'
+import { appWithTranslation } from 'next-i18next'
+import { StoreProvider } from '@/store'
+import '@/globals.scss'
 
-export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
-  const [state, dispatch] = useReducer(StoreReducer, {
-    isReady: false,
-    teams: []
-  })
-  const storeValue = useMemo(() => ({ state, dispatch }), [state])
-
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <StoreContext.Provider value={storeValue}>
+    <StoreProvider>
       <Suspense fallback={<></>}>
         <Head>
           <meta httpEquiv="x-dns-prefetch-control" content="on" />
@@ -29,6 +23,8 @@ export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         </Head>
         <Component {...pageProps} />
       </Suspense>
-    </StoreContext.Provider>
+    </StoreProvider>
   )
 }
+
+export default appWithTranslation(MyApp)

@@ -1,0 +1,28 @@
+{
+  "product": {
+    "title": "Product"
+  },
+  "sidebar": {
+    "createProduct": "Create product",
+    "member": "Member",
+    "accountSettings": "Account settings",
+    "logout": "Logout",
+    "version": "Version",
+    "viewProfile": "View profile",
+    "dashboard": "Dashboard",
+    "engagements": "Customer engagements",
+    "integrate": "Integrate with apps",
+    "members": "Team members",
+    "productSettings": "Product settings",
+    "pro": "EarlyBird Pro",
+    "resources": "Resources",
+    "gettingStarted": "GettingStarted",
+    "whatsNew": "What's new",
+    "roadmap": "Roadmap",
+    "blog": "Blog",
+    "helpSupport": "Help & Support",
+    "helpCenter": "Help center",
+    "sendEmail": "Send us an email",
+    "twitter": "Twitter @EarlyBirdIm"
+  }
+}

@@ -1,64 +1,63 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
-import { pathToRegexp } from 'path-to-regexp'
-import type { NextCookies } from 'next/dist/server/web/spec-extension/cookies'
-import { v4 as uuidV4, validate } from 'uuid'
-import { date, isFunction, isValid } from '@nily/utils'
-
-const browserIdName = process.env.NEXT_PUBLIC_BROWSER_ID_COOKIE_NAME!
-const tokenName = process.env.NEXT_PUBLIC_TOKEN_COOKIE_NAME!
+import { deleteToken, getBrowserId, isLoggedIn, setBrowserId } from '@/utils/cookie'
+import { isMatchRoutes } from '@/utils/route'
 
 const authRoutes = ['/login', '/sign-up', '/confirm-email', '/forgot-password', '/reset-password']
-const bizRoutes: string[] = ['/product/:id*']
+const productRoutes = ['/team/:id*']
 
-function isMatch(pathname: string, matchers: string[]) {
-  return matchers.some(m => pathToRegexp(m).test(pathname))
-}
+export async function middleware(req: NextRequest) {
+  const isLogged = isLoggedIn(req.cookies)
 
-function hasCookie(cookie: NextCookies, key: string, validator?: (value: string) => boolean) {
-  const value = cookie.get(key)
-  let result = isValid(value)
-
-  if (validator && isFunction(validator)) {
-    result = result && validator(value!)
-  }
-
-  return result
-}
-
-export function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl
-
-  const hasBrowserId = hasCookie(req.cookies, browserIdName, validate)
-  const hasToken = hasCookie(req.cookies, tokenName)
-
-  // Auth routes
-  if (isMatch(pathname, authRoutes)) {
-    if (hasToken && hasBrowserId) {
+  // 登录, 注册等页面
+  if (isMatchRoutes(req, authRoutes)) {
+    // 已登录跳转到首页
+    if (isLogged) {
       return NextResponse.redirect(new URL('/', req.url))
     }
 
-    if (!hasBrowserId) {
-      const res = NextResponse.next()
+    const res = NextResponse.next()
 
-      res.cookies.set(browserIdName, uuidV4({ random: undefined }), {
-        httpOnly: false,
-        domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN,
-        maxAge: date.milliseconds(process.env.NEXT_PUBLIC_COOKIE_MAX_AGE!)
+    // 检查是否生成 browserId cookie
+    const browserId = getBrowserId(req.cookies)
+
+    if (!browserId) {
+      setBrowserId(res.cookies)
+    }
+
+    return res
+  }
+
+  // Product 等页面
+  if (isMatchRoutes(req, productRoutes)) {
+    if (!isLogged) {
+      // 展示 404 not found
+      return NextResponse.rewrite(req.url, {
+        status: 404
       })
-
-      return res
     }
   }
 
-  // Biz routes
-  if (isMatch(pathname, bizRoutes)) {
-    if (!hasToken || !hasBrowserId) {
-      return NextResponse.redirect(new URL('/login', req.url))
+  const res = NextResponse.next()
+
+  // 检查 token 是否有效
+  if (isLogged) {
+    try {
+      const f = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/user`, {
+        headers: req.headers
+      })
+      const data = await f.json()
+
+      // 删除 token cookie
+      if (data.statusCode === 401) {
+        deleteToken(res.cookies)
+      }
+    } catch (err: any) {
+      console.error(err)
     }
   }
 
-  return NextResponse.next()
+  return res
 }
 
 export const config = {
@@ -68,6 +67,7 @@ export const config = {
     '/confirm-email',
     '/forgot-password',
     '/reset-password',
-    '/product/:id*'
+    '/team/:id*',
+    '/'
   ]
 }

@@ -1,8 +1,8 @@
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next'
 import { IconBrandGithub, IconBrandGoogle, IconBrandTwitter } from '@tabler/icons'
 
 export const SocialLogin = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('auth')
 
   function handleRedirect(type: string) {
     console.log(type)

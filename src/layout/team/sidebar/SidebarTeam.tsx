@@ -1,13 +1,12 @@
 import { Avatar, Dropdown, Menus } from '@heyforms/ui'
 import type { FC } from 'react'
 import { useMemo, useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { Product, Team } from '@/service'
+import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { IconChevronDown, IconCircleCheck, IconPlus } from '@tabler/icons'
-import { useStoreContext } from '@/store'
 import { isEqual } from '@nily/utils'
-import { useParam, useTeam } from '@/hook'
+import { IconChevronDown, IconCircleCheck, IconPlus } from '@tabler/icons'
+import { useStore } from '@/store'
+import { useProductId, useTeam } from '../hook'
 
 interface CurrentTeamProps {
   team?: Team
@@ -19,9 +18,9 @@ interface TeamItemProps {
 }
 
 const TeamItem: FC<TeamItemProps> = ({ team, onClick }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('team')
   const product = useMemo(() => team.products[0], [team])
-  const productId = useParam('id')
+  const productId = useProductId()
 
   function handleClick() {
     onClick(product)
@@ -29,7 +28,7 @@ const TeamItem: FC<TeamItemProps> = ({ team, onClick }) => {
 
   return (
     <div
-      className="group flex items-center px-4 py-2.5 text-sm text-slate-700 cursor-pointer hover:bg-slate-100"
+      className="group flex items-center px-4 py-2 text-sm text-slate-700 cursor-pointer hover:bg-slate-100"
       onClick={handleClick}
     >
       <Avatar src={product?.logo} size={24} retainLength={2} rounded circular />
@@ -77,13 +76,13 @@ const NavigationSkeleton = () => {
   )
 }
 
-export const TeamDropdown: FC = () => {
-  const { t } = useTranslation()
-  const { state } = useStoreContext()
+export const SidebarTeam: FC = () => {
+  const { t } = useTranslation('team')
   const router = useRouter()
+  const { isReady } = useStore()
 
-  const { current, teams } = useTeam()
   const [visible, setVisible] = useState(false)
+  const { current, teams } = useTeam()
 
   function handleCreate() {}
 
@@ -109,7 +108,7 @@ export const TeamDropdown: FC = () => {
 
   return (
     <div className="px-4">
-      {state.isReady ? (
+      {isReady ? (
         <Dropdown
           className="block w-full"
           placement="bottom-start"

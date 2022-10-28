@@ -1,12 +1,12 @@
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next'
 import { CSSTransition } from 'react-transition-group'
-import { Account } from './Account'
 import { IconX } from '@tabler/icons'
-import { Navbar } from './Navbar'
-import { TeamDropdown } from './TeamDropdown'
+import { SidebarAccount } from './SidebarAccount'
+import { SidebarNavbar } from './SidebarNavbar'
+import { SidebarTeam } from './SidebarTeam'
 
 export const Sidebar = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('team')
 
   function handleClose() {}
 
@@ -31,10 +31,10 @@ export const Sidebar = () => {
           />
           <div className="sidebar-wrapper relative flex flex-col flex-1 max-w-xs w-full h-full bg-white transform-gpu transition-transform duration-300 ease-in-out">
             <div className="flex flex-1 flex-col h-0 pt-5">
-              <TeamDropdown />
-              <Navbar />
+              <SidebarTeam />
+              <SidebarNavbar />
             </div>
-            <Account />
+            <SidebarAccount />
 
             <div className="absolute top-0 right-0 -mr-12 pt-2 md:hidden">
               <button
@@ -54,10 +54,10 @@ export const Sidebar = () => {
       <div className="sidebar fixed inset-0 hidden md:flex md:flex-shrink-0">
         <div className="relative flex flex-col flex-1 w-64 h-full bg-slate-100">
           <div className="flex flex-1 flex-col h-0 pt-5">
-            <TeamDropdown />
-            <Navbar />
+            <SidebarTeam />
+            <SidebarNavbar />
           </div>
-          <Account />
+          <SidebarAccount />
         </div>
       </div>
     </>

@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next'
 import {
   IconBolt,
   IconBrandTwitter,
@@ -16,6 +16,8 @@ import {
   IconUsers,
   TablerIconProps
 } from '@tabler/icons'
+import Link from 'next/link'
+import { useProductId } from '@/layout/team/hook'
 
 interface SidebarNavProps {
   isMobile?: boolean
@@ -40,8 +42,21 @@ const ExternalLink = ({ icon: Icon, href, title }: ExternalLinkProps) => {
   )
 }
 
-export const Navbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
-  const { t } = useTranslation()
+const NavLink = ({ icon: Icon, href, title }: ExternalLinkProps) => {
+  return (
+    <Link
+      href={href}
+      className="text-slate-700 hover:bg-slate-200 hover:text-slate-900 group flex items-center px-2 py-1 text-sm rounded-md"
+    >
+      <Icon className="text-slate-700 mr-3 flex-shrink-0 h-5 w-5" />
+      <span className="truncate">{title}</span>
+    </Link>
+  )
+}
+
+export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
+  const { t } = useTranslation('team')
+  const productId = useProductId()
 
   function handleCloseSidebar() {}
 
@@ -49,30 +64,24 @@ export const Navbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
     <nav className="sidebar-nav scrollbar flex-1 mt-5 px-2 pb-4 space-y-8">
       {/* Product links */}
       <div className="space-y-1">
-        <div className="text-slate-700 hover:bg-slate-200 hover:text-slate-900 group flex items-center px-2 py-1 text-sm rounded-md">
-          <IconHome2 className="text-slate-700 mr-3 flex-shrink-0 h-5 w-5" />
-          {t('sidebar.dashboard')}
-        </div>
-        <div className="text-slate-700 hover:bg-slate-200 hover:text-slate-900 group flex items-center px-2 py-1 text-sm rounded-md">
-          <IconDatabase className="text-slate-700 mr-3 flex-shrink-0 h-5 w-5" />
-          {t('sidebar.engagements')}
-        </div>
-        <div className="text-slate-700 hover:bg-slate-200 hover:text-slate-900 group flex items-center px-2 py-1 text-sm rounded-md">
-          <IconPlug className="text-slate-700 mr-3 flex-shrink-0 h-5 w-5" />
-          {t('sidebar.integrate')}
-        </div>
-        <div className="text-slate-700 hover:bg-slate-200 hover:text-slate-900 group flex items-center px-2 py-1 text-sm rounded-md">
-          <IconUsers className="text-slate-700 mr-3 flex-shrink-0 h-5 w-5" />
-          {t('sidebar.members')}
-        </div>
-        <div className="text-slate-700 hover:bg-slate-200 hover:text-slate-900 group flex items-center px-2 py-1 text-sm rounded-md">
-          <IconSettings className="text-slate-700 mr-3 flex-shrink-0 h-5 w-5" />
-          {t('sidebar.productSettings')}
-        </div>
-        <div className="text-slate-700 hover:bg-slate-200 hover:text-slate-900 group flex items-center px-2 py-1 text-sm rounded-md">
-          <IconBolt className="text-slate-700 mr-3 flex-shrink-0 h-5 w-5" />
-          {t('sidebar.pro')}
-        </div>
+        <NavLink href={`/product/${productId}`} icon={IconHome2} title={t('sidebar.dashboard')} />
+        <NavLink
+          href={`/product/${productId}`}
+          icon={IconDatabase}
+          title={t('sidebar.engagements')}
+        />
+        <NavLink
+          href={`/product/${productId}/integration`}
+          icon={IconPlug}
+          title={t('sidebar.integrate')}
+        />
+        <NavLink href={`/product/${productId}`} icon={IconUsers} title={t('sidebar.members')} />
+        <NavLink
+          href={`/product/${productId}/settings`}
+          icon={IconSettings}
+          title={t('sidebar.productSettings')}
+        />
+        <NavLink href={`/product/${productId}`} icon={IconBolt} title={t('sidebar.pro')} />
       </div>
 
       {/* Resources links */}

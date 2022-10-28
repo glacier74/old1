@@ -1,0 +1,7 @@
+{
+  "app": {
+    "name": "EarlyBird",
+    "description": "EarlyBird is xxx",
+    "title": "{{title}} · $t(app.name)"
+  }
+}
