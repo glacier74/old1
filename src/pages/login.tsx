@@ -7,7 +7,7 @@ import { withTranslations } from '@/utils'
 import { useStore } from '@/store'
 
 const Login = (): JSX.Element => {
-  const { t } = useTranslation('auth')
+  const { t } = useTranslation()
   const router = useRouter()
   const { setEmail } = useStore()
 
@@ -108,13 +108,10 @@ const Login = (): JSX.Element => {
   )
 }
 
-export const getServerSideProps = withTranslations(
-  async context => {
-    return {
-      props: {}
-    }
-  },
-  ['auth']
-)
+export const getServerSideProps = withTranslations(async context => {
+  return {
+    props: {}
+  }
+})
 
 export default Login

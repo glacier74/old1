@@ -17,8 +17,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta content="yes" name="mobile-web-app-capable" />
           <meta content="yes" name="apple-mobile-web-app-capable" />
           <meta content="EarlyBird" name="application-name" />
+          <meta content="EarlyBird" name="apple-mobile-web-app-title" />
           <meta content="white" name="apple-mobile-web-app-status-bar-style" />
-          <meta content="HeyForm" name="apple-mobile-web-app-title" />
           <meta content="telephone=no,email=no" name="format-detection" />
         </Head>
         <Component {...pageProps} />

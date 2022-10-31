@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next'
 import { IconBrandGithub, IconBrandGoogle, IconBrandTwitter } from '@tabler/icons'
 
 export const SocialLogin = () => {
-  const { t } = useTranslation('auth')
+  const { t } = useTranslation()
 
   function handleRedirect(type: string) {
     console.log(type)

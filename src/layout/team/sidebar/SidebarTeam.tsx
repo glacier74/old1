@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { isEqual } from '@nily/utils'
 import { IconChevronDown, IconCircleCheck, IconPlus } from '@tabler/icons'
 import { useStore } from '@/store'
-import { useProductId, useTeam } from '../hook'
+import { useProductId, useTeams } from '../hook'
 
 interface CurrentTeamProps {
   team?: Team
@@ -18,7 +18,7 @@ interface TeamItemProps {
 }
 
 const TeamItem: FC<TeamItemProps> = ({ team, onClick }) => {
-  const { t } = useTranslation('team')
+  const { t } = useTranslation()
   const product = useMemo(() => team.products[0], [team])
   const productId = useProductId()
 
@@ -67,7 +67,7 @@ const CurrentTeam: FC<CurrentTeamProps> = ({ team }) => {
   )
 }
 
-const NavigationSkeleton = () => {
+const Skeleton = () => {
   return (
     <div className="flex items-center">
       <div className="w-6 h-6 bg-slate-200 rounded-full"></div>
@@ -77,12 +77,12 @@ const NavigationSkeleton = () => {
 }
 
 export const SidebarTeam: FC = () => {
-  const { t } = useTranslation('team')
+  const { t } = useTranslation()
   const router = useRouter()
   const { isReady } = useStore()
 
   const [visible, setVisible] = useState(false)
-  const { current, teams } = useTeam()
+  const { team, teams } = useTeams()
 
   function handleCreate() {}
 
@@ -115,10 +115,10 @@ export const SidebarTeam: FC = () => {
           overlay={Overlay}
           visible={visible}
         >
-          <CurrentTeam team={current} />
+          <CurrentTeam team={team} />
         </Dropdown>
       ) : (
-        <NavigationSkeleton />
+        <Skeleton />
       )}
     </div>
   )

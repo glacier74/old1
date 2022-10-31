@@ -18,6 +18,7 @@ import {
 } from '@tabler/icons'
 import Link from 'next/link'
 import { useProductId } from '@/layout/team/hook'
+import { useStore } from '@/store'
 
 interface SidebarNavProps {
   isMobile?: boolean
@@ -55,8 +56,9 @@ const NavLink = ({ icon: Icon, href, title }: ExternalLinkProps) => {
 }
 
 export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
-  const { t } = useTranslation('team')
+  const { t } = useTranslation()
   const productId = useProductId()
+  const { openMemberList } = useStore()
 
   function handleCloseSidebar() {}
 
@@ -66,7 +68,7 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
       <div className="space-y-1">
         <NavLink href={`/product/${productId}`} icon={IconHome2} title={t('sidebar.dashboard')} />
         <NavLink
-          href={`/product/${productId}`}
+          href={`/product/${productId}/engagements`}
           icon={IconDatabase}
           title={t('sidebar.engagements')}
         />
@@ -75,7 +77,13 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
           icon={IconPlug}
           title={t('sidebar.integrate')}
         />
-        <NavLink href={`/product/${productId}`} icon={IconUsers} title={t('sidebar.members')} />
+        <div
+          className="text-slate-700 hover:bg-slate-200 hover:text-slate-900 group flex items-center px-2 py-1 text-sm rounded-md cursor-pointer"
+          onClick={openMemberList}
+        >
+          <IconUsers className="text-slate-700 mr-3 flex-shrink-0 h-5 w-5" />
+          <span className="truncate">{t('sidebar.members')}</span>
+        </div>
         <NavLink
           href={`/product/${productId}/settings`}
           icon={IconSettings}

@@ -1,4 +1,7 @@
 export * from './BaseLayout'
 export * from './home'
 export * from './auth'
+export * from './auth/SocialLogin'
+export * from './onboarding'
+export * from './product'
 export * from './team'

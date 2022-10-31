@@ -22,15 +22,12 @@ const Home = ({ isLoggedIn }: HomeProps): JSX.Element => {
   )
 }
 
-export const getServerSideProps = withTranslations(
-  async context => {
-    return {
-      props: {
-        isLoggedIn: isLoggedIn(context.req.cookies)
-      }
+export const getServerSideProps = withTranslations(async context => {
+  return {
+    props: {
+      isLoggedIn: isLoggedIn(context.req.cookies)
     }
-  },
-  ['home']
-)
+  }
+})
 
 export default Home

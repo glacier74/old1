@@ -9,7 +9,7 @@ import { isEmpty } from '@nily/utils'
 import { useEffect } from 'react'
 
 const ConfirmEmail = (): JSX.Element => {
-  const { t } = useTranslation('auth')
+  const { t } = useTranslation()
   const router = useRouter()
   const { email } = useStore()
 
@@ -68,8 +68,7 @@ export const getServerSideProps = withTranslations(
     return {
       props: {}
     }
-  },
-  ['auth']
+  }
 )
 
 export default ConfirmEmail

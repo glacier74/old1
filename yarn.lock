@@ -42,10 +42,10 @@
   resolved "http://npm.heyooo.com/@heroicons%2freact/-/react-1.0.6.tgz#35dd26987228b39ef2316db3b1245c42eb19e324"
   integrity sha512-JJCXydOFWMDpCP4q13iEplA503MQO3xLoZiKum+955ZCtHINWnx26CUxVxxFQu/uLb4LW3ge15ZpzIkXKkJ8oQ==
 
-"@heyforms/ui@^2022.9.11":
-  version "2022.9.11"
-  resolved "http://npm.heyooo.com/@heyforms%2fui/-/ui-2022.9.11.tgz#937c760b0e56f23c35817887a74c1192ed967f0b"
-  integrity sha512-oUlAX4HkVn6WbgBX88u+A/CXznlnLH9+rPX5wEBFrrH+SHInicDLqQyn0F2qKJLEdSFqX5sG3EtM3lp+2sTqcg==
+"@heyforms/ui@^2022.10.1":
+  version "2022.10.1"
+  resolved "http://npm.heyooo.com/@heyforms%2fui/-/ui-2022.10.1.tgz#7088c60bb85a9593292f3d38e5ec86f0fe0cef32"
+  integrity sha512-QGYfat8qfTeZqNPKMIBZQbgdOHW8KzJlpraVWKhdHrKKhpftg/q+CebneoU5tLj+lpYRNksFZ+d575LjCBlCvw==
   dependencies:
     "@headlessui/react" "^1.6.6"
     "@heroicons/react" "^1.0.6"
@@ -284,6 +284,13 @@
   version "15.7.5"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
+
+"@types/react-copy-to-clipboard@^5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@types/react-copy-to-clipboard/-/react-copy-to-clipboard-5.0.4.tgz#558f2c38a97f53693e537815f6024f1e41e36a7e"
+  integrity sha512-otTJsJpofYAeaIeOwV5xBUGpo6exXG2HX7X4nseToCB2VgPEBxGBHCm/FecZ676doNR7HCSTVtmohxfG2b3/yQ==
+  dependencies:
+    "@types/react" "*"
 
 "@types/react-dom@^18.0.6":
   version "18.0.6"
@@ -2170,6 +2177,14 @@ react-colorful@^5.5.1:
   version "5.6.1"
   resolved "http://npm.heyooo.com/react-colorful/-/react-colorful-5.6.1.tgz#7dc2aed2d7c72fac89694e834d179e32f3da563b"
   integrity sha512-1exovf0uGTGyq5mXQT0zgQ80uvj2PCwvF8zY1RN9/vbJVSjSo3fsB/4L3ObbF7u70NduSiK4xu4Y6q1MHoUGEw==
+
+react-copy-to-clipboard@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-copy-to-clipboard/-/react-copy-to-clipboard-5.1.0.tgz#09aae5ec4c62750ccb2e6421a58725eabc41255c"
+  integrity sha512-k61RsNgAayIJNoy9yDsYzDe/yAZAzEbEgcz3DZMhF686LEyukcE1hzurxe85JandPUG+yTfGVFzuEw3xt8WP/A==
+  dependencies:
+    copy-to-clipboard "^3.3.1"
+    prop-types "^15.8.1"
 
 react-dom@^18.2.0:
   version "18.2.0"

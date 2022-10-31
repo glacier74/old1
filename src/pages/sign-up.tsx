@@ -1,14 +1,13 @@
 import { Form, Input } from '@heyforms/ui'
 import { Trans, useTranslation } from 'next-i18next'
-import { CommonPage } from '@/components/page'
 import { useRouter } from 'next/router'
-import { SocialLogin } from '@/layout'
+import { AuthLayout, SocialLogin } from '@/layout'
 import { AuthService } from '@/service'
 import { useStore } from '@/store'
 import { withTranslations } from '@/utils'
 
 const SignUp = (): JSX.Element => {
-  const { t } = useTranslation('auth')
+  const { t } = useTranslation()
   const router = useRouter()
   const { setEmail } = useStore()
 
@@ -20,7 +19,7 @@ const SignUp = (): JSX.Element => {
   }
 
   return (
-    <CommonPage
+    <AuthLayout
       seo={{
         title: t('signUp.title')
       }}
@@ -100,17 +99,14 @@ const SignUp = (): JSX.Element => {
           </div>
         </div>
       </div>
-    </CommonPage>
+    </AuthLayout>
   )
 }
 
-export const getServerSideProps = withTranslations(
-  async context => {
-    return {
-      props: {}
-    }
-  },
-  ['auth']
-)
+export const getServerSideProps = withTranslations(async context => {
+  return {
+    props: {}
+  }
+})
 
 export default SignUp

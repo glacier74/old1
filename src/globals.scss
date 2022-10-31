@@ -92,15 +92,17 @@ body {
   animation: skeleton 1.4s ease infinite;
 }
 
-.sidebar {
-  @media (min-width: 800px) {
-    width: 16rem;
+.root-container {
+  @media (min-width: 768px) {
+    padding-left: 16rem;
   }
 }
 
-.container {
-  @media (min-width: 800px) {
-    padding-left: 16rem;
+// =================================================================================
+// Sidebar
+.sidebar {
+  @media (min-width: 768px) {
+    width: 16rem;
   }
 }
 
@@ -129,4 +131,55 @@ body {
 
 .sidebar-popup-exit-done {
   @apply hidden #{!important};
+}
+
+// =================================================================================
+// Member
+.member-table {
+  .table-body {
+    tr {
+      @apply hover:bg-transparent;
+    }
+
+    td {
+      @apply px-0;
+    }
+  }
+
+  .button {
+    @apply px-3.5 py-1;
+  }
+}
+
+// =================================================================================
+// Photo picker
+.photo-picker {
+  .modal-body {
+    @apply p-0 overflow-hidden;
+  }
+
+  .modal-close-button {
+    @apply top-3 right-5;
+  }
+
+  .tabs-wrapper {
+    @apply flex flex-col;
+  }
+
+  .tabs-nav-list {
+    @apply px-4;
+  }
+
+  .tabs-pane-group {
+    @apply h-96;
+    @extend .scrollbar;
+  }
+
+  .tabs-pane {
+    @apply h-full p-4;
+  }
+
+  .drag-uploader {
+    @apply h-full;
+  }
 }

@@ -7,18 +7,23 @@ export function useProductId() {
   return useParam('id') as string
 }
 
-export function useTeam() {
+export function useTeams() {
   const store = useStore()
   const productId = useProductId()
 
   const teams = useMemo(() => store.teams.filter(t => isValidArray(t.products)), [store.teams])
-  const current = useMemo(
+  const team = useMemo(
     () => teams.find(t => t.products.some(p => isEqual(p.id, productId))),
     [productId, teams]
   )
 
   return {
-    current,
+    team,
     teams
   }
+}
+
+export function useProduct() {
+  const { team } = useTeams()
+  return team?.products[0]
 }

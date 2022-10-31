@@ -1,19 +1,33 @@
+import { ReactNode } from 'react'
+
 export {}
 
 declare global {
   import type { NextSeoProps } from 'next-seo'
-  import type { ReactNode } from 'react'
+  import type { ReactNode, CSSProperties } from 'react'
   import type { NextPageContext } from 'next'
 
   type AnyMap<V, K = string> = Record<K, T>
   type StringMap = AnyMap<string>
 
-  interface LayoutProps {
+  interface ComponentProps {
+    className?: string
+    style?: CSSProperties
+    children?: ReactNode
+  }
+
+  interface LayoutProps extends ComponentProps {
     seo: NextSeoProps
     children: ReactNode
   }
 
   type NextPageFunction = (context: NextPageContext) => Promise<{ props: AnyMap<any> }>
+
+  interface IModalProps {
+    visible?: boolean
+    onClose?: () => void
+    onComplete?: () => void
+  }
 
   interface User {
     id: number
@@ -50,5 +64,14 @@ declare global {
     description: string
     createdAt: string
     updatedAt: string
+  }
+
+  interface UnsplashImage {
+    id: string
+    url: string
+    thumbUrl: string
+    downloadUrl: string
+    author: string
+    authorUrl: string
   }
 }

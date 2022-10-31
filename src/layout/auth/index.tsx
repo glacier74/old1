@@ -1,7 +1,5 @@
 import { BaseLayout } from '../BaseLayout'
 
-export { SocialLogin } from './SocialLogin'
-
 export function AuthLayout({ seo, children }: LayoutProps) {
   return (
     <BaseLayout seo={seo}>

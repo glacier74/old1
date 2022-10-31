@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 export function useAsyncEffect<T, S extends unknown>(
@@ -22,4 +22,38 @@ export function useParam(key?: string) {
   }
 
   return router.query
+}
+
+export function useVisible(visible = false): [boolean, () => void, () => void] {
+  const [_visible, setVisible] = useState(visible)
+
+  const open = useCallback(() => {
+    setVisible(true)
+  }, [])
+
+  const close = useCallback(() => {
+    setVisible(false)
+  }, [])
+
+  return [_visible, open, close]
+}
+
+export function useRequest(asyncFunction: () => void, deps: unknown[] = []) {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<Error>()
+
+  const request = useCallback(async () => {
+    setLoading(true)
+    setError(undefined)
+
+    try {
+      await asyncFunction()
+    } catch (err: unknown) {
+      setError(err as Error)
+    } finally {
+      setLoading(false)
+    }
+  }, deps)
+
+  return { loading, error, request }
 }

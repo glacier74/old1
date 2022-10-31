@@ -6,7 +6,7 @@ import { SidebarNavbar } from './SidebarNavbar'
 import { SidebarTeam } from './SidebarTeam'
 
 export const Sidebar = () => {
-  const { t } = useTranslation('team')
+  const { t } = useTranslation()
 
   function handleClose() {}
 

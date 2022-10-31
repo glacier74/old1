@@ -6,13 +6,14 @@ import { AuthService } from '@/service'
 import { useRouter } from 'next/router'
 
 export const SidebarAccount: FC = () => {
-  const { t } = useTranslation('team')
+  const { t } = useTranslation()
   const router = useRouter()
-  const { user } = useStore()
+  const { user, openAccountSettings } = useStore()
 
   async function handleMenuClick(name?: any) {
     switch (name) {
       case 'accountSettings':
+        openAccountSettings()
         break
 
       case 'logout':
@@ -24,7 +25,7 @@ export const SidebarAccount: FC = () => {
 
   const Overlay = (
     <Menus className="bottom-12" onClick={handleMenuClick}>
-      <Menus.Item value="accountSettings" label={t('sidebar.accountSettings')} />
+      <Menus.Item value="accountSettings" label={t('account.heading')} />
       <Menus.Item value="logout" label={t('sidebar.logout')} />
       <Menus.Divider />
       <Menus.Item

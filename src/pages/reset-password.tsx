@@ -1,7 +1,6 @@
 import { Form, Input } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
-import { isValid } from '@hpnp/utils/helper'
-import { isEmpty } from '@nily/utils'
+import { isEmpty, isValid } from '@nily/utils'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { AuthLayout } from '@/layout'
@@ -10,7 +9,7 @@ import { AuthService } from '@/service'
 import { withTranslations } from '@/utils'
 
 const ResetPassword = (): JSX.Element => {
-  const { t } = useTranslation('auth')
+  const { t } = useTranslation()
   const router = useRouter()
   const { email } = useStore()
 
@@ -103,13 +102,10 @@ const ResetPassword = (): JSX.Element => {
   )
 }
 
-export const getServerSideProps = withTranslations(
-  async context => {
-    return {
-      props: {}
-    }
-  },
-  ['auth']
-)
+export const getServerSideProps = withTranslations(async context => {
+  return {
+    props: {}
+  }
+})
 
 export default ResetPassword

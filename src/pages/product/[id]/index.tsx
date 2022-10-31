@@ -3,7 +3,7 @@ import { TeamLayout } from '@/layout'
 import { withTranslations } from '@/utils'
 
 const Product = (): JSX.Element => {
-  const { t } = useTranslation('team')
+  const { t } = useTranslation()
 
   return (
     <TeamLayout seo={{ title: t('product.title') }}>
@@ -12,13 +12,10 @@ const Product = (): JSX.Element => {
   )
 }
 
-export const getServerSideProps = withTranslations(
-  async context => {
-    return {
-      props: {}
-    }
-  },
-  ['team']
-)
+export const getServerSideProps = withTranslations(async context => {
+  return {
+    props: {}
+  }
+})
 
 export default Product
