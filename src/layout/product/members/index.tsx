@@ -1,20 +1,19 @@
 import { FC, useMemo, useState } from 'react'
 import { useTranslation } from 'next-i18next'
-import { Avatar, Button, Form, Input, Modal, Table } from '@heyforms/ui'
+import { Avatar, Button, Form, Input, Modal, notification, Table } from '@heyforms/ui'
 import { useStore } from '@/store'
 import { CopyButton } from '@/components'
-import { useProductId, useTeams } from '@/layout/team/hook'
+import { useProduct } from '@/layout'
 import { TableColumn } from '@heyforms/ui/types/table'
-import { RemoveMember } from './RemoveMember'
-import { LeaveTeam } from './LeaveTeam'
 import { useVisible } from '@/utils'
+import { ProductService } from '@/service'
+import { LeaveProduct } from './LeaveProduct'
+import { RemoveMember } from './RemoveMember'
 
-export const TeamMemberModal: FC<IModalProps> = ({ visible }) => {
+export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
   const { t } = useTranslation()
   const { user, closeMemberList } = useStore()
-
-  const { team } = useTeams()
-  const productId = useProductId()
+  const product = useProduct()
 
   const [leaveModalVisible, openLeaveModal, closeLeaveModal] = useVisible()
   const [removeModalVisible, openRemoveModal, closeRemoveModal] = useVisible()
@@ -22,15 +21,21 @@ export const TeamMemberModal: FC<IModalProps> = ({ visible }) => {
   const [selectedUser, setSelectedUser] = useState<User>()
 
   const isOwner = useMemo(
-    () => !!team?.users.find(u => u.role === 'owner' && u.id === user.id),
-    [team?.users, user.id]
+    () => !!product?.users.find(u => u.role === 'owner' && u.id === user.id),
+    [product?.users, user.id]
   )
   const invitationURL = useMemo(
-    () => `${process.env.NEXT_PUBLIC_HOMEPAGE}/invite/${productId}.${team?.inviteCode}`,
-    [productId, team?.inviteCode]
+    () => `${process.env.NEXT_PUBLIC_HOMEPAGE}/invite/${product?.id}.${product?.inviteCode}`,
+    [product]
   )
 
-  async function handleSendEmailInvitation() {}
+  async function handleSendEmailInvitation(values: AnyMap<string>) {
+    await ProductService.sendInvitation(product!.id, values.email)
+
+    notification.success({
+      title: t('member.emailInvitation.success')
+    })
+  }
 
   function handleRemove(row: User) {
     setSelectedUser(row)
@@ -126,18 +131,13 @@ export const TeamMemberModal: FC<IModalProps> = ({ visible }) => {
             <div className="mb-1 block text-sm font-medium text-slate-700">
               {t('member.linkInvitation.heading')}
             </div>
-            <div>
-              <Input
-                className="cursor-default"
-                value={invitationURL}
-                disabled
-                trailing={
-                  <CopyButton
-                    text={invitationURL}
-                    copyText={t('member.linkInvitation.copy')}
-                    copiedText={t('member.linkInvitation.copied')}
-                  />
-                }
+            <div className="input">
+              <div className="flex-1 text-sm truncate">{invitationURL}</div>
+              <CopyButton
+                className="ml-4"
+                text={invitationURL}
+                copyText={t('member.linkInvitation.copy')}
+                copiedText={t('member.linkInvitation.copied')}
               />
             </div>
           </div>
@@ -147,13 +147,18 @@ export const TeamMemberModal: FC<IModalProps> = ({ visible }) => {
             <div className="mb-1 block text-sm font-medium text-slate-700">
               {t('member.heading')}
             </div>
-            <Table<User> className="member-table" columns={columns} data={team?.users} hideHead />
+            <Table<User>
+              className="member-table"
+              columns={columns}
+              data={product?.users}
+              hideHead
+            />
           </div>
         </div>
       </Modal>
 
-      {/* Leave team */}
-      <LeaveTeam visible={leaveModalVisible} onClose={closeLeaveModal} />
+      {/* Leave product */}
+      <LeaveProduct visible={leaveModalVisible} onClose={closeLeaveModal} />
 
       {/* Remove member */}
       <RemoveMember

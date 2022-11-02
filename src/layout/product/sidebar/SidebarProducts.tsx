@@ -1,25 +1,24 @@
 import { Avatar, Dropdown, Menus } from '@heyforms/ui'
 import type { FC } from 'react'
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { isEqual } from '@nily/utils'
 import { IconChevronDown, IconCircleCheck, IconPlus } from '@tabler/icons'
 import { useStore } from '@/store'
-import { useProductId, useTeams } from '../hook'
+import { useProduct, useProductId } from '../hook'
 
-interface CurrentTeamProps {
-  team?: Team
+interface CurrentProps {
+  product?: Product
 }
 
-interface TeamItemProps {
-  team: Team
+interface ProductItemProps {
+  product: Product
   onClick: (product: Product) => void
 }
 
-const TeamItem: FC<TeamItemProps> = ({ team, onClick }) => {
+const ProductItem: FC<ProductItemProps> = ({ product, onClick }) => {
   const { t } = useTranslation()
-  const product = useMemo(() => team.products[0], [team])
   const productId = useProductId()
 
   function handleClick() {
@@ -36,7 +35,7 @@ const TeamItem: FC<TeamItemProps> = ({ team, onClick }) => {
       <div className="ml-4 flex-auto">
         <p className="text-sm font-medium text-slate-700 truncate">{product?.name}</p>
         <p className="text-xs text-slate-500 truncate">
-          {team.users?.length} {t('sidebar.member')}
+          {product.users?.length} {t('sidebar.member')}
         </p>
       </div>
 
@@ -47,8 +46,8 @@ const TeamItem: FC<TeamItemProps> = ({ team, onClick }) => {
   )
 }
 
-const CurrentTeam: FC<CurrentTeamProps> = ({ team }) => {
-  const product = useMemo(() => team?.products[0], [team])
+const Current: FC = () => {
+  const product = useProduct()
 
   return (
     <button className="flex items-center w-full rounded-md text-sm text-left text-slate-700 hover:text-slate-900">
@@ -76,13 +75,12 @@ const Skeleton = () => {
   )
 }
 
-export const SidebarTeam: FC = () => {
+export const SidebarProducts: FC = () => {
   const { t } = useTranslation()
   const router = useRouter()
-  const { isReady } = useStore()
+  const { isReady, products } = useStore()
 
   const [visible, setVisible] = useState(false)
-  const { team, teams } = useTeams()
 
   function handleCreate() {}
 
@@ -93,8 +91,8 @@ export const SidebarTeam: FC = () => {
 
   const Overlay = (
     <div className="menus w-64">
-      {teams.map(team => (
-        <TeamItem key={team.id} team={team} onClick={handleClick} />
+      {products.map(product => (
+        <ProductItem key={product.id} product={product} onClick={handleClick} />
       ))}
       <Menus.Divider />
       <Menus.Item
@@ -115,7 +113,7 @@ export const SidebarTeam: FC = () => {
           overlay={Overlay}
           visible={visible}
         >
-          <CurrentTeam team={team} />
+          <Current />
         </Dropdown>
       ) : (
         <Skeleton />

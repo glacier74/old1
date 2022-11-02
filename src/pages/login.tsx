@@ -1,10 +1,10 @@
 import { Checkbox, Form, Input } from '@heyforms/ui'
 import { Trans, useTranslation } from 'next-i18next'
-import { AuthService } from '@/service'
 import { useRouter } from 'next/router'
-import { AuthLayout, SocialLogin } from '@/layout'
-import { withTranslations } from '@/utils'
+import { LoginLayout, SocialLogin } from '@/layout'
+import { AuthService } from '@/service'
 import { useStore } from '@/store'
+import { withTranslations } from '@/utils'
 
 const Login = (): JSX.Element => {
   const { t } = useTranslation()
@@ -27,7 +27,7 @@ const Login = (): JSX.Element => {
   }
 
   return (
-    <AuthLayout
+    <LoginLayout
       seo={{
         title: t('login.title')
       }}
@@ -53,7 +53,7 @@ const Login = (): JSX.Element => {
 
           <div className="mt-6 relative">
             <div className="absolute inset-0 flex items-center" aria-hidden="true">
-              <div className="w-full border-t border-gray-300" />
+              <div className="w-full border-t border-slate-300" />
             </div>
             <div className="relative flex justify-center text-sm">
               <span className="px-2 bg-white text-slate-500">{t('login.continueWith')}</span>
@@ -104,7 +104,7 @@ const Login = (): JSX.Element => {
           </div>
         </div>
       </div>
-    </AuthLayout>
+    </LoginLayout>
   )
 }
 

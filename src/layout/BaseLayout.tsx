@@ -5,8 +5,8 @@ export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
   const { t } = useTranslation()
 
   const seoProps: NextSeoProps = {
-    title: t('app.name'),
-    description: t('app.description'),
+    title: t('common.name'),
+    description: t('common.description'),
     ...seo
   }
 

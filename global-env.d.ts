@@ -44,24 +44,19 @@ declare global {
     updatedAt: string
   }
 
-  interface Team {
-    id: number
-    name: string
-    users: User[]
-    products: Product[]
-    inviteCode: string
-    inviteExpiredAt: string
-    createdAt: string
-    updatedAt: string
-  }
-
   interface Product {
     id: number
     name: string
-    domain: string
     logo: string
     tagline: string
-    description: string
+    domain: string
+    analyticId: string
+    language: string
+    isSitePrivate: boolean
+    removeBranding: boolean
+    inviteCode: string
+    inviteExpiredAt: number
+    users: User[]
     createdAt: string
     updatedAt: string
   }

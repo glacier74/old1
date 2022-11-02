@@ -2,11 +2,11 @@ import { Form, Input } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { AuthService } from '@/service'
-import { AuthLayout } from '@/layout'
 import { withTranslations } from '@/utils'
 import { useStore } from '@/store'
 import { isEmpty } from '@nily/utils'
 import { useEffect } from 'react'
+import { LoginLayout } from '@/layout'
 
 const ConfirmEmail = (): JSX.Element => {
   const { t } = useTranslation()
@@ -25,7 +25,7 @@ const ConfirmEmail = (): JSX.Element => {
   }, [])
 
   return (
-    <AuthLayout
+    <LoginLayout
       seo={{
         title: t('confirmEmail.title')
       }}
@@ -59,7 +59,7 @@ const ConfirmEmail = (): JSX.Element => {
           </Form.Custom>
         </div>
       </div>
-    </AuthLayout>
+    </LoginLayout>
   )
 }
 

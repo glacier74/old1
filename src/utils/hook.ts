@@ -38,17 +38,17 @@ export function useVisible(visible = false): [boolean, () => void, () => void] {
   return [_visible, open, close]
 }
 
-export function useRequest(asyncFunction: () => void, deps: unknown[] = []) {
+export function useRequest(asyncFunction: (...args: any[]) => void, deps: any[] = []) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<Error>()
 
-  const request = useCallback(async () => {
+  const request = useCallback(async (...args: any[]) => {
     setLoading(true)
     setError(undefined)
 
     try {
-      await asyncFunction()
-    } catch (err: unknown) {
+      await asyncFunction(...args)
+    } catch (err: any) {
       setError(err as Error)
     } finally {
       setLoading(false)

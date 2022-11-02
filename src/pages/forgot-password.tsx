@@ -1,10 +1,10 @@
 import { Form, Input } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { AuthLayout } from '@/layout'
 import { AuthService } from '@/service'
 import { useStore } from '@/store'
 import { withTranslations } from '@/utils'
+import { LoginLayout } from '@/layout'
 
 const ForgotPassword = (): JSX.Element => {
   const { t } = useTranslation()
@@ -23,7 +23,7 @@ const ForgotPassword = (): JSX.Element => {
   }
 
   return (
-    <AuthLayout
+    <LoginLayout
       seo={{
         title: t('forgotPassword.title')
       }}
@@ -61,7 +61,7 @@ const ForgotPassword = (): JSX.Element => {
           </div>
         </div>
       </div>
-    </AuthLayout>
+    </LoginLayout>
   )
 }
 

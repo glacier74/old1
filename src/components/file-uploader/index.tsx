@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
 import { bytes } from '@nily/utils'
 import { IconFileUpload, IconUpload } from '@tabler/icons'
+import { UploadService } from '@/service'
 
 interface DragUploaderProps extends Omit<ComponentProps, 'onChange'> {
   value?: File
@@ -111,7 +112,7 @@ export const DragUploader: FC<DragUploaderProps> = ({
         onChange={handleFileChange}
       />
       {file ? (
-        <div className="flex justify-center w-full h-full px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+        <div className="flex justify-center w-full h-full px-6 pt-5 pb-6 border-2 border-slate-300 border-dashed rounded-md">
           <div className="flex flex-col justify-center space-y-1 text-center">
             <IconFileUpload className="mx-auto h-12 w-12 text-slate-400" />
             <p className="text-sm text-slate-500">
@@ -119,7 +120,7 @@ export const DragUploader: FC<DragUploaderProps> = ({
             </p>
             <div className="flex items-center justify-center text-sm">
               <Button.Link type="primary" loading={loading} onClick={handleOpen}>
-                {loading ? uploadingText : reselectText}
+                {t(loading ? uploadingText : reselectText)}
               </Button.Link>
             </div>
             {error && <p className="text-xs text-red-500">{error.message}</p>}
@@ -128,7 +129,7 @@ export const DragUploader: FC<DragUploaderProps> = ({
       ) : (
         <div
           className={clsx(
-            'flex justify-center w-full h-full px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md',
+            'flex justify-center w-full h-full px-6 pt-5 pb-6 border-2 border-slate-300 border-dashed rounded-md',
             {
               'border-blue-500': dragging
             }
@@ -172,8 +173,10 @@ export const FileUploader: FC<FileUploaderProps> = ({ value, onChange, ...restPr
     setLoading(true)
 
     try {
-      const url = ''
-      onChange?.(url)
+      const { key, token } = await UploadService.token(file.name, file.type, file.size)
+      await UploadService.upload(file, key, token)
+
+      onChange?.(UploadService.getDownloadURL(key))
     } catch (err: any) {
       setError(err)
     }

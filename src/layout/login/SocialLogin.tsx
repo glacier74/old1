@@ -24,7 +24,7 @@ export const SocialLogin = () => {
     <div className="mt-1 grid grid-cols-3 gap-2">
       <div>
         <div
-          className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-slate-500 cursor-pointer hover:bg-slate-50"
+          className="w-full inline-flex justify-center py-2 px-4 border border-slate-300 rounded-md shadow-sm bg-white text-sm font-medium text-slate-500 cursor-pointer hover:bg-slate-50"
           onClick={handleGoogle}
         >
           <span className="sr-only">{t('login.loginWithGoogle')}</span>
@@ -34,7 +34,7 @@ export const SocialLogin = () => {
 
       <div>
         <div
-          className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-slate-500 cursor-pointer hover:bg-slate-50"
+          className="w-full inline-flex justify-center py-2 px-4 border border-slate-300 rounded-md shadow-sm bg-white text-sm font-medium text-slate-500 cursor-pointer hover:bg-slate-50"
           onClick={handleTwitter}
         >
           <span className="sr-only">{t('login.loginWithTwitter')}</span>
@@ -44,7 +44,7 @@ export const SocialLogin = () => {
 
       <div>
         <div
-          className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-slate-500 cursor-pointer hover:bg-slate-50"
+          className="w-full inline-flex justify-center py-2 px-4 border border-slate-300 rounded-md shadow-sm bg-white text-sm font-medium text-slate-500 cursor-pointer hover:bg-slate-50"
           onClick={handleGithub}
         >
           <span className="sr-only">{t('login.loginWithGithub')}</span>

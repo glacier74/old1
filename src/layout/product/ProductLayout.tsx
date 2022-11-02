@@ -1,31 +1,20 @@
 import { useStore } from '@/store'
-import { useAsyncEffect } from '@/utils'
 import { useTranslation } from 'next-i18next'
 import { Avatar, Button } from '@heyforms/ui'
-import { TeamService, UserService } from '@/service'
-import { TeamMemberModal } from './members'
-import { useProduct, useTeams } from './hook'
+import { ProductMemberModal } from './members'
+import { useProduct } from './hook'
 import { AccountSettingsModal } from './account-settings'
-import { BaseLayout } from '../BaseLayout'
 import { Sidebar } from './sidebar'
+import { AuthorizedLayout } from '@/layout'
 
-export function TeamLayout({ seo, children }: LayoutProps) {
+export function ProductLayout({ seo, children }: LayoutProps) {
   const { t } = useTranslation()
-  const { isMemberListShow, isAccountSettingsShow, setIsReady, setUser, setTeams } = useStore()
-  const { team } = useTeams()
+  const { isMemberListShow, isAccountSettingsShow } = useStore()
   const product = useProduct()
-
-  useAsyncEffect(async () => {
-    const [user, teams] = await Promise.all([UserService.user(), TeamService.teams()])
-
-    setUser(user)
-    setTeams(teams)
-    setIsReady(true)
-  }, [])
 
   return (
     <>
-      <BaseLayout seo={seo}>
+      <AuthorizedLayout seo={seo}>
         <div className="w-full min-h-screen bg-white">
           <Sidebar />
 
@@ -42,7 +31,7 @@ export function TeamLayout({ seo, children }: LayoutProps) {
                         <div className="flex-1 min-w-0">
                           <div className="text-3xl font-bold text-slate-900">{product?.name}</div>
                           <div className="text-sm text-slate-500 mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:space-x-6">
-                            {t('product.member', { count: team?.users.length })}
+                            {t('product.member', { count: product?.users.length })}
                           </div>
                         </div>
                       </div>
@@ -61,10 +50,10 @@ export function TeamLayout({ seo, children }: LayoutProps) {
             </main>
           </div>
         </div>
-      </BaseLayout>
+      </AuthorizedLayout>
 
       <AccountSettingsModal visible={isAccountSettingsShow} />
-      <TeamMemberModal visible={isMemberListShow} />
+      <ProductMemberModal visible={isMemberListShow} />
     </>
   )
 }

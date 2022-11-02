@@ -1,28 +1,30 @@
 import { PhotoPickerField } from '@/components'
 import type { FC } from 'react'
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { useTranslation } from 'next-i18next'
+import { notification } from '@heyforms/ui'
 import { useStore } from '@/store'
+import { UserService } from '@/service'
+import { useRequest } from '@/utils'
 
 export const AvatarSettings: FC = () => {
   const { t } = useTranslation()
-  const { user } = useStore()
+  const { user, updateUser } = useStore()
 
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<Error | null>(null)
+  const { loading, error, request } = useRequest(async (avatar: string) => {
+    const updates = { avatar }
 
-  async function handleChange(avatar: string) {
-    setLoading(true)
-    setError(null)
+    await UserService.update(updates)
+    updateUser(updates)
+  }, [])
 
-    try {
-      //
-    } catch (err: any) {
-      setError(err)
+  useEffect(() => {
+    if (error) {
+      notification.error({
+        title: t(error.message)
+      })
     }
-
-    setLoading(false)
-  }
+  }, [error])
 
   return (
     <div>
@@ -31,7 +33,7 @@ export const AvatarSettings: FC = () => {
         label={t('account.avatar.heading')}
         description={t('account.avatar.description')}
         changeLoading={loading}
-        onChange={handleChange}
+        onChange={request}
       />
 
       {error && <div className="form-item-error">{error.message}</div>}

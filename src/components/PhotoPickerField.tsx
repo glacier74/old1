@@ -77,3 +77,51 @@ export const PhotoPickerField: FC<PhotoPickerFieldProps> = ({
     </>
   )
 }
+
+export const LogoPickerField: FC<PhotoPickerFieldProps> = ({
+  id,
+  className,
+  description,
+  changeLoading,
+  removeLoading,
+  value,
+  onVisibilityChange,
+  onChange,
+  onRemove,
+  ...restProps
+}) => {
+  const [visible, open, close] = useVisible()
+  const { t } = useTranslation()
+
+  function handleClick() {
+    open()
+    onVisibilityChange?.(true)
+  }
+
+  function handleClose() {
+    close()
+    onVisibilityChange?.(false)
+  }
+
+  function handleChange(newVal: string) {
+    handleClose()
+    onChange?.(newVal)
+  }
+
+  return (
+    <>
+      <div
+        className={clsx('logo-picker-field relative w-16 h-16 group', className)}
+        onClick={handleClick}
+      >
+        <Avatar src={value} size={64} text={t('common.logo')} retainLength={4} circular rounded />
+        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 rounded-full opacity-0 transition-opacity cursor-pointer group-hover:opacity-100">
+          <span className="text-xs text-white">{t('upload.upload')}</span>
+        </div>
+      </div>
+
+      {/* Photo picker modal */}
+      <PhotoPicker visible={visible} onClose={handleClose} onChange={handleChange} {...restProps} />
+    </>
+  )
+}

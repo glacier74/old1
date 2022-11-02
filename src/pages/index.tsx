@@ -1,5 +1,5 @@
 import { isLoggedIn, withTranslations } from '@/utils'
-import { BaseLayout, TeamRedirect } from '@/layout'
+import { BaseLayout, HomeAuthorizedLayout } from '@/layout'
 
 interface HomeProps {
   isLoggedIn: boolean
@@ -7,12 +7,12 @@ interface HomeProps {
 
 const Home = ({ isLoggedIn }: HomeProps): JSX.Element => {
   /**
-   * 如果用户已经登录，拉取 user 和 teams 信息
+   * 如果用户已经登录，拉取 user 和 product 信息
    * 如果 token 过期，请求 /logout 接口退出登录
-   * 如果 teams 为空，重定向到 /onboarding 页面
+   * 如果 products 为空，重定向到 /onboarding 页面
    */
   if (isLoggedIn) {
-    return <TeamRedirect />
+    return <HomeAuthorizedLayout seo={{ title: 'Home' }} />
   }
 
   return (

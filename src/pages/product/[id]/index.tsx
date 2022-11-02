@@ -1,14 +1,14 @@
 import { useTranslation } from 'next-i18next'
-import { TeamLayout } from '@/layout'
+import { ProductLayout } from '@/layout'
 import { withTranslations } from '@/utils'
 
 const Product = (): JSX.Element => {
   const { t } = useTranslation()
 
   return (
-    <TeamLayout seo={{ title: t('product.title') }}>
+    <ProductLayout seo={{ title: t('product.title') }}>
       <div>Product</div>
-    </TeamLayout>
+    </ProductLayout>
   )
 }
 

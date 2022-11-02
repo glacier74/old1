@@ -36,7 +36,7 @@ export const SidebarAccount: FC = () => {
   )
 
   return (
-    <div className="flex-shrink-0 flex px-4 py-2 bg-slate-100 border-t border-gray-200">
+    <div className="flex-shrink-0 flex px-4 py-2 bg-slate-100 border-t border-slate-200">
       <Dropdown
         className="flex-shrink-0 group block w-full"
         placement="top-start"

@@ -1,11 +1,10 @@
 {
-  "app": {
+  "common": {
     "name": "EarlyBird",
     "description": "EarlyBird is xxx",
-    "title": "{{title}} · $t(app.name)"
-  },
-  "common": {
-    "cancel": "Cancel"
+    "title": "{{title}} · $t(common.name)",
+    "cancel": "Cancel",
+    "logo": "Logo"
   },
   "upload": {
     "upload": "Upload",
@@ -19,7 +18,7 @@
     "unsupported": "Unsupported file type"
   },
   "login": {
-    "title": "Login · $t(app.name)",
+    "title": "Login · $t(common.name)",
     "heading": "👋 Welcome back!",
     "description": "Log in to your account or <1>create an account</1>",
     "startWith": "Start with",
@@ -36,7 +35,7 @@
     "loginWithGithub": "Log in with github"
   },
   "signUp": {
-    "title": "$t(signUp.heading) · $t(app.name)",
+    "title": "$t(signUp.heading) · $t(common.name)",
     "heading": "Create an account",
     "description": "Start a 14-day trial with all features unlocked.",
     "name": "Name",
@@ -46,23 +45,24 @@
     "submit": "Get started"
   },
   "forgotPassword": {
-    "title": "Forgot password · $t(app.name)",
+    "title": "Forgot password · $t(common.name)",
     "heading": "Forgot password?",
     "description": "We'll send you an email with verification code.",
     "continue": "Continue",
     "back": "Back to sign in"
   },
   "resetPassword": {
-    "title": "$t(resetPassword.heading) · $t(app.name)",
+    "title": "$t(resetPassword.heading) · $t(common.name)",
     "heading": "Reset password",
     "description": "We've sent you an email with a 6-digit verification code, please check your inbox at",
     "code": "Verification code",
     "invalidCode": "Invalid verification code",
     "newPassword": "New password",
-    "repeatPassword": "Repeat password"
+    "repeatPassword": "Repeat password",
+    "passwordMismatch": "Your new password and repeat password do not match."
   },
   "confirmEmail": {
-    "title": "Confirm email · $t(app.name)",
+    "title": "Confirm email · $t(common.name)",
     "heading": "Check your email",
     "code": "Verification code",
     "invalidCode": "Invalid verification code"
@@ -97,7 +97,15 @@
     "twitter": "Twitter @EarlyBirdIm"
   },
   "onboarding": {
-    "loggedAs": "Logged in as:"
+    "loggedAs": "Logged in as:",
+    "name": "Product name",
+    "tagline": "Tagline",
+    "description": "Brief description",
+    "createProduct": "Create product",
+    "invalidLogo": "The logo is not allowed to be empty",
+    "invalidName": "The name is not allowed to be empty",
+    "invalidTagline": "The tagline is not allowed to be empty",
+    "invalidDescription": "The description is not allowed to be empty"
   },
   "account": {
     "heading": "Account settings",
@@ -133,7 +141,12 @@
       "tip2": "If you are sure you want to proceed with the deletion of your account, please continue below.",
       "scheduled": "Account deletion scheduled",
       "tip3": "We have scheduled your account deletion in 48 hours. You will receive an email confirmation when it has completed.",
-      "tip4": "You will now be logged out."
+      "tip4": "You will now be logged out.",
+      "deletionAlert": "Your account has been scheduled for deletion",
+      "alertTip1": "All of your account data, including but not limited to workspaces, projects, forms and submissions will be permanently deleted within {{remainingTime}} hours of the deletion request.",
+      "alertTip2": "If this was done in error, you can cancel the deletion of your account below.",
+      "cancel": "Cancel scheduled deletion",
+      "canceledText": "Your account is no longer scheduled for deletion"
     }
   },
   "member": {
@@ -142,7 +155,8 @@
     "emailInvitation": {
       "heading": "Send email invitation",
       "send": "Send invitation",
-      "invalid": "The email address is invalid"
+      "invalid": "The email address is invalid",
+      "success": "Invitation has been sent"
     },
     "linkInvitation": {
       "heading": "Your invite link",

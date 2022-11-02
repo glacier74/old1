@@ -17,7 +17,7 @@ import {
   TablerIconProps
 } from '@tabler/icons'
 import Link from 'next/link'
-import { useProductId } from '@/layout/team/hook'
+import { useProductId } from '@/layout'
 import { useStore } from '@/store'
 
 interface SidebarNavProps {

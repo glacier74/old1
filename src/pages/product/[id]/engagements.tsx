@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next'
-import { TeamLayout } from '@/layout'
+import { ProductLayout } from '@/layout'
 import { withTranslations } from '@/utils'
 import { Avatar, Table } from '@heyforms/ui'
 import { TableColumn } from '@heyforms/ui/types/table'
@@ -87,7 +87,7 @@ const ProductEngagements = (): JSX.Element => {
   ]
 
   return (
-    <TeamLayout seo={{ title: t('team.title') }}>
+    <ProductLayout seo={{ title: t('product.title') }}>
       <h1 className="mt-10 mb-4 text-3xl leading-6 font-bold text-slate-900">
         {t('engagements.heading')}
       </h1>
@@ -95,7 +95,7 @@ const ProductEngagements = (): JSX.Element => {
       <div className="mt-6">
         <Table<User> className="mt-8" columns={columns} data={engagements} hideHead />
       </div>
-    </TeamLayout>
+    </ProductLayout>
   )
 }
 

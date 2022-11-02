@@ -3,7 +3,7 @@ import { CSSTransition } from 'react-transition-group'
 import { IconX } from '@tabler/icons'
 import { SidebarAccount } from './SidebarAccount'
 import { SidebarNavbar } from './SidebarNavbar'
-import { SidebarTeam } from './SidebarTeam'
+import { SidebarProducts } from './SidebarProducts'
 
 export const Sidebar = () => {
   const { t } = useTranslation()
@@ -31,7 +31,7 @@ export const Sidebar = () => {
           />
           <div className="sidebar-wrapper relative flex flex-col flex-1 max-w-xs w-full h-full bg-white transform-gpu transition-transform duration-300 ease-in-out">
             <div className="flex flex-1 flex-col h-0 pt-5">
-              <SidebarTeam />
+              <SidebarProducts />
               <SidebarNavbar />
             </div>
             <SidebarAccount />
@@ -54,7 +54,7 @@ export const Sidebar = () => {
       <div className="sidebar fixed inset-0 hidden md:flex md:flex-shrink-0">
         <div className="relative flex flex-col flex-1 w-64 h-full bg-slate-100">
           <div className="flex flex-1 flex-col h-0 pt-5">
-            <SidebarTeam />
+            <SidebarProducts />
             <SidebarNavbar />
           </div>
           <SidebarAccount />

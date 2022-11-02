@@ -2,12 +2,16 @@ import { useStore } from '@/store'
 import { Form, Input } from '@heyforms/ui'
 import type { FC } from 'react'
 import { useTranslation } from 'next-i18next'
+import { UserService } from '@/service'
 
 export const UserName: FC = () => {
   const { t } = useTranslation()
-  const { user } = useStore()
+  const { user, updateUser } = useStore()
 
-  async function handleFinish(values: AnyMap<any>) {}
+  async function handleFinish(values: AnyMap<any>) {
+    await UserService.update(values)
+    updateUser(values)
+  }
 
   return (
     <div>
@@ -20,6 +24,7 @@ export const UserName: FC = () => {
         submitOptions={{
           className: 'mt-6 ml-3'
         }}
+        onlySubmitOnValueChange={true}
         request={handleFinish}
       >
         <Form.Item name="name" label={t('account.user.heading')} rules={[{ required: true }]}>

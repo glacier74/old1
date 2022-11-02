@@ -5,6 +5,7 @@ import type { FC } from 'react'
 import { useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { isValid } from '@nily/utils'
+import { UserService } from '@/service'
 
 const ChangePassword: FC<IModalProps> = ({ visible, onClose }) => {
   const [values, setValues] = useState<AnyMap<any>>({})
@@ -14,7 +15,9 @@ const ChangePassword: FC<IModalProps> = ({ visible, onClose }) => {
     setValues(val)
   }
 
-  async function handleFinish(val: AnyMap<any>) {
+  async function handleFinish(values: AnyMap<any>) {
+    await UserService.updatePassword(values.currentPassword, values.password)
+
     notification.success({
       title: t('account.password.changeText')
     })
@@ -53,7 +56,7 @@ const ChangePassword: FC<IModalProps> = ({ visible, onClose }) => {
                 required: true,
                 pattern:
                   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[!#$%&()*+\-,.\/\\:<=>?@\[\]^_{|}~0-9a-zA-Z]{8,}$/,
-                message: t('signup.invalidPassword')
+                message: t('signUp.invalidPassword')
               }
             ]}
           >

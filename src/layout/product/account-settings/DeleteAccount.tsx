@@ -3,18 +3,32 @@ import { Button, Form, Input, Modal, notification } from '@heyforms/ui'
 import type { FC } from 'react'
 import { useTranslation } from 'next-i18next'
 import { useStore } from '@/store'
+import { AuthService, UserService } from '@/service'
+import { useRouter } from 'next/router'
 
 const VerifyEmail: FC<IModalProps> = ({ visible, onClose, onComplete }) => {
   const { t } = useTranslation()
-  const { user } = useStore()
+  const router = useRouter()
+  const { user, closeAccountSettings } = useStore()
 
   async function handleFinish(values: AnyMap<any>) {
+    await UserService.verifyDeletion(values.code)
+
+    // Clear the auth state and logout the user
+    setTimeout(async () => {
+      await AuthService.logout()
+      closeAccountSettings()
+      router.replace('/login')
+    }, 10_000)
+
     onComplete?.()
     onClose?.()
   }
 
   useAsyncEffect(async () => {
     if (visible) {
+      await UserService.requestDeletion()
+
       notification.success({
         title: t('resetPassword.description', { email: user.email })
       })
@@ -52,6 +66,7 @@ const VerifyEmail: FC<IModalProps> = ({ visible, onClose, onComplete }) => {
 
 const DeletionWarning: FC<IModalProps> = ({ visible }) => {
   const { t } = useTranslation()
+
   return (
     <Modal.Confirm
       type="danger"

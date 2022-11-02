@@ -1,6 +1,6 @@
 import { BaseLayout } from '../BaseLayout'
 
-export function AuthLayout({ seo, children }: LayoutProps) {
+export function LoginLayout({ seo, children }: LayoutProps) {
   return (
     <BaseLayout seo={seo}>
       <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">

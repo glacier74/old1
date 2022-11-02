@@ -4,7 +4,7 @@ import { deleteToken, getBrowserId, isLoggedIn, setBrowserId } from '@/utils/coo
 import { isMatchRoutes } from '@/utils/route'
 
 const authRoutes = ['/login', '/sign-up', '/confirm-email', '/forgot-password', '/reset-password']
-const productRoutes = ['/team/:id*']
+const productRoutes = ['/product/:id*']
 
 export async function middleware(req: NextRequest) {
   const isLogged = isLoggedIn(req.cookies)
@@ -32,7 +32,10 @@ export async function middleware(req: NextRequest) {
   if (isMatchRoutes(req, productRoutes)) {
     if (!isLogged) {
       // 展示 404 not found
-      return NextResponse.rewrite(req.url, {
+      const url = req.nextUrl.clone()
+      url.pathname = '/404'
+
+      return NextResponse.rewrite(url, {
         status: 404
       })
     }
@@ -43,10 +46,10 @@ export async function middleware(req: NextRequest) {
   // 检查 token 是否有效
   if (isLogged) {
     try {
-      const f = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/user`, {
+      const r = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/user`, {
         headers: req.headers
       })
-      const data = await f.json()
+      const data = await r.json()
 
       // 删除 token cookie
       if (data.statusCode === 401) {
@@ -67,7 +70,7 @@ export const config = {
     '/confirm-email',
     '/forgot-password',
     '/reset-password',
-    '/team/:id*',
+    '/product/:id*',
     '/'
   ]
 }

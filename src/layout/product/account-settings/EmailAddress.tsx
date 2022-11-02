@@ -4,6 +4,7 @@ import type { FC } from 'react'
 import { useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { useStore } from '@/store'
+import { UserService } from '@/service'
 
 export interface FormValues {
   email: string
@@ -19,12 +20,15 @@ interface VerifyEmailProps extends IModalProps {
 }
 
 export const SendCode: FC<SendCodeProps> = ({ visible, onClose, onComplete }) => {
+  const { t } = useTranslation()
+
   async function handleFinish(values: FormValues) {
+    await UserService.changeEmail(values.email)
+
     onClose?.()
     onComplete?.(values)
   }
 
-  const { t } = useTranslation()
   return (
     <Modal contentClassName="max-w-md" visible={visible} showCloseIcon onClose={onClose}>
       <div className="space-y-6">
@@ -56,12 +60,20 @@ export const SendCode: FC<SendCodeProps> = ({ visible, onClose, onComplete }) =>
 }
 
 export const VerifyEmail: FC<VerifyEmailProps> = ({ visible, formValues, onClose, onComplete }) => {
+  const { t } = useTranslation()
+  const { updateUser } = useStore()
+
   async function handleFinish(values: AnyMap<any>) {
+    await UserService.verifyEmail(formValues!.email, values.code)
+
+    updateUser({
+      email: formValues!.email
+    })
+
     onClose?.()
     onComplete?.()
   }
 
-  const { t } = useTranslation()
   return (
     <Modal contentClassName="max-w-md" visible={visible} showCloseIcon onClose={onClose}>
       <div className="space-y-6">
@@ -96,10 +108,10 @@ export const EmailAddress: FC = () => {
 
   const [sendCodeVisible, openSendCode, closeSendCode] = useVisible()
   const [verifyEmailVisible, openVerifyEmail, closeVerifyEmail] = useVisible()
-  const [formValues, setTempValues] = useState<FormValues>()
+  const [formValues, setFormValues] = useState<FormValues>()
 
   function handleSendComplete(values: FormValues) {
-    setTempValues(values)
+    setFormValues(values)
     openVerifyEmail()
   }
 

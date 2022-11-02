@@ -4,7 +4,7 @@ import { SitePrivate } from './SitePrivate'
 import { RemoveBranding } from './RemoveBranding'
 import { DeleteProduct } from './DeleteProduct'
 
-export const Settings = () => {
+export const ProductSettings = () => {
   const { t } = useTranslation()
 
   return (

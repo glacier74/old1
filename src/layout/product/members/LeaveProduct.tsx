@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
 
-export const LeaveTeam: FC<IModalProps> = ({ visible, onClose }) => {
+export const LeaveProduct: FC<IModalProps> = ({ visible, onClose }) => {
   const router = useRouter()
 
   const [loading, setLoading] = useState(false)
