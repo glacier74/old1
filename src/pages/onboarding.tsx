@@ -1,17 +1,26 @@
 import { useTranslation } from 'next-i18next'
-import { OnboardingLayout } from '@/layout'
 import { Form, Input } from '@heyforms/ui'
+import { useRouter } from 'next/router'
+import * as dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
+import { OnboardingLayout } from '@/layout'
 import { LogoPickerField } from '@/components'
 import { withTranslations } from '@/utils'
 import { ProductService } from '@/service'
-import { useRouter } from 'next/router'
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 const Onboarding = (): JSX.Element => {
   const router = useRouter()
   const { t } = useTranslation()
 
   async function handleFinish(values: AnyMap<any>) {
-    const productId = await ProductService.create(values)
+    const productId = await ProductService.create({
+      ...values,
+      timezone: dayjs.tz.guess()
+    })
     router.replace(`/product/${productId}`)
   }
 
@@ -23,7 +32,6 @@ const Onboarding = (): JSX.Element => {
         submitText={t('onboarding.createProduct')}
         submitOptions={{
           type: 'primary',
-          className: 'mt-6',
           block: true
         }}
         request={handleFinish}

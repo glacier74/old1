@@ -20,7 +20,7 @@ export function HomeAuthorizedLayout({ seo }: Partial<LayoutProps>) {
 
   return (
     <AuthorizedLayout seo={seo}>
-      <Loading />
+      <Loading className="h-screen bg-slate-50" />
     </AuthorizedLayout>
   )
 }

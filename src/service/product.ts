@@ -6,7 +6,7 @@ export class ProductService {
     return axios.get('/products', config)
   }
 
-  static async create(product: Partial<Product>): Promise<number> {
+  static async create(product: Partial<Product> & { timezone: string }): Promise<number> {
     const result = await axios.post('/products', product)
     return (result as unknown as Product).id
   }
@@ -18,6 +18,30 @@ export class ProductService {
   static async sendInvitation(productId: number, email: string) {
     return axios.post(`/products/${productId}/invitations`, {
       email
+    })
+  }
+
+  static async totalStats(productId: number, date: string, period: string) {
+    return axios.get(`/products/${productId}/stats/total-stats`, {
+      params: {
+        date,
+        period
+      }
+    })
+  }
+
+  static async timeseries(productId: number, date: string, period: string): Promise<any[]> {
+    return axios.get(`/products/${productId}/stats/timeseries`, {
+      params: {
+        date,
+        period
+      }
+    })
+  }
+
+  static async breakdown(productId: number, params: AnyMap<any>): Promise<any[]> {
+    return axios.get(`/products/${productId}/stats/breakdown`, {
+      params
     })
   }
 }

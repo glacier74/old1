@@ -67,13 +67,6 @@
     "code": "Verification code",
     "invalidCode": "Invalid verification code"
   },
-  "product": {
-    "title": "Product",
-    "member_one": "{{count}} member",
-    "member_other": "{{count}} members",
-    "edit": "Edit",
-    "viewSite": "View site"
-  },
   "sidebar": {
     "createProduct": "Create product",
     "member": "Member",
@@ -96,7 +89,15 @@
     "sendEmail": "Send us an email",
     "twitter": "Twitter @EarlyBirdIm"
   },
+  "product": {
+    "title": "{{name}}",
+    "member_one": "{{count}} member",
+    "member_other": "{{count}} members",
+    "edit": "Edit",
+    "viewSite": "View site"
+  },
   "onboarding": {
+    "title": "Onboarding",
     "loggedAs": "Logged in as:",
     "name": "Product name",
     "tagline": "Tagline",
@@ -176,9 +177,32 @@
     "you": "You"
   },
   "engagements": {
+    "title": "Engagements · {{name}}",
     "heading": "Recent engagements"
   },
+  "productStats": {
+    "visitors": "Visitors",
+    "uniqueVisitors": "Unique visitors",
+    "totalPageviews": "Total pageviews",
+    "bounceRate": "Bounce rate",
+    "visitDuration": "Visit duration",
+    "today":  "Today",
+    "last7Days": "Last 7 days",
+    "last30Days":  "Last 30 days",
+    "monthToDate": "Month to date",
+    "last6Months":  "Last 6 months",
+    "last12Months": "Last 12 months",
+    "topSources": "Top sources",
+    "source": "Source",
+    "topPages": "Top pages",
+    "pageUrl": "Page url",
+    "countries": "Countries",
+    "country": "Country",
+    "devices": "Devices",
+    "operatingSystem": "Operating system"
+  },
   "productSettings": {
+    "title": "Settings · {{name}}",
     "heading": "Settings",
     "general": {
       "heading": "General"

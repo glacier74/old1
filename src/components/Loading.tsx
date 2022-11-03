@@ -1,6 +1,8 @@
-export function Loading() {
+import clsx from 'clsx'
+
+export function Loading({ className }: ComponentProps) {
   return (
-    <div className="h-screen bg-slate-50 flex flex-col justify-center items-center">
+    <div className={clsx('flex flex-col justify-center items-center', className)}>
       <svg
         className="w-5 h-5 text-blue-700 animate-spin"
         fill="none"

@@ -87,7 +87,7 @@ const ProductEngagements = (): JSX.Element => {
   ]
 
   return (
-    <ProductLayout seo={{ title: t('product.title') }}>
+    <ProductLayout seo={{ title: 'engagements.title' }}>
       <h1 className="mt-10 mb-4 text-3xl leading-6 font-bold text-slate-900">
         {t('engagements.heading')}
       </h1>

@@ -14,7 +14,12 @@ export function ProductLayout({ seo, children }: LayoutProps) {
 
   return (
     <>
-      <AuthorizedLayout seo={seo}>
+      <AuthorizedLayout
+        seo={{
+          ...seo,
+          title: t(seo.title, { name: product?.name || '' })
+        }}
+      >
         <div className="w-full min-h-screen bg-white">
           <Sidebar />
 
