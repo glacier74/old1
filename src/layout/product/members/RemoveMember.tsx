@@ -1,24 +1,30 @@
 import { Modal } from '@heyforms/ui'
 import type { FC } from 'react'
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next'
+import { ProductService } from '@/service'
+import { useProductId } from '@/layout'
+import { useStore } from '@/store'
 
 interface RemoveMemberProps extends IModalProps {
-  user?: User
+  member?: User
 }
 
-export const RemoveMember: FC<RemoveMemberProps> = ({ visible, user, onClose }) => {
+export const RemoveMember: FC<RemoveMemberProps> = ({ visible, member, onClose }) => {
+  const { t } = useTranslation()
+  const { removeMember } = useStore()
+  const productId = useProductId()
+
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<Error | null>(null)
-  const { t } = useTranslation()
 
   async function handleConfirm() {
     setLoading(true)
     setError(null)
 
     try {
-      // await WorkspaceService.removeMember(workspaceId, user!.id)
-      // workspaceStore.deleteMember(workspaceId, user!.id)
+      await ProductService.removeMember(productId, member!.id)
+      removeMember(productId, member!.id)
 
       // Hide modal
       onClose?.()

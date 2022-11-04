@@ -223,7 +223,8 @@
     "deleteProduct": {
       "heading": "Delete product",
       "description": "By deleting the product, all the engagements, members and data will be erased and cannot be restored! Be cautious!",
-      "button": "Delete"
+      "button": "Delete",
+      "success": "Product was deleted successfully"
     },
     "deleteProductModal": {
       "warn1": "Keep in mind this operation is irreversible and will permanently delete all the data associated with this product.",

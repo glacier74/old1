@@ -21,6 +21,10 @@ export class ProductService {
     })
   }
 
+  static async removeMember(productId: number, memberId: number) {
+    return axios.delete(`/products/${productId}/members/${memberId}`)
+  }
+
   static async totalStats(productId: number, date: string, period: string) {
     return axios.get(`/products/${productId}/stats/total-stats`, {
       params: {
@@ -42,6 +46,16 @@ export class ProductService {
   static async breakdown(productId: number, params: AnyMap<any>): Promise<any[]> {
     return axios.get(`/products/${productId}/stats/breakdown`, {
       params
+    })
+  }
+
+  static async requestDeletion(productId: number) {
+    return axios.post(`/products/${productId}/deletion`)
+  }
+
+  static async verifyDeletion(productId: number, code: string) {
+    return axios.put(`/products/${productId}/deletion`, {
+      code
     })
   }
 }

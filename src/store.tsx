@@ -15,6 +15,8 @@ interface Store {
   updateUser: (updates: Partial<User>) => void
   setProducts: (value?: any) => void
   updateProduct: (productId: number, updates: Partial<Product>) => void
+  removeProduct: (productId: number) => void
+  removeMember: (productId: number, memberId: number) => void
   openMemberList: () => void
   closeMemberList: () => void
   openAccountSettings: () => void
@@ -59,6 +61,27 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
     [products]
   )
 
+  const removeProduct = useCallback(
+    (productId: number) => {
+      setProducts(products.filter(p => p.id !== productId))
+    },
+    [products]
+  )
+
+  const removeMember = useCallback(
+    (productId: number, memberId: number) => {
+      const newValue = products.map(p => {
+        if (p.id === productId) {
+          return { ...p, users: p.users.filter(u => u.id !== memberId) }
+        }
+        return p
+      })
+
+      setProducts(newValue)
+    },
+    [products]
+  )
+
   const value: Store = {
     isReady,
     isMemberListShow,
@@ -73,6 +96,8 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
     updateUser,
     setProducts,
     updateProduct,
+    removeProduct,
+    removeMember,
     openMemberList,
     closeMemberList,
     openAccountSettings,

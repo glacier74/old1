@@ -10,10 +10,6 @@ export const Sidebar = () => {
 
   function handleClose() {}
 
-  function handleRedirect(type: string) {
-    console.log(type)
-  }
-
   return (
     <>
       <CSSTransition

@@ -18,7 +18,7 @@ export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
   const [leaveModalVisible, openLeaveModal, closeLeaveModal] = useVisible()
   const [removeModalVisible, openRemoveModal, closeRemoveModal] = useVisible()
 
-  const [selectedUser, setSelectedUser] = useState<User>()
+  const [member, setMember] = useState<User>()
 
   const isOwner = useMemo(
     () => !!product?.users.find(u => u.role === 'owner' && u.id === user.id),
@@ -38,12 +38,12 @@ export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
   }
 
   function handleRemove(row: User) {
-    setSelectedUser(row)
+    setMember(row)
     openRemoveModal()
   }
 
   function handleCloseRemoveModal() {
-    setSelectedUser(undefined)
+    setMember(undefined)
     closeRemoveModal()
   }
 
@@ -161,11 +161,7 @@ export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
       <LeaveProduct visible={leaveModalVisible} onClose={closeLeaveModal} />
 
       {/* Remove member */}
-      <RemoveMember
-        visible={removeModalVisible}
-        user={selectedUser}
-        onClose={handleCloseRemoveModal}
-      />
+      <RemoveMember visible={removeModalVisible} member={member} onClose={handleCloseRemoveModal} />
     </>
   )
 }

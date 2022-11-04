@@ -9,27 +9,18 @@ const productRoutes = ['/product/:id*']
 export async function middleware(req: NextRequest) {
   const isLogged = isLoggedIn(req.cookies)
 
+  const res = NextResponse.next()
+
   // 登录, 注册等页面
   if (isMatchRoutes(req, authRoutes)) {
     // 已登录跳转到首页
     if (isLogged) {
       return NextResponse.redirect(new URL('/', req.url))
     }
-
-    const res = NextResponse.next()
-
-    // 检查是否生成 browserId cookie
-    const browserId = getBrowserId(req.cookies)
-
-    if (!browserId) {
-      setBrowserId(res.cookies)
-    }
-
-    return res
   }
 
   // Product 等页面
-  if (isMatchRoutes(req, productRoutes)) {
+  else if (isMatchRoutes(req, productRoutes)) {
     if (!isLogged) {
       // 展示 404 not found
       const url = req.nextUrl.clone()
@@ -41,7 +32,12 @@ export async function middleware(req: NextRequest) {
     }
   }
 
-  const res = NextResponse.next()
+  // 检查是否有 browserId
+  const browserId = getBrowserId(req.cookies)
+
+  if (!browserId) {
+    setBrowserId(res.cookies)
+  }
 
   // 检查 token 是否有效
   if (isLogged) {
@@ -71,6 +67,7 @@ export const config = {
     '/forgot-password',
     '/reset-password',
     '/product/:id*',
+    '/onboarding',
     '/'
   ]
 }

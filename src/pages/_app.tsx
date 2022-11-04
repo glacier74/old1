@@ -2,8 +2,11 @@ import type { AppProps } from 'next/app'
 import { Suspense } from 'react'
 import Head from 'next/head'
 import { appWithTranslation } from 'next-i18next'
+import { Inter } from '@next/font/google'
 import { StoreProvider } from '@/store'
 import '@/globals.scss'
+
+const inter = Inter()
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -21,7 +24,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta content="white" name="apple-mobile-web-app-status-bar-style" />
           <meta content="telephone=no,email=no" name="format-detection" />
         </Head>
-        <Component {...pageProps} />
+        <div className={inter.className}>
+          <Component {...pageProps} />
+        </div>
       </Suspense>
     </StoreProvider>
   )

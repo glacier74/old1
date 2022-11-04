@@ -4,28 +4,31 @@ import { useAsyncEffect, useVisible } from '@/utils'
 import { FC } from 'react'
 import { useRouter } from 'next/router'
 import { useStore } from '@/store'
+import { ProductService } from '@/service'
+import { useProductId } from '@/layout'
 
 const DeleteModal: FC<IModalProps> = ({ visible, onClose }) => {
-  // const { workspaceId } = useParam()
   const { t } = useTranslation()
-  const navigate = useRouter()
-  const { user } = useStore()
+  const router = useRouter()
+  const productId = useProductId()
+  const { user, removeProduct } = useStore()
 
   async function handleFinish(values: AnyMap<any>) {
-    // await WorkspaceService.dissolve(workspaceId, values.code)
-    // workspaceStore.deleteWorkspace(workspaceId)
-    //
-    // navigate('/', {
-    //   replace: true
-    // })
+    await ProductService.verifyDeletion(productId, values.code)
+    removeProduct(productId)
+
+    notification.success({
+      title: t('productSettings.deleteProduct.success')
+    })
+    router.replace('/')
   }
 
   useAsyncEffect(async () => {
     if (visible) {
-      // await WorkspaceService.dissolveCode(workspaceId)
+      await ProductService.requestDeletion(productId)
 
       notification.success({
-        title: `${t('workspace.settings.delWorkspace.sendEmail')} ${user?.email}.`
+        title: `${t('resetPassword.description')} ${user?.email}.`
       })
     }
   }, [visible])

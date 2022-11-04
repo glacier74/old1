@@ -13,10 +13,12 @@ const DeletionAlertModal = () => {
   const { user, isDeletionAlertShow, updateUser, openDeletionAlert, closeDeletionAlert } =
     useStore()
 
-  const remainingTime = useMemo(
-    () => Math.ceil((user.deletionScheduledAt! - date.timestamp()) / 3600),
-    [user.deletionScheduledAt]
-  )
+  const remainingTime = useMemo(() => {
+    if (user?.deletionScheduledAt > 0) {
+      return Math.ceil((user.deletionScheduledAt - date.timestamp()) / 3600)
+    }
+    return 0
+  }, [user.deletionScheduledAt])
 
   const { loading, error, request } = useRequest(async () => {
     await UserService.cancelDeletion()
