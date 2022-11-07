@@ -1,9 +1,9 @@
-import { Dropdown, Menus } from '@heyforms/ui'
-import type { FC } from 'react'
-import { useTranslation } from 'next-i18next'
-import { useStore } from '@/store'
 import { AuthService } from '@/service'
+import { useStore } from '@/store'
+import { Dropdown, Menus } from '@heyforms/ui'
+import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+import type { FC } from 'react'
 
 export const LoggedAccount: FC = () => {
   const { t } = useTranslation()

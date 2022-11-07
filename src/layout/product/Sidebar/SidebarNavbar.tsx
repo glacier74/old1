@@ -1,5 +1,5 @@
-import type { FC } from 'react'
-import { useTranslation } from 'next-i18next'
+import { useProductId } from '@/layout'
+import { useStore } from '@/store'
 import {
   IconBolt,
   IconBrandTwitter,
@@ -16,9 +16,9 @@ import {
   IconUsers,
   TablerIconProps
 } from '@tabler/icons'
+import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
-import { useProductId } from '@/layout'
-import { useStore } from '@/store'
+import type { FC } from 'react'
 
 interface SidebarNavProps {
   isMobile?: boolean

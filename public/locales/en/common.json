@@ -231,5 +231,8 @@
       "warn2": "Once you confirm to delete the product, you will no longer have access to the product data.",
       "button": "Delete product"
     }
+  },
+  "productEdit": {
+    "title": "Edit · {{name}}"
   }
 }

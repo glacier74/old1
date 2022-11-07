@@ -1,5 +1,5 @@
 import { v4 as uuidV4, validate } from 'uuid'
-import { date, isValid } from '@nily/utils'
+import { date, isFunction, isValid } from '@nily/utils'
 import { RequestCookies, ResponseCookies } from 'next/dist/server/web/spec-extension/cookies'
 
 // Cookie options
@@ -13,7 +13,7 @@ const tokenKey = process.env.NEXT_PUBLIC_TOKEN_COOKIE_NAME!
 export function getBrowserId(cookies: RequestCookies | any) {
   let value: string | undefined
 
-  if (cookies.get) {
+  if (cookies.get && isFunction(cookies.get)) {
     value = (cookies as RequestCookies).get(browserIdKey)?.value
   } else {
     value = cookies[browserIdKey]
@@ -35,7 +35,7 @@ export function setBrowserId(cookies: ResponseCookies) {
 export function getToken(cookies: RequestCookies | any) {
   let value: string | undefined
 
-  if (cookies.get) {
+  if (cookies.get && isFunction(cookies.get)) {
     value = (cookies as RequestCookies).get(tokenKey)?.value
   } else {
     value = cookies[tokenKey]

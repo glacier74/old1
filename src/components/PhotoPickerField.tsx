@@ -1,9 +1,9 @@
+import { useVisible } from '@/utils'
 import { Avatar, Button } from '@heyforms/ui'
 import clsx from 'clsx'
-import type { FC, ReactNode } from 'react'
 import { useTranslation } from 'next-i18next'
-import { PhotoPicker } from './photo-picker'
-import { useVisible } from '@/utils'
+import type { FC, ReactNode } from 'react'
+import { PhotoPicker } from './PhotoPicker'
 
 interface PhotoPickerFieldProps extends Omit<ComponentProps, 'onChange'> {
   id?: string
@@ -52,7 +52,7 @@ export const PhotoPickerField: FC<PhotoPickerFieldProps> = ({
 
   return (
     <>
-      <div className={clsx('photo-picker-field', className)}>
+      <div className={clsx('PhotoPicker-field', className)}>
         <label className="form-item-label" htmlFor={id}>
           {label}
         </label>

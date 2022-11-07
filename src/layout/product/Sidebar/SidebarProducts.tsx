@@ -1,11 +1,11 @@
+import { useStore } from '@/store'
 import { Avatar, Dropdown, Menus } from '@heyforms/ui'
-import type { FC } from 'react'
-import { useState } from 'react'
-import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
 import { isEqual } from '@nily/utils'
 import { IconChevronDown, IconCircleCheck, IconPlus } from '@tabler/icons'
-import { useStore } from '@/store'
+import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
+import type { FC } from 'react'
+import { useState } from 'react'
 import { useProduct, useProductId } from '../hook'
 
 interface CurrentProps {

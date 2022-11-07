@@ -1,4 +1,5 @@
 export * from './ProductLayout'
-export * from './product-settings'
-export * from './product-graph'
+export * from './ProductSettings'
+export * from './ProductGraph'
+export * from './EditProduct'
 export * from './hook'

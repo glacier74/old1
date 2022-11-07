@@ -1,16 +1,22 @@
-import { useStore } from '@/store'
-import { useTranslation } from 'next-i18next'
-import { Avatar, Button } from '@heyforms/ui'
-import { ProductMemberModal } from './members'
-import { useProduct } from './hook'
-import { AccountSettingsModal } from './account-settings'
-import { Sidebar } from './sidebar'
 import { AuthorizedLayout } from '@/layout'
+import { useStore } from '@/store'
+import { Avatar, Button } from '@heyforms/ui'
+import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
+import { AccountSettingsModal } from './AccountSettings'
+import { useProduct } from './hook'
+import { ProductMemberModal } from './Members'
+import { Sidebar } from './Sidebar'
 
 export function ProductLayout({ seo, children }: LayoutProps) {
   const { t } = useTranslation()
+  const router = useRouter()
   const { isMemberListShow, isAccountSettingsShow } = useStore()
   const product = useProduct()
+
+  function handleEdit() {
+    router.push(`/product/${product?.id}/edit`)
+  }
 
   return (
     <>
@@ -42,7 +48,7 @@ export function ProductLayout({ seo, children }: LayoutProps) {
                       </div>
 
                       <div className="flex items-center space-x-3">
-                        <Button>{t('product.edit')}</Button>
+                        <Button onClick={handleEdit}>{t('product.edit')}</Button>
                         <Button type="primary">{t('product.viewSite')}</Button>
                       </div>
                     </div>

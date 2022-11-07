@@ -1,7 +1,7 @@
 import { Modal, Tabs } from '@heyforms/ui'
-import type { FC } from 'react'
 import { useTranslation } from 'next-i18next'
-import { FileUploader } from '../file-uploader'
+import type { FC } from 'react'
+import { FileUploader } from '../FileUploader'
 import { Unsplash } from './Unsplash'
 
 interface PhotoPickerProps extends Omit<ComponentProps, 'onChange'>, IModalProps {
