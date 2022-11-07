@@ -44,6 +44,27 @@ declare global {
     updatedAt: string
   }
 
+  interface SiteSettings {
+    productId: number
+    content: string
+    metaTitle: string
+    metaDescription: string
+    twitter: string
+    enableTwitter: boolean
+    facebook: string
+    enableFacebook: boolean
+    instagram: string
+    enableInstagram: boolean
+    youtube: string
+    enableYoutube: boolean
+    telegram: string
+    enableTelegram: boolean
+    linkedin: string
+    enableLinkedin: boolean
+    github: string
+    enableGithub: boolean
+  }
+
   interface Product {
     id: number
     name: string

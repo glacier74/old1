@@ -9,6 +9,7 @@ interface Store {
   email: string | undefined
   user: User
   products: Product[]
+  siteSettings: SiteSettings
   setIsReady: (value: boolean) => void
   setEmail: (value?: string) => void
   setUser: (value?: any) => void
@@ -16,6 +17,8 @@ interface Store {
   setProducts: (value?: any) => void
   updateProduct: (productId: number, updates: Partial<Product>) => void
   removeProduct: (productId: number) => void
+  setSiteSettings: (value: SiteSettings) => void
+  updateSiteSettings: (updates: Partial<SiteSettings>) => void
   removeMember: (productId: number, memberId: number) => void
   openMemberList: () => void
   closeMemberList: () => void
@@ -36,6 +39,7 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
   const [email, setEmail] = useState<string | undefined>()
   const [user, setUser] = useState<User>({} as User)
   const [products, setProducts] = useState<Product[]>([])
+  const [siteSettings, setSiteSettings] = useState<SiteSettings>({} as SiteSettings)
   const [isMemberListShow, openMemberList, closeMemberList] = useVisible()
   const [isAccountSettingsShow, openAccountSettings, closeAccountSettings] = useVisible()
   const [isDeletionAlertShow, openDeletionAlert, closeDeletionAlert] = useVisible()
@@ -68,6 +72,11 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
     [products]
   )
 
+  const updateSiteSettings = useCallback(
+    (updates: Partial<SiteSettings>) => setSiteSettings({ ...siteSettings, ...updates }),
+    [siteSettings]
+  )
+
   const removeMember = useCallback(
     (productId: number, memberId: number) => {
       const newValue = products.map(p => {
@@ -90,6 +99,7 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
     email,
     user,
     products,
+    siteSettings,
     setIsReady,
     setEmail,
     setUser,
@@ -97,6 +107,8 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
     setProducts,
     updateProduct,
     removeProduct,
+    setSiteSettings,
+    updateSiteSettings,
     removeMember,
     openMemberList,
     closeMemberList,

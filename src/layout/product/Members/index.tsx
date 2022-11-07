@@ -1,8 +1,8 @@
 import { FC, useMemo, useState } from 'react'
 import { useTranslation } from 'next-i18next'
-import { Avatar, Button, Form, Input, Modal, notification, Table } from '@heyforms/ui'
+import { Button, Form, Input, Modal, notification, Table } from '@heyforms/ui'
 import { useStore } from '@/store'
-import { CopyButton } from '@/components'
+import { CopyButton, RoundImage } from '@/components'
 import { useProduct } from '@/layout'
 import { TableColumn } from '@heyforms/ui/types/table'
 import { useVisible } from '@/utils'
@@ -25,7 +25,7 @@ export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
     [product?.users, user.id]
   )
   const invitationURL = useMemo(
-    () => `${process.env.NEXT_PUBLIC_HOMEPAGE}/invite/${product?.id}.${product?.inviteCode}`,
+    () => `${process.env.NEXT_PUBLIC_HOMEPAGE}/invite/${product?.inviteCode}`,
     [product]
   )
 
@@ -56,7 +56,7 @@ export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
         return (
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <Avatar src={row.avatar} size={36} rounded circular />
+              <RoundImage src={row.avatar} size={36} />
             </div>
             <div className="flex-1 px-4">
               <p className="text-sm font-medium text-slate-700 truncate">

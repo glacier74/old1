@@ -232,7 +232,18 @@
       "button": "Delete product"
     }
   },
-  "productEdit": {
-    "title": "Edit · {{name}}"
+  "editor": {
+    "title": "Edit · {{name}}",
+    "meta": "Meta",
+    "metaTitle": "Meta title",
+    "metaDescription": "Meta description",
+    "socialMedia": "Social media",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "linkedin": "Linkedin",
+    "youtube": "Youtube",
+    "telegram": "Telegram",
+    "github": "Github"
   }
 }

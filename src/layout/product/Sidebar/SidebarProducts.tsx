@@ -1,16 +1,13 @@
 import { useStore } from '@/store'
-import { Avatar, Dropdown, Menus } from '@heyforms/ui'
+import { Dropdown, Menus } from '@heyforms/ui'
 import { isEqual } from '@nily/utils'
 import { IconChevronDown, IconCircleCheck, IconPlus } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import type { FC } from 'react'
 import { useState } from 'react'
-import { useProduct, useProductId } from '../hook'
-
-interface CurrentProps {
-  product?: Product
-}
+import { useProduct, useProductId } from '../../hook'
+import { RoundImage } from '@/components'
 
 interface ProductItemProps {
   product: Product
@@ -30,7 +27,7 @@ const ProductItem: FC<ProductItemProps> = ({ product, onClick }) => {
       className="group flex items-center px-4 py-2 text-sm text-slate-700 cursor-pointer hover:bg-slate-100"
       onClick={handleClick}
     >
-      <Avatar src={product?.logo} size={24} retainLength={2} rounded circular />
+      <RoundImage src={product?.logo} size={24} retainLength={2} />
 
       <div className="ml-4 flex-auto">
         <p className="text-sm font-medium text-slate-700 truncate">{product?.name}</p>
@@ -52,13 +49,7 @@ const Current: FC = () => {
   return (
     <button className="flex items-center w-full rounded-md text-sm text-left text-slate-700 hover:text-slate-900">
       <span className="flex min-w-0 items-center justify-between space-x-3">
-        <Avatar
-          className="w-6 h-6 rounded-full flex-shrink-0"
-          src={product?.logo}
-          size={24}
-          rounded
-          circular
-        />
+        <RoundImage className="w-6 h-6 rounded-full flex-shrink-0" src={product?.logo} size={24} />
         <span className="flex-1 text-sm font-medium truncate">{product?.name}</span>
       </span>
       <IconChevronDown className="flex-shrink-0 h-4 w-4 ml-1" />

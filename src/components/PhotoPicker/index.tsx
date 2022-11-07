@@ -5,26 +5,29 @@ import { FileUploader } from '../FileUploader'
 import { Unsplash } from './Unsplash'
 
 interface PhotoPickerProps extends Omit<ComponentProps, 'onChange'>, IModalProps {
+  enableUnsplash?: boolean
+  acceptedMimes?: string[]
   value?: string
   onChange?: (value: string) => void
 }
 
-const ACCEPTED_MIMES = ['image/jpeg', 'image/png', 'image/bmp', 'image/gif']
-
 export const PhotoPicker: FC<PhotoPickerProps> = ({
   className,
   visible,
+  enableUnsplash = true,
+  acceptedMimes = ['image/jpeg', 'image/png', 'image/bmp'],
   value,
   onClose,
   onChange,
   ...restProps
 }) => {
+  const { t } = useTranslation()
+
   function handleChange(src: string) {
     onChange?.(src)
     onClose?.()
   }
 
-  const { t } = useTranslation()
   return (
     <Modal
       className="photo-picker"
@@ -35,11 +38,13 @@ export const PhotoPicker: FC<PhotoPickerProps> = ({
     >
       <Tabs>
         <Tabs.Pane name="upload" title={t('upload.upload')}>
-          <FileUploader accept={ACCEPTED_MIMES} onChange={handleChange} />
+          <FileUploader accept={acceptedMimes} onChange={handleChange} />
         </Tabs.Pane>
-        <Tabs.Pane name="unsplash" title="Unsplash">
-          <Unsplash onChange={handleChange} />
-        </Tabs.Pane>
+        {enableUnsplash && (
+          <Tabs.Pane name="unsplash" title="Unsplash">
+            <Unsplash onChange={handleChange} />
+          </Tabs.Pane>
+        )}
       </Tabs>
     </Modal>
   )

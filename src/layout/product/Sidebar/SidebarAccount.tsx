@@ -1,9 +1,10 @@
 import { AuthService } from '@/service'
 import { useStore } from '@/store'
-import { Avatar, Dropdown, Menus } from '@heyforms/ui'
+import { Dropdown, Menus } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import type { FC } from 'react'
+import { RoundImage } from '@/components'
 
 export const SidebarAccount: FC = () => {
   const { t } = useTranslation()
@@ -44,7 +45,7 @@ export const SidebarAccount: FC = () => {
       >
         <div className="flex items-center cursor-pointer">
           <div>
-            <Avatar className="inline-block h-8 w-8" src={user?.avatar} circular rounded />
+            <RoundImage className="inline-block h-8 w-8" src={user?.avatar} size={32} />
           </div>
           <div className="ml-3">
             <p className="text-sm font-medium text-slate-700 truncate group-hover:text-slate-900">

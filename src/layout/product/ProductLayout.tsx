@@ -1,12 +1,13 @@
 import { AuthorizedLayout } from '@/layout'
 import { useStore } from '@/store'
-import { Avatar, Button } from '@heyforms/ui'
+import { Button } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { AccountSettingsModal } from './AccountSettings'
-import { useProduct } from './hook'
+import { useProduct } from '../hook'
 import { ProductMemberModal } from './Members'
 import { Sidebar } from './Sidebar'
+import { RoundImage } from '@/components'
 
 export function ProductLayout({ seo, children }: LayoutProps) {
   const { t } = useTranslation()
@@ -37,7 +38,7 @@ export function ProductLayout({ seo, children }: LayoutProps) {
                     <div className="lg:flex lg:items-center lg:justify-between">
                       <div className="flex items-center flex-1 min-w-0">
                         <div className="flex items-center mr-5">
-                          <Avatar src={product?.logo} size={54} rounded circular />
+                          <RoundImage src={product?.logo} size={54} />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="text-3xl font-bold text-slate-900">{product?.name}</div>

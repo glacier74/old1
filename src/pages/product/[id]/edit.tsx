@@ -1,8 +1,8 @@
-import { EditProduct } from '@/layout'
+import { Editor } from '@/layout'
 import { withTranslations } from '@/utils'
 
 const ProductEdit = (): JSX.Element => {
-  return <EditProduct />
+  return <Editor />
 }
 
 export const getServerSideProps = withTranslations(async context => {

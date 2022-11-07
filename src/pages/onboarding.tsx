@@ -37,7 +37,7 @@ const Onboarding = (): JSX.Element => {
         request={handleFinish}
       >
         <Form.Item name="logo" rules={[{ required: true, message: t('onboarding.invalidLogo') }]}>
-          <LogoPickerField />
+          <LogoPickerField enableUnsplash={false} />
         </Form.Item>
 
         <Form.Item

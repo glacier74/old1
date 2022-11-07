@@ -2,8 +2,8 @@ import { Input } from '@heyforms/ui'
 import type { FC } from 'react'
 import { useState } from 'react'
 import { useTranslation } from 'next-i18next'
-import { Async } from '../Async'
 import { IconSearch } from '@tabler/icons'
+import { AsyncRequest } from '@/components'
 
 interface UnsplashProps {
   onChange: (src: string) => void
@@ -83,13 +83,13 @@ export const Unsplash: FC<UnsplashProps> = ({ onChange }) => {
   return (
     <div>
       <Input placeholder={t('upload.search')} leading={<IconSearch />} onKeyDown={handleKeyDown} />
-      <Async className="mt-4" request={getImages} deps={[keyword]} skeleton={<Skeleton />}>
+      <AsyncRequest className="mt-4" request={getImages} deps={[keyword]} skeleton={<Skeleton />}>
         <ul role="list" className="flex flex-wrap -ml-2 -mr-2">
           {images.map(row => (
             <ImageItem key={row.id} image={row} onChange={onChange} />
           ))}
         </ul>
-      </Async>
+      </AsyncRequest>
     </div>
   )
 }

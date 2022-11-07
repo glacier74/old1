@@ -1,18 +1,21 @@
 import { useVisible } from '@/utils'
-import { Avatar, Button } from '@heyforms/ui'
+import { Button } from '@heyforms/ui'
 import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
 import type { FC, ReactNode } from 'react'
 import { PhotoPicker } from './PhotoPicker'
+import { RoundImage } from '@/components'
 
 interface PhotoPickerFieldProps extends Omit<ComponentProps, 'onChange'> {
   id?: string
   value?: string
   label?: ReactNode
+  size?: number
   description?: ReactNode
   defaultIcon?: ReactNode
   changeLoading?: boolean
   removeLoading?: boolean
+  enableUnsplash?: boolean
   onVisibilityChange?: (visible: boolean) => void
   onChange?: (value: string) => void
   onRemove?: () => void
@@ -22,10 +25,12 @@ export const PhotoPickerField: FC<PhotoPickerFieldProps> = ({
   id,
   className,
   label,
+  size = 48,
   description,
   defaultIcon,
   changeLoading,
   removeLoading,
+  enableUnsplash,
   value,
   onVisibilityChange,
   onChange,
@@ -58,7 +63,7 @@ export const PhotoPickerField: FC<PhotoPickerFieldProps> = ({
         </label>
         <p className="form-item-description">{description}</p>
         <div className="mt-3 flex items-center">
-          <Avatar src={value} size={48} defaultIcon={defaultIcon} circular rounded />
+          <RoundImage src={value} size={size} defaultIcon={defaultIcon} />
           <div className="ml-4 flex flex-auto items-center">
             <Button loading={changeLoading} onClick={handleClick}>
               {t('account.avatar.change')}
@@ -73,7 +78,13 @@ export const PhotoPickerField: FC<PhotoPickerFieldProps> = ({
       </div>
 
       {/* Photo picker modal */}
-      <PhotoPicker visible={visible} onClose={handleClose} onChange={handleChange} {...restProps} />
+      <PhotoPicker
+        visible={visible}
+        enableUnsplash={enableUnsplash}
+        onClose={handleClose}
+        onChange={handleChange}
+        {...restProps}
+      />
     </>
   )
 }
@@ -82,8 +93,10 @@ export const LogoPickerField: FC<PhotoPickerFieldProps> = ({
   id,
   className,
   description,
+  size = 64,
   changeLoading,
   removeLoading,
+  enableUnsplash,
   value,
   onVisibilityChange,
   onChange,
@@ -111,17 +124,24 @@ export const LogoPickerField: FC<PhotoPickerFieldProps> = ({
   return (
     <>
       <div
-        className={clsx('logo-picker-field relative w-16 h-16 group', className)}
+        className={clsx('logo-picker-field relative group', className)}
+        style={{ width: size, height: size }}
         onClick={handleClick}
       >
-        <Avatar src={value} size={64} text={t('common.logo')} retainLength={4} circular rounded />
+        <RoundImage src={value} size={size} text={t('common.logo')} retainLength={4} />
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 rounded-full opacity-0 transition-opacity cursor-pointer group-hover:opacity-100">
           <span className="text-xs text-white">{t('upload.upload')}</span>
         </div>
       </div>
 
       {/* Photo picker modal */}
-      <PhotoPicker visible={visible} onClose={handleClose} onChange={handleChange} {...restProps} />
+      <PhotoPicker
+        visible={visible}
+        enableUnsplash={enableUnsplash}
+        onClose={handleClose}
+        onChange={handleChange}
+        {...restProps}
+      />
     </>
   )
 }

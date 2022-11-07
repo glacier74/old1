@@ -92,9 +92,17 @@ body {
   animation: skeleton 1.4s ease infinite;
 }
 
+.non-scaling-stroke {
+  path,
+  polyline,
+  line {
+    vector-effect: non-scaling-stroke;
+  }
+}
+
 .root-container {
   @media (min-width: 768px) {
-    padding-left: 16rem;
+    padding-left: 18rem;
   }
 }
 
@@ -102,7 +110,7 @@ body {
 // Sidebar
 .sidebar {
   @media (min-width: 768px) {
-    width: 16rem;
+    width: 18rem;
   }
 }
 
@@ -183,3 +191,108 @@ body {
     @apply h-full;
   }
 }
+
+// =================================================================================
+// Editor
+.site-settings {
+  button.switch {
+    @apply h-5 w-9;
+  }
+
+  .switch-handle {
+    @apply h-4 w-4;
+
+    .spin {
+      @apply w-4 h-4;
+    }
+  }
+
+  button.switch-checked {
+    .switch-handle {
+      @apply translate-x-4;
+    }
+  }
+
+  .input, .textarea {
+    @apply py-1.5;
+  }
+
+  input,
+  textarea {
+    @apply text-sm;
+  }
+
+  .accordion-header {
+    @apply px-4;
+  }
+
+  .accordion-text {
+    @apply text-sm leading-6 font-medium text-slate-900;
+  }
+
+  .accordion-expand-icon {
+    svg {
+      @apply transition-transform will-change-transform;
+    }
+  }
+}
+
+.editor-name,
+.editor-tagline {
+  .input {
+    @apply p-0;
+    border: none;
+    box-shadow: none;
+
+    input {
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.editor-name {
+  @apply mt-7;
+
+  .input {
+    input {
+      @apply text-4xl text-black;
+    }
+  }
+}
+
+.editor-tagline {
+  @apply mt-3;
+
+  .input {
+    input {
+      @apply text-xl text-gray-500;
+    }
+  }
+}
+
+.ProseMirror {
+  outline: none;
+  min-height: calc(100vh - 300px);
+
+  p.is-empty::before {
+    @apply text-slate-400 float-left h-0 pointer-events-none;
+    content: attr(data-placeholder);
+  }
+
+  a {
+    @apply text-blue-700;
+  }
+}
+
+.gallery {
+  height: 13.75rem;
+}
+
+.gallery-item {
+  @apply bg-slate-50 hover:bg-slate-100;
+  width: 23rem;
+  height: 13.75rem;
+}
+

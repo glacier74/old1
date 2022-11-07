@@ -1,8 +1,9 @@
 import { useTranslation } from 'next-i18next'
 import { ProductLayout } from '@/layout'
 import { withTranslations } from '@/utils'
-import { Avatar, Table } from '@heyforms/ui'
+import { Table } from '@heyforms/ui'
 import { TableColumn } from '@heyforms/ui/types/table'
+import { RoundImage } from '@/components'
 
 const engagements: any[] = [
   {
@@ -50,7 +51,7 @@ const ProductEngagements = (): JSX.Element => {
         return (
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <Avatar src={user.avatar} size={36} rounded circular />
+              <RoundImage src={user.avatar} size={36} />
             </div>
             <div className="flex-1 px-4">
               <p className="text-sm font-semibold text-slate-800 truncate">{user.name}</p>

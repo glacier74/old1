@@ -73,3 +73,7 @@ export function durationFormatter(duration: number) {
     return `${seconds}s`
   }
 }
+
+export function capitalize(text: string) {
+  return text.replace(/^\S/, s => s.toUpperCase())
+}

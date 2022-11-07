@@ -32,6 +32,7 @@ export const AvatarSettings: FC = () => {
         value={user?.avatar}
         label={t('account.avatar.heading')}
         description={t('account.avatar.description')}
+        enableUnsplash={false}
         changeLoading={loading}
         onChange={request}
       />

@@ -11,7 +11,7 @@ interface AsyncProps extends ComponentProps {
   errorRender?: (err: Error) => ReactNode
 }
 
-export const Async: FC<AsyncProps> = ({
+export const AsyncRequest: FC<AsyncProps> = ({
   className,
   style,
   request,
