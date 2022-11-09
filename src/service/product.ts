@@ -59,4 +59,23 @@ export class ProductService {
       code
     })
   }
+
+  static async invitation(inviteCode: string): Promise<Invitation> {
+    return axios.get(`/products/invitations/${inviteCode}`)
+  }
+
+  static async join(productId: number, inviteCode: string) {
+    return axios.put(`/products/${productId}/members`, {
+      inviteCode
+    })
+  }
+
+  static async payments(productId: number, page = 1, limit = 20): Promise<Payment[]> {
+    return axios.get(`/products/${productId}/payments`, {
+      params: {
+        page,
+        limit
+      }
+    })
+  }
 }

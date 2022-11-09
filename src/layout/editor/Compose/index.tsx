@@ -24,7 +24,7 @@ export const Compose = () => {
   const editor = useEditor({
     extensions: [
       UniqueID.configure({
-        types: ['paragraph', 'heading', 'slideshow']
+        types: ['paragraph', 'heading', 'slideshow', 'payment']
       }),
       StarterKit,
       Underline,
@@ -45,8 +45,7 @@ export const Compose = () => {
       }),
       SlashMenu
     ],
-    content:
-      '<p data-id="UJo5psGjtN88">Hello World! <a href="https://www.github.com">Github</a></p>',
+    content: '',
     onUpdate: ({ editor }) => {
       const json = editor.getJSON()
       console.log(json)

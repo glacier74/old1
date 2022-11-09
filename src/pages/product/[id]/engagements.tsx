@@ -1,62 +1,57 @@
 import { Table } from '@heyforms/ui'
 import { TableColumn } from '@heyforms/ui/types/table'
 import { useTranslation } from 'next-i18next'
+import { useState } from 'react'
+import * as timeago from 'timeago.js'
 
-import { RoundImage } from '~/components'
-import { ProductLayout } from '~/layout'
+import { AsyncRequest, RoundImage } from '~/components'
+import { ProductLayout, useProductId } from '~/layout'
+import { ProductService } from '~/service'
 import { withTranslations } from '~/utils'
 
-const engagements: any[] = [
-  {
-    id: 1,
-    avatar: '',
-    name: 'Frank Boehm',
-    email: 'frank.boehm@example.com'
-  },
-  {
-    id: 2,
-    avatar: '',
-    name: 'Frank Boehm',
-    email: 'frank.boehm@example.com'
-  },
-  {
-    id: 3,
-    avatar: '',
-    name: 'Frank Boehm',
-    email: 'frank.boehm@example.com'
-  },
-  {
-    id: 4,
-    avatar: '',
-    name: 'Frank Boehm',
-    email: 'frank.boehm@example.com'
-  },
-  {
-    id: 5,
-    avatar: '',
-    name: 'Frank Boehm',
-    email: 'frank.boehm@example.com'
-  }
-]
+const Skeleton = () => {
+  return (
+    <div>
+      <div className="flex items-center h-16 py-4">
+        <div className="w-9 h-9 bg-slate-200 rounded-full"></div>
+        <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
+      </div>
+      <div className="flex items-center h-16 py-4">
+        <div className="w-9 h-9 bg-slate-200 rounded-full"></div>
+        <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
+      </div>
+      <div className="flex items-center h-16 py-4">
+        <div className="w-9 h-9 bg-slate-200 rounded-full"></div>
+        <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
+      </div>
+    </div>
+  )
+}
 
 const ProductEngagements = (): JSX.Element => {
   const { t } = useTranslation()
+  const productId = useProductId()
+  const [payments, setPayments] = useState<Payment[]>()
 
   // Table columns
-  const columns: TableColumn<User>[] = [
+  const columns: TableColumn<Payment>[] = [
     {
       key: 'id',
       name: '',
       width: '40%',
-      render(user) {
+      render(row) {
         return (
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <RoundImage src={user.avatar} size={36} />
+              <RoundImage src={row.avatar} text={row.email} size={36} />
             </div>
             <div className="flex-1 px-4">
-              <p className="text-sm font-semibold text-slate-800 truncate">{user.name}</p>
-              <p className="mt-0.5 font-normal text-sm text-slate-500">1 days ago</p>
+              <p className="text-sm font-semibold text-slate-800 truncate">{row.name}</p>
+              {row.paidAt && (
+                <p className="mt-0.5 font-normal text-sm text-slate-500">
+                  {timeago.format(row.paidAt! * 1_000)}
+                </p>
+              )}
             </div>
           </div>
         )
@@ -66,15 +61,15 @@ const ProductEngagements = (): JSX.Element => {
       key: 'email',
       name: '',
       width: '30%',
-      render(user) {
-        return user.email
+      render(row) {
+        return row.email
       }
     },
     {
       key: 'type',
       name: '',
       width: '20%',
-      render(user) {
+      render(row) {
         return 'One time'
       }
     },
@@ -82,11 +77,16 @@ const ProductEngagements = (): JSX.Element => {
       key: 'amount',
       name: '',
       align: 'right',
-      render(user) {
+      render(row) {
         return '$300'
       }
     }
   ]
+
+  async function fetchPayments() {
+    setPayments(await ProductService.payments(productId!))
+    return true
+  }
 
   return (
     <ProductLayout seo={{ title: 'engagements.title' }}>
@@ -95,7 +95,9 @@ const ProductEngagements = (): JSX.Element => {
       </h1>
 
       <div className="mt-6">
-        <Table<User> className="mt-8" columns={columns} data={engagements} hideHead />
+        <AsyncRequest request={fetchPayments} deps={[productId]} skeleton={<Skeleton />}>
+          <Table<Payment> className="mt-8" columns={columns} data={payments} hideHead />
+        </AsyncRequest>
       </div>
     </ProductLayout>
   )

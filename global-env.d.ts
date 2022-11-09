@@ -82,6 +82,33 @@ declare global {
     updatedAt: string
   }
 
+  interface Payment {
+    id: number
+    productId: number
+    blockId: string
+    provider: string
+    name?: string
+    email: string
+    avatar: string
+    currency: string
+    amount: number
+    transactionId?: string
+    paymentMode: string
+    receiptUrl?: string
+    failureMessage: any
+    paidAt?: number
+    status: string
+    createdAt: string
+    updatedAt: string
+  }
+
+  interface Invitation {
+    inviter: string
+    productId: number
+    productName: string
+    productLogo: string
+  }
+
   interface UnsplashImage {
     id: string
     url: string

@@ -108,6 +108,12 @@ body {
   @apply px-4 py-2 border border-gray-300 shadow-sm sm:text-sm font-medium rounded-md text-slate-700 bg-white;
 }
 
+.table-body {
+  td {
+    @apply font-normal text-slate-900;
+  }
+}
+
 .root-container {
   @media (min-width: 768px) {
     padding-left: 18rem;

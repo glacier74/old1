@@ -256,5 +256,18 @@
     "alignLeft": "AlignLeft",
     "alignCenter": "AlignCenter",
     "alignRight": "AlignRight"
+  },
+  "invite": {
+    "title": "Invitation · $t(common.name)",
+    "heading": "You've been invited to {{inviter}}'s product {{productName}}",
+    "description": "Join the product and start working together!",
+    "errorTip": "If you have trouble join the product, please contact the product owner or $t(common.name) support.",
+    "join": "Join",
+    "goBack": "Go back",
+    "backHome": "Back to $t(common.name)"
+  },
+  "stripe": {
+    "title": "$t(stripe.connecting) · $t(common.name)",
+    "connecting": "Connecting with stripe"
   }
 }
