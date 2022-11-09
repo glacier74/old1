@@ -23,10 +23,6 @@ export const BubbleMenu: FC<BubbleMenuProps> = ({ editor }) => {
   const { t } = useTranslation()
 
   function handleShouldShow(props: any) {
-    console.log(
-      !props.editor.view.state.selection.empty &&
-        !(props.editor.isActive('slideshow') || props.editor.isActive('payment'))
-    )
     return (
       !props.editor.view.state.selection.empty &&
       !(props.editor.isActive('slideshow') || props.editor.isActive('payment'))

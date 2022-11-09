@@ -25,6 +25,8 @@ const ResetPassword = (): JSX.Element => {
   }
 
   useEffect(() => {
+    router.prefetch('/login')
+
     if (isEmpty(email)) {
       router.replace('/login')
     }

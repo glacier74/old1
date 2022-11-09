@@ -34,7 +34,7 @@ const ProductItem: FC<ProductItemProps> = ({ product, onClick }) => {
       <div className="ml-4 flex-auto">
         <p className="text-sm font-medium text-slate-700 truncate">{product?.name}</p>
         <p className="text-xs text-slate-500 truncate">
-          {product.users?.length} {t('sidebar.member')}
+          {t('product.member', { count: product?.users.length })}
         </p>
       </div>
 
@@ -63,7 +63,7 @@ const Skeleton = () => {
   return (
     <div className="flex items-center">
       <div className="w-6 h-6 bg-slate-200 rounded-full"></div>
-      <div className="ml-3 h-4 flex-1 rounded skeleton"></div>
+      <div className="ml-3 h-4 rounded-sm skeleton" style={{ width: 100 }}></div>
     </div>
   )
 }

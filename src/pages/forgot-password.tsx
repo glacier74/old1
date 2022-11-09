@@ -1,6 +1,7 @@
 import { Form, Input } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 import { LoginLayout } from '~/layout'
 import { AuthService } from '~/service'
@@ -22,6 +23,10 @@ const ForgotPassword = (): JSX.Element => {
       throw new Error(err.message)
     }
   }
+
+  useEffect(() => {
+    router.prefetch('/reset-password')
+  }, [])
 
   return (
     <LoginLayout

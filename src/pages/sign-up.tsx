@@ -5,6 +5,7 @@ import { LoginLayout, SocialLogin } from '~/layout'
 import { AuthService } from '~/service'
 import { useStore } from '~/store'
 import { withTranslations } from '~/utils'
+import { useEffect } from 'react'
 
 const SignUp = (): JSX.Element => {
   const { t } = useTranslation()
@@ -17,6 +18,10 @@ const SignUp = (): JSX.Element => {
     setEmail(values.email)
     router.push('/confirm-email')
   }
+
+  useEffect(() => {
+    router.prefetch('/confirm-email')
+  }, [])
 
   return (
     <LoginLayout

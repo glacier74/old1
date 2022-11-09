@@ -19,6 +19,8 @@ const ConfirmEmail = (): JSX.Element => {
   }
 
   useEffect(() => {
+    router.prefetch('/login')
+
     if (isEmpty(email)) {
       router.replace('/login')
     }
