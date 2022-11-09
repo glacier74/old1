@@ -1,5 +1,6 @@
 import { Modal, notification } from '@heyforms/ui'
 import { date } from '@nily/utils'
+import Cookies from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo } from 'react'
@@ -7,7 +8,7 @@ import { useEffect, useMemo } from 'react'
 import { BaseLayout } from '~/layout/BaseLayout'
 import { AuthService, ProductService, UserService } from '~/service'
 import { useStore } from '~/store'
-import { useAsyncEffect, useRequest } from '~/utils'
+import { getBrowserId, setBrowserId, useAsyncEffect, useRequest } from '~/utils'
 
 const DeletionAlertModal = () => {
   const { t } = useTranslation()
@@ -76,6 +77,13 @@ export const AuthorizedLayout = ({ seo, children }: LayoutProps) => {
   const { setUser, setProducts, setIsReady } = useStore()
 
   useAsyncEffect(async () => {
+    // 检查是否有 browserId
+    const browserId = getBrowserId(Cookies)
+
+    if (!browserId) {
+      setBrowserId(Cookies)
+    }
+
     try {
       const [user, products] = await Promise.all([UserService.user(), ProductService.products()])
 

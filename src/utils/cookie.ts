@@ -1,4 +1,5 @@
 import { date, isFunction, isValid } from '@nily/utils'
+import { CookiesStatic } from 'js-cookie'
 import { RequestCookies, ResponseCookies } from 'next/dist/server/web/spec-extension/cookies'
 import { v4 as uuidV4, validate } from 'uuid'
 
@@ -14,7 +15,12 @@ export function getBrowserId(cookies: RequestCookies | any) {
   let value: string | undefined
 
   if (cookies.get && isFunction(cookies.get)) {
-    value = (cookies as RequestCookies).get(browserIdKey)?.value
+    // JS cookie
+    if (cookies.converter) {
+      value = (cookies as CookiesStatic).get(browserIdKey)
+    } else {
+      value = (cookies as RequestCookies).get(browserIdKey)?.value
+    }
   } else {
     value = cookies[browserIdKey]
   }
@@ -24,12 +30,21 @@ export function getBrowserId(cookies: RequestCookies | any) {
   }
 }
 
-export function setBrowserId(cookies: ResponseCookies) {
-  cookies.set(browserIdKey, uuidV4({ random: undefined }), {
+export function setBrowserId(cookies: ResponseCookies | any) {
+  const value = uuidV4({ random: undefined })
+  const options: AnyMap<any> = {
     httpOnly: false,
-    domain,
-    maxAge
-  })
+    domain
+  }
+
+  // JS cookie
+  if (cookies.converter) {
+    options.expires = Math.round(maxAge! / (1_000 * 24 * 60 * 60))
+  } else {
+    options.maxAge = maxAge
+  }
+
+  cookies.set(browserIdKey, value, options)
 }
 
 export function getToken(cookies: RequestCookies | any) {

@@ -5,7 +5,6 @@ import { deleteToken, getBrowserId, isLoggedIn, setBrowserId } from '~/utils/coo
 import { isMatchRoutes } from '~/utils/route'
 
 const authRoutes = ['/login', '/sign-up', '/confirm-email', '/forgot-password', '/reset-password']
-const productRoutes = ['/product/:id*']
 
 export async function middleware(req: NextRequest) {
   const isLogged = isLoggedIn(req.cookies)
@@ -21,17 +20,17 @@ export async function middleware(req: NextRequest) {
   }
 
   // Product 等页面
-  else if (isMatchRoutes(req, productRoutes)) {
-    if (!isLogged) {
-      // 展示 404 not found
-      const url = req.nextUrl.clone()
-      url.pathname = '/404'
-
-      return NextResponse.rewrite(url, {
-        status: 404
-      })
-    }
-  }
+  // else if (isMatchRoutes(req, productRoutes)) {
+  //   if (!isLogged) {
+  //     // 展示 404 not found
+  //     const url = req.nextUrl.clone()
+  //     url.pathname = '/404'
+  //
+  //     return NextResponse.rewrite(url, {
+  //       status: 404
+  //     })
+  //   }
+  // }
 
   // 检查是否有 browserId
   const browserId = getBrowserId(req.cookies)
@@ -61,14 +60,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    '/login',
-    '/sign-up',
-    '/confirm-email',
-    '/forgot-password',
-    '/reset-password',
-    '/product/:id*',
-    '/onboarding',
-    '/'
-  ]
+  matcher: ['/login', '/sign-up', '/confirm-email', '/forgot-password', '/reset-password', '/']
 }
