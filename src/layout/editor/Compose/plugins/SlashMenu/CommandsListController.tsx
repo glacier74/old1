@@ -1,5 +1,6 @@
-import React, { FC } from 'react'
 import { SuggestionKeyDownProps } from '@tiptap/suggestion'
+import React, { FC } from 'react'
+
 import { CommandItem, CommandsListProps } from './CommandsList'
 
 interface CommandsListControllerProps {

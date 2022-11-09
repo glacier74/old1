@@ -1,13 +1,15 @@
-import { AuthorizedLayout } from '@/layout'
-import { useStore } from '@/store'
 import { Button } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { AccountSettingsModal } from './AccountSettings'
+
+import { RoundImage } from '~/components'
+import { AuthorizedLayout } from '~/layout'
+import { useStore } from '~/store'
+
 import { useProduct } from '../hook'
+import { AccountSettingsModal } from './AccountSettings'
 import { ProductMemberModal } from './Members'
 import { Sidebar } from './Sidebar'
-import { RoundImage } from '@/components'
 
 export function ProductLayout({ seo, children }: LayoutProps) {
   const { t } = useTranslation()

@@ -1,6 +1,7 @@
+import { IconX } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
 import { CSSTransition } from 'react-transition-group'
-import { IconX } from '@tabler/icons'
+
 import { SidebarAccount } from './SidebarAccount'
 import { SidebarNavbar } from './SidebarNavbar'
 import { SidebarProducts } from './SidebarProducts'
@@ -8,7 +9,9 @@ import { SidebarProducts } from './SidebarProducts'
 export const Sidebar = () => {
   const { t } = useTranslation()
 
-  function handleClose() {}
+  function handleClose() {
+    //
+  }
 
   return (
     <>

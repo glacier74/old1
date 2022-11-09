@@ -1,10 +1,11 @@
-import { useAsyncEffect, useVisible } from '@/utils'
 import { Button, Form, Input, Modal, notification } from '@heyforms/ui'
-import type { FC } from 'react'
 import { useTranslation } from 'next-i18next'
-import { useStore } from '@/store'
-import { AuthService, UserService } from '@/service'
 import { useRouter } from 'next/router'
+import type { FC } from 'react'
+
+import { AuthService, UserService } from '~/service'
+import { useStore } from '~/store'
+import { useAsyncEffect, useVisible } from '~/utils'
 
 const VerifyEmail: FC<IModalProps> = ({ visible, onClose, onComplete }) => {
   const { t } = useTranslation()

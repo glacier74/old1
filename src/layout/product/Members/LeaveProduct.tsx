@@ -1,11 +1,12 @@
 import { Modal } from '@heyforms/ui'
-import type { FC } from 'react'
-import { useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { ProductService } from '@/service'
-import { useStore } from '@/store'
-import { useProductId } from '@/layout'
+import type { FC } from 'react'
+import { useState } from 'react'
+
+import { useProductId } from '~/layout'
+import { ProductService } from '~/service'
+import { useStore } from '~/store'
 
 export const LeaveProduct: FC<IModalProps> = ({ visible, onClose }) => {
   const { t } = useTranslation()

@@ -1,10 +1,11 @@
-import { useVisible } from '@/utils'
 import { Button, Form, Input, Modal } from '@heyforms/ui'
+import { useTranslation } from 'next-i18next'
 import type { FC } from 'react'
 import { useState } from 'react'
-import { useTranslation } from 'next-i18next'
-import { useStore } from '@/store'
-import { UserService } from '@/service'
+
+import { UserService } from '~/service'
+import { useStore } from '~/store'
+import { useVisible } from '~/utils'
 
 export interface FormValues {
   email: string
@@ -115,7 +116,9 @@ export const EmailAddress: FC = () => {
     openVerifyEmail()
   }
 
-  function handleVerifyComplete() {}
+  function handleVerifyComplete() {
+    //
+  }
 
   return (
     <div>

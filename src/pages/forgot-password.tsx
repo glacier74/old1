@@ -1,10 +1,11 @@
 import { Form, Input } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { AuthService } from '@/service'
-import { useStore } from '@/store'
-import { withTranslations } from '@/utils'
-import { LoginLayout } from '@/layout'
+
+import { LoginLayout } from '~/layout'
+import { AuthService } from '~/service'
+import { useStore } from '~/store'
+import { withTranslations } from '~/utils'
 
 const ForgotPassword = (): JSX.Element => {
   const { t } = useTranslation()

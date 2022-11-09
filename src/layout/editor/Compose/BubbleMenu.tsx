@@ -1,4 +1,4 @@
-import { BubbleMenu as TiptapBubbleMenu, Editor } from '@tiptap/react'
+import { Editor, BubbleMenu as TiptapBubbleMenu } from '@tiptap/react'
 import { FC } from 'react'
 
 interface BubbleMenuProps {

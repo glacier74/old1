@@ -1,10 +1,12 @@
-import { useVisible } from '@/utils'
 import { Button } from '@heyforms/ui'
 import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
 import type { FC, ReactNode } from 'react'
+
+import { RoundImage } from '~/components'
+import { useVisible } from '~/utils'
+
 import { PhotoPicker } from './PhotoPicker'
-import { RoundImage } from '@/components'
 
 interface PhotoPickerFieldProps extends Omit<ComponentProps, 'onChange'> {
   id?: string

@@ -1,6 +1,7 @@
-import { useStore } from '@/store'
-import { useParam } from '@/utils'
 import { useMemo } from 'react'
+
+import { useStore } from '~/store'
+import { useParam } from '~/utils'
 
 export function useProductId() {
   return Number(useParam('id') as string)

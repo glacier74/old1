@@ -1,6 +1,7 @@
 import { useTranslation } from 'next-i18next'
-import { ProductLayout, ProductSettings as Settings } from '@/layout'
-import { withTranslations } from '@/utils'
+
+import { ProductLayout, ProductSettings as Settings } from '~/layout'
+import { withTranslations } from '~/utils'
 
 const ProductSettings = (): JSX.Element => {
   const { t } = useTranslation()

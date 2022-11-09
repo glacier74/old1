@@ -1,8 +1,9 @@
+import { isValid } from '@nily/utils'
+import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
 import { FC, useMemo } from 'react'
-import clsx from 'clsx'
-import { isValid } from '@nily/utils'
-import { durationFormatter, numberFormatter } from '@/utils'
+
+import { durationFormatter, numberFormatter } from '~/utils'
 
 interface StatsItemProps extends ComponentProps {
   label: string

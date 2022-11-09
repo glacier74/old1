@@ -1,8 +1,10 @@
-import { useProduct } from '@/layout'
 import { useState } from 'react'
-import { useAsyncEffect } from '@/utils'
-import { ProductService } from '@/service'
-import { Loading } from '@/components'
+
+import { Loading } from '~/components'
+import { useProduct } from '~/layout'
+import { ProductService } from '~/service'
+import { useAsyncEffect } from '~/utils'
+
 import { ChartGraph } from './ChartGraph'
 import { TotalStats } from './TotalStats'
 

@@ -1,10 +1,11 @@
-import { FC, useState } from 'react'
 import clsx from 'clsx'
-import { useAsyncEffect } from '@/utils'
-import { ProductService } from '@/service'
-import { MainGraphProps, useProduct } from '@/layout'
 import { useTranslation } from 'next-i18next'
-import { Loading } from '@/components'
+import { FC, useState } from 'react'
+
+import { Loading } from '~/components'
+import { MainGraphProps, useProduct } from '~/layout'
+import { ProductService } from '~/service'
+import { useAsyncEffect } from '~/utils'
 
 interface BreakdownItemProps extends ComponentProps {
   label: string

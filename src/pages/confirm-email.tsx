@@ -1,12 +1,12 @@
 import { Form, Input } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { AuthService } from '@/service'
-import { withTranslations } from '@/utils'
-import { useStore } from '@/store'
+import { AuthService } from '~/service'
+import { withTranslations } from '~/utils'
+import { useStore } from '~/store'
 import { isEmpty } from '@nily/utils'
 import { useEffect } from 'react'
-import { LoginLayout } from '@/layout'
+import { LoginLayout } from '~/layout'
 
 const ConfirmEmail = (): JSX.Element => {
   const { t } = useTranslation()

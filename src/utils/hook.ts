@@ -1,10 +1,7 @@
-import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { useCallback, useEffect, useState } from 'react'
 
-export function useAsyncEffect<T, S extends unknown>(
-  asyncFunction: () => Promise<T>,
-  deps: S[] = []
-) {
+export function useAsyncEffect<T, S>(asyncFunction: () => Promise<T>, deps: S[] = []) {
   const execute = useCallback(() => {
     return asyncFunction()
   }, [asyncFunction])

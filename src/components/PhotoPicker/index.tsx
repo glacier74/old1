@@ -1,6 +1,7 @@
 import { Modal, Tabs } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import type { FC } from 'react'
+
 import { FileUploader } from '../FileUploader'
 import { Unsplash } from './Unsplash'
 

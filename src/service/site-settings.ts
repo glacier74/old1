@@ -1,4 +1,4 @@
-import { axios } from '@/utils'
+import { axios } from '~/utils'
 
 export class SiteSettingsService {
   static async detail(productId: number): Promise<SiteSettings> {

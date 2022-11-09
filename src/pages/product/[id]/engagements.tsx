@@ -1,9 +1,10 @@
-import { useTranslation } from 'next-i18next'
-import { ProductLayout } from '@/layout'
-import { withTranslations } from '@/utils'
 import { Table } from '@heyforms/ui'
 import { TableColumn } from '@heyforms/ui/types/table'
-import { RoundImage } from '@/components'
+import { useTranslation } from 'next-i18next'
+
+import { RoundImage } from '~/components'
+import { ProductLayout } from '~/layout'
+import { withTranslations } from '~/utils'
 
 const engagements: any[] = [
   {

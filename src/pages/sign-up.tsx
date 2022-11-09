@@ -1,10 +1,10 @@
 import { Form, Input } from '@heyforms/ui'
 import { Trans, useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { LoginLayout, SocialLogin } from '@/layout'
-import { AuthService } from '@/service'
-import { useStore } from '@/store'
-import { withTranslations } from '@/utils'
+import { LoginLayout, SocialLogin } from '~/layout'
+import { AuthService } from '~/service'
+import { useStore } from '~/store'
+import { withTranslations } from '~/utils'
 
 const SignUp = (): JSX.Element => {
   const { t } = useTranslation()

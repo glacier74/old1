@@ -1,9 +1,10 @@
 import { Input, Switch } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { FC, startTransition } from 'react'
-import { SiteSettingsService } from '@/service'
-import { useSiteSettings } from '@/layout'
-import { useStore } from '@/store'
+
+import { useSiteSettings } from '~/layout'
+import { SiteSettingsService } from '~/service'
+import { useStore } from '~/store'
 
 const socialMedias = [
   {

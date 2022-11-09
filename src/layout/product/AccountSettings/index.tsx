@@ -1,12 +1,14 @@
 import { Modal } from '@heyforms/ui'
-import type { FC } from 'react'
 import { useTranslation } from 'next-i18next'
-import { useStore } from '@/store'
+import type { FC } from 'react'
+
+import { useStore } from '~/store'
+
 import { AvatarSettings } from './AvatarSettings'
-import { UserName } from './UserName'
+import { DeleteAccount } from './DeleteAccount'
 import { EmailAddress } from './EmailAddress'
 import { Password } from './Password'
-import { DeleteAccount } from './DeleteAccount'
+import { UserName } from './UserName'
 
 export const AccountSettingsModal: FC<IModalProps> = ({ visible }) => {
   const { t } = useTranslation()

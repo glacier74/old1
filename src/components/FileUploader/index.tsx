@@ -1,11 +1,12 @@
-import type { ChangeEvent, DragEvent, FC, MouseEvent } from 'react'
-import { useState } from 'react'
 import { Button, stopEvent } from '@heyforms/ui'
-import clsx from 'clsx'
-import { useTranslation } from 'next-i18next'
 import { bytes } from '@nily/utils'
 import { IconFileUpload, IconUpload } from '@tabler/icons'
-import { UploadService } from '@/service'
+import clsx from 'clsx'
+import { useTranslation } from 'next-i18next'
+import type { ChangeEvent, DragEvent, FC, MouseEvent } from 'react'
+import { useState } from 'react'
+
+import { UploadService } from '~/service'
 
 interface DragUploaderProps extends Omit<ComponentProps, 'onChange'> {
   value?: File

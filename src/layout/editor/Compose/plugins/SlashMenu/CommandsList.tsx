@@ -1,6 +1,6 @@
-import { FC } from 'react'
-import clsx from 'clsx'
 import { Editor, Range } from '@tiptap/core'
+import clsx from 'clsx'
+import { FC } from 'react'
 
 export type CommandProps = {
   editor: Editor

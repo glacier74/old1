@@ -1,11 +1,12 @@
-import { useTranslation } from 'next-i18next'
 import { Button, Form, Input, Modal, notification } from '@heyforms/ui'
-import { useAsyncEffect, useVisible } from '@/utils'
-import { FC } from 'react'
+import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { useStore } from '@/store'
-import { ProductService } from '@/service'
-import { useProductId } from '@/layout'
+import { FC } from 'react'
+
+import { useProductId } from '~/layout'
+import { ProductService } from '~/service'
+import { useStore } from '~/store'
+import { useAsyncEffect, useVisible } from '~/utils'
 
 const DeleteModal: FC<IModalProps> = ({ visible, onClose }) => {
   const { t } = useTranslation()

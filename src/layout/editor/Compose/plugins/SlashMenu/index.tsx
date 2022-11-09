@@ -1,10 +1,11 @@
-import React from 'react'
 import { Extension } from '@tiptap/core'
-import Suggestion from '@tiptap/suggestion'
 import { ReactRenderer } from '@tiptap/react'
+import Suggestion from '@tiptap/suggestion'
+import React from 'react'
 import tippy, { Instance } from 'tippy.js'
-import { CommandsListController } from './CommandsListController'
+
 import { CommandItem, CommandsList } from './CommandsList'
+import { CommandsListController } from './CommandsListController'
 
 export const SlashMenu = Extension.create({
   name: 'slashMenu',

@@ -1,5 +1,5 @@
-import { useTranslation } from 'next-i18next'
 import { IconBrandGithub, IconBrandGoogle, IconBrandTwitter, TablerIconProps } from '@tabler/icons'
+import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 

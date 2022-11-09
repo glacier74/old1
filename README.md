@@ -11,5 +11,5 @@ pnpm install
 ## Development
 
 ```bash
-yarn dev
+npm run dev
 ```

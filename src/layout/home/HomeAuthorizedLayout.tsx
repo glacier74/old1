@@ -1,8 +1,9 @@
-import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { Loading } from '@/components'
-import { AuthorizedLayout } from '@/layout'
-import { useStore } from '@/store'
+import { useEffect } from 'react'
+
+import { Loading } from '~/components'
+import { AuthorizedLayout } from '~/layout'
+import { useStore } from '~/store'
 
 export function HomeAuthorizedLayout({ seo }: Partial<LayoutProps>) {
   const router = useRouter()

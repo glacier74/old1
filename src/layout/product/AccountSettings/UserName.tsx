@@ -1,8 +1,9 @@
-import { useStore } from '@/store'
 import { Form, Input } from '@heyforms/ui'
-import type { FC } from 'react'
 import { useTranslation } from 'next-i18next'
-import { UserService } from '@/service'
+import type { FC } from 'react'
+
+import { UserService } from '~/service'
+import { useStore } from '~/store'
 
 export const UserName: FC = () => {
   const { t } = useTranslation()

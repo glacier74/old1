@@ -1,5 +1,5 @@
-import { Editor } from '@/layout'
-import { withTranslations } from '@/utils'
+import { Editor } from '~/layout'
+import { withTranslations } from '~/utils'
 
 const ProductEdit = (): JSX.Element => {
   return <Editor />

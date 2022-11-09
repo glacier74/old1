@@ -1,4 +1,5 @@
-import { AuthorizedLayout } from '@/layout'
+import { AuthorizedLayout } from '~/layout'
+
 import { LoggedAccount } from './LoggedAccount'
 
 export function OnboardingLayout({ seo, children }: LayoutProps) {

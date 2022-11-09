@@ -1,5 +1,6 @@
-import { mergeAttributes, Node } from '@tiptap/core'
+import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
+
 import { GalleryComponent } from './GalleryComponent'
 
 declare module '@tiptap/core' {

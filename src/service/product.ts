@@ -1,5 +1,6 @@
 import { AxiosRequestConfig } from 'axios'
-import { axios } from '@/utils/axios'
+
+import { axios } from '~/utils/axios'
 
 export class ProductService {
   static async products(config?: AxiosRequestConfig): Promise<Product[]> {

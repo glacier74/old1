@@ -1,9 +1,10 @@
-import { useTranslation } from 'next-i18next'
 import { Select } from '@heyforms/ui'
-import { useState } from 'react'
 import dayjs from 'dayjs'
-import { Breakdown, MainGraph, ProductLayout } from '@/layout'
-import { withTranslations } from '@/utils'
+import { useTranslation } from 'next-i18next'
+import { useState } from 'react'
+
+import { Breakdown, MainGraph, ProductLayout } from '~/layout'
+import { withTranslations } from '~/utils'
 
 const Product = (): JSX.Element => {
   const { t } = useTranslation()

@@ -1,8 +1,10 @@
-import { FC, useMemo } from 'react'
 import { NodeViewProps, NodeViewWrapper } from '@tiptap/react'
-import { cropImage, useVisible } from '@/utils'
+import { FC, useMemo } from 'react'
+
+import { PhotoPicker } from '~/components'
+import { cropImage, useVisible } from '~/utils'
+
 import { UploadButton } from './UploadButton'
-import { PhotoPicker } from '@/components'
 
 interface GalleryItemProps {
   url: string

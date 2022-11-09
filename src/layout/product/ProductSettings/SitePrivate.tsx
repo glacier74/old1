@@ -1,11 +1,12 @@
-import { SwitchField } from '@/components'
-import { useTranslation } from 'next-i18next'
-import { useRequest } from '@/utils'
-import { useProduct } from '@/layout'
-import { useStore } from '@/store'
-import { ProductService } from '@/service'
-import { useEffect } from 'react'
 import { notification } from '@heyforms/ui'
+import { useTranslation } from 'next-i18next'
+import { useEffect } from 'react'
+
+import { SwitchField } from '~/components'
+import { useProduct } from '~/layout'
+import { ProductService } from '~/service'
+import { useStore } from '~/store'
+import { useRequest } from '~/utils'
 
 export const SitePrivate = () => {
   const { t } = useTranslation()

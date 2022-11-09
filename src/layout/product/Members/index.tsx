@@ -1,12 +1,14 @@
-import { FC, useMemo, useState } from 'react'
-import { useTranslation } from 'next-i18next'
-import { Button, Form, Input, Modal, notification, Table } from '@heyforms/ui'
-import { useStore } from '@/store'
-import { CopyButton, RoundImage } from '@/components'
-import { useProduct } from '@/layout'
+import { Button, Form, Input, Modal, Table, notification } from '@heyforms/ui'
 import { TableColumn } from '@heyforms/ui/types/table'
-import { useVisible } from '@/utils'
-import { ProductService } from '@/service'
+import { useTranslation } from 'next-i18next'
+import { FC, useMemo, useState } from 'react'
+
+import { CopyButton, RoundImage } from '~/components'
+import { useProduct } from '~/layout'
+import { ProductService } from '~/service'
+import { useStore } from '~/store'
+import { useVisible } from '~/utils'
+
 import { LeaveProduct } from './LeaveProduct'
 import { RemoveMember } from './RemoveMember'
 

@@ -1,11 +1,12 @@
-import { useStore } from '@/store'
-import { useVisible } from '@/utils'
 import { Button, Form, Input, Modal, notification } from '@heyforms/ui'
+import { isValid } from '@nily/utils'
+import { useTranslation } from 'next-i18next'
 import type { FC } from 'react'
 import { useState } from 'react'
-import { useTranslation } from 'next-i18next'
-import { isValid } from '@nily/utils'
-import { UserService } from '@/service'
+
+import { UserService } from '~/service'
+import { useStore } from '~/store'
+import { useVisible } from '~/utils'
 
 const ChangePassword: FC<IModalProps> = ({ visible, onClose }) => {
   const [values, setValues] = useState<AnyMap<any>>({})

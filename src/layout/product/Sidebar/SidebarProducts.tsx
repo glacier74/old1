@@ -1,4 +1,3 @@
-import { useStore } from '@/store'
 import { Dropdown, Menus } from '@heyforms/ui'
 import { isEqual } from '@nily/utils'
 import { IconChevronDown, IconCircleCheck, IconPlus } from '@tabler/icons'
@@ -6,8 +5,11 @@ import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import type { FC } from 'react'
 import { useState } from 'react'
+
+import { RoundImage } from '~/components'
+import { useStore } from '~/store'
+
 import { useProduct, useProductId } from '../../hook'
-import { RoundImage } from '@/components'
 
 interface ProductItemProps {
   product: Product
@@ -73,7 +75,9 @@ export const SidebarProducts: FC = () => {
 
   const [visible, setVisible] = useState(false)
 
-  function handleCreate() {}
+  function handleCreate() {
+    //
+  }
 
   function handleClick(product: Product) {
     setVisible(false)

@@ -1,12 +1,13 @@
-import { useStore } from '@/store'
-import { useAsyncEffect, useRequest } from '@/utils'
-import { AuthService, ProductService, UserService } from '@/service'
-import { BaseLayout } from '@/layout/BaseLayout'
-import { useRouter } from 'next/router'
 import { Modal, notification } from '@heyforms/ui'
-import { useEffect, useMemo } from 'react'
-import { useTranslation } from 'next-i18next'
 import { date } from '@nily/utils'
+import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
+import { useEffect, useMemo } from 'react'
+
+import { BaseLayout } from '~/layout/BaseLayout'
+import { AuthService, ProductService, UserService } from '~/service'
+import { useStore } from '~/store'
+import { useAsyncEffect, useRequest } from '~/utils'
 
 const DeletionAlertModal = () => {
   const { t } = useTranslation()

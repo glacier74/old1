@@ -1,4 +1,4 @@
-import { axios } from '@/utils/axios'
+import { axios } from '~/utils/axios'
 
 export class AuthService {
   static async login(email: string, password: string) {

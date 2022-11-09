@@ -1,12 +1,12 @@
 import {
-  combineTransactionSteps,
   Extension,
+  combineTransactionSteps,
   findChildren,
   findChildrenInRange,
   getChangedRanges
 } from '@tiptap/core'
-import { Plugin, PluginKey, Transaction } from 'prosemirror-state'
 import { Fragment, Slice } from 'prosemirror-model'
+import { Plugin, PluginKey, Transaction } from 'prosemirror-state'
 import { v4 as uuidv4 } from 'uuid'
 
 const hasOwnProperty = Object.prototype.hasOwnProperty

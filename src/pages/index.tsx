@@ -1,5 +1,5 @@
-import { isLoggedIn, withTranslations } from '@/utils'
-import { BaseLayout, HomeAuthorizedLayout } from '@/layout'
+import { BaseLayout, HomeAuthorizedLayout } from '~/layout'
+import { isLoggedIn, withTranslations } from '~/utils'
 
 interface HomeProps {
   isLoggedIn: boolean

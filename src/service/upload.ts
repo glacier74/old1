@@ -1,4 +1,4 @@
-import { axios } from '@/utils/axios'
+import { axios } from '~/utils/axios'
 
 const uri = process.env.NEXT_PUBLIC_UPLOAD_URI
 const bucket = process.env.NEXT_PUBLIC_UPLOAD_BUCKET

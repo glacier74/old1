@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useState } from 'react'
-import { useVisible } from '@/utils'
+
+import { useVisible } from '~/utils'
 
 interface Store {
   isReady: boolean

@@ -1,7 +1,8 @@
 import { Avatar } from '@heyforms/ui'
 import { AvatarProps } from '@heyforms/ui/types/avatar/Avatar'
 import { FC } from 'react'
-import { cropImage } from '@/utils'
+
+import { cropImage } from '~/utils'
 
 export const RoundImage: FC<Omit<AvatarProps, 'circular' | 'rounded'>> = ({
   src,

@@ -1,9 +1,10 @@
 import { Input } from '@heyforms/ui'
+import { IconSearch } from '@tabler/icons'
+import { useTranslation } from 'next-i18next'
 import type { FC } from 'react'
 import { useState } from 'react'
-import { useTranslation } from 'next-i18next'
-import { IconSearch } from '@tabler/icons'
-import { AsyncRequest } from '@/components'
+
+import { AsyncRequest } from '~/components'
 
 interface UnsplashProps {
   onChange: (src: string) => void
@@ -32,6 +33,7 @@ const ImageItem: FC<ImageItemProps> = ({ image, onChange }) => {
           className="absolute inset-x-0 bottom-0 px-2 py-1.5 text-xs text-white underline opacity-0 bg-gradient-to-t from-slate-800 group-hover:opacity-100 transition-opacity duration-100 ease-in-out"
           href={image.authorUrl}
           target="_blank"
+          rel="noreferrer"
         >
           {image.author}
         </a>

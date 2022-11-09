@@ -1,10 +1,11 @@
+import { Select, notification } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
-import { notification, Select } from '@heyforms/ui'
-import { useRequest } from '@/utils'
-import { useProduct } from '@/layout'
-import { useStore } from '@/store'
-import { ProductService } from '@/service'
 import { useEffect } from 'react'
+
+import { useProduct } from '~/layout'
+import { ProductService } from '~/service'
+import { useStore } from '~/store'
+import { useRequest } from '~/utils'
 
 const options = [
   {

@@ -1,10 +1,12 @@
-import { AuthorizedLayout, useProduct } from '@/layout'
 import { useTranslation } from 'next-i18next'
-import { AsyncRequest } from '@/components'
-import { SiteSettingsService } from '@/service'
+
+import { AsyncRequest } from '~/components'
+import { AuthorizedLayout, useProduct } from '~/layout'
+import { SiteSettingsService } from '~/service'
+import { useStore } from '~/store'
+
 import { Compose } from './Compose'
 import { SiteSettings } from './SiteSettings'
-import { useStore } from '@/store'
 
 export const Editor = () => {
   const { t } = useTranslation()

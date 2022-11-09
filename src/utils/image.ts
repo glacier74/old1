@@ -1,5 +1,5 @@
-import isURL from 'validator/lib/isURL'
 import { isValid, qs } from '@nily/utils'
+import isURL from 'validator/lib/isURL'
 
 const rules = [
   {

@@ -1,10 +1,11 @@
 import { Modal } from '@heyforms/ui'
+import { useTranslation } from 'next-i18next'
 import type { FC } from 'react'
 import { useState } from 'react'
-import { useTranslation } from 'next-i18next'
-import { ProductService } from '@/service'
-import { useProductId } from '@/layout'
-import { useStore } from '@/store'
+
+import { useProductId } from '~/layout'
+import { ProductService } from '~/service'
+import { useStore } from '~/store'
 
 interface RemoveMemberProps extends IModalProps {
   member?: User

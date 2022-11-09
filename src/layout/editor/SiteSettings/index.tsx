@@ -1,6 +1,7 @@
 import { Accordion, Button } from '@heyforms/ui'
 import { IconChevronLeft } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
+
 import { SiteMeta } from './SiteMeta'
 import { SocialMedia } from './SocialMedia'
 

@@ -1,5 +1,3 @@
-import { useProductId } from '@/layout'
-import { useStore } from '@/store'
 import {
   IconBolt,
   IconBrandTwitter,
@@ -20,6 +18,9 @@ import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import type { FC } from 'react'
 
+import { useProductId } from '~/layout'
+import { useStore } from '~/store'
+
 interface SidebarNavProps {
   isMobile?: boolean
 }
@@ -36,6 +37,7 @@ const ExternalLink = ({ icon: Icon, href, title }: ExternalLinkProps) => {
       href={href}
       target="_blank"
       className="text-slate-700 hover:bg-slate-200 hover:text-slate-900 group flex items-center px-2 py-1 text-sm rounded-md"
+      rel="noreferrer"
     >
       <Icon className="text-slate-700 mr-3 flex-shrink-0 h-5 w-5" />
       <span className="truncate">{title}</span>
@@ -60,7 +62,9 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
   const productId = useProductId()
   const { openMemberList } = useStore()
 
-  function handleCloseSidebar() {}
+  function handleCloseSidebar() {
+    //
+  }
 
   return (
     <nav className="sidebar-nav scrollbar flex-1 mt-5 px-2 pb-4 space-y-8">

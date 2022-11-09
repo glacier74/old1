@@ -1,16 +1,18 @@
+import { Input } from '@heyforms/ui'
+import { Range } from '@tiptap/core'
+import { Link } from '@tiptap/extension-link'
+import { Placeholder } from '@tiptap/extension-placeholder'
 import { Editor, EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
-import { Range } from '@tiptap/core'
-import { UniqueID } from './plugins/UniqueID'
+import { useTranslation } from 'next-i18next'
+
+import { LogoPickerField } from '~/components'
+import { useProduct } from '~/layout'
+
+import { BubbleMenu } from './BubbleMenu'
 import { Gallery } from './plugins/Gallery'
 import { SlashMenu } from './plugins/SlashMenu'
-import { BubbleMenu } from './BubbleMenu'
-import { Placeholder } from '@tiptap/extension-placeholder'
-import { LogoPickerField } from '@/components'
-import { Input } from '@heyforms/ui'
-import { useProduct } from '@/layout'
-import { Link } from '@tiptap/extension-link'
-import { useTranslation } from 'next-i18next'
+import { UniqueID } from './plugins/UniqueID'
 
 export const Compose = () => {
   const { t } = useTranslation()

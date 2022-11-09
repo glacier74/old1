@@ -3,10 +3,10 @@ import { useTranslation } from 'next-i18next'
 import { isEmpty, isValid } from '@nily/utils'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { useStore } from '@/store'
-import { AuthService } from '@/service'
-import { withTranslations } from '@/utils'
-import { LoginLayout } from '@/layout'
+import { useStore } from '~/store'
+import { AuthService } from '~/service'
+import { withTranslations } from '~/utils'
+import { LoginLayout } from '~/layout'
 
 const ResetPassword = (): JSX.Element => {
   const { t } = useTranslation()

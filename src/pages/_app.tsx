@@ -1,10 +1,11 @@
-import type { AppProps } from 'next/app'
-import { Suspense } from 'react'
-import Head from 'next/head'
-import { appWithTranslation } from 'next-i18next'
 import { Inter } from '@next/font/google'
-import { StoreProvider } from '@/store'
-import '@/globals.scss'
+import { appWithTranslation } from 'next-i18next'
+import type { AppProps } from 'next/app'
+import Head from 'next/head'
+import { Suspense } from 'react'
+
+import '~/globals.scss'
+import { StoreProvider } from '~/store'
 
 const inter = Inter()
 

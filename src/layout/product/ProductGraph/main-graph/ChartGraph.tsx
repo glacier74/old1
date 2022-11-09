@@ -1,8 +1,9 @@
-import { FC, useRef } from 'react'
-import { useTranslation } from 'next-i18next'
 import Chart from 'chart.js/auto'
-import { dateFormatter, numberFormatter, useAsyncEffect } from '@/utils'
 import dayjs from 'dayjs'
+import { useTranslation } from 'next-i18next'
+import { FC, useRef } from 'react'
+
+import { dateFormatter, numberFormatter, useAsyncEffect } from '~/utils'
 
 interface ChartGraphProps {
   period: string

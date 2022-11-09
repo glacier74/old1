@@ -1,11 +1,12 @@
-import { PhotoPickerField } from '@/components'
+import { notification } from '@heyforms/ui'
+import { useTranslation } from 'next-i18next'
 import type { FC } from 'react'
 import { useEffect } from 'react'
-import { useTranslation } from 'next-i18next'
-import { notification } from '@heyforms/ui'
-import { useStore } from '@/store'
-import { UserService } from '@/service'
-import { useRequest } from '@/utils'
+
+import { PhotoPickerField } from '~/components'
+import { UserService } from '~/service'
+import { useStore } from '~/store'
+import { useRequest } from '~/utils'
 
 export const AvatarSettings: FC = () => {
   const { t } = useTranslation()

@@ -1,8 +1,9 @@
 import { useTranslation } from 'next-i18next'
-import { Language } from './Language'
-import { SitePrivate } from './SitePrivate'
-import { RemoveBranding } from './RemoveBranding'
+
 import { DeleteProduct } from './DeleteProduct'
+import { Language } from './Language'
+import { RemoveBranding } from './RemoveBranding'
+import { SitePrivate } from './SitePrivate'
 
 export const ProductSettings = () => {
   const { t } = useTranslation()

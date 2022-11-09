@@ -1,7 +1,8 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
-import { deleteToken, getBrowserId, isLoggedIn, setBrowserId } from '@/utils/cookie'
-import { isMatchRoutes } from '@/utils/route'
+
+import { deleteToken, getBrowserId, isLoggedIn, setBrowserId } from '~/utils/cookie'
+import { isMatchRoutes } from '~/utils/route'
 
 const authRoutes = ['/login', '/sign-up', '/confirm-email', '/forgot-password', '/reset-password']
 const productRoutes = ['/product/:id*']
