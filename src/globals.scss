@@ -100,6 +100,10 @@ body {
   }
 }
 
+.tooltip {
+  z-index: 10000;
+}
+
 .root-container {
   @media (min-width: 768px) {
     padding-left: 18rem;
@@ -276,9 +280,13 @@ body {
   outline: none;
   min-height: calc(100vh - 300px);
 
-  p.is-empty::before {
-    @apply text-slate-400 float-left h-0 pointer-events-none;
-    content: attr(data-placeholder);
+  p {
+    @apply my-2;
+
+    &.is-empty::before {
+      @apply text-slate-400 float-left h-0 pointer-events-none;
+      content: attr(data-placeholder);
+    }
   }
 
   a {
@@ -286,11 +294,42 @@ body {
   }
 }
 
-.gallery {
+.editor-bubble-menu {
+  button.button {
+    @apply p-1.5;
+
+    &:not(:disabled):hover {
+      @apply bg-slate-100;
+    }
+
+    .button-leading {
+      @apply text-slate-700;
+
+      &,
+      svg {
+        width: 1.125rem;
+        height: 1.125rem;
+      }
+    }
+
+    &.editor-bubble-menu-active {
+      &,
+      &:hover {
+        @apply bg-blue-100;
+
+        .button-leading {
+          @apply text-blue-700;
+        }
+      }
+    }
+  }
+}
+
+.editor-slideshow {
   height: 13.75rem;
 }
 
-.gallery-item {
+.editor-slideshow-item {
   @apply bg-slate-50 hover:bg-slate-100;
   width: 23rem;
   height: 13.75rem;

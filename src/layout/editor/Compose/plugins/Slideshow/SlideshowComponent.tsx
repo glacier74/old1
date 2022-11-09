@@ -6,14 +6,14 @@ import { cropImage, useVisible } from '~/utils'
 
 import { UploadButton } from './UploadButton'
 
-interface GalleryItemProps {
+interface SlideshowItemProps {
   url: string
   caption: string
 }
 
-const GalleryItem: FC<GalleryItemProps> = ({ url, caption }) => {
+const SlideshowItem: FC<SlideshowItemProps> = ({ url, caption }) => {
   return (
-    <div className="gallery-item group block w-full">
+    <div className="editor-slideshow-item group block w-full">
       <img
         src={cropImage(url, 368, 220)}
         className="object-cover pointer-events-none group-hover:opacity-75"
@@ -23,7 +23,7 @@ const GalleryItem: FC<GalleryItemProps> = ({ url, caption }) => {
   )
 }
 
-export const GalleryComponent: FC<NodeViewProps> = props => {
+export const SlideshowComponent: FC<NodeViewProps> = props => {
   const [visible, open, close] = useVisible()
   const style = useMemo(() => {
     return {
@@ -39,10 +39,13 @@ export const GalleryComponent: FC<NodeViewProps> = props => {
 
   return (
     <NodeViewWrapper>
-      <div tabIndex={0} className="py-8 max-w-full overflow-x-auto focus:ring-1 ring-blue-700">
-        <div className="gallery flex direction-row space-x-2" style={style}>
-          {props.node.attrs.items.map((row: GalleryItemProps, index: number) => (
-            <GalleryItem key={index} {...row} />
+      <div
+        tabIndex={0}
+        className="mt-4 max-w-full overflow-x-auto rounded hover:ring-1 focus:ring-1 ring-blue-700"
+      >
+        <div className="editor-slideshow flex direction-row space-x-2" style={style}>
+          {props.node.attrs.items.map((row: SlideshowItemProps, index: number) => (
+            <SlideshowItem key={index} {...row} />
           ))}
           <UploadButton onClick={open} />
         </div>

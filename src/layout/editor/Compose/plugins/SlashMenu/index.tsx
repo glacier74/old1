@@ -1,5 +1,6 @@
-import { Extension } from '@tiptap/core'
-import { ReactRenderer } from '@tiptap/react'
+import { IconCreditCard, IconSlideshow } from '@tabler/icons'
+import { Extension, Range } from '@tiptap/core'
+import { Editor, ReactRenderer } from '@tiptap/react'
 import Suggestion from '@tiptap/suggestion'
 import React from 'react'
 import tippy, { Instance } from 'tippy.js'
@@ -12,7 +13,22 @@ export const SlashMenu = Extension.create({
 
   addOptions() {
     return {
-      commands: [],
+      commands: [
+        {
+          title: 'editor.slideshow',
+          icon: IconSlideshow,
+          command: ({ editor, range }: { editor: Editor; range: Range }) => {
+            editor.chain().focus().deleteRange(range).setSlideshow().run()
+          }
+        },
+        {
+          title: 'editor.payment',
+          icon: IconCreditCard,
+          command: ({ editor, range }: { editor: Editor; range: Range }) => {
+            editor.chain().focus().deleteRange(range).setPayment().run()
+          }
+        }
+      ],
       filterCommands: (commands: CommandItem[], query: string) => {
         return commands
           .filter(item => item.title.toLowerCase().startsWith(query.toLowerCase()))

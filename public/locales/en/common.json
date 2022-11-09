@@ -244,6 +244,17 @@
     "linkedin": "Linkedin",
     "youtube": "Youtube",
     "telegram": "Telegram",
-    "github": "Github"
+    "github": "Github",
+    "slideshow": "Slideshow",
+    "payment": "Payment",
+    "bold": "Bold",
+    "italic": "Italic",
+    "strikethrough": "Strikethrough",
+    "underline": "Underline",
+    "link": "Link ",
+    "linkOff": "LinkOff",
+    "alignLeft": "AlignLeft",
+    "alignCenter": "AlignCenter",
+    "alignRight": "AlignRight"
   }
 }

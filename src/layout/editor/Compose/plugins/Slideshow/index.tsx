@@ -1,21 +1,21 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 
-import { GalleryComponent } from './GalleryComponent'
+import { SlideshowComponent } from './SlideshowComponent'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
-    gallery: {
+    slideshow: {
       /**
-       * Insert gallery
+       * Insert slideshow
        */
-      setGallery: () => ReturnType
+      setSlideshow: () => ReturnType
     }
   }
 }
 
-export const Gallery = Node.create({
-  name: 'gallery',
+export const Slideshow = Node.create({
+  name: 'slideshow',
   group: 'block',
   atom: true,
 
@@ -30,14 +30,14 @@ export const Gallery = Node.create({
   parseHTML() {
     return [
       {
-        tag: 'gallery'
+        tag: 'slideshow'
       }
     ]
   },
 
   addCommands() {
     return {
-      setGallery: () => {
+      setSlideshow: () => {
         return ({ commands }) => {
           return commands.insertContent({
             type: this.name
@@ -50,10 +50,10 @@ export const Gallery = Node.create({
   // TODO - render html
   // https://github.com/ueberdosis/tiptap/blob/main/packages/extension-youtube/src/youtube.ts#L135
   renderHTML({ HTMLAttributes }) {
-    return ['gallery', mergeAttributes(HTMLAttributes)]
+    return ['slideshow', mergeAttributes(HTMLAttributes)]
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(GalleryComponent)
+    return ReactNodeViewRenderer(SlideshowComponent)
   }
 })
