@@ -1,5 +1,12 @@
 // @ts-check
+const dotenv = require('dotenv')
+const { resolve } = require('path')
+const env = process.env.NODE_ENV || 'development'
 const { i18n } = require('./next-i18next.config.js')
+
+dotenv.config({
+  path: resolve(process.cwd(), `.env.${env}`)
+})
 
 /** @type {import('next').NextConfig} */
 module.exports = {
@@ -22,32 +29,32 @@ module.exports = {
     return [
       {
         source: '/login/google',
-        destination: 'http://127.0.0.1:8000/login/google',
+        destination: `${process.env.NEXT_PUBLIC_API_URI}/login/google`,
         permanent: false
       },
       {
         source: '/login/google/callback',
-        destination: 'http://127.0.0.1:8000/login/google/callback',
+        destination: `${process.env.NEXT_PUBLIC_API_URI}/login/google/callback`,
         permanent: false
       },
       {
         source: '/login/twitter',
-        destination: 'http://127.0.0.1:8000/login/twitter',
+        destination: `${process.env.NEXT_PUBLIC_API_URI}/login/twitter`,
         permanent: false
       },
       {
         source: '/login/twitter/callback',
-        destination: 'http://127.0.0.1:8000/login/twitter/callback',
+        destination: `${process.env.NEXT_PUBLIC_API_URI}/login/twitter/callback`,
         permanent: false
       },
       {
         source: '/login/github',
-        destination: 'http://127.0.0.1:8000/login/github',
+        destination: `${process.env.NEXT_PUBLIC_API_URI}/login/github`,
         permanent: false
       },
       {
         source: '/login/github/callback',
-        destination: 'http://127.0.0.1:8000/login/github/callback',
+        destination: `${process.env.NEXT_PUBLIC_API_URI}/login/github/callback`,
         permanent: false
       }
     ]
