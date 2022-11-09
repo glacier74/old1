@@ -1,14 +1,19 @@
-import { isLoggedIn, withTranslations } from '~/utils'
+import { withTranslations } from '~/utils'
 
 const Invite = () => {
   return <div>Invite Page</div>
 }
 
-export const getServerSideProps = withTranslations(async context => {
+export const getStaticPaths = async () => {
   return {
-    props: {
-      isLoggedIn: isLoggedIn(context.req.cookies)
-    }
+    paths: [],
+    fallback: 'blocking'
+  }
+}
+
+export const getStaticProps = withTranslations(async context => {
+  return {
+    props: {}
   }
 })
 

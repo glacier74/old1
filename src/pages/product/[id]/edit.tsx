@@ -5,7 +5,14 @@ const ProductEdit = (): JSX.Element => {
   return <Editor />
 }
 
-export const getServerSideProps = withTranslations(async context => {
+export const getStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking'
+  }
+}
+
+export const getStaticProps = withTranslations(async context => {
   return {
     props: {}
   }
