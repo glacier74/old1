@@ -16,6 +16,7 @@ specifiers:
   '@tiptap/starter-kit': 2.0.0-beta.202
   '@tiptap/suggestion': 2.0.0-beta.202
   '@trivago/prettier-plugin-sort-imports': ^3.4.0
+  '@types/js-cookie': ^3.0.2
   '@types/node': ^18.11.9
   '@types/react': ^18.0.25
   '@types/react-copy-to-clipboard': ^5.0.4
@@ -98,6 +99,7 @@ devDependencies:
   '@tailwindcss/aspect-ratio': 0.4.2_tailwindcss@3.2.2
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.2
   '@trivago/prettier-plugin-sort-imports': 3.4.0_prettier@2.7.1
+  '@types/js-cookie': 3.0.2
   '@types/node': 18.11.9
   '@types/react': 18.0.25
   '@types/react-copy-to-clipboard': 5.0.4
@@ -1024,6 +1026,10 @@ packages:
   /@types/js-cookie/2.2.7:
     resolution: {integrity: sha512-aLkWa0C0vO5b4Sr798E26QgOkss68Un0bLjs7u9qxzPT5CG+8DuNTffWES58YzJs3hrVAOs1wonycqEBqNJubA==}
     dev: false
+
+  /@types/js-cookie/3.0.2:
+    resolution: {integrity: sha512-6+0ekgfusHftJNYpihfkMu8BWdeHs9EOJuGcSofErjstGPfPGEu9yTu4t460lTzzAMl2cM5zngQJqPMHbbnvYA==}
+    dev: true
 
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
