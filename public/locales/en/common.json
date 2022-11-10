@@ -259,7 +259,7 @@
   },
   "invite": {
     "title": "Invitation · $t(common.name)",
-    "heading": "You've been invited to {{inviter}}'s product {{productName}}",
+    "heading": "You've been invited to {{inviter}}'s product",
     "description": "Join the product and start working together!",
     "errorTip": "If you have trouble join the product, please contact the product owner or $t(common.name) support.",
     "join": "Join",

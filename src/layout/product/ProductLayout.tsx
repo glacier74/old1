@@ -18,15 +18,15 @@ const Skeleton = () => {
         <div className="bg-slate-200 rounded-full" style={{ width: 54, height: 54 }}></div>
       </div>
       <div className="flex-1 min-w-0">
-        <div className="w-40 h-7 mb-1.5 rounded-sm skeleton"></div>
-        <div className="w-20 h-4 rounded-sm skeleton"></div>
+        <div className="w-72 h-6 mt-0.5 mb-2 rounded-sm skeleton"></div>
+        <div className="w-24 h-4 rounded-sm skeleton"></div>
       </div>
     </div>
   )
 }
 
 const TaglineSkeleton = () => {
-  return <div className="mt-6 h-4 rounded-sm skeleton" style={{ width: 220 }}></div>
+  return <div className="mt-6 w-64 h-4 rounded-sm skeleton"></div>
 }
 
 export function ProductLayout({ seo, children }: LayoutProps) {

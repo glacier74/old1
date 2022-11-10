@@ -14,15 +14,19 @@ const Skeleton = () => {
     <div>
       <div className="flex items-center h-16 py-4">
         <div className="w-9 h-9 bg-slate-200 rounded-full"></div>
-        <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
+        <div className="flex flex-1 justify-between">
+          <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
+          <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
+          <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
+        </div>
       </div>
       <div className="flex items-center h-16 py-4">
         <div className="w-9 h-9 bg-slate-200 rounded-full"></div>
-        <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
-      </div>
-      <div className="flex items-center h-16 py-4">
-        <div className="w-9 h-9 bg-slate-200 rounded-full"></div>
-        <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
+        <div className="flex flex-1 justify-between">
+          <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
+          <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
+          <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
+        </div>
       </div>
     </div>
   )

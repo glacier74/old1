@@ -1,5 +1,7 @@
 import { Button, notification } from '@heyforms/ui'
+import { IconChevronLeft } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
@@ -56,14 +58,23 @@ const Invite = () => {
 
   return (
     <OnboardingLayout seo={{ title: t('invite.title') }}>
-      <div className="p-8 bg-white shadow rounded">
+      <Link
+        className="group fixed top-5 left-5 flex items-center text-sm hover:text-blue-700"
+        href="/"
+      >
+        <IconChevronLeft className="w-4 h-4 text-slate-500 -ml-2 group-hover:text-blue-700" />
+        <span className="ml-1">{t('invite.backHome')}</span>
+      </Link>
+
+      <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
         {invitation ? (
           <div className="space-y-6 text-center">
             <div className="flex justify-center">
               <RoundImage src={invitation.productLogo} size={64} />
             </div>
             <div className="mt-2 px-4 text-base font-medium text-slate-800">
-              {t('invite.heading', invitation)}
+              <p>{t('invite.heading', { inviter: invitation.inviter })}</p>
+              <p>{invitation.productName}</p>
             </div>
             <div className="px-4 text-sm text-slate-500">{t('invite.description')}</div>
             <Button type="primary" loading={loading} block onClick={request}>

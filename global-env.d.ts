@@ -93,7 +93,7 @@ declare global {
     currency: string
     amount: number
     transactionId?: string
-    paymentMode: string
+    paymentType: string
     receiptUrl?: string
     failureMessage: any
     paidAt?: number
