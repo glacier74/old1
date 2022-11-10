@@ -1,8 +1,8 @@
-import { Editor } from '~/layout'
+import { Builder } from '~/layout'
 import { withTranslations } from '~/utils'
 
 const ProductEdit = (): JSX.Element => {
-  return <Editor />
+  return <Builder />
 }
 
 export const getStaticPaths = async () => {

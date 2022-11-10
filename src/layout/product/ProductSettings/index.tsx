@@ -1,8 +1,8 @@
 import { useTranslation } from 'next-i18next'
 
 import { DeleteProduct } from './DeleteProduct'
+import { Domain } from './Domain'
 import { Language } from './Language'
-import { RemoveBranding } from './RemoveBranding'
 import { SitePrivate } from './SitePrivate'
 
 export const ProductSettings = () => {
@@ -18,8 +18,9 @@ export const ProductSettings = () => {
 
         <div className="space-y-4 divide-y">
           <Language />
+          <Domain />
           <SitePrivate />
-          <RemoveBranding />
+          {/*<RemoveBranding />*/}
         </div>
       </div>
 

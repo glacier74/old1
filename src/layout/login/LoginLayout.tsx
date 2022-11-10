@@ -1,4 +1,4 @@
-import { BaseLayout } from '../BaseLayout'
+import { BaseLayout } from '~/layout'
 
 export function LoginLayout({ seo, children }: LayoutProps) {
   return (

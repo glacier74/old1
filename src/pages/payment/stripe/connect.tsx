@@ -13,7 +13,7 @@ const StripeConnect = () => {
 
     if (window.opener && window.opener.origin === origin) {
       const data = {
-        source: 'earlybird-stripe-connect',
+        source: 'EARLYBIRD_STRIPE_CONNECT',
         payload: router.query
       }
 

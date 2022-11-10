@@ -101,16 +101,24 @@ body {
 }
 
 .tooltip {
-  z-index: 10000;
+  z-index: 9999;
 }
 
 .link-button {
-  @apply px-4 py-2 border border-gray-300 shadow-sm sm:text-sm font-medium rounded-md text-slate-700 bg-white;
+  @apply px-4 py-2 border border-slate-300 shadow-sm sm:text-sm font-medium rounded-md text-slate-700 bg-white;
 }
 
 .table-body {
   td {
     @apply font-normal text-slate-900;
+  }
+}
+
+.form-inline {
+  @apply mt-1;
+
+  .form-item-content {
+    @apply mt-0;
   }
 }
 
@@ -281,35 +289,113 @@ body {
 
   .input {
     input {
-      @apply text-xl text-gray-500;
+      @apply text-xl text-slate-500;
     }
   }
 }
 
-.ProseMirror {
-  outline: none;
-  min-height: calc(100vh - 300px);
+.block-container {
+  @apply relative px-20;
+  transform: translate(0, 0);
 
-  p {
-    @apply my-2;
-
-    &.is-empty::before {
-      @apply text-slate-400 float-left h-0 pointer-events-none;
-      content: attr(data-placeholder);
-    }
+  .block-container {
+    @apply px-0;
   }
 
-  a {
-    @apply text-blue-700;
+  &:hover {
+    .block-actions {
+      @apply opacity-100;
+    }
   }
 }
 
-.editor-bubble-menu {
+.block-dropzone {
+  @apply absolute left-0 right-0 bottom-1 pointer-events-none hidden;
+
+  &:after {
+    @apply absolute left-20 right-20 h-1 bg-blue-200;
+    content: "";
+  }
+}
+
+.block-dragging {
+  @apply cursor-grab #{!important};
+
+  .block-actions {
+    @apply invisible;
+  }
+}
+
+.block-hovering {
+  .block-dropzone {
+    @apply block;
+  }
+}
+
+.block-actions {
+  @apply absolute top-0 left-0 flex items-center justify-end mt-1.5 pr-1 w-20 opacity-0 z-20;
+
+  &.block-actions-active {
+    @apply opacity-100;
+  }
+
+  .block-create {
+    @apply h-6;
+  }
+
   button.button {
-    @apply p-1.5;
+    @apply p-0.5 rounded-sm hover:bg-slate-100;
+
+    &:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    .button-leading {
+      @apply text-slate-400 hover:text-slate-500;
+    }
+  }
+}
+
+.rich-text {
+  @apply py-2 outline-none;
+
+  &:empty:before {
+    @apply absolute pointer-events-none text-black text-opacity-30 hidden;
+    content: attr(placeholder);
+  }
+}
+
+h3.rich-text {
+  @apply text-3xl font-bold text-slate-900;
+}
+
+.block-selected {
+  .rich-text:empty:before {
+    display: block;
+  }
+}
+
+.bubble-menu {
+  @apply fixed;
+  z-index: 9998;
+
+  button.button {
+    @apply p-1;
 
     &:not(:disabled):hover {
       @apply bg-slate-100;
+    }
+
+    &.bubble-menu-active {
+      &,
+      &:hover {
+        @apply bg-blue-100;
+      }
+
+      .button-leading {
+        @apply text-blue-700;
+      }
     }
 
     .button-leading {
@@ -321,27 +407,209 @@ body {
         height: 1.125rem;
       }
     }
+  }
+}
 
-    &.editor-bubble-menu-active {
-      &,
-      &:hover {
-        @apply bg-blue-100;
+.command-menu {
+  @apply fixed;
+  z-index: 9998;
+}
 
-        .button-leading {
-          @apply text-blue-700;
-        }
+.block-feature {
+  .block-container {
+    @apply px-0;
+  }
+
+  .block-upload {
+    @apply bg-slate-100;
+    width: 25rem;
+    height: 18.75rem;
+  }
+
+  .block-image {
+    img {
+      max-width: 25rem;
+      height: auto;
+    }
+  }
+
+  .block-group {
+    width: 32rem;
+  }
+
+  .rich-text {
+    @apply py-2 outline-none;
+
+    &:empty:before {
+      @apply block;
+    }
+  }
+
+  .block-paragraph {
+    @apply text-slate-700;
+  }
+}
+
+.block-slide-gallery-wrapper {
+  @apply flex space-x-2 transition-transform;
+  height: 13.75rem;
+
+  .block-slide-gallery-item,
+  .block-upload {
+    width: 23rem;
+    height: 13.75rem;
+  }
+
+  .block-upload {
+    @apply bg-slate-100;
+  }
+}
+
+.block-slide-gallery-button {
+  .button-leading {
+    @apply w-full h-full;
+
+    &,
+    svg {
+      @apply w-6 h-6 #{!important};
+    }
+  }
+}
+
+.block-image-toolbar {
+  @apply absolute inset-0 flex items-center justify-center bg-black bg-opacity-10 opacity-0 transition-opacity will-change-auto group-hover/item:opacity-100;
+
+  button.button {
+    @apply bg-black bg-opacity-70 border-none;
+
+    &:hover {
+      @apply bg-black hover:bg-opacity-90 #{!important};
+    }
+
+    &,
+    .button-leading {
+      @apply text-white;
+    }
+  }
+}
+
+.block-payment {
+  .rich-text {
+    @apply py-2 outline-none;
+
+    &:empty:before {
+      @apply block;
+    }
+  }
+
+  .block-list {
+    .rich-text {
+      @apply pl-8 bg-left bg-no-repeat;
+      background-image: url(/static/icon-check.svg);
+    }
+  }
+}
+
+.block-settings {
+  @apply text-sm;
+
+  .menu-label {
+    @apply pb-0 text-xs cursor-default;
+  }
+
+  .switch-group {
+    button.switch-button {
+      @apply px-1.5 py-1;
+
+      &:focus {
+        outline: none !important;
+        box-shadow: none !important;
+      }
+
+      .icon {
+        @apply w-5 h-5 text-slate-600;
       }
     }
   }
 }
 
-.editor-slideshow {
-  height: 13.75rem;
+
+// =================================================================================
+// Slide
+.slide-modal {
+  @apply fixed inset-0 z-40;
 }
 
-.editor-slideshow-item {
-  @apply bg-slate-50 hover:bg-slate-100;
-  width: 23rem;
-  height: 13.75rem;
+.slide-container {
+  @apply absolute inset-0 flex items-center justify-center bg-black bg-opacity-70;
 }
 
+.slide-image {
+  @apply relative w-full h-4/5;
+  max-width: 68.75rem;
+
+  img {
+    @apply absolute w-full h-full object-contain pointer-events-none;
+  }
+}
+
+.slide-button-previous,
+.slide-button-next {
+  @apply p-8 flex-grow-0 flex-shrink-0 text-white opacity-50 hover:opacity-100 transition-opacity cursor-pointer;
+}
+
+.slide-indicators {
+  @apply absolute left-0 right-0 bottom-7 mx-auto flex items-center justify-center h-12 space-x-1;
+  max-width: 56.25rem;
+}
+
+.slide-indicator {
+  @apply w-2 h-2 rounded-full bg-slate-500;
+}
+
+.slide-indicator-active {
+  @apply bg-white;
+}
+
+.stripe-connect-modal {
+  .modal-body {
+    @apply p-0 text-sm text-slate-800;
+  }
+
+  .modal-content {
+    max-width: 48rem;
+  }
+
+  .stepper {
+    @apply sticky top-0 px-12 pt-12 bg-white rounded-t-md;
+  }
+}
+
+.stripe-connect-modal-body {
+  @apply flex flex-col items-center justify-center px-24 py-12;
+  height: 24rem;
+}
+
+.stripe-connect-modal-product {
+  .form-inline {
+    @apply mt-8 items-center;
+
+    .form-item-content {
+      @apply mt-0
+    }
+
+    .input {
+      @apply rounded-r-none border-r-0;
+    }
+
+    button.button {
+      @apply rounded-l-none;
+    }
+  }
+}
+
+.stripe-connect-modal-select-price {
+  .select-card-container {
+    @apply w-96;
+  }
+}

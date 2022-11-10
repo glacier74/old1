@@ -9,8 +9,9 @@ import { useStore } from '~/store'
 import { useVisible } from '~/utils'
 
 const ChangePassword: FC<IModalProps> = ({ visible, onClose }) => {
-  const [values, setValues] = useState<AnyMap<any>>({})
   const { t } = useTranslation()
+  const { user } = useStore()
+  const [values, setValues] = useState<AnyMap<any>>({})
 
   function handleChange(_: unknown, val: AnyMap<any>) {
     setValues(val)
@@ -23,6 +24,10 @@ const ChangePassword: FC<IModalProps> = ({ visible, onClose }) => {
       title: t('account.password.changeText')
     })
     onClose?.()
+  }
+
+  if (user.isSocialAccount) {
+    return null
   }
 
   return (

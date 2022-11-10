@@ -1,5 +1,4 @@
 import {
-  IconBolt,
   IconBrandTwitter,
   IconDatabase,
   IconGift,
@@ -9,7 +8,6 @@ import {
   IconMail,
   IconMap,
   IconNotes,
-  IconPlug,
   IconSettings,
   IconUsers,
   TablerIconProps
@@ -76,11 +74,11 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
           icon={IconDatabase}
           title={t('sidebar.engagements')}
         />
-        <NavLink
-          href={`/product/${productId}/integration`}
-          icon={IconPlug}
-          title={t('sidebar.integrate')}
-        />
+        {/*<NavLink*/}
+        {/*  href={`/product/${productId}/integration`}*/}
+        {/*  icon={IconPlug}*/}
+        {/*  title={t('sidebar.integrate')}*/}
+        {/*/>*/}
         <div
           className="text-slate-700 hover:bg-slate-200 hover:text-slate-900 group flex items-center px-2 py-1 text-sm rounded-md cursor-pointer"
           onClick={openMemberList}
@@ -93,7 +91,7 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
           icon={IconSettings}
           title={t('sidebar.productSettings')}
         />
-        <NavLink href={`/product/${productId}`} icon={IconBolt} title={t('sidebar.pro')} />
+        {/*<NavLink href={`/product/${productId}`} icon={IconBolt} title={t('sidebar.pro')} />*/}
       </div>
 
       {/* Resources links */}

@@ -124,7 +124,7 @@ export const DragUploader: FC<DragUploaderProps> = ({
                 {t(loading ? uploadingText : reselectText)}
               </Button.Link>
             </div>
-            {error && <p className="text-xs text-red-500">{error.message}</p>}
+            {error && <p className="text-xs text-red-700">{error.message}</p>}
           </div>
         </div>
       ) : (
@@ -150,7 +150,7 @@ export const DragUploader: FC<DragUploaderProps> = ({
               <p className="pl-1">{t('upload.drag')}</p>
             </div>
             {error || internalError ? (
-              <p className="text-xs text-red-500">{error?.message || internalError?.message}</p>
+              <p className="text-xs text-red-700">{error?.message || internalError?.message}</p>
             ) : (
               <p className="text-xs text-slate-500">{t('upload.sizeLimit', { maxSize })}</p>
             )}

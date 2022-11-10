@@ -4,6 +4,7 @@ import timezone from 'dayjs/plugin/timezone'
 import utc from 'dayjs/plugin/utc'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 
 import { LogoPickerField } from '~/components'
 import { OnboardingLayout } from '~/layout'
@@ -16,6 +17,13 @@ dayjs.extend(timezone)
 const Onboarding = (): JSX.Element => {
   const router = useRouter()
   const { t } = useTranslation()
+  const [domain, setDomain] = useState<string>()
+
+  function handleValuesChange(changes: any) {
+    if (changes.domain) {
+      setDomain(changes.domain)
+    }
+  }
 
   async function handleFinish(values: AnyMap<any>) {
     const productId = await ProductService.create({
@@ -36,10 +44,21 @@ const Onboarding = (): JSX.Element => {
           type: 'primary',
           block: true
         }}
+        onValuesChange={handleValuesChange}
         request={handleFinish}
       >
         <Form.Item name="logo" rules={[{ required: true, message: t('onboarding.invalidLogo') }]}>
           <LogoPickerField enableUnsplash={false} />
+        </Form.Item>
+
+        <Form.Item
+          name="domain"
+          label={t('onboarding.publicSiteURL')}
+          rules={[
+            { required: true, pattern: /^[a-z0-9-]{3,}$/i, message: t('onboarding.invalidDomain') }
+          ]}
+        >
+          <Input trailing={`.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`} />
         </Form.Item>
 
         <Form.Item
@@ -56,14 +75,6 @@ const Onboarding = (): JSX.Element => {
           rules={[{ required: true, message: t('onboarding.invalidTagline') }]}
         >
           <Input />
-        </Form.Item>
-
-        <Form.Item
-          name="description"
-          label={t('onboarding.description')}
-          rules={[{ required: true, message: t('onboarding.invalidDescription') }]}
-        >
-          <Input.Textarea />
         </Form.Item>
       </Form.Custom>
     </OnboardingLayout>

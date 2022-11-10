@@ -86,10 +86,10 @@ export const Breakdown: FC<BreakdownProps> = ({
   return (
     <div className={clsx('relative bg-slate-50 mb-8 md:mb-0 p-6 rounded', className)}>
       <div className="flex justify-between">
-        <h3 className="font-bold dark:text-gray-100">{t(sourceName)}</h3>
+        <h3 className="font-bold dark:text-slate-100">{t(sourceName)}</h3>
       </div>
       <div className="flex flex-col flex-grow fade-enter-active">
-        <div className="flex items-center justify-between mt-3 mb-2 text-xs font-bold tracking-wide text-gray-500">
+        <div className="flex items-center justify-between mt-3 mb-2 text-xs font-bold tracking-wide text-slate-500">
           <span>{t(propertyName)}</span>
           <div className="text-right">
             <span className="inline-block w-20">{t('productStats.visitors')}</span>

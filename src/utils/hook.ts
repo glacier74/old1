@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 export function useAsyncEffect<T, S>(asyncFunction: () => Promise<T>, deps: S[] = []) {
   const execute = useCallback(() => {
@@ -53,4 +53,31 @@ export function useRequest(asyncFunction: (...args: any[]) => void, deps: any[] 
   }, deps)
 
   return { loading, error, request }
+}
+
+export function useWindow(source: string, listener: (win: Window, payload: any) => void) {
+  const winRef = useRef<Window | null>()
+
+  const messageListener = useCallback(
+    (event: MessageEvent) => {
+      if (event.origin === window.location.origin && event.data.source === source) {
+        listener(winRef.current!, event.data.payload)
+      }
+    },
+    [winRef.current, source]
+  )
+
+  function openWindow(url: string, features?: string) {
+    winRef.current = window.open(url, '_blank', features)
+  }
+
+  useEffect(() => {
+    window.addEventListener('message', messageListener)
+
+    return () => {
+      window.removeEventListener('message', messageListener)
+    }
+  }, [])
+
+  return openWindow
 }

@@ -117,4 +117,123 @@ declare global {
     author: string
     authorUrl: string
   }
+
+  interface StripeProduct {
+    id: string
+    name: string
+    description: string
+    prices: StripePrice[]
+  }
+
+  interface StripePrice {
+    id: string
+    active: boolean
+    billing_scheme: string
+    currency: string
+    custom_unit_amount: any
+    livemode: boolean
+    lookup_key: any
+    nickname?: string
+    recurring?: {
+      aggregate_usage: any
+      interval: string
+      interval_count: number
+      trial_period_days: any
+      usage_type: string
+    }
+    tax_behavior: string
+    tiers_mode: any
+    transform_quantity?: {
+      divide_by: number
+      round: string
+    }
+    type: 'one_time' | 'recurring'
+    unit_amount: number
+  }
+
+  type BlockType =
+    | 'group'
+    | 'payment'
+    | 'slide-gallery'
+    | 'feature'
+    | 'heading'
+    | 'list'
+    | 'paragraph'
+    | 'image'
+
+  interface Block {
+    id: string
+    type: BlockType
+    deletable?: boolean
+  }
+
+  interface BlockLocation extends Block {
+    path: string[]
+  }
+
+  interface GroupBlock<T extends Block[]> extends Block {
+    type: 'group'
+    blocks: T
+  }
+
+  interface ParagraphBlock extends Block {
+    type: 'paragraph'
+    html: string
+    placeholder?: string
+    multiple?: boolean
+    enableCommand?: boolean
+    enableTextFormat?: boolean
+    enterBehavior?: 'createBlock' | 'focusNextBlock'
+  }
+
+  interface HeadingBlock extends Omit<ParagraphBlock, 'enableCommand' | 'enableTextFormat'> {
+    type: 'heading'
+    level: number
+  }
+
+  interface ListBlock extends Block {
+    type: 'list'
+    ordered?: boolean
+    blocks: ParagraphBlock[]
+  }
+
+  interface ImageBlock extends Block {
+    type: 'image'
+    width?: number
+    height?: number
+    source?: string
+    caption?: string
+    align?: 'left' | 'center' | 'right'
+  }
+
+  interface FeatureBlock extends Block {
+    type: 'feature'
+    align: 'left' | 'right'
+    blocks: [ImageBlock, GroupBlock<[HeadingBlock, ParagraphBlock]>]
+  }
+
+  interface SlideGallerySource {
+    type: 'image' | 'video'
+    caption?: string
+    url: string
+  }
+
+  interface SlideGalleryBlock extends Block {
+    type: 'slide-gallery'
+    sources: SlideGallerySource[]
+  }
+
+  interface PaymentBlock extends Block {
+    type: 'payment'
+    provider: string
+    productId?: string
+    productName?: string
+    productDescription?: string
+    priceId?: string
+    currency: string
+    amount: number
+    stripeAccount?: string
+    stripeEmail?: string
+    blocks: [HeadingBlock, ParagraphBlock, ListBlock]
+  }
 }
