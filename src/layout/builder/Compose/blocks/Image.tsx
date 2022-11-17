@@ -1,5 +1,6 @@
 import { Button } from '@heyforms/ui'
 import { IconPhotoEdit } from '@tabler/icons'
+import { useTranslation } from 'next-i18next'
 import { FC } from 'react'
 
 import { PhotoPicker } from '~/components'
@@ -14,12 +15,12 @@ interface ImageProps extends BlockProps {
 }
 
 const ImageComponent: FC<ImageProps> = ({ block, ...resetProps }) => {
+  const { t } = useTranslation()
   const { dispatch } = useComposeStore()
   const [visible, open, close] = useVisible()
 
   // TODO - align image BubbleMenu
   function handleChange(source: string) {
-    console.log('source', source)
     dispatch({
       type: 'updateBlock',
       payload: {
@@ -35,18 +36,18 @@ const ImageComponent: FC<ImageProps> = ({ block, ...resetProps }) => {
     <>
       <Block className={`block-align-${block.align}`} block={block} {...resetProps}>
         {block.source ? (
-          <div className="group relative w-full h-full">
+          <div className="group/item relative w-full h-full">
             <img src={block.source} alt={block.caption} width={block.width} height={block.height} />
             <div className="block-image-toolbar">
               <Button className="!px-3 !py-2" leading={<IconPhotoEdit />} onClick={open}>
-                Change
+                {t('common.change')}
               </Button>
             </div>
           </div>
         ) : (
           <Upload
-            description1="Recommended size: 1100x480 | JPG, PNG, BMP."
-            description2="Max size: 2MB"
+            description1={t(block.placeholder!)}
+            description2={t(block.subPlaceholder!)}
             onClick={open}
           />
         )}

@@ -21,7 +21,9 @@ declare global {
     children: ReactNode
   }
 
-  type NextPageFunction = (context: NextPageContext) => Promise<{ props: AnyMap<any> }>
+  type NextPageFunction = (
+    context: NextPageContext
+  ) => Promise<{ props?: AnyMap<any>; notFound?: boolean }>
 
   interface IModalProps {
     visible?: boolean
@@ -46,7 +48,7 @@ declare global {
 
   interface SiteSettings {
     productId: number
-    content: string
+    content: Block[]
     metaTitle: string
     metaDescription: string
     twitter: string
@@ -78,6 +80,7 @@ declare global {
     inviteCode: string
     inviteExpiredAt: number
     users: User[]
+    siteSetting: SiteSettings
     createdAt: string
     updatedAt: string
   }
@@ -154,7 +157,7 @@ declare global {
   type BlockType =
     | 'group'
     | 'payment'
-    | 'slide-gallery'
+    | 'slideGallery'
     | 'feature'
     | 'heading'
     | 'list'
@@ -165,13 +168,19 @@ declare global {
     id: string
     type: BlockType
     deletable?: boolean
+    placeholder?: string
+    subPlaceholder?: string
+    enableCommand?: boolean
+    enableTextFormat?: boolean
+    enableDropZone?: boolean
+    enterBehavior?: 'createBlock' | 'focusNextBlock'
   }
 
   interface BlockLocation extends Block {
     path: string[]
   }
 
-  interface GroupBlock<T extends Block[]> extends Block {
+  interface GroupBlock<T extends Block[] = Block[]> extends Block {
     type: 'group'
     blocks: T
   }
@@ -179,11 +188,7 @@ declare global {
   interface ParagraphBlock extends Block {
     type: 'paragraph'
     html: string
-    placeholder?: string
     multiple?: boolean
-    enableCommand?: boolean
-    enableTextFormat?: boolean
-    enterBehavior?: 'createBlock' | 'focusNextBlock'
   }
 
   interface HeadingBlock extends Omit<ParagraphBlock, 'enableCommand' | 'enableTextFormat'> {
@@ -191,10 +196,9 @@ declare global {
     level: number
   }
 
-  interface ListBlock extends Block {
+  interface ListBlock extends GroupBlock<ParagraphBlock[]> {
     type: 'list'
     ordered?: boolean
-    blocks: ParagraphBlock[]
   }
 
   interface ImageBlock extends Block {
@@ -206,10 +210,10 @@ declare global {
     align?: 'left' | 'center' | 'right'
   }
 
-  interface FeatureBlock extends Block {
+  interface FeatureBlock
+    extends GroupBlock<[ImageBlock, GroupBlock<[HeadingBlock, ParagraphBlock]>]> {
     type: 'feature'
     align: 'left' | 'right'
-    blocks: [ImageBlock, GroupBlock<[HeadingBlock, ParagraphBlock]>]
   }
 
   interface SlideGallerySource {
@@ -219,11 +223,11 @@ declare global {
   }
 
   interface SlideGalleryBlock extends Block {
-    type: 'slide-gallery'
+    type: 'slideGallery'
     sources: SlideGallerySource[]
   }
 
-  interface PaymentBlock extends Block {
+  interface PaymentBlock extends GroupBlock<[HeadingBlock, ParagraphBlock, ListBlock]> {
     type: 'payment'
     provider: string
     productId?: string
@@ -234,6 +238,5 @@ declare global {
     amount: number
     stripeAccount?: string
     stripeEmail?: string
-    blocks: [HeadingBlock, ParagraphBlock, ListBlock]
   }
 }

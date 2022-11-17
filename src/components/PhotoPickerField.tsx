@@ -132,7 +132,7 @@ export const LogoPickerField: FC<PhotoPickerFieldProps> = ({
       >
         <RoundImage src={value} size={size} text={t('common.logo')} retainLength={4} />
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 rounded-full opacity-0 transition-opacity cursor-pointer group-hover:opacity-100">
-          <span className="text-xs text-white">{t('upload.upload')}</span>
+          <span className="text-xs text-white">{t('common.upload')}</span>
         </div>
       </div>
 

@@ -21,7 +21,7 @@ export const Builder = () => {
   return (
     <AuthorizedLayout
       seo={{
-        title: t('editor.title', { name: product.name || '' })
+        title: t('builder.title', { name: product.name || '' })
       }}
     >
       <div className="w-full min-h-screen bg-white">

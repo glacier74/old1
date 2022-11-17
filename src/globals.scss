@@ -259,6 +259,19 @@ body {
   }
 }
 
+.site-header {
+  .logo-picker-field {
+    @apply mx-auto;
+  }
+
+  .editor-name,
+  .editor-tagline {
+    input {
+      @apply text-center;
+    }
+  }
+}
+
 .editor-name,
 .editor-tagline {
   .input {
@@ -466,8 +479,10 @@ h3.rich-text {
 }
 
 .block-slide-gallery-button {
+  @apply hover:bg-transparent #{!important};
+
   .button-leading {
-    @apply w-full h-full;
+    @apply w-full h-full hover:text-slate-500;
 
     &,
     svg {
@@ -581,12 +596,12 @@ h3.rich-text {
   }
 
   .stepper {
-    @apply sticky top-0 px-12 pt-12 bg-white rounded-t-md;
+    @apply px-12 pt-12 bg-white rounded-t-md;
   }
 }
 
 .stripe-connect-modal-body {
-  @apply flex flex-col items-center justify-center px-24 py-12;
+  @apply flex flex-col items-center justify-center px-24 overflow-y-auto;
   height: 24rem;
 }
 
@@ -594,16 +609,8 @@ h3.rich-text {
   .form-inline {
     @apply mt-8 items-center;
 
-    .form-item-content {
-      @apply mt-0
-    }
-
-    .input {
-      @apply rounded-r-none border-r-0;
-    }
-
     button.button {
-      @apply rounded-l-none;
+      @apply ml-4;
     }
   }
 }

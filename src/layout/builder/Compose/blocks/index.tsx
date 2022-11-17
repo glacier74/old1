@@ -23,7 +23,7 @@ export const BlockWrapper: FC<BlockWrapperProps> = props => {
     case 'group':
       return <Group key={props.block.id} {...props} />
 
-    case 'slide-gallery':
+    case 'slideGallery':
       return <SlideGallery key={props.block.id} {...props} />
 
     case 'payment':

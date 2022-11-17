@@ -70,7 +70,11 @@ export class ProductService {
     })
   }
 
-  static async payments(productId: number, page = 1, limit = 20): Promise<Payment[]> {
+  static async payments(
+    productId: number,
+    page = 1,
+    limit = 20
+  ): Promise<{ count: number; payments: Payment[] }> {
     return axios.get(`/products/${productId}/payments`, {
       params: {
         page,

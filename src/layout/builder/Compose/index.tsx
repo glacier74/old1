@@ -1,50 +1,80 @@
-import { Input } from '@heyforms/ui'
+import { notification } from '@heyforms/ui'
+import { conv } from '@nily/utils'
 import { useTranslation } from 'next-i18next'
-import { FC, useEffect } from 'react'
+import { FC, useEffect, useMemo } from 'react'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 
-import { LogoPickerField } from '~/components'
 import { useProduct } from '~/layout'
+import { SiteSettingsService } from '~/service'
+import { useStore } from '~/store'
+import { Queue } from '~/utils'
 
 import { BlockList } from './BlockList'
 import { ComposeStoreProvider, useComposeStore } from './store'
-import { BubbleMenu, CommandMenu, StripeConnectModal } from './views'
-
-interface ComposeProps {
-  blocks?: Block[]
-}
+import { BubbleMenu, CommandMenu, SiteHeader, StripeConnectModal } from './views'
 
 const Component = () => {
   const { t } = useTranslation()
-  const { dispatch } = useComposeStore()
+  const { siteSettings } = useStore()
+  const { state, dispatch } = useComposeStore()
   const product = useProduct()
 
-  // TODO - remove with backend data
+  const queue = useMemo(() => {
+    return new Queue({
+      concurrency: 1,
+      scheduleInterval: 5_000,
+      taskIntervalTime: 10_000
+    })
+  }, [product.id])
+
+  async function syncData() {
+    try {
+      await SiteSettingsService.update(product.id, {
+        content: JSON.stringify(state.blocks) as any
+      })
+    } catch (err: any) {
+      notification.error({
+        message: 'Error',
+        title: err.message
+      })
+    }
+  }
+
+  function visibilityListener() {
+    if (document.visibilityState === 'hidden') {
+      syncData()
+    }
+  }
+
   useEffect(() => {
+    const blocks = conv.json<Block[]>(siteSettings.content, [])!
+
     dispatch({
       type: 'setBlocks',
-      payload: []
+      payload: blocks
     })
-  }, [])
+  }, [siteSettings?.content])
+
+  useEffect(() => {
+    // Add to queue
+    if (state.syncVersion > 0) {
+      queue.add(async () => {
+        await syncData()
+      })
+    }
+
+    document.addEventListener('visibilitychange', visibilityListener)
+
+    return () => {
+      document.removeEventListener('visibilitychange', visibilityListener)
+    }
+  }, [state.syncVersion])
 
   return (
     <div className="pl-72 pt-16">
       <div className="mx-auto max-w-6xl">
-        <LogoPickerField
-          className="mx-20"
-          value={product?.logo}
-          size={100}
-          enableUnsplash={false}
-        />
-
-        <div className="editor-name mx-20">
-          <Input value={product?.name} placeholder={t('onboarding.name')} />
-        </div>
-
-        <div className="editor-tagline mx-20 mt-3">
-          <Input value={product?.tagline} placeholder={t('onboarding.tagline')} />
-        </div>
+        <SiteHeader />
 
         <div className="editor-content mt-6">
           <DndProvider backend={HTML5Backend}>
@@ -60,9 +90,9 @@ const Component = () => {
   )
 }
 
-const Compose: FC<ComposeProps> = ({ blocks = [] }) => {
+const Compose: FC = () => {
   return (
-    <ComposeStoreProvider blocks={blocks}>
+    <ComposeStoreProvider>
       <Component />
     </ComposeStoreProvider>
   )

@@ -1,4 +1,4 @@
-import { isFalse, isValidArray } from '@nily/utils'
+import { isFalse, isValid, isValidArray } from '@nily/utils'
 import { v4 as uuidv4 } from 'uuid'
 
 export function blockByType(type: BlockType, blockId?: string): Block {
@@ -25,14 +25,14 @@ export function blockByType(type: BlockType, blockId?: string): Block {
             id: uuidv4(),
             type: 'heading',
             level: 3,
-            placeholder: 'Heading'
+            placeholder: 'builder.payment.heading'
           },
           {
             id: uuidv4(),
             type: 'paragraph',
             enableCommand: false,
             deletable: false,
-            placeholder: 'Description',
+            placeholder: 'builder.payment.description',
             enterBehavior: 'focusNextBlock'
           },
           {
@@ -45,7 +45,7 @@ export function blockByType(type: BlockType, blockId?: string): Block {
                 id: uuidv4(),
                 type: 'paragraph',
                 enableCommand: false,
-                placeholder: 'Feature'
+                placeholder: 'builder.payment.feature'
               }
             ]
           }
@@ -53,7 +53,7 @@ export function blockByType(type: BlockType, blockId?: string): Block {
       }
       break
 
-    case 'slide-gallery':
+    case 'slideGallery':
       block.sources = []
       break
 
@@ -65,7 +65,10 @@ export function blockByType(type: BlockType, blockId?: string): Block {
           {
             id: uuidv4(),
             type: 'image',
-            align: 'left'
+            align: 'left',
+            width: 400,
+            placeholder: 'builder.feature.uploadTip1',
+            subPlaceholder: 'builder.feature.uploadTip2'
           },
           {
             id: uuidv4(),
@@ -75,14 +78,14 @@ export function blockByType(type: BlockType, blockId?: string): Block {
                 id: uuidv4(),
                 type: 'heading',
                 level: 3,
-                placeholder: 'Heading'
+                placeholder: 'builder.feature.heading'
               },
               {
                 id: uuidv4(),
                 type: 'paragraph',
                 enableCommand: false,
                 deletable: false,
-                placeholder: 'Description'
+                placeholder: 'builder.feature.description'
               }
             ]
           }
@@ -105,7 +108,7 @@ export function getBlockByPath(blocks: Block[], path: string[]): Block | undefin
 
   if (block) {
     if (subPath.length > 0) {
-      return getBlockByPath((block as GroupBlock<any>).blocks, subPath)
+      return getBlockByPath((block as GroupBlock).blocks, subPath)
     } else {
       return block
     }
@@ -140,10 +143,10 @@ export function blocksToLocations(blocks: Block[], parent?: BlockLocation): Bloc
     result.push(location)
 
     // Child blocks
-    if (isValidArray((b as GroupBlock<any>).blocks)) {
+    if (isValidArray((b as GroupBlock).blocks)) {
       result = [
         ...result,
-        ...blocksToLocations((b as GroupBlock<any>).blocks, {
+        ...blocksToLocations((b as GroupBlock).blocks, {
           ...{},
           ...location,
           path: [...location.path, b.id]
@@ -171,4 +174,14 @@ export function nextFocusableBlock(blocks: Block[], index: number) {
 
 export function stripeConnectStep(block: PaymentBlock) {
   return block.productId ? 'selectPrice' : block.stripeAccount ? 'product' : 'connect'
+}
+
+export function duplicateBlock(block: any) {
+  block.id = uuidv4()
+
+  if (isValid(block.blocks)) {
+    block.blocks.forEach(duplicateBlock)
+  }
+
+  return block
 }

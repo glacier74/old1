@@ -77,3 +77,30 @@ export function durationFormatter(duration: number) {
 export function capitalize(text: string) {
   return text.replace(/^\S/, s => s.toUpperCase())
 }
+
+export const ZERO_DECIMAL_CURRENCIES = [
+  'BIF',
+  'CLP',
+  'DJF',
+  'GNF',
+  'JPY',
+  'KMF',
+  'KRW',
+  'MGA',
+  'PYG',
+  'RWF',
+  'UGX',
+  'VND',
+  'VUV',
+  'XAF',
+  'XOF',
+  'XPF'
+]
+
+export function currencyFormatter(currency: string, amount: number, locale = 'en') {
+  if (!ZERO_DECIMAL_CURRENCIES.includes(currency)) {
+    amount = amount / 100
+  }
+
+  return new Intl.NumberFormat(locale, { style: 'currency', currency }).format(amount)
+}

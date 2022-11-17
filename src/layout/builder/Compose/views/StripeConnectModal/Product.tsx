@@ -50,8 +50,8 @@ export const Product: FC = () => {
     <div className="stripe-connect-modal-product">
       <div className="space-y-2">
         <p>
-          You are connected to Stripe account xxxx@gmail.com. If you want to reconnect to another
-          account, please{' '}
+          You are connected to Stripe account {state.stripeConnectBlock?.stripeEmail}. If you want
+          to reconnect to another account, please{' '}
           <a className="text-blue-700" href="#" onClick={handleBack}>
             click here
           </a>

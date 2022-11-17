@@ -63,7 +63,8 @@ const BlockComponent: FC<BlockProps> = ({
         `block-${block.type}`,
         {
           'block-dragging': isDragging,
-          'block-hovering': isOver
+          'block-hovering': isOver,
+          'block-selected': block.id === state.selectedBlockId
         },
         className
       )}

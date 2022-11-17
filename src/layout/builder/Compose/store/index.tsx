@@ -1,9 +1,11 @@
+import { IComponentProps } from '@heyforms/ui/types/typing'
 import { deepClone } from '@nily/utils'
 import { deepEqual } from 'fast-equals'
-import { FC, ReactNode, createContext, useContext, useMemo, useReducer } from 'react'
+import { FC, createContext, useContext, useMemo, useReducer } from 'react'
 
-import { RichTextSelection, blocksToLocations } from '../utils'
+import { RichTextSelection } from '../utils'
 import * as Actions from './actions'
+import { setBlocks } from './actions'
 
 export interface IState {
   blocks: Block[]
@@ -27,6 +29,9 @@ export interface IState {
   stripeConnectBlock?: PaymentBlock
   stripeProduct?: StripeProduct
   stripeConnectStep?: string
+
+  // Sync
+  syncVersion: number
 }
 
 export interface UpdateAction {
@@ -113,16 +118,21 @@ export function useComposeStore(): IContext {
   return useContext(context)
 }
 
-interface ComposeStoreProviderProps {
-  blocks: Block[]
-  children?: ReactNode
-}
+const SYNC_ACTIONS = ['setBlocks', 'moveBlock', 'addBlock', 'updateBlock', 'deleteBlock']
 
 function updateState(state: IState, action: IAction): IState {
   const clonedState = deepClone(state)
   const newState: IState = (Actions as any)[action.type](clonedState as any, action.payload as any)
 
-  return deepEqual(newState, state) ? state : newState
+  if (deepEqual(newState, state)) {
+    return state
+  }
+
+  if (SYNC_ACTIONS.includes(action.type)) {
+    newState.syncVersion += 1
+  }
+
+  return newState
 }
 
 const reducer = (state: IState, action: IAction) => {
@@ -142,17 +152,17 @@ const reducer = (state: IState, action: IAction) => {
   }
 }
 
-export const ComposeStoreProvider: FC<ComposeStoreProviderProps> = ({ blocks, children }) => {
-  const initialState: IState = useMemo(() => {
-    return {
-      blocks,
-      locations: blocksToLocations(blocks),
-      selection: {} as Selection,
+export const ComposeStoreProvider: FC<IComponentProps> = ({ children }) => {
+  const initialState: IState = useMemo(
+    () => ({
+      blocks: [],
+      locations: [],
       isBubbleMenuOpen: false,
       isCommandMenuOpen: false,
-      isStripeConnectModalOpen: false
-    }
-  }, [blocks])
+      syncVersion: 0
+    }),
+    []
+  )
   const [state, dispatch] = useReducer(reducer, initialState)
   const value = useMemo(() => ({ state, dispatch }), [state])
 

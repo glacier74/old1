@@ -38,7 +38,7 @@ export const PhotoPicker: FC<PhotoPickerProps> = ({
       {...restProps}
     >
       <Tabs>
-        <Tabs.Pane name="upload" title={t('upload.upload')}>
+        <Tabs.Pane name="upload" title={t('common.upload')}>
           <FileUploader accept={acceptedMimes} onChange={handleChange} />
         </Tabs.Pane>
         {enableUnsplash && (

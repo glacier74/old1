@@ -1,5 +1,6 @@
-import { Table } from '@heyforms/ui'
+import { EmptyStates, Table } from '@heyforms/ui'
 import { TableColumn } from '@heyforms/ui/types/table'
+import { IconDatabase } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 import * as timeago from 'timeago.js'
@@ -7,7 +8,17 @@ import * as timeago from 'timeago.js'
 import { AsyncRequest, RoundImage } from '~/components'
 import { ProductLayout, useProductId } from '~/layout'
 import { ProductService } from '~/service'
-import { withTranslations } from '~/utils'
+import { currencyFormatter, withTranslations } from '~/utils'
+
+const PAYMENT_STATUS: AnyMap<string> = {
+  pending: 'engagements.pending',
+  succeeded: 'engagements.succeeded'
+}
+
+const PAYMENT_TYPES: AnyMap<string> = {
+  one_time: 'engagements.oneTime',
+  recurring: 'engagements.recurring'
+}
 
 const Skeleton = () => {
   return (
@@ -35,6 +46,7 @@ const Skeleton = () => {
 const ProductEngagements = (): JSX.Element => {
   const { t } = useTranslation()
   const productId = useProductId()
+  const [count, setCount] = useState(0)
   const [payments, setPayments] = useState<Payment[]>()
 
   // Table columns
@@ -50,8 +62,10 @@ const ProductEngagements = (): JSX.Element => {
               <RoundImage src={row.avatar} text={row.email} size={36} />
             </div>
             <div className="flex-1 px-4">
-              <p className="text-sm font-semibold text-slate-800 truncate">{row.name}</p>
-              {row.paidAt && (
+              <p className="text-sm font-semibold text-slate-800">
+                {t(PAYMENT_STATUS[row.status])}
+              </p>
+              {row.paidAt! > 0 && (
                 <p className="mt-0.5 font-normal text-sm text-slate-500">
                   {timeago.format(row.paidAt! * 1_000)}
                 </p>
@@ -74,7 +88,7 @@ const ProductEngagements = (): JSX.Element => {
       name: '',
       width: '20%',
       render(row) {
-        return 'One time'
+        return t(PAYMENT_TYPES[row.paymentType])
       }
     },
     {
@@ -82,14 +96,18 @@ const ProductEngagements = (): JSX.Element => {
       name: '',
       align: 'right',
       render(row) {
-        return '$300'
+        return currencyFormatter(row.currency, row.amount)
       }
     }
   ]
 
   async function fetchPayments() {
-    setPayments(await ProductService.payments(productId!))
-    return true
+    const result = await ProductService.payments(productId!)
+
+    setCount(result.count)
+    setPayments(result.payments)
+
+    return result.payments.length > 0
   }
 
   return (
@@ -99,7 +117,19 @@ const ProductEngagements = (): JSX.Element => {
       </h1>
 
       <div className="mt-6">
-        <AsyncRequest request={fetchPayments} deps={[productId]} skeleton={<Skeleton />}>
+        <AsyncRequest
+          request={fetchPayments}
+          deps={[productId]}
+          skeleton={<Skeleton />}
+          emptyState={
+            <EmptyStates
+              className="pt-60 flex flex-col justify-center"
+              icon={<IconDatabase />}
+              title={t('engagements.notFound.title')}
+              description={t('engagements.notFound.description')}
+            />
+          }
+        >
           <Table<Payment> className="mt-8" columns={columns} data={payments} hideHead />
         </AsyncRequest>
       </div>

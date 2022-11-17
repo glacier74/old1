@@ -65,8 +65,7 @@ export const Connect: FC = () => {
         <div>
           <div className="space-y-3">
             <p>
-              If you do not have a stripe account, you can create a free account with a valid email
-              address and a bank account linked to an address.{' '}
+              If you do not have a stripe account, you can create a free account.{' '}
               <a className="text-blue-700" href="https://stripe.com/connect" target="_blank">
                 Head over to Stripe
               </a>{' '}

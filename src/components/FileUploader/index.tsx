@@ -32,9 +32,9 @@ export const DragUploader: FC<DragUploaderProps> = ({
   error,
   accept = [],
   maxSize = '2MB',
-  selectText = 'upload.selectText',
-  reselectText = 'upload.reselectText',
-  uploadingText = 'upload.uploading',
+  selectText = 'common.selectText',
+  reselectText = 'common.reselectText',
+  uploadingText = 'common.uploading',
   onChange,
   ...restProps
 }) => {
@@ -49,11 +49,11 @@ export const DragUploader: FC<DragUploaderProps> = ({
 
   function handleChange(f: File) {
     if (f.size > bytes.parse(maxSize)!) {
-      return setInternalError(new Error(t('upload.exceedsLimit', { maxSize })))
+      return setInternalError(new Error(t('common.exceedsLimit', { maxSize })))
     }
 
     if (!accept.includes(f.type)) {
-      return setInternalError(new Error(t('upload.unsupported')))
+      return setInternalError(new Error(t('common.unsupported')))
     }
 
     setFile(f)
@@ -147,12 +147,12 @@ export const DragUploader: FC<DragUploaderProps> = ({
               <Button.Link type="primary" onClick={handleOpen}>
                 {t(selectText)}
               </Button.Link>
-              <p className="pl-1">{t('upload.drag')}</p>
+              <p className="pl-1">{t('common.drag')}</p>
             </div>
             {error || internalError ? (
               <p className="text-xs text-red-700">{error?.message || internalError?.message}</p>
             ) : (
-              <p className="text-xs text-slate-500">{t('upload.sizeLimit', { maxSize })}</p>
+              <p className="text-xs text-slate-500">{t('common.sizeLimit', { maxSize })}</p>
             )}
           </div>
         </div>

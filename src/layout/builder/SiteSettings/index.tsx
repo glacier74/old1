@@ -25,10 +25,10 @@ export const SiteSettings = () => {
           </Link>
         </div>
         <div className="scrollbar flex-1 mt-5 divide-y divide-slate-50 ">
-          <Accordion expanded={true} text={t('editor.meta')}>
+          <Accordion expanded={true} text={t('builder.meta.name')}>
             <SiteMeta />
           </Accordion>
-          <Accordion className="pt-2" text={t('editor.socialMedia')}>
+          <Accordion className="pt-2" text={t('builder.socialMedia')}>
             <SocialMedia />
           </Accordion>
         </div>

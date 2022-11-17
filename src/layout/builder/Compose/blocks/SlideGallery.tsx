@@ -1,6 +1,7 @@
 import { Button, Tooltip } from '@heyforms/ui'
 import { isNil } from '@nily/utils'
 import { IconPhotoEdit, IconTrash, IconZoomIn } from '@tabler/icons'
+import { useTranslation } from 'next-i18next'
 import { FC, useCallback, useMemo, useRef, useState } from 'react'
 
 import {
@@ -78,7 +79,9 @@ const SlideGalleryItem: FC<SlideGalleryItemProps> = ({
 }
 
 const SlideGalleryComponent: FC<SlideGalleryProps> = ({ block, ...restProps }) => {
+  const { t } = useTranslation()
   const { dispatch } = useComposeStore()
+
   const [pickerVisible, openPicker, closePicker] = useVisible()
   const [slideVisible, openSlide, closeSlide] = useVisible()
 
@@ -89,7 +92,7 @@ const SlideGalleryComponent: FC<SlideGalleryProps> = ({ block, ...restProps }) =
 
   const containerWidth = useMemo(() => {
     return containerRef.current?.getBoundingClientRect().width || 0
-  }, [containerRef])
+  }, [containerRef.current])
 
   const style = useMemo(() => {
     const length = block.sources.length
@@ -207,8 +210,8 @@ const SlideGalleryComponent: FC<SlideGalleryProps> = ({ block, ...restProps }) =
               ))}
 
               <Upload
-                description1="Recommended size: 1100x480 | JPG, PNG, BMP."
-                description2="Max size: 2MB"
+                description1={t('builder.slideGallery.uploadTip1')}
+                description2={t('builder.slideGallery.uploadTip2')}
                 onClick={openPicker}
               />
             </div>

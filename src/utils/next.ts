@@ -5,6 +5,10 @@ export function withTranslations(nextPageFunction: NextPageFunction, namespaces?
   return async (context: NextPageContext) => {
     const pageData = await nextPageFunction(context)
 
+    if (pageData.notFound) {
+      return pageData
+    }
+
     return {
       props: {
         ...(await serverSideTranslations(context.locale || context.defaultLocale!, namespaces)),

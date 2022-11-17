@@ -2,11 +2,10 @@
   "common": {
     "name": "EarlyBird",
     "description": "EarlyBird is xxx",
+    "logo": "Logo",
     "title": "{{title}} · $t(common.name)",
+    "change": "Change",
     "cancel": "Cancel",
-    "logo": "Logo"
-  },
-  "upload": {
     "upload": "Upload",
     "uploading": "Uploading",
     "search": "Search",
@@ -186,11 +185,11 @@
     "totalPageviews": "Total pageviews",
     "bounceRate": "Bounce rate",
     "visitDuration": "Visit duration",
-    "today":  "Today",
+    "today": "Today",
     "last7Days": "Last 7 days",
-    "last30Days":  "Last 30 days",
+    "last30Days": "Last 30 days",
     "monthToDate": "Month to date",
-    "last6Months":  "Last 6 months",
+    "last6Months": "Last 6 months",
     "last12Months": "Last 12 months",
     "topSources": "Top sources",
     "source": "Source",
@@ -232,11 +231,13 @@
       "button": "Delete product"
     }
   },
-  "editor": {
+  "builder": {
     "title": "Edit · {{name}}",
-    "meta": "Meta",
-    "metaTitle": "Meta title",
-    "metaDescription": "Meta description",
+    "meta": {
+      "name": "Meta",
+      "title": "Meta title",
+      "description": "Meta description"
+    },
     "socialMedia": "Social media",
     "twitter": "Twitter",
     "facebook": "Facebook",
@@ -245,17 +246,39 @@
     "youtube": "Youtube",
     "telegram": "Telegram",
     "github": "Github",
-    "slideshow": "Slideshow",
-    "payment": "Payment",
     "bold": "Bold",
     "italic": "Italic",
     "strikethrough": "Strikethrough",
     "underline": "Underline",
     "link": "Link ",
     "linkOff": "LinkOff",
-    "alignLeft": "AlignLeft",
-    "alignCenter": "AlignCenter",
-    "alignRight": "AlignRight"
+    "align": {
+      "left": "Align left",
+      "center": "Align center",
+      "right": "Align right"
+    },
+    "paragraph": {
+      "name": "Paragraph",
+      "placeholder": "Type '/' to insert blocks"
+    },
+    "feature": {
+      "name": "Feature",
+      "heading": "Heading",
+      "description": "Description",
+      "uploadTip1": "Recommended size: 1100x480 | JPG, PNG, BMP.",
+      "uploadTip2": "Max size: 2MB"
+    },
+    "payment": {
+      "name": "Payment",
+      "heading": "Heading",
+      "description": "Description",
+      "feature": "Feature"
+    },
+    "slideGallery": {
+      "name": "Slide gallery",
+      "uploadTip1": "Recommended size: 1100x480 | JPG, PNG, BMP.",
+      "uploadTip2": "Max size: 2MB"
+    }
   },
   "invite": {
     "title": "Invitation · $t(common.name)",

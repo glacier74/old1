@@ -24,6 +24,7 @@ specifiers:
   axios: ^1.1.3
   chart.js: ^3.9.1
   clsx: ^1.2.1
+  currency-symbol-map: ^5.1.0
   dayjs: ^1.11.6
   dotenv: ^16.0.3
   eslint: ^8.27.0
@@ -60,13 +61,14 @@ specifiers:
   validator: ^13.7.0
 
 dependencies:
-  '@heyforms/ui': 2022.11.10_tailwindcss@3.2.2
+  '@heyforms/ui': 2022.11.10_tjrzq5vvrv5m43wuhv5loprfia
   '@next/font': 13.0.2
   '@nily/utils': 0.3.6
   '@tabler/icons': 1.110.0_biqbaboplfbrettd7655fr4n2y
   axios: 1.1.3
   chart.js: 3.9.1
   clsx: 1.2.1
+  currency-symbol-map: 5.1.0
   dayjs: 1.11.6
   dotenv: 16.0.3
   fast-equals: 4.0.3
@@ -117,7 +119,7 @@ devDependencies:
   postcss: 8.4.18
   prettier: 2.7.1
   sass: 1.56.0
-  tailwindcss: 3.2.2
+  tailwindcss: 3.2.2_postcss@8.4.18
   typescript: 4.8.4
 
 packages:
@@ -417,8 +419,16 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@heyforms/ui/2022.11.10_tailwindcss@3.2.2:
+  /@heyforms/ui/2022.11.10_tjrzq5vvrv5m43wuhv5loprfia:
     resolution: {integrity: sha512-y59s8zYyYDiG6GAfw8m7KzV1obyNT4nf0BisxjY0KIjRA7i0cAM9qv4wfytfOYhzRodwKHlzDzWwAFwsrBoyKA==}
+    peerDependencies:
+      '@tailwindcss/forms': ^0.5.2
+      clsx: ^1.2.1
+      dayjs: ^1.11.4
+      fast-equals: ^4.0.1
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      react-use: ^17.4.0
     dependencies:
       '@headlessui/react': 1.7.4_biqbaboplfbrettd7655fr4n2y
       '@heroicons/react': 1.0.6_react@18.2.0
@@ -436,8 +446,6 @@ packages:
       react-popper: 2.3.0_r6q5zrenym2zg7je7hgi674bti
       react-transition-state: 1.1.5_biqbaboplfbrettd7655fr4n2y
       react-use: 17.4.0_biqbaboplfbrettd7655fr4n2y
-    transitivePeerDependencies:
-      - tailwindcss
     dev: false
 
   /@hpnp/utils/2.9.3:
@@ -722,7 +730,7 @@ packages:
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:
-      tailwindcss: 3.2.2
+      tailwindcss: 3.2.2_postcss@8.4.18
     dev: true
 
   /@tailwindcss/forms/0.5.3_tailwindcss@3.2.2:
@@ -731,7 +739,7 @@ packages:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.2.2
+      tailwindcss: 3.2.2_postcss@8.4.18
 
   /@trivago/prettier-plugin-sort-imports/3.4.0_prettier@2.7.1:
     resolution: {integrity: sha512-485Iailw8X5f7KetzRka20RF1kPBEINR5LJMNwlBZWY1gRAlVnv5dZzyNPnLxSP0Qcia8HETa9Cdd8LlX9o+pg==}
@@ -1437,6 +1445,10 @@ packages:
 
   /csstype/3.1.1:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
+
+  /currency-symbol-map/5.1.0:
+    resolution: {integrity: sha512-LO/lzYRw134LMDVnLyAf1dHE5tyO6axEFkR3TXjQIOmMkAM9YL6QsiUwuXzZAmFnuDJcs4hayOgyIYtViXFrLw==}
+    dev: false
 
   /damerau-levenshtein/1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
@@ -3790,10 +3802,12 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  /tailwindcss/3.2.2:
+  /tailwindcss/3.2.2_postcss@8.4.18:
     resolution: {integrity: sha512-c2GtSdqg+harR4QeoTmex0Ngfg8IIHNeLQH5yr2B9uZbZR1Xt1rYbjWOWTcj3YLTZhrmZnPowoQDbSRFyZHQ5Q==}
     engines: {node: '>=12.13.0'}
     hasBin: true
+    peerDependencies:
+      postcss: ^8.0.9
     dependencies:
       arg: 5.0.2
       chokidar: 3.5.3

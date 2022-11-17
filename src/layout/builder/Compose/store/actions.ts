@@ -65,7 +65,7 @@ export function addBlock(state: IState, payload: AddBlockAction['payload']): ISt
     if (location) {
       // Nested blocks
       if (isValidArray(location.path)) {
-        const parent = getBlockByPath(blocks, location.path) as GroupBlock<any>
+        const parent = getBlockByPath(blocks, location.path) as GroupBlock
 
         if (parent) {
           const index = getBlockIndex(parent.blocks, payload.afterId)
@@ -96,7 +96,7 @@ export function updateBlock(state: IState, payload: UpdateBlockAction['payload']
   }
 
   if (isValidArray(location!.path)) {
-    const parent = getBlockByPath(blocks, location!.path) as GroupBlock<any>
+    const parent = getBlockByPath(blocks, location!.path) as GroupBlock
     const index = getBlockIndex(parent.blocks, payload.blockId)
 
     if (index > -1) {
@@ -135,7 +135,7 @@ export function deleteBlock(state: IState, payload: DeleteBlockAction['payload']
   }
 
   if (isValidArray(location?.path)) {
-    const parent = getBlockByPath(blocks, location!.path) as GroupBlock<any>
+    const parent = getBlockByPath(blocks, location!.path) as GroupBlock
     const index = getBlockIndex(parent.blocks, payload.blockId)
 
     index > -1 && parent.blocks.splice(index, 1)

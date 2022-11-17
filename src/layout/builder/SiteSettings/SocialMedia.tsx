@@ -72,7 +72,7 @@ const SocialMediaItem: FC<SocialMediaItemProps> = ({ valueKey, enabledKey }) => 
   return (
     <div>
       <div className="flex items-center justify-between mb-1">
-        <span className="text-sm text-slate-700">{t(`editor.${valueKey}`)}</span>
+        <span className="text-sm text-slate-700">{t(`builder.${valueKey}`)}</span>
         <Switch value={settings[enabledKey]} onChange={handleSwitchChange} />
       </div>
       {settings[enabledKey] && <Input value={settings[valueKey]} onChange={handleInputChange} />}

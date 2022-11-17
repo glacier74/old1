@@ -36,12 +36,12 @@ export const SiteMeta = () => {
   return (
     <div className="px-4 pt-1 pb-5 space-y-2">
       <div className="text-sm">
-        <div className="text-slate-700 mb-1">{t('editor.metaTitle')}</div>
+        <div className="text-slate-700 mb-1">{t('builder.meta.title')}</div>
         <Input value={settings.metaTitle} onChange={handleInputChange} />
       </div>
 
       <div className="text-sm">
-        <div className="text-slate-700 mb-1">{t('editor.metaDescription')}</div>
+        <div className="text-slate-700 mb-1">{t('builder.meta.description')}</div>
         <Input.Textarea value={settings.metaDescription} onChange={handleTextareaChange} />
       </div>
     </div>

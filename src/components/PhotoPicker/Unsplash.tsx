@@ -84,7 +84,7 @@ export const Unsplash: FC<UnsplashProps> = ({ onChange }) => {
 
   return (
     <div>
-      <Input placeholder={t('upload.search')} leading={<IconSearch />} onKeyDown={handleKeyDown} />
+      <Input placeholder={t('common.search')} leading={<IconSearch />} onKeyDown={handleKeyDown} />
       <AsyncRequest className="mt-4" request={fetchImages} deps={[keyword]} skeleton={<Skeleton />}>
         <ul role="list" className="flex flex-wrap -ml-2 -mr-2">
           {images.map(row => (

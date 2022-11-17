@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next'
 import { FC, useCallback } from 'react'
 
 import { useComposeStore } from '../store'
@@ -10,13 +11,14 @@ interface ParagraphProps extends BlockProps {
 
 export const Paragraph: FC<ParagraphProps> = ({
   block,
-  placeholder,
+  placeholder = 'builder.paragraph.placeholder',
   enableCommand,
   enableTextFormat,
-  enterBehavior,
+  enterBehavior = 'createBlock',
   children,
   ...restProps
 }) => {
+  const { t } = useTranslation()
   const { dispatch } = useComposeStore()
 
   const handleChange = useCallback((html: string) => {
@@ -36,10 +38,10 @@ export const Paragraph: FC<ParagraphProps> = ({
       <RichText
         blockId={block.id}
         value={block.html}
-        placeholder={placeholder || block.placeholder}
+        placeholder={t(block.placeholder || placeholder)}
         enableCommand={enableCommand}
         enableTextFormat={enableTextFormat}
-        enterBehavior={enterBehavior}
+        enterBehavior={block.enterBehavior || enterBehavior}
         onChange={handleChange}
       />
       {children}

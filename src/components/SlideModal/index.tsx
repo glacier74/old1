@@ -2,6 +2,7 @@ import { Portal, stopPropagation } from '@heyforms/ui'
 import { FC, MouseEvent, useCallback, useMemo, useState } from 'react'
 
 import { IconArrowLeft, IconArrowRight } from '~/components'
+import { cropImage } from '~/utils'
 
 import { SlideIndicator } from './SlideIndicator'
 
@@ -10,6 +11,9 @@ interface SlideModalProps extends IModalProps {
   defaultIndex?: number
   onChange?: (index: number) => void
 }
+
+const IMAGE_COMMEND_WIDTH = 1100
+const IMAGE_COMMEND_HEIGHT = 480
 
 export const SlideModal: FC<SlideModalProps> = ({
   visible = true,
@@ -58,7 +62,11 @@ export const SlideModal: FC<SlideModalProps> = ({
 
           <div className="slide-image">
             <div onClick={stopPropagation}>
-              <img src={source?.url} loading="eager" />
+              <img
+                key={cropImage(source?.url, IMAGE_COMMEND_WIDTH, IMAGE_COMMEND_HEIGHT)}
+                src={source?.url}
+                loading="eager"
+              />
             </div>
           </div>
 

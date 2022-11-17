@@ -1,6 +1,17 @@
 import { Button, Dropdown, Menus, Portal, Tooltip } from '@heyforms/ui'
-import { IconCopy, IconGripVertical, IconPlus, IconTrash } from '@tabler/icons'
+import { deepClone } from '@nily/utils'
+import {
+  IconBox,
+  IconCopy,
+  IconCreditCard,
+  IconGripVertical,
+  IconPlus,
+  IconSlideshow,
+  IconTrash,
+  IconTypography
+} from '@tabler/icons'
 import clsx from 'clsx'
+import { useTranslation } from 'next-i18next'
 import { CSSProperties, FC, MouseEvent, useRef, useState } from 'react'
 import { ConnectDragSource } from 'react-dnd'
 import { useClickAway } from 'react-use'
@@ -9,14 +20,16 @@ import { useVisible } from '~/utils'
 
 import { BlockProps } from '../blocks/Block'
 import { FeatureSettings } from '../blocks/Feature'
+import { PaymentSettings } from '../blocks/Payment'
 import { useComposeStore } from '../store'
-import { blockByType, getStyleFromRect } from '../utils'
+import { blockByType, duplicateBlock, getStyleFromRect } from '../utils'
 
 interface ActionMenuProps extends Pick<BlockProps, 'block'> {
   connectDrag: ConnectDragSource
 }
 
 export const ActionMenu: FC<ActionMenuProps> = ({ block, connectDrag }) => {
+  const { t } = useTranslation()
   const { state, dispatch } = useComposeStore()
   const [visible, open, close] = useVisible()
 
@@ -61,11 +74,26 @@ export const ActionMenu: FC<ActionMenuProps> = ({ block, connectDrag }) => {
     })
   }
 
+  function handleDuplicate() {
+    dispatch({
+      type: 'addBlock',
+      payload: {
+        block: duplicateBlock(deepClone(block)),
+        afterId: block.id
+      }
+    })
+  }
+
   const InsertOverlay = (
     <Menus onClick={handleMenuClick}>
-      <Menus.Item value="feature" label="Feature" />
-      <Menus.Item value="payment" label="Payment" />
-      <Menus.Item value="slide-gallery" label="Slide gallery" />
+      <Menus.Item value="paragraph" icon={<IconTypography />} label={t('builder.paragraph.name')} />
+      <Menus.Item value="feature" icon={<IconBox />} label={t('builder.feature.name')} />
+      <Menus.Item value="payment" icon={<IconCreditCard />} label={t('builder.payment.name')} />
+      <Menus.Item
+        value="slideGallery"
+        icon={<IconSlideshow />}
+        label={t('builder.slideGallery.name')}
+      />
     </Menus>
   )
 
@@ -79,6 +107,7 @@ export const ActionMenu: FC<ActionMenuProps> = ({ block, connectDrag }) => {
             <span>Duplicate</span>
           </div>
         }
+        onClick={handleDuplicate}
       />
       <Menus.Item
         value="delete"
@@ -88,15 +117,23 @@ export const ActionMenu: FC<ActionMenuProps> = ({ block, connectDrag }) => {
             <span>Delete</span>
           </div>
         }
+        onClick={handleDelete}
       />
     </>
   )
 
   const SettingsOverlay = (
     <Menus className="block-settings">
-      <Menus.Label className="uppercase" label="Options" />
-      <FeatureSettings block={block as any} />
-      <Menus.Divider />
+      {(() => {
+        switch (block.type) {
+          case 'feature':
+            return <FeatureSettings block={block as any} />
+
+          case 'payment':
+            return <PaymentSettings block={block as any} />
+        }
+      })()}
+
       {CommonMenus}
     </Menus>
   )
@@ -115,7 +152,7 @@ export const ActionMenu: FC<ActionMenuProps> = ({ block, connectDrag }) => {
           <Button.Link className="block-delete" leading={<IconTrash />} onClick={handleDelete} />
         </Tooltip>
         <Tooltip ariaLabel="Insert block below">
-          <Dropdown className="block-create" overlay={InsertOverlay}>
+          <Dropdown className="block-create" placement="bottom-start" overlay={InsertOverlay}>
             <Button.Link leading={<IconPlus />} />
           </Dropdown>
         </Tooltip>

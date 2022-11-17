@@ -1,4 +1,4 @@
-import { Switch, Tooltip } from '@heyforms/ui'
+import { Menus, Switch, Tooltip } from '@heyforms/ui'
 import { IconLayoutAlignLeft, IconLayoutAlignRight } from '@tabler/icons'
 import clsx from 'clsx'
 import { FC, useMemo } from 'react'
@@ -50,10 +50,16 @@ export const FeatureSettings: FC<Pick<FeatureProps, 'block'>> = ({ block }) => {
   }
 
   return (
-    <div className="flex items-center justify-between px-4 py-2 text-slate-700">
-      <span>Layout</span>
-      <Switch.Group value={block.align} options={options} onChange={handleChange} />
-    </div>
+    <>
+      <Menus.Label className="uppercase" label="Options" />
+
+      <div className="flex items-center justify-between px-4 py-2 text-slate-700">
+        <span>Layout</span>
+        <Switch.Group value={block.align} options={options} onChange={handleChange} />
+      </div>
+
+      <Menus.Divider />
+    </>
   )
 }
 

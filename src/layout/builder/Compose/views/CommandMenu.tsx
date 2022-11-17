@@ -1,8 +1,9 @@
-import { Portal } from '@heyforms/ui'
+import { Menus, Portal } from '@heyforms/ui'
 import { IComponentProps } from '@heyforms/ui/types/typing'
 import { isEmpty, isValidArray } from '@nily/utils'
-import clsx from 'clsx'
-import { FC, useEffect, useMemo, useRef, useState } from 'react'
+import { IconBox, IconCreditCard, IconSlideshow, IconTypography } from '@tabler/icons'
+import { useTranslation } from 'next-i18next'
+import { FC, ReactNode, useEffect, useMemo, useRef, useState } from 'react'
 import { useClickAway } from 'react-use'
 
 import { useComposeStore } from '../store'
@@ -11,6 +12,7 @@ import emitter from '../utils/emitter'
 
 export interface SubMenuOption {
   type: BlockType
+  icon?: ReactNode
   label: string
 }
 
@@ -21,25 +23,39 @@ interface MenuOption {
 
 const blockOptions: MenuOption[] = [
   {
+    name: 'Basic',
+    children: [
+      {
+        type: 'paragraph',
+        label: 'builder.paragraph.name',
+        icon: <IconTypography />
+      }
+    ]
+  },
+  {
     name: 'Fieldset',
     children: [
       {
         type: 'feature',
-        label: 'Feature'
+        label: 'builder.feature',
+        icon: <IconBox />
       },
       {
         type: 'payment',
-        label: 'Payment'
+        label: 'builder.payment.name',
+        icon: <IconCreditCard />
       },
       {
-        type: 'slide-gallery',
-        label: 'Slide gallery'
+        type: 'slideGallery',
+        label: 'builder.slideGallery.name',
+        icon: <IconSlideshow />
       }
     ]
   }
 ]
 
 export const CommandMenu: FC<IComponentProps> = ({ style, ...restProps }) => {
+  const { t } = useTranslation()
   const { state, dispatch } = useComposeStore()
 
   const ref = useRef<HTMLDivElement | null>(null)
@@ -169,28 +185,20 @@ export const CommandMenu: FC<IComponentProps> = ({ style, ...restProps }) => {
         }}
         {...restProps}
       >
-        <div className="bg-white shadow py-1 rounded">
+        <Menus onClick={selectOption}>
           {options.length > 0 ? (
             options.map(option => (
               <div key={option.name}>
-                <div className="px-2 py-0.5 uppercase text-xs text-slate-300">{option.name}</div>
+                <Menus.Label label={t(option.name)} />
                 {option.children.map(row => (
-                  <div
-                    key={row.type}
-                    className={clsx('px-2 py-0.5 cursor-pointer hover:bg-slate-100', {
-                      'bg-slate-100 ': row.type === focused
-                    })}
-                    onClick={() => selectOption(row.type)}
-                  >
-                    {row.label}
-                  </div>
+                  <Menus.Item value={row.type} icon={row.icon} label={t(row.label)} />
                 ))}
               </div>
             ))
           ) : (
             <span>No search results</span>
           )}
-        </div>
+        </Menus>
       </div>
     </Portal>
   )

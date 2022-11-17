@@ -4,11 +4,13 @@ import { FC } from 'react'
 
 import { cropImage } from '~/utils'
 
-export const RoundImage: FC<Omit<AvatarProps, 'circular' | 'rounded'>> = ({
+export const RoundImage: FC<AvatarProps> = ({
   src,
   size = 0,
   text,
   retainLength = 4,
+  circular = true,
+  rounded = true,
   ...restProps
 }) => {
   return (
@@ -17,8 +19,8 @@ export const RoundImage: FC<Omit<AvatarProps, 'circular' | 'rounded'>> = ({
       size={size}
       text={text}
       retainLength={retainLength}
-      circular
-      rounded
+      circular={circular}
+      rounded={rounded}
       {...restProps}
     />
   )

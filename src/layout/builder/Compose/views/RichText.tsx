@@ -41,7 +41,7 @@ const RichTextComponent: FC<RichTextProps> = ({
   placeholder,
   enableCommand = true,
   enableTextFormat = true,
-  enterBehavior = 'create-block-below',
+  enterBehavior,
   style,
   onChange
 }) => {
