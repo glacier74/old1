@@ -371,7 +371,7 @@ body {
 }
 
 .rich-text {
-  @apply py-2 outline-none;
+  @apply py-2 outline-none text-xl leading-9;
 
   &:empty:after {
     @apply pointer-events-none text-black text-opacity-30 hidden;
@@ -380,7 +380,7 @@ body {
 }
 
 h3.rich-text {
-  @apply text-3xl font-bold text-slate-900;
+  @apply text-5xl font-bold text-slate-900;
 }
 
 .block-selected {

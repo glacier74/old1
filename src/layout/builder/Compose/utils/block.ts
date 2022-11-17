@@ -66,7 +66,7 @@ export function blockByType(type: BlockType, blockId?: string): Block {
             id: uuidv4(),
             type: 'image',
             align: 'left',
-            width: 400,
+            width: 500,
             placeholder: 'builder.feature.uploadTip1',
             subPlaceholder: 'builder.feature.uploadTip2'
           },
