@@ -8,6 +8,16 @@ import { useStore } from '~/store'
 import Compose from './Compose'
 import { SiteSettings } from './SiteSettings'
 
+// TODO - Delete Array.prototype.at polyfill https://github.com/vercel/next.js/pull/42307
+if (!Array.prototype.at) {
+  Array.prototype.at = function (index: number) {
+    const len = this.length
+    const k = index >= 0 ? index : len + index
+
+    return k < 0 || k >= len ? undefined : this[k]
+  }
+}
+
 export const Builder = () => {
   const { t } = useTranslation()
   const { setSiteSettings } = useStore()
