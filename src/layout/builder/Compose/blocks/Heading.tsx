@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next'
 import { FC, useCallback } from 'react'
 
 import { useComposeStore } from '../store'
@@ -9,6 +10,7 @@ interface HeadingProps extends BlockProps {
 }
 
 export const Heading: FC<HeadingProps> = ({ block, placeholder, children, ...restProps }) => {
+  const { t } = useTranslation()
   const { dispatch } = useComposeStore()
 
   const handleChange = useCallback((html: string) => {
@@ -29,7 +31,7 @@ export const Heading: FC<HeadingProps> = ({ block, placeholder, children, ...res
         blockId={block.id}
         as={`h${block.level}`}
         value={block.html}
-        placeholder={block.placeholder || placeholder}
+        placeholder={t(block.placeholder || placeholder!)}
         enableCommand={false}
         enableTextFormat={false}
         enterBehavior="focusNextBlock"

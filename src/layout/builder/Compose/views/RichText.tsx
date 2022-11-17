@@ -104,7 +104,7 @@ const RichTextComponent: FC<RichTextProps> = ({
               type: 'addBlock',
               payload: {
                 block: {
-                  ...blockByType('paragraph'),
+                  ...blockByType('text'),
                   placeholder
                 },
                 afterId: blockId

@@ -5,13 +5,13 @@ import { useComposeStore } from '../store'
 import { RichText } from '../views'
 import { Block, BlockProps } from './Block'
 
-interface ParagraphProps extends BlockProps {
-  block: ParagraphBlock
+interface TextProps extends BlockProps {
+  block: TextBlock
 }
 
-export const Paragraph: FC<ParagraphProps> = ({
+export const Text: FC<TextProps> = ({
   block,
-  placeholder = 'builder.paragraph.placeholder',
+  placeholder = 'builder.text.placeholder',
   enableCommand,
   enableTextFormat,
   enterBehavior = 'createBlock',

@@ -147,37 +147,43 @@ const Payment: FC<{ productId: number; block: PaymentBlock }> = ({ productId, bl
   return (
     <Block block={block}>
       <div className="flex items-start justify-between">
-        <div className="w-96">
+        <div className="flex-1 pr-12">
           {block.blocks.map(child => (
             <BlockWrapper key={child.id} block={child} />
           ))}
         </div>
-        <div className="w-96 rounded-lg bg-white overflow-hidden text-sm shadow">
-          {block.priceId && (
-            <div className="p-6 cursor-default">
-              <div className="text-lg font-medium text-slate-900">{block.productName}</div>
-              <p className="mt-1 text-sm text-slate-600 line-clamp-2">{block.productDescription}</p>
-              <div className="mt-4 text-base font-semibold text-slate-800">
-                {currencyFormatter(block.currency, block.amount)}
-              </div>
+        <div className="flex flex-1 items-center">
+          <div className="rounded-lg bg-white overflow-hidden text-sm shadow">
+            {block.priceId && (
+              <div className="p-6 cursor-default">
+                <div className="text-lg font-medium text-slate-900">{block.productName}</div>
+                <p className="mt-1 text-sm text-slate-600 line-clamp-2">
+                  {block.productDescription}
+                </p>
+                <div className="mt-4 text-base font-semibold text-slate-800">
+                  {currencyFormatter(block.currency, block.amount)}
+                </div>
 
-              <Form.Custom
-                submitText={t('publicSite.buyNow')}
-                submitOptions={{
-                  type: 'primary',
-                  block: true
-                }}
-                request={handleFinish}
-              >
-                <Form.Item
-                  name="email"
-                  rules={[{ required: true, type: 'email', message: t('publicSite.invalidEmail') }]}
+                <Form.Custom
+                  submitText={t('publicSite.buyNow')}
+                  submitOptions={{
+                    type: 'primary',
+                    block: true
+                  }}
+                  request={handleFinish}
                 >
-                  <Input placeholder={t('publicSite.email')} />
-                </Form.Item>
-              </Form.Custom>
-            </div>
-          )}
+                  <Form.Item
+                    name="email"
+                    rules={[
+                      { required: true, type: 'email', message: t('publicSite.invalidEmail') }
+                    ]}
+                  >
+                    <Input placeholder={t('publicSite.email')} />
+                  </Form.Item>
+                </Form.Custom>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </Block>
@@ -187,11 +193,7 @@ const Payment: FC<{ productId: number; block: PaymentBlock }> = ({ productId, bl
 const Feature: FC<{ block: FeatureBlock }> = ({ block }) => {
   return (
     <Block block={block}>
-      <div
-        className={clsx('flex flex-start justify-between', {
-          'flex-row-reverse': block.align === 'right'
-        })}
-      >
+      <div className={`block-feature-container block-feature-align-${block.align}`}>
         {block.blocks.map(child => (
           <BlockWrapper key={child.id} block={child} />
         ))}
@@ -225,17 +227,19 @@ const Heading: FC<{ block: HeadingBlock }> = ({ block }) => {
 const Image: FC<{ block: ImageBlock }> = ({ block }) => {
   return (
     <Block block={block}>
-      <img
-        src={cropImage(block.source, block.width, block.height)}
-        width={block.width}
-        height={block.height}
-        alt={block.caption}
-      />
+      <div className="block-image-container">
+        <img
+          src={cropImage(block.source, block.width, block.height)}
+          width={block.width}
+          height={block.height}
+          alt={block.caption}
+        />
+      </div>
     </Block>
   )
 }
 
-const Paragraph: FC<{ block: ParagraphBlock }> = ({ block }) => {
+const Text: FC<{ block: TextBlock }> = ({ block }) => {
   return (
     <Block block={block}>
       <div
@@ -271,7 +275,7 @@ const BlockWrapper: FC<{ productId?: number; block: any }> = ({ productId, block
       return <Image key={block.id} block={block} />
 
     default:
-      return <Paragraph key={block.id} block={block} />
+      return <Text key={block.id} block={block} />
   }
 }
 

@@ -5,10 +5,10 @@ import {
   IconCopy,
   IconCreditCard,
   IconGripVertical,
+  IconLetterT,
   IconPlus,
   IconSlideshow,
-  IconTrash,
-  IconTypography
+  IconTrash
 } from '@tabler/icons'
 import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
@@ -86,7 +86,7 @@ export const ActionMenu: FC<ActionMenuProps> = ({ block, connectDrag }) => {
 
   const InsertOverlay = (
     <Menus onClick={handleMenuClick}>
-      <Menus.Item value="paragraph" icon={<IconTypography />} label={t('builder.paragraph.name')} />
+      <Menus.Item value="text" icon={<IconLetterT />} label={t('builder.text.name')} />
       <Menus.Item value="feature" icon={<IconBox />} label={t('builder.feature.name')} />
       <Menus.Item value="payment" icon={<IconCreditCard />} label={t('builder.payment.name')} />
       <Menus.Item

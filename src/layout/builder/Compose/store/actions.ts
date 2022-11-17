@@ -24,8 +24,8 @@ export function update(state: IState, updates: UpdateAction['payload']): IState 
 }
 
 export function setBlocks(state: IState, blocks: Block[]): IState {
-  if (blocks.length < 1 || blocks.at(-1)!.type !== 'paragraph') {
-    blocks.push(blockByType('paragraph'))
+  if (blocks.length < 1 || blocks.at(-1)!.type !== 'text') {
+    blocks.push(blockByType('text'))
   }
 
   state.blocks = blocks

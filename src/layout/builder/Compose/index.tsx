@@ -1,6 +1,5 @@
 import { notification } from '@heyforms/ui'
 import { conv } from '@nily/utils'
-import { useTranslation } from 'next-i18next'
 import { FC, useEffect, useMemo } from 'react'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
@@ -15,7 +14,6 @@ import { ComposeStoreProvider, useComposeStore } from './store'
 import { BubbleMenu, CommandMenu, SiteHeader, StripeConnectModal } from './views'
 
 const Component = () => {
-  const { t } = useTranslation()
   const { siteSettings } = useStore()
   const { state, dispatch } = useComposeStore()
   const product = useProduct()
@@ -73,7 +71,7 @@ const Component = () => {
 
   return (
     <div className="pl-72 pt-16">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SiteHeader />
 
         <div className="editor-content mt-6">

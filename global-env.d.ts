@@ -161,7 +161,7 @@ declare global {
     | 'feature'
     | 'heading'
     | 'list'
-    | 'paragraph'
+    | 'text'
     | 'image'
 
   interface Block {
@@ -185,18 +185,18 @@ declare global {
     blocks: T
   }
 
-  interface ParagraphBlock extends Block {
-    type: 'paragraph'
+  interface TextBlock extends Block {
+    type: 'text'
     html: string
     multiple?: boolean
   }
 
-  interface HeadingBlock extends Omit<ParagraphBlock, 'enableCommand' | 'enableTextFormat'> {
+  interface HeadingBlock extends Omit<TextBlock, 'enableCommand' | 'enableTextFormat'> {
     type: 'heading'
     level: number
   }
 
-  interface ListBlock extends GroupBlock<ParagraphBlock[]> {
+  interface ListBlock extends GroupBlock<TextBlock[]> {
     type: 'list'
     ordered?: boolean
   }
@@ -211,7 +211,7 @@ declare global {
   }
 
   interface FeatureBlock
-    extends GroupBlock<[ImageBlock, GroupBlock<[HeadingBlock, ParagraphBlock]>]> {
+    extends GroupBlock<[ImageBlock, GroupBlock<[HeadingBlock, GroupBlock<TextBlock[]>]>]> {
     type: 'feature'
     align: 'left' | 'right'
   }
@@ -227,7 +227,7 @@ declare global {
     sources: SlideGallerySource[]
   }
 
-  interface PaymentBlock extends GroupBlock<[HeadingBlock, ParagraphBlock, ListBlock]> {
+  interface PaymentBlock extends GroupBlock<[HeadingBlock, GroupBlock<[TextBlock, ListBlock]>]> {
     type: 'payment'
     provider: string
     productId?: string

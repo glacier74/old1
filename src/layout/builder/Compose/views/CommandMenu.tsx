@@ -1,7 +1,7 @@
 import { Menus, Portal } from '@heyforms/ui'
 import { IComponentProps } from '@heyforms/ui/types/typing'
 import { isEmpty, isValidArray } from '@nily/utils'
-import { IconBox, IconCreditCard, IconSlideshow, IconTypography } from '@tabler/icons'
+import { IconBox, IconCreditCard, IconLetterT, IconSlideshow } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
 import { FC, ReactNode, useEffect, useMemo, useRef, useState } from 'react'
 import { useClickAway } from 'react-use'
@@ -26,9 +26,9 @@ const blockOptions: MenuOption[] = [
     name: 'Basic',
     children: [
       {
-        type: 'paragraph',
-        label: 'builder.paragraph.name',
-        icon: <IconTypography />
+        type: 'text',
+        label: 'builder.text.name',
+        icon: <IconLetterT />
       }
     ]
   },

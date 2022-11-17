@@ -14,7 +14,7 @@ interface SlideModalProps extends IModalProps {
 }
 
 const IMAGE_COMMEND_WIDTH = 1100
-const IMAGE_COMMEND_HEIGHT = 480
+const IMAGE_COMMEND_HEIGHT = 658
 
 export const SlideModal: FC<SlideModalProps> = ({
   visible = true,

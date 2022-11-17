@@ -308,11 +308,11 @@ body {
 }
 
 .block-container {
-  @apply relative px-20;
+  @apply relative -mx-20 px-20;
   transform: translate(0, 0);
 
   .block-container {
-    @apply px-0;
+    @apply px-0 mx-0;
   }
 
   &:hover {
@@ -346,7 +346,7 @@ body {
 }
 
 .block-actions {
-  @apply absolute top-0 left-0 flex items-center justify-end mt-1.5 pr-1 w-20 opacity-0 z-20;
+  @apply absolute top-0 left-0 flex items-center justify-end mt-3.5 pr-1 w-20 opacity-0 z-20;
 
   &.block-actions-active {
     @apply opacity-100;
@@ -428,26 +428,43 @@ h3.rich-text {
   z-index: 9998;
 }
 
-.block-feature {
-  .block-container {
-    @apply px-0;
+.block-feature-container {
+  @apply py-16 flex items-center;
+
+  & > .block-group {
+    @apply pl-12;
+  }
+
+  & > .block-image,
+  & > .block-group {
+    @apply flex-1;
+  }
+
+  &.block-feature-align-right {
+    @apply flex-row-reverse;
+
+    & > .block-group {
+      @apply pl-0 pr-12;
+    }
   }
 
   .block-upload {
     @apply bg-slate-100;
-    width: 25rem;
+    width: 31.25rem;
     height: 18.75rem;
   }
 
   .block-image {
+    @apply flex justify-center;
+
+    .block-image-container {
+      width: 31.25rem;
+    }
+
     img {
-      max-width: 25rem;
+      max-width: 31.25rem;
       height: auto;
     }
-  }
-
-  .block-group {
-    width: 32rem;
   }
 
   .rich-text {
@@ -458,7 +475,7 @@ h3.rich-text {
     }
   }
 
-  .block-paragraph {
+  .block-text {
     @apply text-slate-700;
   }
 }

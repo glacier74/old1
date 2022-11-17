@@ -263,8 +263,8 @@
       "center": "Align center",
       "right": "Align right"
     },
-    "paragraph": {
-      "name": "Paragraph",
+    "text": {
+      "name": "Text",
       "placeholder": "Type '/' to insert blocks"
     },
     "feature": {

@@ -39,14 +39,13 @@ export const SiteHeader = () => {
   return (
     <div className="site-header mt-10 py-10">
       <LogoPickerField
-        className="mx-20"
         value={product?.logo}
         size={100}
         enableUnsplash={false}
         onChange={handleLogoChange}
       />
 
-      <div className="editor-name mx-20">
+      <div className="editor-name">
         <Input
           value={product?.name}
           placeholder={t('onboarding.name')}
@@ -54,7 +53,7 @@ export const SiteHeader = () => {
         />
       </div>
 
-      <div className="editor-tagline mx-20 mt-3">
+      <div className="editor-tagline mt-3">
         <Input
           value={product?.tagline}
           placeholder={t('onboarding.tagline')}

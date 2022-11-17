@@ -36,7 +36,7 @@ const ImageComponent: FC<ImageProps> = ({ block, ...resetProps }) => {
     <>
       <Block className={`block-align-${block.align}`} block={block} {...resetProps}>
         {block.source ? (
-          <div className="group/item relative w-full h-full">
+          <div className="block-image-container group/item relative w-full h-full">
             <img src={block.source} alt={block.caption} width={block.width} height={block.height} />
             <div className="block-image-toolbar">
               <Button className="!px-3 !py-2" leading={<IconPhotoEdit />} onClick={open}>

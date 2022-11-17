@@ -6,9 +6,9 @@ import { Group } from './Group'
 import { Heading } from './Heading'
 import { Image } from './Image'
 import { List } from './List'
-import { Paragraph } from './Paragraph'
 import { Payment } from './Payment'
 import { SlideGallery } from './SlideGallery'
+import { Text } from './Text'
 
 interface BlockWrapperProps
   extends Pick<
@@ -42,6 +42,6 @@ export const BlockWrapper: FC<BlockWrapperProps> = props => {
       return <Image key={props.block.id} {...props} />
 
     default:
-      return <Paragraph key={props.block.id} {...props} />
+      return <Text key={props.block.id} {...props} />
   }
 }

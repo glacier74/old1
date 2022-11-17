@@ -1,6 +1,5 @@
 import { Menus, Switch, Tooltip } from '@heyforms/ui'
 import { IconLayoutAlignLeft, IconLayoutAlignRight } from '@tabler/icons'
-import clsx from 'clsx'
 import { FC, useMemo } from 'react'
 
 import { useComposeStore } from '~/layout/builder/Compose/store'
@@ -65,12 +64,8 @@ export const FeatureSettings: FC<Pick<FeatureProps, 'block'>> = ({ block }) => {
 
 export const Feature: FC<FeatureProps> = ({ block, placeholder, ...restProps }) => {
   return (
-    <Block className={`block-align-${block.align}`} block={block} {...restProps}>
-      <div
-        className={clsx('flex flex-start justify-between', {
-          'flex-row-reverse': block.align === 'right'
-        })}
-      >
+    <Block block={block} {...restProps}>
+      <div className={`block-feature-container block-feature-align-${block.align}`}>
         {block.blocks.map(child => (
           <BlockWrapper key={child.id} block={child} enableAction={false} enableDropZone={false} />
         ))}

@@ -29,23 +29,29 @@ export function blockByType(type: BlockType, blockId?: string): Block {
           },
           {
             id: uuidv4(),
-            type: 'paragraph',
-            enableCommand: false,
-            deletable: false,
-            placeholder: 'builder.payment.description',
-            enterBehavior: 'focusNextBlock'
-          },
-          {
-            id: uuidv4(),
-            type: 'list',
-            enableCommand: false,
-            deletable: false,
+            type: 'group',
             blocks: [
               {
                 id: uuidv4(),
-                type: 'paragraph',
+                type: 'text',
                 enableCommand: false,
-                placeholder: 'builder.payment.feature'
+                deletable: false,
+                placeholder: 'builder.payment.description',
+                enterBehavior: 'focusNextBlock'
+              },
+              {
+                id: uuidv4(),
+                type: 'list',
+                enableCommand: false,
+                deletable: false,
+                blocks: [
+                  {
+                    id: uuidv4(),
+                    type: 'text',
+                    enableCommand: false,
+                    placeholder: 'builder.payment.feature'
+                  }
+                ]
               }
             ]
           }
@@ -82,10 +88,16 @@ export function blockByType(type: BlockType, blockId?: string): Block {
               },
               {
                 id: uuidv4(),
-                type: 'paragraph',
-                enableCommand: false,
-                deletable: false,
-                placeholder: 'builder.feature.description'
+                type: 'group',
+                blocks: [
+                  {
+                    id: uuidv4(),
+                    type: 'text',
+                    enableCommand: false,
+                    deletable: false,
+                    placeholder: 'builder.feature.description'
+                  }
+                ]
               }
             ]
           }
@@ -116,7 +128,7 @@ export function getBlockByPath(blocks: Block[], path: string[]): Block | undefin
 }
 
 export const NESTED_DELETABLE_TYPES = ['list', 'group']
-export const FOCUSABLE_TYPES = ['heading', 'paragraph']
+export const FOCUSABLE_TYPES = ['heading', 'text']
 export const DELETABLE_TYPES = [...NESTED_DELETABLE_TYPES, ...FOCUSABLE_TYPES]
 
 export function blocksToLocations(blocks: Block[], parent?: BlockLocation): BlockLocation[] {
@@ -127,7 +139,7 @@ export function blocksToLocations(blocks: Block[], parent?: BlockLocation): Bloc
 
     if (DELETABLE_TYPES.includes(b.type) && !isFalse(b.deletable)) {
       if (!parent) {
-        deletable = index > 0
+        deletable = index > 0 || (index === 0 && blocks.length > 1)
       } else if (NESTED_DELETABLE_TYPES.includes(parent.type)) {
         deletable = parent.deletable || index > 0
       }
