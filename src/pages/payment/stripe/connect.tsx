@@ -9,6 +9,10 @@ const StripeConnect = () => {
   const router = useRouter()
 
   useEffect(() => {
+    if (!router.isReady) {
+      return
+    }
+
     const origin = window.location.origin
 
     if (window.opener && window.opener.origin === origin) {
@@ -19,7 +23,7 @@ const StripeConnect = () => {
 
       window.opener.postMessage(data, origin)
     }
-  }, [])
+  }, [router.isReady])
 
   return (
     <BaseLayout seo={{ title: t('stripe.title') }}>
