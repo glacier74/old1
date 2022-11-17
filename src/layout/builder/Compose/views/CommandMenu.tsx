@@ -37,7 +37,7 @@ const blockOptions: MenuOption[] = [
     children: [
       {
         type: 'feature',
-        label: 'builder.feature',
+        label: 'builder.feature.name',
         icon: <IconBox />
       },
       {
@@ -191,7 +191,12 @@ export const CommandMenu: FC<IComponentProps> = ({ style, ...restProps }) => {
               <div key={option.name}>
                 <Menus.Label label={t(option.name)} />
                 {option.children.map(row => (
-                  <Menus.Item value={row.type} icon={row.icon} label={t(row.label)} />
+                  <Menus.Item
+                    key={row.type}
+                    value={row.type}
+                    icon={row.icon}
+                    label={t(row.label)}
+                  />
                 ))}
               </div>
             ))

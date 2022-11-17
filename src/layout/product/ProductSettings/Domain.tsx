@@ -1,5 +1,7 @@
-import { Form, Input } from '@heyforms/ui'
+import { Form, Input, Tooltip, notification, useForm } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
+import { useEffect, useMemo } from 'react'
+import CopyToClipboard from 'react-copy-to-clipboard'
 
 import { useProduct } from '~/layout'
 import { ProductService } from '~/service'
@@ -9,17 +11,34 @@ export const Domain = () => {
   const { t } = useTranslation()
   const product = useProduct()
   const { updateProduct } = useStore()
+  const [form] = useForm()
+
+  const url = useMemo(
+    () => `${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`,
+    [product.domain]
+  )
 
   async function handleFinish(updates: any) {
     await ProductService.update(product!.id, updates)
     updateProduct(product!.id, updates)
   }
 
+  function handleCopy() {
+    notification.success({
+      title: t('productSettings.domain.copiedTip')
+    })
+  }
+
+  useEffect(() => {
+    form.resetFields()
+  }, [product.domain])
+
   return (
     <div className="pt-4">
       <div className="form-item-label">{t('onboarding.publicSiteURL')}</div>
       <div>
         <Form.Custom
+          form={form}
           className="w-96"
           inline
           initialValues={{
@@ -27,6 +46,7 @@ export const Domain = () => {
           }}
           submitText="Update"
           submitOptions={{
+            className: 'ml-2',
             type: 'primary'
           }}
           onlySubmitOnValueChange={true}
@@ -46,8 +66,12 @@ export const Domain = () => {
           </Form.Item>
         </Form.Custom>
         <p className="form-item-description mt-1">
-          {t('productSettings.domain.description2')}:{' '}
-          <span className="underline">{`${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`}</span>
+          {t('productSettings.domain.description')}{' '}
+          <Tooltip ariaLabel={t('productSettings.domain.copyTip')}>
+            <CopyToClipboard text={`https://${url}`} onCopy={handleCopy}>
+              <span className="underline cursor-pointer">{url}</span>
+            </CopyToClipboard>
+          </Tooltip>
         </p>
       </div>
     </div>

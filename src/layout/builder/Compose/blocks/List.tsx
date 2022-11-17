@@ -16,9 +16,10 @@ export const List: FC<ListProps> = ({
 }) => {
   return (
     <Block block={block} {...restProps}>
-      {block.blocks.map(b => (
+      {block.blocks.map(child => (
         <BlockWrapper
-          block={b}
+          key={child.id}
+          block={child}
           enableCommand={enableCommand}
           enableTextFormat={enableTextFormat}
           enableAction={false}

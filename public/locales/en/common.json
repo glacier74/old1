@@ -100,7 +100,8 @@
     "loggedAs": "Logged in as:",
     "name": "Product name",
     "tagline": "Tagline",
-    "description": "Brief description",
+    "publicSiteURL": "Public site URL",
+    "invalidDomain": "The domain must have at least 3 characters, including uppercase, lowercase, number or \"-\"",
     "createProduct": "Create product",
     "invalidLogo": "The logo is not allowed to be empty",
     "invalidName": "The name is not allowed to be empty",
@@ -209,6 +210,11 @@
     "language": {
       "heading": "Language",
       "description": "Choose in what language the visitors will see your site. This applies to the text which is not customized by you e.g. default buttons, errors, etc."
+    },
+    "domain": {
+      "description": "Product page shared to web will be under",
+      "copyTip": "Click to copy link",
+      "copiedTip": "Copied link to clipboard"
     },
     "sitePrivate": {
       "heading": "Make the site private"

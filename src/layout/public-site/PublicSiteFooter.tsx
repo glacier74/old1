@@ -74,8 +74,8 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
         )}
       </div>
 
-      <p className="mt-2 text-sm text-slate-700">
-        {new Date().getFullYear()} {product?.name}
+      <p className="mt-2 text-sm text-slate-500">
+        Copyright © {new Date().getFullYear()} {product?.name}
       </p>
     </div>
   )

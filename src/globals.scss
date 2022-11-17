@@ -373,8 +373,8 @@ body {
 .rich-text {
   @apply py-2 outline-none;
 
-  &:empty:before {
-    @apply absolute pointer-events-none text-black text-opacity-30 hidden;
+  &:empty:after {
+    @apply pointer-events-none text-black text-opacity-30 hidden;
     content: attr(placeholder);
   }
 }
@@ -384,7 +384,7 @@ h3.rich-text {
 }
 
 .block-selected {
-  .rich-text:empty:before {
+  .rich-text:empty:after {
     display: block;
   }
 }
@@ -453,7 +453,7 @@ h3.rich-text {
   .rich-text {
     @apply py-2 outline-none;
 
-    &:empty:before {
+    &:empty:after {
       @apply block;
     }
   }
@@ -508,11 +508,19 @@ h3.rich-text {
   }
 }
 
+.blocks {
+  .rich-text {
+    &:empty:after {
+      @apply block;
+    }
+  }
+}
+
 .block-payment {
   .rich-text {
     @apply py-2 outline-none;
 
-    &:empty:before {
+    &:empty:after {
       @apply block;
     }
   }
@@ -571,6 +579,10 @@ h3.rich-text {
 .slide-button-previous,
 .slide-button-next {
   @apply p-8 flex-grow-0 flex-shrink-0 text-white opacity-50 hover:opacity-100 transition-opacity cursor-pointer;
+}
+
+.slide-button-hide {
+  @apply opacity-0 pointer-events-none;
 }
 
 .slide-indicators {

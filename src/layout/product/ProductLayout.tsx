@@ -34,6 +34,10 @@ export function ProductLayout({ seo, children }: LayoutProps) {
   const { isReady, isMemberListShow, isAccountSettingsShow } = useStore()
   const product = useProduct()
 
+  function handlePreview() {
+    window.open(`https://${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`)
+  }
+
   return (
     <>
       <AuthorizedLayout
@@ -71,7 +75,9 @@ export function ProductLayout({ seo, children }: LayoutProps) {
                         <Link className="link-button" href={`/product/${product?.id}/edit`}>
                           {t('product.edit')}
                         </Link>
-                        <Button type="primary">{t('product.viewSite')}</Button>
+                        <Button type="primary" onClick={handlePreview}>
+                          {t('product.viewSite')}
+                        </Button>
                       </div>
                     </div>
 

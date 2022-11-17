@@ -4,6 +4,7 @@ import { useTranslation } from 'next-i18next'
 import { FC, ReactNode, useCallback, useMemo, useRef, useState } from 'react'
 
 import { IconChevronLeftCircle, IconChevronRightCircle, SlideModal } from '~/components'
+import { StripeService } from '~/service'
 import { cropImage, currencyFormatter, useVisible } from '~/utils'
 
 const Block: FC<{ block: Block; children: ReactNode }> = ({ block, children }) => (
@@ -45,8 +46,6 @@ const SlideGalleryItem: FC<{
 }
 
 const SlideGallery: FC<{ block: SlideGalleryBlock }> = ({ block }) => {
-  const { t } = useTranslation()
-
   const containerRef = useRef<HTMLDivElement | null>(null)
   const wrapperRef = useRef<HTMLDivElement | null>(null)
   const [index, setIndex] = useState<number | null>(null)
@@ -131,11 +130,18 @@ const SlideGallery: FC<{ block: SlideGalleryBlock }> = ({ block }) => {
   )
 }
 
-const Payment: FC<{ block: PaymentBlock }> = ({ block }) => {
+const Payment: FC<{ productId: number; block: PaymentBlock }> = ({ productId, block }) => {
   const { t } = useTranslation()
 
-  async function handleFinish() {
-    alert('Payment..')
+  async function handleFinish(values: AnyMap<string>) {
+    const result = await StripeService.checkout({
+      productId,
+      blockId: block.id,
+      productUrl: window.location.href,
+      email: values.email
+    })
+
+    window.location.href = result.sessionUrl
   }
 
   return (
@@ -198,7 +204,7 @@ const List: FC<{ block: ListBlock }> = ({ block }) => {
   return (
     <Block block={block}>
       {block.blocks.map(child => (
-        <BlockWrapper block={child} />
+        <BlockWrapper key={child.id} block={child} />
       ))}
     </Block>
   )
@@ -209,7 +215,9 @@ const Heading: FC<{ block: HeadingBlock }> = ({ block }) => {
 
   return (
     <Block block={block}>
-      <CustomTag className="py-2 text-3xl font-bold text-slate-900">{block.html}</CustomTag>
+      <CustomTag className="rich-text" placeholder="&nbsp;">
+        {block.html}
+      </CustomTag>
     </Block>
   )
 }
@@ -230,12 +238,16 @@ const Image: FC<{ block: ImageBlock }> = ({ block }) => {
 const Paragraph: FC<{ block: ParagraphBlock }> = ({ block }) => {
   return (
     <Block block={block}>
-      <p className="py-2 text-base" dangerouslySetInnerHTML={{ __html: block.html }} />
+      <div
+        className="rich-text"
+        placeholder="&nbsp;"
+        dangerouslySetInnerHTML={{ __html: block.html }}
+      />
     </Block>
   )
 }
 
-const BlockWrapper: FC<{ block: any }> = ({ block }) => {
+const BlockWrapper: FC<{ productId?: number; block: any }> = ({ productId, block }) => {
   switch (block.type) {
     case 'group':
       return <Group key={block.id} block={block} />
@@ -244,7 +256,7 @@ const BlockWrapper: FC<{ block: any }> = ({ block }) => {
       return <SlideGallery key={block.id} block={block} />
 
     case 'payment':
-      return <Payment key={block.id} block={block} />
+      return <Payment key={block.id} productId={productId!} block={block} />
 
     case 'feature':
       return <Feature key={block.id} block={block} />
@@ -263,10 +275,13 @@ const BlockWrapper: FC<{ block: any }> = ({ block }) => {
   }
 }
 
-export const PublicBlocks: FC<{ blocks: Block[] }> = ({ blocks = [] }) => (
+export const PublicBlocks: FC<{ productId: number; blocks: Block[] }> = ({
+  productId,
+  blocks = []
+}) => (
   <div className="blocks">
     {blocks.map(block => (
-      <BlockWrapper key={block.id} block={block} />
+      <BlockWrapper key={block.id} productId={productId} block={block} />
     ))}
   </div>
 )

@@ -18,4 +18,14 @@ export class StripeService {
       stripeAccount
     })
   }
+
+  static async checkout(input: {
+    productId: number
+    blockId: string
+    name?: string
+    email: string
+    productUrl: string
+  }): Promise<{ sessionUrl: string }> {
+    return axios.post('/payment/stripe/checkout', input)
+  }
 }

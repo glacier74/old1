@@ -11,13 +11,13 @@ interface PublicSiteProps {
 const PublicSite: FC<PublicSiteProps> = ({ product }) => (
   <BaseLayout
     seo={{
-      title: product.name,
-      description: product.tagline
+      title: product.siteSetting.metaTitle || product.name,
+      description: product.siteSetting.metaDescription || product.tagline
     }}
   >
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <PublicSiteHeader product={product} />
-      <PublicBlocks blocks={product.siteSetting.content} />
+      <PublicBlocks productId={product.id} blocks={product.siteSetting.content} />
       <PublicSiteFooter product={product} />
     </div>
   </BaseLayout>

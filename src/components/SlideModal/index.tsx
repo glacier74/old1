@@ -1,4 +1,5 @@
 import { Portal, stopPropagation } from '@heyforms/ui'
+import clsx from 'clsx'
 import { FC, MouseEvent, useCallback, useMemo, useState } from 'react'
 
 import { IconArrowLeft, IconArrowRight } from '~/components'
@@ -50,31 +51,35 @@ export const SlideModal: FC<SlideModalProps> = ({
     <Portal visible={visible}>
       <div className="slide-modal" onClick={onClose}>
         <div className="slide-container">
-          {active > 0 && (
-            <button
-              className="slide-button-previous"
-              aria-label="Previous Slide"
-              onClick={handlePrevious}
-            >
-              <IconArrowLeft />
-            </button>
-          )}
+          <button
+            className={clsx('slide-button-previous', {
+              'slide-button-hide': active <= 0
+            })}
+            aria-label="Previous Slide"
+            onClick={handlePrevious}
+          >
+            <IconArrowLeft />
+          </button>
 
           <div className="slide-image">
             <div onClick={stopPropagation}>
               <img
-                key={cropImage(source?.url, IMAGE_COMMEND_WIDTH, IMAGE_COMMEND_HEIGHT)}
-                src={source?.url}
+                key={source?.url}
+                src={cropImage(source?.url, IMAGE_COMMEND_WIDTH, IMAGE_COMMEND_HEIGHT)}
                 loading="eager"
               />
             </div>
           </div>
 
-          {active < sources.length - 1 && (
-            <button className="slide-button-next" aria-label="Next Slide" onClick={handleNext}>
-              <IconArrowRight />
-            </button>
-          )}
+          <button
+            className={clsx('slide-button-next', {
+              'slide-button-hide': active >= sources.length - 1
+            })}
+            aria-label="Next Slide"
+            onClick={handleNext}
+          >
+            <IconArrowRight />
+          </button>
 
           {sources.length > 1 && (
             <SlideIndicator active={active} length={sources.length} onChange={handleChange} />
