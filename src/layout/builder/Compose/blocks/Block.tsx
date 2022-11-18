@@ -8,18 +8,28 @@ import { ActionMenu } from '../views'
 
 export interface BlockProps extends Omit<IComponentProps, 'onFocus' | 'onSelect'> {
   block: Block
+  enableMultiple?: boolean
   enableAction?: boolean
   enableCommand?: boolean
-  enableTextFormat?: boolean
   enableDropZone?: boolean
-  enterBehavior?: 'createBlock' | 'focusNextBlock'
+  enableFormats?: Array<'basic' | 'align'>
+  enterBehavior?: BlockEnterBehavior
 }
 
-const BlockComponent: FC<BlockProps> = ({
+export const BlockPreview: FC<BlockProps> = ({ className, block, children }) => (
+  <div
+    className={clsx('block-container', `block-${block.type}`, className)}
+    data-block-id={block.id}
+  >
+    {children}
+  </div>
+)
+
+export const BlockComponent: FC<BlockProps> = ({
   className,
   block,
-  enableAction = true,
-  enableDropZone = true,
+  enableAction,
+  enableDropZone,
   children
 }) => {
   const { state, dispatch } = useComposeStore()
@@ -64,20 +74,22 @@ const BlockComponent: FC<BlockProps> = ({
         {
           'block-dragging': isDragging,
           'block-hovering': isOver,
-          'block-selected': block.id === state.selectedBlockId
+          'block-selected': block.id === state.selectBlockId
         },
         className
       )}
-      data-block-id={`block-${block.id}`}
+      data-block-id={block.id}
     >
+      {/* Action menu */}
       {enableAction && <ActionMenu block={block} connectDrag={connectDrag} />}
 
-      <div ref={ref => connectDrop(connectPreview(ref))} className="block-content">
+      {/* Preview */}
+      <div ref={ref => connectDrop(connectPreview(ref))} className="block-preview">
         {children}
       </div>
 
+      {/* Dropzone */}
       {enableDropZone && <div className="block-dropzone" />}
     </div>
   )
 }
-export const Block = BlockComponent

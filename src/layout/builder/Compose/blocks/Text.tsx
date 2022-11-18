@@ -3,18 +3,28 @@ import { FC, useCallback } from 'react'
 
 import { useComposeStore } from '../store'
 import { RichText } from '../views'
-import { Block, BlockProps } from './Block'
+import { BlockComponent, BlockPreview, BlockProps } from './Block'
 
-interface TextProps extends BlockProps {
+export interface TextProps extends BlockProps {
   block: TextBlock
+}
+
+export const TextPreview: FC<TextProps> = ({ block, ...restProps }) => {
+  return (
+    <BlockPreview block={block} {...restProps}>
+      <div className="rich-text" placeholder=" " dangerouslySetInnerHTML={{ __html: block.html }} />
+    </BlockPreview>
+  )
 }
 
 export const Text: FC<TextProps> = ({
   block,
   placeholder = 'builder.text.placeholder',
-  enableCommand,
-  enableTextFormat,
-  enterBehavior = 'createBlock',
+  enableMultiple = false,
+  enableAction = true,
+  enableCommand = true,
+  enableFormats = ['basic', 'align'],
+  enterBehavior = 'newBlock',
   children,
   ...restProps
 }) => {
@@ -34,17 +44,17 @@ export const Text: FC<TextProps> = ({
   }, [])
 
   return (
-    <Block block={block} {...restProps}>
+    <BlockComponent block={block} enableAction={enableAction} {...restProps}>
       <RichText
         blockId={block.id}
         value={block.html}
-        placeholder={t(block.placeholder || placeholder)}
+        placeholder={t(placeholder)}
         enableCommand={enableCommand}
-        enableTextFormat={enableTextFormat}
-        enterBehavior={block.enterBehavior || enterBehavior}
+        enableTextFormat={!!enableFormats}
+        enterBehavior={enterBehavior}
         onChange={handleChange}
       />
       {children}
-    </Block>
+    </BlockComponent>
   )
 }

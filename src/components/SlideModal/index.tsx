@@ -14,7 +14,7 @@ interface SlideModalProps extends IModalProps {
 }
 
 const IMAGE_COMMEND_WIDTH = 1100
-const IMAGE_COMMEND_HEIGHT = 658
+const IMAGE_COMMEND_HEIGHT = 640
 
 export const SlideModal: FC<SlideModalProps> = ({
   visible = true,
@@ -64,8 +64,8 @@ export const SlideModal: FC<SlideModalProps> = ({
           <div className="slide-image">
             <div onClick={stopPropagation}>
               <img
-                key={source?.url}
-                src={cropImage(source?.url, IMAGE_COMMEND_WIDTH, IMAGE_COMMEND_HEIGHT)}
+                key={source?.source}
+                src={cropImage(source?.source, IMAGE_COMMEND_WIDTH, IMAGE_COMMEND_HEIGHT)}
                 loading="eager"
               />
             </div>

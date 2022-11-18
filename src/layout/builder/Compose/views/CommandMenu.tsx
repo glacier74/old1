@@ -107,8 +107,8 @@ export const CommandMenu: FC<IComponentProps> = ({ style, ...restProps }) => {
       dispatch({
         type: 'updateBlock',
         payload: {
-          blockId: state.selectedBlockId,
-          updates: blockByType(_type!, state.selectedBlockId)
+          blockId: state.selectBlockId,
+          updates: blockByType(_type!, state.selectBlockId)
         } as any
       })
     }
@@ -160,7 +160,7 @@ export const CommandMenu: FC<IComponentProps> = ({ style, ...restProps }) => {
     return () => {
       emitter.off('selectOption')
     }
-  }, [flatOptions, focused, state.selectedBlockId])
+  }, [flatOptions, focused, state.selectBlockId])
 
   useEffect(() => {
     emitter.on('focusOption', focusOption)

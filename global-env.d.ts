@@ -154,80 +154,55 @@ declare global {
     unit_amount: number
   }
 
-  type BlockType =
-    | 'group'
-    | 'payment'
-    | 'slideGallery'
-    | 'feature'
-    | 'heading'
-    | 'list'
-    | 'text'
-    | 'image'
+  type BlockEnterBehavior = 'focusBlock' | 'newBlock'
+
+  interface SlideGallerySource {
+    type: 'image' | 'video'
+    source: string
+    caption?: string
+  }
+
+  type BlockType = 'text' | 'heading' | 'image' | 'list' | 'feature' | 'payment' | 'slideGallery'
 
   interface Block {
     id: string
     type: BlockType
-    deletable?: boolean
-    placeholder?: string
-    subPlaceholder?: string
-    enableCommand?: boolean
-    enableTextFormat?: boolean
-    enableDropZone?: boolean
-    enterBehavior?: 'createBlock' | 'focusNextBlock'
-  }
-
-  interface BlockLocation extends Block {
-    path: string[]
-  }
-
-  interface GroupBlock<T extends Block[] = Block[]> extends Block {
-    type: 'group'
-    blocks: T
   }
 
   interface TextBlock extends Block {
     type: 'text'
     html: string
-    multiple?: boolean
   }
 
-  interface HeadingBlock extends Omit<TextBlock, 'enableCommand' | 'enableTextFormat'> {
+  interface HeadingBlock extends Omit<TextBlock, 'type'> {
     type: 'heading'
     level: number
   }
 
-  interface ListBlock extends GroupBlock<TextBlock[]> {
-    type: 'list'
-    ordered?: boolean
-  }
-
-  interface ImageBlock extends Block {
+  interface ImageBlock extends Pick<Block, 'id' | 'type'> {
     type: 'image'
+    source: string
+    caption?: string
     width?: number
     height?: number
-    source?: string
-    caption?: string
     align?: 'left' | 'center' | 'right'
   }
 
-  interface FeatureBlock
-    extends GroupBlock<[ImageBlock, GroupBlock<[HeadingBlock, GroupBlock<TextBlock[]>]>]> {
+  interface ListBlock extends Pick<Block, 'id' | 'type'> {
+    type: 'list'
+    ordered?: false
+    content: TextBlock[]
+  }
+
+  interface FeatureBlock extends Pick<Block, 'id' | 'type'> {
     type: 'feature'
-    align: 'left' | 'right'
+    align?: 'left' | 'right'
+    image: Omit<ImageBlock, 'align'>
+    heading: HeadingBlock
+    content: TextBlock
   }
 
-  interface SlideGallerySource {
-    type: 'image' | 'video'
-    caption?: string
-    url: string
-  }
-
-  interface SlideGalleryBlock extends Block {
-    type: 'slideGallery'
-    sources: SlideGallerySource[]
-  }
-
-  interface PaymentBlock extends GroupBlock<[HeadingBlock, GroupBlock<[TextBlock, ListBlock]>]> {
+  interface PaymentBlock extends Pick<Block, 'id' | 'type'> {
     type: 'payment'
     provider: string
     productId?: string
@@ -238,5 +213,19 @@ declare global {
     amount: number
     stripeAccount?: string
     stripeEmail?: string
+    heading: HeadingBlock
+    description: TextBlock
+    content: ListBlock
+  }
+
+  interface SlideGalleryBlock extends Pick<Block, 'id' | 'type'> {
+    type: 'slideGallery'
+    sources: SlideGallerySource[]
+  }
+
+  interface FlattedBlock extends Pick<Block, 'id'> {
+    rootId?: string
+    path: (string | number)[]
+    deletable?: boolean
   }
 }

@@ -21,7 +21,7 @@ export interface RichTextProps extends Omit<IComponentProps, 'onChange'> {
   value?: string
   enableCommand?: boolean
   enableTextFormat?: boolean
-  enterBehavior?: 'createBlock' | 'focusNextBlock'
+  enterBehavior?: BlockEnterBehavior
   onFocus?: () => void
   onUp?: () => void
   onDown?: () => void
@@ -99,7 +99,7 @@ const RichTextComponent: FC<RichTextProps> = ({
           state.isCommandMenuOpen && emitter.emit('selectOption')
           event.preventDefault()
         } else if (!multiple) {
-          if (enterBehavior === 'createBlock') {
+          if (enterBehavior === 'newBlock') {
             dispatch({
               type: 'addBlock',
               payload: {
@@ -110,7 +110,7 @@ const RichTextComponent: FC<RichTextProps> = ({
                 afterId: blockId
               }
             })
-          } else if (enterBehavior === 'focusNextBlock') {
+          } else if (enterBehavior === 'focusBlock') {
             dispatch({
               type: 'focusBlock',
               payload: {
@@ -258,12 +258,14 @@ const RichTextComponent: FC<RichTextProps> = ({
   }
 
   function handleFocus() {
-    dispatch({
-      type: 'focusBlock',
-      payload: {
-        blockId
-      }
-    })
+    if (state.focusBlockId !== blockId) {
+      dispatch({
+        type: 'focusBlock',
+        payload: {
+          blockId
+        }
+      })
+    }
   }
 
   function handleComposition(event: any) {
@@ -318,17 +320,17 @@ const RichTextComponent: FC<RichTextProps> = ({
     state.isBubbleMenuOpen
   ])
   const handlePasteCallback = useCallback(handlePaste, [])
-  const handleFocusCallback = useCallback(handleFocus, [])
+  const handleFocusCallback = useCallback(handleFocus, [state.focusBlockId, blockId])
   const handleMouseUpCallback = useCallback(handleMouseUp, [ref.current])
   const throttledUpdate = useCallback(throttle(handleUpdate, 200), [ref.current])
 
   // Focus when selected
   useEffect(() => {
     // Don't change cart if BubbleMenu is open
-    if (ref.current && !state.isBubbleMenuOpen && state.selectedBlockId === blockId) {
+    if (ref.current && !state.isBubbleMenuOpen && state.focusBlockId === blockId) {
       placeCaretAtEnd(ref.current)
     }
-  }, [ref, state.isBubbleMenuOpen, state.selectedBlockId])
+  }, [ref, state.isBubbleMenuOpen, state.focusBlockId])
 
   // Setup initial html
   useEffect(() => {

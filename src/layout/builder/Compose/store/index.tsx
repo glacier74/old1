@@ -9,10 +9,13 @@ import { setBlocks } from './actions'
 
 export interface IState {
   blocks: Block[]
-  locations: BlockLocation[]
+  flattedBlocks: FlattedBlock[]
+  focusableBlockMap: AnyMap<string[]>
+  rootBlocks: string[]
 
   // Selected block
-  selectedBlockId?: string
+  focusBlockId?: string
+  selectBlockId?: string
 
   // RichText
   textSelection?: RichTextSelection
@@ -156,7 +159,9 @@ export const ComposeStoreProvider: FC<IComponentProps> = ({ children }) => {
   const initialState: IState = useMemo(
     () => ({
       blocks: [],
-      locations: [],
+      flattedBlocks: [],
+      focusableBlockMap: {},
+      rootBlocks: [],
       isBubbleMenuOpen: false,
       isCommandMenuOpen: false,
       syncVersion: 0

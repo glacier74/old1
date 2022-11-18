@@ -271,7 +271,7 @@
       "name": "Feature",
       "heading": "Heading",
       "description": "Description",
-      "uploadTip1": "Recommended size: 1100x480 | JPG, PNG, BMP.",
+      "uploadTip1": "Recommended size: 1100x640 | JPG, PNG, BMP.",
       "uploadTip2": "Max size: 2MB"
     },
     "payment": {
@@ -282,7 +282,7 @@
     },
     "slideGallery": {
       "name": "Slide gallery",
-      "uploadTip1": "Recommended size: 1100x480 | JPG, PNG, BMP.",
+      "uploadTip1": "Recommended size: 1100x640 | JPG, PNG, BMP.",
       "uploadTip2": "Max size: 2MB"
     }
   },

@@ -5,16 +5,42 @@ import { FC } from 'react'
 
 import { PhotoPicker } from '~/components'
 import { Upload } from '~/layout/builder/Compose/views'
-import { useVisible } from '~/utils'
+import { cropImage, useVisible } from '~/utils'
 
 import { useComposeStore } from '../store'
-import { Block, BlockProps } from './Block'
+import { BlockComponent, BlockPreview, BlockProps } from './Block'
 
-interface ImageProps extends BlockProps {
+export interface ImageProps extends BlockProps {
   block: ImageBlock
+  uploadDesc1: string
+  uploadDesc2: string
 }
 
-const ImageComponent: FC<ImageProps> = ({ block, ...resetProps }) => {
+export const ImagePreview: FC<Omit<ImageProps, 'uploadDesc1' | 'uploadDesc2'>> = ({
+  block,
+  ...restProps
+}) => {
+  return (
+    <BlockPreview block={block} {...restProps}>
+      <div className="block-image-container">
+        <img
+          src={cropImage(block.source, block.width, block.height)}
+          alt={block.caption}
+          width={block.width}
+          height={block.height}
+        />
+      </div>
+    </BlockPreview>
+  )
+}
+
+const ImageComponent: FC<ImageProps> = ({
+  block,
+  enableAction = true,
+  uploadDesc1,
+  uploadDesc2,
+  ...resetProps
+}) => {
   const { t } = useTranslation()
   const { dispatch } = useComposeStore()
   const [visible, open, close] = useVisible()
@@ -34,10 +60,20 @@ const ImageComponent: FC<ImageProps> = ({ block, ...resetProps }) => {
 
   return (
     <>
-      <Block className={`block-align-${block.align}`} block={block} {...resetProps}>
+      <BlockComponent
+        className={`block-image-align-${block.align}`}
+        block={block}
+        enableAction={enableAction}
+        {...resetProps}
+      >
         {block.source ? (
-          <div className="block-image-container group/item relative w-full h-full">
-            <img src={block.source} alt={block.caption} width={block.width} height={block.height} />
+          <div className="block-image-container">
+            <img
+              src={cropImage(block.source, block.width, block.height)}
+              alt={block.caption}
+              width={block.width}
+              height={block.height}
+            />
             <div className="block-image-toolbar">
               <Button className="!px-3 !py-2" leading={<IconPhotoEdit />} onClick={open}>
                 {t('common.change')}
@@ -45,13 +81,9 @@ const ImageComponent: FC<ImageProps> = ({ block, ...resetProps }) => {
             </div>
           </div>
         ) : (
-          <Upload
-            description1={t(block.placeholder!)}
-            description2={t(block.subPlaceholder!)}
-            onClick={open}
-          />
+          <Upload description1={t(uploadDesc1)} description2={t(uploadDesc2)} onClick={open} />
         )}
-      </Block>
+      </BlockComponent>
 
       {/* Photo picker modal */}
       <PhotoPicker

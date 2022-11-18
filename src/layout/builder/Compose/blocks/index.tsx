@@ -1,47 +1,35 @@
 import { FC } from 'react'
 
 import { BlockProps } from './Block'
-import { Feature } from './Feature'
-import { Group } from './Group'
-import { Heading } from './Heading'
-import { Image } from './Image'
-import { List } from './List'
-import { Payment } from './Payment'
-import { SlideGallery } from './SlideGallery'
-import { Text } from './Text'
+import { Feature, FeatureProps } from './Feature'
+import { Heading, HeadingProps } from './Heading'
+import { Image, ImageProps } from './Image'
+import { List, ListProps } from './List'
+import { Payment, PaymentProps } from './Payment'
+import { SlideGallery, SlideGalleryProps } from './SlideGallery'
+import { Text, TextProps } from './Text'
 
-interface BlockWrapperProps
-  extends Pick<
-    BlockProps,
-    'enableCommand' | 'enableAction' | 'enableDropZone' | 'enableTextFormat' | 'enterBehavior'
-  > {
-  block: any
-}
-
-export const BlockWrapper: FC<BlockWrapperProps> = props => {
+export const BlockWrapper: FC<BlockProps> = props => {
   switch (props.block.type) {
-    case 'group':
-      return <Group key={props.block.id} {...props} />
-
     case 'slideGallery':
-      return <SlideGallery key={props.block.id} {...props} />
+      return <SlideGallery key={props.block.id} {...(props as SlideGalleryProps)} />
 
     case 'payment':
-      return <Payment key={props.block.id} {...props} />
+      return <Payment key={props.block.id} {...(props as PaymentProps)} />
 
     case 'feature':
-      return <Feature key={props.block.id} {...props} />
+      return <Feature key={props.block.id} {...(props as FeatureProps)} />
 
     case 'list':
-      return <List key={props.block.id} {...props} />
+      return <List key={props.block.id} {...(props as ListProps)} />
 
     case 'heading':
-      return <Heading key={props.block.id} {...props} />
+      return <Heading key={props.block.id} {...(props as HeadingProps)} />
 
     case 'image':
-      return <Image key={props.block.id} {...props} />
+      return <Image key={props.block.id} {...(props as ImageProps)} />
 
     default:
-      return <Text key={props.block.id} {...props} />
+      return <Text key={props.block.id} {...(props as TextProps)} />
   }
 }

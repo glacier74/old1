@@ -234,7 +234,7 @@ export const BubbleMenu: FC = () => {
           </div>
 
           <div className="flex items-center pl-1.5 space-x-1.5">
-            <Tooltip ariaLabel="Align Left">
+            <Tooltip ariaLabel="Align left">
               <Button.Link
                 className={clsx({
                   'bubble-menu-active': activeState.align === 'justifyLeft'
@@ -243,7 +243,7 @@ export const BubbleMenu: FC = () => {
                 onClick={handleAlignLeft}
               />
             </Tooltip>
-            <Tooltip ariaLabel="Align Center">
+            <Tooltip ariaLabel="Align center">
               <Button.Link
                 className={clsx({
                   'bubble-menu-active': activeState.align === 'justifyCenter'
@@ -252,7 +252,7 @@ export const BubbleMenu: FC = () => {
                 onClick={handleAlignCenter}
               />
             </Tooltip>
-            <Tooltip ariaLabel="Align Right">
+            <Tooltip ariaLabel="Align right">
               <Button.Link
                 className={clsx({
                   'bubble-menu-active': activeState.align === 'justifyRight'

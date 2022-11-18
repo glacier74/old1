@@ -1,15 +1,91 @@
-import { Button, Menus } from '@heyforms/ui'
+import { Button, Form, Input, Menus } from '@heyforms/ui'
+import { useTranslation } from 'next-i18next'
 import { FC } from 'react'
 
+import { StripeService } from '~/service'
 import { currencyFormatter } from '~/utils'
 
 import { useComposeStore } from '../store'
 import { stripeConnectStep } from '../utils'
-import { Block, BlockProps } from './Block'
-import { BlockWrapper } from './index'
+import { BlockComponent, BlockPreview, BlockProps } from './Block'
+import { Heading, HeadingPreview } from './Heading'
+import { List, ListPreview } from './List'
+import { Text, TextPreview } from './Text'
 
-interface PaymentProps extends Omit<BlockProps, 'enableCommand' | 'enableTextFormat'> {
+export interface PaymentProps extends BlockProps {
   block: PaymentBlock
+}
+
+export const PaymentPreview: FC<PaymentProps & { productId: number }> = ({
+  block,
+  productId,
+  ...restProps
+}) => {
+  const { t } = useTranslation()
+
+  async function handleFinish(values: AnyMap<string>) {
+    const result = await StripeService.checkout({
+      productId,
+      blockId: block.id,
+      productUrl: window.location.href,
+      email: values.email
+    })
+
+    window.location.href = result.sessionUrl
+  }
+
+  return (
+    <BlockPreview block={block} {...restProps}>
+      <div className="block-payment-container">
+        {/* Left column */}
+        <div className="block-payment-col">
+          <HeadingPreview className="block-payment-heading" block={block.heading} />
+
+          <div className="block-content-container">
+            {/* Description */}
+            <TextPreview className="block-payment-description" block={block.description} />
+
+            {/* Features */}
+            <ListPreview className="block-payment-features" block={block.content} />
+          </div>
+        </div>
+
+        {/* Right column */}
+        <div className="block-payment-col">
+          <div className="rounded-lg bg-white overflow-hidden text-xl shadow">
+            {block.priceId && (
+              <div className="p-10 cursor-default">
+                <div className="text-3xl font-medium text-slate-900">{block.productName}</div>
+                <p className="mt-1 text-sm text-slate-600 line-clamp-2">
+                  {block.productDescription}
+                </p>
+                <div className="mt-4 text-2xl font-semibold text-slate-800">
+                  {currencyFormatter(block.currency, block.amount)}
+                </div>
+                <Form.Custom
+                  submitText={t('publicSite.buyNow')}
+                  submitOptions={{
+                    type: 'primary',
+                    block: true
+                  }}
+                  request={handleFinish}
+                >
+                  <Form.Item
+                    name="email"
+                    rules={[
+                      { required: true, type: 'email', message: t('publicSite.invalidEmail') }
+                    ]}
+                  >
+                    <Input placeholder={t('publicSite.email')} />
+                  </Form.Item>
+                </Form.Custom>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </BlockPreview>
+  )
 }
 
 export const PaymentSettings: FC<Pick<PaymentProps, 'block'>> = ({ block }) => {
@@ -48,28 +124,47 @@ const PaymentComponent: FC<PaymentProps> = ({ block, ...restProps }) => {
   }
 
   return (
-    <Block block={block} {...restProps}>
-      <div className="flex items-start justify-between">
-        <div className="flex-1 pr-12">
-          {block.blocks.map(child => (
-            <BlockWrapper
-              key={child.id}
-              block={child}
+    <BlockComponent block={block} enableAction={true} {...restProps}>
+      <div className="block-payment-container">
+        {/* Left column */}
+        <div className="block-payment-col">
+          <Heading
+            className="block-payment-heading"
+            block={block.heading}
+            placeholder="builder.payment.heading"
+            enableAction={false}
+          />
+
+          <div className="block-content-container">
+            {/* Description */}
+            <Text
+              className="block-payment-description"
+              block={block.description}
+              placeholder="builder.payment.description"
+              enterBehavior="focusBlock"
               enableAction={false}
-              enableDropZone={false}
-              enterBehavior={(child as any).enterBehavior}
             />
-          ))}
+
+            {/* Features */}
+            <List
+              className="block-payment-features"
+              block={block.content}
+              placeholder="builder.payment.feature"
+              enableAction={false}
+            />
+          </div>
         </div>
-        <div className="flex flex-1 items-center">
-          <div className="rounded-lg bg-white overflow-hidden text-sm shadow">
+
+        {/* Right column */}
+        <div className="block-payment-col">
+          <div className="rounded-lg bg-white overflow-hidden text-xl shadow">
             {block.priceId ? (
-              <div className="p-6 cursor-default">
-                <div className="text-lg font-medium text-slate-900">{block.productName}</div>
+              <div className="p-10 cursor-default">
+                <div className="text-3xl font-medium text-slate-900">{block.productName}</div>
                 <p className="mt-1 text-sm text-slate-600 line-clamp-2">
                   {block.productDescription}
                 </p>
-                <div className="mt-4 text-base font-semibold text-slate-800">
+                <div className="mt-4 text-2xl font-semibold text-slate-800">
                   {currencyFormatter(block.currency, block.amount)}
                 </div>
                 <div className="input mt-6">
@@ -80,7 +175,7 @@ const PaymentComponent: FC<PaymentProps> = ({ block, ...restProps }) => {
                 </div>
               </div>
             ) : (
-              <div className="p-6">
+              <div className="p-10">
                 <p>Collect and receive payments directly on your bank account powered by Stripe.</p>
                 <p className="mt-2">
                   If you do not have a stripe account, you can create a free account with a valid
@@ -98,7 +193,7 @@ const PaymentComponent: FC<PaymentProps> = ({ block, ...restProps }) => {
           </div>
         </div>
       </div>
-    </Block>
+    </BlockComponent>
   )
 }
 export const Payment = PaymentComponent

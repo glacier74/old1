@@ -145,12 +145,9 @@ export const ActionMenu: FC<ActionMenuProps> = ({ block, connectDrag }) => {
     <>
       <div
         className={clsx('block-actions', {
-          'block-actions-active': state.selectedBlockId === block.id
+          'block-actions-active': state.selectBlockId === block.id
         })}
       >
-        <Tooltip ariaLabel="Delete this block">
-          <Button.Link className="block-delete" leading={<IconTrash />} onClick={handleDelete} />
-        </Tooltip>
         <Tooltip ariaLabel="Insert block below">
           <Dropdown className="block-create" placement="bottom-start" overlay={InsertOverlay}>
             <Button.Link leading={<IconPlus />} />

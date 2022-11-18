@@ -1,13 +1,6 @@
-import { isFalse, isValidArray } from '@nily/utils'
+import { isFalse } from '@nily/utils'
 
-import {
-  blockByType,
-  blocksToLocations,
-  getBlockByPath,
-  getBlockIndex,
-  nextFocusableBlock,
-  previousFocusableBlock
-} from '../utils'
+import { blockByType, flattenBlocks, getBlockByPath, getBlockIndex } from '../utils'
 import {
   AddBlockAction,
   DeleteBlockAction,
@@ -28,8 +21,12 @@ export function setBlocks(state: IState, blocks: Block[]): IState {
     blocks.push(blockByType('text'))
   }
 
+  const { flattedBlocks, rootBlocks, focusableBlockMap } = flattenBlocks(blocks)
+
   state.blocks = blocks
-  state.locations = blocksToLocations(blocks)
+  state.flattedBlocks = flattedBlocks
+  state.focusableBlockMap = focusableBlockMap
+  state.rootBlocks = rootBlocks
 
   return state
 }
@@ -57,55 +54,88 @@ export function moveBlock(state: IState, payload: MoveBlockAction['payload']): I
 }
 
 export function addBlock(state: IState, payload: AddBlockAction['payload']): IState {
-  const { blocks, locations } = state
+  const { blocks, flattedBlocks } = state
 
   if (payload.afterId) {
-    const location = locations.find(l => l.id === payload.afterId)
+    const fb = flattedBlocks.find(fb => fb.id === payload.afterId)
 
-    if (location) {
-      // Nested blocks
-      if (isValidArray(location.path)) {
-        const parent = getBlockByPath(blocks, location.path) as GroupBlock
+    if (fb) {
+      const parent = getBlockByPath(blocks, fb.path.slice(0, -1)) as any
 
-        if (parent) {
-          const index = getBlockIndex(parent.blocks, payload.afterId)
+      if (parent) {
+        if (parent.type === 'list') {
+          const index = getBlockIndex(parent.content, payload.afterId)
 
-          index > -1 && parent.blocks.splice(index + 1, 0, payload.block)
+          if (index > -1) {
+            parent.content.splice(index + 1, 0, payload.block)
+          }
         }
-      } else {
+      }
+
+      // Add root block after `payload.afterId`
+      else {
         const index = getBlockIndex(blocks, payload.afterId)
 
-        index > -1 && blocks.splice(index + 1, 0, payload.block)
+        if (index > -1) {
+          blocks.splice(index + 1, 0, payload.block)
+        }
       }
     }
-  } else {
+  }
+
+  // Add root block
+  else {
     blocks.push(payload.block)
   }
 
-  state.selectedBlockId = payload.block.id
+  state = setBlocks(state, blocks)
 
-  return setBlocks(state, blocks)
+  return focusBlock(state, {
+    blockId: payload.block.id
+  })
 }
 
 export function updateBlock(state: IState, payload: UpdateBlockAction['payload']): IState {
-  const { blocks, locations } = state
-  const location = locations.find(l => l.id === payload.blockId)
+  const { blocks, flattedBlocks } = state
+  const fb = flattedBlocks.find(l => l.id === payload.blockId)
 
-  if (!location) {
+  if (!fb) {
     return state
   }
 
-  if (isValidArray(location!.path)) {
-    const parent = getBlockByPath(blocks, location!.path) as GroupBlock
-    const index = getBlockIndex(parent.blocks, payload.blockId)
+  if (fb.rootId) {
+    const parent = getBlockByPath(blocks, fb.path.slice(0, -1)) as any
 
-    if (index > -1) {
-      parent.blocks[index] = {
-        ...parent.blocks[index],
-        ...payload.updates
+    if (parent) {
+      if (parent.type === 'list') {
+        const index = getBlockIndex(parent.content, payload.blockId)
+
+        if (index > -1) {
+          parent.content[index] = {
+            ...parent.content[index],
+            ...payload.updates
+          }
+        }
+      } else {
+        let key: string | undefined
+
+        Object.keys(parent).forEach(k => {
+          if (parent[k]?.id === fb.id) {
+            key = k
+          }
+        })
+
+        if (key) {
+          Object.keys(payload.updates).forEach(k => {
+            parent[key!][k] = payload.updates[k]
+          })
+        }
       }
     }
-  } else {
+  }
+
+  // Update root block
+  else {
     const index = getBlockIndex(blocks, payload.blockId)
 
     if (index > -1) {
@@ -120,64 +150,103 @@ export function updateBlock(state: IState, payload: UpdateBlockAction['payload']
 }
 
 export function deleteBlock(state: IState, payload: DeleteBlockAction['payload']): IState {
-  const { blocks, locations } = state
-  const location = locations.find(l => l.id === payload.blockId)
+  const { blocks, flattedBlocks } = state
+  const fb = flattedBlocks.find(bp => bp.id === payload.blockId)
 
-  if (payload.backspaceEvent && isFalse(location?.deletable)) {
+  if (!fb || (payload.backspaceEvent && isFalse(fb.deletable))) {
     return state
   }
 
-  const blockIndex = getBlockIndex(blocks, payload.blockId)
-  const prevLocation = previousFocusableBlock(locations, blockIndex)
+  if (fb.rootId) {
+    const parent = getBlockByPath(blocks, fb.path.slice(0, -1)) as any
 
-  if (prevLocation) {
-    state.selectedBlockId = prevLocation?.id
+    if (parent?.type === 'list') {
+      const index = getBlockIndex(parent.content, payload.blockId)
+
+      if (index > -1) {
+        parent.content.splice(index, 1)
+
+        const focusIndex = Math.max(0, index - 1)
+
+        // Focus on previous block
+        state = focusBlock(state, {
+          blockId: parent.content[focusIndex].id
+        })
+      }
+    }
   }
 
-  if (isValidArray(location?.path)) {
-    const parent = getBlockByPath(blocks, location!.path) as GroupBlock
-    const index = getBlockIndex(parent.blocks, payload.blockId)
+  // Delete root block
+  else {
+    const index = getBlockIndex(blocks, payload.blockId)
 
-    index > -1 && parent.blocks.splice(index, 1)
-  } else {
-    blockIndex > -1 && blocks.splice(blockIndex, 1)
+    if (index > -1) {
+      const focusIndex = Math.max(0, index - 1)
+
+      // Focus on previous root block
+      state = focusBlock(state, {
+        blockId: blocks[focusIndex].id
+      })
+
+      blocks.splice(index, 1)
+    }
   }
 
   return setBlocks(state, blocks)
 }
 
-export function focusBlock(state: IState, payload: FocusBlockAction['payload']): IState {
-  const { locations } = state
+function getFocusableBlocks(rootBlocks: string[], focusableBlockMap: AnyMap<string[]>): string[] {
+  return rootBlocks.reduce(
+    (prev: string[], curr) => [...prev, ...(focusableBlockMap[curr] || [])],
+    []
+  )
+}
 
-  let blockId: string | undefined = payload.blockId
-  const index = getBlockIndex(locations, blockId)
+export function focusBlock(state: IState, payload: FocusBlockAction['payload']): IState {
+  const { flattedBlocks, rootBlocks, focusableBlockMap } = state
+
+  const { blockId } = payload
+  let index = getBlockIndex(flattedBlocks, blockId)
 
   if (index < 0) {
     return state
   }
 
-  if (payload.direction) {
-    switch (payload.direction) {
-      case 'up':
-        blockId = previousFocusableBlock(locations, index)?.id
-        break
+  const fbIds = getFocusableBlocks(rootBlocks, focusableBlockMap)
+  index = fbIds.indexOf(blockId)
 
-      case 'down':
-        blockId = nextFocusableBlock(locations, index)?.id
-        break
-    }
-  } else {
-    const location = locations[index]
+  if (!payload.direction) {
+    const fb = flattedBlocks[index]
+    const selectBlockId = fb?.rootId || blockId
 
-    // Focus block with root id
-    if (isValidArray(location.path)) {
-      blockId = location.path[0]
+    if (index > -1) {
+      state.focusBlockId = blockId
+    } else if (focusableBlockMap[selectBlockId]) {
+      state.focusBlockId = focusableBlockMap[selectBlockId][0]
     }
+
+    state.selectBlockId = selectBlockId
+    return state
   }
 
-  if (blockId) {
-    state.selectedBlockId = blockId
+  let focusId: string | undefined = blockId
+  const length = fbIds.length
+  console.log(index)
+
+  switch (payload.direction) {
+    case 'up':
+      focusId = fbIds[index > 0 ? index - 1 : 0]
+      break
+
+    case 'down':
+      focusId = fbIds[index < length - 1 ? index + 1 : length - 1]
+      break
   }
+
+  const fb = flattedBlocks.find(fb => fb.id === focusId)
+
+  state.selectBlockId = fb?.rootId || blockId
+  state.focusBlockId = focusId
 
   return state
 }

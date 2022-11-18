@@ -3,13 +3,31 @@ import { FC, useCallback } from 'react'
 
 import { useComposeStore } from '../store'
 import { RichText } from '../views'
-import { Block, BlockProps } from './Block'
+import { BlockComponent, BlockPreview, BlockProps } from './Block'
 
-interface HeadingProps extends BlockProps {
+export interface HeadingProps extends BlockProps {
   block: HeadingBlock
 }
 
-export const Heading: FC<HeadingProps> = ({ block, placeholder, children, ...restProps }) => {
+export const HeadingPreview: FC<HeadingProps> = ({ block, ...restProps }) => {
+  const CustomTag = `h${block.level}` as any
+
+  return (
+    <BlockPreview block={block} {...restProps}>
+      <CustomTag className="rich-text" placeholder=" ">
+        {block.html}
+      </CustomTag>
+    </BlockPreview>
+  )
+}
+
+export const Heading: FC<HeadingProps> = ({
+  block,
+  placeholder,
+  enableAction = true,
+  children,
+  ...restProps
+}) => {
   const { t } = useTranslation()
   const { dispatch } = useComposeStore()
 
@@ -26,18 +44,18 @@ export const Heading: FC<HeadingProps> = ({ block, placeholder, children, ...res
   }, [])
 
   return (
-    <Block block={block} {...restProps}>
+    <BlockComponent block={block} enableAction={enableAction} {...restProps}>
       <RichText
         blockId={block.id}
         as={`h${block.level}`}
         value={block.html}
-        placeholder={t(block.placeholder || placeholder!)}
+        placeholder={t(placeholder!)}
         enableCommand={false}
         enableTextFormat={false}
-        enterBehavior="focusNextBlock"
+        enterBehavior="focusBlock"
         onChange={handleChange}
       />
       {children}
-    </Block>
+    </BlockComponent>
   )
 }
