@@ -15,7 +15,7 @@ const PublicSite: FC<PublicSiteProps> = ({ product }) => (
       description: product.siteSetting.metaDescription || product.tagline
     }}
   >
-    <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div className="px-4 sm:px-6 lg:px-8">
       <PublicSiteHeader product={product} />
       <PublicBlocks productId={product.id} blocks={product.siteSetting.content} />
       <PublicSiteFooter product={product} />

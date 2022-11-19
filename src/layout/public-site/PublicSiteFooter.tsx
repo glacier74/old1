@@ -14,8 +14,8 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
   const { siteSetting } = product
 
   return (
-    <div className="flex mt-10 py-10 border-t border-slate-100 justify-between">
-      <div className="flex justify-start space-x-3 inline-block">
+    <div className="max-w-6xl mx-auto sm:flex mt-10 py-10 border-t border-slate-100 sm:justify-between justify-center">
+      <div className="flex my-4 sm:my-0 sm:justify-start justify-center space-x-3">
         {siteSetting.twitter && (
           <a
             href={siteSetting.twitter}
@@ -87,7 +87,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
         )}
       </div>
 
-      <p className="text-base text-slate-900 inline-block">
+      <p className="text-base text-slate-900 text-center">
         Copyright © {new Date().getFullYear()} {product?.name}
       </p>
     </div>

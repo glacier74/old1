@@ -22,7 +22,7 @@ export const ImagePreview: FC<Omit<ImageProps, 'uploadDesc1' | 'uploadDesc2'>> =
 }) => {
   return (
     <BlockPreview block={block} {...restProps}>
-      <div className="block-image-container">
+      <div className="block-image-container max-w-full">
         <img
           src={cropImage(block.source, block.width, block.height)}
           alt={block.caption}

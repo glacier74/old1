@@ -308,7 +308,7 @@ body {
 }
 
 .block-container {
-  @apply relative -mx-20 px-20;
+  @apply max-w-6xl mx-auto relative px-20;
   transform: translate(0, 0);
 
   .block-container {
@@ -371,7 +371,7 @@ body {
 }
 
 .rich-text {
-  @apply py-2 outline-none text-xl leading-9;
+  @apply py-2 outline-none text-xl leading-8;
 
   &:empty:after {
     @apply pointer-events-none text-black text-opacity-30 hidden;
@@ -469,11 +469,11 @@ body {
   }
 
   .block-context-container {
-    @apply py-2 text-slate-500 leading-8;
+    @apply text-slate-500 leading-4;
   }
 
   h3.rich-text {
-    @apply text-5xl font-bold text-slate-900 leading-tight;
+    @apply text-4xl font-bold text-slate-900 leading-tight;
   }
 
   .rich-text {
