@@ -2,6 +2,7 @@ import { FC } from 'react'
 
 import {
   IconFacebook,
+  IconGithub,
   IconInstagram,
   IconLinkedin,
   IconTelegram,
@@ -15,7 +16,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
   return (
     <div className="mt-32 py-10 text-center">
       <div className="flex items-center justify-center space-x-3">
-        {siteSetting.enableTwitter && siteSetting.twitter && (
+        {siteSetting.twitter && (
           <a
             href={siteSetting.twitter}
             className="text-slate-400 hover:text-slate-500"
@@ -25,7 +26,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
           </a>
         )}
 
-        {siteSetting.enableFacebook && siteSetting.facebook && (
+        {siteSetting.facebook && (
           <a
             href={siteSetting.facebook}
             className="text-slate-400 hover:text-slate-500"
@@ -35,7 +36,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
           </a>
         )}
 
-        {siteSetting.enableInstagram && siteSetting.instagram && (
+        {siteSetting.instagram && (
           <a
             href={siteSetting.instagram}
             className="text-slate-400 hover:text-slate-500"
@@ -45,7 +46,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
           </a>
         )}
 
-        {siteSetting.enableYoutube && siteSetting.youtube && (
+        {siteSetting.youtube && (
           <a
             href={siteSetting.youtube}
             className="text-slate-400 hover:text-slate-500"
@@ -55,7 +56,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
           </a>
         )}
 
-        {siteSetting.enableTelegram && siteSetting.telegram && (
+        {siteSetting.telegram && (
           <a
             href={siteSetting.telegram}
             className="text-slate-400 hover:text-slate-500"
@@ -65,13 +66,23 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
           </a>
         )}
 
-        {siteSetting.enableLinkedin && siteSetting.linkedin && (
+        {siteSetting.linkedin && (
           <a
             href={siteSetting.linkedin}
             className="text-slate-400 hover:text-slate-500"
             target="_blank"
           >
             <IconLinkedin />
+          </a>
+        )}
+
+        {siteSetting.github && (
+          <a
+            href={siteSetting.github}
+            className="text-slate-400 hover:text-slate-500"
+            target="_blank"
+          >
+            <IconGithub />
           </a>
         )}
       </div>
