@@ -1,11 +1,13 @@
-import {
-  IconBrandInstagram,
-  IconBrandLinkedin,
-  IconBrandTelegram,
-  IconBrandTwitter,
-  IconBrandYoutube
-} from '@tabler/icons'
 import { FC } from 'react'
+
+import {
+  IconFacebook,
+  IconInstagram,
+  IconLinkedin,
+  IconTelegram,
+  IconTwitter,
+  IconYoutube
+} from '~/components'
 
 export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
   const { siteSetting } = product
@@ -19,7 +21,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
             className="text-slate-400 hover:text-slate-500"
             target="_blank"
           >
-            <IconBrandTwitter />
+            <IconTwitter />
           </a>
         )}
 
@@ -29,7 +31,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
             className="text-slate-400 hover:text-slate-500"
             target="_blank"
           >
-            <IconBrandYoutube />
+            <IconFacebook />
           </a>
         )}
 
@@ -39,7 +41,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
             className="text-slate-400 hover:text-slate-500"
             target="_blank"
           >
-            <IconBrandInstagram />
+            <IconInstagram />
           </a>
         )}
 
@@ -49,7 +51,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
             className="text-slate-400 hover:text-slate-500"
             target="_blank"
           >
-            <IconBrandYoutube />
+            <IconYoutube />
           </a>
         )}
 
@@ -59,7 +61,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
             className="text-slate-400 hover:text-slate-500"
             target="_blank"
           >
-            <IconBrandTelegram />
+            <IconTelegram />
           </a>
         )}
 
@@ -69,7 +71,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
             className="text-slate-400 hover:text-slate-500"
             target="_blank"
           >
-            <IconBrandLinkedin />
+            <IconLinkedin />
           </a>
         )}
       </div>

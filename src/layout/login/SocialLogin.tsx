@@ -1,11 +1,12 @@
-import { IconBrandGithub, IconBrandGoogle, IconBrandTwitter, TablerIconProps } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { FC } from 'react'
+import { FC, SVGProps } from 'react'
+
+import { IconGithub, IconGoogle, IconTwitter } from '~/components'
 
 interface SocialLoginItemProps {
   label: string
-  icon: FC<TablerIconProps>
+  icon: FC<SVGProps<SVGSVGElement>>
   provider: string
 }
 
@@ -34,21 +35,9 @@ export const SocialLogin = () => {
 
   return (
     <div className="mt-1 grid grid-cols-3 gap-2">
-      <SocialLoginItem
-        provider="google"
-        icon={IconBrandGoogle}
-        label={t('login.loginWithGoogle')}
-      />
-      <SocialLoginItem
-        provider="twitter"
-        icon={IconBrandTwitter}
-        label={t('login.loginWithTwitter')}
-      />
-      <SocialLoginItem
-        provider="github"
-        icon={IconBrandGithub}
-        label={t('login.loginWithGithub')}
-      />
+      <SocialLoginItem provider="google" icon={IconGoogle} label={t('login.loginWithGoogle')} />
+      <SocialLoginItem provider="twitter" icon={IconTwitter} label={t('login.loginWithTwitter')} />
+      <SocialLoginItem provider="github" icon={IconGithub} label={t('login.loginWithGithub')} />
     </div>
   )
 }
