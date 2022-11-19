@@ -379,10 +379,6 @@ body {
   }
 }
 
-h3.rich-text {
-  @apply text-5xl font-bold text-slate-900;
-}
-
 .block-selected {
   .rich-text:empty:after {
     display: block;
@@ -435,7 +431,7 @@ h3.rich-text {
     @apply flex-1;
 
     &:nth-of-type(2) {
-      @apply pl-12;
+      @apply pl-24;
     }
   }
 
@@ -444,7 +440,7 @@ h3.rich-text {
 
     .block-feature-col {
       &:nth-of-type(2) {
-        @apply pl-0 pr-12;
+        @apply pl-0 pr-24;
       }
     }
   }
@@ -466,6 +462,18 @@ h3.rich-text {
       max-width: 31.25rem;
       height: auto;
     }
+  }
+
+  .block-feature-heading {
+    @apply text-slate-900;
+  }
+
+  .block-context-container {
+    @apply py-2 text-slate-500 leading-8;
+  }
+
+  h3.rich-text {
+    @apply text-5xl font-bold text-slate-900 leading-tight;
   }
 
   .rich-text {
@@ -544,8 +552,11 @@ h3.rich-text {
 }
 
 .block-payment {
+  h3.rich-text {
+    @apply text-5xl font-bold text-slate-900 leading-tight;
+  }
   .rich-text {
-    @apply py-2 outline-none;
+    @apply py-2 outline-none text-slate-500 leading-6;
 
     &:empty:after {
       @apply block;
@@ -553,6 +564,8 @@ h3.rich-text {
   }
 
   .block-list {
+    @apply mt-4;
+
     .rich-text {
       @apply pl-8 bg-left bg-no-repeat;
       background-image: url(/static/icon-check.svg);
@@ -561,7 +574,7 @@ h3.rich-text {
 }
 
 .block-payment-container {
-  @apply flex items-center;
+  @apply flex items-center py-16;
 
   .block-payment-col {
     @apply flex-1;

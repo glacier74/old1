@@ -52,14 +52,14 @@ export const PaymentPreview: FC<PaymentProps & { productId: number }> = ({
 
         {/* Right column */}
         <div className="block-payment-col">
-          <div className="rounded-lg bg-white overflow-hidden text-xl shadow">
+          <div className="rounded-lg bg-white overflow-hidden text-xl shadow w-96 mx-auto">
             {block.priceId && (
               <div className="p-10 cursor-default">
                 <div className="text-3xl font-medium text-slate-900">{block.productName}</div>
-                <p className="mt-1 text-sm text-slate-600 line-clamp-2">
+                <p className="mt-2 text-sm text-slate-600 line-clamp-2">
                   {block.productDescription}
                 </p>
-                <div className="mt-4 text-2xl font-semibold text-slate-800">
+                <div className="mt-4 text-3xl font-semibold text-slate-800">
                   {currencyFormatter(block.currency, block.amount)}
                 </div>
                 <Form.Custom
