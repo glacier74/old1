@@ -14,12 +14,12 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
   const { siteSetting } = product
 
   return (
-    <div className="mt-32 py-10 text-center">
-      <div className="flex items-center justify-center space-x-3">
+    <div className="flex mt-10 py-10 border-t border-slate-100 justify-between">
+      <div className="flex justify-start space-x-3 inline-block">
         {siteSetting.twitter && (
           <a
             href={siteSetting.twitter}
-            className="text-slate-400 hover:text-slate-500"
+            className="text-slate-700 hover:text-slate-900"
             target="_blank"
           >
             <IconTwitter />
@@ -29,7 +29,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
         {siteSetting.facebook && (
           <a
             href={siteSetting.facebook}
-            className="text-slate-400 hover:text-slate-500"
+            className="text-slate-700 hover:text-slate-900"
             target="_blank"
           >
             <IconFacebook />
@@ -39,7 +39,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
         {siteSetting.instagram && (
           <a
             href={siteSetting.instagram}
-            className="text-slate-400 hover:text-slate-500"
+            className="text-slate-700 hover:text-slate-900"
             target="_blank"
           >
             <IconInstagram />
@@ -49,7 +49,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
         {siteSetting.youtube && (
           <a
             href={siteSetting.youtube}
-            className="text-slate-400 hover:text-slate-500"
+            className="text-slate-700 hover:text-slate-900"
             target="_blank"
           >
             <IconYoutube />
@@ -59,7 +59,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
         {siteSetting.telegram && (
           <a
             href={siteSetting.telegram}
-            className="text-slate-400 hover:text-slate-500"
+            className="text-slate-700 hover:text-slate-900"
             target="_blank"
           >
             <IconTelegram />
@@ -69,7 +69,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
         {siteSetting.linkedin && (
           <a
             href={siteSetting.linkedin}
-            className="text-slate-400 hover:text-slate-500"
+            className="text-slate-700 hover:text-slate-900"
             target="_blank"
           >
             <IconLinkedin />
@@ -79,7 +79,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
         {siteSetting.github && (
           <a
             href={siteSetting.github}
-            className="text-slate-400 hover:text-slate-500"
+            className="text-slate-700 hover:text-slate-900"
             target="_blank"
           >
             <IconGithub />
@@ -87,7 +87,7 @@ export const PublicSiteFooter: FC<{ product: Product }> = ({ product }) => {
         )}
       </div>
 
-      <p className="mt-2 text-sm text-slate-500">
+      <p className="text-base text-slate-900 inline-block">
         Copyright © {new Date().getFullYear()} {product?.name}
       </p>
     </div>
