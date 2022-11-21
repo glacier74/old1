@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
+import { sanitizeHTML } from '~/layout/builder/utils'
+
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
 import { Text } from './Text'
 
@@ -11,9 +13,12 @@ export const ListPreview: FC<ListProps> = ({ block, ...restProps }) => {
   return (
     <BlockPreview block={block} {...restProps}>
       {block.content.map((b, index) => (
-        <div className="rich-text" placeholder=" " key={index}>
-          {b.html}
-        </div>
+        <div
+          key={index}
+          className="rich-text"
+          placeholder=" "
+          dangerouslySetInnerHTML={{ __html: sanitizeHTML(b.html) }}
+        />
       ))}
     </BlockPreview>
   )

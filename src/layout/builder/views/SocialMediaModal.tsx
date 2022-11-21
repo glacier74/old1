@@ -48,6 +48,7 @@ export const SocialMediaModal: FC = () => {
           submitOptions={{
             type: 'primary'
           }}
+          onlySubmitOnValueChange={true}
           request={handleFinish}
         >
           <Form.Item name="twitter" label={t('builder.twitter')}>

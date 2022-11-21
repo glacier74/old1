@@ -5,7 +5,7 @@ import throttle from 'lodash/throttle'
 import { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { useBuilderContext } from '../context'
-import { blockByType, insertClipboardText, placeCaretAtEnd } from '../utils'
+import { blockByType, insertClipboardText, placeCaretAtEnd, sanitizeHTML } from '../utils'
 
 export interface RichTextProps extends Omit<IComponentProps, 'onChange'> {
   as?: string
@@ -274,11 +274,8 @@ const RichTextComponent: FC<RichTextProps> = ({
   // Setup initial html
   useEffect(() => {
     if (ref.current && isValid(value)) {
-      if (enableTextFormat) {
-        ref.current.innerHTML = value!
-      } else {
-        ref.current.innerText = value!
-      }
+      // TODO enableTextFormat
+      ref.current.innerHTML = sanitizeHTML(value!)
     }
   }, [ref])
 

@@ -63,7 +63,7 @@ export const PaymentPreview: FC<PaymentProps & { product: Product }> = ({
                   {currencyFormatter(block.currency, block.amount)}
                 </div>
                 <Form.Custom
-                  submitText={t('publicSite.buyNow')}
+                  submitText={t('publicSite.checkOut')}
                   submitOptions={{
                     type: 'primary',
                     block: true
@@ -105,6 +105,7 @@ export const PaymentSettings: FC<Pick<PaymentProps, 'block'>> = ({ block }) => {
 }
 
 const PaymentComponent: FC<PaymentProps> = ({ block, ...restProps }) => {
+  const { t } = useTranslation()
   const { dispatch } = useBuilderContext()
 
   function handleClick() {
@@ -161,10 +162,10 @@ const PaymentComponent: FC<PaymentProps> = ({ block, ...restProps }) => {
                   {currencyFormatter(block.currency, block.amount)}
                 </div>
                 <div className="input mt-6">
-                  <span className="text-slate-400">Enter your email address</span>
+                  <span className="text-slate-400">{t('publicSite.email')}</span>
                 </div>
                 <div className="mt-4 px-4 py-2 shadow-sm font-medium bg-blue-700 rounded-md text-white text-center cursor-default">
-                  Buy now
+                  {t('publicSite.checkOut')}
                 </div>
               </div>
             ) : (

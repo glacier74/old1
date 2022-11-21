@@ -1,6 +1,8 @@
 import { useTranslation } from 'next-i18next'
 import { FC, useCallback } from 'react'
 
+import { sanitizeHTML } from '~/layout/builder/utils'
+
 import { useBuilderContext } from '../context'
 import { RichText } from '../views'
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
@@ -14,9 +16,11 @@ export const HeadingPreview: FC<HeadingProps> = ({ block, ...restProps }) => {
 
   return (
     <BlockPreview block={block} {...restProps}>
-      <CustomTag className="rich-text" placeholder=" ">
-        {block.html}
-      </CustomTag>
+      <CustomTag
+        className="rich-text"
+        placeholder=" "
+        dangerouslySetInnerHTML={{ __html: sanitizeHTML(block.html) }}
+      />
     </BlockPreview>
   )
 }

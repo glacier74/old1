@@ -317,5 +317,10 @@
   "stripe": {
     "title": "$t(stripe.connecting) · $t(common.name)",
     "connecting": "Connecting with stripe"
+  },
+  "publicSite": {
+    "email": "Email address",
+    "checkOut": "Check out",
+    "invalidEmail": "Please provide a valid email address"
   }
 }

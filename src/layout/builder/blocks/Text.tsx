@@ -1,6 +1,8 @@
 import { useTranslation } from 'next-i18next'
 import { FC, useCallback } from 'react'
 
+import { sanitizeHTML } from '~/layout/builder/utils'
+
 import { useBuilderContext } from '../context'
 import { RichText } from '../views'
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
@@ -12,7 +14,11 @@ export interface TextProps extends BlockProps {
 export const TextPreview: FC<TextProps> = ({ block, ...restProps }) => {
   return (
     <BlockPreview block={block} {...restProps}>
-      <div className="rich-text" placeholder=" " dangerouslySetInnerHTML={{ __html: block.html }} />
+      <div
+        className="rich-text"
+        placeholder=" "
+        dangerouslySetInnerHTML={{ __html: sanitizeHTML(block.html) }}
+      />
     </BlockPreview>
   )
 }
