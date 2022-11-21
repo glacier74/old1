@@ -93,7 +93,7 @@ export const SlideGalleryPreview: FC<SlideGalleryProps> = ({ block, ...restProps
     scrollLeft,
     scrollPrevious,
     scrollNext
-  } = useSlideGallery(containerRef, block.sources)
+  } = useSlideGallery(containerRef, block.sources, true)
 
   return (
     <>
@@ -134,7 +134,6 @@ export const SlideGalleryPreview: FC<SlideGalleryProps> = ({ block, ...restProps
               ))}
             </div>
           </div>
-
           <div className="absolute flex items-center justify-center top-0 -right-16 w-16 pr-6 h-full z-10 opacity-0 group-hover:opacity-100">
             <Tooltip ariaLabel="Scroll to next" disabled={!isNextEnable}>
               <Button.Link
@@ -158,23 +157,29 @@ export const SlideGalleryPreview: FC<SlideGalleryProps> = ({ block, ...restProps
 
 function useSlideGallery(
   containerRef: MutableRefObject<HTMLDivElement | null>,
-  sources: SlideGallerySource[]
+  sources: SlideGallerySource[],
+  isPreview = false
 ) {
   const [scrollLeft, setScrollLeft] = useState(0)
   const [index, setIndex] = useState<number | null>(null)
   const [slideVisible, open, closeSlide] = useVisible()
 
   const containerWidth = useMemo(() => {
+    console.log(containerRef.current)
     return containerRef.current?.getBoundingClientRect().width || 0
   }, [containerRef.current])
 
   const style = useMemo(() => {
-    const length = sources.length
+    let length = sources.length
+
+    if (isPreview) {
+      length -= 1
+    }
 
     return {
       width: length * IMAGE_PADDING + (length + 1) * IMAGE_WIDTH
     }
-  }, [sources.length])
+  }, [isPreview, sources.length])
 
   const isPreviousEnable = useMemo(() => scrollLeft > 0, [scrollLeft])
   const isNextEnable = useMemo(
@@ -200,6 +205,7 @@ function useSlideGallery(
     isNextEnable,
     index,
     setIndex,
+    containerWidth,
     slideVisible,
     openSlide,
     closeSlide,
