@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 
 export {}
 
@@ -155,7 +155,30 @@ declare global {
     caption?: string
   }
 
-  type BlockType = 'text' | 'heading' | 'image' | 'list' | 'feature' | 'payment' | 'slideGallery'
+  type BlockType =
+    | 'text'
+    | 'heading'
+    | 'image'
+    | 'list'
+    | 'heroSection'
+    | 'footer'
+    | 'feature'
+    | 'payment'
+    | 'slideGallery'
+
+  interface BlockOption {
+    type: BlockType
+    textColor: string
+    backgroundColor: string
+    icon: FC<any>
+    label: string
+  }
+
+  interface BlockGroupOptions {
+    label: string
+    types: BlockType[]
+    options: BlockOption[]
+  }
 
   interface Block {
     id: string

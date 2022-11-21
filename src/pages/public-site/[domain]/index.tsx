@@ -1,11 +1,57 @@
 import { conv } from '@nily/utils'
 import { FC } from 'react'
 
-import { BaseLayout, PublicBlocks, PublicSiteFooter, PublicSiteHeader } from '~/layout'
+import { BaseLayout } from '~/layout'
+import { FeaturePreview } from '~/layout/builder/blocks/Feature'
+import { FooterPreview } from '~/layout/builder/blocks/Footer'
+import { HeadingPreview } from '~/layout/builder/blocks/Heading'
+import { HeroSectionPreview } from '~/layout/builder/blocks/HeroSection'
+import { ImagePreview } from '~/layout/builder/blocks/Image'
+import { ListPreview } from '~/layout/builder/blocks/List'
+import { PaymentPreview } from '~/layout/builder/blocks/Payment'
+import { SlideGalleryPreview } from '~/layout/builder/blocks/SlideGallery'
+import { TextPreview } from '~/layout/builder/blocks/Text'
 import { withTranslations } from '~/utils'
 
 interface PublicSiteProps {
   product: Product
+}
+
+const Block: FC<{ product: Product; siteSetting: SiteSettings; block: any }> = ({
+  product,
+  siteSetting,
+  block
+}) => {
+  switch (block.type) {
+    case 'heroSection':
+      return <HeroSectionPreview key={block.id} block={block} product={product} />
+
+    case 'footer':
+      return (
+        <FooterPreview key={block.id} block={block} product={product} siteSetting={siteSetting} />
+      )
+
+    case 'slideGallery':
+      return <SlideGalleryPreview key={block.id} block={block} />
+
+    case 'payment':
+      return <PaymentPreview key={block.id} product={product} block={block} />
+
+    case 'feature':
+      return <FeaturePreview key={block.id} block={block} />
+
+    case 'list':
+      return <ListPreview key={block.id} block={block} />
+
+    case 'heading':
+      return <HeadingPreview key={block.id} block={block} />
+
+    case 'image':
+      return <ImagePreview key={block.id} block={block} />
+
+    default:
+      return <TextPreview key={block.id} block={block} />
+  }
 }
 
 const PublicSite: FC<PublicSiteProps> = ({ product }) => (
@@ -15,11 +61,9 @@ const PublicSite: FC<PublicSiteProps> = ({ product }) => (
       description: product.siteSetting.metaDescription || product.tagline
     }}
   >
-    <div className="px-4 sm:px-6 lg:px-8">
-      <PublicSiteHeader product={product} />
-      <PublicBlocks productId={product.id} blocks={product.siteSetting.content} />
-      <PublicSiteFooter product={product} />
-    </div>
+    {product.siteSetting.content.map(block => (
+      <Block key={block.id} product={product} block={block} siteSetting={product.siteSetting} />
+    ))}
   </BaseLayout>
 )
 

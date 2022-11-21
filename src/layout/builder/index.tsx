@@ -5,8 +5,8 @@ import { AuthorizedLayout, useProduct } from '~/layout'
 import { SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
 
-import Compose from './Compose'
-import { SiteSettings } from './SiteSettings'
+import { BuilderProvider } from './context'
+import { BlockList, Sidebar } from './views'
 
 // TODO - Delete Array.prototype.at polyfill https://github.com/vercel/next.js/pull/42307
 if (!Array.prototype.at) {
@@ -34,12 +34,16 @@ export const Builder = () => {
         title: t('builder.title', { name: product.name || '' })
       }}
     >
-      <div className="w-full min-h-screen bg-white">
-        <AsyncRequest request={fetchSiteSettings} deps={[product.id]}>
-          <SiteSettings />
-          <Compose />
-        </AsyncRequest>
-      </div>
+      <AsyncRequest
+        className="w-full min-h-screen bg-white"
+        request={fetchSiteSettings}
+        deps={[product.id]}
+      >
+        <BuilderProvider>
+          <Sidebar />
+          <BlockList />
+        </BuilderProvider>
+      </AsyncRequest>
     </AuthorizedLayout>
   )
 }

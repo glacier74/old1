@@ -14,7 +14,10 @@
     "drag": "or drag and drop",
     "sizeLimit": "PNG, JPG, GIF up to {{maxSize}}",
     "exceedsLimit": "The selected file exceeds the {{maxSize}} file limit",
-    "unsupported": "Unsupported file type"
+    "unsupported": "Unsupported file type",
+    "duplicate": "Duplicate",
+    "delete": "Delete",
+    "update": "Update"
   },
   "login": {
     "title": "Login · $t(common.name)",
@@ -263,9 +266,25 @@
       "center": "Align center",
       "right": "Align right"
     },
+    "basic": "Basic",
+    "recommended": "Recommended",
+    "addNewBlock": "Add a new block",
+    "searchBlockType": "Find a block type",
+    "layout": "Layout",
+    "socialMediaSettings": "Social media settings",
     "text": {
       "name": "Text",
-      "placeholder": "Type '/' to insert blocks"
+      "placeholder": "Text content"
+    },
+    "heading": {
+      "name": "Heading",
+      "placeholder": "Heading content"
+    },
+    "heroSection": {
+      "name": "Hero section"
+    },
+    "footer": {
+      "name": "Footer"
     },
     "feature": {
       "name": "Feature",
