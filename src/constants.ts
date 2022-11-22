@@ -2,6 +2,17 @@ import { IconCreditCard, IconHeading, IconLetterT, IconRocket, IconSlideshow } f
 
 import { IconFooter, IconHeroSection } from '~/components'
 
+export const LANGUAGE_OPTIONS = [
+  {
+    label: 'English',
+    value: 'en'
+  },
+  {
+    label: '简体中文',
+    value: 'zh-cn'
+  }
+]
+
 export const BLOCK_OPTIONS: BlockOption[] = [
   {
     type: 'heading',

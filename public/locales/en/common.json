@@ -207,6 +207,7 @@
   "productSettings": {
     "title": "Settings · {{name}}",
     "heading": "Settings",
+    "updated": "Product settings have been updated successfully",
     "general": {
       "heading": "General"
     },
@@ -224,6 +225,15 @@
     },
     "removeBranding": {
       "heading": "Remove EarlyBird branding"
+    },
+    "metaData": {
+      "heading": "Meta data",
+      "description": "Set how your products are displayed on the web and when shared on social media",
+      "title": "Title",
+      "description2": "Description",
+      "image": "Image",
+      "uploadTip1": "Recommended size: 1200x630 | JPG, PNG.",
+      "uploadTip2": "Max size: 2MB"
     },
     "dangerZone": {
       "heading": "Danger zone"

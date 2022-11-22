@@ -2,21 +2,11 @@ import { Select, notification } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { useEffect } from 'react'
 
+import { LANGUAGE_OPTIONS } from '~/constants'
 import { useProduct } from '~/layout'
 import { ProductService } from '~/service'
 import { useStore } from '~/store'
 import { useRequest } from '~/utils'
-
-const options = [
-  {
-    label: 'English',
-    value: 'en'
-  },
-  {
-    label: '简体中文',
-    value: 'zh-cn'
-  }
-]
 
 export const Language = () => {
   const { t } = useTranslation()
@@ -50,7 +40,12 @@ export const Language = () => {
         <p className="mt-1 text-sm text-slate-500">{t('productSettings.language.description')}</p>
       </div>
       <div className="form-item ml-4 mb-0">
-        <Select value={product?.language} options={options} loading={loading} onChange={request} />
+        <Select
+          value={product?.language}
+          options={LANGUAGE_OPTIONS}
+          loading={loading}
+          onChange={request}
+        />
       </div>
     </div>
   )

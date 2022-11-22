@@ -4,9 +4,8 @@ import timezone from 'dayjs/plugin/timezone'
 import utc from 'dayjs/plugin/utc'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
 
-import { LogoPickerField } from '~/components'
+import { AvatarPickerField } from '~/components'
 import { OnboardingLayout } from '~/layout'
 import { ProductService } from '~/service'
 import { withTranslations } from '~/utils'
@@ -17,13 +16,6 @@ dayjs.extend(timezone)
 const Onboarding = (): JSX.Element => {
   const router = useRouter()
   const { t } = useTranslation()
-  const [domain, setDomain] = useState<string>()
-
-  function handleValuesChange(changes: any) {
-    if (changes.domain) {
-      setDomain(changes.domain)
-    }
-  }
 
   async function handleFinish(values: AnyMap<any>) {
     const productId = await ProductService.create({
@@ -35,7 +27,7 @@ const Onboarding = (): JSX.Element => {
   }
 
   return (
-    <OnboardingLayout seo={{ title: '' }}>
+    <OnboardingLayout seo={{ title: t('onboarding.title') }}>
       <h2 className="mb-6 text-2xl font-bold text-slate-900">{t('onboarding.createProduct')}</h2>
 
       <Form.Custom
@@ -44,11 +36,10 @@ const Onboarding = (): JSX.Element => {
           type: 'primary',
           block: true
         }}
-        onValuesChange={handleValuesChange}
         request={handleFinish}
       >
         <Form.Item name="logo" rules={[{ required: true, message: t('onboarding.invalidLogo') }]}>
-          <LogoPickerField enableUnsplash={false} />
+          <AvatarPickerField enableUnsplash={false} />
         </Form.Item>
 
         <Form.Item

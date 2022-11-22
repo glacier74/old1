@@ -39,12 +39,12 @@ export const Domain = () => {
       <div>
         <Form.Custom
           form={form}
-          className="w-96"
+          className="w-80"
           inline
           initialValues={{
             domain: product.domain
           }}
-          submitText="Update"
+          submitText={t('common.update')}
           submitOptions={{
             className: 'ml-2',
             type: 'primary'
