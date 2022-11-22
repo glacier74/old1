@@ -1,24 +1,17 @@
 import { EmptyStates, Table } from '@heyforms/ui'
 import { TableColumn } from '@heyforms/ui/types/table'
+import { conv } from '@nily/utils'
 import { IconDatabase } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
-import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import * as timeago from 'timeago.js'
 
-import { AsyncRequest, RoundImage } from '~/components'
+import { AsyncRequest, Pagination, RoundImage } from '~/components'
+import { PAYMENT_STATUS, PAYMENT_TYPES } from '~/constants'
 import { ProductLayout, useProductId } from '~/layout'
 import { ProductService } from '~/service'
 import { currencyFormatter, withTranslations } from '~/utils'
-
-const PAYMENT_STATUS: AnyMap<string> = {
-  pending: 'engagements.pending',
-  succeeded: 'engagements.succeeded'
-}
-
-const PAYMENT_TYPES: AnyMap<string> = {
-  one_time: 'engagements.oneTime',
-  recurring: 'engagements.recurring'
-}
 
 const Skeleton = () => {
   return (
@@ -45,7 +38,10 @@ const Skeleton = () => {
 
 const ProductEngagements = (): JSX.Element => {
   const { t } = useTranslation()
+  const router = useRouter()
   const productId = useProductId()
+
+  const [page, setPage] = useState(1)
   const [count, setCount] = useState(0)
   const [payments, setPayments] = useState<Payment[]>()
 
@@ -54,7 +50,7 @@ const ProductEngagements = (): JSX.Element => {
     {
       key: 'id',
       name: '',
-      width: '40%',
+      width: '30%',
       render(row) {
         return (
           <div className="flex items-center">
@@ -102,13 +98,17 @@ const ProductEngagements = (): JSX.Element => {
   ]
 
   async function fetchPayments() {
-    const result = await ProductService.payments(productId!)
+    const result = await ProductService.payments(productId!, page)
 
     setCount(result.count)
     setPayments(result.payments)
 
     return result.payments.length > 0
   }
+
+  useEffect(() => {
+    setPage(conv.int((router.query as AnyMap<string>).page, 1)!)
+  }, [router.query])
 
   return (
     <ProductLayout seo={{ title: 'engagements.title' }}>
@@ -119,7 +119,7 @@ const ProductEngagements = (): JSX.Element => {
       <div className="mt-6">
         <AsyncRequest
           request={fetchPayments}
-          deps={[productId]}
+          deps={[productId, page]}
           skeleton={<Skeleton />}
           emptyState={
             <EmptyStates
@@ -131,6 +131,13 @@ const ProductEngagements = (): JSX.Element => {
           }
         >
           <Table<Payment> className="mt-8" columns={columns} data={payments} hideHead />
+
+          <Pagination
+            uri={`/product/${productId}/engagements`}
+            total={count}
+            page={page}
+            limit={20}
+          />
         </AsyncRequest>
       </div>
     </ProductLayout>

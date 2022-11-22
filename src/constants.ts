@@ -13,6 +13,16 @@ export const LANGUAGE_OPTIONS = [
   }
 ]
 
+export const PAYMENT_STATUS: AnyMap<string> = {
+  pending: 'engagements.pending',
+  succeeded: 'engagements.succeeded'
+}
+
+export const PAYMENT_TYPES: AnyMap<string> = {
+  one_time: 'engagements.oneTime',
+  recurring: 'engagements.recurring'
+}
+
 export const BLOCK_OPTIONS: BlockOption[] = [
   {
     type: 'heading',

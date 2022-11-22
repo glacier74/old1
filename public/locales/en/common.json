@@ -181,7 +181,15 @@
   },
   "engagements": {
     "title": "Engagements · {{name}}",
-    "heading": "Recent engagements"
+    "heading": "Recent engagements",
+    "pending": "Pending",
+    "succeeded": "Succeeded",
+    "oneTime": "One time",
+    "recurring": "Recurring",
+    "notFound": {
+      "title": "You don't have any engagements yet",
+      "description": "Share your product with others, and get them involved."
+    }
   },
   "productStats": {
     "visitors": "Visitors",

@@ -105,7 +105,11 @@ body {
 }
 
 .link-button {
-  @apply px-4 py-2 border border-slate-300 shadow-sm sm:text-sm font-medium rounded-md text-slate-700 bg-white;
+  @apply px-4 py-2 border border-slate-300 shadow-sm sm:text-sm font-medium rounded-md text-slate-700 bg-white hover:bg-slate-100;
+}
+
+.link-button-disabled {
+  @apply opacity-60 cursor-default hover:bg-white;
 }
 
 .table-body {
