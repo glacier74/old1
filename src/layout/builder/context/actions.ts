@@ -217,7 +217,6 @@ function getFocusableBlocks(rootBlocks: string[], focusableBlockMap: AnyMap<stri
 export function selectBlock(state: IState, payload: SelectBlockAction['payload']): IState {
   const { flattedBlocks, selectBlockId, focusableBlockMap } = state
   const { blockId } = payload
-  console.log('selectBlock', Date.now())
 
   if (selectBlockId === blockId) {
     return state
@@ -250,8 +249,6 @@ export function focusBlock(state: IState, payload: FocusBlockAction['payload']):
   if (!payload.direction) {
     const fb = flattedBlocks[index]
     const selectBlockId = fb?.rootId || blockId
-
-    console.log(flattedBlocks, fb)
 
     if (index > -1) {
       state.focusBlockId = blockId

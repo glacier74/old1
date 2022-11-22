@@ -8,6 +8,7 @@ import { FC, useMemo, useState } from 'react'
 import { BLOCK_OPTIONS, BLOCK_WITH_SETTINGS } from '~/constants'
 import { FeatureSettings } from '~/layout/builder/blocks/Feature'
 import { FooterSettings } from '~/layout/builder/blocks/Footer'
+import { HeroSectionSettings } from '~/layout/builder/blocks/HeroSection'
 import { NavigationSettings } from '~/layout/builder/blocks/Navigation'
 import { PaymentSettings } from '~/layout/builder/blocks/Payment'
 import { useBuilderContext } from '~/layout/builder/context'
@@ -79,7 +80,7 @@ export const BlockCard: FC<BlockCardProps> = ({ block, selectedId }) => {
 
   function handleClick() {
     handleSelectBlock()
-    document.getElementById(`block-${block.id}}`)?.scrollIntoView()
+    document.getElementById(`block-${block.id}`)?.scrollIntoView()
   }
 
   function handleVisibleChange(visible: boolean) {
@@ -142,8 +143,8 @@ export const BlockCard: FC<BlockCardProps> = ({ block, selectedId }) => {
             case 'navigation':
               return <NavigationSettings block={block as NavigationBlock} />
 
-            // case 'heroSection':
-            //   return <FeatureSettings block={block as FeatureBlock} />
+            case 'heroSection':
+              return <HeroSectionSettings block={block as HeroSectionBlock} />
 
             case 'footer':
               return <FooterSettings />
@@ -162,7 +163,7 @@ export const BlockCard: FC<BlockCardProps> = ({ block, selectedId }) => {
         <Menus.Item value="delete" className="text-red-700" label={t('common.delete')} />
       </Menus>
     ),
-    [block.type]
+    [block]
   )
 
   return (

@@ -2,7 +2,7 @@ import { Button, Tooltip } from '@heyforms/ui'
 import { isNil } from '@nily/utils'
 import { IconPhotoEdit, IconTrash, IconZoomIn } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
-import { FC, MutableRefObject, useCallback, useMemo, useRef, useState } from 'react'
+import { FC, MutableRefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import {
   IconChevronLeftCircle,
@@ -163,13 +163,15 @@ function useSlideGallery(
   const [scrollLeft, setScrollLeft] = useState(0)
   const [index, setIndex] = useState<number | null>(null)
   const [slideVisible, open, closeSlide] = useVisible()
+  const [containerWidth, setContainerWidth] = useState(0)
 
   // 服务端渲染和客户端渲染 ref 的判断不一致
   // 服务端使用 ref，客户端使用 ref.current
-  const containerWidth = useMemo(
-    () => containerRef?.current?.getBoundingClientRect().width || 0,
-    [containerRef, containerRef.current]
-  )
+  useEffect(() => {
+    if (containerRef?.current) {
+      setContainerWidth(containerRef.current.getBoundingClientRect().width)
+    }
+  }, [containerRef, containerRef.current])
 
   const style = useMemo(() => {
     let length = sources.length

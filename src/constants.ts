@@ -113,4 +113,4 @@ export const BLOCK_GROUP_OPTIONS: Array<Pick<BlockGroupOptions, 'label' | 'types
   }
 ]
 
-export const BLOCK_WITH_SETTINGS = [/*'heroSection'*/ 'navigation', 'footer', 'feature', 'payment']
+export const BLOCK_WITH_SETTINGS = ['heroSection', 'navigation', 'footer', 'feature', 'payment']

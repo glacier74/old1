@@ -72,6 +72,13 @@ export function blockByType(type: BlockType, blockId?: string): Block {
       } as FeatureBlock
       break
 
+    case 'heroSection':
+      block = {
+        ...block,
+        layout: 'center'
+      } as HeroSectionBlock
+      break
+
     case 'navigation':
       block = {
         ...block,

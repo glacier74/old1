@@ -61,8 +61,14 @@ const Block: FC<{ product: Product; siteSetting: SiteSettings; block: any }> = (
 const PublicSite: FC<PublicSiteProps> = ({ product }) => (
   <BaseLayout
     seo={{
-      title: product.siteSetting.metaTitle || product.name,
-      description: product.siteSetting.metaDescription || product.tagline
+      title: product.metaTitle || product.name,
+      description: product.metaDescription || product.tagline,
+      openGraph: {
+        siteName: product.metaTitle || product.name,
+        images: {
+          url: product.metaImage
+        }
+      }
     }}
   >
     {product.siteSetting.content.map(block => (

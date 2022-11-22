@@ -4,7 +4,7 @@ import { IconChevronDown, IconCircleCheck, IconPlus } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import type { FC } from 'react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { RoundImage } from '~/components'
 import { useStore } from '~/store'
@@ -76,7 +76,7 @@ export const SidebarProducts: FC = () => {
   const [visible, setVisible] = useState(false)
 
   function handleCreate() {
-    //
+    router.push('/onboarding')
   }
 
   function handleClick(product: Product) {
@@ -98,6 +98,10 @@ export const SidebarProducts: FC = () => {
       />
     </div>
   )
+
+  useEffect(() => {
+    router.prefetch('/onboarding')
+  }, [])
 
   return (
     <div className="px-4">

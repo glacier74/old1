@@ -57,7 +57,7 @@ export const StripeConnectModal: FC = () => {
       showCloseIcon
     >
       <Stepper items={STEPPER_OPTIONS} value={state.stripeConnectStep} />
-      <div className="stripe-connect-modal-body">{Element}</div>
+      <div className="stripe-connect-modal-body scrollbar">{Element}</div>
     </Modal>
   )
 }

@@ -49,8 +49,6 @@ declare global {
   interface SiteSettings {
     productId: number
     content: Block[]
-    metaTitle: string
-    metaDescription: string
     twitter: string
     facebook: string
     instagram: string
@@ -70,6 +68,9 @@ declare global {
     language: string
     isSitePrivate: boolean
     removeBranding: boolean
+    metaTitle: string
+    metaDescription: string
+    metaImage: string
     inviteCode: string
     inviteExpiredAt: number
     users: User[]
@@ -209,6 +210,11 @@ declare global {
     type: 'list'
     ordered?: false
     content: TextBlock[]
+  }
+
+  interface HeroSectionBlock extends Pick<Block, 'id' | 'type'> {
+    type: 'heroSection'
+    layout?: 'left' | 'center'
   }
 
   interface FeatureBlock extends Pick<Block, 'id' | 'type'> {

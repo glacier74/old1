@@ -4,7 +4,7 @@ import { BlockProps } from './Block'
 import { Feature, FeatureProps } from './Feature'
 import { Footer } from './Footer'
 import { Heading, HeadingProps } from './Heading'
-import { HeroSection } from './HeroSection'
+import { HeroSection, HeroSectionProps } from './HeroSection'
 import { Image, ImageProps } from './Image'
 import { List, ListProps } from './List'
 import { Navigation, NavigationProps } from './Navigation'
@@ -18,7 +18,7 @@ export const BlockWrapper: FC<BlockProps> = props => {
       return <Navigation key={props.block.id} {...(props as NavigationProps)} />
 
     case 'heroSection':
-      return <HeroSection key={props.block.id} {...(props as FeatureProps)} />
+      return <HeroSection key={props.block.id} {...(props as HeroSectionProps)} />
 
     case 'footer':
       return <Footer key={props.block.id} {...(props as FeatureProps)} />

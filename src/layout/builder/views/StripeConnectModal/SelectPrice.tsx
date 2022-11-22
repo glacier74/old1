@@ -49,7 +49,7 @@ const SelectPriceItem: FC<SelectPriceItemProps> = ({ value, price, onClick }) =>
           <p className="text-red-700 text-xs">At present, only one-time price is supported</p>
         )}
       </div>
-      {isActive && <IconCircleCheck className="ml-4 w-5 h-5 text-blue-500" />}
+      {isActive && <IconCircleCheck className="ml-4 w-5 h-5 text-blue-700" />}
     </div>
   )
 }
@@ -117,34 +117,36 @@ export const SelectPrice: FC = () => {
   }, [state.stripeProduct])
 
   return (
-    <div className="max-w-full">
-      <div className="pt-24 flex items-center justify-between">
-        <div>
-          <div className="text-lg font-medium text-slate-900">
-            {state.stripeConnectBlock?.productName}
+    <div className="flex flex-col items-center justify-center min-h-full">
+      <div className="w-[32rem]">
+        <div className="pt-20 flex items-center justify-between">
+          <div>
+            <div className="text-lg font-medium text-slate-900">
+              {state.stripeConnectBlock?.productName}
+            </div>
+            <div className="mt-1 text-sm text-slate-400 line-clamp-2">
+              {state.stripeConnectBlock?.productDescription}
+            </div>
           </div>
-          <div className="mt-1 text-sm text-slate-400 line-clamp-2">
-            {state.stripeConnectBlock?.productDescription}
-          </div>
+
+          <Button.Link type="primary" onClick={handleBack}>
+            Not this product?
+          </Button.Link>
         </div>
 
-        <Button.Link type="primary" onClick={handleBack}>
-          Not this product?
-        </Button.Link>
-      </div>
+        <div className="mt-8 uppercase text-xs text-slate-300">Select the price</div>
 
-      <div className="mt-8 uppercase text-xs text-slate-300">Select the price</div>
+        <div className="mt-2 w-full space-y-2">
+          {state.stripeProduct?.prices.map(price => (
+            <SelectPriceItem key={price.id} value={priceId} price={price} onClick={handleClick} />
+          ))}
+        </div>
 
-      <div className="mt-2 w-full space-y-2">
-        {state.stripeProduct?.prices.map(price => (
-          <SelectPriceItem key={price.id} value={priceId} price={price} onClick={handleClick} />
-        ))}
-      </div>
-
-      <div className="flex justify-center pt-6 pb-12">
-        <Button className="w-80" type="primary" disabled={!priceId} onClick={handleFinish}>
-          Complete
-        </Button>
+        <div className="flex justify-center pt-6 pb-12">
+          <Button className="w-80" type="primary" disabled={!priceId} onClick={handleFinish}>
+            Complete
+          </Button>
+        </div>
       </div>
     </div>
   )

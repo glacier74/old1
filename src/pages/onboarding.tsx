@@ -23,7 +23,8 @@ const Onboarding = (): JSX.Element => {
       // eslint-disable-next-line import/namespace
       timezone: dayjs.tz.guess()
     })
-    router.replace(`/product/${productId}`)
+
+    await router.replace(`/product/${productId}`)
   }
 
   return (

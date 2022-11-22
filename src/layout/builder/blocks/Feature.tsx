@@ -1,5 +1,6 @@
 import { Switch, Tooltip } from '@heyforms/ui'
 import { IconBoxAlignLeft, IconBoxAlignRight } from '@tabler/icons'
+import { useTranslation } from 'next-i18next'
 import { FC, useMemo } from 'react'
 
 import { useBuilderContext } from '../context'
@@ -17,7 +18,7 @@ export const FeaturePreview: FC<FeatureProps> = ({ block, ...restProps }) => {
 
   return (
     <BlockPreview block={block} {...restProps}>
-      <div className={`block-feature-container block-feature-align-${block.align}`}>
+      <div className={`block-feature-container block-feature-${block.align}`}>
         {/* Left column */}
         <div className="block-feature-col">
           <ImagePreview block={block.image} />
@@ -43,6 +44,7 @@ export const FeaturePreview: FC<FeatureProps> = ({ block, ...restProps }) => {
 }
 
 export const FeatureSettings: FC<Pick<FeatureProps, 'block'>> = ({ block }) => {
+  const { t } = useTranslation()
   const { dispatch } = useBuilderContext()
 
   const options: any[] = useMemo(
@@ -81,7 +83,7 @@ export const FeatureSettings: FC<Pick<FeatureProps, 'block'>> = ({ block }) => {
 
   return (
     <div className="flex items-center justify-between px-4 py-2 text-slate-700">
-      <span>Layout</span>
+      <span>{t('builder.layout')}</span>
       <Switch.Group value={block.align} options={options} onChange={handleChange} />
     </div>
   )
@@ -90,7 +92,7 @@ export const FeatureSettings: FC<Pick<FeatureProps, 'block'>> = ({ block }) => {
 export const Feature: FC<FeatureProps> = ({ block, placeholder, ...restProps }) => {
   return (
     <BlockComponent block={block} {...restProps}>
-      <div className={`block-feature-container block-feature-align-${block.align}`}>
+      <div className={`block-feature-container block-feature-${block.align}`}>
         {/* Left column */}
         <div className="block-feature-col">
           <Image

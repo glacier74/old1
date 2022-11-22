@@ -55,14 +55,14 @@ export const Connect: FC = () => {
   })
 
   return (
-    <div className="text-sm text-center">
+    <div className="flex flex-col items-center justify-center px-24 h-full">
       {loading ? (
-        <div>
+        <div className="text-sm text-center">
           <Loading />
           <p className="mt-2">Connecting with Stripe</p>
         </div>
       ) : (
-        <div>
+        <div className="text-sm text-center">
           <div className="space-y-3">
             <p>
               If you do not have a stripe account, you can create a free account.{' '}

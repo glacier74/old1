@@ -263,6 +263,25 @@ body {
   }
 }
 
+.block-herosection {
+  @apply py-24;
+}
+
+.block-herosection-center {
+  @apply text-center;
+
+  .block-herosection-image,
+  .block-herosection-tagline {
+    @apply mx-auto;
+  }
+
+  .input {
+    input {
+      @apply text-center;
+    }
+  }
+}
+
 .block-herosection-name,
 .block-herosection-tagline {
   .input {
@@ -398,7 +417,7 @@ h3.rich-text {
     }
   }
 
-  &.block-feature-align-right {
+  &.block-feature-right {
     @apply flex-row-reverse;
 
     .block-feature-col {
@@ -622,8 +641,8 @@ h3.rich-text {
 }
 
 .stripe-connect-modal-body {
-  @apply flex flex-col items-center justify-center px-24 overflow-y-auto;
-  height: 24rem;
+  @apply text-sm text-slate-700 overflow-y-auto;
+  height: 28rem;
 }
 
 .stripe-connect-modal-product {
