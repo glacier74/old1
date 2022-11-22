@@ -12,7 +12,7 @@ export const AvatarSettings: FC = () => {
   const { t } = useTranslation()
   const { user, updateUser } = useStore()
 
-  const { loading, error, request } = useRequest(async (avatar: string) => {
+  const { error, request } = useRequest(async (avatar: string) => {
     const updates = { avatar }
 
     await UserService.update(updates)
@@ -37,7 +37,6 @@ export const AvatarSettings: FC = () => {
           text="account.avatar.heading"
           retainLength={6}
           enableUnsplash={false}
-          changeLoading={loading}
           onChange={request}
         />
       </div>
