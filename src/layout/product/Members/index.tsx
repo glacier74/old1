@@ -112,7 +112,7 @@ export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
             inline
             submitText={t('member.emailInvitation.send')}
             submitOptions={{
-              className: 'mt-6 ml-3'
+              className: 'mt-5 ml-3'
             }}
             onlySubmitOnValueChange={true}
             request={handleSendEmailInvitation}

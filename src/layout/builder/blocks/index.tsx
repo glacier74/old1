@@ -7,12 +7,16 @@ import { Heading, HeadingProps } from './Heading'
 import { HeroSection } from './HeroSection'
 import { Image, ImageProps } from './Image'
 import { List, ListProps } from './List'
+import { Navigation, NavigationProps } from './Navigation'
 import { Payment, PaymentProps } from './Payment'
 import { SlideGallery, SlideGalleryProps } from './SlideGallery'
 import { Text, TextProps } from './Text'
 
 export const BlockWrapper: FC<BlockProps> = props => {
   switch (props.block.type) {
+    case 'navigation':
+      return <Navigation key={props.block.id} {...(props as NavigationProps)} />
+
     case 'heroSection':
       return <HeroSection key={props.block.id} {...(props as FeatureProps)} />
 

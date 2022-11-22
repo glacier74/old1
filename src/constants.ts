@@ -1,4 +1,11 @@
-import { IconCreditCard, IconHeading, IconLetterT, IconRocket, IconSlideshow } from '@tabler/icons'
+import {
+  IconBrandSafari,
+  IconCreditCard,
+  IconHeading,
+  IconLetterT,
+  IconRocket,
+  IconSlideshow
+} from '@tabler/icons'
 
 import { IconFooter, IconHeroSection } from '~/components'
 
@@ -24,34 +31,44 @@ export const PAYMENT_TYPES: AnyMap<string> = {
 }
 
 export const BLOCK_OPTIONS: BlockOption[] = [
+  // Basic
   {
-    type: 'heading',
-    icon: IconHeading,
-    label: 'builder.heading.name',
-    textColor: '#334155',
-    backgroundColor: '#e5e7eb'
-  },
-  {
-    type: 'text',
-    icon: IconLetterT,
-    label: 'builder.text.name',
-    textColor: '#334155',
-    backgroundColor: '#e5e7eb'
+    type: 'navigation',
+    icon: IconBrandSafari,
+    label: 'builder.navigation.name',
+    textColor: '#0369a1',
+    backgroundColor: '#e0f2fe'
   },
   {
     type: 'heroSection',
     icon: IconHeroSection,
     label: 'builder.heroSection.name',
-    textColor: '#b91c1c',
-    backgroundColor: '#fee2e2'
+    textColor: '#0369a1',
+    backgroundColor: '#e0f2fe'
   },
   {
     type: 'footer',
     icon: IconFooter,
     label: 'builder.footer.name',
-    textColor: '#b91c1c',
-    backgroundColor: '#fee2e2'
+    textColor: '#0369a1',
+    backgroundColor: '#e0f2fe'
   },
+  {
+    type: 'heading',
+    icon: IconHeading,
+    label: 'builder.heading.name',
+    textColor: '#0369a1',
+    backgroundColor: '#e0f2fe'
+  },
+  {
+    type: 'text',
+    icon: IconLetterT,
+    label: 'builder.text.name',
+    textColor: '#0369a1',
+    backgroundColor: '#e0f2fe'
+  },
+
+  // Feature
   {
     type: 'feature',
     icon: IconRocket,
@@ -66,6 +83,8 @@ export const BLOCK_OPTIONS: BlockOption[] = [
     textColor: '#b91c1c',
     backgroundColor: '#fee2e2'
   },
+
+  // Payment
   {
     type: 'payment',
     icon: IconCreditCard,
@@ -82,11 +101,11 @@ export const BLOCK_GROUP_OPTIONS: Array<Pick<BlockGroupOptions, 'label' | 'types
   },
   {
     label: 'builder.basic',
-    types: ['heading', 'text']
+    types: ['navigation', 'heroSection', 'footer', 'heading', 'text']
   },
   {
     label: 'builder.feature.name',
-    types: ['heroSection', 'feature', 'slideGallery', 'footer']
+    types: ['feature', 'slideGallery']
   },
   {
     label: 'builder.payment.name',
@@ -94,4 +113,4 @@ export const BLOCK_GROUP_OPTIONS: Array<Pick<BlockGroupOptions, 'label' | 'types
   }
 ]
 
-export const BLOCK_WITH_SETTINGS = [/*'heroSection'*/ 'footer', 'feature', 'payment']
+export const BLOCK_WITH_SETTINGS = [/*'heroSection'*/ 'navigation', 'footer', 'feature', 'payment']

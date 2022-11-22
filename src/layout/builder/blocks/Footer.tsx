@@ -114,7 +114,7 @@ export const FooterSettings: FC = () => {
     })
   }
 
-  return <Menus.Item label={t('builder.socialMediaSettings')} onClick={handleClick} />
+  return <Menus.Item label={t('builder.footer.settings')} onClick={handleClick} />
 }
 
 export const FooterPreview: FC<BlockProps & { product: Product; siteSetting: SiteSettings }> = ({

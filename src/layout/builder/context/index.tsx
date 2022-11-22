@@ -34,6 +34,9 @@ export interface IState {
   // Social media
   isSocialMediaOpen: boolean
 
+  // Navigation
+  isNavigationOpen: boolean
+
   // Sync
   syncVersion: number
 }
@@ -184,6 +187,7 @@ export const BuilderProvider: FC<IComponentProps> = ({ children }) => {
       isBubbleMenuOpen: false,
       isCommandMenuOpen: false,
       isSocialMediaOpen: false,
+      isNavigationOpen: false,
       syncVersion: 0
     }),
     []

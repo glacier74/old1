@@ -8,6 +8,7 @@ import { HeadingPreview } from '~/layout/builder/blocks/Heading'
 import { HeroSectionPreview } from '~/layout/builder/blocks/HeroSection'
 import { ImagePreview } from '~/layout/builder/blocks/Image'
 import { ListPreview } from '~/layout/builder/blocks/List'
+import { NavigationPreview } from '~/layout/builder/blocks/Navigation'
 import { PaymentPreview } from '~/layout/builder/blocks/Payment'
 import { SlideGalleryPreview } from '~/layout/builder/blocks/SlideGallery'
 import { TextPreview } from '~/layout/builder/blocks/Text'
@@ -23,6 +24,9 @@ const Block: FC<{ product: Product; siteSetting: SiteSettings; block: any }> = (
   block
 }) => {
   switch (block.type) {
+    case 'navigation':
+      return <NavigationPreview key={block.id} block={block} product={product} />
+
     case 'heroSection':
       return <HeroSectionPreview key={block.id} block={block} product={product} />
 

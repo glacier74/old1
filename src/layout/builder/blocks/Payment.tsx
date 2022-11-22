@@ -89,6 +89,7 @@ export const PaymentPreview: FC<PaymentProps & { product: Product }> = ({
 }
 
 export const PaymentSettings: FC<Pick<PaymentProps, 'block'>> = ({ block }) => {
+  const { t } = useTranslation()
   const { dispatch } = useBuilderContext()
 
   function handleClick() {
@@ -101,7 +102,7 @@ export const PaymentSettings: FC<Pick<PaymentProps, 'block'>> = ({ block }) => {
     })
   }
 
-  return <Menus.Item label="Payment settings" onClick={handleClick} />
+  return <Menus.Item label={t('builder.payment.settings')} onClick={handleClick} />
 }
 
 const PaymentComponent: FC<PaymentProps> = ({ block, ...restProps }) => {

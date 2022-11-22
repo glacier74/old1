@@ -9,7 +9,7 @@ import { Queue } from '~/utils'
 
 import { BlockWrapper } from '../blocks'
 import { useBuilderContext } from '../context'
-import { BubbleMenu, SocialMediaModal, StripeConnectModal } from '../views'
+import { BubbleMenu, NavigationModal, SocialMediaModal, StripeConnectModal } from '../views'
 
 export const BlockList: FC = () => {
   const { siteSettings } = useStore()
@@ -78,6 +78,7 @@ export const BlockList: FC = () => {
       <BubbleMenu />
       <StripeConnectModal />
       <SocialMediaModal />
+      <NavigationModal />
     </>
   )
 }

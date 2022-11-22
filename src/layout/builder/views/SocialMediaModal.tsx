@@ -45,7 +45,7 @@ export const SocialMediaModal: FC = () => {
 
         <Form.Custom
           initialValues={settings}
-          submitText={t('common.update')}
+          submitText={t('common.saveChanges')}
           submitOptions={{
             type: 'primary'
           }}

@@ -72,6 +72,19 @@ export function blockByType(type: BlockType, blockId?: string): Block {
       } as FeatureBlock
       break
 
+    case 'navigation':
+      block = {
+        ...block,
+        links: [
+          {
+            id: uuidv4(),
+            title: 'Link1',
+            url: ''
+          }
+        ]
+      } as NavigationBlock
+      break
+
     case 'heading':
       block = {
         ...block,
@@ -274,6 +287,12 @@ export function copyBlock(block: any) {
       block.image.id = uuidv4()
       block.heading.id = uuidv4()
       block.content.id = uuidv4()
+      break
+
+    case 'navigation':
+      block.links.forEach((row: Block) => {
+        row.id = uuidv4()
+      })
       break
   }
 

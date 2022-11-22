@@ -17,7 +17,8 @@
     "unsupported": "Unsupported file type",
     "duplicate": "Duplicate",
     "delete": "Delete",
-    "update": "Update"
+    "update": "Update",
+    "saveChanges": "Save changes"
   },
   "login": {
     "title": "Login · $t(common.name)",
@@ -289,7 +290,6 @@
     "addNewBlock": "Add a new block",
     "searchBlockType": "Find a block type",
     "layout": "Layout",
-    "socialMediaSettings": "Social media settings",
     "text": {
       "name": "Text",
       "placeholder": "Text content"
@@ -298,11 +298,16 @@
       "name": "Heading",
       "placeholder": "Heading content"
     },
+    "navigation": {
+      "name": "Navigation",
+      "settings": "Navigation settings"
+    },
     "heroSection": {
       "name": "Hero section"
     },
     "footer": {
-      "name": "Footer"
+      "name": "Footer",
+      "settings": "Social media settings"
     },
     "feature": {
       "name": "Feature",
@@ -315,7 +320,8 @@
       "name": "Payment",
       "heading": "Heading",
       "description": "Description",
-      "feature": "Feature"
+      "feature": "Feature",
+      "settings": "Payment settings"
     },
     "slideGallery": {
       "name": "Slide gallery",

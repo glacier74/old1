@@ -8,6 +8,7 @@ import { FC, useMemo, useState } from 'react'
 import { BLOCK_OPTIONS, BLOCK_WITH_SETTINGS } from '~/constants'
 import { FeatureSettings } from '~/layout/builder/blocks/Feature'
 import { FooterSettings } from '~/layout/builder/blocks/Footer'
+import { NavigationSettings } from '~/layout/builder/blocks/Navigation'
 import { PaymentSettings } from '~/layout/builder/blocks/Payment'
 import { useBuilderContext } from '~/layout/builder/context'
 
@@ -138,6 +139,9 @@ export const BlockCard: FC<BlockCardProps> = ({ block, selectedId }) => {
             case 'payment':
               return <PaymentSettings block={block as PaymentBlock} />
 
+            case 'navigation':
+              return <NavigationSettings block={block as NavigationBlock} />
+
             // case 'heroSection':
             //   return <FeatureSettings block={block as FeatureBlock} />
 
@@ -163,7 +167,7 @@ export const BlockCard: FC<BlockCardProps> = ({ block, selectedId }) => {
 
   return (
     <div
-      className={clsx('group flex items-center py-2.5 pr-1 cursor-pointer', {
+      className={clsx('group flex items-center py-2.5 pr-1 cursor-pointer select-none', {
         'bg-slate-100': isSelected
       })}
       onClick={handleClick}

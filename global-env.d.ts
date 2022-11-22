@@ -160,6 +160,7 @@ declare global {
     | 'heading'
     | 'image'
     | 'list'
+    | 'navigation'
     | 'heroSection'
     | 'footer'
     | 'feature'
@@ -243,5 +244,17 @@ declare global {
     rootId?: string
     path: (string | number)[]
     deletable?: boolean
+  }
+
+  interface NavigationLink {
+    id: string
+    title: string
+    url: string
+    openInNewTab?: boolean
+  }
+
+  interface NavigationBlock extends Pick<Block, 'id' | 'type'> {
+    type: 'navigation'
+    links: NavigationLink[]
   }
 }

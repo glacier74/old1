@@ -99,7 +99,6 @@ function getPortalStyle(ref: MutableRefObject<HTMLDivElement | null>, range?: Ra
 
 export const BubbleMenu: FC = () => {
   const { state, dispatch } = useBuilderContext()
-
   const menuRef = useRef<HTMLDivElement | null>(null)
 
   const [activeState, setActiveState] = useState({} as ActiveState)
@@ -173,6 +172,7 @@ export const BubbleMenu: FC = () => {
   }
 
   function handleClose() {
+    setLinkBubbleVisible(false)
     dispatch({
       type: 'update',
       payload: {
@@ -201,7 +201,7 @@ export const BubbleMenu: FC = () => {
   return (
     <Portal visible={state.isBubbleMenuOpen}>
       <div ref={menuRef} className="bubble-menu" style={portalStyle}>
-        <div className="flex items-center bg-white shadow py-1.5 px-2 rounded divide-x divide-slate-200 space-x-1.5">
+        <div className="bg-white shadow py-1.5 px-2 rounded">
           {linkBubbleVisible ? (
             <Form.Custom
               inline

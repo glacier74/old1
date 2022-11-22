@@ -164,10 +164,12 @@ function useSlideGallery(
   const [index, setIndex] = useState<number | null>(null)
   const [slideVisible, open, closeSlide] = useVisible()
 
-  const containerWidth = useMemo(() => {
-    console.log(containerRef.current)
-    return containerRef.current?.getBoundingClientRect().width || 0
-  }, [containerRef.current])
+  // 服务端渲染和客户端渲染 ref 的判断不一致
+  // 服务端使用 ref，客户端使用 ref.current
+  const containerWidth = useMemo(
+    () => containerRef?.current?.getBoundingClientRect().width || 0,
+    [containerRef, containerRef.current]
+  )
 
   const style = useMemo(() => {
     let length = sources.length
