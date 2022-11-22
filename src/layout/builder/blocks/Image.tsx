@@ -3,11 +3,10 @@ import { IconPhotoEdit } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
 import { FC } from 'react'
 
-import { PhotoPicker } from '~/components'
+import { ImagePickerButton, PhotoPicker } from '~/components'
 import { cropImage, useVisible } from '~/utils'
 
 import { useBuilderContext } from '../context'
-import { Upload } from '../views'
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
 
 export interface ImageProps extends BlockProps {
@@ -70,7 +69,12 @@ const ImageComponent: FC<ImageProps> = ({ block, uploadDesc1, uploadDesc2, ...re
             </div>
           </div>
         ) : (
-          <Upload description1={t(uploadDesc1)} description2={t(uploadDesc2)} onClick={open} />
+          <ImagePickerButton
+            className="block-upload"
+            tip1={t(uploadDesc1!)}
+            tip2={t(uploadDesc2!)}
+            onClick={open}
+          />
         )}
       </BlockComponent>
 

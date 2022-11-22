@@ -7,13 +7,13 @@ import { FC, MutableRefObject, useCallback, useMemo, useRef, useState } from 're
 import {
   IconChevronLeftCircle,
   IconChevronRightCircle,
+  ImagePickerButton,
   PhotoPicker,
   SlideModal
 } from '~/components'
 import { cropImage, useVisible } from '~/utils'
 
 import { useBuilderContext } from '../context'
-import { Upload } from '../views'
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
 
 export interface SlideGalleryProps extends BlockProps {
@@ -327,9 +327,10 @@ const SlideGalleryComponent: FC<SlideGalleryProps> = ({ block, ...restProps }) =
                   />
                 ))}
 
-                <Upload
-                  description1={t('builder.slideGallery.uploadTip1')}
-                  description2={t('builder.slideGallery.uploadTip2')}
+                <ImagePickerButton
+                  className="block-upload"
+                  tip1={t('builder.slideGallery.uploadTip1')}
+                  tip2={t('builder.slideGallery.uploadTip2')}
                   onClick={openPicker}
                 />
               </div>

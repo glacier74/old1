@@ -2,7 +2,7 @@ import { Input } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { FC, startTransition } from 'react'
 
-import { LogoPickerField, RoundImage } from '~/components'
+import { AvatarPickerField, RoundImage } from '~/components'
 import { useProduct } from '~/layout'
 import { ProductService } from '~/service'
 
@@ -55,7 +55,7 @@ export const HeroSection: FC<BlockProps> = ({ block }) => {
   return (
     <BlockComponent className="py-24" block={block}>
       <div className="pt-10">
-        <LogoPickerField
+        <AvatarPickerField
           value={product?.logo}
           size={125}
           enableUnsplash={false}

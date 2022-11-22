@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next'
 import type { FC } from 'react'
 import { useEffect } from 'react'
 
-import { PhotoPickerField } from '~/components'
+import { AvatarPickerField } from '~/components'
 import { UserService } from '~/service'
 import { useStore } from '~/store'
 import { useRequest } from '~/utils'
@@ -29,15 +29,18 @@ export const AvatarSettings: FC = () => {
 
   return (
     <div>
-      <PhotoPickerField
-        value={user?.avatar}
-        label={t('account.avatar.heading')}
-        description={t('account.avatar.description')}
-        enableUnsplash={false}
-        changeLoading={loading}
-        onChange={request}
-      />
-
+      <div className="block text-sm font-medium text-slate-700">{t('account.avatar.heading')}</div>
+      <p className="mt-1 text-sm text-slate-500">{t('account.avatar.description')}</p>
+      <div className="mt-3">
+        <AvatarPickerField
+          value={user?.avatar}
+          text="account.avatar.heading"
+          retainLength={6}
+          enableUnsplash={false}
+          changeLoading={loading}
+          onChange={request}
+        />
+      </div>
       {error && <div className="form-item-error">{error.message}</div>}
     </div>
   )

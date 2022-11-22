@@ -2,7 +2,7 @@ import { Input } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { startTransition } from 'react'
 
-import { LogoPickerField } from '~/components'
+import { AvatarPickerField } from '~/components'
 import { useProduct } from '~/layout'
 import { ProductService } from '~/service'
 
@@ -38,7 +38,7 @@ export const SiteHeader = () => {
 
   return (
     <div className="site-header mt-10 py-10">
-      <LogoPickerField
+      <AvatarPickerField
         value={product?.logo}
         size={100}
         enableUnsplash={false}
