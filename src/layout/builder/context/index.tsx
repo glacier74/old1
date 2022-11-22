@@ -64,6 +64,13 @@ export interface AddBlockAction {
   }
 }
 
+export interface DuplicateBlockAction {
+  type: 'duplicateBlock'
+  payload: {
+    blockId: string
+  }
+}
+
 export interface UpdateBlockAction {
   type: 'updateBlock'
   payload: {
@@ -108,6 +115,7 @@ type IAction =
   | SetBlocksAction
   | MoveBlockAction
   | AddBlockAction
+  | DuplicateBlockAction
   | UpdateBlockAction
   | DeleteBlockAction
   | SelectBlockAction
@@ -153,6 +161,7 @@ const reducer = (state: IState, action: IAction) => {
     case 'setBlocks':
     case 'moveBlock':
     case 'addBlock':
+    case 'duplicateBlock':
     case 'updateBlock':
     case 'deleteBlock':
     case 'selectBlock':

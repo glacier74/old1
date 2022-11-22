@@ -1,9 +1,10 @@
-import { isFalse } from '@nily/utils'
+import { deepClone, isFalse } from '@nily/utils'
 
-import { flattenBlocks, getBlockByPath, getBlockIndex } from '../utils'
+import { copyBlock, flattenBlocks, getBlockByPath, getBlockIndex } from '../utils'
 import {
   AddBlockAction,
   DeleteBlockAction,
+  DuplicateBlockAction,
   FocusBlockAction,
   IState,
   MoveBlockAction,
@@ -89,6 +90,20 @@ export function addBlock(state: IState, payload: AddBlockAction['payload']): ISt
 
   return selectBlock(state, {
     blockId: payload.block.id
+  })
+}
+
+export function duplicateBlock(state: IState, payload: DuplicateBlockAction['payload']): IState {
+  const { blockId } = payload
+  const block = state.blocks.find(b => b.id === blockId)
+
+  if (!block) {
+    return state
+  }
+
+  return addBlock(state, {
+    block: copyBlock(deepClone(block)),
+    afterId: blockId
   })
 }
 

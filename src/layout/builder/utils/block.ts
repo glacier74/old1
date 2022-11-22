@@ -1,4 +1,4 @@
-import { isValid, isValidArray } from '@nily/utils'
+import { isValidArray } from '@nily/utils'
 import { v4 as uuidv4 } from 'uuid'
 
 export function blockByType(type: BlockType, blockId?: string): Block {
@@ -257,11 +257,24 @@ export function stripeConnectStep(block: PaymentBlock) {
   return block.productId ? 'selectPrice' : block.stripeAccount ? 'product' : 'connect'
 }
 
-export function duplicateBlock(block: any) {
+export function copyBlock(block: any) {
   block.id = uuidv4()
 
-  if (isValid(block.blocks)) {
-    block.blocks.forEach(duplicateBlock)
+  switch (block.type) {
+    case 'payment':
+      block.heading.id = uuidv4()
+      block.description.id = uuidv4()
+      block.content.id = uuidv4()
+      block.content.content.forEach((row: Block) => {
+        row.id = uuidv4()
+      })
+      break
+
+    case 'feature':
+      block.image.id = uuidv4()
+      block.heading.id = uuidv4()
+      block.content.id = uuidv4()
+      break
   }
 
   return block

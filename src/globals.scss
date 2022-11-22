@@ -297,6 +297,10 @@ body {
 .rich-text {
   @apply py-2 outline-none text-xl leading-8;
 
+  a {
+    @apply text-blue-700;
+  }
+
   &:empty:after {
     @apply pointer-events-none text-black text-opacity-30 hidden;
     content: attr(placeholder);
@@ -329,6 +333,20 @@ h3.rich-text {
   @apply fixed;
   z-index: 9998;
 
+  .form-container {
+    @apply p-2;
+
+    .input {
+      @apply py-1.5;
+    }
+
+    button.button {
+      @apply p-1.5;
+    }
+  }
+}
+
+.bubble-menu-container {
   button.button {
     @apply p-1;
 
@@ -381,7 +399,7 @@ h3.rich-text {
   }
 
   .block-upload {
-    @apply bg-slate-100;
+    @apply bg-slate-100 text-base;
     width: 31.25rem;
     height: 18.75rem;
   }
@@ -432,7 +450,7 @@ h3.rich-text {
   }
 
   .block-upload {
-    @apply bg-slate-100;
+    @apply bg-slate-100 text-base;
   }
 }
 

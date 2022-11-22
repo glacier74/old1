@@ -1,7 +1,6 @@
 export * from './BubbleMenu'
 export * from './StripeConnectModal'
 export * from './RichText'
-export * from './Upload'
 export * from './SiteHeader'
 export * from './Sidebar'
 export * from './BlockList'

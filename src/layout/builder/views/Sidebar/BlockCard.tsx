@@ -1,6 +1,5 @@
 import { Button, Dropdown, Menus, stopPropagation } from '@heyforms/ui'
 import { IComponentProps } from '@heyforms/ui/types/typing'
-import { deepClone } from '@nily/utils'
 import { IconDotsVertical } from '@tabler/icons'
 import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
@@ -11,7 +10,6 @@ import { FeatureSettings } from '~/layout/builder/blocks/Feature'
 import { FooterSettings } from '~/layout/builder/blocks/Footer'
 import { PaymentSettings } from '~/layout/builder/blocks/Payment'
 import { useBuilderContext } from '~/layout/builder/context'
-import { duplicateBlock } from '~/layout/builder/utils'
 
 interface BlockCardProps {
   block: Block
@@ -69,8 +67,7 @@ export const BlockCard: FC<BlockCardProps> = ({ block, selectedId }) => {
   const isSelected = useMemo(() => selectedId === block.id, [selectedId, block.id])
   const label = useMemo(() => BLOCK_OPTIONS.find(o => o.type === block.type)?.label, [block.type])
 
-  function handleClick() {
-    document.getElementById(`block-${block.id}}`)?.scrollIntoView()
+  function handleSelectBlock() {
     dispatch({
       type: 'selectBlock',
       payload: {
@@ -79,11 +76,16 @@ export const BlockCard: FC<BlockCardProps> = ({ block, selectedId }) => {
     })
   }
 
+  function handleClick() {
+    handleSelectBlock()
+    document.getElementById(`block-${block.id}}`)?.scrollIntoView()
+  }
+
   function handleVisibleChange(visible: boolean) {
     setIsOpen(visible)
 
     if (visible) {
-      handleClick()
+      handleSelectBlock()
     }
   }
 
@@ -91,10 +93,9 @@ export const BlockCard: FC<BlockCardProps> = ({ block, selectedId }) => {
     switch (name) {
       case 'duplicate':
         dispatch({
-          type: 'addBlock',
+          type: 'duplicateBlock',
           payload: {
-            block: duplicateBlock(deepClone(block)),
-            afterId: block.id
+            blockId: block.id
           }
         })
         break
