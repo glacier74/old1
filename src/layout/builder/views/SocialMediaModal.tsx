@@ -15,8 +15,9 @@ export const SocialMediaModal: FC = () => {
   const { updateSiteSettings } = useStore()
 
   async function handleFinish(updates: any) {
-    updateSiteSettings(updates)
     await SiteSettingsService.update(settings.productId, updates)
+    updateSiteSettings(updates)
+    handleClose()
   }
 
   function handleClose() {
@@ -30,7 +31,7 @@ export const SocialMediaModal: FC = () => {
 
   return (
     <Modal
-      contentClassName="max-w-md"
+      contentClassName="max-w-lg"
       visible={state.isSocialMediaOpen}
       showCloseIcon
       onClose={handleClose}
@@ -38,7 +39,7 @@ export const SocialMediaModal: FC = () => {
       <div className="space-y-6">
         <div>
           <h1 className="text-lg leading-6 font-medium text-slate-900">
-            {t('builder.socialMediaSettings')}
+            {t('builder.footer.settings')}
           </h1>
         </div>
 
