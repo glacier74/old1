@@ -19,7 +19,7 @@ export const BlockList: FC = () => {
   const queue = useMemo(() => {
     return new Queue({
       concurrency: 1,
-      scheduleInterval: 5_000,
+      scheduleInterval: 1_000,
       taskIntervalTime: 10_000
     })
   }, [product.id])
