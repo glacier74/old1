@@ -1,4 +1,4 @@
-import { Button, Portal, Tooltip } from '@heyforms/ui'
+import { Button, Form, Input, Portal, Tooltip } from '@heyforms/ui'
 import {
   IconAlignCenter,
   IconAlignLeft,
@@ -11,7 +11,15 @@ import {
   IconUnderline
 } from '@tabler/icons'
 import clsx from 'clsx'
-import { CSSProperties, FC, useCallback, useEffect, useRef, useState } from 'react'
+import {
+  CSSProperties,
+  FC,
+  MutableRefObject,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
 import { useClickAway } from 'react-use'
 
 import { useBuilderContext } from '../context'
@@ -59,7 +67,7 @@ function getActiveState() {
   return state
 }
 
-function getPortalStyle(ref: any, range?: Range) {
+function getPortalStyle(ref: MutableRefObject<HTMLDivElement | null>, range?: Range) {
   if (!ref.current || !range) {
     return
   }
@@ -91,10 +99,12 @@ function getPortalStyle(ref: any, range?: Range) {
 
 export const BubbleMenu: FC = () => {
   const { state, dispatch } = useBuilderContext()
-  const ref = useRef<HTMLDivElement | null>(null)
+
+  const menuRef = useRef<HTMLDivElement | null>(null)
 
   const [activeState, setActiveState] = useState({} as ActiveState)
   const [portalStyle, setPortalStyle] = useState<CSSProperties>()
+  const [linkBubbleVisible, setLinkBubbleVisible] = useState(false)
 
   function handleExecCommand(command: string) {
     document.execCommand(command)
@@ -119,20 +129,24 @@ export const BubbleMenu: FC = () => {
 
   const handleAlignLeft = useCallback(() => {
     handleExecCommand('justifyLeft')
-    setPortalStyle(getPortalStyle(ref, state.bubbleMenuRange))
-  }, [ref, state.bubbleMenuRange])
+    setPortalStyle(getPortalStyle(menuRef, state.bubbleMenuRange))
+  }, [menuRef, state.bubbleMenuRange])
 
   const handleAlignCenter = useCallback(() => {
     handleExecCommand('justifyCenter')
-    setPortalStyle(getPortalStyle(ref, state.bubbleMenuRange))
-  }, [ref, state.bubbleMenuRange])
+    setPortalStyle(getPortalStyle(menuRef, state.bubbleMenuRange))
+  }, [menuRef, state.bubbleMenuRange])
 
   const handleAlignRight = useCallback(() => {
     handleExecCommand('justifyRight')
-    setPortalStyle(getPortalStyle(ref, state.bubbleMenuRange))
-  }, [ref, state.bubbleMenuRange])
+    setPortalStyle(getPortalStyle(menuRef, state.bubbleMenuRange))
+  }, [menuRef, state.bubbleMenuRange])
 
-  function handleLink({ url }: any) {
+  function handleLinkOpen() {
+    setLinkBubbleVisible(true)
+  }
+
+  async function handleLink({ url }: any) {
     const sel = handleSelectRange()
     const node = document.createElement('a')
 
@@ -142,6 +156,8 @@ export const BubbleMenu: FC = () => {
 
     state.bubbleMenuRange!.deleteContents()
     state.bubbleMenuRange!.insertNode(node)
+
+    handleClose()
   }
 
   function handleUnlink() {
@@ -156,7 +172,7 @@ export const BubbleMenu: FC = () => {
     return sel
   }
 
-  useClickAway(ref, () => {
+  function handleClose() {
     dispatch({
       type: 'update',
       payload: {
@@ -165,106 +181,133 @@ export const BubbleMenu: FC = () => {
         enableFormats: undefined
       }
     })
+  }
+
+  useClickAway(menuRef, () => {
+    handleClose()
   })
 
   useEffect(() => {
-    if (state.isBubbleMenuOpen && ref) {
+    if (state.isBubbleMenuOpen && menuRef) {
       setActiveState(getActiveState())
-      setPortalStyle(getPortalStyle(ref, state.bubbleMenuRange))
+      setPortalStyle(getPortalStyle(menuRef, state.bubbleMenuRange))
     }
 
     return () => {
       setActiveState({} as ActiveState)
     }
-  }, [state.bubbleMenuRange, ref, state.isBubbleMenuOpen])
+  }, [state.bubbleMenuRange, menuRef, state.isBubbleMenuOpen])
 
   return (
     <Portal visible={state.isBubbleMenuOpen}>
-      <div ref={ref} className="bubble-menu" style={portalStyle}>
+      <div ref={menuRef} className="bubble-menu" style={portalStyle}>
         <div className="flex items-center bg-white shadow py-1.5 px-2 rounded divide-x divide-slate-200 space-x-1.5">
-          {state.enableFormats?.includes('basic') && (
-            <div className="flex items-center space-x-1.5">
-              <Tooltip ariaLabel="bold">
-                <Button.Link
-                  className={clsx({
-                    'bubble-menu-active': activeState.isBold
-                  })}
-                  leading={<IconBold />}
-                  onClick={handleBold}
-                />
-              </Tooltip>
-              <Tooltip ariaLabel="italic">
-                <Button.Link
-                  className={clsx({
-                    'bubble-menu-active': activeState.isItalic
-                  })}
-                  leading={<IconItalic />}
-                  onClick={handleItalic}
-                />
-              </Tooltip>
-              <Tooltip ariaLabel="strikethrough">
-                <Button.Link
-                  className={clsx({
-                    'bubble-menu-active': activeState.isStrikethrough
-                  })}
-                  leading={<IconStrikethrough />}
-                  onClick={handleStrike}
-                />
-              </Tooltip>
-              <Tooltip ariaLabel="underline">
-                <Button.Link
-                  className={clsx({
-                    'bubble-menu-active': activeState.isUnderline
-                  })}
-                  leading={<IconUnderline />}
-                  onClick={handleUnderline}
-                />
-              </Tooltip>
-              <Tooltip ariaLabel="link">
-                <Button.Link
-                  className={clsx({
-                    'bubble-menu-active': !!activeState.link
-                  })}
-                  leading={<IconLink />}
-                />
-              </Tooltip>
-              {activeState.link && (
-                <Tooltip ariaLabel="linkOff">
-                  <Button.Link leading={<IconLinkOff />} onClick={handleUnlink} />
-                </Tooltip>
+          {linkBubbleVisible ? (
+            <Form.Custom
+              inline
+              initialValues={{
+                url: activeState.link
+              }}
+              submitText="Apply"
+              submitOptions={{
+                className: 'ml-1',
+                type: 'primary'
+              }}
+              onlySubmitOnValueChange={true}
+              request={handleLink}
+            >
+              <Form.Item name="url" rules={[{ type: 'url', required: true }]}>
+                <Input type="url" placeholder="Paste or enter link here" />
+              </Form.Item>
+            </Form.Custom>
+          ) : (
+            <div className="bubble-menu-container">
+              {state.enableFormats?.includes('basic') && (
+                <div className="flex items-center space-x-1.5">
+                  <Tooltip ariaLabel="bold">
+                    <Button.Link
+                      className={clsx({
+                        'bubble-menu-active': activeState.isBold
+                      })}
+                      leading={<IconBold />}
+                      onClick={handleBold}
+                    />
+                  </Tooltip>
+                  <Tooltip ariaLabel="italic">
+                    <Button.Link
+                      className={clsx({
+                        'bubble-menu-active': activeState.isItalic
+                      })}
+                      leading={<IconItalic />}
+                      onClick={handleItalic}
+                    />
+                  </Tooltip>
+                  <Tooltip ariaLabel="strikethrough">
+                    <Button.Link
+                      className={clsx({
+                        'bubble-menu-active': activeState.isStrikethrough
+                      })}
+                      leading={<IconStrikethrough />}
+                      onClick={handleStrike}
+                    />
+                  </Tooltip>
+                  <Tooltip ariaLabel="underline">
+                    <Button.Link
+                      className={clsx({
+                        'bubble-menu-active': activeState.isUnderline
+                      })}
+                      leading={<IconUnderline />}
+                      onClick={handleUnderline}
+                    />
+                  </Tooltip>
+                  <Tooltip ariaLabel="link">
+                    <Button.Link
+                      className={clsx({
+                        'bubble-menu-active': !!activeState.link
+                      })}
+                      leading={<IconLink />}
+                      onClick={handleLinkOpen}
+                    />
+                  </Tooltip>
+                  {activeState.link && (
+                    <Tooltip ariaLabel="linkOff">
+                      <Button.Link leading={<IconLinkOff />} onClick={handleUnlink} />
+                    </Tooltip>
+                  )}
+                </div>
               )}
-            </div>
-          )}
 
-          {state.enableFormats?.includes('align') && (
-            <div className="flex items-center pl-1.5 space-x-1.5">
-              <Tooltip ariaLabel="Align left">
-                <Button.Link
-                  className={clsx({
-                    'bubble-menu-active': activeState.align === 'justifyLeft'
-                  })}
-                  leading={<IconAlignLeft />}
-                  onClick={handleAlignLeft}
-                />
-              </Tooltip>
-              <Tooltip ariaLabel="Align center">
-                <Button.Link
-                  className={clsx({
-                    'bubble-menu-active': activeState.align === 'justifyCenter'
-                  })}
-                  leading={<IconAlignCenter />}
-                  onClick={handleAlignCenter}
-                />
-              </Tooltip>
-              <Tooltip ariaLabel="Align right">
-                <Button.Link
-                  className={clsx({
-                    'bubble-menu-active': activeState.align === 'justifyRight'
-                  })}
-                  leading={<IconAlignRight />}
-                  onClick={handleAlignRight}
-                />
-              </Tooltip>
+              {state.enableFormats?.includes('align') && (
+                <div className="flex items-center pl-1.5 space-x-1.5">
+                  <Tooltip ariaLabel="Align left">
+                    <Button.Link
+                      className={clsx({
+                        'bubble-menu-active': activeState.align === 'justifyLeft'
+                      })}
+                      leading={<IconAlignLeft />}
+                      onClick={handleAlignLeft}
+                    />
+                  </Tooltip>
+                  <Tooltip ariaLabel="Align center">
+                    <Button.Link
+                      className={clsx({
+                        'bubble-menu-active': activeState.align === 'justifyCenter'
+                      })}
+                      leading={<IconAlignCenter />}
+                      onClick={handleAlignCenter}
+                    />
+                  </Tooltip>
+                  <Tooltip ariaLabel="Align right">
+                    <Button.Link
+                      className={clsx({
+                        'bubble-menu-active': activeState.align === 'justifyRight'
+                      })}
+                      leading={<IconAlignRight />}
+                      onClick={handleAlignRight}
+                    />
+                  </Tooltip>
+                </div>
+              )}
             </div>
           )}
         </div>
