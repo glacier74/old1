@@ -76,6 +76,10 @@ const PublicSite: FC<PublicSiteProps> = ({ product }) => (
     {product.siteSetting.blocks.map(block => (
       <Block key={block.id} product={product} block={block} siteSetting={product.siteSetting} />
     ))}
+
+    <div className="fixed rounded shadow bg-white text-sm text-slate-700 z-10 px-4 py-2 right-5 bottom-5 md:right-12 md:bottom-6">
+      <a href={process.env.NEXT_PUBLIC_HOMEPAGE}>Made with EarlyBird</a>
+    </div>
   </BaseLayout>
 )
 

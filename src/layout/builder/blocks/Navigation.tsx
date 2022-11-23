@@ -42,8 +42,9 @@ export const NavigationPreview: FC<NavigationProps & { product: Product }> = ({
         ))}
       </div>
 
-      <Button.Link leading={isOpen ? <IconX /> : <IconMenu2 />} onClick={handleClick} />
-
+      <div className="md:hidden">
+        <Button.Link leading={isOpen ? <IconX /> : <IconMenu2 />} onClick={handleClick} />
+      </div>
       {isOpen && (
         <div className="fixed top-24 left-5 right-5 bg-white rounded-lg shadow-xl z-10 md:hidden">
           <div className="flex flex-col py-2 space-y-2">
