@@ -94,7 +94,7 @@ const ShareComponent: FC<{ product: Product; siteSetting: SiteSettings }> = ({
         )}
       </div>
 
-      <p className="text-base text-slate-900 text-center">
+      <p className="sm:pt-1 pt-0 text-base text-slate-900 text-center">
         {new Date().getFullYear()} {product?.name}
       </p>
     </div>

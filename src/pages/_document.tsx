@@ -7,10 +7,7 @@ export default function MyDocument(props: DocumentProps) {
 
   return (
     <Html lang={currentLocale}>
-      <Head>
-        <link type="image/x-icon" href="/static/favicon.png" rel="icon" />
-        <link type="image/x-icon" href="/static/favicon.png" rel="bookmark" />
-      </Head>
+      <Head />
       <body>
         <Main />
         <NextScript />

@@ -1,6 +1,8 @@
-import { Menus } from '@heyforms/ui'
+import { Button, Menus } from '@heyforms/ui'
+import { IconMenu2, IconX } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
-import { FC } from 'react'
+import { FC, useState } from 'react'
+import { useLockBodyScroll } from 'react-use'
 
 import { useProduct } from '~/layout'
 import { useBuilderContext } from '~/layout/builder/context'
@@ -15,6 +17,14 @@ export const NavigationPreview: FC<NavigationProps & { product: Product }> = ({
   block,
   product
 }) => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  function handleClick() {
+    setIsOpen(isOpen => !isOpen)
+  }
+
+  useLockBodyScroll(isOpen)
+
   return (
     <BlockPreview className="block-navigation-container" block={block}>
       <a
@@ -24,13 +34,32 @@ export const NavigationPreview: FC<NavigationProps & { product: Product }> = ({
       >
         {product.name}
       </a>
-      <div className="flex items-center space-x-4">
+      <div className="hidden md:flex md:items-center space-x-4">
         {block.links.map(row => (
           <a key={row.id} href={row.url} target={row.openInNewTab ? '_blank' : undefined}>
             {row.title}
           </a>
         ))}
       </div>
+
+      <Button.Link leading={isOpen ? <IconX /> : <IconMenu2 />} onClick={handleClick} />
+
+      {isOpen && (
+        <div className="fixed top-24 left-5 right-5 bg-white rounded-lg shadow-xl z-10 md:hidden">
+          <div className="flex flex-col py-2 space-y-2">
+            {block.links.map(row => (
+              <a
+                key={row.id}
+                className="px-5 py-2"
+                href={row.url}
+                target={row.openInNewTab ? '_blank' : undefined}
+              >
+                {row.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </BlockPreview>
   )
 }

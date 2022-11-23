@@ -17,6 +17,8 @@ declare global {
   }
 
   interface LayoutProps extends ComponentProps {
+    favicon?: string
+    shortName?: string
     seo: NextSeoProps
     children: ReactNode
   }

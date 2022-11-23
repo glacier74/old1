@@ -99,7 +99,7 @@ export const SlideGalleryPreview: FC<SlideGalleryProps> = ({ block, ...restProps
     <>
       <BlockPreview block={block} {...restProps}>
         <div ref={containerRef} tabIndex={0} className="group relative">
-          <div className="absolute flex items-center justify-center top-0 -left-16 w-16 pl-6 h-full z-10 opacity-0 group-hover:opacity-100">
+          <div className="block-slidegallery-button absolute flex items-center justify-center top-0 -left-16 w-16 pl-6 h-full z-10 opacity-0 group-hover:opacity-100">
             <Tooltip ariaLabel="Scroll to previous" disabled={!isPreviousEnable}>
               <Button.Link
                 className="block-slide-gallery-button"
@@ -134,7 +134,7 @@ export const SlideGalleryPreview: FC<SlideGalleryProps> = ({ block, ...restProps
               ))}
             </div>
           </div>
-          <div className="absolute flex items-center justify-center top-0 -right-16 w-16 pr-6 h-full z-10 opacity-0 group-hover:opacity-100">
+          <div className="block-slidegallery-button absolute flex items-center justify-center top-0 -right-16 w-16 pr-6 h-full z-10 opacity-0 group-hover:opacity-100">
             <Tooltip ariaLabel="Scroll to next" disabled={!isNextEnable}>
               <Button.Link
                 className="block-slide-gallery-button"

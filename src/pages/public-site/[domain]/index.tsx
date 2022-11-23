@@ -12,7 +12,7 @@ import { NavigationPreview } from '~/layout/builder/blocks/Navigation'
 import { PaymentPreview } from '~/layout/builder/blocks/Payment'
 import { SlideGalleryPreview } from '~/layout/builder/blocks/SlideGallery'
 import { TextPreview } from '~/layout/builder/blocks/Text'
-import { withTranslations } from '~/utils'
+import { cropImage, withTranslations } from '~/utils'
 
 interface PublicSiteProps {
   product: Product
@@ -60,6 +60,8 @@ const Block: FC<{ product: Product; siteSetting: SiteSettings; block: any }> = (
 
 const PublicSite: FC<PublicSiteProps> = ({ product }) => (
   <BaseLayout
+    shortName={product.name}
+    favicon={cropImage(product.logo, 16, 16)}
     seo={{
       title: product.metaTitle || product.name,
       description: product.metaDescription || product.tagline,
