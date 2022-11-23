@@ -44,7 +44,7 @@ const Login = (): JSX.Element => {
         </h1>
         <p className="mt-2 text-center text-sm text-slate-600">
           <Trans i18nKey="login.description">
-            Log in to your account or <a href="/sign-up" className="font-medium text-blue-700 hover:text-blue-800">create an account</a>
+            Log in to your account or <a href="/sign-up" className="font-medium text-green-500 hover:text-green-600">create an account</a>
           </Trans>
         </p>
       </div>
@@ -69,7 +69,7 @@ const Login = (): JSX.Element => {
             <Form.Custom
               submitText={t('login.submit')}
               submitOptions={{
-                type: 'primary',
+                type: 'success',
                 className: 'mt-6',
                 block: true
               }}
@@ -99,7 +99,7 @@ const Login = (): JSX.Element => {
                 <div className="text-sm">
                   <a
                     href="/forgot-password"
-                    className="font-medium text-blue-700 hover:text-blue-800"
+                    className="font-medium text-green-500 hover:text-green-600"
                   >
                     {t('login.forgot')}
                   </a>

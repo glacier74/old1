@@ -47,7 +47,7 @@ export const Domain = () => {
           submitText={t('common.update')}
           submitOptions={{
             className: 'ml-2',
-            type: 'primary'
+            type: 'success'
           }}
           onlySubmitOnValueChange={true}
           request={handleFinish}

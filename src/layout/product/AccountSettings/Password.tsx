@@ -42,7 +42,7 @@ const ChangePassword: FC<IModalProps> = ({ visible, onClose }) => {
         <Form.Custom
           submitText={t('forgotPassword.continue')}
           submitOptions={{
-            type: 'primary'
+            type: 'success'
           }}
           request={handleFinish}
           onValuesChange={handleChange}
@@ -103,7 +103,7 @@ export const Password: FC = () => {
     <div>
       <div className="block text-sm font-medium text-slate-700">{t('login.password')}</div>
       <p className="mt-1 text-sm text-slate-500">
-        <Button.Link className="text-blue-500" onClick={open}>
+        <Button.Link className="text-green-500" onClick={open}>
           {t('account.password.button')}
         </Button.Link>
       </p>

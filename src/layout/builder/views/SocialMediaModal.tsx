@@ -47,7 +47,7 @@ export const SocialMediaModal: FC = () => {
           initialValues={settings}
           submitText={t('common.saveChanges')}
           submitOptions={{
-            type: 'primary'
+            type: 'success'
           }}
           onlySubmitOnValueChange={true}
           request={handleFinish}

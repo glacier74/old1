@@ -112,6 +112,36 @@ body {
   @apply opacity-60 cursor-default hover:bg-white;
 }
 
+.select-open .select-button,
+.select-open button.select-button,
+.select-native:focus,
+.select-button:focus,
+button.select-button:focus,
+button.button:not(:disabled):focus {
+  @apply ring-green-500 border-green-500;
+}
+
+.stepper-item-active .stepper-icon-container,
+.stepper-item-completed .stepper-icon-container {
+  @apply border-green-500;
+}
+
+.stepper-item-active .stepper-index,
+.stepper-item-completed .stepper-index,
+.stepper-item-active .stepper-label,
+.stepper-item-completed .stepper-label {
+  @apply text-green-500;
+}
+
+.tabs-nav-active,
+.tabs-nav-active:hover {
+  @apply text-green-500 border-green-500;
+}
+
+.select-option-checkmark {
+  @apply text-green-500;
+}
+
 .table-body {
   td {
     @apply font-normal text-slate-900;
@@ -321,7 +351,7 @@ body {
   @apply py-2 outline-none text-xl leading-8;
 
   a {
-    @apply text-blue-700;
+    @apply text-green-500;
   }
 
   &:empty:after {
@@ -386,11 +416,11 @@ h3.rich-text {
     &.bubble-menu-active {
       &,
       &:hover {
-        @apply bg-blue-100;
+        @apply bg-green-100;
       }
 
       .button-leading {
-        @apply text-blue-700;
+        @apply text-green-500;
       }
     }
 

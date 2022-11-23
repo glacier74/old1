@@ -59,10 +59,10 @@ const Invite = () => {
   return (
     <OnboardingLayout seo={{ title: t('invite.title') }}>
       <Link
-        className="group fixed top-5 left-5 flex items-center text-sm hover:text-blue-700"
+        className="group fixed top-5 left-5 flex items-center text-sm hover:text-green-500"
         href="/"
       >
-        <IconChevronLeft className="w-4 h-4 text-slate-500 -ml-2 group-hover:text-blue-700" />
+        <IconChevronLeft className="w-4 h-4 text-slate-500 -ml-2 group-hover:text-green-500" />
         <span className="ml-1">{t('invite.backHome')}</span>
       </Link>
 
@@ -77,7 +77,7 @@ const Invite = () => {
               <p>{invitation.productName}</p>
             </div>
             <div className="px-4 text-sm text-slate-500">{t('invite.description')}</div>
-            <Button type="primary" loading={loading} block onClick={request}>
+            <Button type="success" loading={loading} block onClick={request}>
               {t('invite.join')}
             </Button>
           </div>
@@ -85,7 +85,7 @@ const Invite = () => {
           <div className="space-y-6 text-center">
             <div className="px-4 text-base font-medium text-slate-800">{t(serverError)}</div>
             <div className="px-4 text-sm text-slate-500">{t('invite.errorTip')}</div>
-            <Button type="primary" block onClick={handleGoBack}>
+            <Button type="success" block onClick={handleGoBack}>
               {t('invite.goBack')}
             </Button>
           </div>

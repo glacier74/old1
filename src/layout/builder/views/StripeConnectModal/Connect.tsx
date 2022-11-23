@@ -66,14 +66,14 @@ export const Connect: FC = () => {
           <div className="space-y-3">
             <p>
               If you do not have a stripe account, you can create a free account.{' '}
-              <a className="text-blue-700" href="https://stripe.com/connect" target="_blank">
+              <a className="text-green-500" href="https://stripe.com/connect" target="_blank">
                 Head over to Stripe
               </a>{' '}
               to find out more.
             </p>
             <p>
               EarlyBird charges 5% commission per payment plus the{' '}
-              <a className="text-blue-700" href="https://stripe.com/pricing" target="_blank">
+              <a className="text-green-500" href="https://stripe.com/pricing" target="_blank">
                 Stripe transaction fee
               </a>
               .
@@ -83,7 +83,7 @@ export const Connect: FC = () => {
           <div className="flex justify-center pt-20">
             <Button
               className="w-80"
-              type="primary"
+              type="success"
               trailing={<IconArrowUpRight />}
               loading={authorize.loading}
               onClick={authorize.request}

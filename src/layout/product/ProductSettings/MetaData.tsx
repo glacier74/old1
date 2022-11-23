@@ -33,7 +33,7 @@ export const MetaData = () => {
         initialValues={product}
         submitText={t('common.update')}
         submitOptions={{
-          type: 'primary'
+          type: 'success'
         }}
         onlySubmitOnValueChange={true}
         request={handleFinish}

@@ -46,7 +46,7 @@ const ConfirmEmail = (): JSX.Element => {
           <Form.Custom
             submitText={t('forgotPassword.continue')}
             submitOptions={{
-              type: 'primary',
+              type: 'success',
               block: true
             }}
             request={handleFinish}

@@ -58,7 +58,7 @@ const Product = (): JSX.Element => {
             labelKey="source"
             date={date}
             period={period}
-            backgroundClassName="bg-blue-700"
+            backgroundClassName="bg-green-700"
           />
           <Breakdown
             className="ml-0 md:ml-6"

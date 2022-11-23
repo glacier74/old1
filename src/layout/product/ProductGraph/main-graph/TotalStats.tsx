@@ -38,7 +38,7 @@ const StatsItem: FC<StatsItemProps> = ({ className, label, name, data }) => {
         <b className="mr-4 text-xl md:text-2xl dark:text-slate-100">{text}</b>
         {isValid(value?.change) && (
           <span className="text-xs dark:text-slate-100">
-            <span className={clsx('font-bold', growth ? 'text-blue-400' : 'text-red-400')}>
+            <span className={clsx('font-bold', growth ? 'text-green-400' : 'text-red-400')}>
               {value.change > 0 ? '↑' : '↓'}
             </span>{' '}
             {Math.abs(value.change)}%

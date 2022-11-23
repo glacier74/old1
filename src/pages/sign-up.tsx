@@ -56,7 +56,7 @@ const SignUp = (): JSX.Element => {
             <Form.Custom
               submitText={t('signUp.submit')}
               submitOptions={{
-                type: 'primary',
+                type: 'success',
                 className: 'mt-3',
                 block: true
               }}

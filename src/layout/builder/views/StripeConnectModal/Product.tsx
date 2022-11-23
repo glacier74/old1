@@ -53,7 +53,7 @@ export const Product: FC = () => {
           <p>
             You are connected to Stripe account {state.stripeConnectBlock?.stripeEmail}. If you want
             to reconnect to another account, please{' '}
-            <a className="text-blue-700" href="#" onClick={handleBack}>
+            <a className="text-green-500" href="#" onClick={handleBack}>
               click here
             </a>
             .
@@ -61,7 +61,7 @@ export const Product: FC = () => {
           <p>
             Go to Stripe dashboard to{' '}
             <a
-              className="text-blue-700"
+              className="text-green-500"
               href="https://dashboard.stripe.com/products/create"
               target="_blank"
             >
@@ -80,7 +80,7 @@ export const Product: FC = () => {
           }}
           submitText="Continue"
           submitOptions={{
-            type: 'primary'
+            type: 'success'
           }}
           onlySubmitOnValueChange={true}
           request={handleFinish}

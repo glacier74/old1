@@ -43,7 +43,7 @@ export const SendCode: FC<SendCodeProps> = ({ visible, onClose, onComplete }) =>
         <Form.Custom
           submitText={t('account.email.send')}
           submitOptions={{
-            type: 'primary'
+            type: 'success'
           }}
           request={handleFinish}
         >
@@ -90,7 +90,7 @@ export const VerifyEmail: FC<VerifyEmailProps> = ({ visible, formValues, onClose
         <Form.Custom
           submitText={t('forgotPassword.continue')}
           submitOptions={{
-            type: 'primary'
+            type: 'success'
           }}
           request={handleFinish}
         >
@@ -127,7 +127,7 @@ export const EmailAddress: FC = () => {
         <span>{user.email}</span>
 
         {!user.isSocialAccount && (
-          <Button.Link className="ml-2 text-blue-500" onClick={openSendCode}>
+          <Button.Link className="ml-2 text-green-500" onClick={openSendCode}>
             {t('account.email.button')}
           </Button.Link>
         )}

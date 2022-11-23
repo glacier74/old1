@@ -34,7 +34,7 @@ const SelectPriceItem: FC<SelectPriceItemProps> = ({ value, price, onClick }) =>
       className={clsx(
         'bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer flex justify-between items-center focus:outline-none border-gray-300 undefined',
         {
-          'ring-2 ring-blue-700 border-transparent': isActive,
+          'ring-2 ring-green-700 border-transparent': isActive,
           'stripe-price-disabled': isDisabled
         }
       )}
@@ -49,7 +49,7 @@ const SelectPriceItem: FC<SelectPriceItemProps> = ({ value, price, onClick }) =>
           <p className="text-red-700 text-xs">At present, only one-time price is supported</p>
         )}
       </div>
-      {isActive && <IconCircleCheck className="ml-4 w-5 h-5 text-blue-700" />}
+      {isActive && <IconCircleCheck className="ml-4 w-5 h-5 text-green-500" />}
     </div>
   )
 }
@@ -129,7 +129,7 @@ export const SelectPrice: FC = () => {
             </div>
           </div>
 
-          <Button.Link type="primary" onClick={handleBack}>
+          <Button.Link type="success" onClick={handleBack}>
             Not this product?
           </Button.Link>
         </div>
@@ -143,7 +143,7 @@ export const SelectPrice: FC = () => {
         </div>
 
         <div className="flex justify-center pt-6 pb-12">
-          <Button className="w-80" type="primary" disabled={!priceId} onClick={handleFinish}>
+          <Button className="w-80" type="success" disabled={!priceId} onClick={handleFinish}>
             Complete
           </Button>
         </div>

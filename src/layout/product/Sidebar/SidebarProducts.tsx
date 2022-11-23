@@ -39,7 +39,7 @@ const ProductItem: FC<ProductItemProps> = ({ product, onClick }) => {
       </div>
 
       {isEqual(productId, product?.id) && (
-        <IconCircleCheck className="ml-4 w-5 h-5 text-blue-500" />
+        <IconCircleCheck className="ml-4 w-5 h-5 text-green-500" />
       )}
     </div>
   )

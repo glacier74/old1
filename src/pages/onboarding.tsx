@@ -34,7 +34,7 @@ const Onboarding = (): JSX.Element => {
       <Form.Custom
         submitText={t('onboarding.createProduct')}
         submitOptions={{
-          type: 'primary',
+          type: 'success',
           block: true
         }}
         request={handleFinish}

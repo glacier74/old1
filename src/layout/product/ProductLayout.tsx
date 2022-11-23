@@ -75,7 +75,7 @@ export function ProductLayout({ seo, children }: LayoutProps) {
                         <Link className="link-button" href={`/product/${product?.id}/edit`}>
                           {t('product.edit')}
                         </Link>
-                        <Button type="primary" onClick={handlePreview}>
+                        <Button type="success" onClick={handlePreview}>
                           {t('product.viewSite')}
                         </Button>
                       </div>

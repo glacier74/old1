@@ -2,10 +2,9 @@ import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
 import { FC, useState } from 'react'
 
-import { Loading } from '~/components'
+import { AsyncRequest, Loading } from '~/components'
 import { MainGraphProps, useProduct } from '~/layout'
 import { ProductService } from '~/service'
-import { useAsyncEffect } from '~/utils'
 
 interface BreakdownItemProps extends ComponentProps {
   label: string
@@ -57,31 +56,26 @@ export const Breakdown: FC<BreakdownProps> = ({
 }) => {
   const { t } = useTranslation()
   const product = useProduct()
-
-  const [loading, setLoading] = useState(false)
   const [data, setData] = useState<any[]>([])
 
-  useAsyncEffect(async () => {
-    if (product?.id) {
-      setLoading(true)
+  async function fetchData() {
+    const data = await ProductService.breakdown(product.id, {
+      property: propertyValue,
+      date,
+      period
+    })
+    const sum = data.reduce((prev, curr) => prev + curr[valueKey], 0)
 
-      const data = await ProductService.breakdown(product.id, {
-        property: propertyValue,
-        date,
-        period
-      })
-      const sum = data.reduce((prev, curr) => prev + curr[valueKey], 0)
+    setData(
+      data.map(r => ({
+        label: r[labelKey],
+        value: r[valueKey],
+        percentage: r[valueKey] / sum
+      }))
+    )
 
-      setData(
-        data.map(r => ({
-          label: r[labelKey],
-          value: r[valueKey],
-          percentage: r[valueKey] / sum
-        }))
-      )
-      setLoading(false)
-    }
-  }, [product?.id, date, period])
+    return data.length > 0
+  }
 
   return (
     <div className={clsx('relative bg-slate-50 mb-8 md:mb-0 p-6 rounded', className)}>
@@ -95,14 +89,24 @@ export const Breakdown: FC<BreakdownProps> = ({
             <span className="inline-block w-20">{t('productStats.visitors')}</span>
           </div>
         </div>
-        <div className="relative flex-grow h-80">
+
+        <AsyncRequest
+          className="relative flex-grow h-80"
+          request={fetchData}
+          deps={[product?.id, date, period]}
+          skeleton={<Loading className="absolute inset-0" />}
+          emptyState={
+            <div className="flex items-center justify-center w-full h-full text-sm text-slate-500">
+              No enough data
+            </div>
+          }
+        >
           <div className="space-y-1">
             {data.map((row, index) => (
               <BreakdownItem key={index} className={backgroundClassName} {...row} />
             ))}
           </div>
-          {loading && <Loading className="absolute inset-0 bg-slate-50 rounded" />}
-        </div>
+        </AsyncRequest>
       </div>
     </div>
   )

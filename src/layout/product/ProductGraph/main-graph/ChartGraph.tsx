@@ -62,10 +62,10 @@ function buildDataSet(
   const gradient = ctx.createLinearGradient(0, 0, 0, 300)
   const prevGradient = ctx.createLinearGradient(0, 0, 0, 300)
 
-  gradient.addColorStop(0, 'rgba(29, 78, 216, 0.2)')
-  gradient.addColorStop(1, 'rgba(29, 78, 216, 0)')
-  prevGradient.addColorStop(0, 'rgba(29, 78, 216, 0.075)')
-  prevGradient.addColorStop(1, 'rgba(29, 78, 216, 0)')
+  gradient.addColorStop(0, 'rgba(34,197,94, 0.2)')
+  gradient.addColorStop(1, 'rgba(34,197,94, 0)')
+  prevGradient.addColorStop(0, 'rgba(34,197,94, 0.075)')
+  prevGradient.addColorStop(1, 'rgba(34,197,94, 0)')
 
   if (!isPrevious) {
     if (presentIndex) {
@@ -82,9 +82,9 @@ function buildDataSet(
           label,
           data: _plot,
           borderWidth: 3,
-          borderColor: 'rgb(29,78,216)',
-          pointBackgroundColor: 'rgb(29,78,216)',
-          pointHoverBackgroundColor: 'rgba(71, 87, 193)',
+          borderColor: 'rgb(34,197,94)',
+          pointBackgroundColor: 'rgb(34,197,94)',
+          pointHoverBackgroundColor: 'rgb(134, 239, 172)',
           pointBorderColor: 'transparent',
           pointHoverRadius: 4,
           backgroundColor: gradient,
@@ -95,8 +95,8 @@ function buildDataSet(
           data: dashedPlot,
           borderWidth: 3,
           borderDash: [3, 3],
-          borderColor: 'rgb(29,78,216)',
-          pointHoverBackgroundColor: 'rgb(30, 64, 175)',
+          borderColor: 'rgb(34,197,94)',
+          pointHoverBackgroundColor: 'rgb(22, 163, 74)',
           pointBorderColor: 'transparent',
           pointHoverRadius: 4,
           backgroundColor: gradient,
@@ -109,8 +109,8 @@ function buildDataSet(
           label,
           data: plot,
           borderWidth: 3,
-          borderColor: 'rgb(29,78,216)',
-          pointHoverBackgroundColor: 'rgb(30, 64, 175)',
+          borderColor: 'rgb(34,197,94)',
+          pointHoverBackgroundColor: 'rgb(22, 163, 74)',
           pointBorderColor: 'transparent',
           pointHoverRadius: 4,
           backgroundColor: gradient,

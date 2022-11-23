@@ -38,7 +38,7 @@ export const BlockComponent: FC<BlockProps> = ({ className, block, children }) =
     <div
       id={`block-${block.id}`}
       className={clsx('border-2 border-dashed border-transparent', {
-        'border-blue-200': block.id === state.selectBlockId
+        'border-green-400': block.id === state.selectBlockId
       })}
       onClick={handleClick}
     >

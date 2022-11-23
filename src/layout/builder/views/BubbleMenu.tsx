@@ -211,7 +211,7 @@ export const BubbleMenu: FC = () => {
               submitText="Apply"
               submitOptions={{
                 className: 'ml-1',
-                type: 'primary'
+                type: 'success'
               }}
               onlySubmitOnValueChange={true}
               request={handleLink}

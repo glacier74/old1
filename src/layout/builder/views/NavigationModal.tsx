@@ -189,7 +189,7 @@ export const NavigationModal: FC = () => {
 
       <div className="flex items-center justify-between border-t border-slate-100 px-8 py-4">
         <Button onClick={handleAddLink}>Add link</Button>
-        <Button type="primary" onClick={handleFinish}>
+        <Button type="success" onClick={handleFinish}>
           Save changes
         </Button>
       </div>

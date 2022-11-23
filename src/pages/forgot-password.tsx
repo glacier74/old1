@@ -46,7 +46,7 @@ const ForgotPassword = (): JSX.Element => {
           <Form.Custom
             submitText={t('forgotPassword.continue')}
             submitOptions={{
-              type: 'primary',
+              type: 'success',
               block: true
             }}
             request={handleFinish}
@@ -60,7 +60,7 @@ const ForgotPassword = (): JSX.Element => {
             </Form.Item>
           </Form.Custom>
 
-          <div className="mt-6 text-center text-blue-700 hover:text-blue-800 sm:text-sm">
+          <div className="mt-6 text-center text-green-500 hover:text-green-600 sm:text-sm">
             <a href="/login" className="inline-flex items-center">
               {t('forgotPassword.back')}
             </a>

@@ -65,7 +65,7 @@ export const PaymentPreview: FC<PaymentProps & { product: Product }> = ({
                 <Form.Custom
                   submitText={t('publicSite.checkOut')}
                   submitOptions={{
-                    type: 'primary',
+                    type: 'success',
                     block: true
                   }}
                   request={handleFinish}
@@ -165,7 +165,7 @@ const PaymentComponent: FC<PaymentProps> = ({ block, ...restProps }) => {
                 <div className="input mt-6">
                   <span className="text-slate-400">{t('publicSite.email')}</span>
                 </div>
-                <div className="mt-4 px-4 py-2 shadow-sm font-medium bg-blue-700 rounded-md text-white text-center cursor-default">
+                <div className="mt-4 px-4 py-2 shadow-sm font-medium bg-green-700 rounded-md text-white text-center cursor-default">
                   {t('publicSite.checkOut')}
                 </div>
               </div>
@@ -175,12 +175,12 @@ const PaymentComponent: FC<PaymentProps> = ({ block, ...restProps }) => {
                 <p className="mt-2">
                   If you do not have a stripe account, you can create a free account with a valid
                   email address and a bank account linked to an address.{' '}
-                  <a className="text-blue-700" href="https://stripe.com/connect" target="_blank">
+                  <a className="text-green-500" href="https://stripe.com/connect" target="_blank">
                     Head over to Stripe
                   </a>{' '}
                   to find out more.
                 </p>
-                <Button className="mt-4" type="primary" block onClick={handleClick}>
+                <Button className="mt-4" type="success" block onClick={handleClick}>
                   Connect with Stripe
                 </Button>
               </div>
