@@ -129,7 +129,8 @@ button.button:not(:disabled):focus {
 .stepper-item-active .stepper-index,
 .stepper-item-completed .stepper-index,
 .stepper-item-active .stepper-label,
-.stepper-item-completed .stepper-label {
+.stepper-item-completed .stepper-label,
+.stepper-icon {
   @apply text-green-500;
 }
 

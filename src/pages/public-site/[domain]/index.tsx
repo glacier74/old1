@@ -71,7 +71,7 @@ const PublicSite: FC<PublicSiteProps> = ({ product }) => (
       }
     }}
   >
-    {product.siteSetting.content.map(block => (
+    {product.siteSetting.blocks.map(block => (
       <Block key={block.id} product={product} block={block} siteSetting={product.siteSetting} />
     ))}
   </BaseLayout>
@@ -88,7 +88,7 @@ export const getServerSideProps = withTranslations(async context => {
     }
   }
 
-  product.siteSetting.content = conv.json<Block[]>(product.siteSetting.content, [])!
+  product.siteSetting.blocks = conv.json<Block[]>(product.siteSetting.blocks, [])!
 
   return {
     props: {

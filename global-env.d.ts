@@ -48,7 +48,7 @@ declare global {
 
   interface SiteSettings {
     productId: number
-    content: Block[]
+    blocks: Block[]
     twitter: string
     facebook: string
     instagram: string

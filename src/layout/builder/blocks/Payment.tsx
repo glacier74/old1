@@ -52,7 +52,7 @@ export const PaymentPreview: FC<PaymentProps & { product: Product }> = ({
 
         {/* Right column */}
         <div className="block-payment-col">
-          <div className="rounded-lg bg-white overflow-hidden text-xl shadow w-96 mx-auto">
+          <div className="rounded-lg bg-white overflow-hidden text-xl shadow w-[28rem] mx-auto">
             {block.priceId && (
               <div className="p-10 cursor-default">
                 <div className="text-3xl font-medium text-slate-900">{block.productName}</div>
@@ -152,7 +152,7 @@ const PaymentComponent: FC<PaymentProps> = ({ block, ...restProps }) => {
 
         {/* Right column */}
         <div className="block-payment-col">
-          <div className="rounded-lg bg-white overflow-hidden text-xl shadow">
+          <div className="rounded-lg bg-white overflow-hidden text-base shadow w-[28rem] mx-auto">
             {block.priceId ? (
               <div className="p-10 cursor-default">
                 <div className="text-3xl font-medium text-slate-900">{block.productName}</div>
@@ -165,7 +165,7 @@ const PaymentComponent: FC<PaymentProps> = ({ block, ...restProps }) => {
                 <div className="input mt-6">
                   <span className="text-slate-400">{t('publicSite.email')}</span>
                 </div>
-                <div className="mt-4 px-4 py-2 shadow-sm font-medium bg-green-700 rounded-md text-white text-center cursor-default">
+                <div className="mt-4 px-4 py-2 shadow-sm font-medium bg-green-500 rounded-md text-white text-center cursor-default">
                   {t('publicSite.checkOut')}
                 </div>
               </div>

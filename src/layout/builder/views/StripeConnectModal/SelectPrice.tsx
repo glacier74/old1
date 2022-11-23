@@ -1,8 +1,10 @@
 import { Button } from '@heyforms/ui'
 import { IconCircleCheck } from '@tabler/icons'
 import clsx from 'clsx'
+import { useTranslation } from 'next-i18next'
 import { FC, useCallback, useMemo, useState } from 'react'
 
+import { PAYMENT_TYPES } from '~/constants'
 import { StripeService } from '~/service'
 import { currencyFormatter, useAsyncEffect } from '~/utils'
 
@@ -14,12 +16,9 @@ interface SelectPriceItemProps {
   onClick: (value: string) => void
 }
 
-const PAYMENT_TYPES: AnyMap<string> = {
-  one_time: 'engagements.oneTime',
-  recurring: 'engagements.recurring'
-}
-
 const SelectPriceItem: FC<SelectPriceItemProps> = ({ value, price, onClick }) => {
+  const { t } = useTranslation()
+
   const isActive = useMemo(() => value === price.id, [value, price.id])
   const isDisabled = useMemo(() => price.type !== 'one_time', [price.type])
 
@@ -34,7 +33,7 @@ const SelectPriceItem: FC<SelectPriceItemProps> = ({ value, price, onClick }) =>
       className={clsx(
         'bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer flex justify-between items-center focus:outline-none border-gray-300 undefined',
         {
-          'ring-2 ring-green-700 border-transparent': isActive,
+          'ring-2 ring-green-500 border-transparent': isActive,
           'stripe-price-disabled': isDisabled
         }
       )}
@@ -44,7 +43,7 @@ const SelectPriceItem: FC<SelectPriceItemProps> = ({ value, price, onClick }) =>
         <div className="font-medium text-gray-900">
           {currencyFormatter(price.currency, price.unit_amount)}
         </div>
-        <div className="text-gray-500">{PAYMENT_TYPES[price.type]}</div>
+        <div className="text-gray-500">{t(PAYMENT_TYPES[price.type])}</div>
         {price.type !== 'one_time' && (
           <p className="text-red-700 text-xs">At present, only one-time price is supported</p>
         )}

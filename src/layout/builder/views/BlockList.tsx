@@ -27,7 +27,7 @@ export const BlockList: FC = () => {
   async function syncData() {
     try {
       await SiteSettingsService.update(product.id, {
-        content: JSON.stringify(state.blocks) as any
+        blocks: JSON.stringify(state.blocks) as any
       })
     } catch (err: any) {
       notification.error({
@@ -44,17 +44,17 @@ export const BlockList: FC = () => {
   }
 
   useEffect(() => {
-    const blocks = conv.json<Block[]>(siteSettings.content, [])!
+    const blocks = conv.json<Block[]>(siteSettings.blocks, [])!
 
     dispatch({
       type: 'setBlocks',
       payload: blocks
     })
-  }, [siteSettings?.content])
+  }, [siteSettings?.blocks])
 
   useEffect(() => {
     // Add to queue
-    if (state.syncVersion > 0) {
+    if (state.syncVersion > 1) {
       queue.add(async () => {
         await syncData()
       })
