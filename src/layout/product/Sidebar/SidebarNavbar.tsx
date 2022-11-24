@@ -104,7 +104,7 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
         </h3>
         <div className="mt-1 space-y-1" aria-labelledby="resources-headline">
           <ExternalLink
-            href="https://earlybird.im"
+            href="https://help.earlybird.im/create-a-landing-page/"
             icon={IconLocation}
             title={t('sidebar.gettingStarted')}
           />
@@ -113,8 +113,16 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
             icon={IconGift}
             title={t('sidebar.whatsNew')}
           />
-          <ExternalLink href="https://earlybird.im" icon={IconMap} title={t('sidebar.roadmap')} />
-          <ExternalLink href="https://earlybird.im" icon={IconNotes} title={t('sidebar.blog')} />
+          <ExternalLink
+            href="https://help.earlybird.im/roadmap/"
+            icon={IconMap}
+            title={t('sidebar.roadmap')}
+          />
+          <ExternalLink
+            href="https://earlybird.im/blog"
+            icon={IconNotes}
+            title={t('sidebar.blog')}
+          />
         </div>
       </div>
 
@@ -128,17 +136,17 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
         </h3>
         <div className="mt-1 space-y-1" aria-labelledby="resources-headline">
           <ExternalLink
-            href="https://earlybird.im"
+            href="https://help.earlybird.im"
             icon={IconHelp}
             title={t('sidebar.helpCenter')}
           />
           <ExternalLink
-            href="https://earlybird.im"
+            href="mailto:support@earlybird.im"
             icon={IconMail}
             title={t('sidebar.sendEmail')}
           />
           <ExternalLink
-            href="https://earlybird.im"
+            href="https://twitter.com/earlybirdim"
             icon={IconBrandTwitter}
             title={t('sidebar.twitter')}
           />

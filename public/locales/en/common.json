@@ -83,14 +83,14 @@
     "productSettings": "Product settings",
     "pro": "EarlyBird Pro",
     "resources": "Resources",
-    "gettingStarted": "GettingStarted",
+    "gettingStarted": "Getting started",
     "whatsNew": "What's new",
     "roadmap": "Roadmap",
     "blog": "Blog",
     "helpSupport": "Help & Support",
     "helpCenter": "Help center",
     "sendEmail": "Send us an email",
-    "twitter": "Twitter @EarlyBirdIm"
+    "twitter": "Tweet @EarlyBirdIM"
   },
   "product": {
     "title": "{{name}}",

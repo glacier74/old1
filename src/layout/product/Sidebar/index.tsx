@@ -51,7 +51,7 @@ export const Sidebar = () => {
 
       {/* Sidebar for desktop */}
       <div className="sidebar fixed inset-0 hidden md:flex md:flex-shrink-0">
-        <div className="relative flex flex-col flex-1 w-64 h-full bg-slate-100">
+        <div className="relative flex flex-col flex-1 w-64 h-full bg-amber-50">
           <div className="flex flex-1 flex-col h-0 pt-5">
             <SidebarProducts />
             <SidebarNavbar />
