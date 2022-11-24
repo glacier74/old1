@@ -3,7 +3,7 @@ import { NextSeo, NextSeoProps } from 'next-seo'
 import Head from 'next/head'
 
 export function BaseLayout({
-  favicon = '/static/favicon.png',
+  favicon,
   shortName = 'EarlyBird',
   seo,
   children
@@ -21,8 +21,17 @@ export function BaseLayout({
       <Head>
         <meta content={shortName} name="application-name" />
         <meta content={shortName} name="apple-mobile-web-app-title" />
-        <link type="image/x-icon" href={favicon} rel="icon" />
-        <link type="image/x-icon" href={favicon} rel="bookmark" />
+        {favicon ? (
+          <>
+            <link rel="icon" type="image/png" href={favicon} />
+          </>
+        ) : (
+          <>
+            <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
+            <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
+            <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+          </>
+        )}
       </Head>
 
       {/* SEO */}
