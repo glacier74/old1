@@ -99,7 +99,7 @@ export const SlideGalleryPreview: FC<SlideGalleryProps> = ({ block, ...restProps
     <>
       <BlockPreview block={block} {...restProps}>
         <div ref={containerRef} tabIndex={0} className="group relative">
-          <div className="block-slidegallery-button absolute flex items-center justify-center top-0 -left-16 w-16 pl-6 h-full z-10 opacity-0 group-hover:opacity-100">
+          <div className="hidden md:flex block-slidegallery-button absolute flex items-center justify-center top-0 -left-16 w-16 pl-6 h-full z-10 opacity-0 group-hover:opacity-100">
             <Tooltip ariaLabel="Scroll to previous" disabled={!isPreviousEnable}>
               <Button.Link
                 className="block-slide-gallery-button"
@@ -110,7 +110,7 @@ export const SlideGalleryPreview: FC<SlideGalleryProps> = ({ block, ...restProps
             </Tooltip>
           </div>
 
-          <div className="max-w-full overflow-x-hidden">
+          <div className="w-screen overflow-x-scroll md:max-w-full md:overflow-x-hidden">
             <div
               ref={wrapperRef}
               className="block-slide-gallery-wrapper"
@@ -134,7 +134,8 @@ export const SlideGalleryPreview: FC<SlideGalleryProps> = ({ block, ...restProps
               ))}
             </div>
           </div>
-          <div className="block-slidegallery-button absolute flex items-center justify-center top-0 -right-16 w-16 pr-6 h-full z-10 opacity-0 group-hover:opacity-100">
+
+          <div className="hidden md:flex block-slidegallery-button absolute items-center justify-center top-0 -right-16 w-16 pr-6 h-full z-10 opacity-0 group-hover:opacity-100">
             <Tooltip ariaLabel="Scroll to next" disabled={!isNextEnable}>
               <Button.Link
                 className="block-slide-gallery-button"

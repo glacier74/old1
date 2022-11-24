@@ -43,10 +43,14 @@ export const NavigationPreview: FC<NavigationProps & { product: Product }> = ({
       </div>
 
       <div className="md:hidden">
-        <Button.Link leading={isOpen ? <IconX /> : <IconMenu2 />} onClick={handleClick} />
+        <Button.Link
+          className="navigation-button"
+          leading={isOpen ? <IconX /> : <IconMenu2 />}
+          onClick={handleClick}
+        />
       </div>
       {isOpen && (
-        <div className="fixed top-24 left-5 right-5 bg-white rounded-lg shadow-xl z-10 md:hidden">
+        <div className="fixed top-20 left-0 right-0 bg-white rounded-lg shadow-xl z-10 md:hidden">
           <div className="flex flex-col py-2 space-y-2">
             {block.links.map(row => (
               <a
