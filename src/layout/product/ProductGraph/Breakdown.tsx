@@ -13,6 +13,8 @@ interface BreakdownItemProps extends ComponentProps {
 }
 
 const BreakdownItem: FC<BreakdownItemProps> = ({ className, label, value, percentage }) => {
+  const { t } = useTranslation()
+
   return (
     <div className="flex items-center justify-between text-sm">
       <div
@@ -26,7 +28,7 @@ const BreakdownItem: FC<BreakdownItemProps> = ({ className, label, value, percen
           style={{ width: `${percentage * 100}%` }}
         />
         <div className="w-full px-2 py-1 h-7 relative z-9 overflow-hidden truncate break-all">
-          {label}
+          {t(label, { ns: 'country' })}
         </div>
       </div>
       <span className="font-medium w-20 text-right">{value}</span>

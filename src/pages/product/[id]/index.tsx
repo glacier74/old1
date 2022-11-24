@@ -105,10 +105,13 @@ export const getStaticPaths = async () => {
   }
 }
 
-export const getStaticProps = withTranslations(async context => {
-  return {
-    props: {}
-  }
-})
+export const getStaticProps = withTranslations(
+  async context => {
+    return {
+      props: {}
+    }
+  },
+  ['common', 'country']
+)
 
 export default Product
