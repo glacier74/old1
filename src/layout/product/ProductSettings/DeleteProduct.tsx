@@ -78,7 +78,7 @@ export const DeleteProduct = () => {
           <div className="block text-sm font-medium text-slate-700">
             {t('productSettings.deleteProduct.heading')}
           </div>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 max-w-2xl text-sm text-slate-500">
             {t('productSettings.deleteProduct.description')}
           </p>
         </div>

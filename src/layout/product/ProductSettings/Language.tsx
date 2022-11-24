@@ -37,7 +37,9 @@ export const Language = () => {
         <div className="text-sm leading-6 font-medium text-slate-900">
           {t('productSettings.language.heading')}
         </div>
-        <p className="mt-1 text-sm text-slate-500">{t('productSettings.language.description')}</p>
+        <p className="mt-1 max-w-2xl text-sm text-slate-500">
+          {t('productSettings.language.description')}
+        </p>
       </div>
       <div className="form-item ml-4 mb-0">
         <Select
