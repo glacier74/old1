@@ -105,7 +105,11 @@ body {
 }
 
 .link-button {
-  @apply px-4 py-2 border border-slate-300 shadow-sm sm:text-sm font-medium rounded-md text-slate-700 bg-white hover:bg-slate-100;
+  @apply px-4 py-2 border border-slate-300 shadow-sm text-base sm:text-sm font-medium rounded-md text-slate-700 bg-white hover:bg-slate-100;
+}
+
+.link-button-success {
+  @apply text-white border-none bg-green-500 hover:bg-green-600 focus:ring-green-500 active:bg-green-600;
 }
 
 .link-button-disabled {
@@ -668,6 +672,22 @@ button.navigation-button {
         @apply w-5 h-5 text-slate-600;
       }
     }
+  }
+}
+
+.payment-successful {
+  @apply flex flex-col items-center justify-center w-screen h-screen;
+
+  .empty-states-icon {
+    @apply text-9xl;
+  }
+
+  .empty-states-title {
+    @apply mt-10 text-xl;
+  }
+
+  .empty-states-description {
+    @apply mt-4 px-5 text-slate-700;
   }
 }
 
