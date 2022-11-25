@@ -1,6 +1,11 @@
+import { isEmpty } from '@nily/utils'
+import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import { NextSeo, NextSeoProps } from 'next-seo'
 import Head from 'next/head'
+import { useEffect } from 'react'
+
+import { getBrowserId, setBrowserId } from '~/utils'
 
 export function BaseLayout({
   favicon,
@@ -15,6 +20,15 @@ export function BaseLayout({
     description: t('common.description'),
     ...seo
   }
+
+  // Make sure that there is a browser id cookie to prevent login errors.
+  useEffect(() => {
+    const browserId = getBrowserId(JsCookie)
+
+    if (isEmpty(browserId)) {
+      setBrowserId(JsCookie)
+    }
+  }, [])
 
   return (
     <>
