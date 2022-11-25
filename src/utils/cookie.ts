@@ -1,72 +1,87 @@
 import { date, isFunction, isValid } from '@nily/utils'
-import { CookiesStatic } from 'js-cookie'
+import dayjs from 'dayjs'
+import { CookiesStatic as JSCookie } from 'js-cookie'
 import { RequestCookies, ResponseCookies } from 'next/dist/server/web/spec-extension/cookies'
-import { v4 as uuidV4, validate } from 'uuid'
+import { v4 as uuidV4 } from 'uuid'
 
 // Cookie options
-const domain = process.env.NEXT_PUBLIC_COOKIE_DOMAIN
-const maxAge = date.milliseconds(process.env.NEXT_PUBLIC_COOKIE_MAX_AGE!)
+const DOMAIN = process.env.NEXT_PUBLIC_COOKIE_DOMAIN
+const DEFAULT_COOKIE_MAX_AGE = date.milliseconds(process.env.NEXT_PUBLIC_COOKIE_MAX_AGE!)!
+const REDIRECT_URL_MAX_AGE = date.milliseconds('5m')!
 
 // Cookies names
-const browserIdKey = process.env.NEXT_PUBLIC_BROWSER_ID_COOKIE_NAME!
-const tokenKey = process.env.NEXT_PUBLIC_TOKEN_COOKIE_NAME!
+const REDIRECT_URL_KEY = process.env.NEXT_PUBLIC_REDIRECT_URL_COOKIE_NAME!
+const BROWSER_ID_KEY = process.env.NEXT_PUBLIC_BROWSER_ID_COOKIE_NAME!
+const TOKEN_KEY = process.env.NEXT_PUBLIC_TOKEN_COOKIE_NAME!
 
-export function getBrowserId(cookies: RequestCookies | any) {
+export function getBrowserId(cookies: RequestCookies | JSCookie | AnyMap<string>) {
+  return getCookie(cookies, BROWSER_ID_KEY)
+}
+
+export function setBrowserId(cookies: ResponseCookies | JSCookie) {
+  setCookie(cookies, BROWSER_ID_KEY, uuidV4({ random: undefined }), DEFAULT_COOKIE_MAX_AGE)
+}
+
+export function getToken(cookies: RequestCookies | JSCookie | AnyMap<string>) {
+  return getCookie(cookies, TOKEN_KEY)
+}
+
+export function deleteToken(cookies: ResponseCookies) {
+  setCookie(cookies, TOKEN_KEY, '', 0)
+}
+
+export function getRedirectURL(cookies: RequestCookies | JSCookie | AnyMap<string>) {
+  return getCookie(cookies, REDIRECT_URL_KEY)
+}
+
+export function setRedirectURL(cookies: ResponseCookies | JSCookie, value: string) {
+  setCookie(cookies, REDIRECT_URL_KEY, value, REDIRECT_URL_MAX_AGE)
+}
+
+export function deleteRedirectURL(cookies: ResponseCookies | JSCookie) {
+  setCookie(cookies, REDIRECT_URL_KEY, '', 0)
+}
+
+export function isLoggedIn(cookies: RequestCookies | any) {
+  return isValid(getBrowserId(cookies)) && isValid(getToken(cookies))
+}
+
+export function setCookie(
+  cookies: ResponseCookies | JSCookie,
+  name: string,
+  value: string,
+  milliseconds: number
+) {
+  const options: AnyMap<any> = {
+    httpOnly: false,
+    domain: DOMAIN
+  }
+
+  // JS cookie
+  if ((cookies as JSCookie).converter) {
+    options.expires = dayjs().add(milliseconds, 'milliseconds').toDate()
+  } else {
+    options.maxAge = milliseconds
+  }
+
+  cookies.set(name, value, options)
+}
+
+export function getCookie(cookies: RequestCookies | JSCookie | AnyMap<string>, name: string) {
   let value: string | undefined
 
   if (cookies.get && isFunction(cookies.get)) {
     // JS cookie
-    if (cookies.converter) {
-      value = (cookies as CookiesStatic).get(browserIdKey)
+    if ((cookies as JSCookie).converter) {
+      value = (cookies as JSCookie).get(name)
     } else {
-      value = (cookies as RequestCookies).get(browserIdKey)?.value
+      value = (cookies as RequestCookies).get(name)?.value
     }
   } else {
-    value = cookies[browserIdKey]
-  }
-
-  if (isValid(value) && validate(value!)) {
-    return value
-  }
-}
-
-export function setBrowserId(cookies: ResponseCookies | any) {
-  const value = uuidV4({ random: undefined })
-  const options: AnyMap<any> = {
-    httpOnly: false,
-    domain
-  }
-
-  // JS cookie
-  if (cookies.converter) {
-    options.expires = Math.round(maxAge! / (1_000 * 24 * 60 * 60))
-  } else {
-    options.maxAge = maxAge
-  }
-
-  cookies.set(browserIdKey, value, options)
-}
-
-export function getToken(cookies: RequestCookies | any) {
-  let value: string | undefined
-
-  if (cookies.get && isFunction(cookies.get)) {
-    value = (cookies as RequestCookies).get(tokenKey)?.value
-  } else {
-    value = cookies[tokenKey]
+    value = (cookies as AnyMap<string>)[name]
   }
 
   if (isValid(value)) {
     return value
   }
-}
-
-export function deleteToken(cookies: ResponseCookies) {
-  cookies.set(tokenKey, '', {
-    expires: new Date(Date.now())
-  })
-}
-
-export function isLoggedIn(cookies: RequestCookies | any) {
-  return isValid(getBrowserId(cookies)) && isValid(getToken(cookies))
 }

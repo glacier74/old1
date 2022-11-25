@@ -1,9 +1,12 @@
+import { isValid } from '@nily/utils'
+import JsCookie from 'js-cookie'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 import { Loading } from '~/components'
 import { AuthorizedLayout } from '~/layout'
 import { useStore } from '~/store'
+import { deleteRedirectURL, getRedirectURL } from '~/utils'
 
 export function HomeAuthorizedLayout({ seo }: Partial<LayoutProps>) {
   const router = useRouter()
@@ -11,10 +14,17 @@ export function HomeAuthorizedLayout({ seo }: Partial<LayoutProps>) {
 
   useEffect(() => {
     if (isReady) {
-      if (products.length > 0) {
-        router.replace(`/product/${products[0].id}`)
+      const redirectURL = getRedirectURL(JsCookie)
+
+      if (isValid(redirectURL)) {
+        deleteRedirectURL(JsCookie)
+        router.replace(isValid(redirectURL) ? redirectURL! : '/')
       } else {
-        router.replace('/onboarding')
+        if (products.length > 0) {
+          router.replace(`/product/${products[0].id}`)
+        } else {
+          router.replace('/onboarding')
+        }
       }
     }
   }, [isReady])

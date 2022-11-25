@@ -1,5 +1,6 @@
 import { Modal, notification } from '@heyforms/ui'
 import { date } from '@nily/utils'
+import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo } from 'react'
@@ -7,7 +8,7 @@ import { useEffect, useMemo } from 'react'
 import { BaseLayout } from '~/layout/BaseLayout'
 import { AuthService, ProductService, UserService } from '~/service'
 import { useStore } from '~/store'
-import { useAsyncEffect, useRequest } from '~/utils'
+import { setRedirectURL, useAsyncEffect, useRequest } from '~/utils'
 
 const DeletionAlertModal = () => {
   const { t } = useTranslation()
@@ -84,8 +85,10 @@ export const AuthorizedLayout = ({ seo, children }: LayoutProps) => {
       setIsReady(true)
     } catch (err: any) {
       if (err.statusCode === 401) {
+        setRedirectURL(JsCookie, router.asPath)
+
         await AuthService.logout()
-        router.replace('/login')
+        await router.replace('/login')
       }
     }
   }, [])
