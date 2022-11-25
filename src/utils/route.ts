@@ -17,5 +17,5 @@ export function isMatchRoutes(req: NextRequest, routes: string[]) {
 }
 
 export function urlBuilder(uri: string, query: AnyMap<string>) {
-  return uri + uri.includes('?') ? '&' : '?' + qs.stringify(query)
+  return uri + (uri.includes('?') ? '&' : '?') + qs.stringify(query)
 }
