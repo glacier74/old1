@@ -1,4 +1,12 @@
-import { BaseLayout, HomeAuthorizedLayout } from '~/layout'
+import {
+  HomeAuthorizedLayout,
+  HomeBottom,
+  HomeFeature,
+  HomeFooter,
+  HomeHeader,
+  HomeHeroSection,
+  HomeLayout
+} from '~/layout'
 import { isLoggedIn, withTranslations } from '~/utils'
 
 interface HomeProps {
@@ -12,13 +20,17 @@ const Home = ({ isLoggedIn }: HomeProps): JSX.Element => {
    * 如果 products 为空，重定向到 /onboarding 页面
    */
   if (isLoggedIn) {
-    return <HomeAuthorizedLayout seo={{ title: 'Home' }} />
+    return <HomeAuthorizedLayout />
   }
 
   return (
-    <BaseLayout seo={{ title: 'Home' }}>
-      <div>Home Page</div>
-    </BaseLayout>
+    <HomeLayout>
+      <HomeHeader />
+      <HomeHeroSection />
+      <HomeFeature />
+      <HomeBottom />
+      <HomeFooter />
+    </HomeLayout>
   )
 }
 

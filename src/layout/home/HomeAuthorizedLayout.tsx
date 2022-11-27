@@ -8,7 +8,7 @@ import { AuthorizedLayout } from '~/layout'
 import { useStore } from '~/store'
 import { deleteRedirectURL, getRedirectURL } from '~/utils'
 
-export function HomeAuthorizedLayout({ seo }: Partial<LayoutProps>) {
+export function HomeAuthorizedLayout() {
   const router = useRouter()
   const { isReady, products } = useStore()
 
@@ -30,7 +30,7 @@ export function HomeAuthorizedLayout({ seo }: Partial<LayoutProps>) {
   }, [isReady])
 
   return (
-    <AuthorizedLayout seo={seo}>
+    <AuthorizedLayout>
       <Loading className="h-screen bg-slate-50" />
     </AuthorizedLayout>
   )

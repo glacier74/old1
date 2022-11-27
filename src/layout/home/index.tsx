@@ -1,1 +1,7 @@
 export * from './HomeAuthorizedLayout'
+export * from './HomeLayout'
+export * from './HomeHeader'
+export * from './HomeHeroSection'
+export * from './HomeFeature'
+export * from './HomeBottom'
+export * from './HomeFooter'
