@@ -1,7 +1,9 @@
+import { IconChevronRight } from '@tabler/icons'
 import Image from 'next/image'
 import { FC } from 'react'
 
 import FeatureBuildImage from '~public/static/feature-build.png'
+import FeatureComponentImage from '~public/static/feature-component.png'
 import FeaturePitchImage from '~public/static/feature-pitch.png'
 import FeatureValidateImage from '~public/static/feature-validate.png'
 
@@ -25,6 +27,20 @@ export const HomeFeature: FC = () => (
             className="w-full object-cover"
             quality={100}
           />
+          <div className="mt-6 flex items-center">
+            <div className="flex-1">
+              <h2 className="text-2xl mb-7">
+                Type / onto the page to reveal a whole menu of elements you can include, just like
+                how it works in Notion.
+              </h2>
+              <a className="inline-flex items-center text-xl border-b-2 border-white" href="#">
+                Check out all the components <IconChevronRight />
+              </a>
+            </div>
+            <div className="flex-1">
+              <Image className="w-full" src={FeatureComponentImage} alt="" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
