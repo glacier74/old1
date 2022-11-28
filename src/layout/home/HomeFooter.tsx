@@ -8,10 +8,10 @@ export const HomeFooter: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <footer className="p-4 bg-gray-800">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center text-xs text-white space-x-5">
-          <div>{new Date().getFullYear()} EarlyBird</div>
+    <footer className="p-6 bg-slate-900">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="flex items-center text-sm text-slate-400 space-x-5">
+          <div>© {new Date().getFullYear()}. EarlyBird All Rights Reserved.</div>
           <Link href="/privacy" title={t('home.privacy')}>
             Privacy
           </Link>
@@ -20,8 +20,8 @@ export const HomeFooter: FC = () => {
           </Link>
         </div>
 
-        <div className="flex items-center text-white space-x-3">
-          <a href="#" target="_blank">
+        <div className="flex items-center text-slate-400 space-x-3">
+          <a href="https://twitter.com/earlybirdim" target="_blank">
             <IconTwitter />
           </a>
           <a href="#" target="_blank">

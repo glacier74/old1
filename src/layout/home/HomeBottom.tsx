@@ -10,18 +10,18 @@ export const HomeBottom: FC = () => {
   return (
     <section className="relative">
       <div className="max-w-7xl mx-auto">
-        <div className="pt-32 pb-48 text-white">
+        <div className="py-48 text-slate-50">
           <h2 className="w-4/5 mx-auto text-7xl text-center font-bold">
             The place for early stage entrepreneurs to bootstrap
           </h2>
-          <div className="w-8/12 mx-auto mt-8 text-lg text-center">
+          <div className="w-9/12 mx-auto mt-8 text-2xl text-center leading-snug text-slate-400">
             Whether you're launching a new product, building a new newsletter, or just creating a
             personal profile, EarlyBird is your home. Get started today, it's free!
           </div>
           <div className="flex justify-center mt-10">
             <a
               href="/sign-up"
-              className="text-xl font-bold px-8 py-3 border border-white rounded-lg"
+              className="text-xl font-medium px-8 py-3 border border-slate-100 rounded-md"
             >
               Sign up as an early bird
             </a>

@@ -3,8 +3,8 @@
 ## Install
 
 ```bash
-# Login to http://npm.heyooo.com
-npm login --registry=http://npm.heyooo.com
+# Login to http://npm.cnnic.eu
+npm login --registry=http://npm.cnnic.eu  --auth-type=legacy
 pnpm install
 ```
 
