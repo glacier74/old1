@@ -26,13 +26,13 @@ export const HomeFooter: FC = () => {
           <a href="https://twitter.com/earlybirdim" target="_blank">
             <IconTwitter />
           </a>
-          <a href="#" target="_blank">
+          <a href="https://facebook.com/earlybirdim" target="_blank">
             <IconFacebook />
           </a>
-          <a href="#" target="_blank">
+          <a href="https://www.linkedin.com/company/earlybirdim/" target="_blank">
             <IconLinkedin />
           </a>
-          <a href="#" target="_blank">
+          <a href="https://www.youtube.com/@earlybirdim" target="_blank">
             <IconYoutube />
           </a>
         </div>
