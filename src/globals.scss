@@ -178,7 +178,11 @@ button.button:not(:disabled):focus {
 
 .header-sticky {
   .header-container {
+<<<<<<< HEAD
     background: rgba(8, 8, 47, 0.5);
+=======
+    background: rgba(9, 9, 47, 0.5);
+>>>>>>> 96e6eb2dfb5dc3ea831740fb3e358e4f8d1ae871
     @apply backdrop-blur-md;
   }
 }

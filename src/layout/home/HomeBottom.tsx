@@ -15,8 +15,8 @@ export const HomeBottom: FC = () => {
             The place for early stage entrepreneurs to bootstrap
           </h2>
           <div className="w-full md:w-9/12 mx-auto mt-8 text-lg md:text-2xl text-center leading-snug text-slate-400">
-            Whether you're launching a new product, building a new newsletter, or just creating a
-            personal profile, EarlyBird is your home. Get started today, it's free!
+            Whether launching a new product, building a newsletter, or creating a personal profile,
+            EarlyBird is your home. Get started today, it's free!
           </div>
           <div className="flex justify-center mt-10">
             <a

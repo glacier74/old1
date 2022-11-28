@@ -22,8 +22,8 @@ export const HomeHeroSection: FC = () => {
       </div>
       <div className="relative text-white max-w-7xl mx-auto px-5 z-10">
         <div className="pt-96">
-          <h1 className="text-5xl md:text-8xl font-bold">Let's ship from here</h1>
-          <div className="text-slate-300 text-xl md:text-2xl w-full md:w-3/4 mt-5 font-normal">
+          <h1 className="text-5xl md:text-8xl font-bold">Build the next big thing</h1>
+          <div className="text-slate-300 text-xl md:text-2xl w-full md:w-4/5 mt-5 font-normal">
             Put your idea into perspective with us. EarlyBird lets you build, pitch and validate
             your early-stage business in a simpler way.
           </div>
@@ -36,7 +36,7 @@ export const HomeHeroSection: FC = () => {
               className="w-full md:w-auto px-4 py-2 md:px-6 md:py-3 text-lg md:text-xl text-center font-medium border border-green-500 bg-green-600 rounded-md"
               title={t('home.signUp')}
             >
-              Sign up for beta
+              Sign up for beta, it's FREE
             </Link>
             <a
               href="https://help.earlybird.im/roadmap/"

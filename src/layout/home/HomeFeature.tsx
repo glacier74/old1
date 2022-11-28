@@ -16,13 +16,13 @@ export const HomeFeature: FC = () => (
           </div>
           <div className="mt-5 mb-7 w-full md:w-3/5 text-2xl md:text-4xl leading-tight font-medium">
             <span className="text-green-400">
-              Create your own Minimum-Viable-Product landing page.
+              Create your own minimum-viable-product landing page.
             </span>{' '}
-            You can make it without a developer in a few minutes.
+            You can design and build it in a few minutes without a developer.
           </div>
           <Image
             src={FeatureBuildImage}
-            alt="Create your own Minimum-Viable-Product landing page"
+            alt="Create your own minimum-viable-product landing page"
             className="w-full object-cover"
             quality={100}
           />
@@ -49,13 +49,13 @@ export const HomeFeature: FC = () => (
           </div>
           <div className="mt-5 mb-7 w-full md:w-3/5 text-2xl md:text-4xl leading-tight font-medium">
             <span className="text-amber-400">
-              Channel your idea into a pitch deck that convince better.
+              Channel your idea into a convincing pitch deck for the masses.
             </span>{' '}
-            You can focus more on growth instead of format.
+            You can focus more on growth instead of creating copies.
           </div>
           <Image
             src={FeaturePitchImage}
-            alt="Channel your idea into a pitch deck that convince better"
+            alt="Channel your idea into a convincing pitch deck for the masses"
             className="w-full object-cover rounded-md"
             quality={100}
           />
@@ -70,12 +70,14 @@ export const HomeFeature: FC = () => (
             Validate
           </div>
           <div className="mt-5 mb-7 w-full md:w-3/5 text-2xl md:text-4xl leading-tight font-medium">
-            <span className="text-blue-400">Talk is cheap, show me your engagement.</span> Make as
-            many sales as possible to validate your product before lunch.
+            <span className="text-blue-400">
+              Start engaging with potential buyers and communities.
+            </span>{' '}
+            Make as many sales as possible to validate your product before launch.
           </div>
           <Image
             src={FeatureValidateImage}
-            alt="Talk is cheap, show me your engagement"
+            alt="Start engaging with potential buyers and communities"
             className="w-full object-cover rounded-md"
             quality={100}
           />
