@@ -176,6 +176,13 @@ button.button:not(:disabled):focus {
   @apply bg-slate-900;
 }
 
+.header-sticky {
+  .header-container {
+    background: rgba(8, 8, 47, 0.5);
+    @apply backdrop-blur-md;
+  }
+}
+
 
 // =================================================================================
 // Sidebar
