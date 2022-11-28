@@ -27,18 +27,15 @@ export const HomeFeature: FC = () => (
             className="w-full object-cover"
             quality={100}
           />
-          <div className="mt-6 flex items-center">
+          <div className="mt-24 flex items-center">
             <div className="flex-1">
-              <h2 className="text-2xl mb-7">
-                Type / onto the page to reveal a whole menu of elements you can include, just like
-                how it works in Notion.
+              <h2 className="text-2xl mb-7 text-slate-50 pr-8">
+                Add a component type from the dashboard, spice it up, and stack it like Legos. Defy
+                the normal, and go wild with your creativity.
               </h2>
-              <a className="inline-flex items-center text-xl border-b-2 border-white" href="#">
-                Check out all the components <IconChevronRight />
-              </a>
             </div>
             <div className="flex-1">
-              <Image className="w-full" src={FeatureComponentImage} alt="" />
+              <Image className="w-full rounded-md" src={FeatureComponentImage} alt="" />
             </div>
           </div>
         </div>
@@ -60,7 +57,7 @@ export const HomeFeature: FC = () => (
           <Image
             src={FeaturePitchImage}
             alt="Channel your idea into a pitch deck that convince better"
-            className="w-full object-cover"
+            className="w-full object-cover rounded-md"
             quality={100}
           />
         </div>
@@ -80,7 +77,7 @@ export const HomeFeature: FC = () => (
           <Image
             src={FeatureValidateImage}
             alt="Talk is cheap, show me your engagement"
-            className="w-full object-cover"
+            className="w-full object-cover rounded-md"
             quality={100}
           />
         </div>
