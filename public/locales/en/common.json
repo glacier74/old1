@@ -40,7 +40,7 @@
   "signUp": {
     "title": "$t(signUp.heading) · $t(common.name)",
     "heading": "Create an account",
-    "description": "Start a 14-day trial with all features unlocked.",
+    "description": "Get started for free, no credit card required.",
     "name": "Name",
     "invalidName": "Name must not be empty",
     "invalidPassword": "Password must be at least 8 characters, and at least 1 uppercase, 1 lowercase and 1 number.",
