@@ -15,7 +15,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Suspense fallback={<></>}>
         <Head>
           <meta httpEquiv="x-dns-prefetch-control" content="on" />
-          <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_UPLOAD_URI} />
+          <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_STORAGE_URI} />
+          <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_API_URI} />
           <meta content="width=device-width,initial-scale=1" name="viewport" />
           <meta content="yes" name="mobile-web-app-capable" />
           <meta content="yes" name="apple-mobile-web-app-capable" />

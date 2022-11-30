@@ -4,8 +4,13 @@ import { FC } from 'react'
 
 import { cropImage } from '~/utils'
 
-export const RoundImage: FC<AvatarProps> = ({
+interface RoundImageProps extends AvatarProps {
+  imageSize: number
+}
+
+export const RoundImage: FC<RoundImageProps> = ({
   src,
+  imageSize = 0,
   size = 0,
   text,
   retainLength = 4,
@@ -15,7 +20,7 @@ export const RoundImage: FC<AvatarProps> = ({
 }) => {
   return (
     <Avatar
-      src={cropImage(src, size, size)}
+      src={cropImage(src, imageSize, imageSize)}
       size={size}
       text={text}
       retainLength={retainLength}

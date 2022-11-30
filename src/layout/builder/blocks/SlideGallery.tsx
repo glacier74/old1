@@ -129,6 +129,8 @@ export const SlideGalleryPreview: FC<SlideGalleryProps> = ({ block, ...restProps
                     src={cropImage(source.source, IMAGE_WIDTH, IMAGE_HEIGHT)}
                     className="object-cover"
                     alt={source.caption}
+                    width={IMAGE_WIDTH}
+                    height={IMAGE_HEIGHT}
                   />
                 </div>
               ))}
@@ -358,6 +360,7 @@ const SlideGalleryComponent: FC<SlideGalleryProps> = ({ block, ...restProps }) =
       {/* Photo picker modal */}
       <PhotoPicker
         visible={pickerVisible}
+        namespace="slideGallery"
         enableUnsplash={false}
         onClose={closePicker}
         onChange={handleChange}

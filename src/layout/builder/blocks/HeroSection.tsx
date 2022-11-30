@@ -21,7 +21,7 @@ export const HeroSectionPreview: FC<HeroSectionProps & { product: Product }> = (
     <BlockPreview className={`block-herosection-${block.layout}`} block={block}>
       <div className="pt-10">
         <a href="/" title={product.name}>
-          <RoundImage src={product.logo} size={125} />
+          <RoundImage src={product.logo} imageSize={120} size={125} />
         </a>
         <h1 className="mt-12 sm:text-5xl text-3xl text-slate-900 font-bold">{product.name}</h1>
         <div className="block-herosection-tagline mt-4 max-w-3xl text-xl text-slate-500">
@@ -113,6 +113,7 @@ export const HeroSection: FC<HeroSectionProps> = ({ block }) => {
       <div className="pt-10">
         <AvatarPickerField
           className="block-herosection-image"
+          namespace="avatar"
           value={product?.logo}
           size={125}
           enableUnsplash={false}

@@ -16,6 +16,7 @@ interface ImagePickerButtonProps extends IComponentProps {
 }
 
 interface ImagePickerFieldProps extends Omit<IComponentProps, 'onChange'> {
+  namespace: string
   value?: string
   width?: number
   height?: number
@@ -47,6 +48,7 @@ export const ImagePickerField: FC<ImagePickerFieldProps> = ({
   className,
   width = 0,
   height = 0,
+  namespace,
   enableUnsplash,
   tip1,
   tip2,
@@ -102,6 +104,7 @@ export const ImagePickerField: FC<ImagePickerFieldProps> = ({
       <PhotoPicker
         visible={visible}
         enableUnsplash={enableUnsplash}
+        namespace={namespace}
         onClose={handleClose}
         onChange={handleChange}
         {...restProps}
@@ -114,11 +117,13 @@ interface AvatarPickerFieldProps extends Omit<ImagePickerFieldProps, 'width' | '
   text?: string
   retainLength?: number
   size?: number
+  imageSize?: number
 }
 
 export const AvatarPickerField: FC<AvatarPickerFieldProps> = ({
   className,
   size = 64,
+  imageSize = 120,
   text = 'common.logo',
   retainLength = 4,
   enableUnsplash,
@@ -155,6 +160,7 @@ export const AvatarPickerField: FC<AvatarPickerFieldProps> = ({
         <RoundImage
           key={value}
           src={value}
+          imageSize={imageSize}
           size={size}
           text={t(text)}
           retainLength={retainLength}

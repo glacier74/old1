@@ -66,6 +66,9 @@ export const SlideModal: FC<SlideModalProps> = ({
               <img
                 key={source?.source}
                 src={cropImage(source?.source, IMAGE_COMMEND_WIDTH, IMAGE_COMMEND_HEIGHT)}
+                className="object-cover"
+                width={IMAGE_COMMEND_WIDTH}
+                height={IMAGE_COMMEND_HEIGHT}
                 loading="eager"
               />
             </div>

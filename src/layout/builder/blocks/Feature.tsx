@@ -13,6 +13,8 @@ export interface FeatureProps extends BlockProps {
   block: FeatureBlock
 }
 
+const IMAGE_WIDTH = 500
+
 export const FeaturePreview: FC<FeatureProps> = ({ block, ...restProps }) => {
   const CustomTag = `h${block.heading.level}` as any
 
@@ -21,7 +23,12 @@ export const FeaturePreview: FC<FeatureProps> = ({ block, ...restProps }) => {
       <div className={`block-feature-container block-feature-${block.align}`}>
         {/* Left column */}
         <div className="block-feature-col">
-          <ImagePreview block={block.image} />
+          <ImagePreview
+            block={{
+              ...block.image,
+              width: IMAGE_WIDTH
+            }}
+          />
         </div>
 
         {/* Right column */}
@@ -96,7 +103,11 @@ export const Feature: FC<FeatureProps> = ({ block, placeholder, ...restProps }) 
         {/* Left column */}
         <div className="block-feature-col">
           <Image
-            block={block.image}
+            namespace="feature"
+            block={{
+              ...block.image,
+              width: IMAGE_WIDTH
+            }}
             uploadDesc1="builder.feature.uploadTip1"
             uploadDesc2="builder.feature.uploadTip2"
           />

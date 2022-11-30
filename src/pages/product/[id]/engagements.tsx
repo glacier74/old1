@@ -55,7 +55,7 @@ const ProductEngagements = (): JSX.Element => {
         return (
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <RoundImage src={row.avatar} text={row.email} size={36} />
+              <RoundImage src={row.avatar} text={row.email} imageSize={0} size={36} />
             </div>
             <div className="flex-1 px-4">
               <p className="text-sm font-semibold text-slate-800">

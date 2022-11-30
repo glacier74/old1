@@ -53,6 +53,7 @@ export const MetaData = () => {
         <Form.Item name="metaImage" className="mb-4" label={t('productSettings.metaData.image')}>
           <ImagePickerField
             className="text-sm"
+            namespace="metaImage"
             tip1={t('productSettings.metaData.uploadTip1')}
             tip2={t('productSettings.metaData.uploadTip2')}
             width={400}

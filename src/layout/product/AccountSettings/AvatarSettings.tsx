@@ -33,6 +33,7 @@ export const AvatarSettings: FC = () => {
       <p className="mt-1 text-sm text-slate-500">{t('account.avatar.description')}</p>
       <div className="mt-3">
         <AvatarPickerField
+          namespace="avatar"
           value={user?.avatar}
           text="account.avatar.heading"
           retainLength={6}

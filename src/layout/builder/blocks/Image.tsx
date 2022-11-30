@@ -10,12 +10,13 @@ import { useBuilderContext } from '../context'
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
 
 export interface ImageProps extends BlockProps {
+  namespace: string
   block: ImageBlock
   uploadDesc1: string
   uploadDesc2: string
 }
 
-export const ImagePreview: FC<Omit<ImageProps, 'uploadDesc1' | 'uploadDesc2'>> = ({
+export const ImagePreview: FC<Omit<ImageProps, 'namespace' | 'uploadDesc1' | 'uploadDesc2'>> = ({
   block,
   ...restProps
 }) => {
@@ -33,7 +34,13 @@ export const ImagePreview: FC<Omit<ImageProps, 'uploadDesc1' | 'uploadDesc2'>> =
   )
 }
 
-const ImageComponent: FC<ImageProps> = ({ block, uploadDesc1, uploadDesc2, ...resetProps }) => {
+const ImageComponent: FC<ImageProps> = ({
+  block,
+  namespace,
+  uploadDesc1,
+  uploadDesc2,
+  ...resetProps
+}) => {
   const { t } = useTranslation()
   const { dispatch } = useBuilderContext()
   const [visible, open, close] = useVisible()
@@ -81,6 +88,7 @@ const ImageComponent: FC<ImageProps> = ({ block, uploadDesc1, uploadDesc2, ...re
       {/* Photo picker modal */}
       <PhotoPicker
         visible={visible}
+        namespace={namespace}
         enableUnsplash={false}
         onClose={close}
         onChange={handleChange}

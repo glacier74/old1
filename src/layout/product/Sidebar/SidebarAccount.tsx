@@ -59,7 +59,12 @@ export const SidebarAccount: FC = () => {
         >
           <div className="flex items-center cursor-pointer">
             <div>
-              <RoundImage className="inline-block h-8 w-8" src={user?.avatar} size={32} />
+              <RoundImage
+                className="inline-block h-8 w-8"
+                src={user?.avatar}
+                imageSize={120}
+                size={32}
+              />
             </div>
             <div className="ml-3">
               <p className="text-sm font-medium text-slate-700 truncate group-hover:text-slate-900">

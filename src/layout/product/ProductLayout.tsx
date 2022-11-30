@@ -58,7 +58,7 @@ export function ProductLayout({ seo, children }: LayoutProps) {
                       {isReady ? (
                         <div className="flex items-center flex-1 min-w-0">
                           <div className="flex items-center mr-5">
-                            <RoundImage src={product.logo} size={54} />
+                            <RoundImage src={product.logo} imageSize={120} size={54} />
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="text-3xl font-bold text-slate-900">{product.name}</div>

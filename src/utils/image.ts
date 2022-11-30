@@ -1,22 +1,31 @@
-import { isValid, qs } from '@nily/utils'
+import { isValid, isValidArray, qs } from '@nily/utils'
 import isURL from 'validator/lib/isURL'
-
-function handler(src: string, width: number, height: number) {
-  const param: AnyMap<number> = {}
-
-  if (width > 0) param.w = width
-  if (height > 0) param.h = height
-
-  return src + (src.includes('?') ? '&' : '?') + qs.stringify(param)
-}
 
 const rules = [
   {
-    match: /^https?:\/\//i,
-    handler
+    url: process.env.NEXT_PUBLIC_STORAGE_URI,
+    handler(src: string, width: number, height: number) {
+      const matches = src.match(/(\.[^.\-_]+)$/)
+      const ext = matches ? matches[0] : ''
+      const param: string[] = []
+
+      if (width > 0) {
+        param.push(`w${width}`)
+      }
+
+      if (height > 0) {
+        param.push(`h${height}`)
+      }
+
+      if (isValidArray(param)) {
+        return [src, ...param].join('_') + ext
+      }
+
+      return src
+    }
   },
   {
-    match: /^https:\/\/images\.unsplash\.com/i,
+    regex: /^https:\/\/images\.unsplash\.com/i,
     handler(src: string, width: number, height: number) {
       src = src!.replace(/&(w|h)=\d+/g, '')
 
@@ -24,25 +33,25 @@ const rules = [
         src = src!.replace(/&fit=[^&]+/i, '&fit=crop')
       }
 
-      return handler(src, width, height)
+      const param: AnyMap<number> = {}
+
+      if (width > 0) param.w = width
+      if (height > 0) param.h = height
+
+      return src + (src.includes('?') ? '&' : '?') + qs.stringify(param)
     }
   }
 ]
 
-export function cropImage(
-  src?: string,
-  width = 0,
-  height = 0,
-  devicePixelRatio?: number
-): string | undefined {
+export function cropImage(src?: string, width = 0, height = 0, scale = 1.5): string | undefined {
   if (isValid(src) && isURL(src!)) {
-    if (devicePixelRatio && devicePixelRatio >= 1) {
-      width = Math.ceil(width * devicePixelRatio)
-      height = Math.ceil(height * devicePixelRatio)
-    }
+    width = Math.ceil(width * scale)
+    height = Math.ceil(height * scale)
 
     for (const rule of rules) {
-      if (rule.match.test(src!)) {
+      const isMatched = rule.regex ? rule.regex.test(src!) : src!.startsWith(rule.url as string)
+
+      if (isMatched) {
         return rule.handler(src!, width, height)
       }
     }
