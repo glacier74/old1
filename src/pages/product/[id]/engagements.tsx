@@ -124,7 +124,7 @@ const ProductEngagements = (): JSX.Element => {
           emptyState={
             <EmptyStates
               className="pt-60 flex flex-col justify-center"
-              icon={<IconDatabase />}
+              icon={<IconDatabase className="non-scaling-stroke" />}
               title={t('engagements.notFound.title')}
               description={t('engagements.notFound.description')}
             />
