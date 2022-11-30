@@ -3,7 +3,6 @@
     "name": "EarlyBird: Landing Page Builder for Startups",
     "description": "EarlyBird is the brand-new landing page builder for startups. Start pitching and validating business ideas in minutes.",
     "logo": "Logo",
-    "title": "{{title}} · $t(common.name)",
     "change": "Change",
     "cancel": "Cancel",
     "upload": "Upload",
@@ -21,7 +20,7 @@
     "saveChanges": "Save changes"
   },
   "login": {
-    "title": "Login · $t(common.name)",
+    "title": "Login · EarlyBird",
     "heading": "👋 Welcome back!",
     "description": "Log in to your account or <1>create an account</1>",
     "startWith": "Start with",
@@ -38,7 +37,7 @@
     "loginWithGithub": "Log in with github"
   },
   "signUp": {
-    "title": "$t(signUp.heading) · $t(common.name)",
+    "title": "$t(signUp.heading) · EarlyBird",
     "heading": "Create an account",
     "description": "Get started for free, no credit card required.",
     "name": "Name",
@@ -48,14 +47,14 @@
     "submit": "Get started"
   },
   "forgotPassword": {
-    "title": "Forgot password · $t(common.name)",
+    "title": "Forgot password · EarlyBird",
     "heading": "Forgot password?",
     "description": "We'll send you an email with verification code.",
     "continue": "Continue",
     "back": "Back to sign in"
   },
   "resetPassword": {
-    "title": "$t(resetPassword.heading) · $t(common.name)",
+    "title": "$t(resetPassword.heading) · EarlyBird",
     "heading": "Reset password",
     "description": "We've sent you an email with a 6-digit verification code, please check your inbox at",
     "code": "Verification code",
@@ -65,7 +64,7 @@
     "passwordMismatch": "Your new password and repeat password do not match."
   },
   "confirmEmail": {
-    "title": "Confirm email · $t(common.name)",
+    "title": "Confirm email · EarlyBird",
     "heading": "Check your email",
     "code": "Verification code",
     "invalidCode": "Invalid verification code"
@@ -330,16 +329,16 @@
     }
   },
   "invite": {
-    "title": "Invitation · $t(common.name)",
+    "title": "Invitation · EarlyBird",
     "heading": "You've been invited to {{inviter}}'s product",
     "description": "Join the product and start working together!",
-    "errorTip": "If you have trouble join the product, please contact the product owner or $t(common.name) support.",
+    "errorTip": "If you have trouble join the product, please contact the product owner or EarlyBird support.",
     "join": "Join",
     "goBack": "Go back",
-    "backHome": "Back to $t(common.name)"
+    "backHome": "Back to EarlyBird"
   },
   "stripe": {
-    "title": "$t(stripe.connecting) · $t(common.name)",
+    "title": "$t(stripe.connecting) · EarlyBird",
     "connecting": "Connecting with stripe"
   },
   "publicSite": {
