@@ -6,6 +6,7 @@ import { AuthService } from '~/service'
 import { useStore } from '~/store'
 import { withTranslations } from '~/utils'
 import { useEffect } from 'react'
+import Link from 'next/link'
 
 const SignUp = (): JSX.Element => {
   const { t } = useTranslation()
@@ -96,7 +97,7 @@ const SignUp = (): JSX.Element => {
               <div className="mt-6">
                 <p className="text-sm text-slate-500">
                   <Trans i18nKey="signUp.agreeWith">
-                    By signing up, you agree to our <a href="https://help.earlybird.im/tos" className="font-medium text-slate-700 underline" target="_blank" rel="noreferrer">terms of service</a> and <a href="https://help.earlybird.im/privacy" className="font-medium text-slate-700 underline" target="_blank" rel="noreferrer">privacy policy </a>.
+                    By signing up, you agree to our <Link href="/terms" className="font-medium text-slate-700 underline" target="_blank" rel="noreferrer">terms of service</Link> and <Link href="/privacy" className="font-medium text-slate-700 underline" target="_blank" rel="noreferrer">privacy policy </Link>.
                   </Trans>
                 </p>
               </div>
