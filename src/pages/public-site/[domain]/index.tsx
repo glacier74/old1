@@ -3,7 +3,7 @@ import { conv } from '@nily/utils'
 import Link from 'next/link'
 import { FC } from 'react'
 
-import { IconLogo } from '~/components'
+import { IconLogo, Plausible } from '~/components'
 import { BaseLayout } from '~/layout'
 import { FeaturePreview } from '~/layout/builder/blocks/Feature'
 import { FooterPreview } from '~/layout/builder/blocks/Footer'
@@ -65,7 +65,7 @@ const Block: FC<{ product: Product; siteSetting: SiteSettings; block: any }> = (
 const PublicSite: FC<PublicSiteProps> = ({ product, paymentStatus }) => (
   <BaseLayout
     shortName={product.name}
-    favicon={cropImage(product.logo, 16, 16)}
+    favicon={cropImage(product.logo, 120, 120)}
     seo={{
       title: product.metaTitle || product.name,
       description: product.metaDescription || product.tagline,
@@ -101,7 +101,7 @@ const PublicSite: FC<PublicSiteProps> = ({ product, paymentStatus }) => (
       </a>
     </div>
 
-    <script data-domain={product.analyticId} src="https://analytics.heyform.net/js/plausible.js" />
+    <Plausible apiURI="https://analytics.earlybird.im" domain={product.analyticId} />
   </BaseLayout>
 )
 
@@ -121,7 +121,8 @@ export const getServerSideProps = withTranslations(async context => {
   return {
     props: {
       product,
-      paymentStatus: context.query.paymentStatus
+      // `undefined` cannot be serialized as JSON
+      paymentStatus: context.query.paymentStatus || null
     }
   }
 })
