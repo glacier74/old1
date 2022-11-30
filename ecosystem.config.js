@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'earlybird',
       script: 'node_modules/next/dist/bin/next',
-      args: 'start -p 5055',
+      args: 'start -p 5050',
       cwd: './',
       max_memory_restart: '2G',
       env: {

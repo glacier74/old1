@@ -2,6 +2,7 @@ image: node:12.17.0
 
 stages:
   - development
+  - release
 
 cache:
   paths:
@@ -42,15 +43,58 @@ development:
     cp package.json tmp/
     cp pnpm-lock.yaml tmp/
 
-    if [ -f eb.tar.gz ]; then
-      rm eb.tar.gz
+    if [ -f ebw.tar.gz ]; then
+      rm ebw.tar.gz
     fi
     cd tmp/
-    tar -czvf eb.tar.gz * .??*
+    tar -czvf ebw.tar.gz * .??*
 
     cd $CURRENT_DIR
     echo "=> Deploying"
-    scp -P "$DEVELOP_PORT" -o stricthostkeychecking=no -C tmp/eb.tar.gz "$DEVELOP_DEPLOY_USER"@"$DEVELOP_DEPLOY_HOST":"$DEVELOP_TEMP"
-    DEPLOY_SHELL="rm -rf ${DEVELOP_APP_DIR}/.next/ && tar -xzf ${DEVELOP_TEMP}/eb.tar.gz -C ${DEVELOP_APP_DIR} && rm -rf ${DEVELOP_TEMP}/eb.tar.gz && cd ${DEVELOP_APP_DIR} && NODE_ENV=production pnpm install && npm start"
+    scp -P "$DEVELOP_PORT" -o stricthostkeychecking=no -C tmp/ebw.tar.gz "$DEVELOP_DEPLOY_USER"@"$DEVELOP_DEPLOY_HOST":"$DEVELOP_TEMP"
+    DEPLOY_SHELL="rm -rf ${DEVELOP_APP_DIR}/.next/ && tar -xzf ${DEVELOP_TEMP}/ebw.tar.gz -C ${DEVELOP_APP_DIR} && rm -rf ${DEVELOP_TEMP}/ebw.tar.gz && cd ${DEVELOP_APP_DIR} && NODE_ENV=production pnpm install && npm start"
     ssh -p "$DEVELOP_PORT" -t "$DEVELOP_DEPLOY_USER"@"$DEVELOP_DEPLOY_HOST" "$DEPLOY_SHELL"
+    exit
+
+release:
+  stage: release
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v.*$/'
+  cache:
+    paths:
+      - node_modules/
+  script: |
+    CURRENT_DIR=$(pwd)
+
+    echo "=> Building"
+    rm -rf .git/
+    rm -rf .next/*
+    pnpm install
+    npm run build
+
+    echo "=> Packing"
+    mkdir tmp/
+    rm -rf .next/cache/
+    cp -r .next tmp/
+    cp -r public tmp/
+    cp .npmrc tmp/
+    cp .env.production tmp/
+    cp next.config.js tmp/
+    cp next-i18next.config.js tmp/
+    cp ecosystem.config.js tmp/
+    cp prepare.js tmp/
+    cp package.json tmp/
+    cp pnpm-lock.yaml tmp/
+
+    if [ -f ebw.tar.gz ]; then
+      rm ebw.tar.gz
+    fi
+    cd tmp/
+    tar -czvf ebw.tar.gz * .??*
+
+    cd $CURRENT_DIR
+    echo "=> Deploying"
+    scp -P "$PRO_DEPLOY_PORT" -o stricthostkeychecking=no -C tmp/ebw.tar.gz "$PRO_DEPLOY_USER"@"$PRO_DEPLOY_HOST":"$PRO_TEMP"
+    DEPLOY_SHELL="rm -rf ${PRO_APP_DIR}/.next/ && tar -xzf ${PRO_TEMP}/ebw.tar.gz -C ${PRO_APP_DIR} && rm -rf ${PRO_TEMP}/ebw.tar.gz && cd ${PRO_APP_DIR} && NODE_ENV=production pnpm install && npm start"
+    ssh -p "$PRO_DEPLOY_PORT" -t "$PRO_DEPLOY_USER"@"$PRO_DEPLOY_HOST" "$DEPLOY_SHELL"
     exit
