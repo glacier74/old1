@@ -96,7 +96,7 @@ const SignUp = (): JSX.Element => {
               <div className="mt-6">
                 <p className="text-sm text-slate-500">
                   <Trans i18nKey="signUp.agreeWith">
-                    By signing up, you agree to our <a href="https://earlybird.im/tos" className="font-medium text-slate-700 underline" target="_blank" rel="noreferrer">terms of service</a> and <a href="https://earlybird.im/privacy" className="font-medium text-slate-700 underline" target="_blank" rel="noreferrer">privacy policy </a>.
+                    By signing up, you agree to our <a href="https://help.earlybird.im/tos" className="font-medium text-slate-700 underline" target="_blank" rel="noreferrer">terms of service</a> and <a href="https://help.earlybird.im/privacy" className="font-medium text-slate-700 underline" target="_blank" rel="noreferrer">privacy policy </a>.
                   </Trans>
                 </p>
               </div>

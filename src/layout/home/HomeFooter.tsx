@@ -13,10 +13,10 @@ export const HomeFooter: FC = () => {
         <div className="flex flex-col md:flex-row items-center text-sm text-slate-400 md:space-x-5">
           <div>Copyright © {new Date().getFullYear()} EarlyBird All Rights Reserved.</div>
           <div className="flex items-center justify-center mt-4 md:mt-0 space-x-5">
-            <Link href="/privacy" title={t('home.privacy')}>
+            <Link href="https://help.earlybird.im/privacy" title={t('home.privacy')}>
               Privacy
             </Link>
-            <Link href="/terms" title={t('home.terms')}>
+            <Link href="https://help.earlybird.im/tos" title={t('home.terms')}>
               Terms
             </Link>
           </div>
