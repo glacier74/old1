@@ -86,6 +86,7 @@ export const ImagePickerField: FC<ImagePickerFieldProps> = ({
           <>
             <img
               key={value}
+              className="max-h-full object-cover"
               src={cropImage(value, width, height)}
               width={width}
               height={height}

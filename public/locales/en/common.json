@@ -229,7 +229,8 @@
       "copiedTip": "Copied link to clipboard"
     },
     "sitePrivate": {
-      "heading": "Make the site private"
+      "heading": "Make the site private",
+      "description": "Enable protection with a simple shared password. All search engine optimization and social features will be disabled."
     },
     "removeBranding": {
       "heading": "Remove EarlyBird branding"
