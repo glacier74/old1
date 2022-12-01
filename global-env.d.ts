@@ -17,10 +17,13 @@ declare global {
   }
 
   interface LayoutProps extends ComponentProps {
-    favicon?: string
-    shortName?: string
     seo?: NextSeoProps
     children: ReactNode
+  }
+
+  interface PublicSiteLayoutProps extends LayoutProps {
+    favicon?: string
+    shortName?: string
   }
 
   type NextPageFunction = (

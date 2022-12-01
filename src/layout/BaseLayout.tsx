@@ -3,16 +3,12 @@ import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import { NextSeo, NextSeoProps } from 'next-seo'
 import Head from 'next/head'
+import Script from 'next/script'
 import { useEffect } from 'react'
 
 import { getBrowserId, setBrowserId } from '~/utils'
 
-export function BaseLayout({
-  favicon,
-  shortName = 'EarlyBird',
-  seo,
-  children
-}: LayoutProps): JSX.Element {
+export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
   const { t } = useTranslation()
 
   const seoProps: NextSeoProps = {
@@ -33,19 +29,11 @@ export function BaseLayout({
   return (
     <>
       <Head>
-        <meta content={shortName} name="application-name" />
-        <meta content={shortName} name="apple-mobile-web-app-title" />
-        {favicon ? (
-          <>
-            <link rel="icon" type="image/png" href={favicon} />
-          </>
-        ) : (
-          <>
-            <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
-            <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
-            <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
-          </>
-        )}
+        <meta content={t('common.shortName')} name="application-name" />
+        <meta content={t('common.shortName')} name="apple-mobile-web-app-title" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
+        <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
       </Head>
 
       {/* SEO */}
@@ -53,6 +41,8 @@ export function BaseLayout({
 
       {/* HTML */}
       {children}
+
+      <Script data-domain="earlybird.im" src="https://analytics.heyform.net/js/plausible.js" />
     </>
   )
 }

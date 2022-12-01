@@ -1,4 +1,5 @@
 export * from './BaseLayout'
+export * from './PublicSiteLayout'
 export * from './AuthorizedLayout'
 export * from './hook'
 export * from './login'

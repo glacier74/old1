@@ -1,10 +1,11 @@
 import { EmptyStates } from '@heyforms/ui'
 import { conv } from '@nily/utils'
 import Link from 'next/link'
+import Script from 'next/script'
 import { FC } from 'react'
 
-import { IconLogo, Plausible } from '~/components'
-import { BaseLayout } from '~/layout'
+import { IconLogo } from '~/components'
+import { PublicSiteLayout } from '~/layout'
 import { FeaturePreview } from '~/layout/builder/blocks/Feature'
 import { FooterPreview } from '~/layout/builder/blocks/Footer'
 import { HeadingPreview } from '~/layout/builder/blocks/Heading'
@@ -63,7 +64,7 @@ const Block: FC<{ product: Product; siteSetting: SiteSettings; block: any }> = (
 }
 
 const PublicSite: FC<PublicSiteProps> = ({ product, paymentStatus }) => (
-  <BaseLayout
+  <PublicSiteLayout
     shortName={product.name}
     favicon={cropImage(product.logo, 120, 120)}
     seo={{
@@ -101,8 +102,8 @@ const PublicSite: FC<PublicSiteProps> = ({ product, paymentStatus }) => (
       </a>
     </div>
 
-    <Plausible apiURI="https://analytics.earlybird.im" domain={product.analyticId} />
-  </BaseLayout>
+    <Script data-domain={product.analyticId} src="https://analytics.earlybird.im/js/plausible.js" />
+  </PublicSiteLayout>
 )
 
 export const getServerSideProps = withTranslations(async context => {
