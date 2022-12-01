@@ -8,10 +8,14 @@ import * as Actions from './actions'
 import { setBlocks } from './actions'
 
 export interface IState {
+  lastSyncedBlocks: Block[]
   blocks: Block[]
   flattedBlocks: FlattedBlock[]
   focusableBlockMap: AnyMap<string[]>
   rootBlocks: string[]
+
+  builderMode: 'desktop' | 'mobile'
+  isBlocksChanged?: boolean
 
   // Selected block
   focusBlockId?: string
@@ -41,6 +45,11 @@ export interface IState {
 export interface UpdateAction {
   type: 'update'
   payload: Partial<IState>
+}
+
+export interface InitBlocksAction {
+  type: 'initBlocks'
+  payload: Block[]
 }
 
 export interface SetBlocksAction {
@@ -112,6 +121,7 @@ export interface UpdateStripeConnectAction {
 
 type IAction =
   | UpdateAction
+  | InitBlocksAction
   | SetBlocksAction
   | MoveBlockAction
   | AddBlockAction
@@ -152,6 +162,7 @@ function updateState(state: IState, action: IAction): IState {
 const reducer = (state: IState, action: IAction) => {
   switch (action.type) {
     case 'update':
+    case 'initBlocks':
     case 'setBlocks':
     case 'moveBlock':
     case 'addBlock':
@@ -171,10 +182,13 @@ const reducer = (state: IState, action: IAction) => {
 export const BuilderProvider: FC<IComponentProps> = ({ children }) => {
   const initialState: IState = useMemo(
     () => ({
+      lastSyncedBlocks: [],
       blocks: [],
       flattedBlocks: [],
       focusableBlockMap: {},
       rootBlocks: [],
+      builderMode: 'desktop',
+      isBlocksChanged: false,
       isBubbleMenuOpen: false,
       isCommandMenuOpen: false,
       isSocialMediaOpen: false,

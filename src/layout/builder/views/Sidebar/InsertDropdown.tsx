@@ -144,7 +144,7 @@ export const InsertDropdown = () => {
 
   return (
     <Dropdown
-      className="insert-field-dropdown w-6 h-6 rounded-md text-slate-500 hover:bg-slate-50 cursor-pointer"
+      className="insert-field-dropdown w-6 h-6 -mr-2 rounded-md text-slate-500 hover:bg-slate-50 cursor-pointer"
       popupClassName="insert-field-popup"
       visible={visible}
       placement="right-start"

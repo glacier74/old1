@@ -1,6 +1,13 @@
-import { deepClone, isFalse } from '@nily/utils'
+import { deepClone, isEmpty, isFalse, isValidArray } from '@nily/utils'
+import { deepEqual } from 'fast-equals'
 
-import { copyBlock, flattenBlocks, getBlockByPath, getBlockIndex } from '../utils'
+import {
+  copyBlock,
+  flattenBlocks,
+  getBlockByPath,
+  getBlockIndex,
+  removeBlocksProperties
+} from '../utils'
 import {
   AddBlockAction,
   DeleteBlockAction,
@@ -18,13 +25,35 @@ export function update(state: IState, updates: UpdateAction['payload']): IState 
   return { ...state, ...updates }
 }
 
+export function initBlocks(state: IState, blocks: Block[]): IState {
+  // Remove invalid property
+  removeBlocksProperties(blocks, ['chosen'])
+
+  state.lastSyncedBlocks = deepClone(blocks)
+  state = setBlocks(state, blocks)
+  state.isBlocksChanged = false
+
+  // Select first block
+  if (isEmpty(state.selectBlockId) && isValidArray(blocks)) {
+    state = selectBlock(state, {
+      blockId: blocks[0].id
+    })
+  }
+
+  return state
+}
+
 export function setBlocks(state: IState, blocks: Block[]): IState {
+  // Remove invalid property
+  removeBlocksProperties(blocks, ['chosen'])
+
   const { flattedBlocks, rootBlocks, focusableBlockMap } = flattenBlocks(blocks)
 
   state.blocks = blocks
   state.flattedBlocks = flattedBlocks
   state.focusableBlockMap = focusableBlockMap
   state.rootBlocks = rootBlocks
+  state.isBlocksChanged = !deepEqual(state.lastSyncedBlocks, blocks)
 
   return state
 }

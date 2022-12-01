@@ -290,6 +290,8 @@
       "center": "Align center",
       "right": "Align right"
     },
+    "blocks": "Blocks",
+    "leaveBrowserMessage": "You have unsaved changes, are you sure you wish to leave this page?",
     "basic": "Basic",
     "recommended": "Recommended",
     "addNewBlock": "Add a new block",

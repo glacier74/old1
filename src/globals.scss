@@ -298,6 +298,15 @@ button.button:not(:disabled):focus {
   @apply bg-slate-100;
 }
 
+.builder-sidebar,
+.builder-blocks {
+  height: calc(100vh - 51px);
+}
+
+.builder-blocks {
+  @apply flex-1 overflow-y-auto;
+}
+
 .block-herosection {
   @apply py-24;
 }
@@ -436,10 +445,6 @@ button.navigation-button {
       &,
       &:hover {
         @apply bg-green-100;
-      }
-
-      .button-leading {
-        @apply text-green-500;
       }
     }
 

@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next'
 
 import { AsyncRequest, Tour } from '~/components'
 import { AuthorizedLayout, useProduct } from '~/layout'
+import { Navbar } from '~/layout/builder/views/Navbar'
 import { SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
 
@@ -61,6 +62,18 @@ export const Builder = () => {
         </div>
       ),
       position: 'left'
+    },
+    {
+      selector: '.builder-publish',
+      content: (
+        <div className="text-sm space-y-2">
+          <div className="text-base font-bold">Publish</div>
+          <div>
+            When you add or update some blocks, you can click "Publish" button to sync these updates
+            to server.
+          </div>
+        </div>
+      )
     }
   ]
 
@@ -82,8 +95,14 @@ export const Builder = () => {
       >
         <BuilderProvider>
           <Tour steps={steps} name="builder">
-            <Sidebar />
-            <BlockList />
+            <div className="flex flex-col h-full">
+              <Navbar />
+
+              <div className="flex-1 flex">
+                <Sidebar />
+                <BlockList />
+              </div>
+            </div>
           </Tour>
         </BuilderProvider>
       </AsyncRequest>

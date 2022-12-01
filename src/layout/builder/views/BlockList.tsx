@@ -1,4 +1,4 @@
-import { conv, isEmpty, isValidArray } from '@nily/utils'
+import { conv } from '@nily/utils'
 import { FC, useEffect } from 'react'
 
 import { useOpenTour } from '~/components'
@@ -18,28 +18,20 @@ export const BlockList: FC = () => {
   useEffect(() => {
     const blocks = conv.json<Block[]>(siteSettings.blocks, [])!
 
-    // Select first block
-    if (isEmpty(state.selectBlockId) && isValidArray(blocks)) {
-      dispatch({
-        type: 'selectBlock',
-        payload: {
-          blockId: blocks[0].id
-        }
-      })
-    }
-
     dispatch({
-      type: 'setBlocks',
+      type: 'initBlocks',
       payload: blocks
     })
-  }, [siteSettings?.blocks, state.selectBlockId])
+  }, [siteSettings?.blocks])
 
   return (
     <>
-      <div className="block-list ml-64 min-h-screen">
-        {state.blocks.map(block => (
-          <BlockWrapper key={block.id} block={block} />
-        ))}
+      <div className="builder-blocks">
+        <div className="builder-blocks-container">
+          {state.blocks.map(block => (
+            <BlockWrapper key={block.id} block={block} />
+          ))}
+        </div>
       </div>
 
       <BubbleMenu />
