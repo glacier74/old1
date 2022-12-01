@@ -102,6 +102,7 @@
   "onboarding": {
     "title": "Onboarding",
     "loggedAs": "Logged in as:",
+    "logo": "Logo (optional)",
     "name": "Product name",
     "tagline": "Tagline",
     "publicSiteURL": "Public site URL",

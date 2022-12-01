@@ -39,7 +39,11 @@ const Onboarding = (): JSX.Element => {
         }}
         request={handleFinish}
       >
-        <Form.Item name="logo" rules={[{ required: true, message: t('onboarding.invalidLogo') }]}>
+        <Form.Item
+          name="logo"
+          label={t('onboarding.logo')}
+          rules={[{ required: false, message: t('onboarding.invalidLogo') }]}
+        >
           <AvatarPickerField namespace="avatar" enableUnsplash={false} />
         </Form.Item>
 

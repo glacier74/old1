@@ -29,7 +29,13 @@ const ProductItem: FC<ProductItemProps> = ({ product, onClick }) => {
       className="group flex items-center px-4 py-2 text-sm text-slate-700 cursor-pointer hover:bg-slate-100"
       onClick={handleClick}
     >
-      <RoundImage src={product?.logo} imageSize={120} size={32} retainLength={2} />
+      <RoundImage
+        src={product?.logo}
+        imageSize={120}
+        text={product?.name}
+        size={32}
+        retainLength={2}
+      />
 
       <div className="ml-4 flex-auto">
         <p className="text-sm font-medium text-slate-700 truncate">{product?.name}</p>
@@ -54,6 +60,7 @@ const Current: FC = () => {
         <RoundImage
           className="w-6 h-6 rounded-full flex-shrink-0"
           src={product?.logo}
+          text={product?.name}
           imageSize={120}
           size={24}
         />
