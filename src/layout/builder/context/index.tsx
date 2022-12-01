@@ -36,9 +36,6 @@ export interface IState {
 
   // Navigation
   isNavigationOpen: boolean
-
-  // Sync
-  syncVersion: number
 }
 
 export interface UpdateAction {
@@ -141,18 +138,12 @@ export function useBuilderContext(): IContext {
   return useContext(context)
 }
 
-const SYNC_ACTIONS = ['setBlocks', 'moveBlock', 'addBlock', 'updateBlock', 'deleteBlock']
-
 function updateState(state: IState, action: IAction): IState {
   const clonedState = deepClone(state)
   const newState: IState = (Actions as any)[action.type](clonedState as any, action.payload as any)
 
   if (deepEqual(newState, state)) {
     return state
-  }
-
-  if (SYNC_ACTIONS.includes(action.type)) {
-    newState.syncVersion += 1
   }
 
   return newState
@@ -187,8 +178,7 @@ export const BuilderProvider: FC<IComponentProps> = ({ children }) => {
       isBubbleMenuOpen: false,
       isCommandMenuOpen: false,
       isSocialMediaOpen: false,
-      isNavigationOpen: false,
-      syncVersion: 0
+      isNavigationOpen: false
     }),
     []
   )

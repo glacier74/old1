@@ -1,11 +1,8 @@
-import { notification } from '@heyforms/ui'
-import { conv } from '@nily/utils'
-import { FC, useEffect, useMemo } from 'react'
+import { conv, isEmpty, isValidArray } from '@nily/utils'
+import { FC, useEffect } from 'react'
 
-import { useProduct } from '~/layout'
-import { SiteSettingsService } from '~/service'
+import { useOpenTour } from '~/components'
 import { useStore } from '~/store'
-import { Queue } from '~/utils'
 
 import { BlockWrapper } from '../blocks'
 import { useBuilderContext } from '../context'
@@ -13,59 +10,29 @@ import { BubbleMenu, NavigationModal, SocialMediaModal, StripeConnectModal } fro
 
 export const BlockList: FC = () => {
   const { siteSettings } = useStore()
-  const product = useProduct()
   const { state, dispatch } = useBuilderContext()
 
-  const queue = useMemo(() => {
-    return new Queue({
-      concurrency: 1,
-      scheduleInterval: 1_000,
-      taskIntervalTime: 10_000
-    })
-  }, [product.id])
-
-  async function syncData() {
-    try {
-      await SiteSettingsService.update(product.id, {
-        blocks: JSON.stringify(state.blocks) as any
-      })
-    } catch (err: any) {
-      notification.error({
-        message: 'Error',
-        title: err.message
-      })
-    }
-  }
-
-  function visibilityListener() {
-    if (document.visibilityState === 'hidden') {
-      syncData()
-    }
-  }
+  // Open builder tour
+  useOpenTour('builder')
 
   useEffect(() => {
     const blocks = conv.json<Block[]>(siteSettings.blocks, [])!
+
+    // Select first block
+    if (isEmpty(state.selectBlockId) && isValidArray(blocks)) {
+      dispatch({
+        type: 'selectBlock',
+        payload: {
+          blockId: blocks[0].id
+        }
+      })
+    }
 
     dispatch({
       type: 'setBlocks',
       payload: blocks
     })
-  }, [siteSettings?.blocks])
-
-  useEffect(() => {
-    // Add to queue
-    if (state.syncVersion > 1) {
-      queue.add(async () => {
-        await syncData()
-      })
-    }
-
-    document.addEventListener('visibilitychange', visibilityListener)
-
-    return () => {
-      document.removeEventListener('visibilitychange', visibilityListener)
-    }
-  }, [state.syncVersion])
+  }, [siteSettings?.blocks, state.selectBlockId])
 
   return (
     <>

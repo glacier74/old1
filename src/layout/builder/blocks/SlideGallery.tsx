@@ -55,7 +55,7 @@ const SlideGalleryItem: FC<SlideGalleryItemProps> = ({
     <div className="block-slide-gallery-item relative group/item block">
       <img
         src={cropImage(source.source, IMAGE_WIDTH, IMAGE_HEIGHT)}
-        className="object-cover"
+        className="w-full max-h-full object-cover"
         alt={source.caption}
       />
 
@@ -127,7 +127,7 @@ export const SlideGalleryPreview: FC<SlideGalleryProps> = ({ block, ...restProps
                 >
                   <img
                     src={cropImage(source.source, IMAGE_WIDTH, IMAGE_HEIGHT)}
-                    className="object-cover"
+                    className="w-full max-h-full object-cover"
                     alt={source.caption}
                     width={IMAGE_WIDTH}
                     height={IMAGE_HEIGHT}

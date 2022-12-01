@@ -164,7 +164,7 @@ const PaymentComponent: FC<PaymentProps> = ({ block, ...restProps }) => {
                 <div className="mt-4 text-2xl font-semibold text-slate-800">
                   {currencyFormatter(block.currency, block.amount)}
                 </div>
-                <div className="input mt-6">
+                <div className="input mt-6 !cursor-default">
                   <span className="text-slate-400">{t('publicSite.email')}</span>
                 </div>
                 <div className="mt-4 px-4 py-2 shadow-sm font-medium bg-green-500 rounded-md text-white text-center cursor-default">

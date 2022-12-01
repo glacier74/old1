@@ -162,6 +162,10 @@ button.button:not(:disabled):focus {
   }
 }
 
+.reactour__popover {
+  @apply rounded-lg;
+}
+
 .root-container {
   @media (min-width: 768px) {
     padding-left: 18rem;
@@ -271,48 +275,27 @@ button.button:not(:disabled):focus {
 }
 
 // =================================================================================
-// Editor
-.site-settings {
-  button.switch {
-    @apply h-5 w-9;
-  }
+// Builder
+.block-card {
+  @apply flex items-center py-2 pr-1 cursor-pointer select-none;
 
-  .switch-handle {
-    @apply h-4 w-4;
-
-    .spin {
-      @apply w-4 h-4;
+  &:hover {
+    .block-card-menu {
+      @apply opacity-100;
     }
   }
+}
 
-  button.switch-checked {
-    .switch-handle {
-      @apply translate-x-4;
-    }
-  }
+.block-card-menu {
+  @apply opacity-0;
 
-  .input, .textarea {
-    @apply py-1.5;
+  &.block-card-menu-open {
+    @apply opacity-100;
   }
+}
 
-  input,
-  textarea {
-    @apply text-sm;
-  }
-
-  .accordion-header {
-    @apply px-4;
-  }
-
-  .accordion-text {
-    @apply text-sm leading-6 font-medium text-slate-900;
-  }
-
-  .accordion-expand-icon {
-    svg {
-      @apply transition-transform will-change-transform;
-    }
-  }
+.block-card-selected {
+  @apply bg-slate-100;
 }
 
 .block-herosection {
@@ -557,14 +540,6 @@ button.navigation-button {
         }
       }
     }
-  }
-}
-
-.block-slidegallery {
-  @apply px-10;
-
-  @media (max-width: 768px) {
-    @apply px-0;
   }
 }
 

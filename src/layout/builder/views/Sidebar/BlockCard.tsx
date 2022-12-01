@@ -168,16 +168,16 @@ export const BlockCard: FC<BlockCardProps> = ({ block, selectedId }) => {
 
   return (
     <div
-      className={clsx('group flex items-center py-2.5 pr-1 cursor-pointer select-none', {
-        'bg-slate-100': isSelected
+      className={clsx('block-card', {
+        'block-card-selected': isSelected
       })}
       onClick={handleClick}
     >
       <BlockIcon className="ml-4" type={block.type} />
       <div className="flex-1 ml-3 text-xs">{t(label!)}</div>
       <Dropdown
-        className={clsx('opacity-0 group-hover:opacity-100', {
-          'opacity-100': isOpen
+        className={clsx('block-card-menu', {
+          'block-card-menu-open': isOpen || isSelected
         })}
         placement="bottom-start"
         overlay={DropdownOverlay}

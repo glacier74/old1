@@ -18,7 +18,10 @@
     "duplicate": "Duplicate",
     "delete": "Delete",
     "update": "Update",
-    "saveChanges": "Save changes"
+    "saveChanges": "Save changes",
+    "previous": "Previous",
+    "next": "Next",
+    "finish": "Finish"
   },
   "login": {
     "title": "Login · EarlyBird",
@@ -302,7 +305,7 @@
     },
     "navigation": {
       "name": "Navigation",
-      "settings": "Navigation settings"
+      "settings": "Links"
     },
     "heroSection": {
       "name": "Hero section"

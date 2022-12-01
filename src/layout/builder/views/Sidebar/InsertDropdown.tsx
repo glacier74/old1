@@ -132,7 +132,7 @@ export const InsertDropdown = () => {
   const dropdownTrigger = useMemo(
     () => (
       <Tooltip ariaLabel={t('builder.addNewBlock')}>
-        <Button.Link className="w-6 h-6" leading={<IconPlus />} />
+        <Button.Link className="builder-create-button w-6 h-6" leading={<IconPlus />} />
       </Tooltip>
     ),
     []
