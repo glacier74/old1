@@ -1,11 +1,12 @@
-import { Input, Switch, Tooltip } from '@heyforms/ui'
+import { Switch, Tooltip } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
-import { FC, startTransition, useMemo } from 'react'
+import { FC, useMemo } from 'react'
 
-import { AvatarPickerField, IconLayoutCenter, IconLayoutLeft, RoundImage } from '~/components'
-import { useProduct } from '~/layout'
+import { IconLayoutCenter, IconLayoutLeft } from '~/components'
+import { Heading } from '~/layout/builder/blocks/Heading'
+import { Image, ImagePreview } from '~/layout/builder/blocks/Image'
+import { Text } from '~/layout/builder/blocks/Text'
 import { useBuilderContext } from '~/layout/builder/context'
-import { ProductService } from '~/service'
 
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
 
@@ -13,20 +14,39 @@ export interface HeroSectionProps extends BlockProps {
   block: HeroSectionBlock
 }
 
-export const HeroSectionPreview: FC<HeroSectionProps & { product: Product }> = ({
-  block,
-  product
-}) => {
+const IMAGE_WIDTH = 120
+const IMAGE_HEIGHT = 120
+
+export const HeroSectionPreview: FC<HeroSectionProps> = ({ block }) => {
+  const CustomTag = `h${block.name.level}` as any
+
   return (
     <BlockPreview className={`block-herosection-${block.layout}`} block={block}>
       <div className="pt-10">
-        <a href="/" title={product.name}>
-          <RoundImage src={product.logo} imageSize={120} size={125} />
+        <a href="/">
+          <ImagePreview
+            block={{
+              ...block.logo,
+              width: IMAGE_WIDTH,
+              height: IMAGE_HEIGHT
+            }}
+          />
         </a>
-        <h1 className="mt-12 sm:text-5xl text-3xl text-slate-900 font-bold">{product.name}</h1>
-        <div className="block-herosection-tagline mt-4 max-w-3xl text-xl text-slate-500">
-          {product.tagline}
-        </div>
+
+        <CustomTag
+          className="mt-12 sm:text-5xl text-3xl text-slate-900 font-bold rich-text"
+          placeholder=" "
+        >
+          {block.name.html}
+        </CustomTag>
+
+        <div
+          className="block-herosection-tagline mt-4 max-w-3xl text-xl text-slate-500 rich-text"
+          placeholder=" "
+          dangerouslySetInnerHTML={{
+            __html: block.tagline.html
+          }}
+        />
       </div>
     </BlockPreview>
   )
@@ -79,61 +99,33 @@ export const HeroSectionSettings: FC<Pick<HeroSectionProps, 'block'>> = ({ block
 }
 
 export const HeroSection: FC<HeroSectionProps> = ({ block }) => {
-  const { t } = useTranslation()
-  const product = useProduct()
-
-  async function handleUpdate(updates: AnyMap<string>) {
-    await ProductService.update(product.id, updates)
-  }
-
-  function handleLogoChange(logo: any) {
-    handleUpdate({
-      logo
-    })
-  }
-
-  function handleNameChange(name: any) {
-    startTransition(() => {
-      handleUpdate({
-        name
-      })
-    })
-  }
-
-  function handleTaglineChange(tagline: any) {
-    startTransition(() => {
-      handleUpdate({
-        tagline
-      })
-    })
-  }
-
   return (
     <BlockComponent className={`block-herosection-${block.layout}`} block={block}>
       <div className="pt-10">
-        <AvatarPickerField
+        {/* Logo */}
+        <Image
           className="block-herosection-image"
           namespace="avatar"
-          value={product?.logo}
-          size={125}
-          enableUnsplash={false}
-          onChange={handleLogoChange}
+          block={{
+            ...block.logo,
+            width: IMAGE_WIDTH,
+            height: IMAGE_HEIGHT
+          }}
+          uploadDesc1="builder.herosection.uploadTip1"
+          uploadDesc2="builder.herosection.uploadTip2"
         />
 
-        <div className="block-herosection-name">
-          <Input
-            value={product?.name}
-            placeholder={t('onboarding.name')}
-            onChange={handleNameChange}
-          />
-        </div>
+        {/* Name */}
+        <Heading
+          className="block-herosection-name"
+          block={block.name}
+          placeholder="onboarding.name"
+          enableFormats={null}
+        />
 
+        {/* Tagline */}
         <div className="block-herosection-tagline">
-          <Input
-            value={product?.tagline}
-            placeholder={t('onboarding.tagline')}
-            onChange={handleTaglineChange}
-          />
+          <Text block={block.tagline} placeholder="onboarding.tagline" enableFormats={['basic']} />
         </div>
       </div>
     </BlockComponent>

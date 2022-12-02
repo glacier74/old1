@@ -8,6 +8,7 @@ import type { FC } from 'react'
 import { startTransition, useCallback, useMemo, useState } from 'react'
 
 import { BLOCK_GROUP_OPTIONS, BLOCK_OPTIONS } from '~/constants'
+import { useProduct } from '~/layout'
 
 import { useBuilderContext } from '../../context'
 import { blockByType } from '../../utils'
@@ -113,6 +114,7 @@ const InsertBlockMenu: FC<InsertBlockMenuProps> = ({ onClick }) => {
 export const InsertDropdown = () => {
   const { state, dispatch } = useBuilderContext()
   const { t } = useTranslation()
+  const product = useProduct()
   const [visible, setVisible] = useState(false)
 
   const handleCreateField = useCallback(
@@ -121,12 +123,12 @@ export const InsertDropdown = () => {
       dispatch({
         type: 'addBlock',
         payload: {
-          block: blockByType(type),
+          block: blockByType(type, undefined, product),
           afterId: state.selectBlockId
         }
       })
     },
-    [state.selectBlockId]
+    [state.selectBlockId, product]
   )
 
   const dropdownTrigger = useMemo(

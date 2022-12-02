@@ -40,7 +40,7 @@ export const BLOCK_OPTIONS: BlockOption[] = [
     backgroundColor: '#e0f2fe'
   },
   {
-    type: 'heroSection',
+    type: 'heroSection1',
     icon: IconHeroSection,
     label: 'builder.heroSection.name',
     textColor: '#0369a1',
@@ -101,7 +101,7 @@ export const BLOCK_GROUP_OPTIONS: Array<Pick<BlockGroupOptions, 'label' | 'types
   },
   {
     label: 'builder.basic',
-    types: ['navigation', 'heroSection', 'footer', 'heading', 'text']
+    types: ['navigation', 'heroSection1', 'footer', 'heading', 'text']
   },
   {
     label: 'builder.feature.name',
@@ -113,4 +113,4 @@ export const BLOCK_GROUP_OPTIONS: Array<Pick<BlockGroupOptions, 'label' | 'types
   }
 ]
 
-export const BLOCK_WITH_SETTINGS = ['heroSection', 'navigation', 'footer', 'feature', 'payment']
+export const BLOCK_WITH_SETTINGS = ['heroSection1', 'navigation', 'footer', 'feature', 'payment']

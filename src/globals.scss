@@ -166,6 +166,10 @@ button.button:not(:disabled):focus {
   @apply rounded-lg;
 }
 
+.reactour__close-button {
+  @apply text-slate-700 hover:text-slate-800;
+}
+
 .root-container {
   @media (min-width: 768px) {
     padding-left: 18rem;
@@ -307,57 +311,41 @@ button.button:not(:disabled):focus {
   @apply flex-1 overflow-y-auto;
 }
 
-.block-herosection {
+.block-herosection1 {
   @apply py-24;
+
+  .block-image-container {
+    @apply relative;
+
+    .block-image-toolbar,
+    img {
+      @apply rounded-full;
+    }
+  }
 }
 
 .block-herosection-center {
   @apply text-center;
 
-  .block-herosection-image,
+  .block-image-container,
   .block-herosection-tagline {
     @apply mx-auto;
-  }
-
-  .input {
-    input {
-      @apply text-center;
-    }
-  }
-}
-
-.block-herosection-name,
-.block-herosection-tagline {
-  .input {
-    @apply p-0;
-    border: none;
-    box-shadow: none;
-
-    input {
-      &:focus {
-        outline: none;
-      }
-    }
   }
 }
 
 .block-herosection-name {
   @apply mt-12;
 
-  .input {
-    input {
-      @apply sm:text-5xl text-3xl text-slate-900 font-bold;
-    }
+  .rich-text {
+    @apply sm:text-5xl text-3xl text-slate-900 font-bold;
   }
 }
 
 .block-herosection-tagline {
   @apply mt-4 max-w-3xl;
 
-  .input {
-    input {
-      @apply text-xl text-slate-500;
-    }
+  .rich-text {
+    @apply text-xl text-slate-500;
   }
 }
 
@@ -519,6 +507,16 @@ button.navigation-button {
 
   .block-text {
     @apply text-slate-700;
+  }
+
+  @media (max-width: 1200px) {
+    .block-feature-col {
+      @apply w-1/2;
+    }
+
+    .block-image img {
+      @apply w-full;
+    }
   }
 
   @media (max-width: 768px) {

@@ -32,8 +32,8 @@ const Block: FC<{ product: Product; siteSetting: SiteSettings; block: any }> = (
     case 'navigation':
       return <NavigationPreview key={block.id} block={block} product={product} />
 
-    case 'heroSection':
-      return <HeroSectionPreview key={block.id} block={block} product={product} />
+    case 'heroSection1':
+      return <HeroSectionPreview key={block.id} block={block} />
 
     case 'footer':
       return (

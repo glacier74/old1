@@ -166,7 +166,7 @@ declare global {
     | 'image'
     | 'list'
     | 'navigation'
-    | 'heroSection'
+    | 'heroSection1'
     | 'footer'
     | 'feature'
     | 'payment'
@@ -217,13 +217,16 @@ declare global {
   }
 
   interface HeroSectionBlock extends Pick<Block, 'id' | 'type'> {
-    type: 'heroSection'
+    type: 'heroSection1'
     layout?: 'left' | 'center'
+    logo: Omit<ImageBlock, 'align'>
+    name: HeadingBlock
+    tagline: TextBlock
   }
 
   interface FeatureBlock extends Pick<Block, 'id' | 'type'> {
     type: 'feature'
-    align?: 'left' | 'right'
+    layout?: 'left' | 'right'
     image: Omit<ImageBlock, 'align'>
     heading: HeadingBlock
     content: TextBlock

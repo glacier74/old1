@@ -143,7 +143,7 @@ export const BlockCard: FC<BlockCardProps> = ({ block, selectedId }) => {
             case 'navigation':
               return <NavigationSettings block={block as NavigationBlock} />
 
-            case 'heroSection':
+            case 'heroSection1':
               return <HeroSectionSettings block={block as HeroSectionBlock} />
 
             case 'footer':

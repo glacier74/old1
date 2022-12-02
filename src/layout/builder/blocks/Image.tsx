@@ -22,7 +22,13 @@ export const ImagePreview: FC<Omit<ImageProps, 'namespace' | 'uploadDesc1' | 'up
 }) => {
   return (
     <BlockPreview block={block} {...restProps}>
-      <div className="block-image-container max-w-full">
+      <div
+        className="block-image-container max-w-full"
+        style={{
+          width: block.width,
+          height: block.height
+        }}
+      >
         <img
           src={cropImage(block.source, block.width, block.height)}
           alt={block.caption}
@@ -62,7 +68,13 @@ const ImageComponent: FC<ImageProps> = ({
     <>
       <BlockComponent className={`block-image-align-${block.align}`} block={block} {...resetProps}>
         {block.source ? (
-          <div className="block-image-container">
+          <div
+            className="block-image-container"
+            style={{
+              width: block.width,
+              height: block.height
+            }}
+          >
             <img
               src={cropImage(block.source, block.width, block.height)}
               alt={block.caption}

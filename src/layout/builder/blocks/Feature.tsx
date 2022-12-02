@@ -20,7 +20,7 @@ export const FeaturePreview: FC<FeatureProps> = ({ block, ...restProps }) => {
 
   return (
     <BlockPreview block={block} {...restProps}>
-      <div className={`block-feature-container block-feature-${block.align}`}>
+      <div className={`block-feature-container block-feature-${block.layout}`}>
         {/* Left column */}
         <div className="block-feature-col">
           <ImagePreview
@@ -40,9 +40,11 @@ export const FeaturePreview: FC<FeatureProps> = ({ block, ...restProps }) => {
 
           {/* Description */}
           <div className="block-context-container">
-            <div className="rich-text" placeholder=" ">
-              {block.content.html}
-            </div>
+            <div
+              className="rich-text"
+              placeholder=" "
+              dangerouslySetInnerHTML={{ __html: block.content.html }}
+            />
           </div>
         </div>
       </div>
@@ -76,13 +78,13 @@ export const FeatureSettings: FC<Pick<FeatureProps, 'block'>> = ({ block }) => {
     []
   )
 
-  function handleChange(align: any) {
+  function handleChange(layout: any) {
     dispatch({
       type: 'updateBlock',
       payload: {
         blockId: block.id,
         updates: {
-          align
+          layout
         }
       }
     })
@@ -91,7 +93,7 @@ export const FeatureSettings: FC<Pick<FeatureProps, 'block'>> = ({ block }) => {
   return (
     <div className="flex items-center justify-between px-4 py-2 text-slate-700">
       <span>{t('builder.layout')}</span>
-      <Switch.Group value={block.align} options={options} onChange={handleChange} />
+      <Switch.Group value={block.layout} options={options} onChange={handleChange} />
     </div>
   )
 }
@@ -99,7 +101,7 @@ export const FeatureSettings: FC<Pick<FeatureProps, 'block'>> = ({ block }) => {
 export const Feature: FC<FeatureProps> = ({ block, placeholder, ...restProps }) => {
   return (
     <BlockComponent block={block} {...restProps}>
-      <div className={`block-feature-container block-feature-${block.align}`}>
+      <div className={`block-feature-container block-feature-${block.layout}`}>
         {/* Left column */}
         <div className="block-feature-col">
           <Image
