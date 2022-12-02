@@ -72,9 +72,7 @@ const PublicSite: FC<PublicSiteProps> = ({ product, paymentStatus }) => (
       description: product.metaDescription || product.tagline,
       openGraph: {
         siteName: product.metaTitle || product.name,
-        images: {
-          url: product.metaImage
-        }
+        locale: product.language
       }
     }}
   >

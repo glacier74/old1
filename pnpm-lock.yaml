@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@heyforms/ui': ^2022.11.10
+  '@heyforms/ui': ^2022.12.1
   '@next/font': ^13.0.5
   '@nily/utils': ^0.3.6
   '@reactour/tour': ^3.1.6
@@ -63,7 +63,7 @@ specifiers:
   validator: ^13.7.0
 
 dependencies:
-  '@heyforms/ui': 2022.11.10_tjrzq5vvrv5m43wuhv5loprfia
+  '@heyforms/ui': 2022.12.1_tjrzq5vvrv5m43wuhv5loprfia
   '@next/font': 13.0.5
   '@nily/utils': 0.3.6
   '@reactour/tour': 3.1.6_react@18.2.0
@@ -423,8 +423,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@heyforms/ui/2022.11.10_tjrzq5vvrv5m43wuhv5loprfia:
-    resolution: {integrity: sha512-y59s8zYyYDiG6GAfw8m7KzV1obyNT4nf0BisxjY0KIjRA7i0cAM9qv4wfytfOYhzRodwKHlzDzWwAFwsrBoyKA==}
+  /@heyforms/ui/2022.12.1_tjrzq5vvrv5m43wuhv5loprfia:
+    resolution: {integrity: sha512-Tz/RsWP/op6iU42DU7Op2lK/4o3hr0hfFaUOEZFJ5+qHDs4sFK4DdxPaDGEYiRdYW2r988ijOKqJNGJ9felGXA==}
     peerDependencies:
       '@tailwindcss/forms': ^0.5.2
       clsx: ^1.2.1
