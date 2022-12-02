@@ -49,8 +49,8 @@ export const MetaData = () => {
         onValuesChange={handleValuesChange}
         request={handleFinish}
       >
-        <div className="flex flex-col md:flex-row justify-start space-y-2 md:space-x-8 md:space-y-0">
-          <div className="w-full md:w-1/2 md:flex-1 2xl:max-w-[34rem]">
+        <div className="flex flex-col lg:flex-row justify-start space-y-2 lg:space-x-8 lg:space-y-0">
+          <div className="w-full lg:w-1/2 lg:flex-1 2xl:max-w-[34rem]">
             <Form.Item
               name="metaTitle"
               className="mb-4"
@@ -76,11 +76,11 @@ export const MetaData = () => {
                 </div>
               )}
             >
-              <Input.Textarea rows={3} />
+              <Input.Textarea rows={5} />
             </Form.Item>
           </div>
 
-          <div className="w-full md:w-1/2 md:flex-1">
+          <div className="w-full lg:w-1/2 lg:flex-1">
             <div className="form-item-label">Search engine result preview</div>
             <div className="w-full px-5 pt-8 pb-5 mt-2 border border-gray-300 shadow-sm rounded-md">
               <div className="flex flex-col mb-4">

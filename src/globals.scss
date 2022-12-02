@@ -456,6 +456,12 @@ button.navigation-button {
   }
 }
 
+.block-feature {
+  @media (max-width: 768px) {
+    @apply px-0;
+  }
+}
+
 .block-feature-container {
   @apply py-16 flex items-center;
 
@@ -546,14 +552,19 @@ button.navigation-button {
     }
 
     .block-feature-col {
+      @apply w-full;
       @apply px-0 #{!important};
+    }
+
+    .rich-text {
+      @apply px-5;
     }
 
     .block-image {
       .block-image-container {
         &,
         img {
-          @apply w-full;
+          @apply w-full #{!important};
         }
 
         img {
@@ -722,11 +733,19 @@ button.navigation-button {
   img {
     @apply absolute w-full h-full object-contain pointer-events-none;
   }
+
+  @media (max-width: 768px) {
+    @apply max-w-full;
+  }
 }
 
 .slide-button-previous,
 .slide-button-next {
   @apply p-8 flex-grow-0 flex-shrink-0 text-white opacity-50 hover:opacity-100 transition-opacity cursor-pointer;
+
+  @media (max-width: 768px) {
+    @apply p-2.5 h-full;
+  }
 }
 
 .slide-button-hide {

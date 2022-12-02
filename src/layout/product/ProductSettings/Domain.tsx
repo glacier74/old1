@@ -1,6 +1,6 @@
-import { Form, Input, Tooltip, notification, useForm } from '@heyforms/ui'
+import { Form, Input, Tooltip, notification } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
 
 import { useProduct } from '~/layout'
@@ -11,7 +11,6 @@ export const Domain = () => {
   const { t } = useTranslation()
   const product = useProduct()
   const { updateProduct } = useStore()
-  const [form] = useForm()
 
   const url = useMemo(
     () => `${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`,
@@ -29,17 +28,11 @@ export const Domain = () => {
     })
   }
 
-  useEffect(() => {
-    form.resetFields()
-  }, [product.domain])
-
   return (
     <div className="pt-4">
       <div className="form-item-label">{t('onboarding.publicSiteURL')}</div>
       <div>
         <Form.Custom
-          form={form}
-          className="w-80"
           inline
           initialValues={{
             domain: product.domain
@@ -54,6 +47,7 @@ export const Domain = () => {
         >
           <Form.Item
             name="domain"
+            className="md:max-w-[20rem]"
             rules={[
               {
                 required: true,
@@ -65,14 +59,14 @@ export const Domain = () => {
             <Input />
           </Form.Item>
         </Form.Custom>
-        <p className="form-item-description mt-1">
+        <div className="form-item-description mt-1">
           {t('productSettings.domain.description')}{' '}
           <Tooltip ariaLabel={t('productSettings.domain.copyTip')}>
             <CopyToClipboard text={`https://${url}`} onCopy={handleCopy}>
               <span className="underline cursor-pointer">{url}</span>
             </CopyToClipboard>
           </Tooltip>
-        </p>
+        </div>
       </div>
     </div>
   )

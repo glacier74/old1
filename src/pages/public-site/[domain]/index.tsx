@@ -1,5 +1,7 @@
-import { EmptyStates } from '@heyforms/ui'
-import { conv } from '@nily/utils'
+import { EmptyStates, Form, Input } from '@heyforms/ui'
+import { conv, isValid } from '@nily/utils'
+import JsCookie from 'js-cookie'
+import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import Script from 'next/script'
 import { FC } from 'react'
@@ -16,9 +18,11 @@ import { NavigationPreview } from '~/layout/builder/blocks/Navigation'
 import { PaymentPreview } from '~/layout/builder/blocks/Payment'
 import { SlideGalleryPreview } from '~/layout/builder/blocks/SlideGallery'
 import { TextPreview } from '~/layout/builder/blocks/Text'
-import { cropImage, withTranslations } from '~/utils'
+import { ProductService } from '~/service'
+import { cropImage, getPrivateToken, setPrivateToken, withTranslations } from '~/utils'
 
 interface PublicSiteProps {
+  isSiteAccessible?: boolean
   product: Product
   paymentStatus?: 'success'
 }
@@ -63,55 +67,155 @@ const Block: FC<{ product: Product; siteSetting: SiteSettings; block: any }> = (
   }
 }
 
-const PublicSite: FC<PublicSiteProps> = ({ product, paymentStatus }) => (
-  <PublicSiteLayout
-    shortName={product.name}
-    favicon={cropImage(product.logo, 120, 120)}
-    seo={{
-      title: product.metaTitle || product.name,
-      description: product.metaDescription || product.tagline,
-      openGraph: {
-        siteName: product.metaTitle || product.name,
-        locale: product.language
-      }
-    }}
-  >
-    {paymentStatus === 'success' ? (
-      <EmptyStates
-        className="payment-successful"
-        title="Your payment is successful!"
-        description="Thank you for your payment! An automated payment receipt will be sent to the email address provided very shortly."
-        icon="🎉"
-        action={
-          <Link href="/" className="link-button link-button-success">
-            Back to {product.name}
-          </Link>
+const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentStatus }) => {
+  const { t } = useTranslation()
+
+  async function handleFinish(values: AnyMap<string>) {
+    const { token } = await ProductService.verifyPassword(product.id, values.password)
+
+    setPrivateToken(JsCookie, token)
+    setTimeout(() => {
+      window.location.reload()
+    }, 10)
+  }
+
+  if (!isSiteAccessible) {
+    return (
+      <PublicSiteLayout
+        shortName={product.name}
+        favicon={cropImage(product.logo, 120, 120)}
+        seo={{
+          title: product.metaTitle || product.name,
+          noindex: true,
+          nofollow: true,
+          description: null,
+          openGraph: null
+        }}
+      >
+        <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+          <div className="sm:mx-auto sm:w-full sm:max-w-md">
+            <div>
+              <h1 className="text-center text-3xl font-bold text-slate-900">
+                {t('publicSite.privateHeading')}
+              </h1>
+            </div>
+
+            <div className="mt-8 mx-5 md:mx-0">
+              <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+                <div className="mt-6">
+                  <Form.Custom
+                    submitText={t('publicSite.accessSite')}
+                    submitOptions={{
+                      type: 'success',
+                      className: 'mt-2',
+                      block: true
+                    }}
+                    request={handleFinish}
+                  >
+                    <Form.Item
+                      name="password"
+                      rules={[{ required: true, message: t('publicSite.invalidPassword') }]}
+                    >
+                      <Input.Password placeholder={t('publicSite.password')} />
+                    </Form.Item>
+                  </Form.Custom>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </PublicSiteLayout>
+    )
+  }
+
+  return (
+    <PublicSiteLayout
+      shortName={product.name}
+      favicon={cropImage(product.logo, 120, 120)}
+      seo={{
+        title: product.metaTitle || product.name,
+        description: product.metaDescription || product.tagline,
+        openGraph: {
+          siteName: product.metaTitle || product.name,
+          locale: product.language
         }
+      }}
+    >
+      {paymentStatus === 'success' ? (
+        <EmptyStates
+          className="payment-successful"
+          title="Your payment is successful!"
+          description="Thank you for your payment! An automated payment receipt will be sent to the email address provided very shortly."
+          icon="🎉"
+          action={
+            <Link href="/" className="link-button link-button-success">
+              Back to {product.name}
+            </Link>
+          }
+        />
+      ) : (
+        product.siteSetting.blocks.map(block => (
+          <Block key={block.id} product={product} block={block} siteSetting={product.siteSetting} />
+        ))
+      )}
+
+      <div className="fixed rounded shadow bg-white text-sm text-slate-700 z-10 px-4 py-2 right-5 bottom-5 md:right-12 md:bottom-6">
+        <a href={process.env.NEXT_PUBLIC_HOMEPAGE}>
+          <IconLogo className="w-6 inline" /> Made with EarlyBird
+        </a>
+      </div>
+
+      <Script
+        data-domain={product.analyticId}
+        src="https://analytics.earlybird.im/js/plausible.js"
       />
-    ) : (
-      product.siteSetting.blocks.map(block => (
-        <Block key={block.id} product={product} block={block} siteSetting={product.siteSetting} />
-      ))
-    )}
-
-    <div className="fixed rounded shadow bg-white text-sm text-slate-700 z-10 px-4 py-2 right-5 bottom-5 md:right-12 md:bottom-6">
-      <a href={process.env.NEXT_PUBLIC_HOMEPAGE}>
-        <IconLogo className="w-6 inline" /> Made with EarlyBird
-      </a>
-    </div>
-
-    <Script data-domain={product.analyticId} src="https://analytics.earlybird.im/js/plausible.js" />
-  </PublicSiteLayout>
-)
+    </PublicSiteLayout>
+  )
+}
 
 export const getServerSideProps = withTranslations(async context => {
   const domain = context.params.domain
   const result = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/product/${domain}`)
   const product: Product = await result.json()
 
-  if ((product as AnyMap<number>).statusCode || product.isSitePrivate) {
+  if ((product as AnyMap<number>).statusCode) {
     return {
       notFound: true
+    }
+  }
+
+  // Protection with a simple shared password
+  if (product.isSitePrivate) {
+    let isSiteAccessible = false
+    const token = getPrivateToken(context.req.cookies)
+
+    if (isValid(token)) {
+      const result = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/product/${product.id}/token`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ token })
+      })
+      const json = await result.json()
+
+      if (json.verified) {
+        isSiteAccessible = true
+      }
+    }
+
+    if (!isSiteAccessible) {
+      return {
+        props: {
+          product: {
+            id: product.id,
+            name: product.name,
+            metaTitle: product.metaTitle
+          },
+          isSiteAccessible: false,
+          language: product.language
+        }
+      }
     }
   }
 
@@ -120,6 +224,7 @@ export const getServerSideProps = withTranslations(async context => {
   return {
     props: {
       product,
+      isSiteAccessible: true,
       language: product.language,
       // `undefined` cannot be serialized as JSON
       paymentStatus: context.query.paymentStatus || null

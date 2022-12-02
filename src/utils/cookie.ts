@@ -2,6 +2,7 @@ import { date, isFunction, isValid } from '@nily/utils'
 import dayjs from 'dayjs'
 import { CookiesStatic as JSCookie } from 'js-cookie'
 import { RequestCookies, ResponseCookies } from 'next/dist/server/web/spec-extension/cookies'
+import * as process from 'process'
 import { v4 as uuidV4 } from 'uuid'
 
 // Cookie options
@@ -13,6 +14,11 @@ const REDIRECT_URL_MAX_AGE = date.milliseconds('5m')!
 const REDIRECT_URL_KEY = process.env.NEXT_PUBLIC_REDIRECT_URL_COOKIE_NAME!
 const BROWSER_ID_KEY = process.env.NEXT_PUBLIC_BROWSER_ID_COOKIE_NAME!
 const TOKEN_KEY = process.env.NEXT_PUBLIC_TOKEN_COOKIE_NAME!
+
+const PRIVATE_TOKEN_KEY = process.env.NEXT_PUBLIC_PRIVATE_TOKEN_COOKIE_NAME!
+const PRIVATE_TOKEN_MAX_AGE = date.milliseconds(
+  process.env.NEXT_PUBLIC_PRIVATE_TOKEN_COOKIE_MAX_AGE!
+)!
 
 export function getBrowserId(cookies: RequestCookies | JSCookie | AnyMap<string>) {
   return getCookie(cookies, BROWSER_ID_KEY)
@@ -44,6 +50,16 @@ export function deleteRedirectURL(cookies: ResponseCookies | JSCookie) {
 
 export function isLoggedIn(cookies: RequestCookies | any) {
   return isValid(getBrowserId(cookies)) && isValid(getToken(cookies))
+}
+
+export function setPrivateToken(cookies: JSCookie, token: string) {
+  cookies.set(PRIVATE_TOKEN_KEY, token, {
+    expires: dayjs().add(PRIVATE_TOKEN_MAX_AGE, 'milliseconds').toDate()
+  })
+}
+
+export function getPrivateToken(cookies: AnyMap<string>) {
+  return cookies[PRIVATE_TOKEN_KEY]
 }
 
 export function setCookie(

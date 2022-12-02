@@ -82,4 +82,10 @@ export class ProductService {
       }
     })
   }
+
+  static async verifyPassword(productId: number, password: string): Promise<{ token: string }> {
+    return axios.post(`/product/${productId}/password`, {
+      password
+    })
+  }
 }

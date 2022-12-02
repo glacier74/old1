@@ -72,6 +72,7 @@ declare global {
     analyticId: string
     language: string
     isSitePrivate: boolean
+    sitePassword: string
     removeBranding: boolean
     metaTitle: string
     metaDescription: string

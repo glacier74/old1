@@ -235,7 +235,9 @@
     },
     "sitePrivate": {
       "heading": "Make the site private",
-      "description": "Enable protection with a simple shared password. All search engine optimization and social features will be disabled."
+      "description": "Enable protection with a simple shared password. All search engine optimization and social features will be disabled.",
+      "invalidPassword": "The password must be at least 4 characters and at most 16 characters, including uppercase, lowercase or number",
+      "placeholder": "Set the password for the site"
     },
     "removeBranding": {
       "heading": "Remove EarlyBird branding"
@@ -243,8 +245,8 @@
     "metaData": {
       "heading": "Meta data",
       "description": "Set how your products are displayed on the web and when shared on social media",
-      "title": "Title",
-      "description2": "Description",
+      "title": "Meta title",
+      "description2": "Meta description",
       "image": "Image",
       "uploadTip1": "Recommended size: 1200x630 | JPG, PNG.",
       "uploadTip2": "Max size: 2MB"
@@ -352,6 +354,9 @@
   "publicSite": {
     "email": "Email address",
     "checkOut": "Check out",
-    "invalidEmail": "Please provide a valid email address"
+    "invalidEmail": "Please provide a valid email address",
+    "privateHeading": "This site is private.",
+    "password": "Password",
+    "accessSite": "Access site"
   }
 }
