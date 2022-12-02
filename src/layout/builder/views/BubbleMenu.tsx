@@ -146,15 +146,8 @@ export const BubbleMenu: FC = () => {
   }
 
   async function handleLink({ url }: any) {
-    const sel = handleSelectRange()
-    const node = document.createElement('a')
-
-    node.setAttribute('href', url)
-    node.setAttribute('target', '_blank')
-    node.innerText = sel!.toString()
-
-    state.bubbleMenuRange!.deleteContents()
-    state.bubbleMenuRange!.insertNode(node)
+    handleSelectRange()
+    document.execCommand('createlink', false, url)
 
     handleClose()
   }
