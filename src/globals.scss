@@ -517,6 +517,16 @@ button.navigation-button {
     .block-image img {
       @apply w-full;
     }
+
+    .block-feature-col:nth-of-type(2) {
+      @apply pl-12;
+    }
+
+    &.block-feature-right {
+      .block-feature-col:nth-of-type(2) {
+        @apply pl-0 pr-12;
+      }
+    }
   }
 
   @media (max-width: 768px) {
@@ -539,7 +549,7 @@ button.navigation-button {
         }
 
         img {
-          @apply h-auto;
+          @apply max-w-full h-auto;
         }
       }
     }
