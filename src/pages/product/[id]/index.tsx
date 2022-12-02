@@ -69,7 +69,7 @@ const Product = (): JSX.Element => {
   return (
     <ProductLayout seo={{ title: 'product.title' }}>
       <div>
-        <div className="relative lg:flex lg:items-center lg:justify-between">
+        <div className="relative md:flex md:items-center md:justify-between">
           {isReady ? (
             <div className="flex items-center flex-1 min-w-0">
               <div className="flex items-center mr-5">
@@ -92,11 +92,14 @@ const Product = (): JSX.Element => {
             <Skeleton />
           )}
 
-          <div className="flex items-center space-x-3">
-            <Link className="link-button" href={`/product/${product?.id}/edit`}>
+          <div className="flex flex-col md:flex-row items-center mt-4 md:mt-0 space-x-0 space-y-3 md:space-x-3 md:space-y-0">
+            <Link
+              className="link-button w-full text-center md:w-auto"
+              href={`/product/${product?.id}/edit`}
+            >
               {t('product.edit')}
             </Link>
-            <Button type="success" onClick={handlePreview}>
+            <Button type="success" className="w-full md:w-auto" onClick={handlePreview}>
               {t('product.viewSite')}
             </Button>
           </div>
@@ -106,7 +109,7 @@ const Product = (): JSX.Element => {
       </div>
 
       <div className="mt-10 mb-4 flex items-center justify-end">
-        <div className="w-20 sm:w-36 md:w-44 md:relative">
+        <div className="w-full md:w-20 sm:w-36 md:w-44 md:relative">
           <Select value={period} options={options} onChange={setPeriod} />
         </div>
       </div>

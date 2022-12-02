@@ -1,34 +1,48 @@
 import { IconX } from '@tabler/icons'
-import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
+
+import { useStore } from '~/store'
 
 import { SidebarAccount } from './SidebarAccount'
 import { SidebarNavbar } from './SidebarNavbar'
 import { SidebarProducts } from './SidebarProducts'
 
 export const Sidebar = () => {
-  const { t } = useTranslation()
+  const { isSidebarOpen, closeSidebar } = useStore()
+  const router = useRouter()
 
-  function handleClose() {
-    //
-  }
+  useEffect(() => {
+    const handleBrowseAway = () => {
+      if (isSidebarOpen) {
+        closeSidebar()
+      }
+    }
+
+    router.events.on('routeChangeStart', handleBrowseAway)
+
+    return () => {
+      router.events.off('routeChangeStart', handleBrowseAway)
+    }
+  }, [isSidebarOpen])
 
   return (
     <>
       <CSSTransition
-        in={false}
+        in={isSidebarOpen}
         timeout={0}
         mountOnEnter={true}
         classNames="sidebar-popup"
         unmountOnExit={false}
-        onExited={handleClose}
+        onExited={closeSidebar}
       >
         <div className="sidebar fixed inset-0 flex z-10 md:hidden">
           <div
             className="sidebar-overlay fixed inset-0 bg-slate-600 bg-opacity-75 transition-opacity duration-300 ease-in-out"
             aria-hidden="true"
           />
-          <div className="sidebar-wrapper relative flex flex-col flex-1 max-w-xs w-full h-full bg-white transform-gpu transition-transform duration-300 ease-in-out">
+          <div className="sidebar-wrapper relative flex flex-col flex-1 max-w-xs bg-slate-50 w-full h-full transform-gpu transition-transform duration-300 ease-in-out">
             <div className="flex flex-1 flex-col h-0 pt-5">
               <SidebarProducts />
               <SidebarNavbar />
@@ -39,7 +53,7 @@ export const Sidebar = () => {
               <button
                 type="button"
                 className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                onClick={handleClose}
+                onClick={closeSidebar}
               >
                 <span className="sr-only">Close sidebar</span>
                 <IconX className="h-6 w-6 text-white" aria-hidden="true" />

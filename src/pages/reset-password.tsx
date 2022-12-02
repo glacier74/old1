@@ -47,7 +47,7 @@ const ResetPassword = (): JSX.Element => {
         </p>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+      <div className="mt-8 mx-5 md:mx-0">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <Form.Custom
             submitText={t('forgotPassword.continue')}

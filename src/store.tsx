@@ -7,6 +7,7 @@ interface Store {
   isMemberListShow: boolean
   isAccountSettingsShow: boolean
   isDeletionAlertShow: boolean
+  isSidebarOpen: boolean
   email: string | undefined
   user: User
   products: Product[]
@@ -23,6 +24,8 @@ interface Store {
   removeMember: (productId: number, memberId: number) => void
   openMemberList: () => void
   closeMemberList: () => void
+  openSidebar: () => void
+  closeSidebar: () => void
   openAccountSettings: () => void
   closeAccountSettings: () => void
   openDeletionAlert: () => void
@@ -44,6 +47,7 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
   const [isMemberListShow, openMemberList, closeMemberList] = useVisible()
   const [isAccountSettingsShow, openAccountSettings, closeAccountSettings] = useVisible()
   const [isDeletionAlertShow, openDeletionAlert, closeDeletionAlert] = useVisible()
+  const [isSidebarOpen, openSidebar, closeSidebar] = useVisible()
 
   const updateUser = useCallback(
     (updates: Partial<User>) => {
@@ -97,6 +101,7 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
     isMemberListShow,
     isAccountSettingsShow,
     isDeletionAlertShow,
+    isSidebarOpen,
     email,
     user,
     products,
@@ -115,6 +120,8 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
     closeMemberList,
     openAccountSettings,
     closeAccountSettings,
+    openSidebar,
+    closeSidebar,
     openDeletionAlert,
     closeDeletionAlert
   }

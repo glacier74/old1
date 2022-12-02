@@ -36,7 +36,7 @@ const SignUp = (): JSX.Element => {
         <p className="mt-2 text-center text-sm text-slate-600">{t('signUp.description')}</p>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+      <div className="mt-8 mx-5 md:mx-0">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <div>
             <p className="text-sm font-medium text-slate-700"> {t('login.startWith')}</p>

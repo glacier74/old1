@@ -30,7 +30,7 @@ const StatsItem: FC<StatsItemProps> = ({ className, label, name, data }) => {
   }, [value, isBounceRate, isVisitDuration])
 
   return (
-    <div className={clsx('w-1/2 px-8 lg:w-auto border-r lg:border-r-0', className)}>
+    <div className={clsx('w-1/2 px-4 md:px-8 lg:w-auto border-r lg:border-r-0', className)}>
       <div className="text-xs font-bold tracking-wide text-slate-500 uppercase dark:text-slate-400 whitespace-nowrap">
         {label}
       </div>
@@ -59,9 +59,24 @@ export function TotalStats({ totalStats }: TotalStatsProps) {
   return (
     <div className="flex flex-wrap">
       <StatsItem label={t('productStats.uniqueVisitors')} data={totalStats} name="visitors" />
-      <StatsItem label={t('productStats.totalPageviews')} data={totalStats} name="pageviews" />
-      <StatsItem label={t('productStats.bounceRate')} data={totalStats} name="bounce_rate" />
-      <StatsItem label={t('productStats.visitDuration')} data={totalStats} name="visit_duration" />
+      <StatsItem
+        className="border-r-0"
+        label={t('productStats.totalPageviews')}
+        data={totalStats}
+        name="pageviews"
+      />
+      <StatsItem
+        className="mt-4"
+        label={t('productStats.bounceRate')}
+        data={totalStats}
+        name="bounce_rate"
+      />
+      <StatsItem
+        className="mt-4 border-r-0"
+        label={t('productStats.visitDuration')}
+        data={totalStats}
+        name="visit_duration"
+      />
     </div>
   )
 }

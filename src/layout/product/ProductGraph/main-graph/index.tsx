@@ -37,7 +37,7 @@ export function MainGraph({ date, period }: MainGraphProps) {
   }, [product?.id, date, period])
 
   return (
-    <div className="relative w-full bg-slate-50 px-4 py-8 rounded">
+    <div className="relative w-full bg-slate-50 px-0 py-4 md:px-4 md:py-8 rounded">
       <div>
         <TotalStats totalStats={totalStats} />
         <ChartGraph graphData={graphData} period={period} />
