@@ -35,8 +35,8 @@ export const MetaData = () => {
 
   useEffect(() => {
     setValues({
-      metaTitle: product.metaTitle,
-      metaDescription: product.metaDescription
+      metaTitle: product.metaTitle || product.name,
+      metaDescription: product.metaDescription || product.tagline
     })
     form.resetFields()
   }, [product.domain])
