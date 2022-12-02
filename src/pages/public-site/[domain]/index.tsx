@@ -120,6 +120,7 @@ export const getServerSideProps = withTranslations(async context => {
   return {
     props: {
       product,
+      language: product.language,
       // `undefined` cannot be serialized as JSON
       paymentStatus: context.query.paymentStatus || null
     }
