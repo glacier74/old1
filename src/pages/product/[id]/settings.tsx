@@ -1,10 +1,24 @@
 import { useTranslation } from 'next-i18next'
 
 import { ProductLayout, ProductSettings as Settings } from '~/layout'
+import { useStore } from '~/store'
 import { withTranslations } from '~/utils'
+
+const Skeleton = () => {
+  return (
+    <div className="min-w-0 pt-1 space-y-4">
+      <div className="skeleton" style={{ width: 120, height: 18 }}></div>
+      <div className="skeleton" style={{ width: 500, height: 14 }}></div>
+      <div className="skeleton" style={{ width: 500, height: 14 }}></div>
+      <div className="skeleton" style={{ width: 500, height: 14 }}></div>
+      <div className="skeleton" style={{ width: 500, height: 14 }}></div>
+    </div>
+  )
+}
 
 const ProductSettings = (): JSX.Element => {
   const { t } = useTranslation()
+  const { isReady } = useStore()
 
   return (
     <ProductLayout seo={{ title: 'productSettings.title' }}>
@@ -12,7 +26,7 @@ const ProductSettings = (): JSX.Element => {
         {t('productSettings.heading')}
       </h1>
 
-      <Settings />
+      {isReady ? <Settings /> : <Skeleton />}
     </ProductLayout>
   )
 }
