@@ -23,18 +23,20 @@ export const HeroSectionPreview: FC<HeroSectionProps> = ({ block }) => {
   return (
     <BlockPreview className={`block-herosection-${block.layout}`} block={block}>
       <div className="pt-10">
-        <a href="/">
-          <ImagePreview
-            block={{
-              ...block.logo,
-              width: IMAGE_WIDTH,
-              height: IMAGE_HEIGHT
-            }}
-          />
-        </a>
+        {block.logo && (
+          <a className="mb-12" href="/">
+            <ImagePreview
+              block={{
+                ...block.logo,
+                width: IMAGE_WIDTH,
+                height: IMAGE_HEIGHT
+              }}
+            />
+          </a>
+        )}
 
         <CustomTag
-          className="mt-12 sm:text-5xl text-3xl text-slate-900 font-bold rich-text"
+          className="sm:text-5xl text-3xl text-slate-900 font-bold rich-text"
           placeholder=" "
         >
           {block.name.html}
