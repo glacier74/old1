@@ -33,7 +33,7 @@ const Product = (): JSX.Element => {
   const product = useProduct()
 
   const date = dayjs().format('YYYY-MM-DD')
-  const [period, setPeriod] = useState<any>('day')
+  const [period, setPeriod] = useState<any>('7d')
 
   const options = [
     {
