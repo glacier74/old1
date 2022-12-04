@@ -342,7 +342,7 @@ button.switch-checked {
 }
 
 .block-herosection-name {
-  @apply mt-12;
+  @apply mt-8;
 
   .rich-text {
     @apply sm:text-5xl text-3xl text-slate-900 font-bold;
@@ -350,7 +350,7 @@ button.switch-checked {
 }
 
 .block-herosection-tagline {
-  @apply mt-4 max-w-3xl;
+  @apply max-w-3xl;
 
   .rich-text {
     @apply text-xl text-slate-500;
@@ -391,6 +391,10 @@ h3.rich-text {
 
   @media (max-width: 768px) {
     @apply w-screen px-5 overflow-x-hidden;
+
+    .block-container {
+      @apply w-auto px-0 overflow-x-auto;
+    }
   }
 }
 

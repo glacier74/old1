@@ -26,6 +26,10 @@ export const SitePrivate = () => {
 
       await ProductService.update(product!.id, updates)
       updateProduct(product!.id, updates)
+
+      notification.success({
+        title: t('productSettings.updated')
+      })
     },
     [product]
   )
