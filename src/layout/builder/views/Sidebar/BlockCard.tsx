@@ -27,28 +27,12 @@ export const BlockIcon: FC<BlockIconProps> = ({
   options = BLOCK_OPTIONS,
   type,
   className,
-  style: rawStyle,
+  style,
   ...restProps
 }) => {
   const option = useMemo(() => {
     return options.find(c => c.type === type)
   }, [type])
-
-  const style = useMemo(
-    () => ({
-      ...rawStyle,
-      backgroundColor: option?.backgroundColor,
-      color: option?.textColor
-    }),
-    [option?.backgroundColor, option?.textColor, rawStyle]
-  )
-
-  const iconStyle = useMemo(
-    () => ({
-      color: option?.textColor
-    }),
-    [option?.textColor]
-  )
 
   return (
     <div
@@ -56,7 +40,7 @@ export const BlockIcon: FC<BlockIconProps> = ({
       style={style}
       {...restProps}
     >
-      {option?.icon && <option.icon className="p-0 m-0" style={iconStyle} />}
+      {option?.icon && <option.icon className="p-0 m-0" />}
     </div>
   )
 }

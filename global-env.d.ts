@@ -175,8 +175,6 @@ declare global {
 
   interface BlockOption {
     type: BlockType
-    textColor: string
-    backgroundColor: string
     icon: FC<any>
     label: string
   }
