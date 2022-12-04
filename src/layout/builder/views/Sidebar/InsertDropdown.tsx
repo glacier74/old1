@@ -32,7 +32,7 @@ const InsertBlockItem: FC<InsertBlockItemProps> = ({ option, onClick }) => {
 
   return (
     <div
-      className="group flex items-center mx-2 p-2 text-sm font-medium rounded-md cursor-pointer hover:bg-slate-100"
+      className="group flex items-center mx-2 p-2 text-sm font-normal rounded-md cursor-pointer hover:bg-slate-100"
       onClick={handleClick}
     >
       <BlockIcon className="mr-3 flex-shrink-0" type={option.type} />

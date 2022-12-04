@@ -35,70 +35,50 @@ export const BLOCK_OPTIONS: BlockOption[] = [
   {
     type: 'navigation',
     icon: IconBrandSafari,
-    label: 'builder.navigation.name',
-    textColor: '#0369a1',
-    backgroundColor: '#e0f2fe'
+    label: 'builder.navigation.name'
   },
   {
     type: 'heroSection1',
     icon: IconHeroSection,
-    label: 'builder.heroSection.name',
-    textColor: '#0369a1',
-    backgroundColor: '#e0f2fe'
+    label: 'builder.heroSection.name'
   },
   {
     type: 'footer',
     icon: IconFooter,
-    label: 'builder.footer.name',
-    textColor: '#0369a1',
-    backgroundColor: '#e0f2fe'
+    label: 'builder.footer.name'
   },
   {
     type: 'heading',
     icon: IconHeading,
-    label: 'builder.heading.name',
-    textColor: '#0369a1',
-    backgroundColor: '#e0f2fe'
+    label: 'builder.heading.name'
   },
   {
     type: 'text',
     icon: IconLetterT,
-    label: 'builder.text.name',
-    textColor: '#0369a1',
-    backgroundColor: '#e0f2fe'
+    label: 'builder.text.name'
   },
 
   // Feature
   {
     type: 'feature',
     icon: IconRocket,
-    label: 'builder.feature.name',
-    textColor: '#b91c1c',
-    backgroundColor: '#fee2e2'
+    label: 'builder.feature.name'
   },
   {
     type: 'slideGallery',
     icon: IconSlideshow,
-    label: 'builder.slideGallery.name',
-    textColor: '#b91c1c',
-    backgroundColor: '#fee2e2'
+    label: 'builder.slideGallery.name'
   },
 
   // Payment
   {
     type: 'payment',
     icon: IconCreditCard,
-    label: 'builder.payment.name',
-    textColor: '#a16207',
-    backgroundColor: '#fef9c3'
+    label: 'builder.payment.name'
   }
 ]
 
 export const BLOCK_GROUP_OPTIONS: Array<Pick<BlockGroupOptions, 'label' | 'types'>> = [
-  {
-    label: 'builder.recommended',
-    types: ['feature', 'slideGallery', 'payment']
-  },
   {
     label: 'builder.basic',
     types: ['navigation', 'heroSection1', 'footer', 'heading', 'text']

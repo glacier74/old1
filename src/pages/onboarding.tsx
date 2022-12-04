@@ -29,7 +29,10 @@ const Onboarding = (): JSX.Element => {
 
   return (
     <OnboardingLayout seo={{ title: t('onboarding.title') }}>
-      <h2 className="mb-6 text-2xl font-bold text-slate-900">{t('onboarding.createProduct')}</h2>
+      <h2 className="mb-2 text-2xl font-bold text-slate-900">
+        {t('onboarding.createProductTitle')}
+      </h2>
+      <p className="mb-6 text-slate-500">{t('onboarding.createProductDesc')}</p>
 
       <Form.Custom
         submitText={t('onboarding.createProduct')}
@@ -39,24 +42,6 @@ const Onboarding = (): JSX.Element => {
         }}
         request={handleFinish}
       >
-        <Form.Item
-          name="logo"
-          label={t('onboarding.logo')}
-          rules={[{ required: false, message: t('onboarding.invalidLogo') }]}
-        >
-          <AvatarPickerField namespace="avatar" enableUnsplash={false} />
-        </Form.Item>
-
-        <Form.Item
-          name="domain"
-          label={t('onboarding.publicSiteURL')}
-          rules={[
-            { required: true, pattern: /^[a-z0-9-]{3,}$/i, message: t('onboarding.invalidDomain') }
-          ]}
-        >
-          <Input trailing={`.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`} />
-        </Form.Item>
-
         <Form.Item
           name="name"
           label={t('onboarding.name')}
@@ -71,6 +56,24 @@ const Onboarding = (): JSX.Element => {
           rules={[{ required: true, message: t('onboarding.invalidTagline') }]}
         >
           <Input />
+        </Form.Item>
+
+        <Form.Item
+          name="domain"
+          label={t('onboarding.publicSiteURL')}
+          rules={[
+            { required: true, pattern: /^[a-z0-9-]{3,}$/i, message: t('onboarding.invalidDomain') }
+          ]}
+        >
+          <Input trailing={`.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`} />
+        </Form.Item>
+
+        <Form.Item
+          name="logo"
+          label={t('onboarding.logo')}
+          rules={[{ required: false, message: t('onboarding.invalidLogo') }]}
+        >
+          <AvatarPickerField namespace="avatar" enableUnsplash={false} />
         </Form.Item>
       </Form.Custom>
     </OnboardingLayout>

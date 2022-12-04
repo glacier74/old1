@@ -103,13 +103,15 @@
     "viewSite": "View site"
   },
   "onboarding": {
-    "title": "Onboarding",
+    "title": "Create a product",
     "loggedAs": "Logged in as:",
     "logo": "Logo (optional)",
     "name": "Product name",
     "tagline": "Tagline",
     "publicSiteURL": "Public site URL",
     "invalidDomain": "The domain must have at least 3 characters, including uppercase, lowercase, number or \"-\"",
+    "createProductTitle": "Welcome to EarlyBird!",
+    "createProductDesc":"To begin, you'll need to enter the required fields like name, tagline, etc. When you're done, you can save and continue to the product dashboard.",
     "createProduct": "Create product",
     "invalidLogo": "The logo is not allowed to be empty",
     "invalidName": "The name is not allowed to be empty",
@@ -295,7 +297,6 @@
     "blocks": "Blocks",
     "leaveBrowserMessage": "You have unsaved changes, are you sure you wish to leave this page?",
     "basic": "Basic",
-    "recommended": "Recommended",
     "addNewBlock": "Add a new block",
     "searchBlockType": "Find a block type",
     "layout": "Layout",
@@ -308,7 +309,7 @@
       "placeholder": "Heading content"
     },
     "navigation": {
-      "name": "Navigation",
+      "name": "Navigation bar",
       "settings": "Links"
     },
     "heroSection": {
@@ -333,7 +334,7 @@
       "settings": "Payment settings"
     },
     "slideGallery": {
-      "name": "Slide gallery",
+      "name": "Carousel",
       "uploadTip1": "Recommended size: 1100x640 | JPG, PNG, BMP.",
       "uploadTip2": "Max size: 2MB"
     }
