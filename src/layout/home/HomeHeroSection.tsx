@@ -17,6 +17,7 @@ export const HomeHeroSection: FC = () => {
           className="absolute -top-[9rem] -left-1 pointer-events-none"
           width="640"
           height="635"
+          loading="eager"
           quality={100}
         />
       </div>
