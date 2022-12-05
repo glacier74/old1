@@ -10,7 +10,7 @@ import { useStore } from '~/store'
 const Skeleton = () => {
   return (
     <div className="flex items-center">
-      <div className="w-6 h-6 bg-slate-50 rounded-full"></div>
+      <div className="w-6 h-6 bg-slate-200 rounded-full"></div>
       <div className="ml-3">
         <div className="h-4 my-1 rounded-sm skeleton" style={{ width: 100 }}></div>
         <div className="h-2 rounded-sm skeleton" style={{ width: 60 }}></div>

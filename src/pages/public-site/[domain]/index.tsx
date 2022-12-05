@@ -2,6 +2,7 @@ import { EmptyStates, Form, Input } from '@heyforms/ui'
 import { conv, isValid } from '@nily/utils'
 import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
+import { NextSeoProps } from 'next-seo'
 import Link from 'next/link'
 import Script from 'next/script'
 import { FC } from 'react'
@@ -67,8 +68,46 @@ const Block: FC<{ product: Product; siteSetting: SiteSettings; block: any }> = (
   }
 }
 
+function getSeoProps(product: Product, isSiteAccessible?: boolean): NextSeoProps {
+  const title = product.metaTitle || product.name
+
+  // Private site
+  if (!isSiteAccessible) {
+    return {
+      title,
+      noindex: true,
+      nofollow: true,
+      description: undefined,
+      openGraph: undefined
+    }
+  }
+
+  const description = product.metaDescription || product.tagline
+  const openGraphImage = product.openGraphImage || product.tempOpenGraphImage
+
+  return {
+    title,
+    description,
+    openGraph: {
+      type: 'website',
+      title,
+      description,
+      siteName: title,
+      images: openGraphImage
+        ? [
+            {
+              url: openGraphImage
+            }
+          ]
+        : undefined,
+      locale: product.language
+    }
+  }
+}
+
 const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentStatus }) => {
   const { t } = useTranslation()
+  const seo = getSeoProps(product, isSiteAccessible)
 
   async function handleFinish(values: AnyMap<string>) {
     const { token } = await ProductService.verifyPassword(product.id, values.password)
@@ -84,13 +123,7 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
       <PublicSiteLayout
         shortName={product.name}
         favicon={cropImage(product.logo, 120, 120)}
-        seo={{
-          title: product.metaTitle || product.name,
-          noindex: true,
-          nofollow: true,
-          description: null,
-          openGraph: null
-        }}
+        seo={seo}
       >
         <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -132,14 +165,7 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
     <PublicSiteLayout
       shortName={product.name}
       favicon={cropImage(product.logo, 120, 120)}
-      seo={{
-        title: product.metaTitle || product.name,
-        description: product.metaDescription || product.tagline,
-        openGraph: {
-          siteName: product.metaTitle || product.name,
-          locale: product.language
-        }
-      }}
+      seo={seo}
     >
       {paymentStatus === 'success' ? (
         <EmptyStates

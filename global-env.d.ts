@@ -76,6 +76,8 @@ declare global {
     removeBranding: boolean
     metaTitle: string
     metaDescription: string
+    openGraphImage: string
+    tempOpenGraphImage: string
     inviteCode: string
     inviteExpiredAt: number
     users: User[]

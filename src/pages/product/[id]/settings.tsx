@@ -7,11 +7,10 @@ import { withTranslations } from '~/utils'
 const Skeleton = () => {
   return (
     <div className="min-w-0 pt-1 space-y-4">
-      <div className="skeleton" style={{ width: 120, height: 18 }}></div>
-      <div className="skeleton" style={{ width: 500, height: 14 }}></div>
-      <div className="skeleton" style={{ width: 500, height: 14 }}></div>
-      <div className="skeleton" style={{ width: 500, height: 14 }}></div>
-      <div className="skeleton" style={{ width: 500, height: 14 }}></div>
+      <div className="rounded-sm skeleton" style={{ width: 120, height: 18 }}></div>
+      <div className="rounded-sm skeleton" style={{ width: 500, height: 14 }}></div>
+      <div className="rounded-sm skeleton" style={{ width: 500, height: 14 }}></div>
+      <div className="rounded-sm skeleton" style={{ width: 500, height: 14 }}></div>
     </div>
   )
 }

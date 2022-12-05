@@ -12,6 +12,7 @@ import { PhotoPicker } from './PhotoPicker'
 interface ImagePickerButtonProps extends IComponentProps {
   tip1: string
   tip2: string
+  disabled?: boolean
   onClick: () => void
 }
 
@@ -23,6 +24,7 @@ interface ImagePickerFieldProps extends Omit<IComponentProps, 'onChange'> {
   enableUnsplash?: boolean
   tip1?: string
   tip2?: string
+  disabled?: boolean
   onVisibilityChange?: (visible: boolean) => void
   onChange?: (value: string) => void
 }
@@ -31,10 +33,16 @@ export const ImagePickerButton: FC<ImagePickerButtonProps> = ({
   className,
   tip1,
   tip2,
+  disabled,
   onClick
 }) => {
   return (
-    <button className={clsx('bg-slate-50 w-full h-full', className)} onClick={onClick}>
+    <button
+      className={clsx('bg-slate-50 w-full h-full', className)}
+      type="button"
+      disabled={disabled}
+      onClick={onClick}
+    >
       <div className="flex flex-col justify-center w-full h-full space-y-1 text-center">
         <IconUpload className="mx-auto h-12 w-12 text-slate-400 non-scaling-stroke" />
         <p className="text-slate-400">{tip1}</p>
@@ -53,6 +61,7 @@ export const ImagePickerField: FC<ImagePickerFieldProps> = ({
   tip1,
   tip2,
   value,
+  disabled,
   onVisibilityChange,
   onChange,
   ...restProps
@@ -80,10 +89,9 @@ export const ImagePickerField: FC<ImagePickerFieldProps> = ({
       <div
         className={clsx('relative group rounded overflow-hidden', className)}
         style={{ width: width, height: height }}
-        onClick={handleClick}
       >
         {value ? (
-          <>
+          <div onClick={handleClick}>
             <img
               key={value}
               className="max-h-full object-cover"
@@ -95,9 +103,15 @@ export const ImagePickerField: FC<ImagePickerFieldProps> = ({
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 transition-opacity cursor-pointer group-hover:opacity-100">
               <span className="text-xs text-white">{t('common.upload')}</span>
             </div>
-          </>
+          </div>
         ) : (
-          <ImagePickerButton tip1={tip1!} tip2={tip2!} onClick={open} />
+          <ImagePickerButton
+            className="text-sm"
+            tip1={tip1!}
+            tip2={tip2!}
+            disabled={disabled}
+            onClick={open}
+          />
         )}
       </div>
 
