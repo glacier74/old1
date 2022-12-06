@@ -1,4 +1,5 @@
 import { Button, Menus } from '@heyforms/ui'
+import { isEmpty } from '@nily/utils'
 import { IconMenu2, IconX } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
 import { FC, useState } from 'react'
@@ -87,6 +88,16 @@ export const NavigationSettings: FC<Pick<NavigationProps, 'block'>> = () => {
 
 export const Navigation: FC<NavigationProps> = ({ block }) => {
   const product = useProduct()
+  const { dispatch } = useBuilderContext()
+
+  function handleClick() {
+    dispatch({
+      type: 'update',
+      payload: {
+        isNavigationOpen: true
+      }
+    })
+  }
 
   return (
     <BlockComponent className="block-navigation-container" block={block}>
@@ -98,11 +109,17 @@ export const Navigation: FC<NavigationProps> = ({ block }) => {
         {product.name}
       </a>
       <div className="flex items-center space-x-4">
-        {block.links.map(row => (
-          <a key={row.id} href={row.url} target={row.openInNewTab ? '_blank' : undefined}>
-            {row.title}
-          </a>
-        ))}
+        {isEmpty(block.links) ? (
+          <Button.Link type="success" onClick={handleClick}>
+            Click to add links
+          </Button.Link>
+        ) : (
+          block.links.map(row => (
+            <a key={row.id} href={row.url} target={row.openInNewTab ? '_blank' : undefined}>
+              {row.title}
+            </a>
+          ))
+        )}
       </div>
     </BlockComponent>
   )

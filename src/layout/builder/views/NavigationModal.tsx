@@ -1,21 +1,22 @@
-import { Button, Checkbox, Input, Modal, Tooltip } from '@heyforms/ui'
-import { deepClone } from '@nily/utils'
-import { IconDotsVertical } from '@tabler/icons'
+import { Button, Checkbox, EmptyStates, Input, Modal, Tooltip } from '@heyforms/ui'
+import { deepClone, isEmpty } from '@nily/utils'
+import { IconDotsVertical, IconLink } from '@tabler/icons'
+import { deepEqual } from 'fast-equals'
 import { useTranslation } from 'next-i18next'
-import { FC, startTransition, useCallback, useEffect, useState } from 'react'
+import { FC, startTransition, useCallback, useEffect, useMemo, useState } from 'react'
 import { ReactSortable } from 'react-sortablejs'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useBuilderContext } from '~/layout/builder/context'
+import { removeBlocksProperties } from '~/layout/builder/utils'
 
 interface NavigationLinkProps {
   link: NavigationLink
-  deletable?: boolean
   onChange: (id: string, updates: AnyMap<string>) => void
   onDelete: (id: string) => void
 }
 
-const NavigationLink: FC<NavigationLinkProps> = ({ link, deletable, onChange, onDelete }) => {
+const NavigationLink: FC<NavigationLinkProps> = ({ link, onChange, onDelete }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   function handleDelete() {
@@ -49,11 +50,9 @@ const NavigationLink: FC<NavigationLinkProps> = ({ link, deletable, onChange, on
       <div className="flex items-center justify-between">
         <span className="text-sm text-slate-700">{link.title}</span>
         <div className="flex items-center space-x-4">
-          {deletable && (
-            <Button.Link type="danger" onClick={handleDelete}>
-              Delete
-            </Button.Link>
-          )}
+          <Button.Link type="danger" onClick={handleDelete}>
+            Delete
+          </Button.Link>
           <Button.Link onClick={handleEdit}>Edit</Button.Link>
           <Tooltip ariaLabel="Drag to reorder links">
             <Button.Link
@@ -96,6 +95,11 @@ export const NavigationModal: FC = () => {
   const { state, dispatch } = useBuilderContext()
   const [links, setLinks] = useState<NavigationLink[]>([])
 
+  const isDisabled = useMemo(() => {
+    const block = state.blocks.find(b => b.id === state.selectBlockId) as NavigationBlock
+    return deepEqual(block?.links, links)
+  }, [state.blocks, state.selectBlockId, links])
+
   const handleFinish = useCallback(async () => {
     dispatch({
       type: 'updateBlock',
@@ -108,6 +112,11 @@ export const NavigationModal: FC = () => {
     })
     handleClose()
   }, [state.selectBlockId, links])
+
+  function handleSetLinks(links: NavigationLink[]) {
+    removeBlocksProperties(links, ['chosen'])
+    setLinks(links)
+  }
 
   function handleClose() {
     setLinks([])
@@ -168,28 +177,60 @@ export const NavigationModal: FC = () => {
         </h1>
       </div>
 
-      <ReactSortable
-        className="flex-1 px-8 pb-3 space-y-3 scrollbar"
-        list={links}
-        setList={setLinks}
-        handle=".navigation-drag-handle"
-        delay={10}
-        animation={150}
-      >
-        {links.map(link => (
-          <NavigationLink
-            key={link.id}
-            link={link}
-            deletable={links.length > 1}
-            onChange={handleChange}
-            onDelete={handleDelete}
-          />
-        ))}
-      </ReactSortable>
+      {isEmpty(links) ? (
+        <EmptyStates
+          className="flex flex-col justify-center flex-1 px-8 pb-3"
+          icon={<IconLink className="non-scaling-stroke" />}
+          title="To add links to the navigation bar, follow these steps:"
+          description={
+            <ol className="text-left list-decimal space-y-2 mt-4">
+              <li>
+                Click on the "Add link" button on the bottom, a new link called "LinkX" will be
+                added to the navigation bar. This is the default label for a new link and can be
+                edited.
+              </li>
+              <li>
+                Clicking on the "Edit" button will open the link form again, where you can change
+                the label or URL of the link.
+              </li>
+              <li>
+                Repeat the process for each additional link that you want to add to the navigation
+                bar.
+              </li>
+              <li>
+                Once all of your links have been added, you can arrange their order by dragging and
+                dropping them into the desired position.
+              </li>
+              <li>
+                Save your changes and the updated navigation bar with the added links will be
+                visible to users on your website.
+              </li>
+            </ol>
+          }
+        />
+      ) : (
+        <ReactSortable
+          className="flex-1 px-8 pb-3 space-y-3 scrollbar"
+          list={links}
+          setList={handleSetLinks}
+          handle=".navigation-drag-handle"
+          delay={10}
+          animation={150}
+        >
+          {links.map(link => (
+            <NavigationLink
+              key={link.id}
+              link={link}
+              onChange={handleChange}
+              onDelete={handleDelete}
+            />
+          ))}
+        </ReactSortable>
+      )}
 
       <div className="flex items-center justify-between border-t border-slate-100 px-8 py-4">
         <Button onClick={handleAddLink}>Add link</Button>
-        <Button type="success" onClick={handleFinish}>
+        <Button type="success" disabled={isDisabled} onClick={handleFinish}>
           Save changes
         </Button>
       </div>
