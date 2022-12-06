@@ -98,14 +98,30 @@ export function blockByType(type: BlockType, blockId?: string, defaultValues?: a
     case 'navigation':
       block = {
         ...block,
-        links: [
-          {
-            id: uuidv4(),
-            title: 'Link1',
-            url: ''
-          }
-        ]
+        links: []
       } as NavigationBlock
+      break
+
+    case 'emailCapture':
+      block = {
+        ...block,
+        heading: {
+          id: uuidv4(),
+          type: 'heading',
+          level: 3,
+          html: ''
+        },
+        description: {
+          id: uuidv4(),
+          type: 'text',
+          html: ''
+        },
+        button: {
+          id: uuidv4(),
+          type: 'text',
+          html: ''
+        }
+      } as EmailCaptureBlock
       break
 
     case 'heading':
@@ -195,6 +211,43 @@ function featureBlockPaths(
 
   // Add to focusable blocks
   focusableBlockMap[block.id] = [block.heading.id, block.content.id]
+}
+
+function contactBlockPaths(
+  block: EmailCaptureBlock,
+  flattedBlocks: FlattedBlock[],
+  focusableBlockMap: Record<string, string[]>,
+  path: Array<string | number>
+) {
+  // Feature Block
+  flattedBlocks.push({
+    id: block.id,
+    path
+  })
+
+  // Heading
+  flattedBlocks.push({
+    id: block.heading.id,
+    rootId: block.id,
+    path: [...path, 'heading']
+  })
+
+  // Description
+  flattedBlocks.push({
+    id: block.description.id,
+    rootId: block.id,
+    path: [...path, 'description']
+  })
+
+  // Button
+  flattedBlocks.push({
+    id: block.button.id,
+    rootId: block.id,
+    path: [...path, 'button']
+  })
+
+  // Add to focusable blocks
+  focusableBlockMap[block.id] = [block.heading.id, block.description.id, block.button.id]
 }
 
 function paymentBlockPaths(
@@ -289,6 +342,10 @@ export function flattenBlocks(blocks: Block[]) {
         listBlockPaths(block as ListBlock, flattedBlocks, focusableBlockMap, [index])
         break
 
+      case 'emailCapture':
+        contactBlockPaths(block as EmailCaptureBlock, flattedBlocks, focusableBlockMap, [index])
+        break
+
       case 'image':
       case 'slideGallery':
         flattedBlocks.push({
@@ -357,6 +414,12 @@ export function copyBlock(block: any) {
       block.image.id = uuidv4()
       block.heading.id = uuidv4()
       block.content.id = uuidv4()
+      break
+
+    case 'emailCapture':
+      block.heading.id = uuidv4()
+      block.description.id = uuidv4()
+      block.button.id = uuidv4()
       break
 
     case 'navigation':

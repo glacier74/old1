@@ -15,7 +15,7 @@
     "prepare": "node prepare.js"
   },
   "dependencies": {
-    "@heyforms/ui": "^2022.12.1",
+    "@heyforms/ui": "^2022.12.2",
     "@next/font": "^13.0.5",
     "@nily/utils": "^0.3.6",
     "@reactour/tour": "^3.1.6",

@@ -680,6 +680,61 @@ button.navigation-button {
   }
 }
 
+.block-emailcapture-container {
+  @apply py-16;
+
+  .rich-text {
+    @apply text-center;
+
+    &:empty:after {
+      display: block;
+    }
+  }
+
+  .input-disabled {
+    @apply bg-transparent;
+
+    &,
+    input {
+      @apply cursor-default;
+    }
+  }
+}
+
+.block-emailcapture-description {
+  @apply max-w-3xl mx-auto;
+
+  .rich-text {
+    @apply text-slate-500;
+  }
+}
+
+.block-emailcapture-content {
+  @apply flex items-center justify-center space-x-2;
+}
+
+.block-emailcapture-button {
+  @apply w-auto min-w-0;
+
+  .rich-text {
+    @apply px-3 py-2 text-sm rounded-md shadow-sm cursor-text bg-green-500 text-white;
+
+    &:empty:after {
+      @apply text-white text-opacity-70;
+    }
+  }
+}
+
+.block-emailcapture {
+  .form-inline {
+    @apply flex flex-col space-x-0 space-y-3 md:flex-row md:items-center md:justify-center md:space-x-2 md:space-y-0;
+
+    .form-item {
+      @apply w-full md:flex-none md:w-auto;
+    }
+  }
+}
+
 .block-settings {
   @apply text-sm;
 

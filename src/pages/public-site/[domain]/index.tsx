@@ -9,6 +9,7 @@ import { FC } from 'react'
 
 import { IconLogo } from '~/components'
 import { PublicSiteLayout } from '~/layout'
+import { EmailCapturePreview } from '~/layout/builder/blocks/EmailCapture'
 import { FeaturePreview } from '~/layout/builder/blocks/Feature'
 import { FooterPreview } from '~/layout/builder/blocks/Footer'
 import { HeadingPreview } from '~/layout/builder/blocks/Heading'
@@ -44,6 +45,9 @@ const Block: FC<{ product: Product; siteSetting: SiteSettings; block: any }> = (
       return (
         <FooterPreview key={block.id} block={block} product={product} siteSetting={siteSetting} />
       )
+
+    case 'emailCapture':
+      return <EmailCapturePreview key={block.id} block={block} product={product} />
 
     case 'slideGallery':
       return <SlideGalleryPreview key={block.id} block={block} />

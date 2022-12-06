@@ -174,6 +174,7 @@ declare global {
     | 'feature'
     | 'payment'
     | 'slideGallery'
+    | 'emailCapture'
 
   interface BlockOption {
     type: BlockType
@@ -252,6 +253,14 @@ declare global {
   interface SlideGalleryBlock extends Pick<Block, 'id' | 'type'> {
     type: 'slideGallery'
     sources: SlideGallerySource[]
+  }
+
+  interface EmailCaptureBlock extends Pick<Block, 'id' | 'type'> {
+    type: 'emailCapture'
+    isNameRequired?: boolean
+    heading: HeadingBlock
+    description: TextBlock
+    button: TextBlock
   }
 
   interface FlattedBlock extends Pick<Block, 'id'> {

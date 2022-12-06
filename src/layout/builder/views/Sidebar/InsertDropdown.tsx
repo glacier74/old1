@@ -91,7 +91,7 @@ const InsertBlockMenu: FC<InsertBlockMenuProps> = ({ onClick }) => {
   return (
     <div className="flex flex-col ml-1 rounded-md shadow-lg bg-white">
       <Input.Search
-        className="insert-field-search px-4 border-gray-200 outline-none focus:outline-none focus:shadow-none rounded-none border-t-0 border-r-0 border-l-0"
+        className="insert-field-search px-4 border-gray-200 outline-none focus:!outline-none focus:!shadow-none rounded-none border-t-0 border-r-0 border-l-0"
         placeholder={t('builder.searchBlockType')}
         onChange={handleKeywordChangeCallback}
       />

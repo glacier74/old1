@@ -6,6 +6,7 @@ import { useTranslation } from 'next-i18next'
 import { FC, useMemo, useState } from 'react'
 
 import { BLOCK_OPTIONS, BLOCK_WITH_SETTINGS } from '~/constants'
+import { EmailCaptureSettings } from '~/layout/builder/blocks/EmailCapture'
 import { FeatureSettings } from '~/layout/builder/blocks/Feature'
 import { FooterSettings } from '~/layout/builder/blocks/Footer'
 import { HeroSectionSettings } from '~/layout/builder/blocks/HeroSection'
@@ -129,6 +130,9 @@ export const BlockCard: FC<BlockCardProps> = ({ block, selectedId }) => {
 
             case 'heroSection1':
               return <HeroSectionSettings block={block as HeroSectionBlock} />
+
+            case 'emailCapture':
+              return <EmailCaptureSettings block={block as EmailCaptureBlock} />
 
             case 'footer':
               return <FooterSettings />

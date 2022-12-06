@@ -1,9 +1,10 @@
 import {
   IconBrandSafari,
+  IconBulb,
   IconCreditCard,
   IconHeading,
   IconLetterT,
-  IconRocket,
+  IconMail,
   IconSlideshow
 } from '@tabler/icons'
 
@@ -61,13 +62,18 @@ export const BLOCK_OPTIONS: BlockOption[] = [
   // Feature
   {
     type: 'feature',
-    icon: IconRocket,
+    icon: IconBulb,
     label: 'builder.feature.name'
   },
   {
     type: 'slideGallery',
     icon: IconSlideshow,
     label: 'builder.slideGallery.name'
+  },
+  {
+    type: 'emailCapture',
+    icon: IconMail,
+    label: 'builder.emailCapture.name'
   },
 
   // Payment
@@ -85,7 +91,7 @@ export const BLOCK_GROUP_OPTIONS: Array<Pick<BlockGroupOptions, 'label' | 'types
   },
   {
     label: 'builder.feature.name',
-    types: ['feature', 'slideGallery']
+    types: ['feature', 'slideGallery', 'emailCapture']
   },
   {
     label: 'builder.payment.name',
@@ -93,4 +99,11 @@ export const BLOCK_GROUP_OPTIONS: Array<Pick<BlockGroupOptions, 'label' | 'types
   }
 ]
 
-export const BLOCK_WITH_SETTINGS = ['heroSection1', 'navigation', 'footer', 'feature', 'payment']
+export const BLOCK_WITH_SETTINGS = [
+  'heroSection1',
+  'navigation',
+  'footer',
+  'feature',
+  'emailCapture',
+  'payment'
+]

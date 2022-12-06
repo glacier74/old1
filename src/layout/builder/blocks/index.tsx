@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import { BlockProps } from './Block'
+import { EmailCapture, EmailCaptureProps } from './EmailCapture'
 import { Feature, FeatureProps } from './Feature'
 import { Footer } from './Footer'
 import { Heading, HeadingProps } from './Heading'
@@ -40,6 +41,9 @@ export const BlockWrapper: FC<BlockProps> = props => {
 
     case 'image':
       return <Image key={props.block.id} {...(props as ImageProps)} />
+
+    case 'emailCapture':
+      return <EmailCapture key={props.block.id} {...(props as EmailCaptureProps)} />
 
     default:
       return <Text key={props.block.id} {...(props as TextProps)} />
