@@ -111,7 +111,7 @@
     "publicSiteURL": "Public site URL",
     "invalidDomain": "The domain must have at least 3 characters, including uppercase, lowercase, number or \"-\"",
     "createProductTitle": "Welcome to EarlyBird!",
-    "createProductDesc":"To begin, you'll need to enter the required fields like name, tagline, etc. When you're done, you can save and continue to the product dashboard.",
+    "createProductDesc": "To begin, you'll need to enter the required fields like name, tagline, etc. When you're done, you can save and continue to the product dashboard.",
     "createProduct": "Create product",
     "invalidLogo": "The logo is not allowed to be empty",
     "invalidName": "The name is not allowed to be empty",
@@ -188,7 +188,10 @@
   },
   "engagements": {
     "title": "Engagements · {{name}}",
-    "heading": "Recent engagements",
+    "heading": "Engagements",
+    "description": "Start engaging with potential buyers and communities.",
+    "payment": "Payment",
+    "emailCapture": "Email capture",
     "pending": "Pending",
     "succeeded": "Succeeded",
     "oneTime": "One time",
@@ -367,6 +370,7 @@
     "invalidEmail": "Please provide a valid email address",
     "privateHeading": "This site is private.",
     "password": "Password",
+    "successfullySubmitted": "You have successfully submitted",
     "accessSite": "Access site"
   }
 }

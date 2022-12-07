@@ -28,4 +28,11 @@ export class StripeService {
   }): Promise<{ sessionUrl: string }> {
     return axios.post('/payment/stripe/checkout', input)
   }
+
+  static async createContact(productId: number, name: string, email: string) {
+    return axios.put(`/product/${productId}/contacts`, {
+      name,
+      email
+    })
+  }
 }

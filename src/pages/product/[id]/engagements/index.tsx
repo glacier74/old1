@@ -7,34 +7,11 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import * as timeago from 'timeago.js'
 
-import { AsyncRequest, Pagination, RoundImage } from '~/components'
+import { Pagination, RoundImage } from '~/components'
 import { PAYMENT_STATUS, PAYMENT_TYPES } from '~/constants'
-import { ProductLayout, useProductId } from '~/layout'
+import { EngagementLayout, useProductId } from '~/layout'
 import { ProductService } from '~/service'
 import { currencyFormatter, withTranslations } from '~/utils'
-
-const Skeleton = () => {
-  return (
-    <div>
-      <div className="flex items-center h-16 py-4">
-        <div className="w-9 h-9 bg-slate-200 rounded-full"></div>
-        <div className="flex flex-1 justify-between">
-          <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
-          <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
-          <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
-        </div>
-      </div>
-      <div className="flex items-center h-16 py-4">
-        <div className="w-9 h-9 bg-slate-200 rounded-full"></div>
-        <div className="flex flex-1 justify-between">
-          <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
-          <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
-          <div className="w-40 h-4 ml-4 rounded-sm skeleton"></div>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 const ProductEngagements = (): JSX.Element => {
   const { t } = useTranslation()
@@ -97,7 +74,7 @@ const ProductEngagements = (): JSX.Element => {
     }
   ]
 
-  async function fetchPayments() {
+  async function fetchData() {
     const result = await ProductService.payments(productId!, page)
 
     setCount(result.count)
@@ -111,36 +88,23 @@ const ProductEngagements = (): JSX.Element => {
   }, [router.query])
 
   return (
-    <ProductLayout seo={{ title: 'engagements.title' }}>
-      <h1 className="mb-4 text-3xl leading-6 font-bold text-slate-900">
-        {t('engagements.heading')}
-      </h1>
-
-      <div className="mt-6">
-        <AsyncRequest
-          request={fetchPayments}
-          deps={[productId, page]}
-          skeleton={<Skeleton />}
-          emptyState={
-            <EmptyStates
-              className="pt-60 flex flex-col justify-center"
-              icon={<IconDatabase className="non-scaling-stroke" />}
-              title={t('engagements.notFound.title')}
-              description={t('engagements.notFound.description')}
-            />
-          }
-        >
-          <Table<Payment> className="mt-8" columns={columns} data={payments} hideHead />
-
-          <Pagination
-            uri={`/product/${productId}/engagements`}
-            total={count}
-            page={page}
-            limit={20}
-          />
-        </AsyncRequest>
-      </div>
-    </ProductLayout>
+    <EngagementLayout
+      seo={{ title: 'engagements.title' }}
+      activeRouteName="payment"
+      request={fetchData}
+      deps={[productId, page]}
+      emptyState={
+        <EmptyStates
+          className="pt-60 flex flex-col justify-center"
+          icon={<IconDatabase className="non-scaling-stroke" />}
+          title={t('engagements.notFound.title')}
+          description={t('engagements.notFound.description')}
+        />
+      }
+    >
+      <Table<Payment> className="mt-8" columns={columns} data={payments} hideHead />
+      <Pagination uri={`/product/${productId}/engagements`} total={count} page={page} limit={20} />
+    </EngagementLayout>
   )
 }
 

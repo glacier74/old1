@@ -89,7 +89,7 @@ function getSeoProps(product: Product, isSiteAccessible?: boolean): NextSeoProps
   const description = product.metaDescription || product.tagline
   const openGraphImage = product.openGraphImage || product.tempOpenGraphImage
 
-  return {
+  const seo: NextSeoProps = {
     title,
     description,
     openGraph: {
@@ -97,16 +97,19 @@ function getSeoProps(product: Product, isSiteAccessible?: boolean): NextSeoProps
       title,
       description,
       siteName: title,
-      images: openGraphImage
-        ? [
-            {
-              url: openGraphImage
-            }
-          ]
-        : undefined,
       locale: product.language
     }
   }
+
+  if (isValid(openGraphImage)) {
+    seo.openGraph!.images = [
+      {
+        url: openGraphImage
+      }
+    ]
+  }
+
+  return seo
 }
 
 const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentStatus }) => {

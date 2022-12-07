@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from 'react'
 import { useCallback, useEffect, useState } from 'react'
 
-interface AsyncProps extends ComponentProps {
+export interface AsyncRequestProps extends ComponentProps {
   request: () => Promise<any>
   immediate?: boolean
   deps?: any[]
@@ -11,7 +11,7 @@ interface AsyncProps extends ComponentProps {
   errorRender?: (err: Error) => ReactNode
 }
 
-export const AsyncRequest: FC<AsyncProps> = ({
+export const AsyncRequest: FC<AsyncRequestProps> = ({
   className,
   style,
   request,

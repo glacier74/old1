@@ -113,6 +113,15 @@ declare global {
     productLogo: string
   }
 
+  interface Contact {
+    id: number
+    name: string
+    email: string
+    avatar: string
+    createdAt: string
+    updatedAt: string
+  }
+
   interface UnsplashImage {
     id: string
     url: string

@@ -727,11 +727,15 @@ button.navigation-button {
 
 .block-emailcapture {
   .form-inline {
-    @apply flex flex-col space-x-0 space-y-3 md:flex-row md:items-center md:justify-center md:space-x-2 md:space-y-0;
+    @apply flex flex-col space-x-0 space-y-3 md:flex-row md:items-start md:justify-center md:space-x-2 md:space-y-0;
 
     .form-item {
       @apply w-full md:flex-none md:w-auto;
     }
+  }
+
+  .form-item-error {
+    @apply text-center;
   }
 }
 
@@ -766,7 +770,7 @@ button.navigation-button {
   }
 
   .empty-states-title {
-    @apply mt-10 text-3xl text-green-700;
+    @apply mt-10 text-3xl text-green-600;
   }
 
   .empty-states-description {

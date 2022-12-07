@@ -1,10 +1,11 @@
-import { Form, Input, Switch } from '@heyforms/ui'
+import { Form, Input, Switch, notification } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { FC } from 'react'
 
 import { Heading } from '~/layout/builder/blocks/Heading'
 import { Text } from '~/layout/builder/blocks/Text'
 import { useBuilderContext } from '~/layout/builder/context'
+import { StripeService } from '~/service'
 
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
 
@@ -12,11 +13,18 @@ export interface EmailCaptureProps extends BlockProps {
   block: EmailCaptureBlock
 }
 
-export const EmailCapturePreview: FC<EmailCaptureProps & { product: Product }> = ({ block }) => {
+export const EmailCapturePreview: FC<EmailCaptureProps & { product: Product }> = ({
+  block,
+  product
+}) => {
   const { t } = useTranslation()
 
   async function handleFinish(values: AnyMap<string>) {
-    console.log(values)
+    await StripeService.createContact(product.id!, values.name, values.email)
+
+    notification.success({
+      title: t('publicSite.successfullySubmitted')
+    })
   }
 
   return (

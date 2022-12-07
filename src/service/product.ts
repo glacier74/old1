@@ -83,6 +83,19 @@ export class ProductService {
     })
   }
 
+  static async contacts(
+    productId: number,
+    page = 1,
+    limit = 20
+  ): Promise<{ count: number; contacts: Contact[] }> {
+    return axios.get(`/products/${productId}/contacts`, {
+      params: {
+        page,
+        limit
+      }
+    })
+  }
+
   static async verifyPassword(productId: number, password: string): Promise<{ token: string }> {
     return axios.post(`/product/${productId}/password`, {
       password

@@ -105,7 +105,11 @@ const Product = (): JSX.Element => {
           </div>
         </div>
 
-        {isReady ? <div className="mt-4">{product?.tagline}</div> : <TaglineSkeleton />}
+        {isReady ? (
+          <div className="mt-4 text-slate-600">{product?.tagline}</div>
+        ) : (
+          <TaglineSkeleton />
+        )}
       </div>
 
       <div className="mt-10 mb-4 flex items-center justify-end">
