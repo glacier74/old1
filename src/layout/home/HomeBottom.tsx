@@ -28,15 +28,7 @@ export const HomeBottom: FC = () => {
           </div>
         </div>
       </div>
-
-      <Image
-        src={FooterImage}
-        alt={t('common.name')}
-        className="absolute bottom-0 left-0 pointer-events-none"
-        width="400"
-        height="350"
-        quality={100}
-      />
+      
     </section>
   )
 }
