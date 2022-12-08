@@ -19,7 +19,7 @@ export const Navbar: FC = () => {
 
   const { loading, error, request } = useRequest(async () => {
     await SiteSettingsService.update(productId, {
-      blocks: JSON.stringify(state.blocks) as any
+      blocks: state.blocks
     })
 
     dispatch({

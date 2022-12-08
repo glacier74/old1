@@ -54,13 +54,6 @@ declare global {
   interface SiteSettings {
     productId: number
     blocks: Block[]
-    twitter: string
-    facebook: string
-    instagram: string
-    youtube: string
-    telegram: string
-    linkedin: string
-    github: string
   }
 
   interface Product {
@@ -283,10 +276,24 @@ declare global {
     title: string
     url: string
     openInNewTab?: boolean
+    isOpen?: boolean
   }
 
   interface NavigationBlock extends Pick<Block, 'id' | 'type'> {
     type: 'navigation'
     links: NavigationLink[]
+  }
+
+  interface SocialMedia {
+    id: string
+    type: 'twitter' | 'facebook' | 'instagram' | 'linkedin' | 'youtube' | 'telegram' | 'github'
+    value: string
+    openInNewTab?: boolean
+    isOpen?: boolean
+  }
+
+  interface FooterBlock extends Pick<Block, 'id' | 'type'> {
+    type: 'footer'
+    socialMedias: SocialMedia[]
   }
 }

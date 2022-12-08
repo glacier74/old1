@@ -1,6 +1,6 @@
 import { Button, Checkbox, EmptyStates, Input, Modal, Tooltip } from '@heyforms/ui'
 import { deepClone, isEmpty } from '@nily/utils'
-import { IconDotsVertical, IconLink } from '@tabler/icons'
+import { IconBrandSafari, IconDotsVertical } from '@tabler/icons'
 import { deepEqual } from 'fast-equals'
 import { useTranslation } from 'next-i18next'
 import { FC, startTransition, useCallback, useEffect, useMemo, useState } from 'react'
@@ -17,7 +17,7 @@ interface NavigationLinkProps {
 }
 
 const NavigationLink: FC<NavigationLinkProps> = ({ link, onChange, onDelete }) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(link.isOpen)
 
   function handleDelete() {
     onDelete(link.id)
@@ -134,7 +134,8 @@ export const NavigationModal: FC = () => {
       {
         id: uuidv4(),
         title: 'Link' + (links.length + 1),
-        url: ''
+        url: '',
+        isOpen: true
       }
     ])
   }, [links])
@@ -180,7 +181,7 @@ export const NavigationModal: FC = () => {
       {isEmpty(links) ? (
         <EmptyStates
           className="flex flex-col justify-center flex-1 px-8 pb-3"
-          icon={<IconLink className="non-scaling-stroke" />}
+          icon={<IconBrandSafari className="non-scaling-stroke" />}
           title="To add links to the navigation bar, follow these steps:"
           description={
             <ol className="text-left list-decimal space-y-2 mt-4">

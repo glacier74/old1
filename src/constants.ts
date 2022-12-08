@@ -107,3 +107,48 @@ export const BLOCK_WITH_SETTINGS = [
   'emailCapture',
   'payment'
 ]
+
+export const SOCIAL_MEDIA_SETTINGS = [
+  {
+    value: 'twitter',
+    label: 'Twitter',
+    prefixUri: 'https://twitter.com/',
+    placeholder: '@elonmusk'
+  },
+  {
+    value: 'facebook',
+    label: 'Facebook',
+    prefixUri: 'https://www.facebook.com/',
+    placeholder: 'elonmusk'
+  },
+  {
+    value: 'instagram',
+    label: 'Instagram',
+    prefixUri: 'https://www.instagram.com/',
+    placeholder: 'elonmusk'
+  },
+  {
+    value: 'linkedin',
+    label: 'LinkedIn',
+    prefixUri: 'https://www.linkedin.com/in/',
+    placeholder: 'elonmusk'
+  },
+  {
+    value: 'youtube',
+    label: 'Youtube',
+    prefixUri: 'https://www.youtube.com/',
+    placeholder: '@elonmusk'
+  },
+  {
+    value: 'telegram',
+    label: 'Telegram',
+    prefixUri: 'https://t.me/',
+    placeholder: 'elonmusk'
+  },
+  {
+    value: 'github',
+    label: 'GitHub',
+    prefixUri: 'https://github.com/',
+    placeholder: 'elonmusk'
+  }
+]

@@ -1,4 +1,3 @@
-import { conv } from '@nily/utils'
 import { FC, useEffect } from 'react'
 
 import { useOpenTour } from '~/components'
@@ -16,11 +15,9 @@ export const BlockList: FC = () => {
   useOpenTour('builder')
 
   useEffect(() => {
-    const blocks = conv.json<Block[]>(siteSettings.blocks, [])!
-
     dispatch({
       type: 'initBlocks',
-      payload: blocks
+      payload: siteSettings.blocks || []
     })
   }, [siteSettings?.blocks])
 

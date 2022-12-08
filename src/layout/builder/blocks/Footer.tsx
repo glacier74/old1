@@ -1,104 +1,17 @@
-import { Menus } from '@heyforms/ui'
+import { Button, Menus } from '@heyforms/ui'
+import { isEmpty } from '@nily/utils'
 import { useTranslation } from 'next-i18next'
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 
-import {
-  IconFacebook,
-  IconGithub,
-  IconInstagram,
-  IconLinkedin,
-  IconTelegram,
-  IconTwitter,
-  IconYoutube
-} from '~/components'
-import { useProduct, useSiteSettings } from '~/layout'
+import { SocialMediaIcon } from '~/components'
+import { SOCIAL_MEDIA_SETTINGS } from '~/constants'
+import { useProduct } from '~/layout'
 import { useBuilderContext } from '~/layout/builder/context'
 
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
 
-const ShareComponent: FC<{ product: Product; siteSetting: SiteSettings }> = ({
-  product,
-  siteSetting
-}) => {
-  return (
-    <div className="sm:flex mt-10 py-10 border-t border-slate-100 sm:justify-between justify-center">
-      <div className="flex items-center justify-center space-x-3">
-        {siteSetting.twitter && (
-          <a
-            href={siteSetting.twitter}
-            className="text-slate-700 hover:text-slate-900"
-            target="_blank"
-          >
-            <IconTwitter />
-          </a>
-        )}
-
-        {siteSetting.facebook && (
-          <a
-            href={siteSetting.facebook}
-            className="text-slate-700 hover:text-slate-900"
-            target="_blank"
-          >
-            <IconFacebook />
-          </a>
-        )}
-
-        {siteSetting.instagram && (
-          <a
-            href={siteSetting.instagram}
-            className="text-slate-700 hover:text-slate-900"
-            target="_blank"
-          >
-            <IconInstagram />
-          </a>
-        )}
-
-        {siteSetting.linkedin && (
-          <a
-            href={siteSetting.linkedin}
-            className="text-slate-700 hover:text-slate-900"
-            target="_blank"
-          >
-            <IconLinkedin />
-          </a>
-        )}
-
-        {siteSetting.youtube && (
-          <a
-            href={siteSetting.youtube}
-            className="text-slate-700 hover:text-slate-900"
-            target="_blank"
-          >
-            <IconYoutube />
-          </a>
-        )}
-
-        {siteSetting.telegram && (
-          <a
-            href={siteSetting.telegram}
-            className="text-slate-700 hover:text-slate-900"
-            target="_blank"
-          >
-            <IconTelegram />
-          </a>
-        )}
-
-        {siteSetting.github && (
-          <a
-            href={siteSetting.github}
-            className="text-slate-700 hover:text-slate-900"
-            target="_blank"
-          >
-            <IconGithub />
-          </a>
-        )}
-      </div>
-
-      <p className="pt-2 md:pt-0 text-base text-slate-900 text-center">
-        {new Date().getFullYear()} {product?.name}
-      </p>
-    </div>
-  )
+export interface FooterProps extends BlockProps {
+  block: FooterBlock
 }
 
 export const FooterSettings: FC = () => {
@@ -117,25 +30,69 @@ export const FooterSettings: FC = () => {
   return <Menus.Item label={t('builder.footer.settings')} onClick={handleClick} />
 }
 
-export const FooterPreview: FC<BlockProps & { product: Product; siteSetting: SiteSettings }> = ({
-  block,
-  product,
-  siteSetting
-}) => {
+export const FooterPreview: FC<FooterProps & { product: Product }> = ({ block, product }) => {
+  const socialMedias = useMemo(
+    () =>
+      block.socialMedias.map(row => ({
+        ...row,
+        value: SOCIAL_MEDIA_SETTINGS.find(s => s.value === row.type)!.prefixUri + row.value
+      })),
+    [block.socialMedias]
+  )
+
   return (
     <BlockPreview block={block}>
-      <ShareComponent product={product} siteSetting={siteSetting} />
+      <div className="footer">
+        <div className="flex items-center justify-center space-x-3">
+          {socialMedias.map(row => (
+            <a key={row.id} href={row.value} target={row.openInNewTab ? '_blank' : undefined}>
+              <SocialMediaIcon type={row.type} />
+            </a>
+          ))}
+        </div>
+
+        <p className="copyright">
+          {new Date().getFullYear()} {product?.name}
+        </p>
+      </div>
     </BlockPreview>
   )
 }
 
-export const Footer: FC<BlockProps> = ({ block }) => {
+export const Footer: FC<FooterProps> = ({ block }) => {
   const product = useProduct()
-  const siteSetting = useSiteSettings()
+  const { dispatch } = useBuilderContext()
+
+  function handleClick() {
+    dispatch({
+      type: 'update',
+      payload: {
+        isSocialMediaOpen: true
+      }
+    })
+  }
 
   return (
     <BlockComponent block={block}>
-      <ShareComponent product={product} siteSetting={siteSetting} />
+      <div className="footer">
+        <div className="flex items-center justify-center space-x-3">
+          {isEmpty(block.socialMedias) ? (
+            <Button.Link type="success" onClick={handleClick}>
+              Click to add social medias
+            </Button.Link>
+          ) : (
+            block.socialMedias.map(row => (
+              <a key={row.id} href={row.value} target={row.openInNewTab ? '_blank' : undefined}>
+                <SocialMediaIcon type={row.type} />
+              </a>
+            ))
+          )}
+        </div>
+
+        <p className="copyright">
+          {new Date().getFullYear()} {product?.name}
+        </p>
+      </div>
     </BlockComponent>
   )
 }

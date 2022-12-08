@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { BlockProps } from './Block'
 import { EmailCapture, EmailCaptureProps } from './EmailCapture'
 import { Feature, FeatureProps } from './Feature'
-import { Footer } from './Footer'
+import { Footer, FooterProps } from './Footer'
 import { Heading, HeadingProps } from './Heading'
 import { HeroSection, HeroSectionProps } from './HeroSection'
 import { Image, ImageProps } from './Image'
@@ -22,7 +22,7 @@ export const BlockWrapper: FC<BlockProps> = props => {
       return <HeroSection key={props.block.id} {...(props as HeroSectionProps)} />
 
     case 'footer':
-      return <Footer key={props.block.id} {...(props as FeatureProps)} />
+      return <Footer key={props.block.id} {...(props as FooterProps)} />
 
     case 'slideGallery':
       return <SlideGallery key={props.block.id} {...(props as SlideGalleryProps)} />

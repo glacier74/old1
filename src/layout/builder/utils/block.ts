@@ -102,6 +102,13 @@ export function blockByType(type: BlockType, blockId?: string, defaultValues?: a
       } as NavigationBlock
       break
 
+    case 'footer':
+      block = {
+        ...block,
+        socialMedias: []
+      } as FooterBlock
+      break
+
     case 'emailCapture':
       block = {
         ...block,
@@ -432,7 +439,10 @@ export function copyBlock(block: any) {
   return block
 }
 
-export function removeBlocksProperties(blocks: any[], properties = ['chosen', 'selected']) {
+export function removeBlocksProperties(
+  blocks: any[],
+  properties = ['chosen', 'selected', 'isOpen']
+) {
   blocks.forEach(b => {
     properties.forEach(p => {
       delete (b as any)[p]

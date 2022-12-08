@@ -29,11 +29,7 @@ interface PublicSiteProps {
   paymentStatus?: 'success'
 }
 
-const Block: FC<{ product: Product; siteSetting: SiteSettings; block: any }> = ({
-  product,
-  siteSetting,
-  block
-}) => {
+const Block: FC<{ product: Product; block: any }> = ({ product, block }) => {
   switch (block.type) {
     case 'navigation':
       return <NavigationPreview key={block.id} block={block} product={product} />
@@ -42,9 +38,7 @@ const Block: FC<{ product: Product; siteSetting: SiteSettings; block: any }> = (
       return <HeroSectionPreview key={block.id} block={block} />
 
     case 'footer':
-      return (
-        <FooterPreview key={block.id} block={block} product={product} siteSetting={siteSetting} />
-      )
+      return <FooterPreview key={block.id} block={block} product={product} />
 
     case 'emailCapture':
       return <EmailCapturePreview key={block.id} block={block} product={product} />
@@ -188,7 +182,7 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
         />
       ) : (
         product.siteSetting.blocks.map(block => (
-          <Block key={block.id} product={product} block={block} siteSetting={product.siteSetting} />
+          <Block key={block.id} product={product} block={block} />
         ))
       )}
 

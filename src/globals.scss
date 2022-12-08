@@ -96,6 +96,7 @@ body {
   ellipse,
   path,
   polyline,
+  circle,
   line {
     vector-effect: non-scaling-stroke;
   }
@@ -869,4 +870,21 @@ button.navigation-button {
   .modal-body {
     @apply p-0 flex flex-col;
   }
+}
+
+.social-media-modal {
+  @extend .navigation-modal;
+
+  .select-value,
+  .input-leading {
+    @apply text-slate-700;
+  }
+}
+
+.footer {
+  @apply sm:flex mt-10 py-10 border-t border-slate-100 sm:justify-between justify-center;
+}
+
+.copyright {
+  @apply pt-2 md:pt-0 text-base text-slate-900 text-center;
 }
