@@ -27,7 +27,7 @@ export function update(state: IState, updates: UpdateAction['payload']): IState 
 
 export function initBlocks(state: IState, blocks: Block[]): IState {
   // Remove invalid property
-  removeBlocksProperties(blocks, ['chosen'])
+  removeBlocksProperties(blocks)
 
   state.lastSyncedBlocks = deepClone(blocks)
   state = setBlocks(state, blocks)
@@ -45,7 +45,7 @@ export function initBlocks(state: IState, blocks: Block[]): IState {
 
 export function setBlocks(state: IState, blocks: Block[]): IState {
   // Remove invalid property
-  removeBlocksProperties(blocks, ['chosen'])
+  removeBlocksProperties(blocks)
 
   const { flattedBlocks, rootBlocks, focusableBlockMap } = flattenBlocks(blocks)
 

@@ -432,7 +432,7 @@ export function copyBlock(block: any) {
   return block
 }
 
-export function removeBlocksProperties(blocks: any[], properties: string[]) {
+export function removeBlocksProperties(blocks: any[], properties = ['chosen', 'selected']) {
   blocks.forEach(b => {
     properties.forEach(p => {
       delete (b as any)[p]

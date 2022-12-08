@@ -114,7 +114,7 @@ export const NavigationModal: FC = () => {
   }, [state.selectBlockId, links])
 
   function handleSetLinks(links: NavigationLink[]) {
-    removeBlocksProperties(links, ['chosen'])
+    removeBlocksProperties(links)
     setLinks(links)
   }
 
