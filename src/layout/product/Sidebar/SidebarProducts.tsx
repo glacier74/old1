@@ -61,6 +61,7 @@ const Current: FC = () => {
           className="w-6 h-6 rounded-full flex-shrink-0"
           src={product?.logo}
           text={product?.name}
+          retainLength={2}
           imageSize={120}
           size={24}
         />
