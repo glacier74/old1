@@ -38,7 +38,7 @@ const DeleteModal: FC<IModalProps> = ({ visible, onClose }) => {
     <Modal contentClassName="max-w-md" visible={visible} showCloseIcon onClose={onClose}>
       <div className="space-y-6">
         <div>
-          <h1 className="text-lg leading-6 font-medium text-slate-900">
+          <h1 className="text-lg leading-6 font-semibold text-slate-900">
             {t('productSettings.deleteProduct.heading')}
           </h1>
           <div className="space-y-2">
@@ -75,7 +75,7 @@ export const DeleteProduct = () => {
     <>
       <div className="flex items-center justify-between">
         <div>
-          <div className="block text-sm font-medium text-slate-700">
+          <div className="block text-sm font-semibold text-slate-700">
             {t('productSettings.deleteProduct.heading')}
           </div>
           <p className="mt-1 max-w-2xl text-sm text-slate-500">

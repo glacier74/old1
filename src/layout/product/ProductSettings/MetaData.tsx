@@ -60,7 +60,7 @@ export const MetaData = () => {
               extra={value => (
                 <div className="text-xs text-gray-500">
                   Recommended: <strong>70</strong> characters. You've used{' '}
-                  <span className="text-green-500 font-bold">{value.length}</span>
+                  <span className="text-green-500 font-semibold">{value.length}</span>
                 </div>
               )}
             >
@@ -74,7 +74,7 @@ export const MetaData = () => {
               extra={value => (
                 <div className="text-xs text-gray-500">
                   Recommended: <strong>156</strong> characters. You've used{' '}
-                  <span className="text-green-500 font-bold">{value.length}</span>
+                  <span className="text-green-500 font-semibold">{value.length}</span>
                 </div>
               )}
             >

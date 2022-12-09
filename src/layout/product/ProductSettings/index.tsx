@@ -1,10 +1,10 @@
 import { useTranslation } from 'next-i18next'
 
+import { Domain } from '~/layout/product/ProductSettings/Domain'
+import { Language } from '~/layout/product/ProductSettings/Language'
 import { MetaData } from '~/layout/product/ProductSettings/MetaData'
 
 import { DeleteProduct } from './DeleteProduct'
-import { Domain } from './Domain'
-import { Language } from './Language'
 import { SitePrivate } from './SitePrivate'
 
 export const ProductSettings = () => {
@@ -12,6 +12,19 @@ export const ProductSettings = () => {
 
   return (
     <div className="mt-6 space-y-12">
+      {/* General */}
+      <div className="space-y-3">
+        <div className="text-lg font-extrabold text-slate-900">
+          {t('productSettings.general.heading')}
+        </div>
+
+        <div className="space-y-4 divide-y">
+          <Language />
+          <Domain />
+          {/*<RemoveBranding />*/}
+        </div>
+      </div>
+
       {/* Meta data */}
       <div className="space-y-3">
         <div>
@@ -24,17 +37,14 @@ export const ProductSettings = () => {
         <MetaData />
       </div>
 
-      {/* General */}
+      {/* Advanced settings */}
       <div className="space-y-3">
         <div className="text-lg font-extrabold text-slate-900">
-          {t('productSettings.general.heading')}
+          {t('productSettings.advanced.heading')}
         </div>
 
         <div className="space-y-4 divide-y">
-          <Language />
-          <Domain />
           <SitePrivate />
-          {/*<RemoveBranding />*/}
         </div>
       </div>
 

@@ -120,7 +120,7 @@ export const SidebarProducts: FC = () => {
     <div className="px-4">
       {isReady ? (
         <Dropdown
-          className="block w-full"
+          className="product-dropdown block w-full"
           placement="bottom-start"
           overlay={Overlay}
           visible={visible}

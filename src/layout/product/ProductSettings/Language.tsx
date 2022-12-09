@@ -34,7 +34,7 @@ export const Language = () => {
   return (
     <div className="flex items-center justify-between">
       <div className="flex flex-col">
-        <div className="text-sm leading-6 font-medium text-slate-900">
+        <div className="text-sm leading-6 font-semibold text-slate-900">
           {t('productSettings.language.heading')}
         </div>
         <p className="mt-1 max-w-2xl text-sm text-slate-500">
