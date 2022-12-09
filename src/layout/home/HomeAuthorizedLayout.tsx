@@ -23,7 +23,7 @@ export function HomeAuthorizedLayout() {
         if (products.length > 0) {
           router.replace(`/product/${products[0].id}`)
         } else {
-          router.replace('/onboarding')
+          router.replace('/product/create')
         }
       }
     }

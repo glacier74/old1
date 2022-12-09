@@ -89,7 +89,7 @@ export const SidebarProducts: FC = () => {
   const [visible, setVisible] = useState(false)
 
   function handleCreate() {
-    router.push('/onboarding')
+    router.push('/product/create')
   }
 
   function handleClick(product: Product) {
@@ -113,7 +113,7 @@ export const SidebarProducts: FC = () => {
   )
 
   useEffect(() => {
-    router.prefetch('/onboarding')
+    router.prefetch('/product/create')
   }, [])
 
   return (

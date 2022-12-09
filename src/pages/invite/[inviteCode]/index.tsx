@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 import { RoundImage } from '~/components'
-import { OnboardingLayout } from '~/layout'
+import { CreateProductLayout } from '~/layout'
 import { ProductService } from '~/service'
 import { useAsyncEffect, useParam, useRequest, withTranslations } from '~/utils'
 
@@ -57,7 +57,7 @@ const Invite = () => {
   }, [error])
 
   return (
-    <OnboardingLayout seo={{ title: t('invite.title') }}>
+    <CreateProductLayout seo={{ title: t('invite.title') }}>
       <Link
         className="group fixed top-5 left-5 flex items-center text-sm hover:text-green-500"
         href="/"
@@ -93,7 +93,7 @@ const Invite = () => {
           <Skeleton />
         )}
       </div>
-    </OnboardingLayout>
+    </CreateProductLayout>
   )
 }
 

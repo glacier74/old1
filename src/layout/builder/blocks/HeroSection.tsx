@@ -123,13 +123,17 @@ export const HeroSection: FC<HeroSectionProps> = ({ block }) => {
         <Heading
           className="block-herosection-name"
           block={block.name}
-          placeholder="onboarding.name"
+          placeholder="createProduct.name"
           enableFormats={null}
         />
 
         {/* Tagline */}
         <div className="block-herosection-tagline">
-          <Text block={block.tagline} placeholder="onboarding.tagline" enableFormats={['basic']} />
+          <Text
+            block={block.tagline}
+            placeholder="createProduct.tagline"
+            enableFormats={['basic']}
+          />
         </div>
       </div>
     </BlockComponent>

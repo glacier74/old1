@@ -30,7 +30,7 @@ export const Domain = () => {
 
   return (
     <div className="pt-4">
-      <div className="form-item-label">{t('onboarding.publicSiteURL')}</div>
+      <div className="form-item-label">{t('createProduct.publicSiteURL')}</div>
       <div>
         <Form.Custom
           inline
@@ -52,7 +52,7 @@ export const Domain = () => {
               {
                 required: true,
                 pattern: /^[a-z0-9-]{3,}$/i,
-                message: t('onboarding.invalidDomain')
+                message: t('createProduct.invalidDomain')
               }
             ]}
           >

@@ -34,7 +34,7 @@ export const LoggedAccount: FC = () => {
         overlay={Overlay}
       >
         <div>
-          <div className="text-xs text-slate-500 text-right">{t('onboarding.loggedAs')}</div>
+          <div className="text-xs text-slate-500 text-right">{t('createProduct.loggedAs')}</div>
           <div className="text-sm text-slate-900">{user?.email}</div>
         </div>
       </Dropdown>

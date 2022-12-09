@@ -6,14 +6,14 @@ import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 
 import { AvatarPickerField } from '~/components'
-import { OnboardingLayout } from '~/layout'
+import { CreateProductLayout } from '~/layout'
 import { ProductService } from '~/service'
 import { withTranslations } from '~/utils'
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-const Onboarding = (): JSX.Element => {
+const CreateProduct = (): JSX.Element => {
   const router = useRouter()
   const { t } = useTranslation()
 
@@ -28,14 +28,14 @@ const Onboarding = (): JSX.Element => {
   }
 
   return (
-    <OnboardingLayout seo={{ title: t('onboarding.title') }}>
+    <CreateProductLayout seo={{ title: t('createProduct.title') }}>
       <h2 className="mb-2 text-2xl font-bold text-slate-900">
-        {t('onboarding.createProductTitle')}
+        {t('createProduct.createProductTitle')}
       </h2>
-      <p className="mb-6 text-slate-500">{t('onboarding.createProductDesc')}</p>
+      <p className="mb-6 text-slate-500">{t('createProduct.createProductDesc')}</p>
 
       <Form.Custom
-        submitText={t('onboarding.createProduct')}
+        submitText={t('createProduct.createProduct')}
         submitOptions={{
           type: 'success',
           block: true
@@ -44,25 +44,29 @@ const Onboarding = (): JSX.Element => {
       >
         <Form.Item
           name="name"
-          label={t('onboarding.name')}
-          rules={[{ required: true, message: t('onboarding.invalidName') }]}
+          label={t('createProduct.name')}
+          rules={[{ required: true, message: t('createProduct.invalidName') }]}
         >
           <Input />
         </Form.Item>
 
         <Form.Item
           name="tagline"
-          label={t('onboarding.tagline')}
-          rules={[{ required: true, message: t('onboarding.invalidTagline') }]}
+          label={t('createProduct.tagline')}
+          rules={[{ required: true, message: t('createProduct.invalidTagline') }]}
         >
           <Input />
         </Form.Item>
 
         <Form.Item
           name="domain"
-          label={t('onboarding.publicSiteURL')}
+          label={t('createProduct.publicSiteURL')}
           rules={[
-            { required: true, pattern: /^[a-z0-9-]{3,}$/i, message: t('onboarding.invalidDomain') }
+            {
+              required: true,
+              pattern: /^[a-z0-9-]{3,}$/i,
+              message: t('createProduct.invalidDomain')
+            }
           ]}
         >
           <Input trailing={`.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`} />
@@ -70,13 +74,13 @@ const Onboarding = (): JSX.Element => {
 
         <Form.Item
           name="logo"
-          label={t('onboarding.logo')}
-          rules={[{ required: false, message: t('onboarding.invalidLogo') }]}
+          label={t('createProduct.logo')}
+          rules={[{ required: false, message: t('createProduct.invalidLogo') }]}
         >
           <AvatarPickerField namespace="avatar" enableUnsplash={false} />
         </Form.Item>
       </Form.Custom>
-    </OnboardingLayout>
+    </CreateProductLayout>
   )
 }
 
@@ -86,4 +90,4 @@ export const getStaticProps = withTranslations(async context => {
   }
 })
 
-export default Onboarding
+export default CreateProduct
