@@ -1,8 +1,6 @@
 import { useTranslation } from 'next-i18next'
-import Image from 'next/image'
+import Link from 'next/link'
 import { FC } from 'react'
-
-import FooterImage from '~public/static/footer.png'
 
 export const HomeBottom: FC = () => {
   const { t } = useTranslation()
@@ -19,16 +17,15 @@ export const HomeBottom: FC = () => {
             EarlyBird is your home. Get started today, it's free!
           </div>
           <div className="flex justify-center mt-10">
-            <a
+            <Link
               href="/sign-up"
               className="text-base md:text-xl font-medium px-6 py-2 md:px-8 md:py-3 border border-slate-100 rounded-md"
             >
               Sign up as an early bird
-            </a>
+            </Link>
           </div>
         </div>
       </div>
-      
     </section>
   )
 }
