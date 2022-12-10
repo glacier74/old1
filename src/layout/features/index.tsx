@@ -1,1 +1,5 @@
 export * from './FeaturesHero'
+export * from './FeaturesBuild'
+export * from './FeaturesPitch'
+export * from './FeaturesValidate'
+export * from './FeaturesCTA'

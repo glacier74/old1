@@ -4,7 +4,11 @@ import {
     HomeHeader
 } from '~/layout'
 import {
-    FeaturesHero
+    FeaturesHero,
+    FeaturesBuild,
+    FeaturesPitch,
+    FeaturesValidate,
+    FeaturesCTA
 } from '~/layout/features'
 import { withTranslations } from '~/utils'
 
@@ -13,6 +17,10 @@ const Features = (): JSX.Element => {
     <HomeLayout>
         <HomeHeader />
         <FeaturesHero />
+        <FeaturesBuild />
+        <FeaturesPitch />
+        <FeaturesValidate />
+        <FeaturesCTA />
         <HomeFooter />
     </HomeLayout>
   )

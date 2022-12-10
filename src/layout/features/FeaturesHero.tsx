@@ -7,7 +7,7 @@ export const FeaturesHero: FC = () => {
 
   return (
     <section>
-      <div className="relative text-white max-w-7xl mx-auto px-5 z-10 py-64">
+      <div className="relative text-white max-w-7xl mx-auto px-5 z-10 pt-48 md:pt-64 md:pb-32">
         <div className="text-center">
           <h1 className="text-5xl md:text-7xl font-extrabold">Turn your idea into a reality</h1>
           <div className="text-slate-400 text-xl md:text-2xl w-full md:max-w-3xl md:mx-auto mt-5 font-normal">

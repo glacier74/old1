@@ -6,6 +6,8 @@ export const FeaturesCTA: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section></section>
+    <section>
+      <div className="max-w-7xl mx-auto py-16"></div>
+    </section>
   )
 }
