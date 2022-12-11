@@ -32,7 +32,9 @@ export const HomeHeroSection: FC = () => {
               View the roadmap
             </a>
           </div>
-          <p className="mt-4 text-sm text-slate-300"><span className="text-sm text-red-400">*</span> No credit card required.</p>
+          <p className="mt-4 text-sm text-slate-300">
+            <span className="text-sm text-red-400">*</span> No credit card required.
+          </p>
         </div>
       </div>
     </section>
