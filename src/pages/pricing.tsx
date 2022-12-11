@@ -1,35 +1,31 @@
-import { 
-    HomeLayout,
-    HomeFooter,
-    HomeHeader
-} from '~/layout'
+import { HomeFooter, HomeHeader, HomeLayout } from '~/layout'
 import {
-    PricingHero,
-    PricingPlans,
-    PricingComparison,
-    PricingFAQ,
-    PricingCTA
+  PricingCTA,
+  PricingComparison,
+  PricingFAQ,
+  PricingHero,
+  PricingPlans
 } from '~/layout/pricing'
 import { withTranslations } from '~/utils'
 
 const Pricing = (): JSX.Element => {
   return (
     <HomeLayout>
-        <HomeHeader />
-        <PricingHero />
-        <PricingPlans />
-        <PricingComparison />
-        <PricingFAQ />
-        <PricingCTA />
-        <HomeFooter />
+      <HomeHeader />
+      <PricingHero />
+      <PricingPlans />
+      <PricingComparison />
+      <PricingFAQ />
+      <PricingCTA />
+      <HomeFooter />
     </HomeLayout>
   )
 }
 
-export const getServerSideProps = withTranslations(async context => {
-    return {
-      props: {}
-    }
-  })
+export const getStaticProps = withTranslations(async context => {
+  return {
+    props: {}
+  }
+})
 
 export default Pricing

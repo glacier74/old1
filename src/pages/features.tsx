@@ -22,7 +22,7 @@ const Features = (): JSX.Element => {
   )
 }
 
-export const getServerSideProps = withTranslations(async context => {
+export const getStaticProps = withTranslations(async context => {
   return {
     props: {}
   }
