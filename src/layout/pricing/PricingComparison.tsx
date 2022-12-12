@@ -5,19 +5,19 @@ import { FC } from 'react'
 
 const tiers = [
   {
-    name: 'Basic',
+    name: 'Free',
     href: '#',
     priceMonthly: 9,
     description: 'Quis suspendisse ut fermentum neque vivamus non tellus.'
   },
   {
-    name: 'Essential',
+    name: 'Standard',
     href: '#',
     priceMonthly: 29,
     description: 'Quis eleifend a tincidunt pellentesque. A tempor in sed.'
   },
   {
-    name: 'Premium',
+    name: 'Pro',
     href: '#',
     priceMonthly: 59,
     description: 'Orci volutpat ut sed sed neque, dui eget. Quis tristique non.'
