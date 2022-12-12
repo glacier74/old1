@@ -212,8 +212,8 @@ button.switch-checked {
   }
 }
 
-.sidebar-popup-enter-active,
-.sidebar-popup-exit {
+.slide-in-left-enter-active,
+.slide-in-left-exit {
   .sidebar-overlay {
     @apply opacity-100;
   }
@@ -223,19 +223,46 @@ button.switch-checked {
   }
 }
 
-.sidebar-popup-enter,
-.sidebar-popup-exit-active,
-.sidebar-popup-exit-done {
+.slide-in-left-enter,
+.slide-in-left-exit-active,
+.slide-in-left-exit-done {
   .sidebar-overlay {
     @apply opacity-0;
   }
 
-  .sidebar-wrapper {
+  .sidebar-wrapper  {
     @apply -translate-x-full;
   }
 }
 
-.sidebar-popup-exit-done {
+.slide-in-left-exit-done {
+  @apply hidden #{!important};
+}
+
+.slide-in-right-enter-active,
+.slide-in-right-exit {
+  .sidebar-overlay {
+    @apply opacity-100;
+  }
+
+  .sidebar-wrapper {
+    @apply translate-x-0;
+  }
+}
+
+.slide-in-right-enter,
+.slide-in-right-exit-active,
+.slide-in-right-exit-done {
+  .sidebar-overlay {
+    @apply opacity-0;
+  }
+
+  .sidebar-wrapper  {
+    @apply translate-x-full;
+  }
+}
+
+.slide-in-right-exit-done {
   @apply hidden #{!important};
 }
 
@@ -298,8 +325,14 @@ button.switch-checked {
 
 // =================================================================================
 // Builder
+.insert-block-popup {
+  .input-focused {
+    @apply ring-0 outline-0 shadow-none border-gray-100 #{!important};
+  }
+}
+
 .block-card {
-  @apply flex items-center py-2 pr-1 cursor-pointer select-none;
+  @apply flex items-center py-1 pr-1 rounded-md cursor-pointer select-none;
 
   &:hover {
     .block-card-menu {
@@ -309,7 +342,7 @@ button.switch-checked {
 }
 
 .block-card-menu {
-  @apply opacity-0;
+  @apply flex items-center opacity-0;
 
   &.block-card-menu-open {
     @apply opacity-100;
@@ -320,13 +353,23 @@ button.switch-checked {
   @apply bg-slate-100;
 }
 
-.builder-sidebar,
+.builder-blocks-container {
+  @apply flex-1;
+}
+
+.builder-main,
+.builder-left-sidebar,
+.builder-right-sidebar,
 .builder-blocks {
-  height: calc(100vh - 51px);
+  height: calc(100vh - 3.75rem);
 }
 
 .builder-blocks {
-  @apply flex-1 overflow-y-auto;
+  @apply flex-1;
+}
+
+.builder-right-sidebar {
+  @apply w-[21.25rem];
 }
 
 .block-herosection1 {
@@ -408,11 +451,11 @@ h3.rich-text {
   }
 }
 
-.block-navigation-container {
+.block-header-container {
   @apply max-w-6xl py-6 lg:py-8 flex items-center justify-between text-slate-700 font-semibold text-sm leading-6;
 }
 
-button.navigation-button {
+button.block-header-button {
   .button-leading {
     @apply text-slate-800 hover:text-slate-900;
   }
@@ -873,7 +916,7 @@ button.navigation-button {
   }
 }
 
-.navigation-modal {
+.header-modal {
   @apply h-4/5;
 
   .modal-body {
@@ -882,7 +925,7 @@ button.navigation-button {
 }
 
 .social-media-modal {
-  @extend .navigation-modal;
+  @extend .header-modal;
 
   .select-value,
   .input-leading {

@@ -10,11 +10,18 @@ export const IconFooter = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="M5 14H19C19.5523 14 20 14.4477 20 15V18C20 18.5523 19.5523 19 19 19H5C4.44772 19 4 18.5523 4 18V15C4 14.4477 4.44772 14 5 14Z"
+      d="M18 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2z"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth={2}
+      strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <path d="M4 4H20M4 9H14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    <path
+      d="M7 18h10"
+      stroke="currentColor"
+      strokeWidth={4}
+      strokeLinecap="square"
+      strokeLinejoin="round"
+    />
   </svg>
 )

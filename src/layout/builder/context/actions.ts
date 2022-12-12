@@ -262,6 +262,7 @@ export function selectBlock(state: IState, payload: SelectBlockAction['payload']
   }
 
   state.selectBlockId = blockId
+
   return state
 }
 

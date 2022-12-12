@@ -95,11 +95,11 @@ export function blockByType(type: BlockType, blockId?: string, defaultValues?: a
       } as HeroSectionBlock
       break
 
-    case 'navigation':
+    case 'header':
       block = {
         ...block,
         links: []
-      } as NavigationBlock
+      } as HeaderBlock
       break
 
     case 'footer':
@@ -429,7 +429,7 @@ export function copyBlock(block: any) {
       block.button.id = uuidv4()
       break
 
-    case 'navigation':
+    case 'header':
       block.links.forEach((row: Block) => {
         row.id = uuidv4()
       })

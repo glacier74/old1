@@ -1,14 +1,13 @@
 import { StepType } from '@reactour/tour'
 import { useTranslation } from 'next-i18next'
 
-import { AsyncRequest, Tour } from '~/components'
+import { AsyncRequest } from '~/components'
 import { AuthorizedLayout, useProduct } from '~/layout'
-import { Navbar } from '~/layout/builder/views/Navbar'
 import { SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
 
 import { BuilderProvider } from './context'
-import { BlockList, Sidebar } from './views'
+import { BlockList, LeftSidebar, Navbar, RightSidebar } from './views'
 
 // TODO - Delete Array.prototype.at polyfill https://github.com/vercel/next.js/pull/42307
 if (!Array.prototype.at) {
@@ -18,6 +17,15 @@ if (!Array.prototype.at) {
 
     return k < 0 || k >= len ? undefined : this[k]
   }
+}
+
+const Main = () => {
+  return (
+    <div className="flex-1 flex">
+      <BlockList />
+      <RightSidebar />
+    </div>
+  )
 }
 
 export const Builder = () => {
@@ -94,16 +102,15 @@ export const Builder = () => {
         deps={[product.id]}
       >
         <BuilderProvider>
-          <Tour steps={steps} name="builder">
-            <div className="flex flex-col h-full">
-              <Navbar />
-
-              <div className="flex-1 flex">
-                <Sidebar />
-                <BlockList />
-              </div>
+          <div className="flex flex-col h-full h-screen overflow-hidden">
+            <Navbar />
+            <div className="flex-1 flex">
+              <BlockList />
+              <RightSidebar />
             </div>
-          </Tour>
+          </div>
+
+          <LeftSidebar />
         </BuilderProvider>
       </AsyncRequest>
     </AuthorizedLayout>

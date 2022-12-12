@@ -10,13 +10,13 @@ import { v4 as uuidv4 } from 'uuid'
 import { useBuilderContext } from '~/layout/builder/context'
 import { removeBlocksProperties } from '~/layout/builder/utils'
 
-interface NavigationLinkProps {
+interface HeaderLinkProps {
   link: NavigationLink
   onChange: (id: string, updates: AnyMap<string>) => void
   onDelete: (id: string) => void
 }
 
-const NavigationLink: FC<NavigationLinkProps> = ({ link, onChange, onDelete }) => {
+const HeaderLink: FC<HeaderLinkProps> = ({ link, onChange, onDelete }) => {
   const [isOpen, setIsOpen] = useState(link.isOpen)
 
   function handleDelete() {
@@ -56,7 +56,7 @@ const NavigationLink: FC<NavigationLinkProps> = ({ link, onChange, onDelete }) =
           <Button.Link onClick={handleEdit}>Edit</Button.Link>
           <Tooltip ariaLabel="Drag to reorder links">
             <Button.Link
-              className="navigation-drag-handle w-6 h-6 cursor-drag"
+              className="header-drag-handle w-6 h-6 cursor-drag"
               leading={<IconDotsVertical />}
             />
           </Tooltip>
@@ -66,14 +66,14 @@ const NavigationLink: FC<NavigationLinkProps> = ({ link, onChange, onDelete }) =
       {isOpen && (
         <div className="mt-4 pt-4 border-t border-slate-100 space-y-4">
           <div>
-            <div className="form-item-label">Navigation label</div>
+            <div className="form-item-label">Header label</div>
             <div className="form-item-content">
               <Input value={link.title} onChange={handleTitleChange} />
             </div>
           </div>
 
           <div>
-            <div className="form-item-label">Navigation url</div>
+            <div className="form-item-label">Header url</div>
             <div className="form-item-content">
               <Input type="url" value={link.url} onChange={handleUrlChange} />
             </div>
@@ -90,13 +90,13 @@ const NavigationLink: FC<NavigationLinkProps> = ({ link, onChange, onDelete }) =
   )
 }
 
-export const NavigationModal: FC = () => {
+export const HeaderModal: FC = () => {
   const { t } = useTranslation()
   const { state, dispatch } = useBuilderContext()
   const [links, setLinks] = useState<NavigationLink[]>([])
 
   const isDisabled = useMemo(() => {
-    const block = state.blocks.find(b => b.id === state.selectBlockId) as NavigationBlock
+    const block = state.blocks.find(b => b.id === state.selectBlockId) as HeaderBlock
     return deepEqual(block?.links, links)
   }, [state.blocks, state.selectBlockId, links])
 
@@ -123,7 +123,7 @@ export const NavigationModal: FC = () => {
     dispatch({
       type: 'update',
       payload: {
-        isNavigationOpen: false
+        isHeaderOpen: false
       }
     })
   }
@@ -155,26 +155,26 @@ export const NavigationModal: FC = () => {
   )
 
   useEffect(() => {
-    if (state.isNavigationOpen) {
-      const block = state.blocks.find(b => b.id === state.selectBlockId) as NavigationBlock
+    if (state.isHeaderOpen) {
+      const block = state.blocks.find(b => b.id === state.selectBlockId) as HeaderBlock
       setLinks(deepClone(block?.links || []))
     }
 
     return () => {
       setLinks([])
     }
-  }, [state.blocks, state.selectBlockId, state.isNavigationOpen])
+  }, [state.blocks, state.selectBlockId, state.isHeaderOpen])
 
   return (
     <Modal
-      contentClassName="navigation-modal"
-      visible={state.isNavigationOpen}
+      contentClassName="header-modal"
+      visible={state.isHeaderOpen}
       showCloseIcon
       onClose={handleClose}
     >
       <div className="p-8">
         <h1 className="text-2xl leading-6 font-bold text-slate-900">
-          {t('builder.navigation.settings')}
+          {t('builder.header.settings')}
         </h1>
       </div>
 
@@ -182,29 +182,27 @@ export const NavigationModal: FC = () => {
         <EmptyStates
           className="flex flex-col justify-center flex-1 px-8 pb-3"
           icon={<IconBrandSafari className="non-scaling-stroke" />}
-          title="To add links to the navigation bar, follow these steps:"
+          title="To add links to the header bar, follow these steps:"
           description={
             <ol className="text-left list-decimal space-y-2 mt-4">
               <li>
                 Click on the "Add link" button on the bottom, a new link called "LinkX" will be
-                added to the navigation bar. This is the default label for a new link and can be
-                edited.
+                added to the header bar. This is the default label for a new link and can be edited.
               </li>
               <li>
                 Clicking on the "Edit" button will open the link form again, where you can change
                 the label or URL of the link.
               </li>
               <li>
-                Repeat the process for each additional link that you want to add to the navigation
-                bar.
+                Repeat the process for each additional link that you want to add to the header bar.
               </li>
               <li>
                 Once all of your links have been added, you can arrange their order by dragging and
                 dropping them into the desired position.
               </li>
               <li>
-                Save your changes and the updated navigation bar with the added links will be
-                visible to users on your website.
+                Save your changes and the updated header bar with the added links will be visible to
+                users on your website.
               </li>
             </ol>
           }
@@ -214,17 +212,12 @@ export const NavigationModal: FC = () => {
           className="flex-1 px-8 pb-3 space-y-3 scrollbar"
           list={links}
           setList={handleSetLinks}
-          handle=".navigation-drag-handle"
+          handle=".header-drag-handle"
           delay={10}
           animation={150}
         >
           {links.map(link => (
-            <NavigationLink
-              key={link.id}
-              link={link}
-              onChange={handleChange}
-              onDelete={handleDelete}
-            />
+            <HeaderLink key={link.id} link={link} onChange={handleChange} onDelete={handleDelete} />
           ))}
         </ReactSortable>
       )}

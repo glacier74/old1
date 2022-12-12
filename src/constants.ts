@@ -1,14 +1,6 @@
-import {
-  IconBrandSafari,
-  IconBulb,
-  IconCreditCard,
-  IconHeading,
-  IconLetterT,
-  IconMail,
-  IconSlideshow
-} from '@tabler/icons'
+import { IconCreditCard, IconLetterH, IconLetterT, IconMail, IconSlideshow } from '@tabler/icons'
 
-import { IconFooter, IconHeroSection } from '~/components'
+import { IconFeature, IconFooter, IconHeader, IconHeroSection } from '~/components'
 
 export const LANGUAGE_OPTIONS = [
   {
@@ -34,9 +26,9 @@ export const PAYMENT_TYPES: AnyMap<string> = {
 export const BLOCK_OPTIONS: BlockOption[] = [
   // Basic
   {
-    type: 'navigation',
-    icon: IconBrandSafari,
-    label: 'builder.navigation.name'
+    type: 'header',
+    icon: IconHeader,
+    label: 'builder.header.name'
   },
   {
     type: 'heroSection1',
@@ -50,7 +42,7 @@ export const BLOCK_OPTIONS: BlockOption[] = [
   },
   {
     type: 'heading',
-    icon: IconHeading,
+    icon: IconLetterH,
     label: 'builder.heading.name'
   },
   {
@@ -62,7 +54,7 @@ export const BLOCK_OPTIONS: BlockOption[] = [
   // Feature
   {
     type: 'feature',
-    icon: IconBulb,
+    icon: IconFeature,
     label: 'builder.feature.name'
   },
   {
@@ -87,7 +79,7 @@ export const BLOCK_OPTIONS: BlockOption[] = [
 export const BLOCK_GROUP_OPTIONS: Array<Pick<BlockGroupOptions, 'label' | 'types'>> = [
   {
     label: 'builder.basic',
-    types: ['navigation', 'heroSection1', 'footer', 'heading', 'text']
+    types: ['header', 'heroSection1', 'footer', 'heading', 'text']
   },
   {
     label: 'builder.feature.name',
@@ -101,7 +93,7 @@ export const BLOCK_GROUP_OPTIONS: Array<Pick<BlockGroupOptions, 'label' | 'types
 
 export const BLOCK_WITH_SETTINGS = [
   'heroSection1',
-  'navigation',
+  'header',
   'footer',
   'feature',
   'emailCapture',

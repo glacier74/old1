@@ -1,4 +1,5 @@
 import { Button, Select } from '@heyforms/ui'
+import { IconArrowUpRight } from '@tabler/icons'
 import dayjs from 'dayjs'
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
@@ -62,7 +63,7 @@ const Product = (): JSX.Element => {
     }
   ]
 
-  function handlePreview() {
+  function handleViewSite() {
     window.open(`https://${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`)
   }
 
@@ -97,9 +98,14 @@ const Product = (): JSX.Element => {
               className="link-button w-full text-center md:w-auto"
               href={`/product/${product?.id}/edit`}
             >
-              {t('product.edit')}
+              {t('product.editSite')}
             </Link>
-            <Button type="success" className="w-full md:w-auto" onClick={handlePreview}>
+            <Button
+              type="success"
+              className="w-full md:w-auto"
+              trailing={<IconArrowUpRight />}
+              onClick={handleViewSite}
+            >
               {t('product.viewSite')}
             </Button>
           </div>
