@@ -50,13 +50,10 @@ const SocialMedia: FC<SocialMediaProps> = ({ socialMedia, onChange, onDelete }) 
   }
 
   return (
-    <div className="relative block bg-white border rounded-md px-3 py-2 border-gray-300">
+    <div className="relative block bg-white border rounded-md px-3 py-1.5 border-gray-300">
       <div className="flex items-center justify-between">
         <div className="flex items-center text-sm text-slate-700 space-x-2">
-          <div className="flex items-center">
-            <SocialMediaIcon className="w-5 h-5 text-slate-500" type={socialMedia.type} />
-            <span className="ml-2">{setting?.label}</span>
-          </div>
+          <SocialMediaIcon className="w-5 h-5 text-slate-500" type={socialMedia.type} />
           <div>{socialMedia.value}</div>
         </div>
         <div className="flex items-center space-x-1">
@@ -84,7 +81,7 @@ const SocialMedia: FC<SocialMediaProps> = ({ socialMedia, onChange, onDelete }) 
       </div>
 
       {isOpen && (
-        <div className="mt-4 pt-4 border-t border-slate-100 space-y-4">
+        <div className="mt-2 pt-2 border-t border-slate-100 space-y-4">
           <div className="flex items-center space-x-4">
             <Select
               className="w-28"
@@ -159,7 +156,7 @@ export const FooterSettings: FC<{ block: FooterBlock }> = ({ block }) => {
   )
 
   return (
-    <div className="mt-4">
+    <div className="px-4">
       <div className="flex items-center justify-between">
         <div className="text-sm font-medium">Social medias</div>
         <Button className="!px-2 !py-1" onClick={handleAdd}>
@@ -178,7 +175,7 @@ export const FooterSettings: FC<{ block: FooterBlock }> = ({ block }) => {
           </div>
         ) : (
           <ReactSortable
-            className="space-y-3"
+            className="space-y-2"
             list={block.socialMedias}
             setList={handleSetSocialMedias}
             handle=".header-drag-handle"

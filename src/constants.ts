@@ -31,7 +31,7 @@ export const BLOCK_OPTIONS: BlockOption[] = [
     label: 'builder.header.name'
   },
   {
-    type: 'heroSection1',
+    type: 'heroSection',
     icon: IconHeroSection,
     label: 'builder.heroSection.name'
   },
@@ -79,7 +79,7 @@ export const BLOCK_OPTIONS: BlockOption[] = [
 export const BLOCK_GROUP_OPTIONS: Array<Pick<BlockGroupOptions, 'label' | 'types'>> = [
   {
     label: 'builder.basic',
-    types: ['header', 'heroSection1', 'footer', 'heading', 'text']
+    types: ['header', 'heroSection', 'footer', 'heading', 'text']
   },
   {
     label: 'builder.feature.name',
@@ -92,7 +92,7 @@ export const BLOCK_GROUP_OPTIONS: Array<Pick<BlockGroupOptions, 'label' | 'types
 ]
 
 export const BLOCK_WITH_SETTINGS = [
-  'heroSection1',
+  'heroSection',
   'header',
   'footer',
   'feature',

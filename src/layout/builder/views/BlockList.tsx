@@ -25,11 +25,11 @@ export const BlockList: FC = () => {
   return (
     <>
       <div
-        className={clsx('builder-blocks-container duration-150 ease-in-out', {
-          'builder-blocks-mobile': state.previewMode === 'mobile'
+        className={clsx('builder-main', {
+          'builder-main-mobile': state.previewMode === 'mobile'
         })}
       >
-        <div className="builder-blocks scrollbar">
+        <div className="builder-block-list scrollbar">
           {state.blocks.map(block => (
             <BlockWrapper key={block.id} block={block} />
           ))}

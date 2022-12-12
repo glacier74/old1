@@ -17,7 +17,7 @@ export const PhotoPicker: FC<PhotoPickerProps> = ({
   className,
   visible,
   namespace,
-  enableUnsplash = true,
+  enableUnsplash = false,
   acceptedMimes = ['image/jpeg', 'image/png', 'image/bmp'],
   value,
   onClose,

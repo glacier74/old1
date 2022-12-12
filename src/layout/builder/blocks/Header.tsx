@@ -6,6 +6,7 @@ import { useLockBodyScroll } from 'react-use'
 
 import { useProduct } from '~/layout'
 import { useBuilderContext } from '~/layout/builder/context'
+import { cropImage } from '~/utils'
 
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
 
@@ -25,13 +26,17 @@ export const HeaderPreview: FC<HeaderProps & { product: Product }> = ({ block, p
   return (
     <BlockPreview className="block-header-container" block={block}>
       <a
-        className="text-2xl"
+        className="block-header-logo text-2xl"
         href={`https://${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`}
         title={product.name}
       >
-        {product.name}
+        {product.logo ? (
+          <img src={cropImage(product.logo, 120, 120)} />
+        ) : (
+          <span>{product.name}</span>
+        )}
       </a>
-      <div className="hidden md:flex md:items-center space-x-4">
+      <div className="hidden text-lg md:flex md:items-center space-x-4">
         {block.links.map(row => (
           <a key={row.id} href={row.url} target={row.openInNewTab ? '_blank' : undefined}>
             {row.title}

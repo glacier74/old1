@@ -113,8 +113,6 @@ const Menu: FC<MenuProps> = ({ onClick }) => {
 
 export const InsertBlock = () => {
   const { state, dispatch } = useBuilderContext()
-  const { t } = useTranslation()
-  const product = useProduct()
   const [visible, setVisible] = useState(false)
 
   const handleCreateField = useCallback(
@@ -123,12 +121,12 @@ export const InsertBlock = () => {
       dispatch({
         type: 'addBlock',
         payload: {
-          block: blockByType(type, undefined, product),
+          block: blockByType(type),
           afterId: state.selectBlockId
         }
       })
     },
-    [state.selectBlockId, product]
+    [state.selectBlockId]
   )
 
   const dropdownTrigger = useMemo(

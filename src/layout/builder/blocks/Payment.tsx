@@ -1,4 +1,4 @@
-import { Button, Form, Input, Menus } from '@heyforms/ui'
+import { Button, Form, Input } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { FC } from 'react'
 
@@ -88,23 +88,6 @@ export const PaymentPreview: FC<PaymentProps & { product: Product }> = ({
       </div>
     </BlockPreview>
   )
-}
-
-export const PaymentSettings: FC<Pick<PaymentProps, 'block'>> = ({ block }) => {
-  const { t } = useTranslation()
-  const { dispatch } = useBuilderContext()
-
-  function handleClick() {
-    dispatch({
-      type: 'update',
-      payload: {
-        stripeConnectBlock: block,
-        stripeConnectStep: stripeConnectStep(block)
-      }
-    })
-  }
-
-  return <Menus.Item label={t('builder.payment.settings')} onClick={handleClick} />
 }
 
 const PaymentComponent: FC<PaymentProps> = ({ block, ...restProps }) => {

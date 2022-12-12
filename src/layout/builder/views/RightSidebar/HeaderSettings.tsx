@@ -6,7 +6,6 @@ import { ReactSortable } from 'react-sortablejs'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useBuilderContext } from '~/layout/builder/context'
-import { removeBlocksProperties } from '~/layout/builder/utils'
 
 interface LinkItemProps {
   link: NavigationLink
@@ -44,7 +43,7 @@ const LinkItem: FC<LinkItemProps> = ({ link, onChange, onDelete }) => {
   }
 
   return (
-    <div className="relative block bg-white border rounded-md px-3 py-2 border-gray-300">
+    <div className="relative block bg-white border rounded-md px-3 py-1.5 border-gray-300">
       <div className="flex items-center justify-between">
         <span className="text-sm text-slate-700">{link.title}</span>
         <div className="flex items-center space-x-1">
@@ -72,7 +71,7 @@ const LinkItem: FC<LinkItemProps> = ({ link, onChange, onDelete }) => {
       </div>
 
       {isOpen && (
-        <div className="mt-4 pt-4 border-t border-slate-100 space-y-4">
+        <div className="mt-2 pt-2 border-t border-slate-100 space-y-4">
           <div>
             <div className="form-item-label">Header label</div>
             <div className="form-item-content">
@@ -103,7 +102,6 @@ export const HeaderSettings: FC<{ block: HeaderBlock }> = ({ block }) => {
 
   const handleSetLinks = useCallback(
     (links: NavigationLink[]) => {
-      removeBlocksProperties(links)
       dispatch({
         type: 'updateBlock',
         payload: {
@@ -144,7 +142,7 @@ export const HeaderSettings: FC<{ block: HeaderBlock }> = ({ block }) => {
   )
 
   return (
-    <div className="mt-4">
+    <div className="px-4">
       <div className="flex items-center justify-between">
         <div className="text-sm font-medium">Links</div>
         <Button className="!px-2 !py-1" onClick={handleAdd}>
@@ -163,7 +161,7 @@ export const HeaderSettings: FC<{ block: HeaderBlock }> = ({ block }) => {
           </div>
         ) : (
           <ReactSortable
-            className="space-y-3"
+            className="space-y-2"
             list={block.links}
             setList={handleSetLinks}
             handle=".header-drag-handle"

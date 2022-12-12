@@ -1,7 +1,7 @@
 import { isValidArray } from '@nily/utils'
 import { v4 as uuidv4 } from 'uuid'
 
-export function blockByType(type: BlockType, blockId?: string, defaultValues?: any): Block {
+export function blockByType(type: BlockType, blockId?: string): Block {
   let block = {
     id: blockId || uuidv4(),
     type
@@ -72,25 +72,31 @@ export function blockByType(type: BlockType, blockId?: string, defaultValues?: a
       } as FeatureBlock
       break
 
-    case 'heroSection1':
+    case 'heroSection':
       block = {
         ...block,
         layout: 'center',
-        logo: {
-          id: uuidv4(),
-          type: 'image',
-          source: defaultValues?.logo
-        },
         name: {
           id: uuidv4(),
           type: 'heading',
           level: 1,
-          html: defaultValues?.name
+          html: ''
         },
         tagline: {
           id: uuidv4(),
           type: 'text',
-          html: defaultValues?.tagline
+          html: ''
+        },
+        buttons: [
+          {
+            id: uuidv4(),
+            type: 'text',
+            html: ''
+          }
+        ],
+        image: {
+          id: uuidv4(),
+          type: 'image'
         }
       } as HeroSectionBlock
       break
@@ -146,7 +152,7 @@ export function getBlockIndex(blocks: any[], id: string): number {
   return blocks.findIndex(b => b.id === id)
 }
 
-function heroSection1BlockPaths(
+function heroSectionBlockPaths(
   block: HeroSectionBlock,
   flattedBlocks: FlattedBlock[],
   focusableBlockMap: Record<string, string[]>,
@@ -156,13 +162,6 @@ function heroSection1BlockPaths(
   flattedBlocks.push({
     id: block.id,
     path
-  })
-
-  // Logo
-  flattedBlocks.push({
-    id: block.logo.id,
-    rootId: block.id,
-    path: [...path, 'logo']
   })
 
   // Name
@@ -179,8 +178,28 @@ function heroSection1BlockPaths(
     path: [...path, 'tagline']
   })
 
+  // Image
+  flattedBlocks.push({
+    id: block.image.id,
+    rootId: block.id,
+    path: [...path, 'image']
+  })
+
   // Add to focusable blocks
   focusableBlockMap[block.id] = [block.name.id, block.tagline.id]
+
+  // Buttons
+  block.buttons.forEach((buttonBlock, index) => {
+    flattedBlocks.push({
+      id: buttonBlock.id,
+      rootId: block.id,
+      deletable: false,
+      path: [...path, 'buttons', index]
+    })
+
+    // Add to focusable blocks
+    focusableBlockMap[block.id].push(buttonBlock.id)
+  })
 }
 
 function featureBlockPaths(
@@ -333,8 +352,8 @@ export function flattenBlocks(blocks: Block[]) {
 
   blocks.forEach((block, index) => {
     switch (block.type) {
-      case 'heroSection1':
-        heroSection1BlockPaths(block as HeroSectionBlock, flattedBlocks, focusableBlockMap, [index])
+      case 'heroSection':
+        heroSectionBlockPaths(block as HeroSectionBlock, flattedBlocks, focusableBlockMap, [index])
         break
 
       case 'feature':
@@ -402,7 +421,7 @@ export function copyBlock(block: any) {
   block.id = uuidv4()
 
   switch (block.type) {
-    case 'heroSection1':
+    case 'heroSection':
       block.logo.id = uuidv4()
       block.name.id = uuidv4()
       block.tagline.id = uuidv4()

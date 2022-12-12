@@ -1,4 +1,4 @@
-import { Button, Switch, Tooltip, notification } from '@heyforms/ui'
+import { Button, Tooltip, notification } from '@heyforms/ui'
 import { deepClone } from '@nily/utils'
 import {
   IconChevronLeft,
@@ -74,7 +74,7 @@ export const Navbar: FC = () => {
     })
   }, [state.isBlocksSidebarOpen])
 
-  function onModeChange(previewMode: any) {
+  function handleModeChange(previewMode: any) {
     dispatch({
       type: 'update',
       payload: {
@@ -179,14 +179,14 @@ export const Navbar: FC = () => {
       </div>
 
       <div className="flex-1 flex items-center justify-end">
-        <Switch.Group
-          className="builder-mode"
-          value={state.previewMode}
-          options={options}
-          onChange={onModeChange}
-        />
+        {/*<Switch.Group*/}
+        {/*  className="builder-mode"*/}
+        {/*  value={state.previewMode}*/}
+        {/*  options={options}*/}
+        {/*  onChange={handleModeChange}*/}
+        {/*/>*/}
 
-        <div className="mx-4 w-px h-5 bg-gray-200" />
+        {/*<div className="mx-4 w-px h-5 bg-gray-200" />*/}
 
         <Button
           type="success"

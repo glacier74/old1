@@ -1,9 +1,5 @@
-import { Switch, Tooltip } from '@heyforms/ui'
-import { IconBoxAlignLeft, IconBoxAlignRight } from '@tabler/icons'
-import { useTranslation } from 'next-i18next'
-import { FC, useMemo } from 'react'
+import { FC } from 'react'
 
-import { useBuilderContext } from '../context'
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
 import { Heading } from './Heading'
 import { Image, ImagePreview } from './Image'
@@ -49,52 +45,6 @@ export const FeaturePreview: FC<FeatureProps> = ({ block, ...restProps }) => {
         </div>
       </div>
     </BlockPreview>
-  )
-}
-
-export const FeatureSettings: FC<Pick<FeatureProps, 'block'>> = ({ block }) => {
-  const { t } = useTranslation()
-  const { dispatch } = useBuilderContext()
-
-  const options: any[] = useMemo(
-    () => [
-      {
-        value: 'left',
-        label: (
-          <Tooltip ariaLabel="Left to right">
-            <IconBoxAlignLeft className="w-5 h-5" />
-          </Tooltip>
-        )
-      },
-      {
-        value: 'right',
-        label: (
-          <Tooltip ariaLabel="Right to left">
-            <IconBoxAlignRight className="w-5 h-5" />
-          </Tooltip>
-        )
-      }
-    ],
-    []
-  )
-
-  function handleChange(layout: any) {
-    dispatch({
-      type: 'updateBlock',
-      payload: {
-        blockId: block.id,
-        updates: {
-          layout
-        }
-      }
-    })
-  }
-
-  return (
-    <div className="flex items-center justify-between px-4 py-2 text-slate-700">
-      <span>{t('builder.layout')}</span>
-      <Switch.Group value={block.layout} options={options} onChange={handleChange} />
-    </div>
   )
 }
 

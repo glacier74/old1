@@ -28,10 +28,9 @@ export const LeftSidebar: FC = () => {
       mountOnEnter={true}
       classNames="slide-in-left"
       unmountOnExit={false}
-      onExited={handleExited}
     >
       <div className="builder-left-sidebar fixed top-[3.75rem] left-0">
-        <div className="sidebar-wrapper flex flex-col w-64 h-full bg-white border-r border-gray-200 duration-150 ease-in-out">
+        <div className="sidebar-wrapper flex flex-col w-[18.75rem] h-full bg-white border-r border-gray-200 duration-150 ease-in-out">
           <div className="flex items-center justify-between p-4">
             <div className="text-sm font-medium">{t('builder.blocks')}</div>
             <Tooltip ariaLabel={t('builder.closeBlocks')}>

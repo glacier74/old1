@@ -17,6 +17,7 @@ export interface IState {
   previewMode: 'desktop' | 'mobile'
   isBlocksChanged?: boolean
   isBlocksSidebarOpen: boolean
+  isSettingsSidebarOpen: boolean
 
   // Selected block
   focusBlockId?: string
@@ -191,6 +192,7 @@ export const BuilderProvider: FC<IComponentProps> = ({ children }) => {
       previewMode: 'desktop',
       isBlocksChanged: false,
       isBlocksSidebarOpen: false,
+      isSettingsSidebarOpen: false,
       isBubbleMenuOpen: false,
       isCommandMenuOpen: false,
       isSocialMediaOpen: false,

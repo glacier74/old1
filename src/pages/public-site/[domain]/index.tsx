@@ -34,7 +34,7 @@ const Block: FC<{ product: Product; block: any }> = ({ product, block }) => {
     case 'header':
       return <HeaderPreview key={block.id} block={block} product={product} />
 
-    case 'heroSection1':
+    case 'heroSection':
       return <HeroSectionPreview key={block.id} block={block} />
 
     case 'footer':
@@ -181,14 +181,16 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
           }
         />
       ) : (
-        product.siteSetting.blocks.map(block => (
-          <Block key={block.id} product={product} block={block} />
-        ))
+        <div className="blocks">
+          {product.siteSetting.blocks.map(block => (
+            <Block key={block.id} product={product} block={block} />
+          ))}
+        </div>
       )}
 
-      <div className="fixed rounded shadow bg-white text-sm text-slate-700 z-10 px-4 py-2 right-5 bottom-5 md:right-12 md:bottom-6">
+      <div className="fixed rounded-md shadow bg-white text-sm text-slate-700 z-10 px-2 py-0.5 right-5 bottom-5 md:right-12 md:bottom-6">
         <a href={process.env.NEXT_PUBLIC_HOMEPAGE}>
-          <IconLogo className="w-6 inline" /> Made with EarlyBird
+          <IconLogo className="w-4 inline" /> Made with EarlyBird
         </a>
       </div>
 

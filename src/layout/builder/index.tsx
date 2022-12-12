@@ -19,15 +19,6 @@ if (!Array.prototype.at) {
   }
 }
 
-const Main = () => {
-  return (
-    <div className="flex-1 flex">
-      <BlockList />
-      <RightSidebar />
-    </div>
-  )
-}
-
 export const Builder = () => {
   const { t } = useTranslation()
   const { setSiteSettings } = useStore()
@@ -104,13 +95,11 @@ export const Builder = () => {
         <BuilderProvider>
           <div className="flex flex-col h-full h-screen overflow-hidden">
             <Navbar />
-            <div className="flex-1 flex">
-              <BlockList />
-              <RightSidebar />
-            </div>
+            <BlockList />
           </div>
 
           <LeftSidebar />
+          <RightSidebar />
         </BuilderProvider>
       </AsyncRequest>
     </AuthorizedLayout>

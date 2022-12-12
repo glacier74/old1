@@ -18,7 +18,7 @@ export const BlockWrapper: FC<BlockProps> = props => {
     case 'header':
       return <Header key={props.block.id} {...(props as HeaderProps)} />
 
-    case 'heroSection1':
+    case 'heroSection':
       return <HeroSection key={props.block.id} {...(props as HeroSectionProps)} />
 
     case 'footer':
