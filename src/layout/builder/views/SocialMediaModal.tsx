@@ -68,7 +68,7 @@ const SocialMedia: FC<SocialMediaProps> = ({ socialMedia, onChange, onDelete }) 
           <Button.Link onClick={handleEdit}>Edit</Button.Link>
           <Tooltip ariaLabel="Drag to reorder socialMedias">
             <Button.Link
-              className="navigation-drag-handle w-6 h-6 cursor-drag"
+              className="header-drag-handle w-6 h-6 cursor-drag"
               leading={<IconDotsVertical />}
             />
           </Tooltip>
@@ -227,7 +227,7 @@ export const SocialMediaModal: FC = () => {
           className="flex-1 px-8 pb-3 space-y-3 scrollbar"
           list={socialMedias}
           setList={handleSetSocialMedias}
-          handle=".navigation-drag-handle"
+          handle=".header-drag-handle"
           delay={10}
           animation={150}
         >

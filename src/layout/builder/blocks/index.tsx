@@ -4,19 +4,19 @@ import { BlockProps } from './Block'
 import { EmailCapture, EmailCaptureProps } from './EmailCapture'
 import { Feature, FeatureProps } from './Feature'
 import { Footer, FooterProps } from './Footer'
+import { Header, HeaderProps } from './Header'
 import { Heading, HeadingProps } from './Heading'
 import { HeroSection, HeroSectionProps } from './HeroSection'
 import { Image, ImageProps } from './Image'
 import { List, ListProps } from './List'
-import { Navigation, NavigationProps } from './Navigation'
 import { Payment, PaymentProps } from './Payment'
 import { SlideGallery, SlideGalleryProps } from './SlideGallery'
 import { Text, TextProps } from './Text'
 
 export const BlockWrapper: FC<BlockProps> = props => {
   switch (props.block.type) {
-    case 'navigation':
-      return <Navigation key={props.block.id} {...(props as NavigationProps)} />
+    case 'header':
+      return <Header key={props.block.id} {...(props as HeaderProps)} />
 
     case 'heroSection1':
       return <HeroSection key={props.block.id} {...(props as HeroSectionProps)} />

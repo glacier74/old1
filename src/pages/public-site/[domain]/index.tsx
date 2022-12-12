@@ -12,11 +12,11 @@ import { PublicSiteLayout } from '~/layout'
 import { EmailCapturePreview } from '~/layout/builder/blocks/EmailCapture'
 import { FeaturePreview } from '~/layout/builder/blocks/Feature'
 import { FooterPreview } from '~/layout/builder/blocks/Footer'
+import { HeaderPreview } from '~/layout/builder/blocks/Header'
 import { HeadingPreview } from '~/layout/builder/blocks/Heading'
 import { HeroSectionPreview } from '~/layout/builder/blocks/HeroSection'
 import { ImagePreview } from '~/layout/builder/blocks/Image'
 import { ListPreview } from '~/layout/builder/blocks/List'
-import { NavigationPreview } from '~/layout/builder/blocks/Navigation'
 import { PaymentPreview } from '~/layout/builder/blocks/Payment'
 import { SlideGalleryPreview } from '~/layout/builder/blocks/SlideGallery'
 import { TextPreview } from '~/layout/builder/blocks/Text'
@@ -31,8 +31,8 @@ interface PublicSiteProps {
 
 const Block: FC<{ product: Product; block: any }> = ({ product, block }) => {
   switch (block.type) {
-    case 'navigation':
-      return <NavigationPreview key={block.id} block={block} product={product} />
+    case 'header':
+      return <HeaderPreview key={block.id} block={block} product={product} />
 
     case 'heroSection1':
       return <HeroSectionPreview key={block.id} block={block} />

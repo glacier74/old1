@@ -1,7 +1,6 @@
-import { Button, Menus } from '@heyforms/ui'
+import { Button } from '@heyforms/ui'
 import { isEmpty } from '@nily/utils'
 import { IconMenu2, IconX } from '@tabler/icons'
-import { useTranslation } from 'next-i18next'
 import { FC, useState } from 'react'
 import { useLockBodyScroll } from 'react-use'
 
@@ -10,14 +9,11 @@ import { useBuilderContext } from '~/layout/builder/context'
 
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
 
-export interface NavigationProps extends BlockProps {
-  block: NavigationBlock
+export interface HeaderProps extends BlockProps {
+  block: HeaderBlock
 }
 
-export const NavigationPreview: FC<NavigationProps & { product: Product }> = ({
-  block,
-  product
-}) => {
+export const HeaderPreview: FC<HeaderProps & { product: Product }> = ({ block, product }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   function handleClick() {
@@ -27,7 +23,7 @@ export const NavigationPreview: FC<NavigationProps & { product: Product }> = ({
   useLockBodyScroll(isOpen)
 
   return (
-    <BlockPreview className="block-navigation-container" block={block}>
+    <BlockPreview className="block-header-container" block={block}>
       <a
         className="text-2xl"
         href={`https://${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`}
@@ -45,7 +41,7 @@ export const NavigationPreview: FC<NavigationProps & { product: Product }> = ({
 
       <div className="md:hidden">
         <Button.Link
-          className="navigation-button"
+          className="block-header-button"
           leading={isOpen ? <IconX /> : <IconMenu2 />}
           onClick={handleClick}
         />
@@ -70,23 +66,7 @@ export const NavigationPreview: FC<NavigationProps & { product: Product }> = ({
   )
 }
 
-export const NavigationSettings: FC<Pick<NavigationProps, 'block'>> = () => {
-  const { t } = useTranslation()
-  const { dispatch } = useBuilderContext()
-
-  function handleClick() {
-    dispatch({
-      type: 'update',
-      payload: {
-        isNavigationOpen: true
-      }
-    })
-  }
-
-  return <Menus.Item label={t('builder.navigation.settings')} onClick={handleClick} />
-}
-
-export const Navigation: FC<NavigationProps> = ({ block }) => {
+export const Header: FC<HeaderProps> = ({ block }) => {
   const product = useProduct()
   const { dispatch } = useBuilderContext()
 
@@ -94,13 +74,13 @@ export const Navigation: FC<NavigationProps> = ({ block }) => {
     dispatch({
       type: 'update',
       payload: {
-        isNavigationOpen: true
+        isHeaderOpen: true
       }
     })
   }
 
   return (
-    <BlockComponent className="block-navigation-container" block={block}>
+    <BlockComponent className="block-header-container" block={block}>
       <a
         className="text-2xl"
         href={`https://${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`}
@@ -110,9 +90,7 @@ export const Navigation: FC<NavigationProps> = ({ block }) => {
       </a>
       <div className="flex items-center space-x-4">
         {isEmpty(block.links) ? (
-          <Button.Link type="success" onClick={handleClick}>
-            Click to add links
-          </Button.Link>
+          <div className="font-normal text-slate-400">Set links in settings</div>
         ) : (
           block.links.map(row => (
             <a key={row.id} href={row.url} target={row.openInNewTab ? '_blank' : undefined}>

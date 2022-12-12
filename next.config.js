@@ -11,9 +11,6 @@ dotenv.config({
 /** @type {import('next').NextConfig} */
 module.exports = {
   i18n,
-  reactStrictMode: true,
-  swcMinify: true,
-  poweredByHeader: false,
   experimental: {
     fontLoaders: [
       {
@@ -25,6 +22,12 @@ module.exports = {
       }
     ]
   },
+  eslint: {
+    ignoreDuringBuilds: true
+  },
+  reactStrictMode: true,
+  swcMinify: true,
+  poweredByHeader: false,
   async redirects() {
     return [
       {

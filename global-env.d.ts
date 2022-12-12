@@ -170,7 +170,7 @@ declare global {
     | 'heading'
     | 'image'
     | 'list'
-    | 'navigation'
+    | 'header'
     | 'heroSection1'
     | 'footer'
     | 'feature'
@@ -279,8 +279,8 @@ declare global {
     isOpen?: boolean
   }
 
-  interface NavigationBlock extends Pick<Block, 'id' | 'type'> {
-    type: 'navigation'
+  interface HeaderBlock extends Pick<Block, 'id' | 'type'> {
+    type: 'header'
     links: NavigationLink[]
   }
 

@@ -25,7 +25,7 @@ export const BlockCardList: FC = () => {
 
   return (
     <ReactSortable
-      className="flex-1 scrollbar"
+      className="flex-1 px-4 scrollbar"
       ghostClass="field-card-ghost"
       chosenClass="field-card-chosen"
       dragClass="field-card-dragging"

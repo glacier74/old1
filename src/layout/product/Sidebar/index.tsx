@@ -33,16 +33,16 @@ export const Sidebar = () => {
         in={isSidebarOpen}
         timeout={0}
         mountOnEnter={true}
-        classNames="sidebar-popup"
+        classNames="slide-in-left"
         unmountOnExit={false}
         onExited={closeSidebar}
       >
         <div className="sidebar fixed inset-0 flex z-10 md:hidden">
           <div
-            className="sidebar-overlay fixed inset-0 bg-slate-600 bg-opacity-75 transition-opacity duration-300 ease-in-out"
+            className="sidebar-overlay fixed inset-0 bg-slate-600 bg-opacity-75 transition-opacity duration-100 ease-in-out"
             aria-hidden="true"
           />
-          <div className="sidebar-wrapper relative flex flex-col flex-1 max-w-xs bg-slate-50 w-full h-full transform-gpu transition-transform duration-300 ease-in-out">
+          <div className="sidebar-wrapper relative flex flex-col flex-1 max-w-xs bg-slate-50 w-full h-full duration-150 ease-in-out">
             <div className="flex flex-1 flex-col h-0 pt-5">
               <SidebarProducts />
               <SidebarNavbar />

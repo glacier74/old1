@@ -5,13 +5,7 @@ import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
 import { FC, useMemo, useState } from 'react'
 
-import { BLOCK_OPTIONS, BLOCK_WITH_SETTINGS } from '~/constants'
-import { EmailCaptureSettings } from '~/layout/builder/blocks/EmailCapture'
-import { FeatureSettings } from '~/layout/builder/blocks/Feature'
-import { FooterSettings } from '~/layout/builder/blocks/Footer'
-import { HeroSectionSettings } from '~/layout/builder/blocks/HeroSection'
-import { NavigationSettings } from '~/layout/builder/blocks/Navigation'
-import { PaymentSettings } from '~/layout/builder/blocks/Payment'
+import { BLOCK_OPTIONS } from '~/constants'
 import { useBuilderContext } from '~/layout/builder/context'
 
 interface BlockCardProps {
@@ -101,7 +95,7 @@ export const BlockCard: FC<BlockCardProps> = ({ block, selectedId }) => {
   const DropdownTrigger = useMemo(
     () => (
       <Button.Link
-        className="block-card-action w-8 h-8"
+        className="block-card-action w-6 h-6"
         leading={<IconDotsVertical />}
         onMouseDown={stopPropagation}
       />
@@ -109,44 +103,9 @@ export const BlockCard: FC<BlockCardProps> = ({ block, selectedId }) => {
     []
   )
 
-  const SettingsMenuItem = useMemo(() => {
-    if (!BLOCK_WITH_SETTINGS.includes(block.type)) {
-      return null
-    }
-
-    return (
-      <>
-        <Menus.Label className="text-xs uppercase" label="Options" />
-        {(() => {
-          switch (block.type) {
-            case 'feature':
-              return <FeatureSettings block={block as FeatureBlock} />
-
-            case 'payment':
-              return <PaymentSettings block={block as PaymentBlock} />
-
-            case 'navigation':
-              return <NavigationSettings block={block as NavigationBlock} />
-
-            case 'heroSection1':
-              return <HeroSectionSettings block={block as HeroSectionBlock} />
-
-            case 'emailCapture':
-              return <EmailCaptureSettings block={block as EmailCaptureBlock} />
-
-            case 'footer':
-              return <FooterSettings />
-          }
-        })()}
-        <Menus.Divider />
-      </>
-    )
-  }, [block])
-
   const DropdownOverlay = useMemo(
     () => (
       <Menus className="text-sm" onClick={handleMenuClick}>
-        {SettingsMenuItem}
         <Menus.Item value="duplicate" label={t('common.duplicate')} />
         <Menus.Item value="delete" className="text-red-700" label={t('common.delete')} />
       </Menus>
@@ -161,8 +120,10 @@ export const BlockCard: FC<BlockCardProps> = ({ block, selectedId }) => {
       })}
       onClick={handleClick}
     >
-      <BlockIcon className="ml-4" type={block.type} />
-      <div className="flex-1 ml-3 text-xs">{t(label!)}</div>
+      <div className="flex items-center flex-1 ">
+        <BlockIcon className="ml-1 text-slate-700" type={block.type} />
+        <div className="flex-1 ml-2 text-xs">{t(label!)}</div>
+      </div>
       <Dropdown
         className={clsx('block-card-menu', {
           'block-card-menu-open': isOpen || isSelected
