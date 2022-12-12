@@ -11,7 +11,16 @@ export const HomeFooter: FC = () => {
     <footer className="p-6 bg-slate-900">
       <div className="max-w-7xl mx-auto px-5 flex flex-col md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col md:flex-row items-center text-sm text-slate-400 md:space-x-5">
-          <div>Copyright © {new Date().getFullYear()} EarlyBird All Rights Reserved.</div>
+          <div className="pr-4 border-r border-slate-500">
+            Copyright © {new Date().getFullYear()} EarlyBird. Founded by{' '}
+            <a
+              href="https://twitter.com/LuoBaishun"
+              target="_blank"
+              className="text-white font-bold"
+            >
+              Luo Baishun
+            </a>
+          </div>
           <div className="flex items-center justify-center mt-4 md:mt-0 space-x-5">
             <Link href="https://help.earlybird.im/privacy" title={t('home.privacy')}>
               Privacy

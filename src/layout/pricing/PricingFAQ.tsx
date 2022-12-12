@@ -28,7 +28,7 @@ const faqs = [
   {
     question: 'Do you offer refunds?',
     answer:
-      "There is a 72-hour money-back guarantee, no questions asked. However, I do love to hear your feedback. Please send a refund request to me 💌 support@earlybird.im and w'll process it as soon as w can."
+      "There is a 72-hour money-back guarantee, no questions asked. However, we do love to hear your feedback. Please send a refund request to support@earlybird.im and we'll process it as soon as w can."
   }
   // More questions...
 ]
