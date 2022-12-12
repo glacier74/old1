@@ -5,51 +5,83 @@ import { FC } from 'react'
 
 const tiers = [
   {
-    name: 'Free',
+    name: 'Explorer',
     href: '#',
-    priceMonthly: 9,
-    description: 'Quis suspendisse ut fermentum neque vivamus non tellus.'
+    priceMonthly: 0,
+    description: 'For new makers who want to fine-tune and test an idea.'
   },
   {
-    name: 'Standard',
+    name: 'Starter',
     href: '#',
-    priceMonthly: 29,
-    description: 'Quis eleifend a tincidunt pellentesque. A tempor in sed.'
+    priceMonthly: 8,
+    priceAnnually: 6,
+    description: 'For creators with multiple ideas who want to efficiently test and refine them.'
   },
   {
-    name: 'Pro',
+    name: 'Shipper',
     href: '#',
-    priceMonthly: 59,
-    description: 'Orci volutpat ut sed sed neque, dui eget. Quis tristique non.'
+    priceMonthly: 15,
+    priceAnnually: 10,
+    description: 'For productive shippers who want to work more efficiently.'
   }
 ]
 
 const sections = [
   {
-    name: 'Features',
+    name: 'Build',
     features: [
-      { name: 'Molestie lobortis massa.', tiers: { Basic: true, Essential: true, Premium: true } },
-      { name: 'Urna purus felis.', tiers: { Basic: true, Essential: true, Premium: true } },
-      { name: 'Tellus pulvinar sit dictum.', tiers: { Essential: true, Premium: true } },
-      { name: 'Convallis.', tiers: { Essential: 'Up to 20 users', Premium: 'Up to 50 users' } }
+      { name: 'Product quota', tiers: { Explorer: '1', Starter: '5', Shipper: '20' } },
+      {
+        name: 'Monthly visits',
+        tiers: { Explorer: '1,000', Starter: '50,000', Shipper: '200,000' }
+      },
+      { name: 'Access to all UI blocks', tiers: { Explorer: true, Starter: true, Shipper: true } },
+      { name: 'Unlimited blocks', tiers: { Explorer: true, Starter: true, Shipper: true } },
+      { name: 'Text formatting', tiers: { Explorer: true, Starter: true, Shipper: true } },
+      { name: 'Responsive layout', tiers: { Explorer: true, Starter: true, Shipper: true } },
+      { name: 'Full SEO control', tiers: { Explorer: false, Starter: true, Shipper: true } },
+      { name: 'Private mode', tiers: { Explorer: false, Starter: true, Shipper: true } }
     ]
   },
   {
-    name: 'Reporting',
+    name: 'Pitch',
     features: [
-      { name: 'Adipiscing.', tiers: { Basic: true, Essential: true, Premium: true } },
-      { name: 'Eget risus integer.', tiers: { Essential: true, Premium: true } },
-      { name: 'Gravida leo urna velit.', tiers: { Premium: true } },
-      { name: 'Elementum ut dapibus mi feugiat cras nisl.', tiers: { Premium: true } }
+      { name: 'Features walkthrough', tiers: { Explorer: true, Starter: true, Shipper: true } },
+      { name: 'Image Carousel', tiers: { Explorer: true, Starter: true, Shipper: true } },
+      { name: 'Social proof', tiers: { Explorer: true, Starter: true, Shipper: true } },
+      {
+        name: 'Remove EarlyBird branding',
+        tiers: { Explorer: false, Starter: true, Shipper: true }
+      },
+      { name: 'Custom domain', tiers: { Explorer: false, Starter: true, Shipper: true } },
+      { name: 'Embed Custom CSS', tiers: { Explorer: false, Starter: false, Shipper: true } }
     ]
   },
   {
-    name: 'Support',
+    name: 'Validate',
     features: [
-      { name: 'Sit dignissim.', tiers: { Basic: true, Essential: true, Premium: true } },
-      { name: 'Congue at nibh et.', tiers: { Essential: true, Premium: true } },
-      { name: 'Volutpat feugiat mattis.', tiers: { Essential: true, Premium: true } },
-      { name: 'Tristique pellentesque ornare diam sapien.', tiers: { Premium: true } }
+      { name: 'Conversion action', tiers: { Explorer: '50', Starter: '1,000', Shipper: '5,000' } },
+      {
+        name: 'Accept payments',
+        tiers: {
+          Explorer: '5% commission + Stripe fee',
+          Starter: '1% commission + Stripe fee',
+          Shipper: 'No commission'
+        }
+      },
+      { name: 'Real-time analytics', tiers: { Explorer: true, Starter: true, Shipper: true } },
+      { name: 'Understand interests', tiers: { Explorer: true, Starter: true, Shipper: true } },
+      { name: 'Collect feedback', tiers: { Explorer: true, Starter: true, Shipper: true } },
+      { name: 'Quick polls', tiers: { Explorer: true, Starter: true, Shipper: true } }
+    ]
+  },
+  {
+    name: 'Other',
+    features: [
+      { name: 'Web hosting', tiers: { Explorer: true, Starter: true, Shipper: true } },
+      { name: 'Automatic SSL', tiers: { Explorer: true, Starter: true, Shipper: true } },
+      { name: 'Priority support', tiers: { Explorer: false, Starter: true, Shipper: true } },
+      { name: 'Team collaboration', tiers: { Explorer: false, Starter: false, Shipper: true } }
     ]
   }
 ]
@@ -111,7 +143,7 @@ export const PricingComparison: FC = () => {
                         href={tier.href}
                         className="absolute bottom-0 flex-grow block w-full bg-green-500 border border-green-500 rounded-md 5 py-2 text-sm font-semibold text-white text-center hover:bg-green-600"
                       >
-                        Buy {tier.name}
+                        Get started with {tier.name}
                       </a>
                     </div>
                   </td>
@@ -174,7 +206,7 @@ export const PricingComparison: FC = () => {
                       href={tier.href}
                       className="block w-full bg-green-500 border border-green-500 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-green-600"
                     >
-                      Buy {tier.name}
+                      Get started with {tier.name}
                     </a>
                   </td>
                 ))}

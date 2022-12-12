@@ -5,28 +5,50 @@ import { FC } from 'react'
 
 const tiers = [
   {
-    name: 'Explore',
+    name: 'Explorer',
     href: '#',
     priceMonthly: 0,
     priceAnually: 0,
     description: 'For new makers who want to fine-tune and test an idea.',
-    includedFeatures: ['1 product included', '1,000 visits/mo', 'Access to all UI blocks', '5% payment commission', 'Real-time analytics']
+    includedFeatures: [
+      '1 product included',
+      '1,000 visits/mo',
+      'Access to all UI blocks',
+      '5% payment commission',
+      'Real-time analytics'
+    ]
   },
   {
     name: 'Starter',
     href: '#',
-    priceMonthly: 12,
-    priceAnually: 10,
+    priceMonthly: 8,
+    priceAnually: 6,
     description: 'For creators with multiple ideas who want to efficiently test and refine them.',
-    includedFeatures: ['All Free features', '5 products included', '50,000 visits/mo', '1% payment commission', 'Custom domain', '1,000 engagements included', 'Remove EarlyBird branding']
+    includedFeatures: [
+      'All Free features',
+      '5 products included',
+      '50,000 visits/mo',
+      '1,000 engagements included',
+      '1% payment commission',
+      'Custom domain',
+      'Remove EarlyBird branding'
+    ]
   },
   {
     name: 'Shipper',
     href: '#',
-    priceMonthly: 25,
-    priceAnually: 20,
+    priceMonthly: 15,
+    priceAnually: 10,
     description: 'For productive shippers who want to work more efficiently.',
-    includedFeatures: ['All Standard features', '20 products included', '200,000 visits/mo', 'No payment commission', '5,000 engagements included', 'Embed custom CSS & JS', 'Team collaboration']
+    includedFeatures: [
+      'All Standard features',
+      '20 products included',
+      '200,000 visits/mo',
+      '5,000 engagements included',
+      'No payment commission',
+      'Embed custom CSS',
+      'Team collaboration'
+    ]
   }
 ]
 

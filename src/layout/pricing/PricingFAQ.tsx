@@ -6,9 +6,29 @@ import { FC } from 'react'
 
 const faqs = [
   {
-    question: "What's the best thing about Switzerland?",
+    question: 'Who is behind EarlyBird?',
     answer:
-      "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat."
+      "Hi! My name is Luo and I created EarlyBird to solve a problem I was facing as a creator. I had multiple startup ideas, but as a developer, it took me a long time to create a landing page and validate each idea. I wondered how people without technical skills could do this quickly and easily, so I decided to build something for them. And that's how EarlyBird was born!"
+  },
+  {
+    question: 'Do you offer discounts?',
+    answer:
+      'Discounts are only available for members on special occasions. To stay informed about discounts, follow us on Twitter and create an account. Additionally, if you have a blog or newsletter, you can write a post about EarlyBird and receive 3 months of free membership.'
+  },
+  {
+    question: 'Can I start for free and upgrade later?',
+    answer:
+      'You can upgrade your plan at any time through the dashboard billing. Simply log in to your dashboard and navigate to the billing section to choose a new plan.'
+  },
+  {
+    question: 'Can I cancel my plan anytime?',
+    answer:
+      'Yes, you can cancel your plan at any time through your dashboard. Simply log in to your dashboard and navigate to the billing section to cancel your plan.'
+  },
+  {
+    question: 'Do you offer refunds?',
+    answer:
+      "There is a 72-hour money-back guarantee, no questions asked. However, I do love to hear your feedback. Please send a refund request to me 💌 support@earlybird.im and w'll process it as soon as w can."
   }
   // More questions...
 ]
