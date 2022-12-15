@@ -67,25 +67,32 @@ const DeleteModal: FC<IModalProps> = ({ visible, onClose }) => {
   )
 }
 
-export const DeleteProduct = () => {
+export const DangerZone = () => {
   const [visible, open, close] = useVisible()
   const { t } = useTranslation()
 
   return (
     <>
-      <div className="px-6 py-5 flex items-center justify-between">
-        <div>
-          <div className="block text-base text-red-500 font-bold">
-            {t('productSettings.deleteProduct.heading')}
+      <div className="mt-12 space-y-2">
+        <div className="text-xs text-slate-900 uppercase">Danger zone</div>
+
+        <div className="bg-slate-50 rounded-lg divide-y divide-gray-100">
+          <div className="px-6 py-5 flex items-center justify-between">
+            <div>
+              <div className="block text-base text-red-500 font-bold">
+                {t('productSettings.deleteProduct.heading')}
+              </div>
+              <p className="mt-1 max-w-2xl text-sm text-slate-500">
+                {t('productSettings.deleteProduct.description')}
+              </p>
+            </div>
+            <Button className="!py-1.5" type="danger" onClick={open}>
+              {t('productSettings.deleteProduct.button')}
+            </Button>
           </div>
-          <p className="mt-1 max-w-2xl text-sm text-slate-500">
-            {t('productSettings.deleteProduct.description')}
-          </p>
         </div>
-        <Button type="danger" className="!py-1.5" onClick={open}>
-          {t('productSettings.deleteProduct.button')}
-        </Button>
       </div>
+
       <DeleteModal visible={visible} onClose={close} />
     </>
   )

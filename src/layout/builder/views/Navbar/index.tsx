@@ -13,19 +13,17 @@ import {
 } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { FC, useCallback, useEffect, useMemo } from 'react'
 
 import { useProductId } from '~/layout'
 import { useBuilderContext } from '~/layout/builder/context'
 import { SiteSettingsService } from '~/service'
-import { useRequest } from '~/utils'
+import { useRequest, useUnsaveChanges } from '~/utils'
 
 import { InsertBlock } from './InsertBlock'
 
 export const Navbar: FC = () => {
   const { t } = useTranslation()
-  const router = useRouter()
   const productId = useProductId()
   const { state, dispatch } = useBuilderContext()
 
@@ -83,37 +81,8 @@ export const Navbar: FC = () => {
     })
   }
 
-  useEffect(() => {
-    const handleWindowClose = (e: any) => {
-      if (!state.isBlocksChanged) {
-        return
-      }
-
-      e.preventDefault()
-      return (e.returnValue = t('builder.leaveBrowserMessage'))
-    }
-
-    const handleBrowseAway = () => {
-      if (!state.isBlocksChanged) {
-        return
-      }
-
-      if (window.confirm(t('builder.leaveBrowserMessage'))) {
-        return
-      }
-
-      router.events.emit('routeChangeError')
-      throw 'route change aborted'
-    }
-
-    window.addEventListener('beforeunload', handleWindowClose)
-    router.events.on('routeChangeStart', handleBrowseAway)
-
-    return () => {
-      window.removeEventListener('beforeunload', handleWindowClose)
-      router.events.off('routeChangeStart', handleBrowseAway)
-    }
-  }, [state.isBlocksChanged])
+  // If the changes have not been saved, the user will be prompted.
+  useUnsaveChanges(state.isBlocksChanged, t('builder.leaveBrowserMessage'))
 
   useEffect(() => {
     if (error) {

@@ -17,6 +17,7 @@ interface ImagePickerButtonProps extends IComponentProps {
 }
 
 interface ImagePickerFieldProps extends Omit<IComponentProps, 'onChange'> {
+  pickerButtonClassName?: string
   namespace: string
   value?: string
   width?: number
@@ -54,6 +55,7 @@ export const ImagePickerButton: FC<ImagePickerButtonProps> = ({
 
 export const ImagePickerField: FC<ImagePickerFieldProps> = ({
   className,
+  pickerButtonClassName,
   width = 0,
   height = 0,
   namespace,
@@ -106,7 +108,7 @@ export const ImagePickerField: FC<ImagePickerFieldProps> = ({
           </div>
         ) : (
           <ImagePickerButton
-            className="text-sm"
+            className={clsx('text-sm', pickerButtonClassName)}
             tip1={tip1!}
             tip2={tip2!}
             disabled={disabled}

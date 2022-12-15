@@ -189,6 +189,32 @@ button.switch-checked {
   }
 }
 
+.expandable {
+  .input,
+  .textarea,
+  .select {
+    @apply max-w-[32rem];
+  }
+
+  .form-item-label {
+    @apply font-medium;
+  }
+
+  &.expandable-advanced {
+    .form-item-label {
+      @apply text-base font-bold;
+    }
+  }
+
+  .input,
+  .textarea {
+    @apply bg-white;
+  }
+
+  .form-item:nth-last-of-type(1) {
+    @apply mb-0;
+  }
+}
 
 // =================================================================================
 // Home
