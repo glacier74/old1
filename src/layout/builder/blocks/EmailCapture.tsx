@@ -1,10 +1,9 @@
-import { Form, Input, Switch, notification } from '@heyforms/ui'
+import { Form, Input, notification } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { FC } from 'react'
 
 import { Heading } from '~/layout/builder/blocks/Heading'
 import { Text } from '~/layout/builder/blocks/Text'
-import { useBuilderContext } from '~/layout/builder/context'
 import { StripeService } from '~/service'
 
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
@@ -30,26 +29,27 @@ export const EmailCapturePreview: FC<EmailCaptureProps & { product: Product }> =
   return (
     <BlockPreview block={block}>
       <div className="block-emailcapture-container">
-        <h3
-          className="rich-text !text-4xl md:!text-5xl text-slate-900 font-bold text-center"
-          placeholder=" "
-        >
-          {block.heading.html}
-        </h3>
+        <div className="block-emailcapture-heading">
+          <h3 className="rich-text" placeholder=" ">
+            {block.heading.html}
+          </h3>
+        </div>
 
-        <div
-          className="rich-text max-w-3xl mx-auto !text-xl text-slate-500 text-center"
-          placeholder=" "
-          dangerouslySetInnerHTML={{
-            __html: block.description.html
-          }}
-        />
+        <div className="block-emailcapture-description">
+          <div
+            className="rich-text"
+            placeholder=" "
+            dangerouslySetInnerHTML={{
+              __html: block.description.html
+            }}
+          />
+        </div>
 
         <Form.Custom
           inline
           submitText={block.button.html}
           submitOptions={{
-            className: 'w-full ml-1 md:w-auto md:ml-0',
+            className: 'w-full ml-1 !text-base md:w-auto md:ml-0',
             type: 'success'
           }}
           request={handleFinish}
@@ -71,30 +71,6 @@ export const EmailCapturePreview: FC<EmailCaptureProps & { product: Product }> =
         </Form.Custom>
       </div>
     </BlockPreview>
-  )
-}
-
-export const EmailCaptureSettings: FC<Pick<EmailCaptureProps, 'block'>> = ({ block }) => {
-  const { t } = useTranslation()
-  const { dispatch } = useBuilderContext()
-
-  function handleChange(isNameRequired: any) {
-    dispatch({
-      type: 'updateBlock',
-      payload: {
-        blockId: block.id,
-        updates: {
-          isNameRequired
-        }
-      }
-    })
-  }
-
-  return (
-    <div className="flex items-center justify-between px-4 py-2 text-slate-700">
-      <span>{t('builder.emailCapture.nameRequired')}</span>
-      <Switch value={block.isNameRequired} onChange={handleChange} />
-    </div>
   )
 }
 

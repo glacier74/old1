@@ -1,60 +1,56 @@
+import { Form } from '@heyforms/ui'
+import { deepEqual } from 'fast-equals'
 import { useTranslation } from 'next-i18next'
+import { FC, useMemo, useState } from 'react'
 
-import { Domain } from '~/layout/product/ProductSettings/Domain'
-import { Language } from '~/layout/product/ProductSettings/Language'
-import { MetaData } from '~/layout/product/ProductSettings/MetaData'
+import { useProduct } from '~/layout'
+import { useUnsaveChanges } from '~/utils'
 
-import { DeleteProduct } from './DeleteProduct'
-import { SitePrivate } from './SitePrivate'
+import { Advanced } from './Advanced'
+import { DangerZone } from './DangerZone'
+import { General } from './General'
+import { Meta } from './Meta'
 
-export const ProductSettings = () => {
+interface ProductSettingsProps {
+  form: any
+  onFinish: (values: any) => void
+}
+
+export const ProductSettings: FC<ProductSettingsProps> = ({ form, onFinish }) => {
   const { t } = useTranslation()
+  const product = useProduct()
+  const [values, setValues] = useState<any>(product)
+
+  const isValuesChanged = useMemo(() => {
+    return !deepEqual(values, product)
+  }, [values, product])
+
+  function handleValuesChange(_: any, updates: any) {
+    setValues((values: any) => ({
+      ...values,
+      ...updates
+    }))
+  }
+
+  // If the changes have not been saved, the user will be prompted.
+  useUnsaveChanges(isValuesChanged, t('builder.leaveBrowserMessage'))
 
   return (
-    <div className="mt-6 space-y-12">
-      {/* General */}
-      <div className="space-y-3">
-        <div className="text-lg font-extrabold text-slate-900">
-          {t('productSettings.general.heading')}
+    <div className="mt-12">
+      <Form
+        form={form}
+        initialValues={product}
+        onFinish={onFinish}
+        onValuesChange={handleValuesChange}
+      >
+        <div className="space-y-12">
+          <General values={values} />
+          <Meta values={values} />
+          <Advanced values={values} />
         </div>
+      </Form>
 
-        <div className="space-y-4 divide-y">
-          <Language />
-          <Domain />
-          {/*<RemoveBranding />*/}
-        </div>
-      </div>
-
-      {/* Meta data */}
-      <div className="space-y-3">
-        <div>
-          <div className="text-lg font-extrabold text-slate-900">
-            {t('productSettings.metaData.heading')}
-          </div>
-          <p className="mt-1 text-sm text-slate-500">{t('productSettings.metaData.description')}</p>
-        </div>
-
-        <MetaData />
-      </div>
-
-      {/* Advanced settings */}
-      <div className="space-y-3">
-        <div className="text-lg font-extrabold text-slate-900">
-          {t('productSettings.advanced.heading')}
-        </div>
-
-        <div className="space-y-4 divide-y">
-          <SitePrivate />
-        </div>
-      </div>
-
-      {/* Danger zone */}
-      <div className="space-y-3">
-        <div className="text-lg font-extrabold text-slate-900">
-          {t('productSettings.dangerZone.heading')}
-        </div>
-        <DeleteProduct />
-      </div>
+      <DangerZone />
     </div>
   )
 }

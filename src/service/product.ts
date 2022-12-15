@@ -7,6 +7,13 @@ export class ProductService {
     return axios.get('/products', config)
   }
 
+  static async checkDomain(domain: string, productId?: number) {
+    return axios.post('/products/domains', {
+      domain,
+      productId
+    })
+  }
+
   static async create(product: Partial<Product> & { timezone: string }): Promise<number> {
     const result = await axios.post('/products', product)
     return (result as unknown as Product).id

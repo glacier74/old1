@@ -81,3 +81,39 @@ export function useWindow(source: string, listener: (win: Window, payload: any) 
 
   return openWindow
 }
+
+export function useUnsaveChanges(isChanged?: boolean, message?: string) {
+  const router = useRouter()
+
+  useEffect(() => {
+    const handleWindowClose = (e: any) => {
+      if (!isChanged) {
+        return
+      }
+
+      e.preventDefault()
+      return (e.returnValue = message)
+    }
+
+    const handleBrowseAway = () => {
+      if (!isChanged) {
+        return
+      }
+
+      if (window.confirm(message)) {
+        return
+      }
+
+      router.events.emit('routeChangeError')
+      throw 'Nextjs route change aborted'
+    }
+
+    window.addEventListener('beforeunload', handleWindowClose)
+    router.events.on('routeChangeStart', handleBrowseAway)
+
+    return () => {
+      window.removeEventListener('beforeunload', handleWindowClose)
+      router.events.off('routeChangeStart', handleBrowseAway)
+    }
+  }, [isChanged])
+}

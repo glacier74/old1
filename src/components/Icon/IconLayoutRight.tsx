@@ -1,6 +1,6 @@
 import { SVGProps } from 'react'
 
-export const IconLayoutLeft = (props: SVGProps<SVGSVGElement>) => (
+export const IconLayoutRight = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width="24"
     height="24"
@@ -10,26 +10,26 @@ export const IconLayoutLeft = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="M4 7H11"
+      d="M13 7H20"
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
-      d="M4 12H10"
+      d="M14 12H20"
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
-      d="M4 17H8"
+      d="M16 17H20"
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <rect x="14" y="6" width="6" height="12" rx="2" fill="currentColor" />
+    <rect x="4" y="6" width="6" height="12" rx="2" fill="currentColor" />
   </svg>
 )

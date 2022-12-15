@@ -14,8 +14,10 @@ export interface IState {
   focusableBlockMap: AnyMap<string[]>
   rootBlocks: string[]
 
-  builderMode: 'desktop' | 'mobile'
+  previewMode: 'desktop' | 'mobile'
   isBlocksChanged?: boolean
+  isBlocksSidebarOpen: boolean
+  isSettingsSidebarOpen: boolean
 
   // Selected block
   focusBlockId?: string
@@ -38,8 +40,8 @@ export interface IState {
   // Social media
   isSocialMediaOpen: boolean
 
-  // Navigation
-  isNavigationOpen: boolean
+  // Header
+  isHeaderOpen: boolean
 }
 
 export interface UpdateAction {
@@ -187,12 +189,14 @@ export const BuilderProvider: FC<IComponentProps> = ({ children }) => {
       flattedBlocks: [],
       focusableBlockMap: {},
       rootBlocks: [],
-      builderMode: 'desktop',
+      previewMode: 'desktop',
       isBlocksChanged: false,
+      isBlocksSidebarOpen: false,
+      isSettingsSidebarOpen: false,
       isBubbleMenuOpen: false,
       isCommandMenuOpen: false,
       isSocialMediaOpen: false,
-      isNavigationOpen: false
+      isHeaderOpen: false
     }),
     []
   )

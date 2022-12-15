@@ -99,7 +99,7 @@
     "title": "{{name}}",
     "member_one": "{{count}} member",
     "member_other": "{{count}} members",
-    "edit": "Edit",
+    "editSite": "Edit site",
     "viewSite": "View site"
   },
   "createProduct": {
@@ -305,17 +305,18 @@
     "basic": "Basic",
     "addNewBlock": "Add a new block",
     "searchBlockType": "Find a block type",
+    "settings": "Settings",
     "layout": "Layout",
     "text": {
-      "name": "Text",
+      "name": "Rich text",
       "placeholder": "Text content"
     },
     "heading": {
       "name": "Heading",
       "placeholder": "Heading content"
     },
-    "navigation": {
-      "name": "Navigation bar",
+    "header": {
+      "name": "Header",
       "settings": "Links"
     },
     "heroSection": {

@@ -1,0 +1,87 @@
+import { Form, Input, Select, Tooltip, notification } from '@heyforms/ui'
+import { useTranslation } from 'next-i18next'
+import { FC, useMemo } from 'react'
+import CopyToClipboard from 'react-copy-to-clipboard'
+
+import { AvatarPickerField, Expandable } from '~/components'
+import { LANGUAGE_OPTIONS } from '~/constants'
+import { useProductId } from '~/layout'
+import { ProductService } from '~/service'
+
+export const General: FC<{ values: any }> = ({ values }) => {
+  const { t } = useTranslation()
+  const productId = useProductId()
+
+  const url = useMemo(
+    () => `${values.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`,
+    [values.domain]
+  )
+
+  function handleCopy() {
+    notification.success({
+      title: t('productSettings.domain.copiedTip')
+    })
+  }
+
+  return (
+    <div className="space-y-2">
+      <div className="text-xs text-slate-900 uppercase">{t('productSettings.general.heading')}</div>
+
+      <div className="bg-slate-50 rounded-lg divide-y divide-gray-100">
+        <Expandable
+          title="Product"
+          description="The details used to identify your product around the web"
+        >
+          <Form.Item name="logo">
+            <AvatarPickerField namespace="avatar" enableUnsplash={false} />
+          </Form.Item>
+          <Form.Item name="name" label="Name">
+            <Input />
+          </Form.Item>
+          <Form.Item name="tagline" label="Tagline">
+            <Input />
+          </Form.Item>
+        </Expandable>
+
+        <Expandable
+          title="Public site URL"
+          description={
+            <div>
+              {t('productSettings.domain.description')}{' '}
+              <Tooltip ariaLabel={t('productSettings.domain.copyTip')}>
+                <CopyToClipboard text={`https://${url}`} onCopy={handleCopy}>
+                  <span className="underline cursor-pointer">{url}</span>
+                </CopyToClipboard>
+              </Tooltip>
+            </div>
+          }
+        >
+          <Form.Item
+            name="domain"
+            validateTrigger={['onBlur', 'onChange']}
+            rules={[
+              {
+                required: true,
+                message: t('createProduct.invalidDomain'),
+                async validator(rule, value) {
+                  await ProductService.checkDomain(value, productId)
+                }
+              }
+            ]}
+          >
+            <Input />
+          </Form.Item>
+        </Expandable>
+
+        <Expandable
+          title="Language"
+          description="Choose in what language the visitors will see your site. This applies to the text which is not customized by you e.g. default buttons, errors, etc."
+        >
+          <Form.Item name="language">
+            <Select options={LANGUAGE_OPTIONS} />
+          </Form.Item>
+        </Expandable>
+      </div>
+    </div>
+  )
+}

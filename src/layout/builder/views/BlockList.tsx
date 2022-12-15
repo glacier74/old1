@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { FC, useEffect } from 'react'
 
 import { useOpenTour } from '~/components'
@@ -5,7 +6,7 @@ import { useStore } from '~/store'
 
 import { BlockWrapper } from '../blocks'
 import { useBuilderContext } from '../context'
-import { BubbleMenu, NavigationModal, SocialMediaModal, StripeConnectModal } from '../views'
+import { BubbleMenu, StripeConnectModal } from '../views'
 
 export const BlockList: FC = () => {
   const { siteSettings } = useStore()
@@ -23,8 +24,12 @@ export const BlockList: FC = () => {
 
   return (
     <>
-      <div className="builder-blocks">
-        <div className="builder-blocks-container">
+      <div
+        className={clsx('builder-main', {
+          'builder-main-mobile': state.previewMode === 'mobile'
+        })}
+      >
+        <div className="builder-block-list scrollbar">
           {state.blocks.map(block => (
             <BlockWrapper key={block.id} block={block} />
           ))}
@@ -33,8 +38,6 @@ export const BlockList: FC = () => {
 
       <BubbleMenu />
       <StripeConnectModal />
-      <SocialMediaModal />
-      <NavigationModal />
     </>
   )
 }

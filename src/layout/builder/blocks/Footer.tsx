@@ -1,6 +1,4 @@
-import { Button, Menus } from '@heyforms/ui'
 import { isEmpty } from '@nily/utils'
-import { useTranslation } from 'next-i18next'
 import { FC, useMemo } from 'react'
 
 import { SocialMediaIcon } from '~/components'
@@ -12,22 +10,6 @@ import { BlockComponent, BlockPreview, BlockProps } from './Block'
 
 export interface FooterProps extends BlockProps {
   block: FooterBlock
-}
-
-export const FooterSettings: FC = () => {
-  const { t } = useTranslation()
-  const { dispatch } = useBuilderContext()
-
-  function handleClick() {
-    dispatch({
-      type: 'update',
-      payload: {
-        isSocialMediaOpen: true
-      }
-    })
-  }
-
-  return <Menus.Item label={t('builder.footer.settings')} onClick={handleClick} />
 }
 
 export const FooterPreview: FC<FooterProps & { product: Product }> = ({ block, product }) => {
@@ -77,9 +59,7 @@ export const Footer: FC<FooterProps> = ({ block }) => {
       <div className="footer">
         <div className="flex items-center justify-center space-x-3">
           {isEmpty(block.socialMedias) ? (
-            <Button.Link type="success" onClick={handleClick}>
-              Click to add social medias
-            </Button.Link>
+            <div className="font-normal text-sm text-slate-400">Set social medias in settings</div>
           ) : (
             block.socialMedias.map(row => (
               <a key={row.id} href={row.value} target={row.openInNewTab ? '_blank' : undefined}>

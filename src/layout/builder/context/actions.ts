@@ -1,4 +1,4 @@
-import { deepClone, isEmpty, isFalse, isValidArray } from '@nily/utils'
+import { deepClone, isFalse } from '@nily/utils'
 import { deepEqual } from 'fast-equals'
 
 import {
@@ -21,6 +21,13 @@ import {
   UpdateStripeConnectAction
 } from './index'
 
+function setSelectBlock(state: IState, selectBlockId: string) {
+  state.selectBlockId = selectBlockId
+  state.isSettingsSidebarOpen = true
+
+  return state
+}
+
 export function update(state: IState, updates: UpdateAction['payload']): IState {
   return { ...state, ...updates }
 }
@@ -32,13 +39,6 @@ export function initBlocks(state: IState, blocks: Block[]): IState {
   state.lastSyncedBlocks = deepClone(blocks)
   state = setBlocks(state, blocks)
   state.isBlocksChanged = false
-
-  // Select first block
-  if (isEmpty(state.selectBlockId) && isValidArray(blocks)) {
-    state = selectBlock(state, {
-      blockId: blocks[0].id
-    })
-  }
 
   return state
 }
@@ -261,8 +261,7 @@ export function selectBlock(state: IState, payload: SelectBlockAction['payload']
     state.focusBlockId = focusableBlockMap[blockId][0]
   }
 
-  state.selectBlockId = blockId
-  return state
+  return setSelectBlock(state, blockId)
 }
 
 export function focusBlock(state: IState, payload: FocusBlockAction['payload']): IState {
@@ -285,8 +284,7 @@ export function focusBlock(state: IState, payload: FocusBlockAction['payload']):
       state.focusBlockId = focusableBlockMap[selectBlockId][0]
     }
 
-    state.selectBlockId = selectBlockId
-    return state
+    return setSelectBlock(state, selectBlockId)
   }
 
   const fbIds = getFocusableBlocks(rootBlocks, focusableBlockMap)
@@ -307,10 +305,9 @@ export function focusBlock(state: IState, payload: FocusBlockAction['payload']):
 
   const fb = flattedBlocks.find(fb => fb.id === focusId)
 
-  state.selectBlockId = fb?.rootId || blockId
   state.focusBlockId = focusId
 
-  return state
+  return setSelectBlock(state, fb?.rootId || blockId)
 }
 
 export function updateStripeConnect(

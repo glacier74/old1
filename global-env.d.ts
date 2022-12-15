@@ -170,8 +170,8 @@ declare global {
     | 'heading'
     | 'image'
     | 'list'
-    | 'navigation'
-    | 'heroSection1'
+    | 'header'
+    | 'heroSection'
     | 'footer'
     | 'feature'
     | 'payment'
@@ -200,6 +200,15 @@ declare global {
     html: string
   }
 
+  interface ButtonBlockAction {
+    type: 'block' | 'link'
+    value?: string
+  }
+
+  interface ButtonBlock extends TextBlock {
+    action?: ButtonBlockAction
+  }
+
   interface HeadingBlock extends Omit<TextBlock, 'type'> {
     type: 'heading'
     level: number
@@ -221,11 +230,12 @@ declare global {
   }
 
   interface HeroSectionBlock extends Pick<Block, 'id' | 'type'> {
-    type: 'heroSection1'
+    type: 'heroSection'
     layout?: 'left' | 'center'
-    logo: Omit<ImageBlock, 'align'>
     name: HeadingBlock
     tagline: TextBlock
+    image: Omit<ImageBlock, 'align'>
+    buttons: ButtonBlock[]
   }
 
   interface FeatureBlock extends Pick<Block, 'id' | 'type'> {
@@ -262,7 +272,7 @@ declare global {
     isNameRequired?: boolean
     heading: HeadingBlock
     description: TextBlock
-    button: TextBlock
+    button: ButtonBlock
   }
 
   interface FlattedBlock extends Pick<Block, 'id'> {
@@ -279,8 +289,8 @@ declare global {
     isOpen?: boolean
   }
 
-  interface NavigationBlock extends Pick<Block, 'id' | 'type'> {
-    type: 'navigation'
+  interface HeaderBlock extends Pick<Block, 'id' | 'type'> {
+    type: 'header'
     links: NavigationLink[]
   }
 

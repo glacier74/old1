@@ -1,4 +1,4 @@
-import { Button, Dropdown, Input, Tooltip } from '@heyforms/ui'
+import { Dropdown, Input } from '@heyforms/ui'
 import type { InputValue } from '@heyforms/ui/types/input/Input'
 import { IComponentProps } from '@heyforms/ui/types/typing'
 import { isValid } from '@nily/utils'
@@ -9,21 +9,21 @@ import { startTransition, useCallback, useMemo, useState } from 'react'
 
 import { BLOCK_GROUP_OPTIONS, BLOCK_OPTIONS } from '~/constants'
 import { useProduct } from '~/layout'
+import { BlockIcon } from '~/layout/builder/views/LeftSidebar/BlockCard'
 
 import { useBuilderContext } from '../../context'
 import { blockByType } from '../../utils'
-import { BlockIcon } from './BlockCard'
 
-interface InsertBlockMenuProps extends Omit<IComponentProps, 'onClick'> {
+interface MenuProps extends Omit<IComponentProps, 'onClick'> {
   onClick: (type: BlockType) => void
 }
 
-interface InsertBlockItemProps {
+interface ItemProps {
   option: BlockOption
   onClick: (type: BlockType) => void
 }
 
-const InsertBlockItem: FC<InsertBlockItemProps> = ({ option, onClick }) => {
+const Item: FC<ItemProps> = ({ option, onClick }) => {
   const { t } = useTranslation()
 
   function handleClick() {
@@ -56,7 +56,7 @@ function filterGroups(keyword?: string): BlockGroupOptions[] {
   })).filter(group => group.options.length > 0)
 }
 
-const InsertBlockMenu: FC<InsertBlockMenuProps> = ({ onClick }) => {
+const Menu: FC<MenuProps> = ({ onClick }) => {
   const { t } = useTranslation()
   const [groups, setGroups] = useState<BlockGroupOptions[]>(filterGroups())
 
@@ -68,9 +68,9 @@ const InsertBlockMenu: FC<InsertBlockMenuProps> = ({ onClick }) => {
   }
 
   // useLayoutEffect(() => {
-  //   const container = document.querySelector('.insert-field-groups')
+  //   const container = document.querySelector('.insert-block-groups')
   //   const elements: HTMLDivElement[] = Array.from(
-  //     container!.querySelectorAll('.insert-field-group')
+  //     container!.querySelectorAll('.insert-block-group')
   //   )
   //   const columns = Array.from({ length: 4 }).fill(0) as number[]
   //   const gap = 36
@@ -89,20 +89,20 @@ const InsertBlockMenu: FC<InsertBlockMenuProps> = ({ onClick }) => {
   const handleKeywordChangeCallback = useCallback(handleKeywordChange, [])
 
   return (
-    <div className="flex flex-col ml-1 rounded-md shadow-lg bg-white">
+    <div className="flex flex-col rounded-md shadow-lg bg-white">
       <Input.Search
-        className="insert-field-search px-4 border-gray-200 outline-none focus:!outline-none focus:!shadow-none rounded-none border-t-0 border-r-0 border-l-0"
+        className="insert-block-search px-4 !border-x-0 !border-t-0 border-gray-100 outline-none shadow-none rounded-none"
         placeholder={t('builder.searchBlockType')}
         onChange={handleKeywordChangeCallback}
       />
-      <div className="w-[22rem] h-[32rem] pb-4 scrollbar">
+      <div className="w-[22rem] h-[30rem] pb-4 scrollbar">
         {groups.map(group => (
           <div key={group.label} className="pt-4">
             <div className="uppercase mb-0.5 pl-4 text-xs font-medium text-slate-500">
               {t(group.label)}
             </div>
             {BLOCK_OPTIONS.filter(option => group.types.includes(option.type)).map(option => (
-              <InsertBlockItem key={option.type} option={option} onClick={onClick} />
+              <Item key={option.type} option={option} onClick={onClick} />
             ))}
           </div>
         ))}
@@ -111,10 +111,8 @@ const InsertBlockMenu: FC<InsertBlockMenuProps> = ({ onClick }) => {
   )
 }
 
-export const InsertDropdown = () => {
+export const InsertBlock = () => {
   const { state, dispatch } = useBuilderContext()
-  const { t } = useTranslation()
-  const product = useProduct()
   const [visible, setVisible] = useState(false)
 
   const handleCreateField = useCallback(
@@ -123,33 +121,34 @@ export const InsertDropdown = () => {
       dispatch({
         type: 'addBlock',
         payload: {
-          block: blockByType(type, undefined, product),
+          block: blockByType(type),
           afterId: state.selectBlockId
         }
       })
     },
-    [state.selectBlockId, product]
+    [state.selectBlockId]
   )
 
   const dropdownTrigger = useMemo(
     () => (
-      <Tooltip ariaLabel={t('builder.addNewBlock')}>
-        <Button.Link className="builder-create-button w-6 h-6" leading={<IconPlus />} />
-      </Tooltip>
+      <>
+        <IconPlus className="w-5 h-5" />
+        <span className="text-[0.6875rem]">Add</span>
+      </>
     ),
     []
   )
   const dropdownOverlay = useMemo(
-    () => (visible ? <InsertBlockMenu onClick={handleCreateField} /> : <></>),
+    () => (visible ? <Menu onClick={handleCreateField} /> : <></>),
     [visible]
   )
 
   return (
     <Dropdown
-      className="insert-field-dropdown w-6 h-6 -mr-2 rounded-md text-slate-500 hover:bg-slate-50 cursor-pointer"
-      popupClassName="insert-field-popup"
+      className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100"
+      popupClassName="insert-block-popup"
       visible={visible}
-      placement="right-start"
+      placement="bottom-start"
       dismissOnClickInside={false}
       overlay={dropdownOverlay}
       onDropdownVisibleChange={setVisible}

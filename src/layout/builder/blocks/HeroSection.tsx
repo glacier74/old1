@@ -1,12 +1,9 @@
-import { Switch, Tooltip } from '@heyforms/ui'
-import { useTranslation } from 'next-i18next'
-import { FC, useMemo } from 'react'
+import { Button } from '@heyforms/ui'
+import { FC } from 'react'
 
-import { IconLayoutCenter, IconLayoutLeft } from '~/components'
 import { Heading } from '~/layout/builder/blocks/Heading'
 import { Image, ImagePreview } from '~/layout/builder/blocks/Image'
 import { Text } from '~/layout/builder/blocks/Text'
-import { useBuilderContext } from '~/layout/builder/context'
 
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
 
@@ -14,41 +11,47 @@ export interface HeroSectionProps extends BlockProps {
   block: HeroSectionBlock
 }
 
-const IMAGE_WIDTH = 120
-const IMAGE_HEIGHT = 120
+const IMAGE_WIDTHS = {
+  left: 500,
+  center: 1_000
+}
 
 export const HeroSectionPreview: FC<HeroSectionProps> = ({ block }) => {
   const CustomTag = `h${block.name.level}` as any
 
   return (
     <BlockPreview className={`block-herosection-${block.layout}`} block={block}>
-      <div className="pt-10">
-        {block.logo && (
-          <div className="mb-8">
-            <a href="/">
-              <ImagePreview
-                block={{
-                  ...block.logo,
-                  width: IMAGE_WIDTH,
-                  height: IMAGE_HEIGHT
-                }}
-              />
-            </a>
-          </div>
-        )}
+      <div className="block-herosection-col">
+        <div className="block-herosection-name">
+          <CustomTag className="rich-text" placeholder=" ">
+            {block.name.html}
+          </CustomTag>
+        </div>
 
-        <CustomTag
-          className="rich-text !text-4xl md:!text-5xl text-slate-900 font-bold"
-          placeholder=" "
-        >
-          {block.name.html}
-        </CustomTag>
+        <div className="block-herosection-tagline">
+          <div
+            className="rich-text"
+            placeholder=" "
+            dangerouslySetInnerHTML={{
+              __html: block.tagline.html
+            }}
+          />
+        </div>
 
-        <div
-          className="rich-text block-herosection-tagline max-w-3xl !text-xl text-slate-500"
-          placeholder=" "
-          dangerouslySetInnerHTML={{
-            __html: block.tagline.html
+        <div className="block-herosection-action">
+          {block.buttons.map(button => (
+            <Button key={button.id} type="success" className="!text-base">
+              {button.html}
+            </Button>
+          ))}
+        </div>
+      </div>
+
+      <div className="block-herosection-image">
+        <ImagePreview
+          block={{
+            ...block.image,
+            width: IMAGE_WIDTHS[block.layout || 'center']
           }}
         />
       </div>
@@ -56,69 +59,10 @@ export const HeroSectionPreview: FC<HeroSectionProps> = ({ block }) => {
   )
 }
 
-export const HeroSectionSettings: FC<Pick<HeroSectionProps, 'block'>> = ({ block }) => {
-  const { t } = useTranslation()
-  const { dispatch } = useBuilderContext()
-
-  const options: any[] = useMemo(
-    () => [
-      {
-        value: 'left',
-        label: (
-          <Tooltip ariaLabel="Align left">
-            <IconLayoutLeft className="w-5 h-5" />
-          </Tooltip>
-        )
-      },
-      {
-        value: 'center',
-        label: (
-          <Tooltip ariaLabel="Align center">
-            <IconLayoutCenter className="w-5 h-5" />
-          </Tooltip>
-        )
-      }
-    ],
-    []
-  )
-
-  function handleChange(layout: any) {
-    dispatch({
-      type: 'updateBlock',
-      payload: {
-        blockId: block.id,
-        updates: {
-          layout
-        }
-      }
-    })
-  }
-
-  return (
-    <div className="flex items-center justify-between px-4 py-2 text-slate-700">
-      <span>{t('builder.layout')}</span>
-      <Switch.Group value={block.layout} options={options} onChange={handleChange} />
-    </div>
-  )
-}
-
 export const HeroSection: FC<HeroSectionProps> = ({ block }) => {
   return (
     <BlockComponent className={`block-herosection-${block.layout}`} block={block}>
-      <div className="pt-10">
-        {/* Logo */}
-        <Image
-          className="block-herosection-image"
-          namespace="avatar"
-          block={{
-            ...block.logo,
-            width: IMAGE_WIDTH,
-            height: IMAGE_HEIGHT
-          }}
-          uploadDesc1="builder.herosection.uploadTip1"
-          uploadDesc2="builder.herosection.uploadTip2"
-        />
-
+      <div className="block-herosection-col">
         {/* Name */}
         <Heading
           className="block-herosection-name"
@@ -135,6 +79,30 @@ export const HeroSection: FC<HeroSectionProps> = ({ block }) => {
             enableFormats={['basic']}
           />
         </div>
+
+        <div className="block-herosection-action">
+          {block.buttons.map(button => (
+            <Text
+              className="block-herosection-button"
+              block={button}
+              placeholder="builder.herosection.button"
+              enableFormats={null}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Image */}
+      <div className="block-herosection-image">
+        <Image
+          namespace="heroSection"
+          block={{
+            ...block.image,
+            width: IMAGE_WIDTHS[block.layout || 'center']
+          }}
+          uploadDesc1="builder.feature.uploadTip1"
+          uploadDesc2="builder.feature.uploadTip2"
+        />
       </div>
     </BlockComponent>
   )

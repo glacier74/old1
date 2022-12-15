@@ -1,6 +1,6 @@
 import { SVGProps } from 'react'
 
-export const IconHeroSection = (props: SVGProps<SVGSVGElement>) => (
+export const IconFeature = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width="24"
     height="24"
@@ -10,12 +10,12 @@ export const IconHeroSection = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="M18 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2z"
+      d="M19.5 4h-15C3.12 4 2 4.895 2 6v12c0 1.105 1.12 2 2.5 2h15c1.38 0 2.5-.895 2.5-2V6c0-1.105-1.12-2-2.5-2zM14 10h4M14 14h4"
       stroke="currentColor"
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <path fill="currentColor" d="M7 7H17V11H7z" />
+    <rect x={5} y={9} width={6} height={6} rx={2} fill="currentColor" />
   </svg>
 )
