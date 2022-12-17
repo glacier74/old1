@@ -90,30 +90,30 @@ export const PricingComparison: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section>
+    <section className="hidden lg:block">
       <div className="max-w-7xl mx-auto py-16 sm:py-48 sm:px-6 lg:px-8">
-        <h2 className="max-w-3xl mx-auto text-white font-extrabold text-5xl text-center">
+        <h2 className="max-w-3xl mx-auto text-slate-900 font-extrabold text-4xl text-center">
           Compare Plans
         </h2>
-        <p className="mt-4 max-w-3xl mx-auto text-center text-lg text-slate-400">
+        <p className="mt-4 max-w-3xl mx-auto text-center text-slate-500">
           Whether you're building a tiny project or managing multiple products, we have an
           affordable plan that meets your needs.
         </p>
 
         {/* lg+ only */}
-        <div className="mt-24 hidden lg:block">
+        <div className="mt-24">
           <table className="w-full h-px table-fixed">
             <caption className="sr-only">Pricing plan comparison</caption>
             <thead>
               <tr>
-                <th className="pb-4 px-6 text-sm font-medium text-white text-left" scope="col">
+                <th className="pb-4 px-6 text-sm font-medium text-slate-700 text-left" scope="col">
                   <span className="sr-only">Feature by</span>
                   <span>Plans</span>
                 </th>
                 {tiers.map(tier => (
                   <th
                     key={tier.name}
-                    className="w-1/4 pb-4 px-6 text-lg leading-6 font-medium text-white text-left"
+                    className="w-1/4 pb-4 px-6 text-lg leading-6 font-medium text-slate-700 text-left"
                     scope="col"
                   >
                     {tier.name}
@@ -121,10 +121,10 @@ export const PricingComparison: FC = () => {
                 ))}
               </tr>
             </thead>
-            <tbody className="border-t border-slate-700 divide-y divide-slate-700">
+            <tbody className="border-t border-slate-200 divide-y divide-slate-200">
               <tr>
                 <th
-                  className="py-8 px-6 text-sm font-medium text-white text-left align-top"
+                  className="py-8 px-6 text-sm font-medium text-slate-700 text-left align-top"
                   scope="row"
                 >
                   Pricing
@@ -133,15 +133,15 @@ export const PricingComparison: FC = () => {
                   <td key={tier.name} className="h-full py-8 px-6 align-top">
                     <div className="relative h-full table">
                       <p>
-                        <span className="text-4xl font-extrabold text-white">
+                        <span className="text-4xl font-extrabold text-slate-900">
                           ${tier.priceMonthly}
                         </span>{' '}
-                        <span className="text-base font-medium text-slate-400">/mo</span>
+                        <span className="text-base font-medium text-slate-500">/mo</span>
                       </p>
-                      <p className="mt-4 mb-16 text-sm text-slate-400">{tier.description}</p>
+                      <p className="mt-4 mb-16 text-sm text-slate-500">{tier.description}</p>
                       <a
                         href={tier.href}
-                        className="absolute bottom-0 flex-grow block w-full bg-green-500 border border-green-500 rounded-md 5 py-2 text-sm font-semibold text-white text-center hover:bg-green-600"
+                        className="absolute bottom-0 flex-grow block w-full bg-slate-200 border border-slate-200 rounded-md 5 py-2 text-sm font-semibold text-slate-900 text-center hover:bg-slate-300"
                       >
                         Get started with {tier.name}
                       </a>
@@ -153,7 +153,7 @@ export const PricingComparison: FC = () => {
                 <Fragment key={section.name}>
                   <tr>
                     <th
-                      className="bg-slate-700 py-3 pl-6 text-sm font-medium text-white text-left"
+                      className="bg-slate-200 py-3 pl-6 text-sm font-medium text-slate-700 text-left"
                       colSpan={4}
                       scope="colgroup"
                     >
@@ -163,7 +163,7 @@ export const PricingComparison: FC = () => {
                   {section.features.map((feature: any) => (
                     <tr key={feature.name}>
                       <th
-                        className="py-5 px-6 text-sm font-normal text-slate-400 text-left"
+                        className="py-5 px-6 text-sm font-normal text-slate-500 text-left"
                         scope="row"
                       >
                         {feature.name}
@@ -171,7 +171,7 @@ export const PricingComparison: FC = () => {
                       {tiers.map(tier => (
                         <td key={tier.name} className="py-5 px-6">
                           {typeof feature.tiers[tier.name] === 'string' ? (
-                            <span className="block text-sm text-slate-400">
+                            <span className="block text-sm text-slate-500">
                               {feature.tiers[tier.name]}
                             </span>
                           ) : (
@@ -196,7 +196,7 @@ export const PricingComparison: FC = () => {
               ))}
             </tbody>
             <tfoot>
-              <tr className="border-t border-slate-700">
+              <tr className="border-t border-slate-200">
                 <th className="sr-only" scope="row">
                   Choose your plan
                 </th>
@@ -204,7 +204,7 @@ export const PricingComparison: FC = () => {
                   <td key={tier.name} className="pt-5 px-6">
                     <a
                       href={tier.href}
-                      className="block w-full bg-green-500 border border-green-500 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-green-600"
+                      className="block w-full bg-slate-200 border border-slate-200 rounded-md py-2 text-sm font-semibold text-slate-900 text-center hover:bg-slate-300"
                     >
                       Get started with {tier.name}
                     </a>

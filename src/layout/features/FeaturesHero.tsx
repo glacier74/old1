@@ -7,10 +7,10 @@ export const FeaturesHero: FC = () => {
 
   return (
     <section>
-      <div className="relative text-white max-w-7xl mx-auto px-5 z-10 pt-48 md:pt-64 md:pb-32">
+      <div className="relative max-w-7xl mx-auto px-5 z-10 pt-48 md:pt-64 md:pb-32">
         <div className="text-center">
-          <h1 className="text-5xl md:text-7xl font-extrabold">Turn your idea into a reality</h1>
-          <div className="text-slate-400 text-xl md:text-2xl w-full md:max-w-3xl md:mx-auto mt-5 font-normal">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900">Turn your idea into a reality</h1>
+          <div className="text-slate-500 text-lg md:text-xl w-full md:max-w-3xl md:mx-auto mt-5 font-normal">
             Save time and resources by using EarlyBird to validate your idea before diving into
             product development.
           </div>
@@ -20,14 +20,14 @@ export const FeaturesHero: FC = () => {
           <div className="flex flex-col md:flex-row items-center place-content-center space-y-5 space-x-0 md:space-y-0 md:space-x-5">
             <Link
               href="/sign-up"
-              className="w-full md:w-auto px-4 py-2 md:px-6 md:py-3 text-normal text-center font-medium border border-green-500 bg-green-500 rounded-md"
+              className="w-full md:w-auto px-4 py-2 md:px-6 md:py-3 text-normal text-center font-medium border border-slate-900 bg-slate-900 rounded-md text-white"
               title={t('home.signUp')}
             >
-              Sign up for beta, it's FREE
+              Get started free
             </Link>
             <a
               href="https://help.earlybird.im/roadmap/"
-              className="w-full md:w-auto px-4 py-2 md:px-6 md:py-3 text-normal text-center font-medium border border-slate-100 rounded-md"
+              className="w-full md:w-auto px-4 py-2 md:px-6 md:py-3 text-normal text-center font-medium border border-slate-900 rounded-md"
             >
               View the roadmap
             </a>

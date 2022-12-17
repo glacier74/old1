@@ -59,16 +59,16 @@ export const PricingPlans: FC = () => {
     <section>
       <div className="max-w-7xl mx-auto">
         <div className="sm:flex sm:flex-col sm:align-center">
-          <div className="relative self-center bg-slate-800 rounded-lg p-0.5 flex">
+          <div className="relative self-center bg-slate-100 rounded-lg p-0.5 flex">
             <button
               type="button"
-              className="relative w-1/2 bg-green-500 border-green-500 rounded-md shadow-sm py-2 text-sm font-medium text-white whitespace-nowrap focus:outline-none sm:w-auto sm:px-8"
+              className="relative w-1/2 bg-slate-900 border-slate-900 rounded-md shadow-sm py-2 text-sm font-medium text-white whitespace-nowrap focus:outline-none sm:w-auto sm:px-8"
             >
               Monthly billing
             </button>
             <button
               type="button"
-              className="ml-0.5 relative w-1/2 border border-transparent rounded-md py-2 text-sm font-medium text-white whitespace-nowrap focus:outline-none sm:w-auto sm:px-8"
+              className="ml-0.5 relative w-1/2 border border-transparent rounded-md py-2 text-sm font-medium text-slate-900 whitespace-nowrap focus:outline-none sm:w-auto sm:px-8"
             >
               Yearly billing
             </button>
@@ -78,24 +78,24 @@ export const PricingPlans: FC = () => {
             {tiers.map(tier => (
               <div
                 key={tier.name}
-                className="border border-slate-700 rounded-lg shadow-sm divide-y divide-slate-800"
+                className="border border-slate-200 rounded-lg shadow-sm divide-y divide-slate-200"
               >
                 <div className="p-6">
-                  <h2 className="text-lg leading-6 font-medium text-white">{tier.name}</h2>
-                  <p className="mt-4 text-sm text-slate-400">{tier.description}</p>
+                  <h2 className="text-lg leading-6 font-medium text-slate-900">{tier.name}</h2>
+                  <p className="mt-4 text-sm text-slate-500">{tier.description}</p>
                   <p className="mt-8">
-                    <span className="text-4xl font-extrabold text-white">${tier.priceMonthly}</span>{' '}
-                    <span className="text-base font-medium text-slate-400">/mo</span>
+                    <span className="text-4xl font-extrabold text-slate-900">${tier.priceMonthly}</span>{' '}
+                    <span className="text-base font-medium text-slate-500">/mo</span>
                   </p>
                   <a
                     href={tier.href}
-                    className="mt-8 block w-full bg-green-500 border border-green-500 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-green-600"
+                    className="mt-8 block w-full bg-slate-200 border border-slate-100 rounded-md py-2 text-sm font-semibold text-slate-900 text-center hover:bg-slate-300"
                   >
                     Get started with {tier.name}
                   </a>
                 </div>
                 <div className="pt-6 pb-8 px-6">
-                  <h3 className="text-xs font-medium text-white tracking-wide uppercase">
+                  <h3 className="text-xs font-medium text-slate-700 tracking-wide uppercase">
                     What's included
                   </h3>
                   <ul role="list" className="mt-6 space-y-4">
@@ -105,7 +105,7 @@ export const PricingPlans: FC = () => {
                           className="flex-shrink-0 h-5 w-5 text-green-400"
                           aria-hidden="true"
                         />
-                        <span className="text-sm text-slate-400">{feature}</span>
+                        <span className="text-sm text-slate-700">{feature}</span>
                       </li>
                     ))}
                   </ul>
