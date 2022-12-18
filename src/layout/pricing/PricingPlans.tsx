@@ -11,7 +11,7 @@ const tiers = [
     priceAnually: 0,
     description: 'For new makers who want to fine-tune and test an idea.',
     includedFeatures: [
-      '1 product included',
+      '1 landing page included',
       '1,000 visits/mo',
       'Access to all UI blocks',
       '5% payment commission',
@@ -26,7 +26,7 @@ const tiers = [
     description: 'For creators with multiple ideas who want to efficiently test and refine them.',
     includedFeatures: [
       'All Free features',
-      '5 products included',
+      '5 landing pages included',
       '50,000 visits/mo',
       '1,000 engagements included',
       '1% payment commission',
@@ -42,7 +42,7 @@ const tiers = [
     description: 'For productive shippers who want to work more efficiently.',
     includedFeatures: [
       'All Standard features',
-      '20 products included',
+      '20 landing pages included',
       '200,000 visits/mo',
       '5,000 engagements included',
       'No payment commission',
@@ -84,7 +84,9 @@ export const PricingPlans: FC = () => {
                   <h2 className="text-lg leading-6 font-medium text-slate-900">{tier.name}</h2>
                   <p className="mt-4 text-sm text-slate-500">{tier.description}</p>
                   <p className="mt-8">
-                    <span className="text-4xl font-extrabold text-slate-900">${tier.priceMonthly}</span>{' '}
+                    <span className="text-4xl font-extrabold text-slate-900">
+                      ${tier.priceMonthly}
+                    </span>{' '}
                     <span className="text-base font-medium text-slate-500">/mo</span>
                   </p>
                   <a
