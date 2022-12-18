@@ -26,7 +26,7 @@ export const FeaturesValidate: FC = () => {
 
         <div className="mt-8 max-w-5xl mx-auto px-4 md:px-0">
           <div className="md:grid md:grid-cols-3 md:gap-4">
-            <div className="mb-2 bg-slate-50 py-8 px-6 rounded rounded-md">
+            <div className="mb-2 bg-slate-50 py-8 px-6 rounded rounded-md shadow">
               <IconReportAnalytics
                 size={64}
                 strokeWidth={2}
@@ -46,7 +46,8 @@ export const FeaturesValidate: FC = () => {
               />
               <h3 className="text-slate-900 font-bold text-lg">Understand interests</h3>
               <p className="mt-2 text-slate-500">
-                Build a list of interested individuals to keep them engaged and informed about your product development and offer.
+                Build a list of interested individuals to keep them engaged and informed about your
+                product development and offer.
               </p>
             </div>
             <div className="mb-2 bg-slate-50 py-8 px-6 rounded rounded-md shadow">

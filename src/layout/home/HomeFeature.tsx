@@ -10,11 +10,9 @@ export const HomeFeature: FC = () => (
   <>
     <section>
       <div className="max-w-3xl mx-auto px-5">
-        <div className="pt-32 md:pt-48 pb-10 text-slate-700">
-          <div className="text-2xl md:text-4xl font-extrabold text-slate-900">
-            Build
-          </div>
-          <div className="mt-5 mb-7 w-full text-xl md:text-2xl leading-tight font-medium">
+        <div className="pt-32 md:pt-48 pb-10">
+          <div className="text-2xl md:text-4xl font-extrabold text-slate-900">Build</div>
+          <div className="mt-5 mb-7 w-full text-xl md:text-2xl leading-tight text-slate-500">
             <span className="text-green-500">
               Create your own minimum-viable-product landing page.
             </span>{' '}
@@ -28,7 +26,7 @@ export const HomeFeature: FC = () => (
           />
           <div className="mt-16 md:mt-24 flex flex-col md:flex-row md:items-center">
             <div className="flex-1">
-              <h2 className="text-lg md:text-xl mb-7 text-slate-700 pr-8">
+              <h2 className="text-base md:text-lg mb-7 text-slate-500 pr-8">
                 Add a component type from the dashboard, spice it up, and stack it like Legos. Defy
                 the normal, and go wild with your creativity.
               </h2>
@@ -44,10 +42,8 @@ export const HomeFeature: FC = () => (
     <section>
       <div className="max-w-3xl mx-auto px-5">
         <div className="pt-16 md:pt-28 pb-10 text-slate-900">
-          <div className="text-2xl md:text-4xl font-extrabold">
-            Pitch
-          </div>
-          <div className="mt-5 mb-7 w-full text-xl md:text-2xl leading-tight font-medium text-slate-700">
+          <div className="text-2xl md:text-4xl font-extrabold">Pitch</div>
+          <div className="mt-5 mb-7 w-full text-xl md:text-2xl leading-tight text-slate-500">
             <span className="text-amber-500">
               Channel your idea into a convincing pitch deck for the masses.
             </span>{' '}
@@ -66,10 +62,8 @@ export const HomeFeature: FC = () => (
     <section>
       <div className="max-w-3xl mx-auto px-5">
         <div className="pt-16 md:pt-28 pb-10 text-slate-900">
-          <div className="text-2xl md:text-4xl font-extrabold ">
-            Validate
-          </div>
-          <div className="mt-5 mb-7 w-full text-xl md:text-2xl leading-tight font-medium text-slate-700">
+          <div className="text-2xl md:text-4xl font-extrabold ">Validate</div>
+          <div className="mt-5 mb-7 w-full text-xl md:text-2xl leading-tight text-slate-500">
             <span className="text-blue-500">
               Start engaging with potential buyers and communities.
             </span>{' '}
