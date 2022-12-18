@@ -5,13 +5,13 @@ import { FC } from 'react'
 
 const tiers = [
   {
-    name: 'Explorer',
+    name: 'Starter',
     href: '#',
     priceMonthly: 0,
     description: 'For new makers who want to fine-tune and test an idea.'
   },
   {
-    name: 'Starter',
+    name: 'Superior',
     href: '#',
     priceMonthly: 8,
     priceAnnually: 6,
@@ -30,58 +30,58 @@ const sections = [
   {
     name: 'Build',
     features: [
-      { name: 'Product quota', tiers: { Explorer: '1', Starter: '5', Shipper: '20' } },
+      { name: 'Landing page(s)', tiers: { Starter: '1', Superior: '5', Shipper: '20' } },
       {
         name: 'Monthly visits',
-        tiers: { Explorer: '1,000', Starter: '50,000', Shipper: '200,000' }
+        tiers: { Starter: '1,000', Superior: '50,000', Shipper: '200,000' }
       },
-      { name: 'Access to all UI blocks', tiers: { Explorer: true, Starter: true, Shipper: true } },
-      { name: 'Unlimited blocks', tiers: { Explorer: true, Starter: true, Shipper: true } },
-      { name: 'Text formatting', tiers: { Explorer: true, Starter: true, Shipper: true } },
-      { name: 'Responsive layout', tiers: { Explorer: true, Starter: true, Shipper: true } },
-      { name: 'Full SEO control', tiers: { Explorer: false, Starter: true, Shipper: true } },
-      { name: 'Private mode', tiers: { Explorer: false, Starter: true, Shipper: true } }
+      { name: 'Access to all UI blocks', tiers: { Starter: true, Superior: true, Shipper: true } },
+      { name: 'Unlimited blocks', tiers: { Starter: true, Superior: true, Shipper: true } },
+      { name: 'Text formatting', tiers: { Starter: true, Superior: true, Shipper: true } },
+      { name: 'Responsive layout', tiers: { Starter: true, Superior: true, Shipper: true } },
+      { name: 'Full SEO control', tiers: { Starter: false, Superior: true, Shipper: true } },
+      { name: 'Private mode', tiers: { Starter: false, Superior: true, Shipper: true } }
     ]
   },
   {
     name: 'Pitch',
     features: [
-      { name: 'Features walkthrough', tiers: { Explorer: true, Starter: true, Shipper: true } },
-      { name: 'Image Carousel', tiers: { Explorer: true, Starter: true, Shipper: true } },
-      { name: 'Social proof', tiers: { Explorer: true, Starter: true, Shipper: true } },
+      { name: 'Features walkthrough', tiers: { Starter: true, Superior: true, Shipper: true } },
+      { name: 'Image Carousel', tiers: { Starter: true, Superior: true, Shipper: true } },
+      { name: 'Social proof', tiers: { Starter: true, Superior: true, Shipper: true } },
       {
         name: 'Remove EarlyBird branding',
-        tiers: { Explorer: false, Starter: true, Shipper: true }
+        tiers: { Starter: false, Superior: true, Shipper: true }
       },
-      { name: 'Custom domain', tiers: { Explorer: false, Starter: true, Shipper: true } },
-      { name: 'Embed Custom CSS', tiers: { Explorer: false, Starter: false, Shipper: true } }
+      { name: 'Custom domain', tiers: { Starter: false, Superior: true, Shipper: true } },
+      { name: 'Embed Custom CSS', tiers: { Starter: false, Superior: false, Shipper: true } }
     ]
   },
   {
     name: 'Validate',
     features: [
-      { name: 'Conversion action', tiers: { Explorer: '50', Starter: '1,000', Shipper: '5,000' } },
+      { name: 'Conversion action', tiers: { Starter: '50', Superior: '1,000', Shipper: '5,000' } },
       {
         name: 'Accept payments',
         tiers: {
-          Explorer: '5% commission + Stripe fee',
-          Starter: '1% commission + Stripe fee',
-          Shipper: 'No commission'
+          Starter: '5% commission + Stripe fee',
+          Superior: '1% commission + Stripe fee',
+          Shipper: 'Stripe fee only'
         }
       },
-      { name: 'Real-time analytics', tiers: { Explorer: true, Starter: true, Shipper: true } },
-      { name: 'Understand interests', tiers: { Explorer: true, Starter: true, Shipper: true } },
-      { name: 'Collect feedback', tiers: { Explorer: true, Starter: true, Shipper: true } },
-      { name: 'Quick polls', tiers: { Explorer: true, Starter: true, Shipper: true } }
+      { name: 'Real-time analytics', tiers: { Starter: true, Superior: true, Shipper: true } },
+      { name: 'Understand interests', tiers: { Starter: true, Superior: true, Shipper: true } },
+      { name: 'Collect feedback', tiers: { Starter: true, Superior: true, Shipper: true } },
+      { name: 'Quick polls', tiers: { Starter: true, Superior: true, Shipper: true } }
     ]
   },
   {
     name: 'Other',
     features: [
-      { name: 'Web hosting', tiers: { Explorer: true, Starter: true, Shipper: true } },
-      { name: 'Automatic SSL', tiers: { Explorer: true, Starter: true, Shipper: true } },
-      { name: 'Priority support', tiers: { Explorer: false, Starter: true, Shipper: true } },
-      { name: 'Team collaboration', tiers: { Explorer: false, Starter: false, Shipper: true } }
+      { name: 'Web hosting', tiers: { Starter: true, Superior: true, Shipper: true } },
+      { name: 'Automatic SSL', tiers: { Starter: true, Superior: true, Shipper: true } },
+      { name: 'Priority support', tiers: { Starter: false, Superior: true, Shipper: true } },
+      { name: 'Team collaboration', tiers: { Starter: false, Superior: false, Shipper: true } }
     ]
   }
 ]
@@ -143,7 +143,7 @@ export const PricingComparison: FC = () => {
                         href={tier.href}
                         className="absolute bottom-0 flex-grow block w-full bg-slate-200 border border-slate-200 rounded-md 5 py-2 text-sm font-semibold text-slate-900 text-center hover:bg-slate-300"
                       >
-                        Get started with {tier.name}
+                        Join as a {tier.name}
                       </a>
                     </div>
                   </td>
@@ -206,7 +206,7 @@ export const PricingComparison: FC = () => {
                       href={tier.href}
                       className="block w-full bg-slate-200 border border-slate-200 rounded-md py-2 text-sm font-semibold text-slate-900 text-center hover:bg-slate-300"
                     >
-                      Get started with {tier.name}
+                      Join as a {tier.name}
                     </a>
                   </td>
                 ))}

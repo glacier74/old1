@@ -10,8 +10,8 @@ export const HomeFooter: FC = () => {
   return (
     <footer className="p-6 bg-slate-900">
       <div className="max-w-7xl mx-auto px-5 flex flex-col md:flex-row md:items-center md:justify-between">
-        <div className="flex flex-col md:flex-row items-center text-sm text-slate-400 md:space-x-5">
-          <div className="pr-4 border-r border-slate-500">
+        <div className="flex flex-col md:flex-row items-center text-sm text-slate-400 md:space-x-4">
+          <div className="md:pr-4 text-center md:text-left md:border-r border-slate-500">
             Copyright © {new Date().getFullYear()} EarlyBird. Founded by{' '}
             <a
               href="https://twitter.com/LuoBaishun"

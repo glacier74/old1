@@ -14,9 +14,9 @@ export const HomeFeature: FC = () => (
           <div className="text-2xl md:text-4xl font-extrabold text-slate-900">Build</div>
           <div className="mt-5 mb-7 w-full text-xl md:text-2xl leading-tight text-slate-500">
             <span className="text-green-500">
-              Create your own minimum-viable-product landing page.
+              Easily build your minimum-viable-product landing page in minutes.
             </span>{' '}
-            You can design and build it in a few minutes without a developer.
+            Seek no help from a designer or developer.
           </div>
           <Image
             src={FeatureBuildImage}
@@ -45,9 +45,9 @@ export const HomeFeature: FC = () => (
           <div className="text-2xl md:text-4xl font-extrabold">Pitch</div>
           <div className="mt-5 mb-7 w-full text-xl md:text-2xl leading-tight text-slate-500">
             <span className="text-amber-500">
-              Channel your idea into a convincing pitch deck for the masses.
+              Transform your idea into a compelling pitch deck that interests your audience
             </span>{' '}
-            You can focus more on growth instead of creating copies.
+            Spend less time creating copies.
           </div>
           <Image
             src={FeaturePitchImage}
@@ -64,10 +64,8 @@ export const HomeFeature: FC = () => (
         <div className="pt-16 md:pt-28 pb-10 text-slate-900">
           <div className="text-2xl md:text-4xl font-extrabold ">Validate</div>
           <div className="mt-5 mb-7 w-full text-xl md:text-2xl leading-tight text-slate-500">
-            <span className="text-blue-500">
-              Start engaging with potential buyers and communities.
-            </span>{' '}
-            Make as many sales as possible to validate your product before launch.
+            <span className="text-blue-500">Start engaging with potential customers.</span> Validate
+            the demand for your product and accept payments before launch.
           </div>
           <Image
             src={FeatureValidateImage}

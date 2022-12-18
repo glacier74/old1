@@ -15,8 +15,8 @@ export const PricingHero: FC = () => {
             </div>
             <div className="ml-3 flex-1 md:flex md:justify-between">
               <p className="text-sm text-slate-700">
-                EarlyBird is now running a public beta until December 31st, 2022, during this
-                period, the product will be totally free to use.
+                EarlyBird is in public beta until December 31st, 2022. During this period, the
+                product will be totally free to use.
               </p>
             </div>
           </div>
@@ -26,8 +26,8 @@ export const PricingHero: FC = () => {
             Affordable pricing for startups
           </h1>
           <div className="text-slate-500 text-lg md:text-xl w-full md:max-w-3xl md:mx-auto mt-5 font-normal">
-            We understand that startups often have limited budgets and need to be mindful of their
-            spending, get started for free today and consider upgrading when you want to.
+            We understand that startups often have limited budgets and to be mindful of their
+            spending. Get started for free and consider upgrading when you want to.
           </div>
         </div>
       </div>

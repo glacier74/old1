@@ -15,7 +15,7 @@ export const FeaturesBuild: FC = () => {
 
   return (
     <section>
-      <div className="py-16 max-w-7xl mx-auto">
+      <div className="px-2 py-16 max-w-7xl mx-auto">
         <h1 className="max-w-5xl mx-auto text-slate-900 font-extrabold text-4xl text-center">
           Build a landing page in 10 minutes
         </h1>

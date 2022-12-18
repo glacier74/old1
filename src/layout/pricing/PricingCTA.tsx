@@ -7,7 +7,7 @@ export const PricingCTA: FC = () => {
 
   return (
     <section>
-      <div className="max-w-7xl mx-auto py-32 text-center">
+      <div className="max-w-7xl mx-auto py-32 px-4 text-center">
         <h2 className="font-extrabold text-4xl text-slate-900">Try EarlyBird today for free</h2>
         <p className="max-w-3xl mx-auto mt-6 text-lg text-slate-500">
           Build a rockin' no-code landing page in just 10 minutes.

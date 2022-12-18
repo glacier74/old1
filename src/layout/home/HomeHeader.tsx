@@ -1,8 +1,9 @@
 import { useTranslation } from 'next-i18next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { FC, useEffect } from 'react'
 
-import { IconLogoWhite } from '~/components'
+import IconLogo from '~public/static/header-logo.png'
 
 export const HomeHeader: FC = () => {
   const { t } = useTranslation()
@@ -30,7 +31,7 @@ export const HomeHeader: FC = () => {
           <div className="py-6 flex items-center justify-between">
             <div className="flex items-center text-slate-900 text-base space-x-8">
               <Link href="/" title={t('common.name')} className="hover:opacity-80 mx-8">
-                <IconLogoWhite className="w-8 h-8" />
+                <Image src={IconLogo} alt="EarlyBird Logo" width={110} height={36} quality={100} />
               </Link>
               <Link href="/features" title={t('common.features')} className="hover:opacity-80">
                 Features

@@ -11,8 +11,8 @@ export const HomeHeroSection: FC = () => {
         <div className="pt-48 text-center">
           <h1 className="text-3xl md:text-5xl font-extrabold">Build the next big thing</h1>
           <div className="text-slate-700 text-lg md:text-xl max-w-3xl mt-5 font-normal mx-auto">
-            Put your idea into perspective with us. EarlyBird lets you build, pitch and validate
-            your early-stage business in a simpler way.
+            Bring your idea to life with EarlyBird. Our platform allows you to build, pitch, and
+            validate your early-stage business easily.
           </div>
         </div>
 

@@ -15,7 +15,7 @@ export const FeaturesPitch: FC = () => {
 
   return (
     <section>
-      <div className="py-16 max-w-7xl mx-auto">
+      <div className="py-16 px-2 max-w-7xl mx-auto">
         <h1 className="max-w-5xl mx-auto text-slate-900 font-extrabold text-4xl text-center">
           Pitch an idea and convince the audience
         </h1>
@@ -32,9 +32,7 @@ export const FeaturesPitch: FC = () => {
                 strokeWidth={2}
                 className="mb-4 text-white p-4 rounded-full bg-slate-700"
               />
-              <h3 className="text-slate-900 font-bold text-lg">
-                Custom branding
-              </h3>
+              <h3 className="text-slate-900 font-bold text-lg">Custom branding</h3>
               <p className="mt-2 text-slate-500">
                 Add your own logo, colors, and other branding elements to reflect your own brand.
               </p>

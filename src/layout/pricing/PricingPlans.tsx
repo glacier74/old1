@@ -5,7 +5,7 @@ import { FC } from 'react'
 
 const tiers = [
   {
-    name: 'Explorer',
+    name: 'Starter',
     href: '#',
     priceMonthly: 0,
     priceAnually: 0,
@@ -14,12 +14,13 @@ const tiers = [
       '1 landing page included',
       '1,000 visits/mo',
       'Access to all UI blocks',
+      '50 conversion actions included',
       '5% payment commission',
       'Real-time analytics'
     ]
   },
   {
-    name: 'Starter',
+    name: 'Superior',
     href: '#',
     priceMonthly: 8,
     priceAnually: 6,
@@ -28,7 +29,7 @@ const tiers = [
       'All Free features',
       '5 landing pages included',
       '50,000 visits/mo',
-      '1,000 engagements included',
+      '1,000 conversion actions included',
       '1% payment commission',
       'Custom domain',
       'Remove EarlyBird branding'
@@ -44,7 +45,7 @@ const tiers = [
       'All Standard features',
       '20 landing pages included',
       '200,000 visits/mo',
-      '5,000 engagements included',
+      '5,000 conversion actions included',
       'No payment commission',
       'Embed custom CSS',
       'Team collaboration'
@@ -57,7 +58,7 @@ export const PricingPlans: FC = () => {
 
   return (
     <section>
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 mt-8">
         <div className="sm:flex sm:flex-col sm:align-center">
           <div className="relative self-center bg-slate-100 rounded-lg p-0.5 flex">
             <button
@@ -93,7 +94,7 @@ export const PricingPlans: FC = () => {
                     href={tier.href}
                     className="mt-8 block w-full bg-slate-200 border border-slate-100 rounded-md py-2 text-sm font-semibold text-slate-900 text-center hover:bg-slate-300"
                   >
-                    Get started with {tier.name}
+                    Join as a {tier.name}
                   </a>
                 </div>
                 <div className="pt-6 pb-8 px-6">
