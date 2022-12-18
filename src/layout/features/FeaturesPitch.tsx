@@ -32,7 +32,9 @@ export const FeaturesPitch: FC = () => {
                 strokeWidth={2}
                 className="mb-4 text-white p-4 rounded-full bg-slate-700"
               />
-              <h3 className="text-slate-900 font-bold text-lg">Custom branding</h3>
+              <h3 className="text-slate-900 font-bold text-lg">
+                Custom branding
+              </h3>
               <p className="mt-2 text-slate-500">
                 Add your own logo, colors, and other branding elements to reflect your own brand.
               </p>
@@ -43,7 +45,12 @@ export const FeaturesPitch: FC = () => {
                 strokeWidth={2}
                 className="mb-4 text-white p-4 rounded-full bg-slate-700"
               />
-              <h3 className="text-slate-900 font-bold text-lg">Custom domain</h3>
+              <h3 className="text-slate-900 font-bold text-lg">
+                Custom domain
+                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">
+                  Coming soon
+                </span>
+              </h3>
               <p className="mt-2 text-slate-500">
                 Use your own domain name to create a more professional-looking and cohesive
                 experience for your customers.
@@ -91,7 +98,12 @@ export const FeaturesPitch: FC = () => {
                 strokeWidth={2}
                 className="mb-4 text-white p-4 rounded-full bg-slate-700"
               />
-              <h3 className="text-slate-900 font-bold text-lg">Social proof</h3>
+              <h3 className="text-slate-900 font-bold text-lg">
+                Social proof
+                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">
+                  Coming soon
+                </span>
+              </h3>
               <p className="mt-2 text-slate-500">
                 Show testimonials and ratings to build trust and credibility with potential
                 customers.

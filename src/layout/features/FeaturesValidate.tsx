@@ -46,8 +46,7 @@ export const FeaturesValidate: FC = () => {
               />
               <h3 className="text-slate-900 font-bold text-lg">Understand interests</h3>
               <p className="mt-2 text-slate-500">
-                Build a list of interested individuals to keep them engaged and informed about your
-                product development and offer.
+                Build a list of interested individuals to keep them engaged and informed about your product development and offer.
               </p>
             </div>
             <div className="mb-2 bg-slate-50 py-8 px-6 rounded rounded-md shadow">
@@ -67,7 +66,12 @@ export const FeaturesValidate: FC = () => {
                 strokeWidth={2}
                 className="mb-4 text-white p-4 rounded-full bg-slate-700"
               />
-              <h3 className="text-slate-900 font-bold text-lg">Collect feedback</h3>
+              <h3 className="text-slate-900 font-bold text-lg">
+                Collect feedback
+                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">
+                  Coming soon
+                </span>
+              </h3>
               <p className="mt-2 text-slate-500">
                 Add a simple form that users can fill out to provide their thoughts, opinions, and
                 suggestions about your product or service.
@@ -79,7 +83,12 @@ export const FeaturesValidate: FC = () => {
                 strokeWidth={2}
                 className="mb-4 text-white p-4 rounded-full bg-slate-700"
               />
-              <h3 className="text-slate-900 font-bold text-lg">Quick polls</h3>
+              <h3 className="text-slate-900 font-bold text-lg">
+                Quick polls
+                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">
+                  Coming soon
+                </span>
+              </h3>
               <p className="mt-2 text-slate-500">
                 Get insights faster. Add user-friendly online polls to understand the needs and
                 preferences of your target audience.
@@ -91,7 +100,12 @@ export const FeaturesValidate: FC = () => {
                 strokeWidth={2}
                 className="mb-4 text-white p-4 rounded-full bg-slate-700"
               />
-              <h3 className="text-slate-900 font-bold text-lg">Send files</h3>
+              <h3 className="text-slate-900 font-bold text-lg">
+                Send files
+                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">
+                  Coming soon
+                </span>
+              </h3>
               <p className="mt-2 text-slate-500">
                 Automatically deliver files to the target who signs up or pays for your service or
                 product.
