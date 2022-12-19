@@ -80,7 +80,7 @@
     "version": "Version",
     "viewProfile": "View profile",
     "dashboard": "Dashboard",
-    "engagements": "Engagements",
+    "engagements": "Lead capture",
     "integrate": "Integrate with apps",
     "members": "Team members",
     "productSettings": "Product settings",
@@ -187,8 +187,8 @@
     "you": "You"
   },
   "engagements": {
-    "title": "Engagements · {{name}}",
-    "heading": "Engagements",
+    "title": "Lead capture · {{name}}",
+    "heading": "Lead capture",
     "description": "Start engaging with potential buyers and communities.",
     "payment": "Payment",
     "emailCapture": "Email capture",
@@ -322,10 +322,10 @@
       "settings": "Links"
     },
     "heroSection": {
-      "name": "Hero section",
-      "heading": "The headline on your landing page is like an opening line in a conversation.",
+      "name": "Hero",
+      "heading": "Convey the value proposition of your product or service",
       "tagline": "A subheading is an effective way to reinforce your headline and provide additional information about your offer. It helps clarify and expand on the main points of your headline.",
-      "button": "xxxxxxxxxxxxxxxx",
+      "button": "Write a call-to-action here",
       "uploadTip1": "Recommended size: 1100x640 | JPG, PNG.",
       "uploadTip2": "Max size: 2MB"
     },
@@ -335,8 +335,8 @@
     },
     "feature": {
       "name": "Feature",
-      "heading": "Provide specific details on how you plan to deliver the value you promised. This will make your offer seem more tangible and believable.",
-      "description": "xxxxxxxxx",
+      "heading": "Highlight the key features of your product",
+      "description": "Provide concise information on this key feature of your product and what it allows the users to achieve.",
       "uploadTip1": "Recommended size: 500x320 | JPG, PNG.",
       "uploadTip2": "Max size: 2MB"
     },
