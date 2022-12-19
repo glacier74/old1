@@ -145,7 +145,7 @@ export const InsertBlock = () => {
 
   return (
     <Dropdown
-      className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100"
+      className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100 addBlock"
       popupClassName="insert-block-popup"
       visible={visible}
       placement="bottom-start"

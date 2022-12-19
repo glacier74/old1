@@ -26,29 +26,40 @@ export const Builder = () => {
 
   const steps: StepType[] = [
     {
-      selector: '.block-header',
+      selector: '.addBlock',
       content: (
         <div className="text-sm space-y-2">
-          <div className="text-base font-bold">Header</div>
-          <div>xxxx</div>
+          <div className="text-base font-bold">Add UI blocks</div>
+          <div>
+            UI blocks include ready-made design elements such as header, hero, feature, footer,
+            buttons, payment blocks, and other interface components. Choose them one by one and
+            start editing.
+          </div>
         </div>
       )
     },
     {
-      selector: '.block-herosection',
+      selector: '.blockSidebar',
       content: (
         <div className="text-sm space-y-2">
-          <div className="text-base font-bold">Hero section</div>
-          <div>xxxx</div>
+          <div className="text-base font-bold">Organize UI blocks</div>
+          <div>
+            Organize UI blocks like Legos to form a landing page structure. Apply one of our themes
+            or create a design structure from scratch that resonates with your audience and niche.
+          </div>
         </div>
       )
     },
     {
-      selector: '.block-feature',
+      selector: '.pageSettings',
       content: (
         <div className="text-sm space-y-2">
-          <div className="text-base font-bold">Feature</div>
-          <div>xxxx</div>
+          <div className="text-base font-bold">Settings</div>
+          <div>
+            In settings, you can edit and preview the SEO metadata and social media card details of
+            the landing page, make the page private, manage the public site URL, and set a default
+            language for visitors.
+          </div>
         </div>
       )
     },
@@ -58,8 +69,8 @@ export const Builder = () => {
         <div className="text-sm space-y-2">
           <div className="text-base font-bold">Publish</div>
           <div>
-            When you add or update some blocks, you can click "Publish" button to sync these updates
-            to server.
+            Click the "Publish" button to sync the updates made to blocks on the landing page. This
+            will apply any changes or additions made to the page and make them visible to users.
           </div>
         </div>
       )
