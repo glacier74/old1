@@ -119,7 +119,7 @@ const NextButton: FC<TourClickProps> = ({
 }
 
 export const Tour: FC<TourProps> = ({ steps, name, children, ...restProps }) => {
-  const [value, setValue] = useLocalStorage<Record<string, boolean>>('tour', {})
+  const [value, setValue] = useLocalStorage<Record<string, boolean>>('earlybird_tour', {})
 
   const nextButton = ({ currentStep, stepsLength, setIsOpen, setCurrentStep }: any) => {
     return (

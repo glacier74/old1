@@ -70,10 +70,10 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
                     {url}
                   </div>
                   <div className="mb-1 pt-1 text-xl leading-[1.3] text-[#1a0dab] font-serif whitespace-nowrap break-words text-ellipsis overflow-hidden">
-                    {values.metaTitle}
+                    {values.metaTitle || values.name}
                   </div>
                   <div className="font-serif text-[0.875rem] leading-[1.57] text-[#4d5156] font-serif">
-                    {values.metaDescription}
+                    {values.metaDescription || values.tagline}
                   </div>
                 </div>
               </div>
@@ -118,14 +118,18 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
               <div className="text-sm text-slate-700">Search engine result preview</div>
               <div className="max-w-full mt-1 overflow-hidden text-black border border-gray-300 bg-white shadow-sm rounded-md">
                 <div className="flex h-full flex-col items-center justify-center rounded-t-md">
-                  <OpenGraphImage text={values.metaTitle} width={1200} height={630} />
+                  <OpenGraphImage
+                    text={values.metaTitle || values.name}
+                    width={1200}
+                    height={630}
+                  />
                 </div>
                 <div className="font-serif break-words border-t border-gray-300 p-4 antialiased">
                   <div className="mb-[0.15em] truncate text-[14px] font-semibold leading-[18px]">
-                    {values.metaTitle}
+                    {values.metaTitle || values.name}
                   </div>
                   <div className="mt-[0.32em] block max-h-[2.6em] border-separate select-none overflow-hidden truncate whitespace-nowrap break-words text-left text-[14px] leading-[18px]">
-                    {values.metaDescription}
+                    {values.metaDescription || values.tagline}
                   </div>
                   <div className="mt-[0.32em] overflow-hidden truncate whitespace-nowrap text-[14px] lowercase leading-[18px] text-[#8899a6]">
                     {url}

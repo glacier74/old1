@@ -1,3 +1,4 @@
+import { isValid } from '@nily/utils'
 import canvasTxt from 'canvas-txt'
 import { FC, useEffect, useRef } from 'react'
 
@@ -7,11 +8,11 @@ interface OpenGraphImageProps {
   height: number
 }
 
-export const OpenGraphImage: FC<OpenGraphImageProps> = ({ text, width, height }, ref) => {
+export const OpenGraphImage: FC<OpenGraphImageProps> = ({ text, width, height }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
-    if (canvasRef.current) {
+    if (canvasRef.current && isValid(text)) {
       const ctx = canvasRef.current.getContext('2d')!
       ctx.clearRect(0, 0, width, height)
 
