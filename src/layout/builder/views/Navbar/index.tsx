@@ -107,7 +107,7 @@ export const Navbar: FC = () => {
       <div className="flex-[2_1_0%] flex items-center justify-center">
         <InsertBlock />
         <div
-          className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100"
+          className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100 addBlock"
           onClick={toggleBlocksSidebar}
         >
           <IconLayoutGrid className="w-5 h-5" />

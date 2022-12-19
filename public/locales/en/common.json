@@ -342,9 +342,9 @@
     },
     "payment": {
       "name": "Payment",
-      "heading": "Heading",
-      "description": "Description",
-      "feature": "Feature",
+      "heading": "Motivate your visitors to purchase",
+      "description": "Communicate the value and benefits of the paid feature or service, and encourage users to try it out.",
+      "feature": "Elaborate on the value and benefits",
       "settings": "Payment settings"
     },
     "slideGallery": {
@@ -354,9 +354,9 @@
     },
     "emailCapture": {
       "name": "Email capture",
-      "heading": "Email capture Heading",
-      "description": "Email capture Description",
-      "button": "CTA text",
+      "heading": "Convince your visitors to join",
+      "description": "Emphasize why a potential lead should enter the email address. Reinforce the value of your product or service in exchange for an email address.",
+      "button": "Call-to-action text",
       "namePlaceholder": "Your name",
       "emailPlaceholder": "Email address",
       "nameRequired": "Name required"
