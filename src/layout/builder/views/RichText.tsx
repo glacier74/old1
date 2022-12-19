@@ -224,7 +224,12 @@ const RichTextComponent: FC<RichTextProps> = ({
   }
 
   function handleUpdate() {
-    const html = enableTextFormat ? ref.current!.innerHTML : ref.current!.innerText
+    let html = enableTextFormat ? ref.current!.innerHTML : ref.current!.innerText
+
+    if (html === '<br>') {
+      ref.current!.innerHTML = ''
+      html = ''
+    }
 
     dispatch({
       type: 'updateBlock',

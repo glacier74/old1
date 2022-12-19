@@ -43,16 +43,6 @@ export const FooterPreview: FC<FooterProps & { product: Product }> = ({ block, p
 
 export const Footer: FC<FooterProps> = ({ block }) => {
   const product = useProduct()
-  const { dispatch } = useBuilderContext()
-
-  function handleClick() {
-    dispatch({
-      type: 'update',
-      payload: {
-        isSocialMediaOpen: true
-      }
-    })
-  }
 
   return (
     <BlockComponent block={block}>

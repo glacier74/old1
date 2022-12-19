@@ -67,7 +67,7 @@ export const HeroSection: FC<HeroSectionProps> = ({ block }) => {
         <Heading
           className="block-herosection-name"
           block={block.name}
-          placeholder="createProduct.name"
+          placeholder="builder.heroSection.heading"
           enableFormats={null}
         />
 
@@ -75,7 +75,7 @@ export const HeroSection: FC<HeroSectionProps> = ({ block }) => {
         <div className="block-herosection-tagline">
           <Text
             block={block.tagline}
-            placeholder="createProduct.tagline"
+            placeholder="builder.heroSection.tagline"
             enableFormats={['basic']}
           />
         </div>
@@ -83,9 +83,10 @@ export const HeroSection: FC<HeroSectionProps> = ({ block }) => {
         <div className="block-herosection-action">
           {block.buttons.map(button => (
             <Text
+              key={button.id}
               className="block-herosection-button"
               block={button}
-              placeholder="builder.herosection.button"
+              placeholder="builder.heroSection.button"
               enableFormats={null}
             />
           ))}
@@ -100,8 +101,8 @@ export const HeroSection: FC<HeroSectionProps> = ({ block }) => {
             ...block.image,
             width: IMAGE_WIDTHS[block.layout || 'center']
           }}
-          uploadDesc1="builder.feature.uploadTip1"
-          uploadDesc2="builder.feature.uploadTip2"
+          uploadDesc1="builder.heroSection.uploadTip1"
+          uploadDesc2="builder.heroSection.uploadTip2"
         />
       </div>
     </BlockComponent>

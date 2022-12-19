@@ -37,11 +37,9 @@ export interface IState {
   stripeProduct?: StripeProduct
   stripeConnectStep?: string
 
-  // Social media
-  isSocialMediaOpen: boolean
-
-  // Header
-  isHeaderOpen: boolean
+  // Tour
+  isBuilderTourOpen: boolean
+  isBlocksTourOpen: boolean
 }
 
 export interface UpdateAction {
@@ -194,9 +192,8 @@ export const BuilderProvider: FC<IComponentProps> = ({ children }) => {
       isBlocksSidebarOpen: false,
       isSettingsSidebarOpen: false,
       isBubbleMenuOpen: false,
-      isCommandMenuOpen: false,
-      isSocialMediaOpen: false,
-      isHeaderOpen: false
+      isBuilderTourOpen: false,
+      isBlocksTourOpen: false
     }),
     []
   )

@@ -9,7 +9,9 @@ export const FeaturesHero: FC = () => {
     <section>
       <div className="relative max-w-7xl mx-auto px-5 z-10 pt-48 md:pt-64 md:pb-32">
         <div className="text-center">
-          <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900">Turn your idea into a reality</h1>
+          <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900">
+            Turn your idea into a reality
+          </h1>
           <div className="text-slate-500 text-lg md:text-xl w-full md:max-w-3xl md:mx-auto mt-5 font-normal">
             Save time and resources by using EarlyBird to validate your idea before diving into
             product development.

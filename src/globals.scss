@@ -408,6 +408,16 @@ button.switch-checked {
   .block-image-container {
     @apply relative;
   }
+
+  .block-upload {
+    @apply min-h-[24rem];
+  }
+
+  .rich-text {
+    &:empty:after {
+      @apply block;
+    }
+  }
 }
 
 .block-herosection-center {

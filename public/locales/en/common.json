@@ -301,11 +301,13 @@
       "right": "Align right"
     },
     "blocks": "Blocks",
+    "closeBlocks": "Close blocks",
     "leaveBrowserMessage": "You have unsaved changes, are you sure you wish to leave this page?",
     "basic": "Basic",
     "addNewBlock": "Add a new block",
     "searchBlockType": "Find a block type",
-    "settings": "Settings",
+    "settings": "Block settings",
+    "closeSettings": "Close block settings",
     "layout": "Layout",
     "text": {
       "name": "Rich text",
@@ -320,7 +322,12 @@
       "settings": "Links"
     },
     "heroSection": {
-      "name": "Hero section"
+      "name": "Hero section",
+      "heading": "The headline on your landing page is like an opening line in a conversation.",
+      "tagline": "A subheading is an effective way to reinforce your headline and provide additional information about your offer. It helps clarify and expand on the main points of your headline.",
+      "button": "xxxxxxxxxxxxxxxx",
+      "uploadTip1": "Recommended size: 1100x640 | JPG, PNG.",
+      "uploadTip2": "Max size: 2MB"
     },
     "footer": {
       "name": "Footer",
@@ -328,9 +335,9 @@
     },
     "feature": {
       "name": "Feature",
-      "heading": "Heading",
-      "description": "Description",
-      "uploadTip1": "Recommended size: 1100x640 | JPG, PNG.",
+      "heading": "Provide specific details on how you plan to deliver the value you promised. This will make your offer seem more tangible and believable.",
+      "description": "xxxxxxxxx",
+      "uploadTip1": "Recommended size: 500x320 | JPG, PNG.",
       "uploadTip2": "Max size: 2MB"
     },
     "payment": {

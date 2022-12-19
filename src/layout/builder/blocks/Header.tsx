@@ -73,16 +73,6 @@ export const HeaderPreview: FC<HeaderProps & { product: Product }> = ({ block, p
 
 export const Header: FC<HeaderProps> = ({ block }) => {
   const product = useProduct()
-  const { dispatch } = useBuilderContext()
-
-  function handleClick() {
-    dispatch({
-      type: 'update',
-      payload: {
-        isHeaderOpen: true
-      }
-    })
-  }
 
   return (
     <BlockComponent className="block-header-container" block={block}>

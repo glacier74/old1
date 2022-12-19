@@ -1,7 +1,7 @@
 import { StepType } from '@reactour/tour'
 import { useTranslation } from 'next-i18next'
 
-import { AsyncRequest } from '~/components'
+import { AsyncRequest, Tour } from '~/components'
 import { AuthorizedLayout, useProduct } from '~/layout'
 import { SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
@@ -26,41 +26,31 @@ export const Builder = () => {
 
   const steps: StepType[] = [
     {
-      selector: '.builder-create-button',
+      selector: '.block-header',
       content: (
         <div className="text-sm space-y-2">
-          <div className="text-base font-bold">{t('builder.addNewBlock')}</div>
-          <div>{t('builder.addNewBlock')}</div>
+          <div className="text-base font-bold">Header</div>
+          <div>xxxx</div>
         </div>
-      ),
-      position: 'left'
+      )
     },
     {
-      selector: '.block-card-selected',
+      selector: '.block-herosection',
       content: (
         <div className="text-sm space-y-2">
-          <div className="text-base font-bold">Reorder block</div>
-          <div>Click and hold the block, then drag to a new location to reorder these blocks.</div>
+          <div className="text-base font-bold">Hero section</div>
+          <div>xxxx</div>
         </div>
-      ),
-      position: 'left'
+      )
     },
     {
-      selector: '.block-card-menu-open',
+      selector: '.block-feature',
       content: (
         <div className="text-sm space-y-2">
-          <div className="text-base font-bold">Block menu</div>
-          <div>
-            Click the rectangle made of three dots to expand the dropdown menu, where you can
-            duplicate or delete the block, and you can also set the layout, links, payment, footer
-            social medias and other settings of these blocks.{' '}
-            <a href="#" className="underline">
-              Learn more about block settings.
-            </a>
-          </div>
+          <div className="text-base font-bold">Feature</div>
+          <div>xxxx</div>
         </div>
-      ),
-      position: 'left'
+      )
     },
     {
       selector: '.builder-publish',
@@ -93,13 +83,15 @@ export const Builder = () => {
         deps={[product.id]}
       >
         <BuilderProvider>
-          <div className="flex flex-col h-full h-screen overflow-hidden">
-            <Navbar />
-            <BlockList />
-          </div>
+          <Tour steps={steps} name="builder">
+            <div className="flex flex-col h-full h-screen overflow-hidden">
+              <Navbar />
+              <BlockList />
+            </div>
 
-          <LeftSidebar />
-          <RightSidebar />
+            <LeftSidebar />
+            <RightSidebar />
+          </Tour>
         </BuilderProvider>
       </AsyncRequest>
     </AuthorizedLayout>

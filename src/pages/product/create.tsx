@@ -24,7 +24,7 @@ const CreateProduct = (): JSX.Element => {
       timezone: dayjs.tz.guess()
     })
 
-    await router.replace(`/product/${productId}`)
+    await router.replace(`/product/${productId}/edit`)
   }
 
   return (
