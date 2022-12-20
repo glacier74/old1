@@ -40,6 +40,18 @@ export const BlockIcon: FC<BlockIconProps> = ({
   )
 }
 
+export const BlockIconName: FC<Partial<BlockIconProps>> = ({ type, className, ...restProps }) => {
+  const { t } = useTranslation()
+  const label = useMemo(() => BLOCK_OPTIONS.find(o => o.type === type)?.label, [type])
+
+  return (
+    <div className={clsx('flex items-center', className)} {...restProps}>
+      <BlockIcon className="ml-1 text-slate-700" type={type!} />
+      <div className="flex-1 ml-2 text-sm">{t(label!)}</div>
+    </div>
+  )
+}
+
 export const BlockCard: FC<BlockCardProps> = ({ block, selectedId }) => {
   const { t } = useTranslation()
   const { dispatch } = useBuilderContext()
@@ -120,10 +132,7 @@ export const BlockCard: FC<BlockCardProps> = ({ block, selectedId }) => {
       })}
       onClick={handleClick}
     >
-      <div className="flex items-center flex-1 ">
-        <BlockIcon className="ml-1 text-slate-700" type={block.type} />
-        <div className="flex-1 ml-2 text-xs">{t(label!)}</div>
-      </div>
+      <BlockIconName className="flex-1" type={block.type} />
       <Dropdown
         className={clsx('block-card-menu', {
           'block-card-menu-open': isOpen || isSelected

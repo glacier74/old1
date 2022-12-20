@@ -226,7 +226,7 @@ const RichTextComponent: FC<RichTextProps> = ({
   function handleUpdate() {
     let html = enableTextFormat ? ref.current!.innerHTML : ref.current!.innerText
 
-    if (html === '<br>') {
+    if (html === '<br>' || /^(\r|\n|\r\n)$/.test(html)) {
       ref.current!.innerHTML = ''
       html = ''
     }

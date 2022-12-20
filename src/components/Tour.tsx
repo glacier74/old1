@@ -25,7 +25,7 @@ interface TourProps extends ComponentProps {
 
 export function useOpenTour(name: string) {
   const { setIsOpen } = useTour()
-  const [value] = useLocalStorage<Record<string, boolean>>('tour', {})
+  const [value] = useLocalStorage<Record<string, boolean>>(process.env.NEXT_PUBLIC_TOUR_NAME!, {})
 
   useEffect(() => {
     if (value && value![name]) {
@@ -119,7 +119,10 @@ const NextButton: FC<TourClickProps> = ({
 }
 
 export const Tour: FC<TourProps> = ({ steps, name, children, ...restProps }) => {
-  const [value, setValue] = useLocalStorage<Record<string, boolean>>('earlybird_tour', {})
+  const [value, setValue] = useLocalStorage<Record<string, boolean>>(
+    process.env.NEXT_PUBLIC_TOUR_NAME!,
+    {}
+  )
 
   const nextButton = ({ currentStep, stepsLength, setIsOpen, setCurrentStep }: any) => {
     return (

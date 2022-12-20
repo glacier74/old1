@@ -113,14 +113,18 @@ export const Navbar: FC = () => {
           <IconLayoutGrid className="w-5 h-5" />
           <span className="text-[0.6875rem]">Blocks</span>
         </div>
-        <div className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100">
-          <IconDroplet className="w-5 h-5" />
-          <span className="text-[0.6875rem]">Design</span>
-        </div>
-        <div className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100">
-          <IconShare className="w-5 h-5" />
-          <span className="text-[0.6875rem]">Share</span>
-        </div>
+        <Tooltip ariaLabel="Coming soon">
+          <div className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100">
+            <IconDroplet className="w-5 h-5" />
+            <span className="text-[0.6875rem]">Design</span>
+          </div>
+        </Tooltip>
+        <Tooltip ariaLabel="Coming soon">
+          <div className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100">
+            <IconShare className="w-5 h-5" />
+            <span className="text-[0.6875rem]">Share</span>
+          </div>
+        </Tooltip>
 
         <div className="mx-1.5 w-px h-5 bg-gray-200" />
 
@@ -131,13 +135,19 @@ export const Navbar: FC = () => {
           <IconDatabase className="w-5 h-5" />
           <span className="text-[0.6875rem]">Lead capture</span>
         </Link>
-        <Link
-          href={`/product/${productId}/integrations`}
-          className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100"
-        >
-          <IconPlug className="w-5 h-5" />
-          <span className="text-[0.6875rem]">Integration</span>
-        </Link>
+        <Tooltip ariaLabel="Coming soon">
+          <div className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100">
+            <IconPlug className="w-5 h-5" />
+            <span className="text-[0.6875rem]">Integration</span>
+          </div>
+        </Tooltip>
+        {/*<Link*/}
+        {/*  href={`/product/${productId}/integrations`}*/}
+        {/*  className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100"*/}
+        {/*>*/}
+        {/*  <IconPlug className="w-5 h-5" />*/}
+        {/*  <span className="text-[0.6875rem]">Integration</span>*/}
+        {/*</Link>*/}
         <Link
           href={`/product/${productId}/settings`}
           className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100 pageSettings"

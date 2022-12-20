@@ -471,7 +471,7 @@ button.switch-checked {
 }
 
 .block-herosection-action {
-  @apply mt-5 flex items-center justify-center space-x-4;
+  @apply mt-5 flex flex-col md:flex-row md:items-center md:justify-center space-x-0 space-y-4 md:space-x-4 md:space-y-0;
 
   @media (max-width: 768px) {
     @apply flex-1;
@@ -479,14 +479,19 @@ button.switch-checked {
 }
 
 .block-herosection-button {
-  @apply w-auto min-w-0;
+  @apply w-full md:w-auto min-w-0;
 
+  a,
   .rich-text {
     @apply px-4 py-2 md:px-6 md:py-3 text-base font-medium rounded-md shadow-sm cursor-text bg-green-500 text-white;
 
     &:empty:after {
       @apply text-white text-opacity-70;
     }
+  }
+
+  a {
+    @apply block w-full cursor-pointer;
   }
 }
 

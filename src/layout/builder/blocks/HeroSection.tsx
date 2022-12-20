@@ -39,11 +39,27 @@ export const HeroSectionPreview: FC<HeroSectionProps> = ({ block }) => {
         </div>
 
         <div className="block-herosection-action">
-          {block.buttons.map(button => (
-            <Button key={button.id} type="success" className="!text-base">
-              {button.html}
-            </Button>
-          ))}
+          {block.buttons.map(button => {
+            let href: string | undefined
+
+            switch (button.action?.type) {
+              case 'link':
+                href = button.action.value
+                break
+
+              case 'block':
+                href = `#block-${button.action.value}`
+                break
+            }
+
+            return (
+              <div className="block-herosection-button">
+                <a key={button.id} href={href}>
+                  {button.html}
+                </a>
+              </div>
+            )
+          })}
         </div>
       </div>
 
