@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { HomeFooter, HomeHeader, HomeLayout } from '~/layout'
 import {
   PricingCTA,
@@ -9,12 +11,14 @@ import {
 import { withTranslations } from '~/utils'
 
 const Pricing = (): JSX.Element => {
+  const [billingCycle, setBillingCycle] = useState('monthly')
+
   return (
     <HomeLayout>
       <HomeHeader />
       <PricingHero />
-      <PricingPlans />
-      <PricingComparison />
+      <PricingPlans billingCycle={billingCycle} onChange={setBillingCycle} />
+      <PricingComparison billingCycle={billingCycle} onChange={setBillingCycle} />
       <PricingFAQ />
       <PricingCTA />
       <HomeFooter />

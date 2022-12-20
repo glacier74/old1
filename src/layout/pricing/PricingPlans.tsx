@@ -1,14 +1,15 @@
 import { IconCheck } from '@tabler/icons'
+import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 const tiers = [
   {
     name: 'Starter',
     href: '#',
     priceMonthly: 0,
-    priceAnually: 0,
+    priceAnnually: 0,
     description: 'For new makers who want to fine-tune and test an idea.',
     includedFeatures: [
       '1 landing page included',
@@ -23,7 +24,7 @@ const tiers = [
     name: 'Superior',
     href: '#',
     priceMonthly: 8,
-    priceAnually: 6,
+    priceAnnually: 6,
     description: 'For creators with multiple ideas who want to efficiently test and refine them.',
     includedFeatures: [
       'All Free features',
@@ -39,7 +40,7 @@ const tiers = [
     name: 'Shipper',
     href: '#',
     priceMonthly: 15,
-    priceAnually: 10,
+    priceAnnually: 10,
     description: 'For productive shippers who want to work more efficiently.',
     includedFeatures: [
       'All Standard features',
@@ -53,8 +54,19 @@ const tiers = [
   }
 ]
 
-export const PricingPlans: FC = () => {
+export const PricingPlans: FC<{
+  billingCycle: string
+  onChange: (billingCycle: string) => void
+}> = ({ billingCycle, onChange }) => {
   const { t } = useTranslation()
+
+  function switchToMonthly() {
+    onChange('monthly')
+  }
+
+  function switchToYearly() {
+    onChange('yearly')
+  }
 
   return (
     <section>
@@ -63,13 +75,25 @@ export const PricingPlans: FC = () => {
           <div className="relative self-center bg-slate-100 rounded-lg p-0.5 flex">
             <button
               type="button"
-              className="relative w-1/2 bg-slate-900 border-slate-900 rounded-md shadow-sm py-2 text-sm font-medium text-white whitespace-nowrap focus:outline-none sm:w-auto sm:px-8"
+              className={clsx(
+                'relative w-1/2 rounded-md py-2 text-sm font-medium whitespace-nowrap focus:outline-none sm:w-auto sm:px-8',
+                billingCycle === 'monthly'
+                  ? 'bg-slate-900 border-slate-900 text-white shadow-sm'
+                  : 'border-transparent text-slate-900'
+              )}
+              onClick={switchToMonthly}
             >
               Monthly billing
             </button>
             <button
               type="button"
-              className="ml-0.5 relative w-1/2 border border-transparent rounded-md py-2 text-sm font-medium text-slate-900 whitespace-nowrap focus:outline-none sm:w-auto sm:px-8"
+              className={clsx(
+                'ml-0.5 relative w-1/2 border rounded-md py-2 text-sm font-medium whitespace-nowrap focus:outline-none sm:w-auto sm:px-8',
+                billingCycle === 'yearly'
+                  ? 'bg-slate-900 border-slate-900 text-white shadow-sm'
+                  : 'border-transparent text-slate-900'
+              )}
+              onClick={switchToYearly}
             >
               Yearly billing
             </button>
@@ -86,9 +110,11 @@ export const PricingPlans: FC = () => {
                   <p className="mt-4 text-sm text-slate-500">{tier.description}</p>
                   <p className="mt-8">
                     <span className="text-4xl font-extrabold text-slate-900">
-                      ${tier.priceMonthly}
+                      ${billingCycle === 'monthly' ? tier.priceMonthly : tier.priceAnnually}
                     </span>{' '}
-                    <span className="text-base font-medium text-slate-500">/mo</span>
+                    <span className="text-base font-medium text-slate-500">
+                      /{billingCycle === 'monthly' ? 'mo' : 'yr'}
+                    </span>
                   </p>
                   <a
                     href={tier.href}
