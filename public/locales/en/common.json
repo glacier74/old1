@@ -74,7 +74,7 @@
     "invalidCode": "Invalid verification code"
   },
   "sidebar": {
-    "createProduct": "Create product",
+    "createProduct": "Create a landing page",
     "member": "Member",
     "logout": "Logout",
     "version": "Version",
@@ -83,7 +83,7 @@
     "engagements": "Lead capture",
     "integrate": "Integrate with apps",
     "members": "Team members",
-    "productSettings": "Product settings",
+    "productSettings": "Landing page settings",
     "pro": "EarlyBird Pro",
     "resources": "Resources",
     "gettingStarted": "Getting started",
@@ -103,16 +103,16 @@
     "viewSite": "View site"
   },
   "createProduct": {
-    "title": "Create a product",
+    "title": "Create a landing page",
     "loggedAs": "Logged in as:",
     "logo": "Logo (optional)",
-    "name": "Product name",
+    "name": "Landing page name",
     "tagline": "Tagline",
     "publicSiteURL": "Public site URL",
     "invalidDomain": "The domain must have at least 3 characters, including uppercase, lowercase, number or \"-\"",
     "createProductTitle": "Welcome to EarlyBird!",
-    "createProductDesc": "To begin, you'll need to enter the required fields like name, tagline, etc. When you're done, you can save and continue to the product dashboard.",
-    "createProduct": "Create product",
+    "createProductDesc": "To begin, you'll need to enter the required fields like name, tagline, etc. When you're done, you can save and continue to the landing page dashboard.",
+    "createProduct": "Create the landing page",
     "invalidLogo": "The logo is not allowed to be empty",
     "invalidName": "The name is not allowed to be empty",
     "invalidTagline": "The tagline is not allowed to be empty",
@@ -145,7 +145,7 @@
     },
     "dangerZone": {
       "heading": "Danger zone",
-      "description": "This will permanently delete your entire account. All your products, engagements and members will be deleted",
+      "description": "This will permanently delete your entire account. All your products, lead captures and members will be deleted",
       "button": "Delete account",
       "confirm": "Delete my account",
       "tip1": "This action cannot be undone. This will permanently delete your entire account. All workspaces you created will be deleted, and you will be removed from all shared workspaces.",
@@ -162,7 +162,7 @@
   },
   "member": {
     "heading": "Members",
-    "description": "Give your teammates access to this product and start collaboration in real time.",
+    "description": "Give your teammates access to this landing page and start collaboration in real time.",
     "emailInvitation": {
       "heading": "Send email invitation",
       "send": "Send invitation",
@@ -176,12 +176,12 @@
     },
     "removeModal": {
       "heading": "Are you sure you want to remove this member?",
-      "description": "Once you confirm to remove this member, member will no longer have access to this product data.",
+      "description": "Once you confirm to remove this member, member will no longer have access to this landing page data.",
       "button": "Remove"
     },
     "leaveModal": {
-      "heading": "Are you sure you want to leave this product?",
-      "description": "Once you confirm to leave this product, you will no longer have access to this product data.",
+      "heading": "Are you sure you want to leave this landing page?",
+      "description": "Once you confirm to leave this landing page, you will no longer have access to this landing page data.",
       "button": "Leave"
     },
     "you": "You"
@@ -197,8 +197,8 @@
     "oneTime": "One time",
     "recurring": "Recurring",
     "notFound": {
-      "title": "You don't have any engagements yet",
-      "description": "Share your product with others, and get them involved."
+      "title": "You don't have any lead captures yet",
+      "description": "Share your landing page with others, and get them involved."
     }
   },
   "productStats": {
@@ -225,7 +225,7 @@
   "productSettings": {
     "title": "Settings · {{name}}",
     "heading": "Settings",
-    "updated": "Product settings have been updated successfully",
+    "updated": "Landing page settings have been updated successfully",
     "general": {
       "heading": "General"
     },
@@ -234,7 +234,7 @@
       "description": "Choose in what language the visitors will see your site. This applies to the text which is not customized by you e.g. default buttons, errors, etc."
     },
     "domain": {
-      "description": "Product page shared to web will be under",
+      "description": "Landing page shared to web will be under",
       "copyTip": "Click to copy link",
       "copiedTip": "Copied link to clipboard"
     },
@@ -252,7 +252,7 @@
     },
     "metaData": {
       "heading": "Meta data",
-      "description": "Set how your products are displayed on the web and when shared on social media",
+      "description": "Set how your landing page is displayed on the web and when shared on social media",
       "title": "Meta title",
       "description2": "Meta description",
       "openGraphImage": "Open graph image",
@@ -263,15 +263,15 @@
       "heading": "Danger zone"
     },
     "deleteProduct": {
-      "heading": "Delete product",
-      "description": "By deleting the product, all the engagements, members and data will be erased and cannot be restored! Be cautious!",
+      "heading": "Delete the landing page",
+      "description": "By deleting the landing page, all the lead captures, members and data will be erased and cannot be restored! Be cautious!",
       "button": "Delete",
-      "success": "Product was deleted successfully"
+      "success": "The landing page has been deleted successfully"
     },
     "deleteProductModal": {
-      "warn1": "Keep in mind this operation is irreversible and will permanently delete all the data associated with this product.",
-      "warn2": "Once you confirm to delete the product, you will no longer have access to the product data.",
-      "button": "Delete product"
+      "warn1": "Keep in mind this operation is irreversible and will permanently delete all the data associated with this landing page.",
+      "warn2": "Once you confirm to delete the landing page, you will no longer have access to the landing page data.",
+      "button": "Delete the landing page"
     }
   },
   "builder": {
@@ -364,9 +364,9 @@
   },
   "invite": {
     "title": "Invitation · EarlyBird",
-    "heading": "You've been invited to {{inviter}}'s product",
-    "description": "Join the product and start working together!",
-    "errorTip": "If you have trouble join the product, please contact the product owner or EarlyBird support.",
+    "heading": "You've been invited to {{inviter}}'s landing page",
+    "description": "Join the landing page and start working together!",
+    "errorTip": "If you have trouble join the landing page, please contact the page owner or EarlyBird support.",
     "join": "Join",
     "goBack": "Go back",
     "backHome": "Back to EarlyBird"

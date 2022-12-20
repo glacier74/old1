@@ -79,7 +79,7 @@ export const DangerZone = () => {
         <div className="bg-slate-50 rounded-lg divide-y divide-gray-100">
           <div className="px-6 py-5 flex items-center justify-between">
             <div>
-              <div className="block text-base text-red-500 font-bold">
+              <div className="block text-base text-slate-900 font-bold">
                 {t('productSettings.deleteProduct.heading')}
               </div>
               <p className="mt-1 max-w-2xl text-sm text-slate-500">
