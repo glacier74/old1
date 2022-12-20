@@ -1,8 +1,8 @@
 import { IconCheck, IconMinus } from '@tabler/icons'
+import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
 import { Fragment } from 'react'
 import { FC } from 'react'
-import clsx from "clsx";
 
 const tiers = [
   {
@@ -88,7 +88,10 @@ const sections = [
   }
 ]
 
-export const PricingComparison: FC<{ billingCycle: string; onChange: (billingCycle: string) => void }> = ({ billingCycle, onChange }) => {
+export const PricingComparison: FC<{
+  billingCycle: string
+  onChange: (billingCycle: string) => void
+}> = ({ billingCycle, onChange }) => {
   const { t } = useTranslation()
 
   function switchToMonthly() {
@@ -172,9 +175,7 @@ export const PricingComparison: FC<{ billingCycle: string; onChange: (billingCyc
                         <span className="text-4xl font-extrabold text-slate-900">
                           ${billingCycle === 'monthly' ? tier.priceMonthly : tier.priceAnnually}
                         </span>{' '}
-                        <span className="text-base font-medium text-slate-500">
-                          /{billingCycle === 'monthly' ? 'mo' : 'yr'}
-                        </span>
+                        <span className="text-base font-medium text-slate-500">/mo</span>
                       </p>
                       <p className="mt-4 mb-16 text-sm text-slate-500">{tier.description}</p>
                       <a

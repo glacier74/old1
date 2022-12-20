@@ -112,9 +112,7 @@ export const PricingPlans: FC<{
                     <span className="text-4xl font-extrabold text-slate-900">
                       ${billingCycle === 'monthly' ? tier.priceMonthly : tier.priceAnnually}
                     </span>{' '}
-                    <span className="text-base font-medium text-slate-500">
-                      /{billingCycle === 'monthly' ? 'mo' : 'yr'}
-                    </span>
+                    <span className="text-base font-medium text-slate-500">/mo</span>
                   </p>
                   <a
                     href={tier.href}
