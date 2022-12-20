@@ -94,7 +94,7 @@ export const Builder = () => {
         deps={[product.id]}
       >
         <BuilderProvider>
-          <Tour steps={steps} name="builder">
+          <Tour steps={steps}>
             <div className="flex flex-col h-full h-screen overflow-hidden">
               <Navbar />
               <BlockList />

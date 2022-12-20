@@ -2,7 +2,7 @@ import { useTour } from '@reactour/tour'
 import clsx from 'clsx'
 import { FC, useEffect } from 'react'
 
-import { useOpenTour, useTourStorage } from '~/components'
+import { useTourStorage } from '~/components'
 import { useStore } from '~/store'
 
 import { BlockWrapper } from '../blocks'
