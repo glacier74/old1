@@ -66,6 +66,7 @@ const CallToAction: FC<CallToActionProps> = ({ blocks, button, index, onChange }
   return (
     <div className="mt-2 space-y-2">
       <Switch.Group
+        className="builder-cta-switch"
         value={button.action?.type || 'block'}
         options={typeOptions}
         onChange={handleTypeChange}
@@ -86,6 +87,7 @@ const CallToAction: FC<CallToActionProps> = ({ blocks, button, index, onChange }
             valueKey="id"
             valueRender={valueRender as unknown as any}
             optionRender={optionRender}
+            placeholder="Select a block"
             onChange={handleValueChange}
           />
         )}

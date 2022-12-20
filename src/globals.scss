@@ -503,6 +503,14 @@ button.switch-checked {
   }
 }
 
+.builder-cta-switch {
+  @apply flex;
+
+  .switch-button {
+    @apply flex-1 text-xs;
+  }
+}
+
 .rich-text {
   @apply py-2 outline-none text-xl leading-8;
 

@@ -1,4 +1,5 @@
 import { Button } from '@heyforms/ui'
+import { isValid } from '@nily/utils'
 import { FC } from 'react'
 
 import { Heading } from '~/layout/builder/blocks/Heading'
@@ -63,14 +64,16 @@ export const HeroSectionPreview: FC<HeroSectionProps> = ({ block }) => {
         </div>
       </div>
 
-      <div className="block-herosection-image">
-        <ImagePreview
-          block={{
-            ...block.image,
-            width: IMAGE_WIDTHS[block.layout || 'center']
-          }}
-        />
-      </div>
+      {isValid(block.image.source) && (
+        <div className="block-herosection-image">
+          <ImagePreview
+            block={{
+              ...block.image,
+              width: IMAGE_WIDTHS[block.layout || 'center']
+            }}
+          />
+        </div>
+      )}
     </BlockPreview>
   )
 }
