@@ -2,7 +2,7 @@ import { Button } from '@heyforms/ui'
 import { StepType, TourProvider, useTour } from '@reactour/tour'
 import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
-import { Dispatch, FC, SetStateAction, useCallback, useEffect } from 'react'
+import { Dispatch, FC, SetStateAction, useCallback, useEffect, useState } from 'react'
 import { useLocalStorage } from 'react-use'
 
 interface TourClickProps {
@@ -12,15 +12,8 @@ interface TourClickProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>
 }
 
-interface NextButtonProps extends TourClickProps {
-  name: string
-  value?: Record<string, boolean>
-  setValue: Dispatch<SetStateAction<Record<string, boolean>>>
-}
-
 interface TourProps extends ComponentProps {
   steps: StepType[]
-  name: string
 }
 
 export function useOpenTour(name: string) {
@@ -34,6 +27,25 @@ export function useOpenTour(name: string) {
 
     setIsOpen(true)
   }, [])
+}
+
+export function useTourStorage(name: string): [boolean, (val: boolean) => void] {
+  const [value, _setValue] = useLocalStorage<Record<string, boolean>>(
+    process.env.NEXT_PUBLIC_TOUR_NAME!,
+    {}
+  )
+
+  const setValue = useCallback(
+    (val: boolean) => {
+      _setValue({
+        ...value,
+        [name]: val
+      })
+    },
+    [value]
+  )
+
+  return [value ? value[name] : false, setValue]
 }
 
 const Dots: FC<Pick<TourClickProps, 'currentStep' | 'stepsLength'>> = ({
@@ -118,12 +130,7 @@ const NextButton: FC<TourClickProps> = ({
   )
 }
 
-export const Tour: FC<TourProps> = ({ steps, name, children, ...restProps }) => {
-  const [value, setValue] = useLocalStorage<Record<string, boolean>>(
-    process.env.NEXT_PUBLIC_TOUR_NAME!,
-    {}
-  )
-
+export const Tour: FC<TourProps> = ({ steps, children, ...restProps }) => {
   const nextButton = ({ currentStep, stepsLength, setIsOpen, setCurrentStep }: any) => {
     return (
       <div className="flex items-center justify-between w-full">
@@ -146,10 +153,6 @@ export const Tour: FC<TourProps> = ({ steps, name, children, ...restProps }) => 
     // Do nothing
   }, [])
 
-  const handleBeforeClose = useCallback(() => {
-    setValue({ ...value, [name]: true })
-  }, [value, name])
-
   return (
     <TourProvider
       steps={steps}
@@ -165,7 +168,6 @@ export const Tour: FC<TourProps> = ({ steps, name, children, ...restProps }) => 
       prevButton={() => null}
       nextButton={nextButton}
       onClickMask={handleClickMask}
-      beforeClose={handleBeforeClose}
       {...restProps}
     >
       {children}

@@ -1,7 +1,8 @@
+import { useTour } from '@reactour/tour'
 import clsx from 'clsx'
 import { FC, useEffect } from 'react'
 
-import { useOpenTour } from '~/components'
+import { useOpenTour, useTourStorage } from '~/components'
 import { useStore } from '~/store'
 
 import { BlockWrapper } from '../blocks'
@@ -11,11 +12,15 @@ import { BubbleMenu, StripeConnectModal } from '../views'
 export const BlockList: FC = () => {
   const { siteSettings } = useStore()
   const { state, dispatch } = useBuilderContext()
-
-  // Open builder tour
-  useOpenTour('builder')
+  const { setIsOpen } = useTour()
+  const [value, setValue] = useTourStorage('builder')
 
   useEffect(() => {
+    if (!value) {
+      setIsOpen(true)
+      setValue(true)
+    }
+
     dispatch({
       type: 'initBlocks',
       payload: siteSettings.blocks || []

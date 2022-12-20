@@ -1,5 +1,6 @@
 import { Button, Tooltip, notification } from '@heyforms/ui'
-import { deepClone } from '@nily/utils'
+import { deepClone, isEmpty } from '@nily/utils'
+import { StepType, useTour } from '@reactour/tour'
 import {
   IconChevronLeft,
   IconDatabase,
@@ -14,7 +15,9 @@ import {
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import { FC, useCallback, useEffect, useMemo } from 'react'
+import { useLocalStorage } from 'react-use'
 
+import { useTourStorage } from '~/components'
 import { useProductId } from '~/layout'
 import { useBuilderContext } from '~/layout/builder/context'
 import { SiteSettingsService } from '~/service'
@@ -26,6 +29,9 @@ export const Navbar: FC = () => {
   const { t } = useTranslation()
   const productId = useProductId()
   const { state, dispatch } = useBuilderContext()
+
+  const { setIsOpen, setSteps, setCurrentStep } = useTour()
+  const [value, setValue] = useTourStorage('blocks')
 
   const { loading, error, request } = useRequest(async () => {
     await SiteSettingsService.update(productId, {
@@ -63,14 +69,60 @@ export const Navbar: FC = () => {
     []
   )
 
+  const steps: StepType[] = [
+    {
+      selector: '.block-card-selected',
+      content: (
+        <div className="text-sm space-y-2">
+          <div className="text-base font-bold">Reorder block</div>
+          <div>Click and hold the block, then drag to a new location to reorder these blocks.</div>
+        </div>
+      ),
+      position: 'left'
+    },
+    {
+      selector: '.block-card-menu-open',
+      content: (
+        <div className="text-sm space-y-2">
+          <div className="text-base font-bold">Block menu</div>
+          <div>
+            Click the rectangle made of three dots to expand the dropdown menu, where you can
+            duplicate or delete the block.
+          </div>
+        </div>
+      ),
+      position: 'left'
+    }
+  ]
+
   const toggleBlocksSidebar = useCallback(() => {
+    // Open tour
+    if (!value) {
+      // Select first block
+      if (!state.selectBlockId) {
+        dispatch({
+          type: 'selectBlock',
+          payload: {
+            blockId: state.blocks[0]?.id
+          }
+        })
+      }
+
+      setTimeout(() => {
+        setSteps(steps)
+        setCurrentStep(0)
+        setIsOpen(true)
+        setValue(true)
+      }, 150)
+    }
+
     dispatch({
       type: 'update',
       payload: {
         isBlocksSidebarOpen: !state.isBlocksSidebarOpen
       }
     })
-  }, [state.isBlocksSidebarOpen])
+  }, [value, state.blocks, state.selectBlockId, state.isBlocksSidebarOpen])
 
   function handleModeChange(previewMode: any) {
     dispatch({
