@@ -15,7 +15,7 @@ export interface FooterProps extends BlockProps {
 export const FooterPreview: FC<FooterProps & { product: Product }> = ({ block, product }) => {
   const socialMedias = useMemo(
     () =>
-      block.socialMedias.map(row => ({
+      (block.socialMedias || []).map(row => ({
         ...row,
         value: SOCIAL_MEDIA_SETTINGS.find(s => s.value === row.type)!.prefixUri + row.value
       })),

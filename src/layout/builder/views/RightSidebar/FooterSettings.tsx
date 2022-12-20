@@ -143,14 +143,16 @@ export const FooterSettings: FC<{ block: FooterBlock }> = ({ block }) => {
 
   const handleChange = useCallback(
     (id: string, updates: AnyMap<string>) => {
-      handleSetSocialMedias(block.socialMedias.map(l => (l.id === id ? { ...l, ...updates } : l)))
+      handleSetSocialMedias(
+        (block.socialMedias || []).map(l => (l.id === id ? { ...l, ...updates } : l))
+      )
     },
     [block.socialMedias]
   )
 
   const handleDelete = useCallback(
     (id: string) => {
-      handleSetSocialMedias(block.socialMedias.filter(l => l.id !== id))
+      handleSetSocialMedias((block.socialMedias || []).filter(l => l.id !== id))
     },
     [block.socialMedias]
   )
