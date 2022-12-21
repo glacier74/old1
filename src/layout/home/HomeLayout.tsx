@@ -14,20 +14,7 @@ export function HomeLayout({ seo, children }: LayoutProps): JSX.Element {
       <Script
         dangerouslySetInnerHTML={{
           __html: `
-          (function(d,t) {
-            var BASE_URL="https://chat.earlybird.im";
-            var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=BASE_URL+"/packs/js/sdk.js";
-            g.defer = true;
-            g.async = true;
-            s.parentNode.insertBefore(g,s);
-            g.onload=function(){
-              window.chatwootSDK.run({
-                websiteToken: 'jiVN6eVixD2uwhy5ac8yKqGH',
-                baseUrl: BASE_URL
-              })
-            }
-          })(document,"script");`
+          window.$crisp=[];window.CRISP_WEBSITE_ID="d57ec6f7-1ed8-4b02-bd44-add83a2eff72";(function(){ d=document;s=d.createElement("script"); s.src="https://client.crisp.chat/l.js"; s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`
         }}
       />
     </BaseLayout>
