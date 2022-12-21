@@ -7,21 +7,21 @@ import { FC } from 'react'
 const tiers = [
   {
     name: 'Starter',
-    href: '#',
+    href: '/sign-up',
     priceMonthly: 0,
     priceAnnually: 0,
     description: 'For new makers who want to fine-tune and test an idea.'
   },
   {
     name: 'Superior',
-    href: '#',
+    href: '/sign-up',
     priceMonthly: 8,
     priceAnnually: 6,
     description: 'For creators with multiple ideas who want to efficiently test and refine them.'
   },
   {
     name: 'Shipper',
-    href: '#',
+    href: '/sign-up',
     priceMonthly: 15,
     priceAnnually: 10,
     description: 'For productive shippers who want to work more efficiently.'

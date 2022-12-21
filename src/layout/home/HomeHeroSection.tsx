@@ -26,10 +26,10 @@ export const HomeHeroSection: FC = () => {
               Get started free
             </Link>
             <a
-              href="#"
+              href="https://help.earlybird.im/roadmap/"
               className="w-full md:w-auto px-4 py-3 md:px-6 md:py-3 text-normal text-center font-medium border border-slate-900 rounded-md"
             >
-              Try the demo
+              View the roadmap
             </a>
           </div>
         </div>
