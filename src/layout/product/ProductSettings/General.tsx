@@ -1,4 +1,4 @@
-import { Form, Input, Select, Tooltip, notification } from '@heyforms/ui'
+import { Form, Input, Select, Switch, Tooltip, notification } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { FC, useMemo } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
@@ -81,6 +81,21 @@ export const General: FC<{ values: any }> = ({ values }) => {
             <Select options={LANGUAGE_OPTIONS} />
           </Form.Item>
         </Expandable>
+
+        <div className="px-6 py-5">
+          <div className="flex items-start justify-between">
+            <div className="text-sm">
+              <h4 className="text-base text-slate-900 font-bold">Lead capture notification</h4>
+              <p className="mt-1 text-slate-500 font-normal">
+                When a new lead capture action is triggered on your landing page, an email
+                notification will be sent.
+              </p>
+            </div>
+            <Form.Item name="leadCaptureNotification">
+              <Switch />
+            </Form.Item>
+          </div>
+        </div>
       </div>
     </div>
   )

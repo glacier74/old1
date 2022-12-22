@@ -36,6 +36,10 @@ const ProductSettings = (): JSX.Element => {
     try {
       await ProductService.update(productId, values)
       updateProduct(productId, values)
+
+      notification.success({
+        title: t('productSettings.updated')
+      })
     } catch (err: any) {
       notification.error({
         title: t(err.message)
