@@ -1,5 +1,5 @@
 import { EmptyStates, Form, Input } from '@heyforms/ui'
-import { conv, isValid } from '@nily/utils'
+import { isValid } from '@nily/utils'
 import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import { NextSeoProps } from 'next-seo'
@@ -247,8 +247,6 @@ export const getServerSideProps = withTranslations(async context => {
       }
     }
   }
-
-  product.siteSetting.blocks = conv.json<Block[]>(product.siteSetting.blocks, [])!
 
   return {
     props: {
