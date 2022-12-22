@@ -14,7 +14,15 @@ export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
   const seoProps: NextSeoProps = {
     title: t('common.name'),
     description: t('common.description'),
-    ...seo
+    ...seo,
+    openGraph: {
+      ...seo?.openGraph,
+      images: [
+        {
+          url: 'https://storage.earlybird.im/og-image.png'
+        }
+      ]
+    }
   }
 
   // Make sure that there is a browser id cookie to prevent login errors.
