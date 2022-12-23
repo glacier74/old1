@@ -335,6 +335,7 @@ declare global {
     productId: number
     webhookId: number
     webhookUrl: string
+    eventId: number
     eventType: string
     payload: string
     statusCode: number

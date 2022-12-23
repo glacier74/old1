@@ -13,7 +13,7 @@ const Skeleton = () => {
       <div className="min-w-0 py-4">
         <div className="flex items-center space-x-4">
           <div className="flex-shrink-0">
-            <div className="w-12 h-12 rounded-full shadow skeleton"></div>
+            <div className="w-12 h-12 rounded-full bg-slate-200"></div>
           </div>
           <div className="flex-1 min-w-0">
             <div className="rounded-sm skeleton" style={{ width: 100, height: 18 }}></div>
@@ -24,7 +24,7 @@ const Skeleton = () => {
       <div className="min-w-0 py-4">
         <div className="flex items-center space-x-4">
           <div className="flex-shrink-0">
-            <div className="w-12 h-12 rounded-full shadow skeleton"></div>
+            <div className="w-12 h-12 rounded-full bg-slate-200"></div>
           </div>
           <div className="flex-1 min-w-0">
             <div className="rounded-sm skeleton" style={{ width: 100, height: 18 }}></div>
