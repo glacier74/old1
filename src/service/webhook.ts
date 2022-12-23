@@ -28,11 +28,15 @@ export class WebhookService {
     webhookId: number,
     page: number
   ): Promise<{ count: number; logs: WebhookLog[] }> {
-    return axios.get(`/products/${productId}/webhooks/${webhookId}`, {
+    return axios.get(`/products/${productId}/webhooks/${webhookId}/logs`, {
       params: {
         type: 'lead_capture',
         page
       }
     })
+  }
+
+  static async sampleEvent(productId: number, webhookId: number) {
+    return axios.post(`/products/${productId}/webhooks/${webhookId}/sample`)
   }
 }

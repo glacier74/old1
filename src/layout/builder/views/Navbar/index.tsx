@@ -165,7 +165,7 @@ export const Navbar: FC = () => {
           <span className="text-[0.6875rem]">Blocks</span>
         </div>
         <Tooltip ariaLabel="Coming soon">
-          <div className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100">
+          <div className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded opacity-50 cursor-pointer text-slate-700 hover:bg-slate-100">
             <IconDroplet className="w-5 h-5" />
             <span className="text-[0.6875rem]">Design</span>
           </div>

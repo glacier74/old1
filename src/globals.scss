@@ -167,6 +167,10 @@ button.switch-checked {
   }
 }
 
+.table-expanded-row {
+  @apply border-none hover:bg-transparent #{!important};
+}
+
 .form-inline {
   @apply mt-1;
 

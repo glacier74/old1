@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@headlessui/react': ^1.7.5
-  '@heyforms/ui': ^2022.12.3
+  '@heyforms/ui': ^2022.12.5
   '@next/font': ^13.0.6
   '@nily/utils': ^0.3.6
   '@reactour/tour': ^3.1.6
@@ -65,7 +65,7 @@ specifiers:
 
 dependencies:
   '@headlessui/react': 1.7.5_biqbaboplfbrettd7655fr4n2y
-  '@heyforms/ui': 2022.12.3_rixgf5cgyovsaznuwfsrer5hke
+  '@heyforms/ui': 2022.12.5_rixgf5cgyovsaznuwfsrer5hke
   '@next/font': 13.0.6
   '@nily/utils': 0.3.6
   '@reactour/tour': 3.1.6_react@18.2.0
@@ -425,8 +425,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@heyforms/ui/2022.12.3_rixgf5cgyovsaznuwfsrer5hke:
-    resolution: {integrity: sha512-dDC66SO4+IRXuXT/ueOvEjhtylWOU7Ppo2WU4Y/nA6ybGRCAmDF3IolOEk7qAVSn4QLQ5dNEjsZtUvF2EIWiZQ==}
+  /@heyforms/ui/2022.12.5_rixgf5cgyovsaznuwfsrer5hke:
+    resolution: {integrity: sha512-8h0MMJIFpJIsL/XFas2KA3OvXcLIaSbDh9ErD+YJXnLTyg0MnfUvzig4vgBbDcgg0QXIRJWpbH2QMCHwpTIOTA==}
     peerDependencies:
       '@headlessui/react': ^1.6.6
       '@tailwindcss/forms': ^0.5.2
