@@ -1,4 +1,3 @@
-import { Button } from '@heyforms/ui'
 import { isValid } from '@nily/utils'
 import { FC } from 'react'
 
@@ -54,10 +53,8 @@ export const HeroSectionPreview: FC<HeroSectionProps> = ({ block }) => {
             }
 
             return (
-              <div className="block-herosection-button">
-                <a key={button.id} href={href}>
-                  {button.html}
-                </a>
+              <div key={button.id} className="block-herosection-button">
+                <a href={href}>{button.html}</a>
               </div>
             )
           })}
