@@ -83,7 +83,7 @@ export const HomeHeader: FC = () => {
               </Link>
               <Link
                 href="/sign-up"
-                className="py-1 px-3 border border-green-500 text-green-500 rounded-md hover:opacity-80"
+                className="py-2 px-4 border border-emerald-500 bg-emerald-500 rounded-md hover:opacity-80 text-white"
                 title={t('common.name')}
               >
                 Sign up
@@ -125,7 +125,7 @@ export const HomeHeader: FC = () => {
               </Link>
               <Link
                 href="/sign-up"
-                className="py-1 px-3 border border-green-500 text-green-500 rounded-md hover:opacity-80 text-center"
+                className="py-1 px-3 border border-emerald-500 text-emerald-500 rounded-md hover:opacity-80 text-center"
                 title={t('common.name')}
               >
                 Sign up

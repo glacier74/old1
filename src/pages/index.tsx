@@ -5,6 +5,7 @@ import {
   HomeFooter,
   HomeHeader,
   HomeHeroSection,
+  HomeUserImage,
   HomeLayout
 } from '~/layout'
 import { isLoggedIn, withTranslations } from '~/utils'
@@ -27,6 +28,7 @@ const Home = ({ isLoggedIn }: HomeProps): JSX.Element => {
     <HomeLayout>
       <HomeHeader />
       <HomeHeroSection />
+      <HomeUserImage />
       <HomeFeature />
       <HomeBottom />
       <HomeFooter />
