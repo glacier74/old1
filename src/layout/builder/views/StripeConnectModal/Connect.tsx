@@ -18,7 +18,7 @@ export const Connect: FC = () => {
     const { authorizeUrl } = await StripeService.authorizeUrl()
 
     setLoading(true)
-    openWindow(authorizeUrl)
+    openWindow(authorizeUrl, 'scrollbars=yes, resizable=yes, width=1120, height=720')
   }, [])
 
   async function connect(stateQuery: string, code: string) {
@@ -44,15 +44,21 @@ export const Connect: FC = () => {
     setLoading(false)
   }
 
-  const openWindow = useWindow('EARLYBIRD_STRIPE_CONNECT', async (win, payload) => {
-    win.close()
+  const openWindow = useWindow(
+    'EARLYBIRD_STRIPE_CONNECT',
+    async (win, payload) => {
+      win.close()
 
-    if (payload.error) {
-      return setError(new Error(`Failed to connect with stripe: ${payload.error_description}`))
+      if (payload.error) {
+        return setError(new Error(`Failed to connect with stripe: ${payload.error_description}`))
+      }
+
+      await connect(payload.state, payload.code)
+    },
+    () => {
+      setLoading(false)
     }
-
-    await connect(payload.state, payload.code)
-  })
+  )
 
   return (
     <div className="flex flex-col items-center justify-center px-24 h-full">

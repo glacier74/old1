@@ -1,3 +1,5 @@
+import { notification } from '@heyforms/ui'
+import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
@@ -35,7 +37,17 @@ export function useVisible(visible = false): [boolean, () => void, () => void] {
   return [_visible, open, close]
 }
 
-export function useRequest(asyncFunction: (...args: any[]) => void, deps: any[] = []) {
+interface UseRequestOptions {
+  errorNotify?: boolean
+}
+
+export function useRequest(
+  asyncFunction: (...args: any[]) => void,
+  deps: any[] = [],
+  options?: UseRequestOptions
+) {
+  const { t } = useTranslation()
+
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<Error>()
 
@@ -47,6 +59,12 @@ export function useRequest(asyncFunction: (...args: any[]) => void, deps: any[] 
       await asyncFunction(...args)
     } catch (err: any) {
       setError(err as Error)
+
+      if (options?.errorNotify) {
+        notification.error({
+          title: t(err.message)
+        })
+      }
     } finally {
       setLoading(false)
     }
@@ -55,20 +73,35 @@ export function useRequest(asyncFunction: (...args: any[]) => void, deps: any[] 
   return { loading, error, request }
 }
 
-export function useWindow(source: string, listener: (win: Window, payload: any) => void) {
+export function useWindow(
+  source: string,
+  onMessage: (win: Window, payload: any) => void,
+  onClose?: () => void
+) {
   const winRef = useRef<Window | null>()
 
   const messageListener = useCallback(
     (event: MessageEvent) => {
       if (event.origin === window.location.origin && event.data.source === source) {
-        listener(winRef.current!, event.data.payload)
+        onMessage(winRef.current!, event.data.payload)
       }
     },
     [winRef.current, source]
   )
 
-  function openWindow(url: string, features?: string) {
-    winRef.current = window.open(url, '_blank', features)
+  function openWindow(
+    url: string,
+    features = 'scrollbars=yes, resizable=yes, width=600, height=800'
+  ) {
+    const win = window.open(url, '', features)!
+    const timer = setInterval(() => {
+      if (win.closed) {
+        clearInterval(timer)
+        onClose?.()
+      }
+    }, 1_000)
+
+    winRef.current = win
   }
 
   useEffect(() => {
