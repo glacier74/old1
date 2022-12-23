@@ -49,11 +49,7 @@ const WebhookLogModal: FC<IModalProps & { productId: number; webhookId: number }
             : 'bg-red-50 text-red-500'
 
         return (
-<<<<<<< HEAD
-          <div className="flex items-center">
-=======
           <div className="flex items-center cursor-pointer">
->>>>>>> 40a04480ff4dbddabf6e1807c015d114d7cb8584
             <IconChevronRight
               className={clsx('w-5 h-5 text-slate-500', { 'rotate-90': isExpanded })}
             />
