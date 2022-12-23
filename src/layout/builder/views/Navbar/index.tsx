@@ -1,21 +1,20 @@
 import { Button, Tooltip, notification } from '@heyforms/ui'
-import { deepClone, isEmpty } from '@nily/utils'
+import { deepClone } from '@nily/utils'
 import { StepType, useTour } from '@reactour/tour'
 import {
+  IconBolt,
   IconChevronLeft,
   IconDatabase,
   IconDeviceDesktop,
   IconDeviceMobile,
   IconDroplet,
   IconLayoutGrid,
-  IconPlug,
   IconSettings,
   IconShare
 } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import { FC, useCallback, useEffect, useMemo } from 'react'
-import { useLocalStorage } from 'react-use'
 
 import { useTourStorage } from '~/components'
 import { useProductId } from '~/layout'
@@ -171,12 +170,10 @@ export const Navbar: FC = () => {
             <span className="text-[0.6875rem]">Design</span>
           </div>
         </Tooltip>
-        <Tooltip ariaLabel="Coming soon">
-          <div className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100">
-            <IconShare className="w-5 h-5" />
-            <span className="text-[0.6875rem]">Share</span>
-          </div>
-        </Tooltip>
+        <div className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100">
+          <IconShare className="w-5 h-5" />
+          <span className="text-[0.6875rem]">Share</span>
+        </div>
 
         <div className="mx-1.5 w-px h-5 bg-gray-200" />
 
@@ -187,12 +184,13 @@ export const Navbar: FC = () => {
           <IconDatabase className="w-5 h-5" />
           <span className="text-[0.6875rem]">Lead capture</span>
         </Link>
-        <Tooltip ariaLabel="Coming soon">
-          <div className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100">
-            <IconPlug className="w-5 h-5" />
-            <span className="text-[0.6875rem]">Integration</span>
-          </div>
-        </Tooltip>
+        <Link
+          href={`/product/${productId}/integrations`}
+          className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100"
+        >
+          <IconBolt className="w-5 h-5" />
+          <span className="text-[0.6875rem]">Integrations</span>
+        </Link>
         {/*<Link*/}
         {/*  href={`/product/${productId}/integrations`}*/}
         {/*  className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100"*/}

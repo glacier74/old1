@@ -27,7 +27,9 @@ export const HomeFeature: FC = () => (
           <div className="mt-16 md:mt-24 flex flex-col md:flex-row md:items-center">
             <div className="flex-1">
               <h2 className="text-base md:text-lg mb-7 text-slate-500 pr-8">
-                Add a UI block from the dashboard and customize it to your liking. Stack it like Legos to create unique layouts. Feel free to think outside the box and let your imagination run wild.
+                Add a UI block from the dashboard and customize it to your liking. Stack it like
+                Legos to create unique layouts. Feel free to think outside the box and let your
+                imagination run wild.
               </h2>
             </div>
             <div className="flex-1">

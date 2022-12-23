@@ -1,4 +1,5 @@
 import {
+  IconBolt,
   IconBrandTwitter,
   IconDatabase,
   IconGift,
@@ -74,11 +75,11 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
           icon={IconDatabase}
           title={t('sidebar.engagements')}
         />
-        {/*<NavLink*/}
-        {/*  href={`/product/${productId}/integration`}*/}
-        {/*  icon={IconPlug}*/}
-        {/*  title={t('sidebar.integrate')}*/}
-        {/*/>*/}
+        <NavLink
+          href={`/product/${productId}/integrations`}
+          icon={IconBolt}
+          title={t('sidebar.integrate')}
+        />
         <div
           className="text-slate-700 hover:bg-slate-200 hover:text-slate-900 group flex items-center px-2 py-1 text-sm rounded-md cursor-pointer"
           onClick={openMemberList}

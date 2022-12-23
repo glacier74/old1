@@ -25,6 +25,7 @@ const ProductSettings = (): JSX.Element => {
 
   const [form] = useForm()
   const [loading, setLoading] = useState(false)
+  const [isValueChanged, setValueChanged] = useState(false)
 
   function handleSubmit() {
     form.submit()
@@ -56,12 +57,16 @@ const ProductSettings = (): JSX.Element => {
           {t('productSettings.heading')}
         </h1>
 
-        <Button type="success" loading={loading} onClick={handleSubmit}>
+        <Button type="success" loading={loading} disabled={!isValueChanged} onClick={handleSubmit}>
           Save
         </Button>
       </div>
 
-      {isReady ? <Settings form={form} onFinish={handleFinish} /> : <Skeleton />}
+      {isReady ? (
+        <Settings form={form} onValueChanged={setValueChanged} onFinish={handleFinish} />
+      ) : (
+        <Skeleton />
+      )}
     </ProductLayout>
   )
 }

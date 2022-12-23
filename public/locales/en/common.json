@@ -375,6 +375,11 @@
     "title": "$t(stripe.connecting) · EarlyBird",
     "connecting": "Connecting with stripe"
   },
+  "integrations": {
+    "title": "Integrate with apps · {{name}}",
+    "heading": "Integrate with apps",
+    "description": "Connect your lead capture data with your favorite apps."
+  },
   "publicSite": {
     "email": "Email address",
     "checkOut": "Check out",

@@ -1,7 +1,7 @@
 import { Form } from '@heyforms/ui'
 import { deepEqual } from 'fast-equals'
 import { useTranslation } from 'next-i18next'
-import { FC, useMemo, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 
 import { useProduct } from '~/layout'
 import { useUnsaveChanges } from '~/utils'
@@ -13,10 +13,11 @@ import { Meta } from './Meta'
 
 interface ProductSettingsProps {
   form: any
+  onValueChanged: (isChanged: boolean) => void
   onFinish: (values: any) => void
 }
 
-export const ProductSettings: FC<ProductSettingsProps> = ({ form, onFinish }) => {
+export const ProductSettings: FC<ProductSettingsProps> = ({ form, onValueChanged, onFinish }) => {
   const { t } = useTranslation()
   const product = useProduct()
   const [values, setValues] = useState<any>(product)
@@ -34,6 +35,10 @@ export const ProductSettings: FC<ProductSettingsProps> = ({ form, onFinish }) =>
 
   // If the changes have not been saved, the user will be prompted.
   useUnsaveChanges(isValuesChanged, t('builder.leaveBrowserMessage'))
+
+  useEffect(() => {
+    onValueChanged(isValuesChanged)
+  }, [isValuesChanged])
 
   return (
     <div className="mt-12">

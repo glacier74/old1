@@ -306,4 +306,46 @@ declare global {
     type: 'footer'
     socialMedias: SocialMedia[]
   }
+
+  interface Integration {
+    type: 'webhook' | 'mailchimp'
+
+    // Webhook
+    webhookId: number
+    webhookType: string
+    webhookUrl: string
+
+    // OAuth apps
+    oauthAccountName: string
+    oauthAccountId: string
+    lastConfiguredAt: number
+    lastSyncedAt: number
+
+    isEnabled: boolean
+    settings: IntegrationSettings
+  }
+
+  interface IntegrationSettings {
+    // Mailchimp
+    audienceId: string
+  }
+
+  interface WebhookLog {
+    id: number
+    productId: number
+    webhookId: number
+    webhookUrl: string
+    eventType: string
+    payload: string
+    statusCode: number
+    response: string
+    deliveryStatus: string
+    createdAt: string
+    updatedAt: string
+  }
+
+  interface MailchimpAudience {
+    id: string
+    name: string
+  }
 }
