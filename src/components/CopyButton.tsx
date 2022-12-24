@@ -1,8 +1,9 @@
 import { Button } from '@heyforms/ui'
+import { ButtonProps } from '@heyforms/ui/types/button/Button'
 import { FC, useState } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
 
-interface CopyButtonProps extends ComponentProps {
+interface CopyButtonProps extends ButtonProps {
   text: string
   duration?: number
   copiedText?: string

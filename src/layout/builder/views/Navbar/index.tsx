@@ -20,9 +20,10 @@ import { useTourStorage } from '~/components'
 import { useProductId } from '~/layout'
 import { useBuilderContext } from '~/layout/builder/context'
 import { SiteSettingsService } from '~/service'
-import { useRequest, useUnsaveChanges } from '~/utils'
+import { useRequest, useUnsaveChanges, useVisible } from '~/utils'
 
 import { InsertBlock } from './InsertBlock'
+import { ShareModal } from './ShareModal'
 
 export const Navbar: FC = () => {
   const { t } = useTranslation()
@@ -31,6 +32,7 @@ export const Navbar: FC = () => {
 
   const { setIsOpen, setSteps, setCurrentStep } = useTour()
   const [value, setValue] = useTourStorage('blocks')
+  const [visible, open, close] = useVisible()
 
   const { loading, error, request } = useRequest(async () => {
     await SiteSettingsService.update(productId, {
@@ -144,89 +146,96 @@ export const Navbar: FC = () => {
   }, [error])
 
   return (
-    <div className="flex items-center justify-between h-[3.75rem] px-4 border-b border-gray-200">
-      <div className="flex-1">
-        <Link
-          className="group flex items-center text-sm hover:text-green-500"
-          href={`/product/${productId}`}
-        >
-          <IconChevronLeft className="w-5 h-5 text-slate-500 -ml-1 group-hover:text-green-500" />
-          <span className="ml-1">{t('sidebar.dashboard')}</span>
-        </Link>
-      </div>
-
-      <div className="flex-[2_1_0%] flex items-center justify-center">
-        <InsertBlock />
-        <div
-          className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100 blockSidebar"
-          onClick={toggleBlocksSidebar}
-        >
-          <IconLayoutGrid className="w-5 h-5" />
-          <span className="text-[0.6875rem]">Blocks</span>
+    <>
+      <div className="flex items-center justify-between h-[3.75rem] px-4 border-b border-gray-200">
+        <div className="flex-1">
+          <Link
+            className="group flex items-center text-sm hover:text-green-500"
+            href={`/product/${productId}`}
+          >
+            <IconChevronLeft className="w-5 h-5 text-slate-500 -ml-1 group-hover:text-green-500" />
+            <span className="ml-1">{t('sidebar.dashboard')}</span>
+          </Link>
         </div>
-        <Tooltip ariaLabel="Coming soon">
-          <div className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded opacity-50 cursor-pointer text-slate-700 hover:bg-slate-100">
-            <IconDroplet className="w-5 h-5" />
-            <span className="text-[0.6875rem]">Design</span>
+
+        <div className="flex-[2_1_0%] flex items-center justify-center">
+          <InsertBlock />
+          <div
+            className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100 blockSidebar"
+            onClick={toggleBlocksSidebar}
+          >
+            <IconLayoutGrid className="w-5 h-5" />
+            <span className="text-[0.6875rem]">Blocks</span>
           </div>
-        </Tooltip>
-        <div className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100">
-          <IconShare className="w-5 h-5" />
-          <span className="text-[0.6875rem]">Share</span>
+          <Tooltip ariaLabel="Coming soon">
+            <div className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded opacity-50 cursor-pointer text-slate-700 hover:bg-slate-100">
+              <IconDroplet className="w-5 h-5" />
+              <span className="text-[0.6875rem]">Design</span>
+            </div>
+          </Tooltip>
+          <div
+            className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100"
+            onClick={open}
+          >
+            <IconShare className="w-5 h-5" />
+            <span className="text-[0.6875rem]">Share</span>
+          </div>
+
+          <div className="mx-1.5 w-px h-5 bg-gray-200" />
+
+          <Link
+            href={`/product/${productId}/engagements`}
+            className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100"
+          >
+            <IconDatabase className="w-5 h-5" />
+            <span className="text-[0.6875rem]">Lead capture</span>
+          </Link>
+          <Link
+            href={`/product/${productId}/integrations`}
+            className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100"
+          >
+            <IconBolt className="w-5 h-5" />
+            <span className="text-[0.6875rem]">Integrations</span>
+          </Link>
+          {/*<Link*/}
+          {/*  href={`/product/${productId}/integrations`}*/}
+          {/*  className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100"*/}
+          {/*>*/}
+          {/*  <IconPlug className="w-5 h-5" />*/}
+          {/*  <span className="text-[0.6875rem]">Integration</span>*/}
+          {/*</Link>*/}
+          <Link
+            href={`/product/${productId}/settings`}
+            className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100 pageSettings"
+          >
+            <IconSettings className="w-5 h-5" />
+            <span className="text-[0.6875rem]">Settings</span>
+          </Link>
         </div>
 
-        <div className="mx-1.5 w-px h-5 bg-gray-200" />
+        <div className="flex-1 flex items-center justify-end">
+          {/*<Switch.Group*/}
+          {/*  className="builder-mode"*/}
+          {/*  value={state.previewMode}*/}
+          {/*  options={options}*/}
+          {/*  onChange={handleModeChange}*/}
+          {/*/>*/}
 
-        <Link
-          href={`/product/${productId}/engagements`}
-          className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100"
-        >
-          <IconDatabase className="w-5 h-5" />
-          <span className="text-[0.6875rem]">Lead capture</span>
-        </Link>
-        <Link
-          href={`/product/${productId}/integrations`}
-          className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100"
-        >
-          <IconBolt className="w-5 h-5" />
-          <span className="text-[0.6875rem]">Integrations</span>
-        </Link>
-        {/*<Link*/}
-        {/*  href={`/product/${productId}/integrations`}*/}
-        {/*  className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100"*/}
-        {/*>*/}
-        {/*  <IconPlug className="w-5 h-5" />*/}
-        {/*  <span className="text-[0.6875rem]">Integration</span>*/}
-        {/*</Link>*/}
-        <Link
-          href={`/product/${productId}/settings`}
-          className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100 pageSettings"
-        >
-          <IconSettings className="w-5 h-5" />
-          <span className="text-[0.6875rem]">Settings</span>
-        </Link>
+          {/*<div className="mx-4 w-px h-5 bg-gray-200" />*/}
+
+          <Button
+            type="success"
+            className="builder-publish !py-1.5"
+            disabled={!state.isBlocksChanged || loading}
+            loading={loading}
+            onClick={request}
+          >
+            Publish
+          </Button>
+        </div>
       </div>
 
-      <div className="flex-1 flex items-center justify-end">
-        {/*<Switch.Group*/}
-        {/*  className="builder-mode"*/}
-        {/*  value={state.previewMode}*/}
-        {/*  options={options}*/}
-        {/*  onChange={handleModeChange}*/}
-        {/*/>*/}
-
-        {/*<div className="mx-4 w-px h-5 bg-gray-200" />*/}
-
-        <Button
-          type="success"
-          className="builder-publish !py-1.5"
-          disabled={!state.isBlocksChanged || loading}
-          loading={loading}
-          onClick={request}
-        >
-          Publish
-        </Button>
-      </div>
-    </div>
+      <ShareModal visible={visible} onClose={close} />
+    </>
   )
 }
