@@ -110,7 +110,7 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
             title={t('sidebar.gettingStarted')}
           />
           <ExternalLink
-            href="https://earlybird.im/changelog"
+            href="https://earlybird.im/blog/tag/changelog/"
             icon={IconGift}
             title={t('sidebar.whatsNew')}
           />

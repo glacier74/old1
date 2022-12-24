@@ -62,7 +62,7 @@ export const HomeHeader: FC = () => {
                 Pricing
               </Link>
               <Link
-                href="/changelog"
+                href="https://earlybird.im/blog/tag/changelog/"
                 title={t('common.changelog')}
                 className="hidden md:block hover:opacity-80"
               >
@@ -111,7 +111,7 @@ export const HomeHeader: FC = () => {
               <Link href="/pricing" title={t('common.pricing')} className="hover:opacity-80">
                 Pricing
               </Link>
-              <Link href="/changelog" title={t('common.changelog')} className="hover:opacity-80">
+              <Link href="https://earlybird.im/blog/tag/changelog/" title={t('common.changelog')} className="hover:opacity-80">
                 Changelog
               </Link>
               <Link href="/blog" title={t('common.blog')} className="hover:opacity-80">
