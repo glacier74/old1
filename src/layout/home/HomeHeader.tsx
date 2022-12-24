@@ -79,7 +79,7 @@ export const HomeHeader: FC = () => {
 
             <div className="hidden items-center text-slate-900 space-x-5 md:flex">
               <Link href="/login" title={t('common.name')} className="hover:opacity-80">
-                Sign in
+                Log in
               </Link>
               <Link
                 href="/sign-up"
@@ -121,7 +121,7 @@ export const HomeHeader: FC = () => {
 
             <div className="flex flex-col text-slate-900 space-y-2 border-t border-slate-200 mt-5 pt-5">
               <Link href="/login" title={t('common.name')} className="hover:opacity-80 text-center">
-                Sign in
+                Log in
               </Link>
               <Link
                 href="/sign-up"
