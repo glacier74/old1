@@ -41,12 +41,16 @@ const ProductEmailCaptures = (): JSX.Element => {
       }
     },
     {
-      key: 'name',
-      name: ''
-    },
-    {
       key: 'email',
-      name: ''
+      name: '',
+      render(row) {
+        return (
+          <div className="text-sm text-slate-800 font-medium">
+            {row.name && <p className="mb-0.5">{row.name}</p>}
+            <p>{row.email}</p>
+          </div>
+        )
+      }
     },
     {
       key: 'date',

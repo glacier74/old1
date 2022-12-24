@@ -36,7 +36,7 @@ const ProductEngagements = (): JSX.Element => {
             </div>
             <div className="flex-1 px-4">
               <p className="text-sm font-semibold text-slate-800">
-                {t(PAYMENT_STATUS[row.status])}
+                {row.email}
               </p>
               {row.paidAt! > 0 && (
                 <p className="mt-0.5 font-normal text-sm text-slate-500">
@@ -49,11 +49,11 @@ const ProductEngagements = (): JSX.Element => {
       }
     },
     {
-      key: 'email',
+      key: 'status',
       name: '',
       width: '30%',
       render(row) {
-        return row.email
+        return t(PAYMENT_STATUS[row.status])
       }
     },
     {
