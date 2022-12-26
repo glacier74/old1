@@ -244,7 +244,7 @@
     "sitePrivate": {
       "heading": "Make the site private",
       "description": "Enable protection with a simple shared password. All search engine optimization and social features will be disabled.",
-      "invalidPassword": "The password must be at least 4 characters and at most 16 characters. Password can be any one of uppercase, lowercase or number.",
+      "invalidPassword": "Your password should be between 4 and 16 characters.",
       "placeholder": "Set the password for the site"
     },
     "removeBranding": {
