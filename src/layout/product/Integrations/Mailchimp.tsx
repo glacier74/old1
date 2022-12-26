@@ -122,7 +122,7 @@ export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => 
             }}
             request={handleFinish}
           >
-            <Form.Item name="audienceId" label="Select audience" rules={[{ required: true }]}>
+            <Form.Item name="audienceId" label="Select an audience" rules={[{ required: true }]}>
               <Select
                 options={audiences as any}
                 valueKey="id"

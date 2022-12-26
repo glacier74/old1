@@ -384,7 +384,8 @@
   "integrations": {
     "title": "Integrate with apps · {{name}}",
     "heading": "Integrate with apps",
-    "description": "Connect your lead capture data with your favorite apps."
+    "description": "Connect your lead capture data with your favorite apps.",
+    "connecting": "Connecting with your favorite apps"
   },
   "publicSite": {
     "email": "Email address",

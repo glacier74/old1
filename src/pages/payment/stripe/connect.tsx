@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 import { BaseLayout } from '~/layout'
+import { withTranslations } from '~/utils'
 
 const StripeConnect = () => {
   const { t } = useTranslation()
@@ -33,5 +34,11 @@ const StripeConnect = () => {
     </BaseLayout>
   )
 }
+
+export const getStaticProps = withTranslations(async context => {
+  return {
+    props: {}
+  }
+})
 
 export default StripeConnect
