@@ -28,7 +28,7 @@ export const ProductSettings: FC<ProductSettingsProps> = ({ form, onValueChanged
   }, [values, product])
 
   function handleValuesChange(_: any, updates: any) {
-    if (updates.isSitePrivate && isEmpty(values.sitePassword)) {
+    if (updates.isSitePrivate && isEmpty(values.sitePassword) && isEmpty(updates.sitePassword)) {
       updates.sitePassword = random.alphaNumeric(4)
       form.setFieldValue('sitePassword', updates.sitePassword)
     }
