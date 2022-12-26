@@ -1,4 +1,5 @@
 import { Form } from '@heyforms/ui'
+import { isEmpty, random } from '@nily/utils'
 import { deepEqual } from 'fast-equals'
 import { useTranslation } from 'next-i18next'
 import { FC, useEffect, useMemo, useState } from 'react'
@@ -27,6 +28,11 @@ export const ProductSettings: FC<ProductSettingsProps> = ({ form, onValueChanged
   }, [values, product])
 
   function handleValuesChange(_: any, updates: any) {
+    if (updates.isSitePrivate && isEmpty(values.sitePassword)) {
+      updates.sitePassword = random.alphaNumeric(4)
+      form.setFieldValue('sitePassword', updates.sitePassword)
+    }
+
     setValues((values: any) => ({
       ...values,
       ...updates
@@ -41,7 +47,7 @@ export const ProductSettings: FC<ProductSettingsProps> = ({ form, onValueChanged
   }, [isValuesChanged])
 
   return (
-    <div className="mt-12">
+    <div className="mt-12 pb-20">
       <Form
         form={form}
         initialValues={product}
