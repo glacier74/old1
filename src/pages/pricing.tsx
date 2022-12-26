@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
 import { HomeFooter, HomeHeader, HomeLayout } from '~/layout'
@@ -11,10 +12,15 @@ import {
 import { withTranslations } from '~/utils'
 
 const Pricing = (): JSX.Element => {
+  const { t } = useTranslation()
   const [billingCycle, setBillingCycle] = useState('monthly')
 
   return (
-    <HomeLayout>
+    <HomeLayout
+      seo={{
+        title: t('pricing.title')
+      }}
+    >
       <HomeHeader />
       <PricingHero />
       <PricingPlans billingCycle={billingCycle} onChange={setBillingCycle} />

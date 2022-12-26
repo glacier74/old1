@@ -23,6 +23,12 @@
     "next": "Next",
     "finish": "Finish"
   },
+  "features": {
+    "title": "Features · EarlyBird"
+  },
+  "pricing": {
+   "title": "Pricing · EarlyBird"
+  },
   "login": {
     "title": "Login · EarlyBird",
     "heading": "👋 Welcome back!",

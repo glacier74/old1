@@ -1,3 +1,5 @@
+import { useTranslation } from 'next-i18next'
+
 import { HomeFooter, HomeHeader, HomeLayout } from '~/layout'
 import {
   FeaturesBuild,
@@ -9,8 +11,14 @@ import {
 import { withTranslations } from '~/utils'
 
 const Features = (): JSX.Element => {
+  const { t } = useTranslation()
+
   return (
-    <HomeLayout>
+    <HomeLayout
+      seo={{
+        title: t('features.title')
+      }}
+    >
       <HomeHeader />
       <FeaturesHero />
       <FeaturesBuild />
