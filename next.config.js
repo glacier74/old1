@@ -28,6 +28,24 @@ module.exports = {
   reactStrictMode: true,
   swcMinify: true,
   poweredByHeader: false,
+  // https://nextjs.org/docs/advanced-features/security-headers
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN'
+          }
+        ]
+      }
+    ]
+  },
   async redirects() {
     return [
       {
