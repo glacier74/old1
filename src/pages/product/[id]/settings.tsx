@@ -56,14 +56,26 @@ const ProductSettings = (): JSX.Element => {
         <h1 className="mb-4 text-3xl leading-6 font-bold text-slate-900">
           {t('productSettings.heading')}
         </h1>
-
-        <Button type="success" loading={loading} disabled={!isValueChanged} onClick={handleSubmit}>
-          Save
-        </Button>
       </div>
 
       {isReady ? (
-        <Settings form={form} onValueChanged={setValueChanged} onFinish={handleFinish} />
+        <>
+          <Settings form={form} onValueChanged={setValueChanged} onFinish={handleFinish} />
+
+          <div className="fixed left-0 md:left-[18rem] bottom-0 right-0 bg-white border-t border-slate-200">
+            <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 md:px-8">
+              <Button
+                type="success"
+                className="w-full md:w-auto"
+                loading={loading}
+                disabled={!isValueChanged}
+                onClick={handleSubmit}
+              >
+                {t('common.saveChanges')}
+              </Button>
+            </div>
+          </div>
+        </>
       ) : (
         <Skeleton />
       )}
