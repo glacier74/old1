@@ -15,8 +15,9 @@ const TYPE = 'mailchimp'
 export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => {
   const { t } = useTranslation()
   const productId = useProductId()
-  const [visible, open, close] = useVisible()
   const { reload } = useIntegrationsContext()
+  const [visible, open, close] = useVisible()
+
   const [audiences, setAudiences] = useState<MailchimpAudience[]>([])
 
   // Delete integration
@@ -31,6 +32,18 @@ export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => 
     }
   )
 
+  // Fetch audiences
+  const { loading: isFetching, request: fetchAudiences } = useRequest(
+    async () => {
+      const result = await MailchimpService.audiences(productId)
+      setAudiences(result)
+    },
+    [productId],
+    {
+      errorNotify: true
+    }
+  )
+
   async function handleAuthorize() {
     const { authorizeUrl } = await MailchimpService.authorizeUrl()
     return authorizeUrl
@@ -38,9 +51,7 @@ export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => 
 
   async function handleConnect(code: string) {
     await MailchimpService.connect(productId, code)
-
-    const result = await MailchimpService.audiences(productId)
-    setAudiences(result)
+    await fetchAudiences()
   }
 
   async function handleFinish(settings: any) {
@@ -112,7 +123,13 @@ export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => 
             request={handleFinish}
           >
             <Form.Item name="audienceId" label="Select audience" rules={[{ required: true }]}>
-              <Select options={audiences as any} valueKey="id" labelKey="name" />
+              <Select
+                options={audiences as any}
+                valueKey="id"
+                labelKey="name"
+                disabled={audiences.length < 1}
+                loading={isFetching}
+              />
             </Form.Item>
           </Form.Custom>
         </div>

@@ -28,7 +28,7 @@ export const Expandable: FC<ExpandableProps> = ({
       <div className="flex items-start justify-between">
         <div className="text-sm">
           <h4 className="text-base text-slate-900 font-bold">{title}</h4>
-          <p className="mt-1 text-slate-500 font-normal">{description}</p>
+          <div className="mt-1 text-slate-500 font-normal">{description}</div>
         </div>
         <Button className="ml-3 w-[4.5rem] !px-2.5 !py-1" onClick={handleClick}>
           {expanded ? 'Close' : 'Expand'}
