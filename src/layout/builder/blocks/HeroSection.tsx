@@ -47,8 +47,8 @@ export const HeroSectionPreview: FC<HeroSectionProps> = ({ block }) => {
                 href = button.action.value
                 break
 
-              case 'block':
-                href = `#block-${button.action.value}`
+              default:
+                href = `#block-${button.action?.blockId}`
                 break
             }
 

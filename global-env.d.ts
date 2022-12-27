@@ -203,6 +203,7 @@ declare global {
   interface ButtonBlockAction {
     type: 'block' | 'link'
     value?: string
+    blockId?: string
   }
 
   interface ButtonBlock extends TextBlock {

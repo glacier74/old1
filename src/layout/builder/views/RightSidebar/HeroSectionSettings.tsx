@@ -1,6 +1,5 @@
 import { Input, Select, Switch, Tooltip } from '@heyforms/ui'
 import { IconQuestionCircle } from '@tabler/icons'
-import { useTranslation } from 'next-i18next'
 import { FC, useCallback, useMemo } from 'react'
 
 import { IconLayoutCenter, IconLayoutRight } from '~/components'
@@ -14,7 +13,7 @@ interface CallToActionProps {
   onChange: (buttonId: string, action: ButtonBlockAction) => void
 }
 
-const CallToAction: FC<CallToActionProps> = ({ blocks, button, index, onChange }) => {
+const CallToAction: FC<CallToActionProps> = ({ blocks, button, onChange }) => {
   const typeOptions: any[] = useMemo(
     () => [
       {
@@ -53,11 +52,23 @@ const CallToAction: FC<CallToActionProps> = ({ blocks, button, index, onChange }
     [button.action]
   )
 
-  const handleValueChange = useCallback(
+  const handleLinkChange = useCallback(
     (value: any) => {
       onChange(button.id, {
         ...(button.action || {}),
+        type: 'link',
         value
+      } as ButtonBlockAction)
+    },
+    [button.action]
+  )
+
+  const handleBlockChange = useCallback(
+    (blockId: any) => {
+      onChange(button.id, {
+        ...(button.action || {}),
+        type: 'block',
+        blockId
       } as ButtonBlockAction)
     },
     [button.action]
@@ -78,17 +89,17 @@ const CallToAction: FC<CallToActionProps> = ({ blocks, button, index, onChange }
             type="url"
             placeholder="https://example.com"
             value={button.action?.value}
-            onChange={handleValueChange}
+            onChange={handleLinkChange}
           />
         ) : (
           <Select
             options={blocks as unknown as any[]}
-            value={button.action?.value}
+            value={button.action?.blockId}
             valueKey="id"
             valueRender={valueRender as unknown as any}
             optionRender={optionRender}
             placeholder="Select a block"
-            onChange={handleValueChange}
+            onChange={handleBlockChange}
           />
         )}
       </div>
