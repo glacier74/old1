@@ -31,10 +31,25 @@ export class MailchimpService {
   }
 
   static async audiences(productId: number): Promise<MailchimpAudience[]> {
-    return axios.get('/apps/mailchimp/audiences', {
-      params: {
-        productId
-      }
+    return axios.post('/apps/mailchimp/audiences', {
+      productId
+    })
+  }
+}
+
+export class SendyService {
+  static async brands(serverUri: string, apiKey: string): Promise<SendyBrand[]> {
+    return axios.post('/apps/sendy/brands', {
+      serverUri,
+      apiKey
+    })
+  }
+
+  static async lists(serverUri: string, apiKey: string, brandId: string): Promise<SendyBrand[]> {
+    return axios.post('/apps/sendy/lists', {
+      serverUri,
+      apiKey,
+      brandId
     })
   }
 }
