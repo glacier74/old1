@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.5",
-    "@heyforms/ui": "^2022.12.5",
+    "@heyforms/ui": "^2022.12.6",
     "@next/font": "^13.0.6",
     "@nily/utils": "^0.3.6",
     "@reactour/tour": "^3.1.6",

@@ -217,6 +217,7 @@ declare global {
 
   interface ImageBlock extends Pick<Block, 'id' | 'type'> {
     type: 'image'
+    mediaType: 'image' | 'video'
     source: string
     caption?: string
     width?: number
@@ -309,7 +310,7 @@ declare global {
   }
 
   interface Integration {
-    type: 'webhook' | 'mailchimp'
+    type: 'webhook' | 'mailchimp' | 'sendy'
 
     // Webhook
     webhookId: number

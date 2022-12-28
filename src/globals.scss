@@ -97,7 +97,7 @@ body {
   path,
   polyline,
   circle,
-  line {
+  line,rect {
     vector-effect: non-scaling-stroke;
   }
 }
@@ -242,7 +242,7 @@ button.switch-checked {
 // =================================================================================
 // Home
 .home-container {
-  background-image: url(/static/site_bg.jpg);
+  background-image: url(/static/site-bg.jpg);
   background-size: auto;
   @apply bg-white;
 }
@@ -441,6 +441,14 @@ button.switch-checked {
       @apply block;
     }
   }
+
+  .block-embed-iframe {
+    @apply h-[20rem];
+  }
+
+  @media (max-width: 768px) {
+    @apply pt-24 pb-[4.5rem];
+  }
 }
 
 .block-herosection-center {
@@ -449,6 +457,17 @@ button.switch-checked {
   .block-image-container,
   .block-herosection-tagline {
     @apply mx-auto;
+  }
+
+  .block-embed-iframe {
+    @apply h-[35rem];
+  }
+
+  @media (max-width: 768px) {
+    .block-embed-iframe {
+      width: 100%;
+      height: 50vw;
+    }
   }
 }
 
@@ -473,6 +492,13 @@ button.switch-checked {
 
     .block-image-container {
       @apply w-full #{!important};
+    }
+  }
+
+  @media (max-width: 768px) {
+    .block-embed-iframe {
+      width: 100%;
+      height: 50vw;
     }
   }
 }
@@ -519,7 +545,7 @@ button.switch-checked {
 }
 
 .block-herosection-image {
-  @apply mt-8;
+  @apply mt-8 md:mt-12;
 
   .block-upload {
     @apply h-[16rem];

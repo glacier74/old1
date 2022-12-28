@@ -45,6 +45,10 @@ export function blockByType(type: BlockType, blockId?: string): Block {
       } as PaymentBlock
       break
 
+    case 'image':
+      ;(block as ImageBlock).mediaType = 'image'
+      break
+
     case 'slideGallery':
       ;(block as SlideGalleryBlock).sources = []
       break
