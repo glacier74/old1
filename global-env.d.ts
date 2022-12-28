@@ -233,10 +233,10 @@ declare global {
     align?: 'left' | 'center' | 'right'
   }
 
-  interface ListBlock extends Pick<Block, 'id' | 'type'> {
+  interface ListBlock<B = TextBlock> extends Pick<Block, 'id' | 'type'> {
     type: 'list'
     ordered?: false
-    content: TextBlock[]
+    content: B[]
   }
 
   interface HeroSectionBlock extends Pick<Block, 'id' | 'type'> {
@@ -308,7 +308,7 @@ declare global {
     type: 'faq'
     heading: HeadingBlock
     description: TextBlock
-    content: ParagraphBlock[]
+    content: ListBlock<ParagraphBlock>
   }
 
   interface SocialMedia {

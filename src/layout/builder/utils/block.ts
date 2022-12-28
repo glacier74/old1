@@ -8,6 +8,19 @@ export function blockByType(type: BlockType, blockId?: string): Block {
   } as Block
 
   switch (type) {
+    case 'list':
+      block = {
+        ...block,
+        content: [
+          {
+            id: uuidv4(),
+            type: 'text',
+            html: ''
+          }
+        ]
+      } as ListBlock
+      break
+
     case 'payment':
       block = {
         ...block,
@@ -31,18 +44,12 @@ export function blockByType(type: BlockType, blockId?: string): Block {
           type: 'text',
           html: ''
         },
-        content: {
-          id: uuidv4(),
-          type: 'list',
-          content: [
-            {
-              id: uuidv4(),
-              type: 'text',
-              html: ''
-            }
-          ]
-        }
+        content: blockByType('list')
       } as PaymentBlock
+      break
+
+    case 'image':
+      ;(block as ImageBlock).mediaType = 'image'
       break
 
     case 'slideGallery':
@@ -135,6 +142,45 @@ export function blockByType(type: BlockType, blockId?: string): Block {
           html: ''
         }
       } as EmailCaptureBlock
+      break
+
+    case 'paragraph':
+      block = {
+        ...block,
+        heading: {
+          id: uuidv4(),
+          type: 'heading',
+          level: 4,
+          html: ''
+        },
+        description: {
+          id: uuidv4(),
+          type: 'text',
+          html: ''
+        }
+      } as ParagraphBlock
+      break
+
+    case 'faq':
+      block = {
+        ...block,
+        heading: {
+          id: uuidv4(),
+          type: 'heading',
+          level: 3,
+          html: ''
+        },
+        description: {
+          id: uuidv4(),
+          type: 'text',
+          html: ''
+        },
+        content: {
+          id: uuidv4(),
+          type: 'list',
+          content: [blockByType('paragraph')]
+        }
+      } as FaqBlock
       break
 
     case 'heading':
@@ -327,9 +373,7 @@ function listBlockPaths(
   const length = block.content.length
 
   // Initial
-  if (!rootId) {
-    focusableBlockMap[block.id] = []
-  }
+  focusableBlockMap[block.id] = []
 
   block.content.forEach((textBlock, index) => {
     flattedBlocks.push({
@@ -340,8 +384,111 @@ function listBlockPaths(
     })
 
     // Add to focusable blocks
-    focusableBlockMap[rootId || block.id].push(textBlock.id)
+    focusableBlockMap[block.id].push(textBlock.id)
+
+    if (rootId) {
+      focusableBlockMap[rootId].push(textBlock.id)
+    }
   })
+}
+
+function paragraphListBlockPaths(
+  block: ListBlock<ParagraphBlock>,
+  flattedBlocks: FlattedBlock[],
+  focusableBlockMap: Record<string, string[]>,
+  path: Array<string | number>,
+  rootId?: string
+) {
+  // List Block
+  flattedBlocks.push({
+    id: block.id,
+    rootId,
+    path
+  })
+
+  // List content
+  const length = block.content.length
+
+  // Initial
+  focusableBlockMap[block.id] = []
+
+  block.content.forEach((paragraphBlock, index) => {
+    flattedBlocks.push({
+      id: paragraphBlock.id,
+      rootId: rootId || block.id,
+      deletable: index > 0 || length > 1,
+      path: [...path, index]
+    })
+
+    flattedBlocks.push({
+      id: paragraphBlock.heading.id,
+      rootId: rootId || block.id,
+      deletable: index > 0 || length > 1,
+      path: [...path, index, 'heading']
+    })
+
+    flattedBlocks.push({
+      id: paragraphBlock.description.id,
+      rootId: rootId || block.id,
+      deletable: index > 0 || length > 1,
+      path: [...path, index, 'description']
+    })
+
+    // Add to focusable blocks
+    focusableBlockMap[paragraphBlock.id] = [
+      paragraphBlock.heading.id,
+      paragraphBlock.description.id
+    ]
+
+    focusableBlockMap[block.id].push(paragraphBlock.heading.id)
+    focusableBlockMap[block.id].push(paragraphBlock.description.id)
+
+    if (rootId) {
+      focusableBlockMap[rootId].push(paragraphBlock.heading.id)
+      focusableBlockMap[rootId].push(paragraphBlock.description.id)
+    }
+  })
+}
+
+function faqBlockPaths(
+  block: FaqBlock,
+  flattedBlocks: FlattedBlock[],
+  focusableBlockMap: Record<string, string[]>,
+  path: Array<string | number>,
+  rootId?: string
+) {
+  // Faq block
+  flattedBlocks.push({
+    id: block.id,
+    rootId,
+    path
+  })
+
+  // Heading
+  flattedBlocks.push({
+    id: block.heading.id,
+    rootId: block.id,
+    path: [...path, 'heading']
+  })
+
+  // Description
+  flattedBlocks.push({
+    id: block.description.id,
+    rootId: block.id,
+    path: [...path, 'description']
+  })
+
+  // Add to focusable blocks
+  focusableBlockMap[block.id] = [block.heading.id, block.description.id]
+
+  // List
+  paragraphListBlockPaths(
+    block.content,
+    flattedBlocks,
+    focusableBlockMap,
+    [...path, 'content'],
+    block.id
+  )
 }
 
 export function flattenBlocks(blocks: Block[]) {
@@ -370,6 +517,10 @@ export function flattenBlocks(blocks: Block[]) {
 
       case 'emailCapture':
         contactBlockPaths(block as EmailCaptureBlock, flattedBlocks, focusableBlockMap, [index])
+        break
+
+      case 'faq':
+        faqBlockPaths(block as FaqBlock, flattedBlocks, focusableBlockMap, [index])
         break
 
       case 'image':

@@ -1,6 +1,6 @@
 import { IconCreditCard, IconLetterH, IconLetterT, IconMail, IconSlideshow } from '@tabler/icons'
 
-import { IconFeature, IconFooter, IconHeader, IconHeroSection } from '~/components'
+import { IconFaq, IconFeature, IconFooter, IconHeader, IconHeroSection } from '~/components'
 
 export const LANGUAGE_OPTIONS = [
   {
@@ -67,6 +67,11 @@ export const BLOCK_OPTIONS: BlockOption[] = [
     icon: IconMail,
     label: 'builder.emailCapture.name'
   },
+  {
+    type: 'faq',
+    icon: IconFaq,
+    label: 'builder.faq.name'
+  },
 
   // Payment
   {
@@ -83,7 +88,7 @@ export const BLOCK_GROUP_OPTIONS: Array<Pick<BlockGroupOptions, 'label' | 'types
   },
   {
     label: 'builder.feature.name',
-    types: ['feature', 'slideGallery', 'emailCapture']
+    types: ['feature', 'slideGallery', 'emailCapture', 'faq']
   },
   {
     label: 'builder.payment.name',

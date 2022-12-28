@@ -10,6 +10,7 @@ import { FC } from 'react'
 import { IconLogo } from '~/components'
 import { PublicSiteLayout } from '~/layout'
 import { EmailCapturePreview } from '~/layout/builder/blocks/EmailCapture'
+import { FaqPreview } from '~/layout/builder/blocks/Faq'
 import { FeaturePreview } from '~/layout/builder/blocks/Feature'
 import { FooterPreview } from '~/layout/builder/blocks/Footer'
 import { HeaderPreview } from '~/layout/builder/blocks/Header'
@@ -60,6 +61,9 @@ const Block: FC<{ product: Product; block: any }> = ({ product, block }) => {
 
     case 'image':
       return <ImagePreview key={block.id} block={block} />
+
+    case 'faq':
+      return <FaqPreview key={block.id} block={block} />
 
     default:
       return <TextPreview key={block.id} block={block} />

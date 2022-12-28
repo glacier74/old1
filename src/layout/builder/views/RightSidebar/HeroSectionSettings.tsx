@@ -203,6 +203,7 @@ export const HeroSectionSettings: FC<{ block: HeroSectionBlock }> = ({ block }) 
         <div className="space-y-2 divide divide-slate-100">
           {block.buttons.map((button, index) => (
             <CallToAction
+              key={button.id}
               blocks={blocks}
               button={button}
               index={index}

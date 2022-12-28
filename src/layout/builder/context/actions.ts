@@ -1,4 +1,4 @@
-import { deepClone, isFalse } from '@nily/utils'
+import { deepClone, isEmpty, isFalse } from '@nily/utils'
 import { deepEqual } from 'fast-equals'
 
 import {
@@ -87,11 +87,19 @@ export function addBlock(state: IState, payload: AddBlockAction['payload']): ISt
     const fb = flattedBlocks.find(fb => fb.id === payload.afterId)
 
     if (fb) {
-      const parent = getBlockByPath(blocks, fb.path.slice(0, -1)) as any
+      let parent = getBlockByPath(blocks, fb.path.slice(0, -1)) as any
 
       if (parent) {
+        let afterId = payload.afterId
+
+        // 单独处理 paragraph
+        if (parent.type === 'paragraph') {
+          afterId = parent.id
+          parent = getBlockByPath(blocks, fb.path.slice(0, -2)) as any
+        }
+
         if (parent.type === 'list') {
-          const index = getBlockIndex(parent.content, payload.afterId)
+          const index = getBlockIndex(parent.content, afterId)
 
           if (index > -1) {
             parent.content.splice(index + 1, 0, payload.block)
@@ -199,10 +207,19 @@ export function deleteBlock(state: IState, payload: DeleteBlockAction['payload']
   }
 
   if (fb.rootId) {
-    const parent = getBlockByPath(blocks, fb.path.slice(0, -1)) as any
+    let parent = getBlockByPath(blocks, fb.path.slice(0, -1)) as any
+    let deleteBlockId = payload.blockId
+
+    // 单独处理 paragraph
+    if (parent.type === 'paragraph') {
+      if (isEmpty(parent.heading.html) && isEmpty(parent.description.html)) {
+        deleteBlockId = parent.id
+        parent = getBlockByPath(blocks, fb.path.slice(0, -2)) as any
+      }
+    }
 
     if (parent?.type === 'list') {
-      const index = getBlockIndex(parent.content, payload.blockId)
+      const index = getBlockIndex(parent.content, deleteBlockId)
 
       if (index > -1) {
         parent.content.splice(index, 1)
@@ -261,7 +278,9 @@ export function selectBlock(state: IState, payload: SelectBlockAction['payload']
     state.focusBlockId = focusableBlockMap[blockId][0]
   }
 
-  return setSelectBlock(state, blockId)
+  const fb = flattedBlocks[index]
+
+  return setSelectBlock(state, fb.rootId || fb.id)
 }
 
 export function focusBlock(state: IState, payload: FocusBlockAction['payload']): IState {

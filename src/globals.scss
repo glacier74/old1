@@ -154,6 +154,10 @@ button.switch-checked {
 
     &.switch-button-active {
       @apply text-slate-900 hover:text-slate-900;
+
+      svg {
+        @apply text-green-500;
+      }
     }
   }
 }
@@ -1008,7 +1012,7 @@ button.block-header-button {
   }
 
   .block-context-container {
-    @apply mt-12 space-y-8 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10 lg:grid-cols-3;
+    @apply mt-6 space-y-4 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-6 lg:grid-cols-3;
   }
 }
 
@@ -1024,6 +1028,24 @@ button.block-header-button {
   .rich-text {
     @apply text-slate-500;
   }
+}
+
+.block-faq-item {
+  @apply relative pt-6;
+
+  &:hover {
+    .block-faq-delete-button {
+      @apply block;
+    }
+  }
+}
+
+.block-faq-delete-button {
+  @apply absolute top-0 left-1/2 -translate-x-1/2 hidden p-1 border border-gray-300 shadow-sm sm:text-sm font-medium rounded-md text-slate-700 bg-white;
+}
+
+.block-faq-add-button {
+  @apply w-full h-full flex flex-col items-center justify-center border-2 border-slate-200 border-dashed rounded-lg px-2 py-2 text-center hover:border-slate-400;
 }
 
 .block-faq-question {
