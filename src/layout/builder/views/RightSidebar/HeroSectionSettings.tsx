@@ -119,17 +119,19 @@ export const HeroSectionSettings: FC<{ block: HeroSectionBlock }> = ({ block }) 
       {
         value: 'left',
         label: (
-          <Tooltip ariaLabel="Align left">
+          <div className="flex items-center px-1">
             <IconLayoutRight className="w-4 h-4" />
-          </Tooltip>
+            <span className="text-sm ml-1">Left</span>
+          </div>
         )
       },
       {
         value: 'center',
         label: (
-          <Tooltip ariaLabel="Align center">
+          <div className="flex items-center px-1">
             <IconLayoutCenter className="w-4 h-4" />
-          </Tooltip>
+            <span className="text-sm ml-1">Center</span>
+          </div>
         )
       }
     ],
@@ -171,7 +173,7 @@ export const HeroSectionSettings: FC<{ block: HeroSectionBlock }> = ({ block }) 
   return (
     <div className="px-4">
       <div className="flex items-center justify-between">
-        <div className="text-sm font-medium">Layout</div>
+        <div className="text-sm font-medium">Layout align</div>
         <Switch.Group
           className="builder-mode"
           value={block.layout || 'left'}

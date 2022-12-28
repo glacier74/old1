@@ -139,6 +139,21 @@ button.switch-checked {
   @apply bg-green-500;
 }
 
+.switch-group {
+  button.switch-button {
+    @apply px-1.5 py-1.5 text-slate-500 hover:text-slate-500;
+
+    &:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    &.switch-button-active {
+      @apply text-slate-900 hover:text-slate-900;
+    }
+  }
+}
+
 .stepper-item-active .stepper-icon-container,
 .stepper-item-completed .stepper-icon-container {
   @apply border-green-500;
@@ -947,21 +962,6 @@ button.block-header-button {
 
   .menu-label {
     @apply pb-0 text-xs cursor-default;
-  }
-
-  .switch-group {
-    button.switch-button {
-      @apply px-1.5 py-1;
-
-      &:focus {
-        outline: none !important;
-        box-shadow: none !important;
-      }
-
-      .icon {
-        @apply w-5 h-5 text-slate-600;
-      }
-    }
   }
 }
 

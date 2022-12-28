@@ -74,7 +74,7 @@ export const RightSidebar: FC = () => {
         <div className="sidebar-wrapper flex flex-col w-[18.75rem] h-full scrollbar bg-white border-l border-gray-200 duration-150 ease-in-out">
           <div className="py-6 space-y-4">
             <div className="flex items-center justify-between px-4">
-              <div className="text-sm font-medium">{t('builder.settings')}</div>
+              <div className="text-base font-medium">{t('builder.settings')}</div>
               <Tooltip ariaLabel={t('builder.closeSettings')}>
                 <Button.Link className="w-6 h-6" leading={<IconX />} onClick={handleExited} />
               </Tooltip>

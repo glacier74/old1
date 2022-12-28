@@ -32,7 +32,7 @@ export const LeftSidebar: FC = () => {
       <div className="builder-left-sidebar fixed top-[3.75rem] left-0">
         <div className="sidebar-wrapper flex flex-col w-[18.75rem] h-full bg-white border-r border-gray-200 duration-150 ease-in-out">
           <div className="flex items-center justify-between p-4">
-            <div className="text-sm font-medium">{t('builder.blocks')}</div>
+            <div className="text-base font-medium">{t('builder.blocks')}</div>
             <Tooltip ariaLabel={t('builder.closeBlocks')}>
               <Button.Link className="w-6 h-6" leading={<IconX />} onClick={handleExited} />
             </Tooltip>
