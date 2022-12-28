@@ -83,7 +83,7 @@ export const HomeHeader: FC = () => {
               </Link>
               <Link
                 href="/sign-up"
-                className="py-2 px-4 border border-emerald-500 bg-emerald-500 rounded-md hover:opacity-80 text-white"
+                className="py-2 px-4 border border-emerald-500 rounded-md text-emerald-500"
                 title={t('common.name')}
               >
                 Sign up
