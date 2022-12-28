@@ -131,6 +131,10 @@ button.button:not(:disabled):focus {
   @apply ring-green-500 border-green-500;
 }
 
+.input input {
+  @apply placeholder-slate-400;
+}
+
 button.switch:focus {
   @apply ring-green-500;
 }

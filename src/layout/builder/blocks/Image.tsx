@@ -37,7 +37,6 @@ export const ImagePreview: FC<Omit<ImageProps, 'namespace' | 'uploadDesc1' | 'up
             width={block.width}
             height={block.height}
             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            modestBranding="1"
             allowFullScreen
           />
         ) : (
@@ -97,7 +96,6 @@ const ImageComponent: FC<ImageProps> = ({
                 width={block.width}
                 height={block.height}
                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                modestBranding="1"
                 allowFullScreen
               />
             ) : (
