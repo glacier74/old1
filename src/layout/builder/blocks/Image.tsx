@@ -29,24 +29,12 @@ export const ImagePreview: FC<Omit<ImageProps, 'namespace' | 'uploadDesc1' | 'up
           height: block.height
         }}
       >
-        {block.mediaType === 'video' ? (
-          <iframe
-            className="block-embed-iframe"
-            src={block.source}
-            title={block.caption}
-            width={block.width}
-            height={block.height}
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        ) : (
-          <img
-            src={cropImage(block.source, block.width, block.height)}
-            alt={block.caption}
-            width={block.width}
-            height={block.height}
-          />
-        )}
+        <img
+          src={cropImage(block.source, block.width, block.height)}
+          alt={block.caption}
+          width={block.width}
+          height={block.height}
+        />
       </div>
     </BlockPreview>
   )
@@ -64,13 +52,12 @@ const ImageComponent: FC<ImageProps> = ({
   const [visible, open, close] = useVisible()
 
   // TODO - align image BubbleMenu
-  function handleChange(source: string, mediaType: 'image' | 'video') {
+  function handleChange(source: string) {
     dispatch({
       type: 'updateBlock',
       payload: {
         blockId: block.id,
         updates: {
-          mediaType,
           source
         }
       }
@@ -88,24 +75,12 @@ const ImageComponent: FC<ImageProps> = ({
               height: block.height
             }}
           >
-            {block.mediaType === 'video' ? (
-              <iframe
-                className="block-embed-iframe"
-                src={block.source}
-                title={block.caption}
-                width={block.width}
-                height={block.height}
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            ) : (
-              <img
-                src={cropImage(block.source, block.width, block.height)}
-                alt={block.caption}
-                width={block.width}
-                height={block.height}
-              />
-            )}
+            <img
+              src={cropImage(block.source, block.width, block.height)}
+              alt={block.caption}
+              width={block.width}
+              height={block.height}
+            />
             <div className="block-image-toolbar">
               <Button className="!px-3 !py-2" leading={<IconPhotoEdit />} onClick={open}>
                 {t('common.change')}
@@ -127,7 +102,6 @@ const ImageComponent: FC<ImageProps> = ({
         visible={visible}
         namespace={namespace}
         enableUnsplash={false}
-        enableVideo={true}
         onClose={close}
         onChange={handleChange}
       />

@@ -1,7 +1,6 @@
 import { FC } from 'react'
 
 import { Mailchimp } from './Mailchimp'
-import { Sendy } from './Sendy'
 import { Webhook } from './Webhook'
 
 const Integration: FC<{ integration: Integration }> = ({ integration }) => {
@@ -11,9 +10,6 @@ const Integration: FC<{ integration: Integration }> = ({ integration }) => {
 
     case 'mailchimp':
       return <Mailchimp integration={integration} />
-
-    case 'sendy':
-      return <Sendy integration={integration} />
   }
 }
 

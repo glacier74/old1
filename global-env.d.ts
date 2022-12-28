@@ -217,7 +217,6 @@ declare global {
 
   interface ImageBlock extends Pick<Block, 'id' | 'type'> {
     type: 'image'
-    mediaType: 'image' | 'video'
     source: string
     caption?: string
     width?: number
@@ -310,7 +309,7 @@ declare global {
   }
 
   interface Integration {
-    type: 'webhook' | 'mailchimp' | 'sendy'
+    type: 'webhook' | 'mailchimp'
 
     // Webhook
     webhookId: number
@@ -330,12 +329,6 @@ declare global {
   interface IntegrationSettings {
     // Mailchimp
     audienceId: string
-
-    // Sendy
-    serverUri: string
-    apiKey: string
-    brandId: string
-    listId: string
   }
 
   interface WebhookLog {
@@ -356,17 +349,5 @@ declare global {
   interface MailchimpAudience {
     id: string
     name: string
-  }
-
-  interface SendyBrand {
-    id: string
-    name: string
-  }
-
-  interface SendySettings {
-    serverUri: string
-    apiKey: string
-    brandId: string
-    listId: string
   }
 }

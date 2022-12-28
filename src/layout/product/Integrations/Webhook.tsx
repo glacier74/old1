@@ -11,7 +11,7 @@ import {
 import clsx from 'clsx'
 import dayjs from 'dayjs'
 import { useTranslation } from 'next-i18next'
-import { FC, useMemo, useRef, useState } from 'react'
+import { FC, useRef, useState } from 'react'
 
 import { AsyncRequest, AsyncRequestInstance, Loading, Pagination2 } from '~/components'
 import { useProductId } from '~/layout'
@@ -155,10 +155,6 @@ export const Webhook: FC<{ integration: Integration }> = ({ integration }) => {
   const [settingsVisible, openSettings, closeSettings] = useVisible()
   const [logsVisible, openLogs, closeLogs] = useVisible()
 
-  const isConfigured = useMemo(() => {
-    return isValid(integration.webhookId)
-  }, [integration.webhookId])
-
   // Delete webhook
   const { loading: isDeleting, request: handleDelete } = useRequest(
     async () => {
@@ -201,7 +197,7 @@ export const Webhook: FC<{ integration: Integration }> = ({ integration }) => {
             </p>
           </div>
           <div>
-            {isConfigured ? (
+            {integration.webhookId ? (
               <div className="flex items-center">
                 <Tooltip ariaLabel="Webhook logs">
                   <Button.Link leading={<IconClockPlay />} onClick={openLogs} />
@@ -255,7 +251,6 @@ export const Webhook: FC<{ integration: Integration }> = ({ integration }) => {
             submitOptions={{
               type: 'success'
             }}
-            onlySubmitOnValueChange
             request={handleFinish}
           >
             <Form.Item name="url" label="Endpoint URL" rules={[{ type: 'url', required: true }]}>
