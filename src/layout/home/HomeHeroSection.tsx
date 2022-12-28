@@ -10,7 +10,7 @@ export const HomeHeroSection: FC = () => {
     <section>
       <div className="relative text-slate-900 max-w-7xl mx-auto px-12 z-10">
         <div className="pt-40 text-center">
-          <div className="inline-block rounded-full bg-emerald-50 px-4 py-2 mb-8 text-base text-emerald-600">Secure your first lead by <span className="font-bold text-emerald-700">{dayjs().add(10, 'm').format('h:mm A')}</span> with no waiting.</div>
+          <div className="inline-block rounded-full bg-emerald-50 px-4 py-2 mb-8 text-base text-emerald-600">Acquire your first customer by <span className="font-bold text-emerald-700">{dayjs().add(10, 'm').format('h:mm A')}</span> with no waiting.</div>
           <h1 className="text-4xl leading-tight md:text-6xl font-extrabold md:leading-none">Create landing pages<br /> your audience will love</h1>
           <div className="max-w-2xl mx-auto text-slate-500 text-lg md:text-xl mt-8 font-normal">
             Effortlessly create, pitch, and validate your early-stage business with our no-code landing page builder.
