@@ -17,6 +17,7 @@ development:
   stage: development
   only:
     - master
+    - development
   cache:
     paths:
       - node_modules/
