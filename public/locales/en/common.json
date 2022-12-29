@@ -368,6 +368,13 @@
       "namePlaceholder": "Your name",
       "emailPlaceholder": "Email address",
       "nameRequired": "Name required"
+    },
+    "faq": {
+      "name": "FAQ",
+      "heading": "xxx",
+      "description": "xxx",
+      "addItem": "Add item",
+      "deleteItem": "Delete item"
     }
   },
   "invite": {
