@@ -1,8 +1,11 @@
+import { isValid } from '@nily/utils'
 import { useTour } from '@reactour/tour'
 import clsx from 'clsx'
 import { FC, useEffect } from 'react'
 
 import { useTourStorage } from '~/components'
+import { THEMES } from '~/constants'
+import { insertThemeStyle, loadFont } from '~/layout/builder/utils'
 import { useStore } from '~/store'
 
 import { BlockWrapper } from '../blocks'
@@ -23,9 +26,19 @@ export const BlockList: FC = () => {
 
     dispatch({
       type: 'initBlocks',
-      payload: siteSettings.blocks || []
+      payload: {
+        blocks: siteSettings.blocks || [],
+        theme: siteSettings.theme || THEMES[0]
+      }
     })
-  }, [siteSettings?.blocks])
+  }, [siteSettings?.blocks, siteSettings?.theme])
+
+  useEffect(() => {
+    if (isValid(state.theme)) {
+      loadFont(state.theme.fontFamily)
+      insertThemeStyle(state.theme)
+    }
+  }, [state.theme])
 
   return (
     <>

@@ -14,7 +14,7 @@ export interface BlockProps extends Omit<IComponentProps, 'onFocus' | 'onSelect'
 export const BlockPreview: FC<BlockProps> = ({ className, block, children }) => (
   <div
     id={`block-${block.id}`}
-    className={clsx('block-container', `block-${block.type.toLowerCase()}`, className)}
+    className={clsx('earlybird-block', `block-${block.type.toLowerCase()}`, className)}
   >
     {children}
   </div>
@@ -44,7 +44,7 @@ export const BlockComponent: FC<BlockProps> = ({ className, block, children }) =
     >
       <div
         className={clsx(
-          'block-container',
+          'earlybird-block',
           `block-${block.type.toLowerCase()}`,
           {
             'block-selected': block.id === state.selectBlockId

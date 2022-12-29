@@ -1,4 +1,5 @@
 import { isValid } from '@nily/utils'
+import { useTranslation } from 'next-i18next'
 import { FC } from 'react'
 
 import { Heading } from '~/layout/builder/blocks/Heading'
@@ -76,6 +77,8 @@ export const HeroSectionPreview: FC<HeroSectionProps> = ({ block }) => {
 }
 
 export const HeroSection: FC<HeroSectionProps> = ({ block }) => {
+  const { t } = useTranslation()
+
   return (
     <BlockComponent className={`block-herosection-${block.layout}`} block={block}>
       <div className="block-herosection-col">
@@ -83,7 +86,7 @@ export const HeroSection: FC<HeroSectionProps> = ({ block }) => {
         <Heading
           className="block-herosection-name"
           block={block.name}
-          placeholder="builder.heroSection.heading"
+          placeholder={t('builder.heroSection.heading')}
           enableFormats={null}
         />
 
@@ -91,7 +94,7 @@ export const HeroSection: FC<HeroSectionProps> = ({ block }) => {
         <div className="block-herosection-tagline">
           <Text
             block={block.tagline}
-            placeholder="builder.heroSection.tagline"
+            placeholder={t('builder.heroSection.tagline')}
             enableFormats={['basic']}
           />
         </div>
@@ -102,7 +105,7 @@ export const HeroSection: FC<HeroSectionProps> = ({ block }) => {
               key={button.id}
               className="block-herosection-button"
               block={button}
-              placeholder="builder.heroSection.button"
+              placeholder={t('builder.heroSection.button')}
               enableFormats={null}
             />
           ))}
@@ -117,8 +120,8 @@ export const HeroSection: FC<HeroSectionProps> = ({ block }) => {
             ...block.image,
             width: IMAGE_WIDTHS[block.layout || 'center']
           }}
-          uploadDesc1="builder.heroSection.uploadTip1"
-          uploadDesc2="builder.heroSection.uploadTip2"
+          tip1={t('builder.heroSection.uploadTip1')}
+          tip2={t('builder.heroSection.uploadTip2')}
         />
       </div>
     </BlockComponent>

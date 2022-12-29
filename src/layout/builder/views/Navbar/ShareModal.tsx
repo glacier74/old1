@@ -16,7 +16,10 @@ export const ShareModal: FC<IModalProps> = ({ visible, onClose }) => {
   function handleEmail() {
     const url = urlBuilder('mailto:', {
       subject: 'Seeking feedback on my landing page',
-      body: 'Hi,\n\nI hope this email finds you well. I am reaching out because I recently created a landing page for my business and I am looking for some feedback.\n\nI would really appreciate it if you could take a few minutes to check out the page and let me know what you think. Any feedback, big or small, would be greatly appreciated.\n\nHere is the link to the page: ' + shareURL + '\n\nThanks in advance for your help. I am looking forward to hearing your thoughts.'
+      body:
+        'Hi,\n\nI hope this email finds you well. I am reaching out because I recently created a landing page for my business and I am looking for some feedback.\n\nI would really appreciate it if you could take a few minutes to check out the page and let me know what you think. Any feedback, big or small, would be greatly appreciated.\n\nHere is the link to the page: ' +
+        shareURL +
+        '\n\nThanks in advance for your help. I am looking forward to hearing your thoughts.'
     })
     window.open(url)
   }
@@ -53,19 +56,19 @@ export const ShareModal: FC<IModalProps> = ({ visible, onClose }) => {
         <div>
           <div className="mb-8 grid grid-cols-4 gap-4 justify-items-center">
             <button onClick={handleEmail} className="bg-emerald-50 p-4 rounded-full">
-              <IconMail className="w-8 h-8 text-emerald-500"/>
+              <IconMail className="w-8 h-8 text-emerald-500" />
             </button>
 
             <button onClick={handleFacebook} className="bg-blue-50 p-4 rounded-full">
-              <IconFacebook className="w-8 h-8 text-blue-500"/>
+              <IconFacebook className="w-8 h-8 text-blue-500" />
             </button>
 
             <button onClick={handleTwitter} className="bg-sky-50 p-4 rounded-full">
-              <IconTwitter className="w-8 h-8 text-sky-400"/>
+              <IconTwitter className="w-8 h-8 text-sky-400" />
             </button>
 
             <button onClick={handleLinkedin} className="bg-sky-100 p-4 rounded-full">
-              <IconLinkedin className="w-8 h-8 text-sky-800"/>
+              <IconLinkedin className="w-8 h-8 text-sky-800" />
             </button>
           </div>
         </div>

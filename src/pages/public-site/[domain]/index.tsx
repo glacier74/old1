@@ -171,6 +171,7 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
       shortName={product.name}
       favicon={cropImage(product.logo, 120, 120)}
       seo={seo}
+      theme={product.siteSetting.theme}
     >
       {paymentStatus === 'success' ? (
         <EmptyStates
@@ -185,14 +186,14 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
           }
         />
       ) : (
-        <div className="blocks">
+        <div className="earlybird-blocks">
           {product.siteSetting.blocks.map(block => (
             <Block key={block.id} product={product} block={block} />
           ))}
         </div>
       )}
 
-      <div className="fixed rounded-md shadow bg-white text-sm text-slate-700 z-10 px-2 py-0.5 right-5 bottom-5 md:right-12 md:bottom-6">
+      <div className="earlybird-branding">
         <a href={process.env.NEXT_PUBLIC_HOMEPAGE}>
           <IconLogo className="w-4 inline" /> Made with EarlyBird
         </a>

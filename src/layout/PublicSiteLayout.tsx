@@ -1,11 +1,16 @@
+import { isValid } from '@nily/utils'
 import { useTranslation } from 'next-i18next'
 import { NextSeo, NextSeoProps } from 'next-seo'
 import Head from 'next/head'
+
+import { THEMES } from '~/constants'
+import { fontLink, themeToStyle } from '~/layout/builder/utils'
 
 export function PublicSiteLayout({
   favicon,
   shortName,
   seo,
+  theme: rawTheme,
   children
 }: PublicSiteLayoutProps): JSX.Element {
   const { t } = useTranslation()
@@ -15,12 +20,18 @@ export function PublicSiteLayout({
     description: t('common.description'),
     ...seo
   }
+  const theme = isValid(rawTheme) ? rawTheme! : THEMES[0]
+  console.log(rawTheme)
 
   return (
     <>
       <Head>
         <meta content={shortName} name="application-name" />
         <meta content={shortName} name="apple-mobile-web-app-title" />
+        <link rel="stylesheet" href={fontLink(theme.fontFamily)} />
+        <style
+          dangerouslySetInnerHTML={{ __html: themeToStyle(theme, { bodyBackground: true }) }}
+        />
         {favicon ? (
           <>
             <link rel="icon" type="image/png" href={favicon} />

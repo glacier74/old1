@@ -1,4 +1,3 @@
-import { useTranslation } from 'next-i18next'
 import { FC, useCallback } from 'react'
 
 import { sanitizeHTML } from '~/layout/builder/utils'
@@ -32,7 +31,6 @@ export const Heading: FC<HeadingProps> = ({
   children,
   ...restProps
 }) => {
-  const { t } = useTranslation()
   const { dispatch } = useBuilderContext()
 
   const handleChange = useCallback((html: string) => {
@@ -53,7 +51,7 @@ export const Heading: FC<HeadingProps> = ({
         blockId={block.id}
         as={`h${block.level || 3}`}
         value={block.html}
-        placeholder={t(placeholder!)}
+        placeholder={placeholder}
         enableFormats={enableFormats}
         enterBehavior="focusBlock"
         onChange={handleChange}

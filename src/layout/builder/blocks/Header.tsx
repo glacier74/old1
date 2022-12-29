@@ -23,9 +23,9 @@ export const HeaderPreview: FC<HeaderProps & { product: Product }> = ({ block, p
   useLockBodyScroll(isOpen)
 
   return (
-    <BlockPreview className="block-header-container" block={block}>
+    <BlockPreview block={block}>
       <a
-        className="block-header-logo text-2xl"
+        className="block-header-logo"
         href={`https://${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`}
         title={product.name}
       >
@@ -35,7 +35,7 @@ export const HeaderPreview: FC<HeaderProps & { product: Product }> = ({ block, p
           <span>{product.name}</span>
         )}
       </a>
-      <div className="hidden text-lg md:flex md:items-center space-x-4">
+      <div className="block-header-nav">
         {block.links.map(row => (
           <a key={row.id} href={row.url} target={row.openInNewTab ? '_blank' : undefined}>
             {row.title}
@@ -50,8 +50,9 @@ export const HeaderPreview: FC<HeaderProps & { product: Product }> = ({ block, p
           onClick={handleClick}
         />
       </div>
+
       {isOpen && (
-        <div className="fixed top-20 left-0 right-0 bg-white rounded-lg shadow-xl z-10 md:hidden">
+        <div className="block-header-mobile-nav">
           <div className="flex flex-col py-2 space-y-2">
             {block.links.map(row => (
               <a
@@ -74,9 +75,9 @@ export const Header: FC<HeaderProps> = ({ block }) => {
   const product = useProduct()
 
   return (
-    <BlockComponent className="block-header-container" block={block}>
+    <BlockComponent block={block}>
       <a
-        className="block-header-logo text-2xl"
+        className="block-header-logo"
         href={`https://${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`}
         title={product.name}
       >
@@ -88,7 +89,7 @@ export const Header: FC<HeaderProps> = ({ block }) => {
       </a>
       <div className="flex items-center space-x-4">
         {isEmpty(block.links) ? (
-          <div className="font-normal text-slate-400">Set links in settings</div>
+          <div className="font-normal block-text-placeholder">Set links in settings</div>
         ) : (
           block.links.map(row => (
             <a key={row.id} href={row.url} target={row.openInNewTab ? '_blank' : undefined}>

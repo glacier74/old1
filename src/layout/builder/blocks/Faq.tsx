@@ -45,7 +45,7 @@ const FaqItemPreview: FC<Omit<FaqItemProps, 'onDelete'>> = ({ paragraphBlock }) 
 export const FaqPreview: FC<FaqProps> = ({ block, ...restProps }) => {
   return (
     <BlockPreview block={block} {...restProps}>
-      <div className="block-faq-container">
+      <div className="block-faq-wrapper">
         <div className="block-faq-heading">
           <h3 className="rich-text" placeholder=" ">
             {block.heading.html}
@@ -62,7 +62,7 @@ export const FaqPreview: FC<FaqProps> = ({ block, ...restProps }) => {
           />
         </div>
 
-        <div className="block-context-container">
+        <div className="block-faq-content">
           {block.content.content.map(paragraphBlock => (
             <FaqItemPreview key={paragraphBlock.id} paragraphBlock={paragraphBlock} />
           ))}
@@ -135,7 +135,7 @@ export const Faq: FC<FaqProps> = ({ block, ...restProps }) => {
 
   return (
     <BlockComponent block={block} {...restProps}>
-      <div className="block-faq-container">
+      <div className="block-faq-wrapper">
         {/* Heading */}
         <Heading
           className="block-faq-heading"
@@ -153,7 +153,7 @@ export const Faq: FC<FaqProps> = ({ block, ...restProps }) => {
           />
         </div>
 
-        <div className="block-context-container">
+        <div className="block-faq-content">
           {block.content.content.map(paragraphBlock => (
             <FaqItem
               key={paragraphBlock.id}
@@ -166,8 +166,8 @@ export const Faq: FC<FaqProps> = ({ block, ...restProps }) => {
           <div className="block-faq-item">
             <div className="py-2 h-full">
               <button type="button" className="block-faq-add-button" onClick={handleAddItem}>
-                <IconPlus className="text-slate-400" />
-                <span className="mt-2 block text-sm font-medium text-slate-500">
+                <IconPlus className="block-text-placeholder" />
+                <span className="mt-2 block text-sm font-medium block-text-placeholder">
                   {t('builder.faq.addItem')}
                 </span>
               </button>

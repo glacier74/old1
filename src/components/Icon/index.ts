@@ -1,7 +1,5 @@
 export * from './IconArrowLeft'
 export * from './IconArrowRight'
-export * from './IconChevronLeftCircle'
-export * from './IconChevronRightCircle'
 export * from './IconFacebook'
 export * from './IconFeature'
 export * from './IconFooter'

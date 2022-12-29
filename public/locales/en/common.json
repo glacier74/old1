@@ -317,6 +317,18 @@
     "settings": "Block settings",
     "closeSettings": "Close block settings",
     "layout": "Layout",
+    "design": {
+      "name": "Design",
+      "theme": "Theme",
+      "customize": "Customize",
+      "headline": "Headline",
+      "content": "Content",
+      "primary": "Primary",
+      "buttonBackground": "Button background",
+      "buttonText": "Button text",
+      "border": "Border",
+      "background": "Background"
+    },
     "text": {
       "name": "Rich text",
       "placeholder": "Text content"

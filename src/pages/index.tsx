@@ -5,8 +5,8 @@ import {
   HomeFooter,
   HomeHeader,
   HomeHeroSection,
-  HomeUserImage,
-  HomeLayout
+  HomeLayout,
+  HomeUserImage
 } from '~/layout'
 import { isLoggedIn, withTranslations } from '~/utils'
 

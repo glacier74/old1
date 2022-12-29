@@ -24,6 +24,7 @@ declare global {
   interface PublicSiteLayoutProps extends LayoutProps {
     favicon?: string
     shortName?: string
+    theme?: Theme
   }
 
   type NextPageFunction = (
@@ -51,9 +52,23 @@ declare global {
     updatedAt: string
   }
 
+  interface Theme {
+    fontFamily: string
+    fontSize: string
+    lineHeight: string | number
+    primary: string
+    text: string
+    textLight: string
+    border: string
+    buttonBackground: string
+    buttonText: string
+    background: string
+  }
+
   interface SiteSettings {
     productId: number
     blocks: Block[]
+    theme: Theme
   }
 
   interface Product {

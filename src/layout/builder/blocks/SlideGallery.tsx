@@ -1,16 +1,16 @@
 import { Button, Tooltip } from '@heyforms/ui'
 import { isNil } from '@nily/utils'
-import { IconPhotoEdit, IconTrash, IconZoomIn } from '@tabler/icons'
+import {
+  IconCircleChevronLeft,
+  IconCircleChevronRight,
+  IconPhotoEdit,
+  IconTrash,
+  IconZoomIn
+} from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
 import { FC, MutableRefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
-import {
-  IconChevronLeftCircle,
-  IconChevronRightCircle,
-  ImagePickerButton,
-  PhotoPicker,
-  SlideModal
-} from '~/components'
+import { ImagePickerButton, PhotoPicker, SlideModal } from '~/components'
 import { cropImage, useVisible } from '~/utils'
 
 import { useBuilderContext } from '../context'
@@ -104,13 +104,13 @@ export const SlideGalleryPreview: FC<SlideGalleryProps> = ({ block, ...restProps
               <Button.Link
                 className="block-slide-gallery-button"
                 disabled={!isPreviousEnable}
-                leading={<IconChevronLeftCircle />}
+                leading={<IconCircleChevronLeft />}
                 onClick={scrollPrevious}
               />
             </Tooltip>
           </div>
 
-          <div className="w-screen overflow-x-scroll md:max-w-full md:overflow-x-hidden">
+          <div className="max-w-full overflow-x-scroll md:overflow-x-hidden">
             <div
               ref={wrapperRef}
               className="block-slide-gallery-wrapper"
@@ -142,7 +142,7 @@ export const SlideGalleryPreview: FC<SlideGalleryProps> = ({ block, ...restProps
               <Button.Link
                 className="block-slide-gallery-button"
                 disabled={!isNextEnable}
-                leading={<IconChevronRightCircle />}
+                leading={<IconCircleChevronRight />}
                 onClick={scrollNext}
               />
             </Tooltip>
@@ -308,7 +308,7 @@ const SlideGalleryComponent: FC<SlideGalleryProps> = ({ block, ...restProps }) =
                 <Button.Link
                   className="block-slide-gallery-button"
                   disabled={!isPreviousEnable}
-                  leading={<IconChevronLeftCircle />}
+                  leading={<IconCircleChevronLeft />}
                   onClick={scrollPrevious}
                 />
               </Tooltip>
@@ -348,7 +348,7 @@ const SlideGalleryComponent: FC<SlideGalleryProps> = ({ block, ...restProps }) =
                 <Button.Link
                   className="block-slide-gallery-button"
                   disabled={!isNextEnable}
-                  leading={<IconChevronRightCircle />}
+                  leading={<IconCircleChevronRight />}
                   onClick={scrollNext}
                 />
               </Tooltip>

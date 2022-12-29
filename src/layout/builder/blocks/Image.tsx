@@ -1,7 +1,8 @@
 import { Button } from '@heyforms/ui'
 import { IconPhotoEdit } from '@tabler/icons'
+import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 
 import { ImagePickerButton, PhotoPicker } from '~/components'
 import { cropImage, useVisible } from '~/utils'
@@ -12,18 +13,20 @@ import { BlockComponent, BlockPreview, BlockProps } from './Block'
 export interface ImageProps extends BlockProps {
   namespace: string
   block: ImageBlock
-  uploadDesc1: string
-  uploadDesc2: string
+  tip1: string
+  tip2: string
 }
 
-export const ImagePreview: FC<Omit<ImageProps, 'namespace' | 'uploadDesc1' | 'uploadDesc2'>> = ({
+export const ImagePreview: FC<Omit<ImageProps, 'namespace' | 'tip1' | 'tip2'>> = ({
   block,
   ...restProps
 }) => {
+  const isVideo = useMemo(() => block.mediaType === 'video', [block.mediaType])
+
   return (
     <BlockPreview block={block} {...restProps}>
       <div
-        className="block-image-container max-w-full"
+        className={clsx('block-image-wrapper', { 'block-video-wrapper': isVideo })}
         style={{
           width: block.width,
           height: block.height
@@ -34,8 +37,6 @@ export const ImagePreview: FC<Omit<ImageProps, 'namespace' | 'uploadDesc1' | 'up
             className="block-embed-iframe"
             src={block.source}
             title={block.caption}
-            width={block.width}
-            height={block.height}
             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
@@ -52,16 +53,12 @@ export const ImagePreview: FC<Omit<ImageProps, 'namespace' | 'uploadDesc1' | 'up
   )
 }
 
-const ImageComponent: FC<ImageProps> = ({
-  block,
-  namespace,
-  uploadDesc1,
-  uploadDesc2,
-  ...resetProps
-}) => {
+const ImageComponent: FC<ImageProps> = ({ block, namespace, tip1, tip2, ...resetProps }) => {
   const { t } = useTranslation()
   const { dispatch } = useBuilderContext()
   const [visible, open, close] = useVisible()
+
+  const isVideo = useMemo(() => block.mediaType === 'video', [block.mediaType])
 
   // TODO - align image BubbleMenu
   function handleChange(source: string, mediaType: 'image' | 'video') {
@@ -82,7 +79,7 @@ const ImageComponent: FC<ImageProps> = ({
       <BlockComponent className={`block-image-align-${block.align}`} block={block} {...resetProps}>
         {block.source ? (
           <div
-            className="block-image-container"
+            className={clsx('block-image-wrapper', { 'block-video-wrapper': isVideo })}
             style={{
               width: block.width,
               height: block.height
@@ -93,8 +90,6 @@ const ImageComponent: FC<ImageProps> = ({
                 className="block-embed-iframe"
                 src={block.source}
                 title={block.caption}
-                width={block.width}
-                height={block.height}
                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
@@ -113,12 +108,7 @@ const ImageComponent: FC<ImageProps> = ({
             </div>
           </div>
         ) : (
-          <ImagePickerButton
-            className="block-upload"
-            tip1={t(uploadDesc1!)}
-            tip2={t(uploadDesc2!)}
-            onClick={open}
-          />
+          <ImagePickerButton className="block-upload" tip1={tip1} tip2={tip2} onClick={open} />
         )}
       </BlockComponent>
 
@@ -134,4 +124,5 @@ const ImageComponent: FC<ImageProps> = ({
     </>
   )
 }
+
 export const Image = ImageComponent

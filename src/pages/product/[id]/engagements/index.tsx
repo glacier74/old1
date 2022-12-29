@@ -35,9 +35,7 @@ const ProductEngagements = (): JSX.Element => {
               <RoundImage src={row.avatar} text={row.email} imageSize={0} size={36} />
             </div>
             <div className="flex-1 px-4">
-              <p className="text-sm font-semibold text-slate-800">
-                {row.email}
-              </p>
+              <p className="text-sm font-semibold text-slate-800">{row.email}</p>
               {row.paidAt! > 0 && (
                 <p className="mt-0.5 font-normal text-sm text-slate-500">
                   {timeago.format(row.paidAt! * 1_000)}
