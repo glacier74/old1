@@ -371,10 +371,10 @@
     },
     "faq": {
       "name": "FAQ",
-      "heading": "xxx",
-      "description": "xxx",
-      "addItem": "Add item",
-      "deleteItem": "Delete item"
+      "heading": "Frequently asked questions",
+      "description": "FAQs improve user journey by addressing the needs of your customers. Here you can provide answers to a list of typical questions that your customers might ask regarding the business.",
+      "addItem": "Add an item",
+      "deleteItem": "Delete the item"
     }
   },
   "invite": {
