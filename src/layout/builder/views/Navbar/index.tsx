@@ -17,7 +17,7 @@ import Link from 'next/link'
 import { FC, useCallback, useEffect, useMemo } from 'react'
 
 import { useTourStorage } from '~/components'
-import { useProductId } from '~/layout'
+import { useProduct, useProductId } from '~/layout'
 import { useBuilderContext } from '~/layout/builder/context'
 import { SiteSettingsService } from '~/service'
 import { useRequest, useUnsaveChanges, useVisible } from '~/utils'
@@ -28,11 +28,12 @@ import { ShareModal } from './ShareModal'
 export const Navbar: FC = () => {
   const { t } = useTranslation()
   const productId = useProductId()
+  const product = useProduct()
   const { state, dispatch } = useBuilderContext()
 
   const { setIsOpen, setSteps, setCurrentStep } = useTour()
   const [value, setValue] = useTourStorage('blocks')
-  const [visible, open, close] = useVisible()
+  const [shareModalVisible, openShareModal, closeShareModal] = useVisible()
 
   const { loading, error, request } = useRequest(async () => {
     await SiteSettingsService.update(productId, {
@@ -133,6 +134,18 @@ export const Navbar: FC = () => {
       }
     })
   }
+
+  const handleShare = useCallback(() => {
+    if (window.navigator.canShare?.()) {
+      window.navigator.share({
+        title: product.name,
+        text: product.tagline,
+        url: `https://${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`
+      })
+    } else {
+      openShareModal()
+    }
+  }, [product.domain, product.name, product.tagline])
 
   // If the changes have not been saved, the user will be prompted.
   useUnsaveChanges(state.isBlocksChanged, t('builder.leaveBrowserMessage'))
@@ -235,7 +248,7 @@ export const Navbar: FC = () => {
         </div>
       </div>
 
-      <ShareModal visible={visible} onClose={close} />
+      <ShareModal visible={shareModalVisible} onClose={closeShareModal} />
     </>
   )
 }
