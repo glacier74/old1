@@ -1,4 +1,3 @@
-import { IconCheck, IconMinus } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
 import { FC } from 'react'
 import { Fragment } from 'react'
@@ -35,7 +34,7 @@ const comparisonTable = [
       { name: 'Quick Polls', brands: { EarlyBird: '✅ Yes', Gumroad: '❌ No' } },
       {
         name: 'Comprehensive Analytics',
-        brands: { EarlyBird: '✅ Yes, muchos data', Gumroad: '❌ No, only sales analytics' }
+        brands: { EarlyBird: '✅ Yes', Gumroad: '✅ Yes, with 3rd-party support' }
       },
       { name: 'SEO control', brands: { EarlyBird: '✅ Yes', Gumroad: '❌ No' } },
       { name: 'Open Graph control', brands: { EarlyBird: '✅ Yes', Gumroad: '❌ No' } },
@@ -61,8 +60,8 @@ export const GumroadComparison: FC = () => {
   return (
     <section className="bg-emerald-100 py-24 lg:py-32 px-8 md:px-0">
       <div className="max-w-7xl mx-auto">
-        <h2 className="mb-6 text-4xl font-bold">Why use EarlyBird?</h2>
-        <div className="text text-xl mt-4 max-w-screen-lg leading-relaxed">
+        <h2 className="mb-6 text-5xl font-bold">Why use EarlyBird?</h2>
+        <div className="text text-xl mt-4 max-w-screen-lg">
           <p>
             EarlyBird offers more advanced features and customization options, making it easier for
             you to sell your products and stand out from the competition. With competitive pricing
@@ -110,12 +109,6 @@ export const GumroadComparison: FC = () => {
                             </span>
                           ) : (
                             <>
-                              {feature.brands[brand.name] === true ? (
-                                <IconCheck className="h-5 w-5 text-green-500" aria-hidden="true" />
-                              ) : (
-                                <IconMinus className="h-5 w-5 text-slate-400" aria-hidden="true" />
-                              )}
-
                               <span className="sr-only">
                                 {feature.brands[brand.name] === true ? 'Included' : 'Not included'}{' '}
                                 in {brand.name}

@@ -17,7 +17,7 @@ export const GumroadHero: FC = () => {
             </span>{' '}
             with no waiting.
           </div>
-          <h1 className="text-4xl leading-tight md:text-6xl font-extrabold md:leading-none">
+          <h1 className="text-4xl leading-tight md:text-7xl font-extrabold">
             EarlyBird - a{' '}
             <span className="relative whitespace-nowrap text-emerald-500">
               <svg
@@ -32,7 +32,7 @@ export const GumroadHero: FC = () => {
             </span>
             <br /> Gumroad Alternative
           </h1>
-          <div className="max-w-2xl mx-auto text-slate-500 text-lg md:text-xl mt-8 font-normal">
+          <div className="max-w-2xl mx-auto text-slate-700 text-lg md:text-xl mt-8 font-medium">
             Create a stunning landing page in a few mins and start selling your digital contents.
             We're all in to support creators to take their sales to the next level.
           </div>

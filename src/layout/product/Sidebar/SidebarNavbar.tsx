@@ -8,6 +8,7 @@ import {
   IconLocation,
   IconMail,
   IconMap,
+  IconMessageDots,
   IconNotes,
   IconSettings,
   IconUsers,
@@ -16,9 +17,11 @@ import {
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import type { FC } from 'react'
+import { useMemo } from 'react'
 
 import { useProductId } from '~/layout'
 import { useStore } from '~/store'
+import { urlBuilder } from '~/utils'
 
 interface SidebarNavProps {
   isMobile?: boolean
@@ -59,7 +62,15 @@ const NavLink = ({ icon: Icon, href, title }: ExternalLinkProps) => {
 export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
   const { t } = useTranslation()
   const productId = useProductId()
-  const { openMemberList } = useStore()
+  const { user, openMemberList } = useStore()
+
+  const crispLink = useMemo(() => {
+    return urlBuilder('https://go.crisp.chat/chat/embed/', {
+      website_id: 'd57ec6f7-1ed8-4b02-bd44-add83a2eff72',
+      user_email: user?.email,
+      user_nickname: user?.name
+    })
+  }, [user?.email, user?.name])
 
   function handleCloseSidebar() {
     //
@@ -141,6 +152,7 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
             icon={IconHelp}
             title={t('sidebar.helpCenter')}
           />
+          <ExternalLink href={crispLink} icon={IconMessageDots} title={t('sidebar.chatWithUs')} />
           <ExternalLink
             href="mailto:support@earlybird.im"
             icon={IconMail}

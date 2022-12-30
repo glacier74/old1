@@ -61,7 +61,7 @@ export const PricingFAQ: FC = () => {
                       </Disclosure.Button>
                     </dt>
                     <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                      <p className="mt-4 text-lg text-slate-900 font-medium">{faq.answer}</p>
+                      <p className="mt-4 text-lg text-slate-900">{faq.answer}</p>
                     </Disclosure.Panel>
                   </>
                 )}
