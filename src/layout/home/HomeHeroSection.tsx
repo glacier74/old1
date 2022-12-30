@@ -17,7 +17,7 @@ export const HomeHeroSection: FC = () => {
             </span>{' '}
             with no waiting.
           </div>
-          <h1 className="text-4xl leading-tight md:text-6xl font-extrabold md:leading-none">
+          <h1 className="text-4xl leading-tight md:text-7xl font-extrabold md:leading-none">
             Create{' '}
             <span className="relative whitespace-nowrap text-emerald-500">
               <svg
@@ -32,13 +32,13 @@ export const HomeHeroSection: FC = () => {
             </span>
             <br /> your audience will love
           </h1>
-          <div className="max-w-2xl mx-auto text-slate-500 text-lg md:text-xl mt-8 font-normal">
+          <div className="max-w-2xl mx-auto text-slate-700 text-xl md:text-2xl mt-8 font-medium">
             Effortlessly create, pitch, and validate your early-stage business with our no-code
             landing page builder.
           </div>
         </div>
 
-        <div className="mt-10 pb-36">
+        <div className="mt-12 pb-36">
           <div className="flex justify-center flex-col md:flex-row items-center space-y-5 space-x-0 md:space-y-0 md:space-x-5">
             <Link
               href="/sign-up"
