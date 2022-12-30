@@ -5,12 +5,13 @@ import CopyToClipboard from 'react-copy-to-clipboard'
 
 import { AvatarPickerField, Expandable } from '~/components'
 import { LANGUAGE_OPTIONS } from '~/constants'
-import { useProductId } from '~/layout'
+import { useProduct, useProductId } from '~/layout'
 import { ProductService } from '~/service'
 
 export const General: FC<{ values: any }> = ({ values }) => {
   const { t } = useTranslation()
   const productId = useProductId()
+  const product = useProduct()
 
   const url = useMemo(
     () => `${values.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`,
@@ -64,7 +65,9 @@ export const General: FC<{ values: any }> = ({ values }) => {
                 required: true,
                 message: t('createProduct.invalidDomain'),
                 async validator(rule, value) {
-                  await ProductService.checkDomain(value, productId)
+                  if (product.domain !== value) {
+                    await ProductService.checkDomain(value, productId)
+                  }
                 }
               }
             ]}
