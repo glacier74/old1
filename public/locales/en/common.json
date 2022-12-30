@@ -9,6 +9,7 @@
     "uploadImage": "Upload image",
     "embedVideo": "Embed video",
     "embed": "Embed",
+    "upload": "Upload",
     "uploading": "Uploading",
     "search": "Search",
     "selectText": "Upload a file",
@@ -389,6 +390,8 @@
       "name": "FAQ",
       "heading": "Frequently asked questions",
       "description": "FAQs improve user journey by addressing the needs of your customers. Here you can provide answers to a list of typical questions that your customers might ask regarding the business.",
+      "question": "A commonly asked question",
+      "answer": "Provide an answer with helpful and relevant information. Keep it precise.",
       "addItem": "Add an item",
       "deleteItem": "Delete the item"
     }
