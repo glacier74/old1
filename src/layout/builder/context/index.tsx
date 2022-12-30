@@ -175,8 +175,6 @@ function updateState(state: IState, action: IAction): IState {
 }
 
 const reducer = (state: IState, action: IAction) => {
-  console.log(action.type, action.payload)
-
   switch (action.type) {
     case 'update':
     case 'initBlocks':

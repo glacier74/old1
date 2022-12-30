@@ -21,7 +21,6 @@ export function PublicSiteLayout({
     ...seo
   }
   const theme = isValid(rawTheme) ? rawTheme! : THEMES[0]
-  console.log(rawTheme)
 
   return (
     <>

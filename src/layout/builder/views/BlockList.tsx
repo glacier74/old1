@@ -28,7 +28,7 @@ export const BlockList: FC = () => {
       type: 'initBlocks',
       payload: {
         blocks: siteSettings.blocks || [],
-        theme: siteSettings.theme || THEMES[0]
+        theme: isValid(siteSettings.theme) ? siteSettings.theme : THEMES[0]
       }
     })
   }, [siteSettings?.blocks, siteSettings?.theme])
