@@ -671,7 +671,7 @@ h3.rich-text {
   }
 
   .block-embed-iframe {
-    @apply w-full h-[20rem];
+    @apply w-full h-[21.76rem];
   }
 
   @media (max-width: 768px) {
@@ -688,13 +688,13 @@ h3.rich-text {
   }
 
   .block-embed-iframe {
-    @apply h-[35rem];
+    @apply h-[38.25rem];
   }
 
   @media (max-width: 768px) {
     .block-embed-iframe {
       width: 100%;
-      height: 50vw;
+      height: calc((100vw - 2.5rem) * 0.5625);
     }
   }
 }
@@ -710,7 +710,7 @@ h3.rich-text {
 
     .block-herosection-image {
       .block-image {
-        @apply pl-24 #{!important};
+        @apply pl-20 #{!important};
       }
     }
 
@@ -902,7 +902,7 @@ button.block-header-button {
     @apply flex-1;
 
     &:nth-of-type(2) {
-      @apply pl-24;
+      @apply pl-20;
     }
   }
 
@@ -911,7 +911,7 @@ button.block-header-button {
 
     .block-feature-col {
       &:nth-of-type(2) {
-        @apply pl-0 pr-24;
+        @apply pl-0 pr-20;
       }
     }
   }
