@@ -16,15 +16,15 @@ export const FeaturesValidate: FC = () => {
   return (
     <section>
       <div className="py-16 px-2 max-w-7xl mx-auto">
-        <h1 className="max-w-5xl mx-auto text-slate-900 font-extrabold text-4xl text-center">
+        <h1 className="max-w-5xl mx-auto text-slate-900 font-extrabold text-5xl text-center">
           Maximize engagement to ensure success
         </h1>
-        <p className="mt-4 max-w-3xl mx-auto text-slate-500 text-lg text-center">
+        <p className="mt-4 max-w-3xl mx-auto text-slate-700 text-xl font-medium text-center">
           Benchmark with your customers to test the idea, gather interests, insights, and initial
           funding, and ensure that you have the potential to succeed.{' '}
         </p>
 
-        <div className="mt-8 max-w-5xl mx-auto px-4 md:px-0">
+        <div className="mt-16 max-w-5xl mx-auto px-4 md:px-0">
           <div className="md:grid md:grid-cols-3 md:gap-4">
             <div className="mb-2 bg-slate-50 py-8 px-6 rounded rounded-md shadow">
               <IconReportAnalytics

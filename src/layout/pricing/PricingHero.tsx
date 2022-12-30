@@ -14,19 +14,19 @@ export const PricingHero: FC = () => {
               <IconSpeakerphone className="h-5 w-5 text-blue-400" aria-hidden="true" />
             </div>
             <div className="ml-3 flex-1 md:flex md:justify-between">
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-slate-900">
                 EarlyBird is in public beta until{' '}
-                <span className="font-bold text-slate-700">December 31st, 2022</span>. During this
+                <span className="font-bold text-slate-900">December 31st, 2022</span>. During this
                 period, the product will be totally free to use.
               </p>
             </div>
           </div>
         </div>
         <div className="text-center">
-          <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 ">
+          <h1 className="text-4xl md:text-7xl font-extrabold text-slate-900 ">
             Affordable pricing for startups
           </h1>
-          <div className="text-slate-500 text-lg md:text-xl w-full md:max-w-3xl md:mx-auto mt-5 font-normal">
+          <div className="text-slate-700 text-lg md:text-xl w-full md:max-w-3xl md:mx-auto mt-5 font-medium">
             We understand that startups often have limited budgets and to be mindful of their
             spending. Get started for free and consider upgrading when you want to.
           </div>

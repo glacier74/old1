@@ -16,15 +16,15 @@ export const FeaturesBuild: FC = () => {
   return (
     <section>
       <div className="px-2 py-16 max-w-7xl mx-auto">
-        <h1 className="max-w-5xl mx-auto text-slate-900 font-extrabold text-4xl text-center">
+        <h1 className="max-w-5xl mx-auto text-slate-900 font-extrabold text-5xl text-center">
           Build a landing page in 10 minutes
         </h1>
-        <p className="mt-4 max-w-3xl mx-auto text-slate-500 text-lg text-center">
+        <p className="mt-4 max-w-3xl mx-auto text-slate-700 text-xl font-medium text-center">
           Create a high-quality landing page in no time, and start promoting your business and
           generating leads quickly.
         </p>
 
-        <div className="mt-8 max-w-5xl mx-auto px-4 md:px-0">
+        <div className="mt-16 max-w-5xl mx-auto px-4 md:px-0">
           <div className="md:grid md:grid-cols-3 md:gap-4">
             <div className="mb-2 bg-slate-50 py-8 px-6 rounded rounded-md shadow">
               <IconLego

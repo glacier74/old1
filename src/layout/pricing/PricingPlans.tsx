@@ -106,8 +106,8 @@ export const PricingPlans: FC<{
                 className="border border-slate-200 rounded-lg shadow-sm divide-y divide-slate-200"
               >
                 <div className="p-6">
-                  <h2 className="text-lg leading-6 font-medium text-slate-900">{tier.name}</h2>
-                  <p className="mt-4 text-sm text-slate-500">{tier.description}</p>
+                  <h2 className="text-lg leading-6 font-bold text-slate-900">{tier.name}</h2>
+                  <p className="mt-4 text-sm text-slate-700">{tier.description}</p>
                   <p className="mt-8">
                     <span className="text-4xl font-extrabold text-slate-900">
                       ${billingCycle === 'monthly' ? tier.priceMonthly : tier.priceAnnually}

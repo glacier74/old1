@@ -39,7 +39,7 @@ export const HomeHeader: FC = () => {
       <div className="header-container absolute top-0 left-0 w-full z-20">
         <div className="max-w-7xl mx-auto md:px-5">
           <div className="py-6 flex items-center justify-between">
-            <div className="flex items-center text-slate-900 text-base md:space-x-8">
+            <div className="flex items-center text-slate-900 text-base font-medium md:space-x-8">
               <Link
                 href="/"
                 title={t('common.name')}
@@ -77,7 +77,7 @@ export const HomeHeader: FC = () => {
               </Link>
             </div>
 
-            <div className="hidden items-center text-slate-900 space-x-5 md:flex">
+            <div className="hidden items-center text-slate-900 font-medium space-x-5 md:flex">
               <Link href="/login" title={t('common.name')} className="hover:opacity-80">
                 Log in
               </Link>

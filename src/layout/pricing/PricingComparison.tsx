@@ -105,10 +105,10 @@ export const PricingComparison: FC<{
   return (
     <section className="hidden lg:block">
       <div className="max-w-7xl mx-auto py-16 sm:py-48 sm:px-6 lg:px-8">
-        <h2 className="max-w-3xl mx-auto text-slate-900 font-extrabold text-4xl text-center">
+        <h2 className="max-w-3xl mx-auto text-slate-900 font-extrabold text-5xl text-center">
           Compare Plans
         </h2>
-        <p className="mt-4 max-w-3xl mx-auto text-center text-slate-500">
+        <p className="mt-4 max-w-3xl mx-auto text-center text-slate-700 font-medium text-xl">
           Whether you're building a tiny project or managing multiple products, we have an
           affordable plan that meets your needs.
         </p>
@@ -126,7 +126,7 @@ export const PricingComparison: FC<{
                 {tiers.map(tier => (
                   <th
                     key={tier.name}
-                    className="w-1/4 pb-4 px-6 text-lg leading-6 font-medium text-slate-700 text-left"
+                    className="w-1/4 pb-4 px-6 text-lg leading-6 font-bold text-slate-700 text-left"
                     scope="col"
                   >
                     {tier.name}
@@ -177,7 +177,7 @@ export const PricingComparison: FC<{
                         </span>{' '}
                         <span className="text-base font-medium text-slate-500">/mo</span>
                       </p>
-                      <p className="mt-4 mb-16 text-sm text-slate-500">{tier.description}</p>
+                      <p className="mt-4 mb-16 text-sm text-slate-500 font-medium">{tier.description}</p>
                       <a
                         href={tier.href}
                         className="absolute bottom-0 flex-grow block w-full bg-emerald-500 border border-emerald-500 rounded-md 5 py-2 text-sm font-semibold text-white text-center hover:bg-emerald-600"
