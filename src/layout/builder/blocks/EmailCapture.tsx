@@ -84,7 +84,7 @@ export const EmailCapture: FC<EmailCaptureProps> = ({ block }) => {
         <Heading
           className="block-emailcapture-heading"
           block={block.heading}
-          placeholder="builder.emailCapture.heading"
+          placeholder={t('builder.emailCapture.heading')}
           enableFormats={null}
         />
 
@@ -92,7 +92,7 @@ export const EmailCapture: FC<EmailCaptureProps> = ({ block }) => {
         <div className="block-emailcapture-description">
           <Text
             block={block.description}
-            placeholder="builder.emailCapture.description"
+            placeholder={t('builder.emailCapture.description')}
             enableFormats={['basic']}
           />
         </div>
@@ -105,7 +105,7 @@ export const EmailCapture: FC<EmailCaptureProps> = ({ block }) => {
           <Text
             className="block-emailcapture-button"
             block={block.button}
-            placeholder="builder.emailCapture.button"
+            placeholder={t('builder.emailCapture.button')}
             enableFormats={null}
           />
         </div>

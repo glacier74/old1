@@ -24,6 +24,7 @@ declare global {
   interface PublicSiteLayoutProps extends LayoutProps {
     favicon?: string
     shortName?: string
+    theme?: Theme
   }
 
   type NextPageFunction = (
@@ -51,9 +52,23 @@ declare global {
     updatedAt: string
   }
 
+  interface Theme {
+    fontFamily: string
+    fontSize: string
+    lineHeight: string | number
+    primary: string
+    text: string
+    textLight: string
+    border: string
+    buttonBackground: string
+    buttonText: string
+    background: string
+  }
+
   interface SiteSettings {
     productId: number
     blocks: Block[]
+    theme: Theme
   }
 
   interface Product {
@@ -168,6 +183,7 @@ declare global {
   type BlockType =
     | 'text'
     | 'heading'
+    | 'paragraph'
     | 'image'
     | 'list'
     | 'header'
@@ -177,6 +193,7 @@ declare global {
     | 'payment'
     | 'slideGallery'
     | 'emailCapture'
+    | 'faq'
 
   interface BlockOption {
     type: BlockType
@@ -200,6 +217,12 @@ declare global {
     html: string
   }
 
+  interface ParagraphBlock extends Block {
+    type: 'paragraph'
+    heading: HeadingBlock
+    description: TextBlock
+  }
+
   interface ButtonBlockAction {
     type: 'block' | 'link'
     value?: string
@@ -217,6 +240,7 @@ declare global {
 
   interface ImageBlock extends Pick<Block, 'id' | 'type'> {
     type: 'image'
+    mediaType: 'image' | 'video'
     source: string
     caption?: string
     width?: number
@@ -224,10 +248,10 @@ declare global {
     align?: 'left' | 'center' | 'right'
   }
 
-  interface ListBlock extends Pick<Block, 'id' | 'type'> {
+  interface ListBlock<B = TextBlock> extends Pick<Block, 'id' | 'type'> {
     type: 'list'
     ordered?: false
-    content: TextBlock[]
+    content: B[]
   }
 
   interface HeroSectionBlock extends Pick<Block, 'id' | 'type'> {
@@ -295,6 +319,13 @@ declare global {
     links: NavigationLink[]
   }
 
+  interface FaqBlock extends Pick<Block, 'id' | 'type'> {
+    type: 'faq'
+    heading: HeadingBlock
+    description: TextBlock
+    content: ListBlock<ParagraphBlock>
+  }
+
   interface SocialMedia {
     id: string
     type: 'twitter' | 'facebook' | 'instagram' | 'linkedin' | 'youtube' | 'telegram' | 'github'
@@ -309,7 +340,7 @@ declare global {
   }
 
   interface Integration {
-    type: 'webhook' | 'mailchimp'
+    type: 'webhook' | 'mailchimp' | 'sendy'
 
     // Webhook
     webhookId: number
@@ -329,6 +360,12 @@ declare global {
   interface IntegrationSettings {
     // Mailchimp
     audienceId: string
+
+    // Sendy
+    serverUri: string
+    apiKey: string
+    brandId: string
+    listId: string
   }
 
   interface WebhookLog {
@@ -349,5 +386,17 @@ declare global {
   interface MailchimpAudience {
     id: string
     name: string
+  }
+
+  interface SendyBrand {
+    id: string
+    name: string
+  }
+
+  interface SendySettings {
+    serverUri: string
+    apiKey: string
+    brandId: string
+    listId: string
   }
 }

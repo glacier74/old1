@@ -2,6 +2,7 @@ import { FC } from 'react'
 
 import { BlockProps } from './Block'
 import { EmailCapture, EmailCaptureProps } from './EmailCapture'
+import { Faq, FaqProps } from './Faq'
 import { Feature, FeatureProps } from './Feature'
 import { Footer, FooterProps } from './Footer'
 import { Header, HeaderProps } from './Header'
@@ -44,6 +45,9 @@ export const BlockWrapper: FC<BlockProps> = props => {
 
     case 'emailCapture':
       return <EmailCapture key={props.block.id} {...(props as EmailCaptureProps)} />
+
+    case 'faq':
+      return <Faq key={props.block.id} {...(props as FaqProps)} />
 
     default:
       return <Text key={props.block.id} {...(props as TextProps)} />

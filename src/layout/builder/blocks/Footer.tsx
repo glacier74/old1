@@ -4,7 +4,6 @@ import { FC, useMemo } from 'react'
 import { SocialMediaIcon } from '~/components'
 import { SOCIAL_MEDIA_SETTINGS } from '~/constants'
 import { useProduct } from '~/layout'
-import { useBuilderContext } from '~/layout/builder/context'
 
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
 
@@ -24,8 +23,8 @@ export const FooterPreview: FC<FooterProps & { product: Product }> = ({ block, p
 
   return (
     <BlockPreview block={block}>
-      <div className="footer">
-        <div className="flex items-center justify-center space-x-3">
+      <div className="block-footer-wrapper">
+        <div className="block-footer-socialmedias">
           {socialMedias.map(row => (
             <a key={row.id} href={row.value} target={row.openInNewTab ? '_blank' : undefined}>
               <SocialMediaIcon type={row.type} />
@@ -33,7 +32,7 @@ export const FooterPreview: FC<FooterProps & { product: Product }> = ({ block, p
           ))}
         </div>
 
-        <p className="copyright">
+        <p className="block-footer-copyright">
           {new Date().getFullYear()} {product?.name}
         </p>
       </div>
@@ -46,10 +45,10 @@ export const Footer: FC<FooterProps> = ({ block }) => {
 
   return (
     <BlockComponent block={block}>
-      <div className="footer">
-        <div className="flex items-center justify-center space-x-3">
+      <div className="block-footer-wrapper">
+        <div className="block-footer-socialmedias">
           {isEmpty(block.socialMedias) ? (
-            <div className="font-normal text-sm text-slate-400">Set social medias in settings</div>
+            <div className="font-normal text-sm">Set social medias in settings</div>
           ) : (
             block.socialMedias.map(row => (
               <a key={row.id} href={row.value} target={row.openInNewTab ? '_blank' : undefined}>
@@ -59,7 +58,7 @@ export const Footer: FC<FooterProps> = ({ block }) => {
           )}
         </div>
 
-        <p className="copyright">
+        <p className="block-footer-copyright">
           {new Date().getFullYear()} {product?.name}
         </p>
       </div>

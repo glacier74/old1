@@ -7,7 +7,7 @@ import { SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
 
 import { BuilderProvider } from './context'
-import { BlockList, LeftSidebar, Navbar, RightSidebar } from './views'
+import { BlockList, DesignSidebar, LeftSidebar, Navbar, RightSidebar } from './views'
 
 // TODO - Delete Array.prototype.at polyfill https://github.com/vercel/next.js/pull/42307
 if (!Array.prototype.at) {
@@ -102,6 +102,7 @@ export const Builder = () => {
 
             <LeftSidebar />
             <RightSidebar />
+            <DesignSidebar />
           </Tour>
         </BuilderProvider>
       </AsyncRequest>

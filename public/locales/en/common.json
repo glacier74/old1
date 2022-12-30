@@ -6,7 +6,9 @@
     "logo": "Logo",
     "change": "Change",
     "cancel": "Cancel",
-    "upload": "Upload",
+    "uploadImage": "Upload image",
+    "embedVideo": "Embed video",
+    "embed": "Embed",
     "uploading": "Uploading",
     "search": "Search",
     "selectText": "Upload a file",
@@ -318,6 +320,18 @@
     "settings": "Block settings",
     "closeSettings": "Close block settings",
     "layout": "Layout",
+    "design": {
+      "name": "Design",
+      "theme": "Theme",
+      "customize": "Customize",
+      "headline": "Headline",
+      "content": "Content",
+      "primary": "Primary",
+      "buttonBackground": "Button background",
+      "buttonText": "Button text",
+      "border": "Border",
+      "background": "Background"
+    },
     "text": {
       "name": "Rich text",
       "placeholder": "Text content"
@@ -369,6 +383,13 @@
       "namePlaceholder": "Your name",
       "emailPlaceholder": "Email address",
       "nameRequired": "Name required"
+    },
+    "faq": {
+      "name": "FAQ",
+      "heading": "Frequently asked questions",
+      "description": "FAQs improve user journey by addressing the needs of your customers. Here you can provide answers to a list of typical questions that your customers might ask regarding the business.",
+      "addItem": "Add an item",
+      "deleteItem": "Delete the item"
     }
   },
   "invite": {

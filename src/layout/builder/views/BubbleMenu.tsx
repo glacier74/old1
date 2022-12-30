@@ -209,15 +209,15 @@ export const BubbleMenu: FC = () => {
               onlySubmitOnValueChange={true}
               request={handleLink}
             >
-              <Form.Item name="url" rules={[{ type: 'url', required: true }]}>
-                <Input type="url" placeholder="Paste or enter link here" />
+              <Form.Item name="url" rules={[{ required: true }]}>
+                <Input placeholder="Paste or enter link here" />
               </Form.Item>
             </Form.Custom>
           ) : (
             <div className="bubble-menu-container">
               {state.enableFormats?.includes('basic') && (
                 <div className="flex items-center space-x-1.5">
-                  <Tooltip ariaLabel="bold">
+                  <Tooltip ariaLabel="Bold">
                     <Button.Link
                       className={clsx({
                         'bubble-menu-active': activeState.isBold
@@ -226,7 +226,7 @@ export const BubbleMenu: FC = () => {
                       onClick={handleBold}
                     />
                   </Tooltip>
-                  <Tooltip ariaLabel="italic">
+                  <Tooltip ariaLabel="Italic">
                     <Button.Link
                       className={clsx({
                         'bubble-menu-active': activeState.isItalic
@@ -235,7 +235,7 @@ export const BubbleMenu: FC = () => {
                       onClick={handleItalic}
                     />
                   </Tooltip>
-                  <Tooltip ariaLabel="strikethrough">
+                  <Tooltip ariaLabel="Strikethrough">
                     <Button.Link
                       className={clsx({
                         'bubble-menu-active': activeState.isStrikethrough
@@ -244,7 +244,7 @@ export const BubbleMenu: FC = () => {
                       onClick={handleStrike}
                     />
                   </Tooltip>
-                  <Tooltip ariaLabel="underline">
+                  <Tooltip ariaLabel="Underline">
                     <Button.Link
                       className={clsx({
                         'bubble-menu-active': activeState.isUnderline
@@ -253,7 +253,7 @@ export const BubbleMenu: FC = () => {
                       onClick={handleUnderline}
                     />
                   </Tooltip>
-                  <Tooltip ariaLabel="link">
+                  <Tooltip ariaLabel="Link">
                     <Button.Link
                       className={clsx({
                         'bubble-menu-active': !!activeState.link
@@ -263,7 +263,7 @@ export const BubbleMenu: FC = () => {
                     />
                   </Tooltip>
                   {activeState.link && (
-                    <Tooltip ariaLabel="linkOff">
+                    <Tooltip ariaLabel="Link off">
                       <Button.Link leading={<IconLinkOff />} onClick={handleUnlink} />
                     </Tooltip>
                   )}

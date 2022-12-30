@@ -5,19 +5,25 @@ import { FC, createContext, useContext, useMemo, useReducer } from 'react'
 
 import { RichTextSelection } from '../utils'
 import * as Actions from './actions'
-import { setBlocks } from './actions'
 
 export interface IState {
-  lastSyncedBlocks: Block[]
   blocks: Block[]
   flattedBlocks: FlattedBlock[]
   focusableBlockMap: AnyMap<string[]>
   rootBlocks: string[]
 
   previewMode: 'desktop' | 'mobile'
-  isBlocksChanged?: boolean
   isBlocksSidebarOpen: boolean
   isSettingsSidebarOpen: boolean
+
+  theme: Theme
+  isDesignSidebarOpen: boolean
+
+  lastSyncedData: {
+    blocks: Block[]
+    theme: Theme
+  }
+  isSyncDataChanged?: boolean
 
   // Selected block
   focusBlockId?: string
@@ -49,7 +55,15 @@ export interface UpdateAction {
 
 export interface InitBlocksAction {
   type: 'initBlocks'
-  payload: Block[]
+  payload: {
+    blocks: Block[]
+    theme: Theme
+  }
+}
+
+export interface SetThemeAction {
+  type: 'setTheme'
+  payload: AnyMap<string>
 }
 
 export interface SetBlocksAction {
@@ -122,6 +136,7 @@ export interface UpdateStripeConnectAction {
 type IAction =
   | UpdateAction
   | InitBlocksAction
+  | SetThemeAction
   | SetBlocksAction
   | MoveBlockAction
   | AddBlockAction
@@ -160,9 +175,12 @@ function updateState(state: IState, action: IAction): IState {
 }
 
 const reducer = (state: IState, action: IAction) => {
+  console.log(action.type, action.payload)
+
   switch (action.type) {
     case 'update':
     case 'initBlocks':
+    case 'setTheme':
     case 'setBlocks':
     case 'moveBlock':
     case 'addBlock':
@@ -182,15 +200,17 @@ const reducer = (state: IState, action: IAction) => {
 export const BuilderProvider: FC<IComponentProps> = ({ children }) => {
   const initialState: IState = useMemo(
     () => ({
-      lastSyncedBlocks: [],
+      lastSyncedData: {} as any,
       blocks: [],
       flattedBlocks: [],
       focusableBlockMap: {},
       rootBlocks: [],
       previewMode: 'desktop',
-      isBlocksChanged: false,
+      theme: {} as any,
+      isSyncDataChanged: false,
       isBlocksSidebarOpen: false,
       isSettingsSidebarOpen: false,
+      isDesignSidebarOpen: false,
       isBubbleMenuOpen: false,
       isBuilderTourOpen: false,
       isBlocksTourOpen: false

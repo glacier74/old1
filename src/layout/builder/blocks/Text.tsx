@@ -9,6 +9,7 @@ import { BlockComponent, BlockPreview, BlockProps } from './Block'
 
 export interface TextProps extends BlockProps {
   block: TextBlock
+  newBlockType?: BlockType
 }
 
 export const TextPreview: FC<TextProps> = ({ block, ...restProps }) => {
@@ -25,10 +26,11 @@ export const TextPreview: FC<TextProps> = ({ block, ...restProps }) => {
 
 export const Text: FC<TextProps> = ({
   block,
-  placeholder = 'builder.text.placeholder',
+  placeholder,
   enableMultiple = false,
   enableFormats = ['basic', 'align'],
   enterBehavior = 'newBlock',
+  newBlockType,
   children,
   ...restProps
 }) => {
@@ -52,9 +54,11 @@ export const Text: FC<TextProps> = ({
       <RichText
         blockId={block.id}
         value={block.html}
-        placeholder={t(placeholder)}
+        placeholder={placeholder || t('builder.text.placeholder')}
+        multiple={enableMultiple}
         enableFormats={enableFormats}
         enterBehavior={enterBehavior}
+        newBlockType={newBlockType}
         onChange={handleChange}
       />
       {children}

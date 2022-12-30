@@ -1,6 +1,6 @@
 import { IconCreditCard, IconLetterH, IconLetterT, IconMail, IconSlideshow } from '@tabler/icons'
 
-import { IconFeature, IconFooter, IconHeader, IconHeroSection } from '~/components'
+import { IconFaq, IconFeature, IconFooter, IconHeader, IconHeroSection } from '~/components'
 
 export const LANGUAGE_OPTIONS = [
   {
@@ -67,6 +67,11 @@ export const BLOCK_OPTIONS: BlockOption[] = [
     icon: IconMail,
     label: 'builder.emailCapture.name'
   },
+  {
+    type: 'faq',
+    icon: IconFaq,
+    label: 'builder.faq.name'
+  },
 
   // Payment
   {
@@ -83,7 +88,7 @@ export const BLOCK_GROUP_OPTIONS: Array<Pick<BlockGroupOptions, 'label' | 'types
   },
   {
     label: 'builder.feature.name',
-    types: ['feature', 'slideGallery', 'emailCapture']
+    types: ['feature', 'slideGallery', 'emailCapture', 'faq']
   },
   {
     label: 'builder.payment.name',
@@ -142,5 +147,193 @@ export const SOCIAL_MEDIA_SETTINGS = [
     label: 'GitHub',
     prefixUri: 'https://github.com/',
     placeholder: 'elonmusk'
+  }
+]
+
+export const GOOGLE_FONTS = [
+  'Inter',
+  'Public Sans',
+  'Karla',
+  'Crimson Text',
+  'Cairo',
+  'Alegreya Sans',
+  'Roboto',
+  'Poppins',
+  'Montserrat',
+  'Ubuntu',
+  'JetBrains Mono',
+  'Source Sans Pro',
+  'Noto Sans',
+  'Lato',
+  'Mulish',
+  'Georgia',
+  'Arimo',
+  'Alegreya',
+  'Varela',
+  'Vollkorn',
+  'IBM Plex Mono',
+  'Open Sans',
+  'B612',
+  'Muli',
+  'Lora',
+  'Rubik',
+  'Work Sans',
+  'Arvo',
+  'PT Serif',
+  'Courier Prime',
+  'Josefin Sans',
+  'Nunito'
+]
+
+export const GOOGLE_FONTS_OPTIONS = [
+  {
+    value:
+      '-apple-system, BlinkMacSystemFont, Helvetica, Roboto, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", STXihei, "Microsoft YaHei", SimHei, "WenQuanYi Micro Hei", serif',
+    label: 'System Fonts'
+  },
+  ...GOOGLE_FONTS.map(value => ({
+    value,
+    label: value
+  }))
+]
+
+export const THEME_COLOR_KEYS = [
+  {
+    label: 'builder.design.headline',
+    value: 'text'
+  },
+  {
+    label: 'builder.design.content',
+    value: 'textLight'
+  },
+  { label: 'builder.design.primary', value: 'primary' },
+  { label: 'builder.design.buttonBackground', value: 'buttonBackground' },
+  { label: 'builder.design.buttonText', value: 'buttonText' },
+  { label: 'builder.design.border', value: 'border' },
+  { label: 'builder.design.background', value: 'background' }
+]
+
+export const THEME_PRESET_COLORS = [
+  '#fff',
+  '#f9fafb',
+  '#fef2f2',
+  '#fefce8',
+  '#f0fdf4',
+  '#eff6ff',
+  '#faf5ff',
+
+  '#d1d5db',
+  '#9ca3af',
+  '#ef4444',
+  '#eab308',
+  '#22c55e',
+  '#3b82f6',
+  '#a855f7',
+
+  '#4b5563',
+  '#000',
+  '#991b1b',
+  '#854d0e',
+  '#166534',
+  '#1e40af',
+  '#6b21a8'
+]
+
+export const THEMES: Theme[] = [
+  {
+    fontFamily: 'Inter',
+    fontSize: '16px',
+    lineHeight: 1.5,
+    primary: '#22c55e',
+    text: '#111827',
+    textLight: '#6b7280',
+    border: '#d1d5db',
+    buttonBackground: '#22c55e',
+    buttonText: '#fff',
+    background: '#fff'
+  },
+  {
+    fontFamily: 'Inter',
+    fontSize: '16px',
+    lineHeight: 1.5,
+    primary: '#2563eb',
+    text: '#111827',
+    textLight: '#6b7280',
+    border: '#d1d5db',
+    buttonBackground: '#2563eb',
+    buttonText: '#fff',
+    background: '#fff'
+  },
+  {
+    fontFamily: 'Inter',
+    fontSize: '16px',
+    lineHeight: 1.5,
+    primary: '#000',
+    text: '#000',
+    textLight: '#666',
+    border: '#666',
+    buttonBackground: '#000',
+    buttonText: '#fff',
+    background: '#f9fafb'
+  },
+  {
+    fontFamily: 'Inter',
+    fontSize: '16px',
+    lineHeight: 1.5,
+    primary: '#ef4444',
+    text: '#ef4444',
+    textLight: '#6b7280',
+    border: '#d1d5db',
+    buttonBackground: '#dc2626',
+    buttonText: '#fff',
+    background: '#fef2f2'
+  },
+  {
+    fontFamily: 'Inter',
+    fontSize: '16px',
+    lineHeight: 1.5,
+    primary: '#ca8a04',
+    text: '#111827',
+    textLight: '#6b7280',
+    border: '#d1d5db',
+    buttonBackground: '#ca8a04',
+    buttonText: '#fff',
+    background: '#fef3c7'
+  },
+  {
+    fontFamily: 'Inter',
+    fontSize: '16px',
+    lineHeight: 1.5,
+    primary: '#075985',
+    text: '#075985',
+    textLight: '#334155',
+    border: '#0369a1',
+    buttonBackground: '#075985',
+    buttonText: '#fff',
+    background: '#bae6fd'
+  },
+  {
+    fontFamily: 'Inter',
+    fontSize: '16px',
+    lineHeight: 1.5,
+    primary: '#a855f7',
+    text: '#fff',
+    textLight: '#e5e7eb',
+    border: '#d1d5db',
+    buttonBackground: '#a855f7',
+    buttonText: '#fff',
+    background: '#581c87'
+  },
+  {
+    fontFamily: 'Inter',
+    fontSize: '16px',
+    lineHeight: 1.5,
+    primary: '#22c55e',
+    text: '#e2e8f0',
+    textLight: '#9ca3af',
+    border: '#888',
+    buttonBackground: '#22c55e',
+    buttonText: '#fff',
+    background: '#0f172a'
   }
 ]

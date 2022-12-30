@@ -14,6 +14,7 @@ export interface RichTextProps extends Omit<IComponentProps, 'onChange'> {
   value?: string
   enableFormats?: Array<'basic' | 'align'> | null
   enterBehavior?: BlockEnterBehavior
+  newBlockType?: BlockType
   onFocus?: () => void
   onUp?: () => void
   onDown?: () => void
@@ -31,6 +32,7 @@ const RichTextComponent: FC<RichTextProps> = ({
   placeholder,
   enableFormats = ['basic', 'align'],
   enterBehavior,
+  newBlockType = 'text',
   style,
   onChange
 }) => {
@@ -92,7 +94,7 @@ const RichTextComponent: FC<RichTextProps> = ({
               type: 'addBlock',
               payload: {
                 block: {
-                  ...blockByType('text'),
+                  ...blockByType(newBlockType),
                   placeholder
                 },
                 afterId: blockId

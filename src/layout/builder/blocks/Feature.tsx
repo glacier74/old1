@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next'
 import { FC } from 'react'
 
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
@@ -16,7 +17,7 @@ export const FeaturePreview: FC<FeatureProps> = ({ block, ...restProps }) => {
 
   return (
     <BlockPreview block={block} {...restProps}>
-      <div className={`block-feature-container block-feature-${block.layout}`}>
+      <div className={`block-feature-wrapper block-feature-${block.layout}`}>
         {/* Left column */}
         <div className="block-feature-col">
           <ImagePreview
@@ -35,7 +36,7 @@ export const FeaturePreview: FC<FeatureProps> = ({ block, ...restProps }) => {
           </CustomTag>
 
           {/* Description */}
-          <div className="block-context-container">
+          <div className="block-feature-content">
             <div
               className="rich-text"
               placeholder=" "
@@ -49,9 +50,11 @@ export const FeaturePreview: FC<FeatureProps> = ({ block, ...restProps }) => {
 }
 
 export const Feature: FC<FeatureProps> = ({ block, placeholder, ...restProps }) => {
+  const { t } = useTranslation()
+
   return (
     <BlockComponent block={block} {...restProps}>
-      <div className={`block-feature-container block-feature-${block.layout}`}>
+      <div className={`block-feature-wrapper block-feature-${block.layout}`}>
         {/* Left column */}
         <div className="block-feature-col">
           <Image
@@ -60,8 +63,8 @@ export const Feature: FC<FeatureProps> = ({ block, placeholder, ...restProps }) 
               ...block.image,
               width: IMAGE_WIDTH
             }}
-            uploadDesc1="builder.feature.uploadTip1"
-            uploadDesc2="builder.feature.uploadTip2"
+            tip1="builder.feature.uploadTip1"
+            tip2="builder.feature.uploadTip2"
           />
         </div>
 
@@ -71,15 +74,15 @@ export const Feature: FC<FeatureProps> = ({ block, placeholder, ...restProps }) 
           <Heading
             className="block-feature-heading"
             block={block.heading}
-            placeholder="builder.feature.heading"
+            placeholder={t('builder.feature.heading')}
             enableFormats={null}
           />
 
           {/* Description */}
-          <div className="block-context-container">
+          <div className="block-feature-content">
             <Text
               block={block.content}
-              placeholder="builder.feature.description"
+              placeholder={t('builder.feature.description')}
               enableFormats={['basic']}
             />
           </div>

@@ -38,6 +38,7 @@ export function useVisible(visible = false): [boolean, () => void, () => void] {
 }
 
 interface UseRequestOptions {
+  fetchWhenDepsChange?: boolean
   errorNotify?: boolean
 }
 
@@ -67,6 +68,12 @@ export function useRequest(
       }
     } finally {
       setLoading(false)
+    }
+  }, deps)
+
+  useEffect(() => {
+    if (options?.fetchWhenDepsChange) {
+      request()
     }
   }, deps)
 

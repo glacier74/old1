@@ -1,7 +1,8 @@
 import { Button, Form, Modal, Select, Tooltip } from '@heyforms/ui'
+import { isValid } from '@nily/utils'
 import { IconTrash } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
-import { FC, useState } from 'react'
+import { FC, useMemo, useState } from 'react'
 
 import { useProductId } from '~/layout'
 import { OAuth } from '~/layout/product/Integrations/OAuth'
@@ -10,6 +11,7 @@ import { useRequest, useVisible } from '~/utils'
 
 import { useIntegrationsContext } from './context'
 
+// Integration type
 const TYPE = 'mailchimp'
 
 export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => {
@@ -18,6 +20,11 @@ export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => 
   const { reload } = useIntegrationsContext()
   const [visible, open, close] = useVisible()
 
+  const isConfigured = useMemo(() => {
+    return integration.lastConfiguredAt && isValid(integration.settings?.audienceId)
+  }, [integration.lastConfiguredAt, integration.settings])
+
+  const [isConnected, setConnected] = useState(isConfigured)
   const [audiences, setAudiences] = useState<MailchimpAudience[]>([])
 
   // Delete integration
@@ -33,12 +40,14 @@ export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => 
   )
 
   // Fetch audiences
-  const { loading: isFetching, request: fetchAudiences } = useRequest(
+  const { loading: isFetching } = useRequest(
     async () => {
-      const result = await MailchimpService.audiences(productId)
-      setAudiences(result)
+      if (isConnected) {
+        const result = await MailchimpService.audiences(productId)
+        setAudiences(result)
+      }
     },
-    [productId],
+    [productId, isConnected],
     {
       errorNotify: true
     }
@@ -51,7 +60,7 @@ export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => 
 
   async function handleConnect(code: string) {
     await MailchimpService.connect(productId, code)
-    await fetchAudiences()
+    setConnected(true)
   }
 
   async function handleFinish(settings: any) {
@@ -83,7 +92,7 @@ export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => 
             </p>
           </div>
           <div>
-            {integration.lastConfiguredAt && integration.settings?.audienceId ? (
+            {isConfigured ? (
               <Tooltip ariaLabel="Delete">
                 <Button.Link leading={<IconTrash />} loading={isDeleting} onClick={handleDelete} />
               </Tooltip>
@@ -113,16 +122,20 @@ export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => 
           />
 
           <Form.Custom
-            initialValues={{
-              audienceId: integration.settings?.audienceId
-            }}
+            initialValues={integration.settings}
             submitText={t('common.saveChanges')}
             submitOptions={{
               type: 'success'
             }}
+            onlySubmitOnValueChange
             request={handleFinish}
           >
-            <Form.Item name="audienceId" label="Select an audience" rules={[{ required: true }]}>
+            <Form.Item
+              name="audienceId"
+              label="Audience"
+              description="Select a audience you want to subscribe a user to."
+              rules={[{ required: true }]}
+            >
               <Select
                 options={audiences as any}
                 valueKey="id"
