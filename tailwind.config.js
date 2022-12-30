@@ -9,7 +9,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: ['Inter', ...defaultTheme.fontFamily.sans]
+      sans: ['Proxima Vara', ...defaultTheme.fontFamily.sans]
     }
   },
   plugins: [require('@tailwindcss/aspect-ratio'), require('@tailwindcss/forms')]

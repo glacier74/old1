@@ -1,4 +1,3 @@
-import { Inter } from '@next/font/google'
 import { isEmpty } from '@nily/utils'
 import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
@@ -8,8 +7,6 @@ import Script from 'next/script'
 import { useEffect } from 'react'
 
 import { getBrowserId, setBrowserId } from '~/utils'
-
-const inter = Inter()
 
 export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
   const { t } = useTranslation()
@@ -51,7 +48,7 @@ export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
       <NextSeo {...seoProps} />
 
       {/* HTML */}
-      <div className={inter.className}>{children}</div>
+      <div>{children}</div>
 
       <Script data-domain="earlybird.im" src="https://analytics.heyform.net/js/plausible.js" />
     </>
