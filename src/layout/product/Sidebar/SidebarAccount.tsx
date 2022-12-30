@@ -44,7 +44,7 @@ export const SidebarAccount: FC = () => {
       <Menus.Divider />
       <Menus.Item
         className="text-slate-400 hover:bg-transparent cursor-default"
-        label={`${t('sidebar.version')} v1.0.0`}
+        label={`${t('sidebar.version')} v${process.env.NEXT_PUBLIC_APP_VERSION}`}
       />
     </Menus>
   )

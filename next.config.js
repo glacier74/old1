@@ -1,8 +1,9 @@
 // @ts-check
 const dotenv = require('dotenv')
 const { resolve } = require('path')
-const env = process.env.NODE_ENV || 'development'
+const pkg = require('./package.json')
 const { i18n } = require('./next-i18next.config.js')
+const env = process.env.NODE_ENV || 'development'
 
 dotenv.config({
   path: resolve(process.cwd(), `.env.${env}`)
@@ -21,6 +22,9 @@ module.exports = {
         }
       }
     ]
+  },
+  env: {
+    NEXT_PUBLIC_APP_VERSION: pkg.version
   },
   eslint: {
     ignoreDuringBuilds: true
