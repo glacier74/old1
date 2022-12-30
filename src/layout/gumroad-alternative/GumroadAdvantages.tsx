@@ -9,8 +9,8 @@ export const GumroadAdvantages: FC = () => {
       <div className="max-w-7xl mx-auto">
         <h2 className="text-5xl font-bold">Advanced features</h2>
         <div className="text-xl mt-4 leading-relaxed">
-          EarlyBird is packed with features that make it easy for you to sell your products online,
-          including:
+          EarlyBird is packed with features that make it easy to create a landing page and sell your
+          products online. Here's what we offer to our users.
         </div>
 
         <div className="mt-8 grid md:grid-cols-3 md:gap-8">
