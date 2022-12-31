@@ -70,7 +70,7 @@ export const HomeTestimonals: FC = () => {
             </div>
 
             <div className="w-full flex-grow mt-2">
-              <div className="text-slate-500 text-md">
+              <div className="text-slate-700 text-md">
                 <p>
                   This is by far the most awesome screenshot tool I have ever seen. I have been
                   using it since its beta release and I'm in love with this one.

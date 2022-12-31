@@ -22,7 +22,7 @@ export const HomeUserImage: FC = () => {
             </div>
             <div className="mt-8">
               <div>
-                <h3 className="text-lg font-medium mb-2">EarlyBird is for</h3>
+                <h3 className="text-2xl font-medium mb-2">EarlyBird is for</h3>
                 <ul className="list-disc text-lg pl-4 leading-loose">
                   <li>Users without development and design skills</li>
                   <li>Running a simple online business</li>
@@ -30,8 +30,8 @@ export const HomeUserImage: FC = () => {
                 </ul>
               </div>
               <div className="mt-4">
-                <h3 className="text-lg font-medium mb-2">
-                  EarlyBird is <span className="font-bold">NOT</span> for
+                <h3 className="text-2xl font-medium mb-2">
+                  EarlyBird is <span className="font-extrabold">NOT</span> for
                 </h3>
                 <ul className="list-disc text-lg pl-4 leading-loose">
                   <li>Building a complex web app</li>
