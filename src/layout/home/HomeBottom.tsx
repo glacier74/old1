@@ -8,8 +8,8 @@ export const HomeBottom: FC = () => {
   return (
     <section className="relative pb-0">
       <div className="max-w-5xl mx-auto px-5">
-        <div className="py-32 md:py-48 text-slate-900">
-          <h2 className="max-w-2xl mx-auto text-2xl md:text-5xl text-center font-extrabold">
+        <div className="py-32 text-slate-900">
+          <h2 className="w-full md:w-3/5 mx-auto text-2xl md:text-4xl text-center font-bold">
             The place for early stage entrepreneurs to bootstrap
           </h2>
           <div className="max-w-3xl mx-auto mt-8 text-lg md:text-2xl text-center leading-snug text-slate-700">
