@@ -63,7 +63,6 @@ export const General: FC<{ values: any }> = ({ values }) => {
             rules={[
               {
                 required: true,
-                message: t('createProduct.invalidDomain'),
                 async validator(rule, value) {
                   if (product.domain !== value) {
                     await ProductService.checkDomain(value, productId)
