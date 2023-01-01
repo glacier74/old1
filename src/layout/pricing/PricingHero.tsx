@@ -15,9 +15,8 @@ export const PricingHero: FC = () => {
             </div>
             <div className="ml-3 flex-1 md:flex md:justify-between">
               <p className="text-sm text-slate-900">
-                EarlyBird is in public beta until{' '}
-                <span className="font-bold text-slate-900">December 31st, 2022</span>. During this
-                period, the product will be totally free to use.
+              The EarlyBird public beta has been extended until{' '}
+                <span className="font-bold text-slate-900">January 8th, 2023</span>- and during this time period, you can use the product totally free of charge!
               </p>
             </div>
           </div>
