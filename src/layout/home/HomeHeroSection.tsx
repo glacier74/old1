@@ -4,11 +4,10 @@ import Link from 'next/link'
 import { FC } from 'react'
 import Image from 'next/image'
 
-import CrownLeavesLeft from '~public/static/leaves-left.png'
-import CrownLeavesRight from '~public/static/leaves-right.png'
-import RatingStars from '~public/static/stars.svg'
+
 import UserAvatar1 from '~public/static/userAvatar-1.png'
 import UserAvatar2 from '~public/static/userAvatar-2.png'
+import HomeBanner from '~public/static/home-banner.png'
 
 export const HomeHeroSection: FC = () => {
   const { t } = useTranslation()
@@ -45,82 +44,45 @@ export const HomeHeroSection: FC = () => {
           </div>
         </div>
 
-        <div className="mt-12 pb-36">
+        <div className="mt-12 pb-8">
           <div className="flex justify-center flex-col md:flex-row items-center space-y-5 space-x-0 md:space-y-0 md:space-x-5">
             <Link
               href="/sign-up"
               className="w-full md:w-auto px-4 py-3 md:px-6 md:py-3 text-lg text-center font-medium border border-emerald-500 bg-emerald-500 rounded-md text-white"
               title={t('home.signUp')}
             >
-              Sign up free
+              Sign up today, it's FREE!
             </Link>
           </div>
         </div>
 
-
-        <div className="mx-10 my-4 flex items-center justify-center">
-          <Image
-              src={CrownLeavesLeft}
-              alt="Award leaves left"
-              className="w-14 opacity-50 md:w-20"
-              quality={100}
-            />
-          <div className="text-center">
-            <div className="my-2 max-w-xs text-sm md:text-base">
-              <div className="text-xl font-semibold sm:text-2xl text-slate-900 mb-2">
-                5.0 User Ratings
-              </div>
-              <div className="my-4 flex items-center justify-center">
-                <Image
-                  src={RatingStars}
-                  alt="Rating stars"
-                  className="w-40"
-                  quality={100}
-                />
-              </div>
-              
-              <div className="my-4 mx-4 flex flex-col items-center justify-center space-y-1">
-                <a href="https://www.producthunt.com/posts/earlybird-2?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-earlybird&#0045;2" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=371908&theme=light" alt="EarlyBird - Build&#0032;a&#0032;landing&#0032;page&#0032;and&#0032;validate&#0032;your&#0032;new&#0032;idea&#0032;in&#0032;10&#0032;mins | Product Hunt" width="250" height="54" className="inline-block w-full md:w-auto" /></a>
-                <a
-              href="https://www.producthunt.com/posts/earlybird-2?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-earlybird&#0045;2"
-              target="_blank"
-            >
-              <img
-                src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=371908&theme=light&period=daily"
-                alt="EarlyBird - Build&#0032;a&#0032;landing&#0032;page&#0032;and&#0032;validate&#0032;your&#0032;new&#0032;idea&#0032;in&#0032;10&#0032;mins | Product Hunt"
-                className="inline-block w-full md:w-auto"
-                width="250"
-                height="54"
-              />
-            </a>
-              </div>
-            </div>
-            </div>
-            <Image
-              src={CrownLeavesRight}
-              alt="Award leaves right"
-              className="w-14 opacity-50 md:w-20"
-              quality={100}
-            />
+        <div className="max-w-3xl mx-auto text-center mb-24">
+          <div className="text-sm sm:text-base text-slate-700 mb-4">
+            Helping 700+ makers build their beautiful landing pages everyday.
           </div>
+          <Image
+            src={UserAvatar1}
+            alt="People using EarlyBird"
+            className="inline-block"
+            quality={100}
+          />
+          <Image
+            src={UserAvatar2}
+            alt="People using EarlyBird"
+            className="hidden md:inline-block"
+            quality={100}
+          />
+        </div>
 
-          <div className="max-w-3xl mx-auto text-center mb-32">
-              <div className="text-sm sm:text-base text-slate-700 mb-4">
-                Helping 700+ makers build their beautiful landing pages everyday.
-              </div>
-              <Image
-                src={UserAvatar1}
-                alt="People using EarlyBird"
-                className="inline-block"
-                quality={100}
-              />
-              <Image
-                src={UserAvatar2}
-                alt="People using EarlyBird"
-                className="hidden md:inline-block"
-                quality={100}
-              />
-            </div>
+        <div className="max-w-7xl mx-auto mb-24">
+          <Image
+            src={HomeBanner}
+            alt="EarlyBird Screenshot"
+            className="w-full shadow-xl rounded-lg"
+            quality={100}
+          />
+        </div>
+
       </div>
     </section>
   )
