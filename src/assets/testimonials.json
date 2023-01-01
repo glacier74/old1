@@ -1,59 +1,86 @@
 [
   {
-    "type": "twitter",
-    "postUrl": "https://twitter.com/jakubeth/status/1562159815736057857",
-    "date": "Aug 23, 2022",
-    "nickname": "Gerry Hays",
-    "accountName": "@jakubeth",
-    "accountUrl": "https://twitter.com/jakubeth",
-    "avatar": "https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/twitter-profile-image%2Fjakubeth-880819052?alt=media&token=5e532b41-1fd6-456b-afe9-1104e2184a36",
-    "message": "Luo, loving the new changes! <mark>You are onto something really big</mark>. Congrats!"
+    "type": "producthunt",
+    "postUrl": "https://www.producthunt.com/posts/earlybird-2?comment=2117900",
+    "date": "Dec 25, 2022",
+    "nickname": "Ariel Orbach",
+    "title": "CTO at User1st",
+    "avatar": "https://earlybird.b-cdn.net/testimonials/avatars/Ariel_Orbach.webp",
+    "message": "🙌 This is such a cool solution! I'm always a fan of no-code platforms that can help me get to market/production faster, and this one fits the bill without any overhead or need for a pro role 💪."
   },
   {
     "type": "producthunt",
-    "postUrl": "https://producthunt.com/xxx",
-    "date": "Aug 23, 2022",
-    "nickname": "Hays Gerry",
-    "avatar": "https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/twitter-profile-image%2Fjakubeth-880819052?alt=media&token=5e532b41-1fd6-456b-afe9-1104e2184a36",
-    "title": "Founder & CEO, Doriot",
-    "message": "Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home."
+    "postUrl": "https://www.producthunt.com/posts/earlybird-2?comment=2118007",
+    "date": "Dec 25, 2022",
+    "nickname": "Advait Vaidya",
+    "avatar": "https://earlybird.b-cdn.net/testimonials/avatars/Advait_Vaidya.webp",
+    "title": "Founder at Hubbleform",
+    "message": "Congrats on the launch! Love the idea. <mark>The tool is quite powerful</mark>. I would really like to deploy a full landing page on my domain address using this tool."
   },
   {
     "type": "producthunt",
-    "postUrl": "https://producthunt.com/xxx",
-    "date": "Aug 23, 2022",
-    "nickname": "Hays Gerry",
-    "avatar": "https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/twitter-profile-image%2Fjakubeth-880819052?alt=media&token=5e532b41-1fd6-456b-afe9-1104e2184a36",
-    "title": "Founder & CEO, Doriot",
-    "message": "Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home."
-  },
-  {
-    "type": "twitter",
-    "postUrl": "https://twitter.com/jakubeth/status/1562159815736057857",
-    "date": "Aug 23, 2022",
-    "nickname": "Gerry Hays",
-    "accountName": "@jakubeth",
-    "accountUrl": "https://twitter.com/jakubeth",
-    "avatar": "https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/twitter-profile-image%2Fjakubeth-880819052?alt=media&token=5e532b41-1fd6-456b-afe9-1104e2184a36",
-    "message": "Luo, loving the new changes! <mark>You are onto something really big</mark>. Congrats!"
-  },
-  {
-    "type": "twitter",
-    "postUrl": "https://twitter.com/jakubeth/status/1562159815736057857",
-    "date": "Aug 23, 2022",
-    "nickname": "Gerry Hays",
-    "accountName": "@jakubeth",
-    "accountUrl": "https://twitter.com/jakubeth",
-    "avatar": "https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/twitter-profile-image%2Fjakubeth-880819052?alt=media&token=5e532b41-1fd6-456b-afe9-1104e2184a36",
-    "message": "Luo, loving the new changes! <mark>You are onto something really big</mark>. Congrats!"
+    "postUrl": "https://producthunt.com/posts/earlybird-2?comment=2117955",
+    "date": "Dec 25, 2022",
+    "nickname": "Adetokunbo Abiola",
+    "avatar": "https://earlybird.b-cdn.net/testimonials/avatars/Adetokunbo_Abiola.webp",
+    "title": "Founder at Adetokunbo Sees",
+    "message": "👍 <mark>Great idea. Great tool. Great vision.</mark> Congrats on the launch of a product with a great conception. Now I can validate my idea without great problems"
   },
   {
     "type": "producthunt",
-    "postUrl": "https://producthunt.com/xxx",
+    "postUrl": "https://twitter.com/jakubeth/status/1562159815736057857",
+    "date": "Dec 25, 2022",
+    "nickname": "Abhimanyu Ghoshal",
+    "avatar": "https://earlybird.b-cdn.net/testimonials/avatars/Abhimanyu_Ghoshal.webp",
+    "title": "Lead Content Strategist at Hashnode",
+    "message": "I've been looking for a simple tool to place copy on a web page in different blocks and see how it all flows. This makes it real easy to do that quickly, and I love how it works for this use case."
+  },
+  {
+    "type":"email",
     "date": "Aug 23, 2022",
-    "nickname": "Hays Gerry",
-    "avatar": "https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/twitter-profile-image%2Fjakubeth-880819052?alt=media&token=5e532b41-1fd6-456b-afe9-1104e2184a36",
-    "title": "Founder & CEO, Doriot",
-    "message": "Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home."
+    "nickname": "Gerry Hays",
+    "avatar": "https://earlybird.b-cdn.net/testimonials/avatars/Gerry_Hays.webp",
+    "title": "Founder & CEO at Doriot Markets, LLC",
+    "message": "Really like the product! <mark>You are onto something really big</mark>. Keep up the great work! I hope to offer a great case study for your product!"
+  },
+  {
+    "type": "producthunt",
+    "postUrl": "https://producthunt.com/posts/earlybird-2?comment=2119744",
+    "date": "Dec 25, 2022",
+    "nickname": "Hanna Z",
+    "avatar": "https://earlybird.b-cdn.net/testimonials/avatars/Hanna_Z.webp",
+    "title": "Founder @boolv.tech",
+    "message": "This product is right on time for my recent launch - <mark>super easy to use n straightforward</mark>. Thanks and Congrats!!!"
+  },
+  {
+    "type": "producthunt",
+    "postUrl": "https://producthunt.com/posts/earlybird-2?comment=2120705",
+    "date": "Dec 27, 2022",
+    "nickname": "Nguyễn Trung",
+    "avatar": "https://earlybird.b-cdn.net/testimonials/avatars/Nguyen_Trung.webp",
+    "title": "Graphic Designer and 2D Illustrator",
+    "message": "As a graphic designer /2D illustrator that has almost no code background, I'm pleased with what I see, easy to use with instructions and UI is not too crowded with tons of functions but focus on what's essential. I'll definitely keep Earlybird in mind for my upcoming small business."
+  },
+  {
+    "type":"email",
+    "date": "Dec 30, 2022",
+    "nickname": "James Brauer",
+    "avatar": "https://earlybird.b-cdn.net/testimonials/avatars/James_Brauer.jpeg",
+    "message": "Great work on the EarlyBird launch! I was able to register an account with ease and get a landing page up and running within minutes. Unreal!"
+  },
+  {
+    "type":"email",
+    "date": "Dec 27, 2022",
+    "nickname": "Lucas Gil Cantón",
+    "avatar": "https://earlybird.b-cdn.net/testimonials/avatars/Lucas_Gil_Canton.jpeg",
+    "message": "Thanks for creating EarlyBird, looks great. I've been trying to find a go-to landing page builder forever and this seems like it could be it."
+  },
+  {
+    "type": "twitter",
+    "date": "Dec 29, 2022",
+    "nickname": "Richard Frantzen",
+    "accountName": "@frantzenrichard",
+    "avatar": "https://earlybird.b-cdn.net/testimonials/avatars/Richard_Frantzen.jpeg",
+    "message": "Great product. Looking forward to trying it out. I’m pretty much done with my little tool I’m going to release for sale to my niche audience. I see your product as a perfect tool for me to use as the landing page for that which can be a real contender winning over for example Gumroad."
   }
 ]
