@@ -1,39 +1,59 @@
 [
-    {
-        "type": "twitter",
-        // Tweet URL
-        "url": "https://twitter.com/xxx/xxx",
-        "date":"Aug 23, 2022"
-        "testiminal": {
-            "name": "Gerry Hays",
-            "avatar": "",
-            "title": "Founder & CEO",
-            "company":"Doriot",
-            // Twitter handle URL
-            "handle":"https://twitter.com/",
-            "message": "Luo, loving the new changes! You are onto something really big. Congrats!"
-        }
-    },
-    {
-        "type": "producthunt",
-        "url": "https://producthunt.com/xxx",
-        "testiminal": {
-            "name": "Glen Davis",
-            "avatar": "",
-            "title": "Founder & CEO",
-            "company":"XXX",
-            "message": "Luo, loving the new changes! You are onto something really big. Congrats!"
-        }
-    },
-    {
-        "type": "Polywork",
-        "url": "https://producthunt.com/xxx",
-        "testiminal": {
-            "name": "Glen Davis",
-            "avatar": "",
-            "title": "Founder & CEO",
-            "company":"XXX",
-            "message": "Luo, loving the new changes! You are onto something really big. Congrats!"
-        }
-    }
+  {
+    "type": "twitter",
+    "postUrl": "https://twitter.com/jakubeth/status/1562159815736057857",
+    "date": "Aug 23, 2022",
+    "nickname": "Gerry Hays",
+    "accountName": "@jakubeth",
+    "accountUrl": "https://twitter.com/jakubeth",
+    "avatar": "https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/twitter-profile-image%2Fjakubeth-880819052?alt=media&token=5e532b41-1fd6-456b-afe9-1104e2184a36",
+    "message": "Luo, loving the new changes! <mark>You are onto something really big</mark>. Congrats!"
+  },
+  {
+    "type": "producthunt",
+    "postUrl": "https://producthunt.com/xxx",
+    "date": "Aug 23, 2022",
+    "nickname": "Hays Gerry",
+    "avatar": "https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/twitter-profile-image%2Fjakubeth-880819052?alt=media&token=5e532b41-1fd6-456b-afe9-1104e2184a36",
+    "title": "Founder & CEO, Doriot",
+    "message": "Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home."
+  },
+  {
+    "type": "producthunt",
+    "postUrl": "https://producthunt.com/xxx",
+    "date": "Aug 23, 2022",
+    "nickname": "Hays Gerry",
+    "avatar": "https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/twitter-profile-image%2Fjakubeth-880819052?alt=media&token=5e532b41-1fd6-456b-afe9-1104e2184a36",
+    "title": "Founder & CEO, Doriot",
+    "message": "Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home."
+  },
+  {
+    "type": "twitter",
+    "postUrl": "https://twitter.com/jakubeth/status/1562159815736057857",
+    "date": "Aug 23, 2022",
+    "nickname": "Gerry Hays",
+    "accountName": "@jakubeth",
+    "accountUrl": "https://twitter.com/jakubeth",
+    "avatar": "https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/twitter-profile-image%2Fjakubeth-880819052?alt=media&token=5e532b41-1fd6-456b-afe9-1104e2184a36",
+    "message": "Luo, loving the new changes! <mark>You are onto something really big</mark>. Congrats!"
+  },
+  {
+    "type": "twitter",
+    "postUrl": "https://twitter.com/jakubeth/status/1562159815736057857",
+    "date": "Aug 23, 2022",
+    "nickname": "Gerry Hays",
+    "accountName": "@jakubeth",
+    "accountUrl": "https://twitter.com/jakubeth",
+    "avatar": "https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/twitter-profile-image%2Fjakubeth-880819052?alt=media&token=5e532b41-1fd6-456b-afe9-1104e2184a36",
+    "message": "Luo, loving the new changes! <mark>You are onto something really big</mark>. Congrats!"
+  },
+  {
+    "type": "producthunt",
+    "postUrl": "https://producthunt.com/xxx",
+    "date": "Aug 23, 2022",
+    "nickname": "Hays Gerry",
+    "avatar": "https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/twitter-profile-image%2Fjakubeth-880819052?alt=media&token=5e532b41-1fd6-456b-afe9-1104e2184a36",
+    "title": "Founder & CEO, Doriot",
+    "message": "Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home. Sometimes it’s just better to make pizza at home."
+  }
 ]

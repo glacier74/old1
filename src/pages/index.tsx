@@ -7,7 +7,7 @@ import {
   HomeHeroSection,
   HomeLayout,
   HomeLetter,
-  HomeTestimonals,
+  HomeTestimonials,
   HomeUserImage
 } from '~/layout'
 import { isLoggedIn, withTranslations } from '~/utils'
@@ -32,7 +32,7 @@ const Home = ({ isLoggedIn }: HomeProps): JSX.Element => {
       <HomeHeroSection />
       <HomeUserImage />
       <HomeFeature />
-      <HomeTestimonals />
+      <HomeTestimonials />
       <HomeLetter />
       <HomeBottom />
       <HomeFooter />
