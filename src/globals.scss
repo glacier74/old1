@@ -261,14 +261,6 @@ button.switch-checked {
   }
 }
 
-.waterfall {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);  // 指定两列，自动宽度
-  grid-gap: 0.25em; // 横向，纵向间隔
-  grid-auto-flow: row dense;  // 是否自动补齐空白
-  grid-auto-rows: 20px;  // base高度，grid-row基于此运算
-}
-
 // =================================================================================
 // Home
 .home-container {
