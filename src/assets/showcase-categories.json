@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Commerce",
+    "slug": "commerce"
+  },
+  {
+    "name": "Personal",
+    "slug": "personal"
+  },
+  {
+    "name": "Community",
+    "slug": "community"
+  },
+  {
+    "name": "Web3",
+    "slug": "web3"
+  },
+  {
+    "name": "SaaS",
+    "slug": "saaS"
+  },
+  {
+    "name": "Mobile",
+    "slug": "mobile"
+  },
+  {
+    "name": "Event",
+    "slug": "event"
+  },
+  {
+    "name": "Service",
+    "slug": "service"
+  }
+]

@@ -1,11 +1,7 @@
 import { useTranslation } from 'next-i18next'
 
 import { HomeFooter, HomeHeader, HomeLayout } from '~/layout'
-import {
-  ShowcaseCTA,
-  ShowcaseHero,
-  ShowcaseList,
-} from '~/layout/showcase'
+import { ShowcaseCTA, ShowcaseHero, ShowcaseList } from '~/layout/showcase'
 import { withTranslations } from '~/utils'
 
 const Features = (): JSX.Element => {
