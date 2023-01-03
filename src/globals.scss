@@ -793,6 +793,12 @@ h3.rich-text {
   }
 }
 
+.block-producthunt-badge {
+  @media (max-width: 768px) {
+    @apply flex justify-center;
+  }
+}
+
 .block-herosection-image {
   @apply mt-8 md:mt-12;
 

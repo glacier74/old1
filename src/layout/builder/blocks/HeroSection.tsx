@@ -2,6 +2,7 @@ import { isValid } from '@nily/utils'
 import { useTranslation } from 'next-i18next'
 import { FC } from 'react'
 
+import { ProducthuntBadge } from '~/components'
 import { Heading } from '~/layout/builder/blocks/Heading'
 import { Image, ImagePreview } from '~/layout/builder/blocks/Image'
 import { Text } from '~/layout/builder/blocks/Text'
@@ -59,6 +60,12 @@ export const HeroSectionPreview: FC<HeroSectionProps> = ({ block }) => {
               </div>
             )
           })}
+
+          {block.producthuntBadge?.id && (
+            <div className="block-producthunt-badge">
+              <ProducthuntBadge badge={block.producthuntBadge} />
+            </div>
+          )}
         </div>
       </div>
 
@@ -109,6 +116,12 @@ export const HeroSection: FC<HeroSectionProps> = ({ block }) => {
               enableFormats={null}
             />
           ))}
+
+          {block.producthuntBadge?.id && (
+            <div className="block-producthunt-badge">
+              <ProducthuntBadge badge={block.producthuntBadge} />
+            </div>
+          )}
         </div>
       </div>
 

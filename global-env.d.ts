@@ -172,6 +172,13 @@ declare global {
     unit_amount: number
   }
 
+  interface ProducthuntPost {
+    id: string
+    name: string
+    slug: string
+    tagline: string
+  }
+
   type BlockEnterBehavior = 'focusBlock' | 'newBlock'
 
   interface SlideGallerySource {
@@ -254,6 +261,23 @@ declare global {
     content: B[]
   }
 
+  interface ProducthuntTopPostBadge {
+    period: 'daily' | 'weekly' | 'monthly'
+    topicName?: string
+  }
+
+  interface ProducthuntBadgeInfo extends ProducthuntTopPostBadge {
+    id: number
+    name: string
+    tagline: string
+    slug: string
+    url: string
+    type: 'top-post-badge' | 'featured'
+    theme: 'light' | 'neutral' | 'dark'
+    topPostBadges: ProducthuntTopPostBadge[]
+    topPostTopicBadges: ProducthuntTopPostBadge[]
+  }
+
   interface HeroSectionBlock extends Pick<Block, 'id' | 'type'> {
     type: 'heroSection'
     layout?: 'left' | 'center'
@@ -261,6 +285,7 @@ declare global {
     tagline: TextBlock
     image: Omit<ImageBlock, 'align'>
     buttons: ButtonBlock[]
+    producthuntBadge?: ProducthuntBadgeInfo
   }
 
   interface FeatureBlock extends Pick<Block, 'id' | 'type'> {
