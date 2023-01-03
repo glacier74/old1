@@ -1,9 +1,8 @@
 import dayjs from 'dayjs'
 import { useTranslation } from 'next-i18next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
-import Image from 'next/image'
-
 
 import UserAvatar1 from '~public/static/userAvatar-1.png'
 import UserAvatar2 from '~public/static/userAvatar-2.png'
@@ -15,7 +14,7 @@ export const ShowcaseHero: FC = () => {
     <section>
       <div className="relative text-slate-900 max-w-7xl mx-auto px-12 z-10">
         <div className="pt-40 text-center">
-          <h1 className="text-4xl leading-tight md:text-7xl font-extrabold md:leading-none">
+          <h1 className="text-3xl leading-tight md:text-7xl font-extrabold md:leading-none">
             Proudly{' '}
             <span className="relative whitespace-nowrap text-emerald-500">
               <svg
@@ -29,7 +28,7 @@ export const ShowcaseHero: FC = () => {
               <span className="relative">#MadeWithEarlyBird</span>
             </span>
           </h1>
-          <div className="max-w-2xl mx-auto text-slate-700 text-xl md:text-2xl mt-8 font-medium">
+          <div className="max-w-2xl mx-auto text-slate-700 text-lg md:text-2xl mt-8 font-medium">
             Check out these incredible landing pages created using EarlyBird!
           </div>
         </div>
@@ -63,7 +62,6 @@ export const ShowcaseHero: FC = () => {
             quality={100}
           />
         </div>
-
       </div>
     </section>
   )
