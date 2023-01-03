@@ -63,7 +63,7 @@ export const HomeFeature: FC = () => (
         <div className="pt-16 md:pt-28 pb-10 text-slate-900">
           <div className="text-3xl md:text-5xl font-extrabold ">Validate as quick as possible</div>
           <div className="mt-5 mb-7 w-full text-xl md:text-2xl leading-tight text-slate-700">
-            Start engaging with potential customers.Validate the demand for your product and accept
+            Start engaging with potential customers. Validate the demand for your product and accept
             payments before launch.
           </div>
           <Image
