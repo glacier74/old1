@@ -6,7 +6,7 @@ export const FeaturesCTA: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section>
+    <section className="bg-emerald-100">
       <div className="max-w-7xl mx-auto py-32 px-4 text-center">
         <h2 className="font-extrabold text-5xl text-slate-900">Try EarlyBird today for free</h2>
         <p className="max-w-3xl mx-auto mt-6 text-xl font-medium text-slate-700">
