@@ -48,6 +48,7 @@ export const HomeUserImage: FC = () => {
             alt="Avoid burning time and money at early stage "
             className="w-full object-cover"
             quality={100}
+            width={548}
           />
         </div>
       </div>

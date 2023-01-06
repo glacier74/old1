@@ -81,6 +81,18 @@
     "nickname": "Richard Frantzen",
     "accountName": "@frantzenrichard",
     "avatar": "https://earlybird.b-cdn.net/testimonials/avatars/Richard_Frantzen.jpeg",
+    "accountUrl":"https://twitter.com/frantzenrichard",
+    "postUrl":"https://twitter.com/RTkatsenko",
     "message": "Great product. Looking forward to trying it out. I’m pretty much done with my little tool I’m going to release for sale to my niche audience. I see your product as a perfect tool for me to use as the landing page for that which can be a real contender winning over for example Gumroad."
+  },
+  {
+    "type": "twitter",
+    "date": "Jan 5, 2023",
+    "nickname": "Rando Tkatsenko",
+    "accountName": "@RTkatsenko",
+    "avatar": "https://earlybird.b-cdn.net/testimonials/avatars/Rando_Tkatsenko.jpg",
+    "accountUrl":"https://twitter.com/RTkatsenko",
+    "postUrl":"https://twitter.com/RTkatsenko",
+    "message": "Earlybird is the fastest and easiest way to setup a clean and professional landing page for any product or service. I have used many website builders before and most are a headache to use. I create landing pages with Earlybird for my mobile apps within 10-15 minutes. Earlybird does not require any complex setups or coding knowledge. It's simple to use and does what it promises, without any hassle. Recommend to anyone looking to get a great looking website up as fast as possible."
   }
 ]

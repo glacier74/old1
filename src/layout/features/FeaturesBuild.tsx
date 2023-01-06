@@ -7,12 +7,12 @@ const features = [
   {
     title: 'Newbie-friendly UI blocks',
     desc: 'Every UI block is designed to be easy to use and understand, even for those who are unfamiliar with technology.',
-    imageUrl: '/static/private-mode.webp'
+    imageUrl: '/static/ui-blocks.webp'
   },
   {
-    title: 'Unlimited blocks',
-    desc: 'Add as many blocks as you need to your landing page, and customize them to match the tone and aesthetic of your brand.',
-    imageUrl: '/static/private-mode.webp'
+    title: 'Fully responsive',
+    desc: 'Every landing page is set to be responsive and looks great on all devices, ensuring accessibility for everyone.',
+    imageUrl: '/static/fully-responsive.webp'
   },
   {
     title: 'Text formatting',
@@ -27,11 +27,6 @@ const features = [
   {
     title: 'Private mode',
     desc: 'Restrict access to your landing pages by keeping them password-protected for a select group of users.',
-    imageUrl: '/static/private-mode.webp'
-  },
-  {
-    title: 'Fully responsive',
-    desc: 'Every landing page is set to be responsive and looks great on all devices, ensuring accessibility for everyone.',
     imageUrl: '/static/private-mode.webp'
   }
 ]

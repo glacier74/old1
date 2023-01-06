@@ -80,7 +80,7 @@ export const HomeHeader: FC = () => {
             <div className="hidden items-center text-slate-900 font-medium space-x-5 md:flex">
               <Link
                 href="/login"
-                className="py-2 px-4 border border-emerald-500 rounded-md text-emerald-500"
+                className="py-2 px-4 border border-slate-900 rounded-md text-slate-900 font-medium"
                 title={t('common.name')}
               >
                 Log in
@@ -92,6 +92,7 @@ export const HomeHeader: FC = () => {
                 className="block-header-button"
                 leading={isOpen ? <IconX /> : <IconMenu2 />}
                 onClick={handleClick}
+                aria-label="Menu"
               />
             </div>
           </div>

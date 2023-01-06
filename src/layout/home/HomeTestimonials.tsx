@@ -26,7 +26,13 @@ const TestimonialTwitter: FC<{ testimonial: Testimonial }> = ({ testimonial }) =
     <div className="w-full bg-white shadow-md shadow-emerald-200/50 border border-slate-200 p-5 mb-4 rounded-md">
       <div className="w-full flex items-center">
         <a href={testimonial.accountUrl} target="_blank" rel="noreferrer">
-          <img className="w-12 h-12 rounded-full" src={testimonial.avatar} />
+          <img
+            className="w-12 h-12 rounded-full"
+            src={testimonial.avatar}
+            width="48"
+            height="48"
+            alt={testimonial.nickname}
+          />
         </a>
         <div className="flex-grow pl-3">
           <div className="flex justify-between my-auto">
@@ -41,7 +47,7 @@ const TestimonialTwitter: FC<{ testimonial: Testimonial }> = ({ testimonial }) =
                   {testimonial.nickname}
                 </a>
               </h4>
-              <div className="text-sm text-sm text-gray-400 ">
+              <div className="text-sm text-sm text-slate-500 ">
                 <a
                   className="hover:underline"
                   href={testimonial.accountUrl}
@@ -52,7 +58,7 @@ const TestimonialTwitter: FC<{ testimonial: Testimonial }> = ({ testimonial }) =
                 </a>
               </div>
             </div>
-            <a href={testimonial.postUrl} target="_blank" rel="noreferrer">
+            <a href={testimonial.postUrl} target="_blank" rel="noreferrer" aria-label="Twitter">
               <IconTwitter className="w-6 h-6 text-[#1ea1f2]" />
             </a>
           </div>
@@ -86,7 +92,12 @@ const TestimonialProducthunt: FC<{ testimonial: Testimonial }> = ({ testimonial 
     <div className="w-full bg-white shadow-md shadow-emerald-200/50 border border-slate-200 p-5 mb-4 rounded-md">
       <div className="w-full flex items-center">
         <a href={testimonial.postUrl} target="_blank" rel="noreferrer">
-          <img className="w-12 h-12 rounded-full" src={testimonial.avatar} />
+          <img
+            className="w-12 h-12 rounded-full"
+            src={testimonial.avatar}
+            width="48"
+            alt={testimonial.nickname}
+          />
         </a>
         <div className="flex-grow pl-3">
           <div className="flex justify-between my-auto">
@@ -101,9 +112,14 @@ const TestimonialProducthunt: FC<{ testimonial: Testimonial }> = ({ testimonial 
                   {testimonial.nickname}
                 </a>
               </h4>
-              <div className="text-sm text-sm text-gray-400 ">{testimonial.title}</div>
+              <div className="text-sm text-sm text-slate-500 ">{testimonial.title}</div>
             </div>
-            <a href={testimonial.postUrl} target="_blank" rel="noreferrer">
+            <a
+              href={testimonial.postUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Product Hunt"
+            >
               <IconProducthunt className="w-6 h-6 text-[#da552f]" />
             </a>
           </div>
@@ -136,14 +152,19 @@ const TestimonialEmail: FC<{ testimonial: Testimonial }> = ({ testimonial }) => 
   return (
     <div className="w-full bg-white shadow-md shadow-emerald-200/50 border border-slate-200 p-5 mb-4 rounded-md">
       <div className="w-full flex items-center">
-        <a href={testimonial.postUrl} target="_blank" rel="noreferrer">
-          <img className="w-12 h-12 rounded-full" src={testimonial.avatar} />
-        </a>
+        <div>
+          <img
+            className="w-12 h-12 rounded-full"
+            src={testimonial.avatar}
+            width="48"
+            alt={testimonial.nickname}
+          />
+        </div>
         <div className="flex-grow pl-3">
           <div className="flex justify-between my-auto">
             <div>
               <h4 className="font-bold inline text-md">{testimonial.nickname}</h4>
-              <div className="text-sm text-sm text-gray-400 ">{testimonial.title}</div>
+              <div className="text-sm text-sm text-slate-500 ">{testimonial.title}</div>
             </div>
           </div>
         </div>
@@ -156,16 +177,7 @@ const TestimonialEmail: FC<{ testimonial: Testimonial }> = ({ testimonial }) => 
       </div>
 
       <div className="w-full flex justify-between mt-2">
-        <div className="text-sm text-slate-500 mt-2">
-          <a
-            className="hover:underline"
-            href={testimonial.postUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {testimonial.date}
-          </a>
-        </div>
+        <div className="text-sm text-slate-500 mt-2">{testimonial.date}</div>
       </div>
     </div>
   )

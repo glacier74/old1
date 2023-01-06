@@ -12,7 +12,7 @@ const features = [
   {
     title: 'Understand interests',
     desc: 'Build a list of interested individuals to keep them engaged and informed about your product development and offer.',
-    imageUrl: '/static/analytics.webp'
+    imageUrl: '/static/understand-interests.webp'
   },
   {
     title: 'Accept payments',
@@ -22,17 +22,12 @@ const features = [
   {
     title: 'Collect feedback',
     desc: 'Add a simple form that users can fill out to provide their thoughts, opinions, and suggestions about your product or service.',
-    imageUrl: '/static/analytics.webp'
+    imageUrl: '/static/collect-feedback.webp'
   },
   {
     title: 'Quick polls',
     desc: 'Get insights faster. Add user-friendly online polls to understand the needs and preferences of your target audience.',
     imageUrl: '/static/polls.webp'
-  },
-  {
-    title: 'Send files',
-    desc: 'Automatically deliver files to the target who signs up or pays for your service or product.',
-    imageUrl: '/static/analytics.webp'
   }
 ]
 

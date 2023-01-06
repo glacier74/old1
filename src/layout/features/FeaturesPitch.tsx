@@ -1,4 +1,5 @@
 import { useTranslation } from 'next-i18next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
@@ -6,32 +7,32 @@ const features = [
   {
     title: 'Custom branding',
     desc: 'Add your own logo, colors, and other branding elements to reflect your own brand.',
-    imageUrl: 'https://placehold.jp/d1fae5/000000/600x400.png'
+    imageUrl: '/static/custom-branding.webp'
   },
   {
     title: 'Custom domain',
     desc: 'Use your own domain name to create a more professional-looking and cohesive experience for your customers.',
-    imageUrl: 'https://placehold.jp/d1fae5/000000/600x400.png'
+    imageUrl: '/static/custom-domain.webp'
   },
   {
     title: 'Custom Open Graph',
     desc: 'Get your content stand out and attract more attention on social media with custom title, description, image, and other information.',
-    imageUrl: 'https://placehold.jp/d1fae5/000000/600x400.png'
+    imageUrl: '/static/custom-open-graph.webp'
   },
   {
     title: 'Features walkthrough',
     desc: 'Highlight the key benefits and features of your product, and explain how it solves specific problems that your target customers have.',
-    imageUrl: 'https://placehold.jp/d1fae5/000000/600x400.png'
+    imageUrl: '/static/features-walkthrough.webp'
   },
   {
     title: 'Image Carousel',
     desc: 'Showcase your product, service, or other visual content in an engaging way to your customers that your offering is worth investing in.',
-    imageUrl: 'https://placehold.jp/d1fae5/000000/600x400.png'
+    imageUrl: '/static/image-carousel.webp'
   },
   {
     title: 'Social proof',
     desc: 'Show testimonials and ratings to build trust and credibility with potential customers.',
-    imageUrl: 'https://placehold.jp/d1fae5/000000/600x400.png'
+    imageUrl: '/static/social-proof.png'
   }
 ]
 
@@ -53,10 +54,13 @@ export const FeaturesPitch: FC = () => {
           <ul role="list" className="md:grid md:grid-cols-2 md:gap-x-16">
             {features.map(feature => (
               <li key={feature.title} className="mb-16">
-                <img
+                <Image
                   src={feature.imageUrl}
                   alt={feature.title}
                   className="w-full mb-8 rounded rounded-md"
+                  width={600}
+                  height={400}
+                  quality={100}
                 />
                 <h3 className="text-slate-900 font-extrabold text-3xl">{feature.title}</h3>
                 <p className="mt-2 text-slate-900 text-xl">{feature.desc}</p>
