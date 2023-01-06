@@ -49,6 +49,7 @@ export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => 
     },
     [productId, isConnected],
     {
+      fetchWhenDepsChange: true,
       errorNotify: true
     }
   )
