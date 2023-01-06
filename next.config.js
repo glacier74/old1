@@ -12,17 +12,6 @@ dotenv.config({
 /** @type {import('next').NextConfig} */
 module.exports = {
   i18n,
-  experimental: {
-    fontLoaders: [
-      {
-        loader: '@next/font/google',
-        options: {
-          subsets: ['latin'],
-          weights: [400, 500, 600, 700, 800, 900]
-        }
-      }
-    ]
-  },
   env: {
     NEXT_PUBLIC_APP_VERSION: pkg.version
   },
