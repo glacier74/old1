@@ -166,6 +166,7 @@ declare global {
     subscription?: Subscription
     siteSetting: SiteSettings
     isRestricted: boolean
+    isBrandingRemoved: boolean
     createdAt: string
     updatedAt: string
   }

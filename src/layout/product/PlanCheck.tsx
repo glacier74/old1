@@ -1,7 +1,7 @@
 import { isNotNil } from '@nily/utils'
 import clsx from 'clsx'
 import { useRouter } from 'next/router'
-import { FC, useEffect } from 'react'
+import { FC, cloneElement, useEffect } from 'react'
 
 import { PLAN_NAMES } from '~/constants'
 import { useProduct } from '~/layout'
@@ -20,13 +20,7 @@ export const PlanBadge: FC<PlanCheckProps> = ({ className, minimalLevel, ...rest
   }
 
   return (
-    <div
-      className={clsx(
-        'inline-block px-1 py-0.5 text-[11px] leading-[1] font-bold uppercase rounded bg-yellow-500 text-white',
-        className
-      )}
-      {...restProps}
-    >
+    <div className={clsx('plan-badge', className)} {...restProps}>
       {PLAN_NAMES[minimalLevel]}
     </div>
   )
@@ -59,10 +53,15 @@ export const PlanCheck: FC<PlanCheckProps> = ({
     router.prefetch('/account/plan')
   }, [])
 
+  const Element = cloneElement(children as any, {
+    ...(children as any).props,
+    onClick: null,
+    onChange: null
+  })
+
   return (
-    <div className={clsx('relative', className)} {...restProps}>
-      {children}
-      <div className="absolute inset-0" onClick={handleClick} />
+    <div className={clsx('plan-check', className)} onClick={handleClick} {...restProps}>
+      {Element}
     </div>
   )
 }

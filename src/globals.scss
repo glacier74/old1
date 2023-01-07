@@ -242,6 +242,16 @@ button.switch-checked {
   }
 }
 
+.plan-badge {
+  @apply inline-block px-1 py-0.5 text-[11px] leading-[1] font-bold uppercase rounded bg-yellow-500 text-white;
+}
+
+.plan-check {
+  *:not(.plan-badge) {
+    @apply pointer-events-none;
+  }
+}
+
 // Main
 .root-container {
   @media (min-width: 768px) {
@@ -793,7 +803,7 @@ h3.rich-text {
     color: var(--earlybird-button-text);
 
     &:empty:after {
-      @apply text-white text-opacity-70;
+      @apply text-white opacity-50;
     }
   }
 

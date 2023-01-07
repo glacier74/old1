@@ -28,7 +28,12 @@ export const UserName: FC = () => {
         onlySubmitOnValueChange={true}
         request={handleFinish}
       >
-        <Form.Item name="name" label={t('account.user.heading')} rules={[{ required: true }]}>
+        <Form.Item
+          className="w-auto flex-1 md:!w-[20rem] md:!flex-none"
+          name="name"
+          label={t('account.user.heading')}
+          rules={[{ required: true }]}
+        >
           <Input />
         </Form.Item>
       </Form.Custom>

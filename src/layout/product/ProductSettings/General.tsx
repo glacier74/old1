@@ -37,7 +37,7 @@ export const General: FC = () => {
           description="Choose in what language the visitors will see your site. This applies to the text which is not customized by you e.g. default buttons, errors, etc."
         >
           <Form.Item name="language">
-            <Select options={LANGUAGE_OPTIONS} />
+            <Select className="w-full md:w-[10rem]" options={LANGUAGE_OPTIONS} />
           </Form.Item>
         </Expandable>
 
