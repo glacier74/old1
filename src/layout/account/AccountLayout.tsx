@@ -2,6 +2,7 @@ import { IconMenu2 } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
 
 import { AuthorizedLayout } from '~/layout'
+import { useStore } from '~/store'
 
 import { useProduct } from '../hook'
 import { AccountSidebar } from './AccountSidebar'
@@ -9,10 +10,7 @@ import { AccountSidebar } from './AccountSidebar'
 export function AccountLayout({ seo, children }: LayoutProps) {
   const { t } = useTranslation()
   const product = useProduct()
-
-  function openAccountSidebar() {
-    // TODO - openAccountSidebar
-  }
+  const { openAccountSettings } = useStore()
 
   return (
     <>
@@ -30,7 +28,7 @@ export function AccountLayout({ seo, children }: LayoutProps) {
               <div className="md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3">
                 <button
                   className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-slate-500 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-                  onClick={openAccountSidebar}
+                  onClick={openAccountSettings}
                 >
                   <span className="sr-only">Open sidebar</span>
                   <IconMenu2 className="h-6 w-6" aria-hidden="true" />

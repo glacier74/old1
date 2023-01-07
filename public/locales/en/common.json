@@ -190,9 +190,7 @@
     "description": "Manage your billing information and invoices."
   },
   "invoice": {
-    "notFound": {
-      "title": "You don't have any invoices yet"
-    }
+    "notFound": "You don't have any invoices yet"
   },
   "member": {
     "heading": "Members",

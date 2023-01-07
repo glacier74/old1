@@ -8,13 +8,13 @@ import { useStore } from '~/store'
 import { AccountSidebarNav } from './AccountSidebarNav'
 
 export const AccountSidebar = () => {
-  const { isSidebarOpen, closeSidebar } = useStore()
+  const { isAccountSettingsShow, closeAccountSettings } = useStore()
   const router = useRouter()
 
   useEffect(() => {
     const handleBrowseAway = () => {
-      if (isSidebarOpen) {
-        closeSidebar()
+      if (isAccountSettingsShow) {
+        closeAccountSettings()
       }
     }
 
@@ -23,17 +23,17 @@ export const AccountSidebar = () => {
     return () => {
       router.events.off('routeChangeStart', handleBrowseAway)
     }
-  }, [isSidebarOpen])
+  }, [isAccountSettingsShow])
 
   return (
     <>
       <CSSTransition
-        in={isSidebarOpen}
+        in={isAccountSettingsShow}
         timeout={0}
         mountOnEnter={true}
         classNames="slide-in-left"
         unmountOnExit={false}
-        onExited={closeSidebar}
+        onExited={closeAccountSettings}
       >
         <div className="sidebar fixed inset-0 flex z-10 md:hidden">
           <div
@@ -49,7 +49,7 @@ export const AccountSidebar = () => {
               <button
                 type="button"
                 className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                onClick={closeSidebar}
+                onClick={closeAccountSettings}
               >
                 <span className="sr-only">Close sidebar</span>
                 <IconX className="h-6 w-6 text-white" aria-hidden="true" />

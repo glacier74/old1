@@ -76,9 +76,9 @@ export const BillingInvoice = () => {
         skeleton={<Skeleton />}
         emptyState={
           <EmptyStates
-            className="pt-60 flex flex-col justify-center"
+            className="pt-16 flex flex-col justify-center"
             icon={<IconFileInvoice className="non-scaling-stroke" />}
-            title={t('invoice.notFound.title')}
+            title={t('invoice.notFound')}
           />
         }
       >

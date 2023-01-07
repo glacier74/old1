@@ -113,9 +113,12 @@ export const BillingPlan = () => {
             />
           </>
         ) : (
-          <div className="space-y-1">
-            <div className="text-base font-semibold">{PLAN_NAMES[PLAN_LEVELS.plan_free]}</div>
-            <Link className="link-button link-button-success" href="/account/plan">
+          <div>
+            <div className="mb-1 text-base font-semibold">{PLAN_NAMES[PLAN_LEVELS.plan_free]}</div>
+            <Link
+              className="block md:!inline-block link-button link-button-success"
+              href="/account/plan"
+            >
               Upgrade plan
             </Link>
           </div>
