@@ -217,11 +217,13 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
         </div>
       )}
 
-      <div className="earlybird-branding">
-        <a href={process.env.NEXT_PUBLIC_HOMEPAGE}>
-          <IconLogo className="w-4 inline" /> Made with EarlyBird
-        </a>
-      </div>
+      {!product.isBrandingRemoved && (
+        <div className="earlybird-branding">
+          <a href={process.env.NEXT_PUBLIC_HOMEPAGE}>
+            <IconLogo className="w-4 inline" /> Made with EarlyBird
+          </a>
+        </div>
+      )}
 
       <Script
         data-domain={product.analyticId}
