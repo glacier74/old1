@@ -4,11 +4,15 @@ import { useTranslation } from 'next-i18next'
 import { FC, useMemo } from 'react'
 
 import { Expandable, IconGoogle2, ImagePickerField } from '~/components'
+import { PLAN_LEVELS } from '~/constants'
+import { useProduct } from '~/layout'
+import { PlanBadge, PlanCheck } from '~/layout/product/PlanCheck'
 
 import { OpenGraphImage } from './OpenGraphImage'
 
 export const Meta: FC<{ values: any }> = ({ values }) => {
   const { t } = useTranslation()
+  const product = useProduct()
 
   const url = useMemo(
     () => `${values.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`,
@@ -87,30 +91,29 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
         >
           <div className="flex flex-col lg:flex-row justify-start space-y-2 lg:space-x-8 lg:space-y-0">
             <div className="w-full lg:w-1/2 lg:flex-1">
-              <Form.Item
-                name="openGraphImage"
-                className="mb-4"
-                label={
-                  <>
-                    {t('productSettings.metaData.openGraphImage')}{' '}
-                    <span className="px-1.5 py-0.5 bg-green-500 text-xs text-white rounded-[0.6rem]">
-                      Pro
-                    </span>
-                  </>
-                }
-              >
-                <ImagePickerField
-                  className="!w-full !h-[12rem] md:!h-[20rem]"
-                  pickerButtonClassName="!bg-white rounded-md border border-gray-300 shadow-sm"
-                  namespace="openGraphImage"
-                  width={800}
-                  height={420}
-                  enableUnsplash={false}
-                  disabled={true}
-                  tip1={t('productSettings.metaData.uploadTip1')}
-                  tip2={t('productSettings.metaData.uploadTip2')}
-                />
-              </Form.Item>
+              <PlanCheck className="cursor-pointer" minimalLevel={PLAN_LEVELS.plan_superior}>
+                <Form.Item
+                  name="openGraphImage"
+                  className="mb-4"
+                  label={
+                    <>
+                      {t('productSettings.metaData.openGraphImage')}
+                      <PlanBadge className="ml-2" minimalLevel={PLAN_LEVELS.plan_superior} />
+                    </>
+                  }
+                >
+                  <ImagePickerField
+                    className="!w-full !h-[12rem] md:!h-[20rem]"
+                    pickerButtonClassName="!bg-white rounded-md border border-gray-300 shadow-sm"
+                    namespace="openGraphImage"
+                    width={800}
+                    height={420}
+                    enableUnsplash={false}
+                    tip1={t('productSettings.metaData.uploadTip1')}
+                    tip2={t('productSettings.metaData.uploadTip2')}
+                  />
+                </Form.Item>
+              </PlanCheck>
             </div>
 
             {/* Preview */}

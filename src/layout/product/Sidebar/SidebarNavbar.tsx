@@ -19,7 +19,9 @@ import Link from 'next/link'
 import type { FC } from 'react'
 import { useMemo } from 'react'
 
-import { useProductId } from '~/layout'
+import { PLAN_LEVELS } from '~/constants'
+import { useProduct } from '~/layout'
+import { PlanBadge, PlanCheck } from '~/layout/product/PlanCheck'
 import { useStore } from '~/store'
 import { urlBuilder } from '~/utils'
 
@@ -61,8 +63,13 @@ const NavLink = ({ icon: Icon, href, title }: ExternalLinkProps) => {
 
 export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
   const { t } = useTranslation()
-  const productId = useProductId()
+  const product = useProduct()
   const { user, openMemberList } = useStore()
+
+  const isOwner = useMemo(
+    () => user.id && product?.ownerId === user.id,
+    [product?.ownerId, user.id]
+  )
 
   const crispLink = useMemo(() => {
     return urlBuilder('https://go.crisp.chat/chat/embed/', {
@@ -80,30 +87,44 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
     <nav className="sidebar-nav scrollbar flex-1 mt-5 px-2 pb-4 space-y-8">
       {/* Product links */}
       <div className="space-y-1">
-        <NavLink href={`/product/${productId}`} icon={IconHome2} title={t('sidebar.dashboard')} />
+        <NavLink href={`/product/${product.id}`} icon={IconHome2} title={t('sidebar.dashboard')} />
         <NavLink
-          href={`/product/${productId}/engagements`}
+          href={`/product/${product.id}/engagements`}
           icon={IconDatabase}
           title={t('sidebar.engagements')}
         />
         <NavLink
-          href={`/product/${productId}/integrations`}
+          href={`/product/${product.id}/integrations`}
           icon={IconBolt}
           title={t('sidebar.integrate')}
         />
-        <div
-          className="text-slate-700 hover:bg-slate-200 hover:text-slate-900 group flex items-center px-2 py-1 text-sm rounded-md cursor-pointer"
-          onClick={openMemberList}
+
+        {/* Only Shipper can collaborate with members */}
+        <PlanCheck
+          className="rounded-md cursor-pointer hover:bg-slate-200 hover:text-slate-900"
+          minimalLevel={PLAN_LEVELS.plan_shipper}
         >
-          <IconUsers className="text-slate-700 mr-3 flex-shrink-0 h-5 w-5" />
-          <span className="truncate">{t('sidebar.members')}</span>
-        </div>
-        <NavLink
-          href={`/product/${productId}/settings`}
-          icon={IconSettings}
-          title={t('sidebar.productSettings')}
-        />
-        {/*<NavLink href={`/product/${productId}`} icon={IconBolt} title={t('sidebar.pro')} />*/}
+          <div
+            className="flex items-center justify-between px-2 py-1 text-sm rounded-md cursor-pointer text-slate-700 hover:bg-slate-200 hover:text-slate-900"
+            onClick={openMemberList}
+          >
+            <div className="flex items-center">
+              <IconUsers className="text-slate-700 mr-3 flex-shrink-0 h-5 w-5" />
+              <span className="truncate">{t('sidebar.members')}</span>
+            </div>
+
+            <PlanBadge minimalLevel={PLAN_LEVELS.plan_shipper} />
+          </div>
+        </PlanCheck>
+
+        {/* Only owner can update product */}
+        {isOwner && (
+          <NavLink
+            href={`/product/${product.id}/settings`}
+            icon={IconSettings}
+            title={t('sidebar.productSettings')}
+          />
+        )}
       </div>
 
       {/* Resources links */}

@@ -5,11 +5,9 @@ import { CSSTransition } from 'react-transition-group'
 
 import { useStore } from '~/store'
 
-import { SidebarAccount } from './SidebarAccount'
-import { SidebarNavbar } from './SidebarNavbar'
-import { SidebarProducts } from './SidebarProducts'
+import { AccountSidebarNav } from './AccountSidebarNav'
 
-export const Sidebar = () => {
+export const AccountSidebar = () => {
   const { isSidebarOpen, closeSidebar } = useStore()
   const router = useRouter()
 
@@ -44,10 +42,8 @@ export const Sidebar = () => {
           />
           <div className="sidebar-wrapper relative flex flex-col flex-1 max-w-xs bg-slate-50 w-full h-full duration-150 ease-in-out">
             <div className="flex flex-1 flex-col h-0 pt-5">
-              <SidebarProducts />
-              <SidebarNavbar />
+              <AccountSidebarNav />
             </div>
-            <SidebarAccount />
 
             <div className="absolute top-0 right-0 -mr-12 pt-2 md:hidden">
               <button
@@ -67,10 +63,8 @@ export const Sidebar = () => {
       <div className="sidebar fixed inset-0 hidden md:flex md:flex-shrink-0">
         <div className="relative flex flex-col flex-1 h-full bg-slate-50">
           <div className="flex flex-1 flex-col h-0 pt-5">
-            <SidebarProducts />
-            <SidebarNavbar />
+            <AccountSidebarNav />
           </div>
-          <SidebarAccount />
         </div>
       </div>
     </>

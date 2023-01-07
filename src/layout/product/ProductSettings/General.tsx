@@ -1,28 +1,14 @@
-import { Form, Input, Select, Switch, Tooltip, notification } from '@heyforms/ui'
+import { Form, Input, Select, Switch } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
-import { FC, useMemo } from 'react'
-import CopyToClipboard from 'react-copy-to-clipboard'
+import { FC } from 'react'
 
 import { AvatarPickerField, Expandable } from '~/components'
 import { LANGUAGE_OPTIONS } from '~/constants'
-import { useProduct, useProductId } from '~/layout'
-import { ProductService } from '~/service'
 
-export const General: FC<{ values: any }> = ({ values }) => {
+import { PublicSiteURL } from './PublicSiteURL'
+
+export const General: FC = () => {
   const { t } = useTranslation()
-  const productId = useProductId()
-  const product = useProduct()
-
-  const url = useMemo(
-    () => `${values.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`,
-    [values.domain]
-  )
-
-  function handleCopy() {
-    notification.success({
-      title: t('productSettings.domain.copiedTip')
-    })
-  }
 
   return (
     <div className="space-y-2">
@@ -44,36 +30,7 @@ export const General: FC<{ values: any }> = ({ values }) => {
           </Form.Item>
         </Expandable>
 
-        <Expandable
-          title="Public site URL"
-          description={
-            <div>
-              {t('productSettings.domain.description')}{' '}
-              <Tooltip ariaLabel={t('productSettings.domain.copyTip')}>
-                <CopyToClipboard text={`https://${url}`} onCopy={handleCopy}>
-                  <span className="underline cursor-pointer">{url}</span>
-                </CopyToClipboard>
-              </Tooltip>
-            </div>
-          }
-        >
-          <Form.Item
-            name="domain"
-            validateTrigger={['onBlur', 'onChange']}
-            rules={[
-              {
-                required: true,
-                async validator(rule, value) {
-                  if (product.domain !== value) {
-                    await ProductService.checkDomain(value, productId)
-                  }
-                }
-              }
-            ]}
-          >
-            <Input />
-          </Form.Item>
-        </Expandable>
+        <PublicSiteURL />
 
         <Expandable
           title="Language"

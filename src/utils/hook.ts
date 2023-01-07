@@ -1,7 +1,9 @@
 import { notification } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+
+import { PLAN_LEVELS } from '~/constants'
 
 export function useAsyncEffect<T, S>(asyncFunction: () => Promise<T>, deps: S[] = []) {
   const execute = useCallback(() => {
@@ -156,4 +158,20 @@ export function useUnsaveChanges(isChanged?: boolean, message?: string) {
       router.events.off('routeChangeStart', handleBrowseAway)
     }
   }, [isChanged])
+}
+
+export const useSubscription = (user: User): Subscription | undefined => {
+  if (user.subscription?.isActive) {
+    return user.subscription
+  }
+}
+
+export const useSubscriptionPlanLevel = (subscription?: Subscription) => {
+  return useMemo(() => {
+    if (subscription?.isActive) {
+      return PLAN_LEVELS[subscription.planId]
+    }
+
+    return PLAN_LEVELS.plan_free
+  }, [subscription?.isActive, subscription?.planId])
 }

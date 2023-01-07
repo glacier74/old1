@@ -1,10 +1,9 @@
 import { Dropdown, Menus } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
+import Link from 'next/link'
 import type { FC } from 'react'
 
 import { RoundImage } from '~/components'
-import { AuthService } from '~/service'
 import { useStore } from '~/store'
 
 const Skeleton = () => {
@@ -21,26 +20,34 @@ const Skeleton = () => {
 
 export const SidebarAccount: FC = () => {
   const { t } = useTranslation()
-  const router = useRouter()
-  const { isReady, user, openAccountSettings } = useStore()
-
-  async function handleMenuClick(name?: any) {
-    switch (name) {
-      case 'accountSettings':
-        openAccountSettings()
-        break
-
-      case 'logout':
-        await AuthService.logout()
-        router.replace('/login')
-        break
-    }
-  }
+  const { isReady, user } = useStore()
 
   const Overlay = (
-    <Menus className="bottom-12" onClick={handleMenuClick}>
-      <Menus.Item value="accountSettings" label={t('account.heading')} />
-      <Menus.Item value="logout" label={t('sidebar.logout')} />
+    <Menus className="bottom-12">
+      <Menus.Item
+        className="!p-0"
+        label={
+          <Link className="block px-4 py-2" href="/account">
+            {t('account.heading')}
+          </Link>
+        }
+      />
+      <Menus.Item
+        className="!p-0"
+        label={
+          <Link className="block px-4 py-2" href="/account/billing">
+            {t('billing.heading')}
+          </Link>
+        }
+      />
+      <Menus.Item
+        className="!p-0"
+        label={
+          <Link className="block px-4 py-2" href="/logout">
+            {t('sidebar.logout')}
+          </Link>
+        }
+      />
       <Menus.Divider />
       <Menus.Item
         className="text-slate-400 hover:bg-transparent cursor-default"

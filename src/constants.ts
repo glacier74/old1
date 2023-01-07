@@ -337,3 +337,20 @@ export const THEMES: Theme[] = [
     background: '#0f172a'
   }
 ]
+
+export const PLAN_LEVELS: AnyMap<number> = {
+  plan_free: 0,
+  plan_superior: 1,
+  plan_shipper: 2
+}
+
+export const PLAN_NAMES: AnyMap<string, number> = {
+  [PLAN_LEVELS.plan_free]: 'Free',
+  [PLAN_LEVELS.plan_superior]: 'Superior',
+  [PLAN_LEVELS.plan_shipper]: 'Shipper'
+}
+
+export const PLAN_INTERVALS: AnyMap<string> = {
+  month: 'Monthly',
+  year: 'Yearly'
+}

@@ -135,11 +135,12 @@
     "invalidDescription": "The description is not allowed to be empty"
   },
   "account": {
-    "heading": "Account settings",
-    "description": "Changes to account settings will apply to all of your workspaces.",
+    "title": "Account · EarlyBird",
+    "heading": "Account",
+    "description": "Changes to account will apply to all of your products.",
     "avatar": {
       "heading": "Avatar",
-      "description": "Gravatar is used by default as your EarlyBird avatar, you can upload your custom avatar here",
+      "description": "Gravatar is used by default as your EarlyBird avatar, you can upload your custom avatar here.",
       "change": "Change",
       "remove": "Remove"
     },
@@ -174,6 +175,23 @@
       "alertTip2": "If this was done in error, you can cancel the deletion of your account below.",
       "cancel": "Cancel scheduled deletion",
       "canceledText": "Your account is no longer scheduled for deletion"
+    }
+  },
+  "plan": {
+    "title": "Plans · EarlyBird",
+    "heading": "Plans",
+    "description": "You are currently on the {{planName}} plan.",
+    "upgrade": "You have successfully upgraded to the {{planName}} plan.",
+    "downgrade": "You have successfully downgraded to the {{planName}} plan."
+  },
+  "billing": {
+    "title": "Billing · EarlyBird",
+    "heading": "Billing",
+    "description": "Manage your billing information and invoices."
+  },
+  "invoice": {
+    "notFound": {
+      "title": "You don't have any invoices yet"
     }
   },
   "member": {
@@ -264,7 +282,8 @@
       "placeholder": "Set the password for the site"
     },
     "removeBranding": {
-      "heading": "Remove EarlyBird branding"
+      "heading": "Remove EarlyBird branding",
+      "description": "Remove \"Made with EarlyBird\" on your page."
     },
     "metaData": {
       "heading": "Meta data",

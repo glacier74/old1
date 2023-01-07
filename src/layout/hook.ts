@@ -11,10 +11,15 @@ export function useProduct(): Product {
   const store = useStore()
   const productId = useProductId()
 
-  return useMemo(
-    () => store.products.find(p => p.id === productId) || ({ id: productId, users: [] } as any),
-    [productId, store.products]
-  )
+  return useMemo(() => {
+    let product = store.products.find(p => p.id === productId)
+
+    if (!product) {
+      product = { id: productId, users: [] } as unknown as Product
+    }
+
+    return product
+  }, [productId, store.products])
 }
 
 export function useSiteSettings() {

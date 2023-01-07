@@ -1,11 +1,11 @@
 import { IconCheck, IconMinus } from '@tabler/icons'
 import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
-import { Fragment } from 'react'
-import { FC } from 'react'
+import { FC, Fragment } from 'react'
 
-const tiers = [
+export const PLAN_TIERS = [
   {
+    id: 'plan_free',
     name: 'Starter',
     href: '/sign-up',
     priceMonthly: 0,
@@ -13,6 +13,7 @@ const tiers = [
     description: 'For new makers who want to fine-tune and test an idea.'
   },
   {
+    id: 'plan_superior',
     name: 'Superior',
     href: '/sign-up',
     priceMonthly: 8,
@@ -20,6 +21,7 @@ const tiers = [
     description: 'For creators with multiple ideas who want to efficiently test and refine them.'
   },
   {
+    id: 'plan_shipper',
     name: 'Shipper',
     href: '/sign-up',
     priceMonthly: 15,
@@ -88,6 +90,53 @@ const sections = [
   }
 ]
 
+export const PricingComparisonSections: FC = () => {
+  return (
+    <>
+      {sections.map(section => (
+        <Fragment key={section.name}>
+          <tr>
+            <th
+              className="bg-slate-200 py-3 pl-6 text-sm font-medium text-slate-700 text-left"
+              colSpan={4}
+              scope="colgroup"
+            >
+              {section.name}
+            </th>
+          </tr>
+          {section.features.map((feature: any) => (
+            <tr key={feature.name}>
+              <th className="py-5 px-6 text-sm font-normal text-slate-500 text-left" scope="row">
+                {feature.name}
+              </th>
+              {PLAN_TIERS.map(tier => (
+                <td key={tier.name} className="py-5 px-6">
+                  {typeof feature.tiers[tier.name] === 'string' ? (
+                    <span className="block text-sm text-slate-500">{feature.tiers[tier.name]}</span>
+                  ) : (
+                    <>
+                      {feature.tiers[tier.name] === true ? (
+                        <IconCheck className="h-5 w-5 text-green-500" aria-hidden="true" />
+                      ) : (
+                        <IconMinus className="h-5 w-5 text-slate-400" aria-hidden="true" />
+                      )}
+
+                      <span className="sr-only">
+                        {feature.tiers[tier.name] === true ? 'Included' : 'Not included'} in{' '}
+                        {tier.name}
+                      </span>
+                    </>
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </Fragment>
+      ))}
+    </>
+  )
+}
+
 export const PricingComparison: FC<{
   billingCycle: string
   onChange: (billingCycle: string) => void
@@ -123,7 +172,7 @@ export const PricingComparison: FC<{
                   <span className="sr-only">Feature by</span>
                   <span>Plans</span>
                 </th>
-                {tiers.map(tier => (
+                {PLAN_TIERS.map(tier => (
                   <th
                     key={tier.name}
                     className="w-1/4 pb-4 px-6 text-lg leading-6 font-bold text-slate-700 text-left"
@@ -168,7 +217,7 @@ export const PricingComparison: FC<{
                     </button>
                   </div>
                 </th>
-                {tiers.map(tier => (
+                {PLAN_TIERS.map(tier => (
                   <td key={tier.name} className="h-full py-8 px-6 align-top">
                     <div className="relative h-full table">
                       <p>
@@ -177,7 +226,9 @@ export const PricingComparison: FC<{
                         </span>{' '}
                         <span className="text-base font-medium text-slate-500">/mo</span>
                       </p>
-                      <p className="mt-4 mb-16 text-sm text-slate-500 font-medium">{tier.description}</p>
+                      <p className="mt-4 mb-16 text-sm text-slate-500 font-medium">
+                        {tier.description}
+                      </p>
                       <a
                         href={tier.href}
                         className="absolute bottom-0 flex-grow block w-full bg-emerald-500 border border-emerald-500 rounded-md 5 py-2 text-sm font-semibold text-white text-center hover:bg-emerald-600"
@@ -188,58 +239,14 @@ export const PricingComparison: FC<{
                   </td>
                 ))}
               </tr>
-              {sections.map(section => (
-                <Fragment key={section.name}>
-                  <tr>
-                    <th
-                      className="bg-slate-200 py-3 pl-6 text-sm font-medium text-slate-700 text-left"
-                      colSpan={4}
-                      scope="colgroup"
-                    >
-                      {section.name}
-                    </th>
-                  </tr>
-                  {section.features.map((feature: any) => (
-                    <tr key={feature.name}>
-                      <th
-                        className="py-5 px-6 text-sm font-normal text-slate-500 text-left"
-                        scope="row"
-                      >
-                        {feature.name}
-                      </th>
-                      {tiers.map(tier => (
-                        <td key={tier.name} className="py-5 px-6">
-                          {typeof feature.tiers[tier.name] === 'string' ? (
-                            <span className="block text-sm text-slate-500">
-                              {feature.tiers[tier.name]}
-                            </span>
-                          ) : (
-                            <>
-                              {feature.tiers[tier.name] === true ? (
-                                <IconCheck className="h-5 w-5 text-green-500" aria-hidden="true" />
-                              ) : (
-                                <IconMinus className="h-5 w-5 text-slate-400" aria-hidden="true" />
-                              )}
-
-                              <span className="sr-only">
-                                {feature.tiers[tier.name] === true ? 'Included' : 'Not included'} in{' '}
-                                {tier.name}
-                              </span>
-                            </>
-                          )}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </Fragment>
-              ))}
+              <PricingComparisonSections />
             </tbody>
             <tfoot>
               <tr className="border-t border-slate-200">
                 <th className="sr-only" scope="row">
                   Choose your plan
                 </th>
-                {tiers.map(tier => (
+                {PLAN_TIERS.map(tier => (
                   <td key={tier.name} className="pt-5 px-6">
                     <a
                       href={tier.href}

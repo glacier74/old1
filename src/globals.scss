@@ -227,6 +227,21 @@ button.switch-checked {
   @apply w-5 h-5 border border-slate-200;
 }
 
+.table-compact {
+  .table-head th,
+  .table-body td {
+    @apply px-3 py-1.5;
+
+    &:nth-of-type(1) {
+      @apply pl-0;
+    }
+
+    &:nth-last-of-type(1) {
+      @apply pr-0;
+    }
+  }
+}
+
 // Main
 .root-container {
   @media (min-width: 768px) {
@@ -275,7 +290,7 @@ button.switch-checked {
 
 
 // =================================================================================
-// Sidebar
+// AccountSidebar
 .sidebar {
   @media (min-width: 768px) {
     width: 18rem;
@@ -1362,5 +1377,17 @@ button.block-header-button {
     &.tabs-nav-active {
       @apply text-slate-900 hover:text-slate-900;
     }
+  }
+}
+
+.user-modal {
+  .modal-content {
+    @apply w-[1150px] max-h-[720px] overflow-hidden;
+    max-width: calc(100vw - 100px);
+    height: calc(100vh - 100px);
+  }
+
+  .modal-body {
+    padding: 0;
   }
 }

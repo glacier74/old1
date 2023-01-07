@@ -37,6 +37,65 @@ declare global {
     onComplete?: () => void
   }
 
+  interface Subscription {
+    id: number
+    planId: string
+    plan: Plan
+    price: Price
+    canceledAt: any
+    endsAt: number
+    isActive: boolean
+    isCancelled: boolean
+  }
+
+  interface SubscriptionUsageValue {
+    used: number
+    quota: number
+    percent: number
+  }
+
+  export interface SubscriptionUsage {
+    landingPage: SubscriptionUsageValue
+    conversion: SubscriptionUsageValue
+    visit: SubscriptionUsageValue
+  }
+
+  interface Plan {
+    id: string
+    name: string
+    landingPages: number
+    visitsPerMonth: number
+    conversions: number
+    commissionRate: number
+    customDomain: boolean
+    removeBranding: boolean
+    customCss: boolean
+    teamCollaboration: boolean
+    isFree: boolean
+    status: string
+  }
+
+  interface Price {
+    id: number
+    stripePriceId: string
+    price: number
+    currency: string
+    interval: string
+    isArchived: boolean
+  }
+
+  interface Receipt {
+    id: number
+    type: string
+    planId: string
+    amount: number
+    currency: string
+    paidAt: number
+    receiptUrl: string
+    createdAt: string
+    updatedAt: string
+  }
+
   interface User {
     id: number
     name: string
@@ -45,6 +104,8 @@ declare global {
     isEmailVerified: boolean
     avatar: string
     role: string
+    subscription: Subscription
+    plans: Plan[]
     isDeletionScheduled: boolean
     deletionScheduledAt: any
     isSocialAccount: boolean
@@ -71,12 +132,24 @@ declare global {
     theme: Theme
   }
 
+  interface CustomDomain {
+    id: number
+    productId: number
+    domain: string
+    isPrimary: boolean
+    status: string
+    createdAt: string
+    updatedAt: string
+  }
+
   interface Product {
     id: number
     name: string
     logo: string
     tagline: string
+    domainType: 'sub_domain' | 'custom_domain'
     domain: string
+    customDomains?: CustomDomain[]
     analyticId: string
     language: string
     isSitePrivate: boolean
@@ -89,7 +162,10 @@ declare global {
     inviteCode: string
     inviteExpiredAt: number
     users: User[]
+    ownerId: number
+    subscription?: Subscription
     siteSetting: SiteSettings
+    isRestricted: boolean
     createdAt: string
     updatedAt: string
   }

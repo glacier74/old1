@@ -2,16 +2,17 @@ import { IconMenu2 } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
 
 import { AuthorizedLayout } from '~/layout'
-import { useStore } from '~/store'
 
 import { useProduct } from '../hook'
-import { ProductMemberModal } from './Members'
-import { Sidebar } from './Sidebar'
+import { AccountSidebar } from './AccountSidebar'
 
-export function ProductLayout({ seo, children }: LayoutProps) {
+export function AccountLayout({ seo, children }: LayoutProps) {
   const { t } = useTranslation()
-  const { isMemberListShow, openSidebar } = useStore()
   const product = useProduct()
+
+  function openAccountSidebar() {
+    // TODO - openAccountSidebar
+  }
 
   return (
     <>
@@ -22,14 +23,14 @@ export function ProductLayout({ seo, children }: LayoutProps) {
         }}
       >
         <div className="w-full min-h-screen bg-white">
-          <Sidebar />
+          <AccountSidebar />
 
           <div className="root-container min-h-screen">
             <main className="relative z-0 focus:outline-none">
               <div className="md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3">
                 <button
                   className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-slate-500 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-                  onClick={openSidebar}
+                  onClick={openAccountSidebar}
                 >
                   <span className="sr-only">Open sidebar</span>
                   <IconMenu2 className="h-6 w-6" aria-hidden="true" />
@@ -42,8 +43,6 @@ export function ProductLayout({ seo, children }: LayoutProps) {
           </div>
         </div>
       </AuthorizedLayout>
-
-      <ProductMemberModal visible={isMemberListShow} />
     </>
   )
 }

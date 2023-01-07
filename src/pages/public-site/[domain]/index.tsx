@@ -123,6 +123,30 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
     }, 10)
   }
 
+  if (product.isRestricted) {
+    return (
+      <PublicSiteLayout
+        shortName={product.name}
+        favicon={cropImage(product.logo, 120, 120)}
+        seo={seo}
+      >
+        <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+          <div className="sm:mx-auto sm:w-full sm:max-w-md">
+            <div>
+              <h1 className="text-center text-3xl font-bold text-slate-900">
+                Access to the landing page is restricted
+              </h1>
+              <p className="text-sm text-slate-700">
+                This landing page is temporarily restricted from access. If you think this is an
+                error, please get in touch with us.
+              </p>
+            </div>
+          </div>
+        </div>
+      </PublicSiteLayout>
+    )
+  }
+
   if (!isSiteAccessible) {
     return (
       <PublicSiteLayout

@@ -5,6 +5,14 @@ export class UserService {
     return axios.get('/user')
   }
 
+  static async receipts(page = 1): Promise<{ count: number; receipts: Receipt[] }> {
+    return axios.get('/user/receipts', {
+      params: {
+        page
+      }
+    })
+  }
+
   static async update(updates: Partial<User>) {
     return axios.patch('/user', updates)
   }

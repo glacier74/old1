@@ -7,10 +7,16 @@ export class ProductService {
     return axios.get('/products', config)
   }
 
-  static async checkDomain(domain: string, productId?: number) {
-    return axios.post('/products/domains', {
+  static async validateSubdomain(domain: string, productId?: number) {
+    return axios.post('/products/subdomain/validate', {
       domain,
       productId
+    })
+  }
+
+  static async updateSubdomain(productId: number, domain: string) {
+    return axios.patch(`/products/${productId}/subdomain`, {
+      domain
     })
   }
 

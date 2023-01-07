@@ -176,10 +176,10 @@ export const Navbar: FC = () => {
       <div className="flex items-center justify-between h-[3.75rem] px-4 border-b border-gray-200">
         <div className="flex-1">
           <Link
-            className="group flex items-center text-sm hover:text-green-500"
+            className="inline-flex items-center text-sm -ml-2 pl-1 pr-3 py-1.5 rounded hover:bg-slate-100"
             href={`/product/${productId}`}
           >
-            <IconChevronLeft className="w-5 h-5 text-slate-500 -ml-1 group-hover:text-green-500" />
+            <IconChevronLeft className="w-5 h-5 text-slate-500" />
             <span className="ml-1">{t('sidebar.dashboard')}</span>
           </Link>
         </div>
