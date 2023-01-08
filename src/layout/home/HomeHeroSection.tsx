@@ -8,7 +8,7 @@ import HomeBanner from '~public/static/home-banner.png'
 import UserAvatar1 from '~public/static/userAvatar-1.png'
 import UserAvatar2 from '~public/static/userAvatar-2.png'
 
-export const HomeHeroSection: FC = () => {
+export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
   const { t } = useTranslation()
 
   return (
@@ -58,7 +58,7 @@ export const HomeHeroSection: FC = () => {
 
         <div className="max-w-3xl mx-auto text-center mb-24">
           <div className="text-sm sm:text-base text-slate-700 mb-4">
-            Helping 700+ makers build their beautiful landing pages everyday.
+            Helping {usersCount}+ makers build their beautiful landing pages everyday.
           </div>
           <Image
             src={UserAvatar1}

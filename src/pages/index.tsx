@@ -1,3 +1,5 @@
+import * as process from 'process'
+
 import {
   HomeAuthorizedLayout,
   HomeBottom,
@@ -14,9 +16,10 @@ import { isLoggedIn, withTranslations } from '~/utils'
 
 interface HomeProps {
   isLoggedIn: boolean
+  usersCount: number
 }
 
-const Home = ({ isLoggedIn }: HomeProps): JSX.Element => {
+const Home = ({ isLoggedIn, usersCount }: HomeProps): JSX.Element => {
   /**
    * 如果用户已经登录，拉取 user 和 product 信息
    * 如果 token 过期，请求 /logout 接口退出登录
@@ -29,7 +32,7 @@ const Home = ({ isLoggedIn }: HomeProps): JSX.Element => {
   return (
     <HomeLayout>
       <HomeHeader />
-      <HomeHeroSection />
+      <HomeHeroSection usersCount={usersCount} />
       <HomeUserImage />
       <HomeFeature />
       <HomeTestimonials />
@@ -41,8 +44,14 @@ const Home = ({ isLoggedIn }: HomeProps): JSX.Element => {
 }
 
 export const getServerSideProps = withTranslations(async context => {
+  const request = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URI}/users-count?key=${process.env.NEXT_API_VERIFICATION_KEY}`
+  )
+  const result = await request.json()
+
   return {
     props: {
+      usersCount: result.count,
       isLoggedIn: isLoggedIn(context.req.cookies)
     }
   }
