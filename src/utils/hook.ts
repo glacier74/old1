@@ -175,3 +175,19 @@ export const useSubscriptionPlanLevel = (subscription?: Subscription) => {
     return PLAN_LEVELS.plan_free
   }, [subscription?.isActive, subscription?.planId])
 }
+
+export const useProductURL = (product: Product) => {
+  const planLevel = useSubscriptionPlanLevel(product.subscription)
+
+  return useMemo(() => {
+    if (product.subscription?.isActive && planLevel >= PLAN_LEVELS.plan_superior) {
+      const customDomain = product.customDomains?.find(c => c.isPrimary)
+
+      if (customDomain) {
+        return customDomain.domain
+      }
+    }
+
+    return `${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`
+  }, [product.customDomains, product.domain, product.subscription?.isActive, planLevel])
+}

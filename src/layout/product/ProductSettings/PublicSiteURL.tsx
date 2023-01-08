@@ -22,7 +22,7 @@ import { useProduct, useProductId } from '~/layout'
 import { PlanBadge, PlanCheck } from '~/layout/product/PlanCheck'
 import { CustomDomainService, ProductService } from '~/service'
 import { useStore } from '~/store'
-import { useSubscriptionPlanLevel, useVisible } from '~/utils'
+import { useProductURL, useVisible } from '~/utils'
 
 interface CustomURLItemProps {
   customDomain: CustomDomain
@@ -350,20 +350,8 @@ const CustomURL: FC = () => {
 export const PublicSiteURL: FC = () => {
   const { t } = useTranslation()
   const product = useProduct()
-  const planLevel = useSubscriptionPlanLevel(product.subscription)
 
-  const host = useMemo(() => {
-    if (product.subscription?.isActive && planLevel >= PLAN_LEVELS.plan_superior) {
-      const customDomain = product.customDomains?.find(c => c.isPrimary)
-
-      if (customDomain) {
-        return customDomain.domain
-      }
-    }
-
-    return `${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`
-  }, [product.customDomains, product.domain, product.subscription?.isActive, planLevel])
-
+  const host = useProductURL(product)
   const siteURL = useMemo(() => `https://${host}`, [host])
 
   function handleCopy() {

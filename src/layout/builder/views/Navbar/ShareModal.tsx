@@ -3,25 +3,14 @@ import { IconMail } from '@tabler/icons'
 import { FC, useMemo } from 'react'
 
 import { CopyButton, IconFacebook, IconLinkedin, IconTwitter } from '~/components'
-import { PLAN_LEVELS } from '~/constants'
 import { useProduct } from '~/layout'
-import { urlBuilder, useSubscriptionPlanLevel } from '~/utils'
+import { urlBuilder, useProductURL } from '~/utils'
 
 export const ShareModal: FC<IModalProps> = ({ visible, onClose }) => {
   const product = useProduct()
-  const planLevel = useSubscriptionPlanLevel(product.subscription)
 
-  const shareURL = useMemo(() => {
-    if (product.subscription?.isActive && planLevel >= PLAN_LEVELS.plan_superior) {
-      const customDomain = product.customDomains?.find(c => c.isPrimary)
-
-      if (customDomain) {
-        return `https://${customDomain.domain}`
-      }
-    }
-
-    return `https://${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`
-  }, [product.customDomains, product.domain, product.subscription?.isActive, planLevel])
+  const host = useProductURL(product)
+  const shareURL = useMemo(() => `https://${host}`, [host])
 
   function handleEmail() {
     const url = urlBuilder('mailto:', {

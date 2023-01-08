@@ -22,6 +22,7 @@ declare global {
   }
 
   interface PublicSiteLayoutProps extends LayoutProps {
+    canonicalURL: string
     favicon?: string
     shortName?: string
     theme?: Theme
@@ -165,6 +166,7 @@ declare global {
     ownerId: number
     subscription?: Subscription
     siteSetting: SiteSettings
+    canonicalURL: string
     isRestricted: boolean
     isBrandingRemoved: boolean
     createdAt: string
