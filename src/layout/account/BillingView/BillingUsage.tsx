@@ -9,16 +9,21 @@ import { SubscriptionService } from '~/service'
 
 const Skeleton = () => {
   return (
-    <div>
-      <div className="flex items-center h-16 py-4">
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
+    <div className="space-y-6">
+      <div className="space-y-2">
+        <div className="w-40 h-3 rounded-sm skeleton"></div>
+        <div className="w-full h-2 rounded-sm skeleton"></div>
+        <div className="w-52 h-2 rounded-sm skeleton"></div>
       </div>
-      <div className="flex items-center h-16 py-4">
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
+      <div className="space-y-2">
+        <div className="w-40 h-3 rounded-sm skeleton"></div>
+        <div className="w-full h-2 rounded-sm skeleton"></div>
+        <div className="w-52 h-2 rounded-sm skeleton"></div>
+      </div>
+      <div className="space-y-2">
+        <div className="w-40 h-3 rounded-sm skeleton"></div>
+        <div className="w-full h-2 rounded-sm skeleton"></div>
+        <div className="w-52 h-2 rounded-sm skeleton"></div>
       </div>
     </div>
   )

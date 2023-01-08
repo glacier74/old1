@@ -7,17 +7,9 @@ import { withTranslations } from '~/utils'
 
 const Skeleton = () => {
   return (
-    <div>
-      <div className="flex items-center h-16 py-4">
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
-      </div>
-      <div className="flex items-center h-16 py-4">
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
-      </div>
+    <div className="mt-12 space-y-4">
+      <div className="w-80 h-4 rounded-sm skeleton"></div>
+      <div className="w-80 h-4 rounded-sm skeleton"></div>
     </div>
   )
 }

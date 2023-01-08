@@ -45,7 +45,7 @@ export const PlanCheck: FC<PlanCheckProps> = ({
   }
 
   function handleClick() {
-    router.push('/account/plan?utm=upgrade_plan')
+    router.push('/account/plan?utm_source=upgrade-plan')
   }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks

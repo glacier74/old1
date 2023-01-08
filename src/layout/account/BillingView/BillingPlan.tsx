@@ -8,23 +8,6 @@ import { SubscriptionService, UserService } from '~/service'
 import { useStore } from '~/store'
 import { currencyFormatter, useRequest, useSubscription, useVisible } from '~/utils'
 
-const Skeleton = () => {
-  return (
-    <div>
-      <div className="flex items-center h-16 py-4">
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
-      </div>
-      <div className="flex items-center h-16 py-4">
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
-        <div className="w-40 h-4 rounded-sm skeleton"></div>
-      </div>
-    </div>
-  )
-}
-
 export const BillingPlan = () => {
   const { user, updateUser } = useStore()
   const subscription = useSubscription(user)
