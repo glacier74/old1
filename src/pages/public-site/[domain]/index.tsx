@@ -90,6 +90,7 @@ function getSeoProps(product: Product, isSiteAccessible?: boolean): NextSeoProps
   const seo: NextSeoProps = {
     title,
     description,
+    canonical: product.canonicalURL,
     openGraph: {
       type: 'website',
       title,
@@ -128,7 +129,6 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
       <PublicSiteLayout
         shortName={product.name}
         favicon={cropImage(product.logo, 120, 120)}
-        canonicalURL={product.canonicalURL}
         seo={seo}
       >
         <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -153,7 +153,6 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
       <PublicSiteLayout
         shortName={product.name}
         favicon={cropImage(product.logo, 120, 120)}
-        canonicalURL={product.canonicalURL}
         seo={seo}
       >
         <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -196,7 +195,6 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
     <PublicSiteLayout
       shortName={product.name}
       favicon={cropImage(product.logo, 120, 120)}
-      canonicalURL={product.canonicalURL}
       seo={seo}
       theme={product.siteSetting.theme}
     >

@@ -22,7 +22,6 @@ declare global {
   }
 
   interface PublicSiteLayoutProps extends LayoutProps {
-    canonicalURL: string
     favicon?: string
     shortName?: string
     theme?: Theme

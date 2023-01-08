@@ -9,7 +9,6 @@ import { fontLink, themeToStyle } from '~/layout/builder/utils'
 export function PublicSiteLayout({
   favicon,
   shortName,
-  canonicalURL,
   seo,
   theme: rawTheme,
   children
@@ -32,7 +31,6 @@ export function PublicSiteLayout({
         <style
           dangerouslySetInnerHTML={{ __html: themeToStyle(theme, { bodyBackground: true }) }}
         />
-        <link rel="canonical" href={canonicalURL} />
         {favicon ? (
           <>
             <link rel="icon" type="image/png" href={favicon} />

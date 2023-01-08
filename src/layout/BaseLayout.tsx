@@ -14,6 +14,8 @@ export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
   const seoProps: NextSeoProps = {
     title: t('common.name'),
     description: t('common.description'),
+    noindex: true,
+    nofollow: true,
     ...seo,
     openGraph: {
       ...seo?.openGraph,
