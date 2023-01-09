@@ -26,7 +26,7 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
       <div className="bg-slate-50 rounded-lg divide-y divide-gray-100">
         <Expandable
           title="Meta title & description"
-          description="The details used to identify your product around the web"
+          description="The details used to identify your landing page around the web."
         >
           <div className="flex flex-col lg:flex-row justify-start space-y-2 lg:space-x-8 lg:space-y-0">
             <div className="w-full lg:w-1/2 lg:flex-1">

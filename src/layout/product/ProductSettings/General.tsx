@@ -17,7 +17,7 @@ export const General: FC = () => {
       <div className="bg-slate-50 rounded-lg divide-y divide-gray-100">
         <Expandable
           title="Product"
-          description="The details used to identify your product around the web"
+          description="The details used to identify your landing page around the web."
         >
           <Form.Item name="logo">
             <AvatarPickerField namespace="avatar" enableUnsplash={false} />
@@ -34,7 +34,7 @@ export const General: FC = () => {
 
         <Expandable
           title="Language"
-          description="Choose in what language the visitors will see your site. This applies to the text which is not customized by you e.g. default buttons, errors, etc."
+          description="Choose the language in which visitors will view your site. This applies to text that has not been customized by you, such as default buttons, errors, etc."
         >
           <Form.Item name="language">
             <Select className="w-full md:w-[10rem]" options={LANGUAGE_OPTIONS} />

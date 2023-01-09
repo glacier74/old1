@@ -140,7 +140,7 @@
     "description": "Changes to account will apply to all of your products.",
     "avatar": {
       "heading": "Avatar",
-      "description": "Gravatar is used by default as your EarlyBird avatar, you can upload your custom avatar here.",
+      "description": "Gravatar is the default avatar used for EarlyBird, but you can upload your own custom avatar here.",
       "change": "Change",
       "remove": "Remove"
     },
@@ -162,7 +162,7 @@
     },
     "dangerZone": {
       "heading": "Danger zone",
-      "description": "This will permanently delete your entire account. All your products, lead captures and members will be deleted",
+      "description": "This will permanently delete your entire account, including all your landing pages, lead captures, and members.",
       "button": "Delete account",
       "confirm": "Delete my account",
       "tip1": "This action cannot be undone. This will permanently delete your entire account. All workspaces you created will be deleted, and you will be removed from all shared workspaces.",
@@ -263,7 +263,7 @@
     },
     "language": {
       "heading": "Language",
-      "description": "Choose in what language the visitors will see your site. This applies to the text which is not customized by you e.g. default buttons, errors, etc."
+      "description": "Choose the language in which visitors will view your site. This applies to text that has not been customized by you, such as default buttons, errors, etc."
     },
     "domain": {
       "description": "Landing page shared to web will be under",
@@ -275,13 +275,13 @@
     },
     "sitePrivate": {
       "heading": "Make the site private",
-      "description": "Enable protection with a simple shared password. All search engine optimization and social features will be disabled.",
+      "description": "Secure your landing page with a single, easy-to-remember password. All SEO and social media capabilities will be deactivated.",
       "invalidPassword": "Your password should be between 4 and 16 characters.",
       "placeholder": "Set the password for the site"
     },
     "removeBranding": {
       "heading": "Remove EarlyBird branding",
-      "description": "Remove \"Made with EarlyBird\" on your page."
+      "description": "Remove \"Made with EarlyBird\" badge on your page."
     },
     "metaData": {
       "heading": "Meta data",
@@ -297,7 +297,7 @@
     },
     "deleteProduct": {
       "heading": "Delete the landing page",
-      "description": "By deleting the landing page, all the lead captures, members and data will be erased and cannot be restored! Be cautious!",
+      "description": "Beware! Deleting the landing page will result in the permanent loss of all lead captures, members, and data - they cannot be recovered!",
       "button": "Delete",
       "success": "The landing page has been deleted successfully"
     },
