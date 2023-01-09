@@ -56,7 +56,7 @@ export const BillingUsage = () => {
         <div className="text-base font-semibold">Landing page</div>
         <Progress type="green" percent={usage?.landingPage.percent || 0} />
         <div className="text-sm text-slate-500">
-          {usage?.landingPage.used} of {usage?.landingPage.quota} pages used
+          {usage?.landingPage.used} of {usage?.landingPage.quota} pages
         </div>
       </div>
 
@@ -64,7 +64,7 @@ export const BillingUsage = () => {
         <div className="text-base font-semibold">Monthly visits</div>
         <Progress type="green" percent={usage?.visit.percent || 0} />
         <div className="text-sm text-slate-500">
-          {usage?.visit.used} of {usage?.visit.quota} visits used. Your visits reset on{' '}
+          {usage?.visit.used} of {usage?.visit.quota} visits. Resets on{' '}
           {dayjs().startOf('month').add(1, 'month').format('MMM DD, YYYY')}
         </div>
       </div>
@@ -73,7 +73,7 @@ export const BillingUsage = () => {
         <div className="text-base font-semibold">Conversion action</div>
         <Progress type="green" percent={usage?.conversion.percent || 0} />
         <div className="text-sm text-slate-500">
-          {usage?.conversion.used} of {usage?.conversion.quota} conversion actions used.
+          {usage?.conversion.used} of {usage?.conversion.quota} conversion actions.
         </div>
       </div>
     </AsyncRequest>

@@ -44,7 +44,7 @@ export const BillingPlan = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Link className="link-button link-button-success" href="/account/plan">
-                    Explore plans
+                    View plans
                   </Link>
                   {!subscription.isCancelled && (
                     <Button loading={loading} onClick={open}>
