@@ -2,6 +2,7 @@ import dayjs from 'dayjs'
 import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import Link from 'next/link'
+import {Tooltip} from '@heyforms/ui'
 import { FC } from 'react'
 
 import HomeBanner from '~public/static/home-banner.png'
@@ -61,11 +62,12 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
             <div className="text-sm sm:text-base text-slate-700 mb-4">
               Helping <span className="font-medium">{usersCount}+</span> makers and startups build their beautiful landing pages
             </div>
-            <div className="group ml-3 flex h-3 w-3">
-              <span className="animate-ping absolute h-3 w-3 rounded-full bg-emerald-500 opacity-75"></span>
-              <span className="relative inline-block rounded-full h-3 w-3 bg-emerald-500"></span>
-              <span className="group-hover:opacity-100 transition-opacity bg-gray-800 px-2 py-2 text-sm text-gray-100 rounded-md absolute translate-x-4 -translate-y-10 opacity-0 mx-auto">Real-time data updated hourly</span>
-            </div>
+            <Tooltip ariaLabel="Real-time data updated hourly">
+              <div className="group ml-3 flex h-3 w-3">
+                <span className="animate-ping absolute h-3 w-3 rounded-full bg-emerald-500 opacity-75"></span>
+                <span className="relative inline-block rounded-full h-3 w-3 bg-emerald-500"></span>
+              </div>
+            </Tooltip>
           </div>
           <Image
             src={UserAvatar1}
