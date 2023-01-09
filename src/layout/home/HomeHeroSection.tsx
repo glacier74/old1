@@ -44,7 +44,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
           </div>
         </div>
 
-        <div className="mt-12 pb-8">
+        <div className="mt-8 pb-8">
           <div className="flex justify-center flex-col md:flex-row items-center space-y-5 space-x-0 md:space-y-0 md:space-x-5">
             <Link
               href="/sign-up"
@@ -57,8 +57,15 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
         </div>
 
         <div className="max-w-3xl mx-auto text-center mb-24">
-          <div className="text-sm sm:text-base text-slate-700 mb-4">
-            Helping {usersCount}+ makers build their beautiful landing pages everyday.
+          <div className="flex place-content-center">
+            <div className="text-sm sm:text-base text-slate-700 mb-4">
+              Helping <span className="font-medium">{usersCount}+</span> makers and startups build their beautiful landing pages
+            </div>
+            <div className="group ml-3 flex h-3 w-3">
+              <span className="animate-ping absolute h-3 w-3 rounded-full bg-emerald-500 opacity-75"></span>
+              <span className="relative inline-block rounded-full h-3 w-3 bg-emerald-500"></span>
+              <span className="group-hover:opacity-100 transition-opacity bg-gray-800 px-2 py-2 text-sm text-gray-100 rounded-md absolute translate-x-4 -translate-y-10 opacity-0 mx-auto">Real-time data updated hourly</span>
+            </div>
           </div>
           <Image
             src={UserAvatar1}

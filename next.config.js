@@ -19,7 +19,7 @@ module.exports = {
     ignoreDuringBuilds: true
   },
   reactStrictMode: true,
-  swcMinify: true,
+  swcMinify: false,
   poweredByHeader: false,
   // https://nextjs.org/docs/advanced-features/security-headers
   async headers() {
