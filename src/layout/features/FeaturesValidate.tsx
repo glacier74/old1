@@ -7,27 +7,27 @@ const features = [
   {
     title: 'Comprehensive analytics',
     desc: 'View detailed information, including the number of visitors, page visits, top source, geo-location, and more.',
-    imageUrl: '/static/analytics.webp'
+    imageUrl: '/static/analytics.png'
   },
   {
     title: 'Understand interests',
     desc: 'Build a list of interested individuals to keep them engaged and informed about your product development and offer.',
-    imageUrl: '/static/understand-interests.webp'
+    imageUrl: '/static/understand-interests.png'
   },
   {
     title: 'Accept payments',
     desc: 'Easily collect payments, track your income and manage your paid subscribers.',
-    imageUrl: '/static/accept-payment.webp'
+    imageUrl: '/static/accept-payment.png'
   },
   {
     title: 'Collect feedback',
     desc: 'Add a simple form that users can fill out to provide their thoughts, opinions, and suggestions about your product or service.',
-    imageUrl: '/static/collect-feedback.webp'
+    imageUrl: '/static/collect-feedback.png'
   },
   {
     title: 'Quick polls',
     desc: 'Get insights faster. Add user-friendly online polls to understand the needs and preferences of your target audience.',
-    imageUrl: '/static/polls.webp'
+    imageUrl: '/static/polls.png'
   }
 ]
 

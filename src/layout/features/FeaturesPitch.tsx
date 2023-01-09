@@ -7,27 +7,27 @@ const features = [
   {
     title: 'Custom branding',
     desc: 'Add your own logo, colors, and other branding elements to reflect your own brand.',
-    imageUrl: '/static/custom-branding.webp'
+    imageUrl: '/static/custom-branding.png'
   },
   {
     title: 'Custom domain',
     desc: 'Use your own domain name to create a more professional-looking and cohesive experience for your customers.',
-    imageUrl: '/static/custom-domain.webp'
+    imageUrl: '/static/custom-domain.png'
   },
   {
     title: 'Custom Open Graph',
     desc: 'Get your content stand out and attract more attention on social media with custom title, description, image, and other information.',
-    imageUrl: '/static/custom-open-graph.webp'
+    imageUrl: '/static/custom-open-graph.png'
   },
   {
     title: 'Features walkthrough',
     desc: 'Highlight the key benefits and features of your product, and explain how it solves specific problems that your target customers have.',
-    imageUrl: '/static/features-walkthrough.webp'
+    imageUrl: '/static/features-walkthrough.png'
   },
   {
     title: 'Image Carousel',
     desc: 'Showcase your product, service, or other visual content in an engaging way to your customers that your offering is worth investing in.',
-    imageUrl: '/static/image-carousel.webp'
+    imageUrl: '/static/image-carousel.png'
   },
   {
     title: 'Social proof',

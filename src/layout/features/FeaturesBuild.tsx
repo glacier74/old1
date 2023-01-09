@@ -7,27 +7,27 @@ const features = [
   {
     title: 'Newbie-friendly UI blocks',
     desc: 'Every UI block is designed to be easy to use and understand, even for those who are unfamiliar with technology.',
-    imageUrl: '/static/ui-blocks.webp'
+    imageUrl: '/static/ui-blocks.png'
   },
   {
     title: 'Fully responsive',
     desc: 'Every landing page is set to be responsive and looks great on all devices, ensuring accessibility for everyone.',
-    imageUrl: '/static/fully-responsive.webp'
+    imageUrl: '/static/fully-responsive.png'
   },
   {
     title: 'Text formatting',
     desc: 'Easily add headings, links, paragraphs, and apply various text styles, including bold, italic, underline, etc.',
-    imageUrl: '/static/text-formating.webp'
+    imageUrl: '/static/text-formatting.png'
   },
   {
     title: 'SEO ready',
     desc: 'All landing pages are optimized for search engines by default, and you can customize the SEO fields to suit your specific needs.',
-    imageUrl: '/static/seo-ready.webp'
+    imageUrl: '/static/seo-ready.png'
   },
   {
     title: 'Private mode',
     desc: 'Restrict access to your landing pages by keeping them password-protected for a select group of users.',
-    imageUrl: '/static/private-mode.webp'
+    imageUrl: '/static/private-mode.png'
   }
 ]
 
