@@ -6,10 +6,10 @@ export const PricingCTA: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section>
+    <section className="bg-emerald-100">
       <div className="max-w-7xl mx-auto py-32 px-4 text-center">
         <h2 className="font-extrabold text-5xl text-slate-900">Try EarlyBird today for free</h2>
-        <p className="max-w-3xl mx-auto mt-6 text-xl text-slate-700 font-medium">
+        <p className="max-w-3xl mx-auto mt-6 text-xl font-medium text-slate-700">
           Build a rockin' no-code landing page in just 10 minutes.
         </p>
 
@@ -25,6 +25,6 @@ export const PricingCTA: FC = () => {
           </div>
         </div>
       </div>
-    </section>
+  </section>
   )
 }

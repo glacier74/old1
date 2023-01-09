@@ -106,10 +106,10 @@ export const PricingPlans: FC<{
                 className="border border-slate-200 rounded-lg shadow-sm divide-y divide-slate-200"
               >
                 <div className="p-6">
-                  <h2 className="text-lg leading-6 font-bold text-slate-900">{tier.name}</h2>
-                  <p className="mt-4 text-sm text-slate-700">{tier.description}</p>
+                  <h2 className="text-xl leading-6 font-bold text-slate-900">{tier.name}</h2>
+                  <p className="mt-2 text-base text-slate-700 leading-tight">{tier.description}</p>
                   <p className="mt-8">
-                    <span className="text-4xl font-extrabold text-slate-900">
+                    <span className="text-4xl font-bold text-slate-900 tracking-tighter">
                       ${billingCycle === 'monthly' ? tier.priceMonthly : tier.priceAnnually}
                     </span>{' '}
                     <span className="text-base font-medium text-slate-500">/mo</span>
@@ -122,17 +122,17 @@ export const PricingPlans: FC<{
                   </a>
                 </div>
                 <div className="pt-6 pb-8 px-6">
-                  <h3 className="text-xs font-medium text-slate-700 tracking-wide uppercase">
+                  <h3 className="text-sm font-bold text-slate-900 tracking-wide uppercase">
                     What's included
                   </h3>
-                  <ul role="list" className="mt-6 space-y-4">
+                  <ul role="list" className="mt-4 space-y-3">
                     {tier.includedFeatures.map(feature => (
                       <li key={feature} className="flex space-x-3">
                         <IconCheck
                           className="flex-shrink-0 h-5 w-5 text-green-400"
                           aria-hidden="true"
                         />
-                        <span className="text-sm text-slate-700">{feature}</span>
+                        <span className="text-base text-slate-700">{feature}</span>
                       </li>
                     ))}
                   </ul>

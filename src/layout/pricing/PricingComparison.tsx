@@ -97,7 +97,7 @@ export const PricingComparisonSections: FC = () => {
         <Fragment key={section.name}>
           <tr>
             <th
-              className="bg-slate-200 py-3 pl-6 text-sm font-medium text-slate-700 text-left"
+              className="bg-slate-200 py-8 pl-6 text-xl font-bold text-slate-900 text-left"
               colSpan={4}
               scope="colgroup"
             >
@@ -106,13 +106,13 @@ export const PricingComparisonSections: FC = () => {
           </tr>
           {section.features.map((feature: any) => (
             <tr key={feature.name}>
-              <th className="py-5 px-6 text-sm font-normal text-slate-500 text-left" scope="row">
+              <th className="py-8 px-6 text-base font-normal text-slate-700 text-left" scope="row">
                 {feature.name}
               </th>
               {PLAN_TIERS.map(tier => (
-                <td key={tier.name} className="py-5 px-6">
+                <td key={tier.name} className="py-8 px-6">
                   {typeof feature.tiers[tier.name] === 'string' ? (
-                    <span className="block text-sm text-slate-500">{feature.tiers[tier.name]}</span>
+                    <span className="block text-base text-slate-500">{feature.tiers[tier.name]}</span>
                   ) : (
                     <>
                       {feature.tiers[tier.name] === true ? (
@@ -226,7 +226,7 @@ export const PricingComparison: FC<{
                         </span>{' '}
                         <span className="text-base font-medium text-slate-500">/mo</span>
                       </p>
-                      <p className="mt-4 mb-16 text-sm text-slate-500 font-medium">
+                      <p className="mt-4 mb-16 text-base text-slate-500 font-medium leading-tight">
                         {tier.description}
                       </p>
                       <a
