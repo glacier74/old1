@@ -59,11 +59,12 @@ export const BillingPlan = () => {
                   <span>{PLAN_INTERVALS[subscription.price.interval]}</span>
                   {subscription.isCancelled ? (
                     <span className="pl-1 text-slate-500">
-                      (expires on {dayjs.unix(subscription.endsAt!).format('MMM DD, YYYY')})
+                      (Canceled, valid until{' '}
+                      {dayjs.unix(subscription.endsAt!).format('MMM DD, YYYY')})
                     </span>
                   ) : (
                     <span className="pl-1 text-slate-500">
-                      (renews on {dayjs.unix(subscription.endsAt!).format('MMM DD, YYYY')})
+                      (Renews on {dayjs.unix(subscription.endsAt!).format('MMM DD, YYYY')})
                     </span>
                   )}
                 </div>
