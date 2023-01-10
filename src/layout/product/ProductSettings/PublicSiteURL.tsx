@@ -228,8 +228,15 @@ const CustomURL: FC = () => {
 
     const data = [
       {
-        recordType: 'CNAME',
+        recordType: 'A',
         name: '@',
+        value: '65.108.150.94',
+        ttl: 'Auto / Default',
+        status: 'DNS Only'
+      },
+      {
+        recordType: 'CNAME',
+        name: 'www',
         value: subdomainURL,
         ttl: 'Auto / Default',
         status: 'DNS Only'
@@ -314,7 +321,7 @@ const CustomURL: FC = () => {
             <h1 className="text-lg leading-6 font-medium text-slate-900">New custom URL</h1>
             <div className="text-sm text-slate-500">
               <p className="mb-4">
-                Add the CNAME record below to your domain name provider's DNS settings.
+                Add these DNS records below to your domain name provider's DNS settings.
               </p>
               {DnsRecordTable}
             </div>
