@@ -51,9 +51,9 @@
     "remember": "Remember me",
     "submit": "Log in",
     "continueWith": "Or continue with",
-    "loginWithGoogle": "Log in with google",
-    "loginWithTwitter": "Log in with twitter",
-    "loginWithGithub": "Log in with github"
+    "loginWithGoogle": "Google",
+    "loginWithTwitter": "Twitter",
+    "loginWithGithub": "Github"
   },
   "signUp": {
     "title": "$t(signUp.heading) · EarlyBird",
