@@ -229,14 +229,14 @@ const CustomURL: FC = () => {
     const data = [
       {
         recordType: 'A',
-        name: '@',
+        name: '@ (or empty)',
         value: '65.108.150.94',
         ttl: 'Auto / Default',
         status: 'DNS Only'
       },
       {
         recordType: 'CNAME',
-        name: 'www',
+        name: 'www (or empty)',
         value: subdomainURL,
         ttl: 'Auto / Default',
         status: 'DNS Only'
@@ -321,7 +321,15 @@ const CustomURL: FC = () => {
             <h1 className="text-lg leading-6 font-medium text-slate-900">New custom URL</h1>
             <div className="text-sm text-slate-500">
               <p className="mb-4">
-                Add these DNS records below to your domain name provider's DNS settings.
+                Add these DNS records below to your domain name provider's DNS settings.{' '}
+                <strong>You may not need to add A record</strong> if your domain support{' '}
+                <a
+                  href="https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root/"
+                  target="_blank"
+                >
+                  CNAME Flattening
+                </a>
+                .
               </p>
               {DnsRecordTable}
             </div>
