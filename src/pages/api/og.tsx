@@ -24,7 +24,7 @@ export default async function handler(req: NextRequest) {
       (
         <div
           style={{
-            backgroundImage: 'linear-gradient(135deg, #fdef84 0%, #f7c6a9 50%, #15bac4 100%)',
+            backgroundImage: 'linear-gradient(135deg, #b721ff 0%, #21d4fd 100%)',
             height: '100%',
             width: '100%',
             display: 'flex',

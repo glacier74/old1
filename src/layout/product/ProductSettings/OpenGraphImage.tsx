@@ -18,9 +18,8 @@ export const OpenGraphImage: FC<OpenGraphImageProps> = ({ text, width, height })
 
       const grd = ctx.createLinearGradient(0, height, width, 0)
 
-      grd.addColorStop(0, '#fdef84')
-      grd.addColorStop(0.5, '#f7c6a9')
-      grd.addColorStop(1, '#15bac4')
+      grd.addColorStop(0, '#b721ff')
+      grd.addColorStop(1, '#21d4fd')
 
       ctx.fillStyle = grd
       ctx.fillRect(0, 0, width, height)
