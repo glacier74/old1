@@ -40,10 +40,6 @@ export const PlanCheck: FC<PlanCheckProps> = ({
   const product = useProduct()
   const planLevel = useSubscriptionPlanLevel(product.subscription)
 
-  if (planLevelCompare(minimalLevel, planLevel)) {
-    return children as any
-  }
-
   function handleClick() {
     router.push('/account/plan?utm_source=upgrade-plan')
   }
@@ -52,6 +48,10 @@ export const PlanCheck: FC<PlanCheckProps> = ({
   useEffect(() => {
     router.prefetch('/account/plan')
   }, [])
+
+  if (planLevelCompare(minimalLevel, planLevel)) {
+    return children as any
+  }
 
   const Element = cloneElement(children as any, {
     ...(children as any).props,
