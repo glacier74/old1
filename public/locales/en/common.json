@@ -444,5 +444,27 @@
     "password": "Password",
     "successfullySubmitted": "You have successfully submitted",
     "accessSite": "Access site"
+  },
+  "openApp": {
+    "authorize": {
+      "title": "Authorize · EarlyBird",
+      "heading": "To continue, please authorize {{openAppName}} to access the following information from your EarlyBird account:",
+      "account": {
+        "heading": "Account details",
+        "description": "Allows {{openAppName}} to access your name, email and avatar"
+      },
+      "product": {
+        "heading": "Landing pages",
+        "description": "Allows {{openAppName}} to get a list of your landing pages"
+      },
+      "contact": {
+        "heading": "Contacts",
+        "description": "Allows {{openAppName}} to get a list of your lead capture contacts"
+      },
+      "payment": {
+        "heading": "Payments",
+        "description": "Allows {{openAppName}} to get a list of your lead capture payments"
+      }
+    }
   }
 }

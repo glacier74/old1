@@ -27,7 +27,7 @@ export const LoggedAccount: FC = () => {
   )
 
   return (
-    <div className="fixed top-5 right-5 px-2 py-1 rounded cursor-pointer hover:bg-slate-100">
+    <div className="px-2 py-1 rounded cursor-pointer hover:bg-slate-100">
       <Dropdown
         className="flex-shrink-0 group block w-full"
         placement="top-start"
