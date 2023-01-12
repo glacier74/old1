@@ -283,13 +283,6 @@ const ValidateComponent: FC<{ domain: string; onFinish: () => void }> = ({ domai
 
     const data = [
       {
-        recordType: 'A',
-        name: '@ (or empty)',
-        value: '65.108.150.94',
-        ttl: 'Auto / Default',
-        status: 'DNS Only'
-      },
-      {
         recordType: 'CNAME',
         name: getSubdomain(domain),
         value: cnameValue,
