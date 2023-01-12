@@ -5,16 +5,19 @@ import {
   Input,
   Menus,
   Modal,
+  Stepper,
   Table,
   Tooltip,
   notification
 } from '@heyforms/ui'
 import { TableColumn } from '@heyforms/ui/types/table'
-import { isValidArray } from '@nily/utils'
+import { isValid, isValidArray } from '@nily/utils'
 import { IconDotsVertical } from '@tabler/icons'
+import { divide, isEmpty } from 'lodash'
 import { useTranslation } from 'next-i18next'
 import React, { FC, useCallback, useMemo, useState } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
+import isFQDN from 'validator/lib/isFQDN'
 
 import { Expandable } from '~/components'
 import { PLAN_LEVELS } from '~/constants'
@@ -22,7 +25,7 @@ import { useProduct, useProductId } from '~/layout'
 import { PlanBadge, PlanCheck } from '~/layout/product/PlanCheck'
 import { CustomDomainService, ProductService } from '~/service'
 import { useStore } from '~/store'
-import { useProductURL, useVisible } from '~/utils'
+import { getSubdomain, isValidDomain, useProductURL, useRequest, useVisible } from '~/utils'
 
 interface CustomURLItemProps {
   customDomain: CustomDomain
@@ -176,15 +179,67 @@ const CustomURLItem: FC<CustomURLItemProps> = ({ customDomain, onSetPrimary, onD
   )
 }
 
-const CustomURL: FC = () => {
+const DomainComponent: FC<{ domain?: string; onChange: (domain: string) => void }> = ({
+  domain,
+  onChange
+}) => {
+  async function handleFinish(values: any) {
+    onChange(values.domain)
+  }
+
+  return (
+    <div className="mt-2">
+      <Form.Custom
+        initialValues={{ domain }}
+        submitText="Continue"
+        submitOptions={{
+          type: 'success'
+        }}
+        request={handleFinish}
+      >
+        <Form.Item
+          className="!mb-4"
+          name="domain"
+          label="Your domain name"
+          rules={[
+            {
+              required: true,
+              async validator(_, value) {
+                if (isEmpty(value)) {
+                  throw new Error('The domain is not allowed to be empty')
+                }
+
+                if (!isValidDomain(value)) {
+                  throw new Error('The domain is not a valid, it should be like e.g., example.com, app.example.com')
+                }
+              }
+            }
+          ]}
+        >
+          <Input placeholder="Domain name e.g., example.com, app.example.com" />
+        </Form.Item>
+      </Form.Custom>
+    </div>
+  )
+}
+
+const ValidateComponent: FC<{ domain: string; onFinish: () => void }> = ({ domain, onFinish }) => {
   const product = useProduct()
   const { updateProduct } = useStore()
-  const [visible, open, close] = useVisible()
 
-  const subdomainURL = useMemo(
+  const cnameValue = useMemo(
     () => `${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`,
     [product.domain]
   )
+
+  const { loading, error, request } = useRequest(async () => {
+    const result = await CustomDomainService.create(product.id, domain!)
+
+    updateProduct(product.id, {
+      customDomains: [result, ...(product.customDomains || [])]
+    })
+    onFinish()
+  }, [product.customDomains, product.id, domain])
 
   const DnsRecordTable = useMemo(() => {
     const columns: TableColumn<any>[] = [
@@ -236,27 +291,57 @@ const CustomURL: FC = () => {
       },
       {
         recordType: 'CNAME',
-        name: 'www (or empty)',
-        value: subdomainURL,
+        name: getSubdomain(domain),
+        value: cnameValue,
         ttl: 'Auto / Default',
         status: 'DNS Only'
       }
     ]
 
     return <Table<any> className="table-compact" columns={columns} data={data} />
-  }, [subdomainURL])
+  }, [domain, cnameValue])
 
-  const handleFinish = useCallback(
-    async (values: any) => {
-      const result = await CustomDomainService.create(product.id, values.domain)
+  return (
+    <div className="mt-2 space-y-4">
+      <div className="text-sm text-slate-500">
+        Add these DNS records below to your domain name provider's DNS settings. You can check the
+        DNS records of your domain with this tool:{' '}
+        <a
+          className="underline"
+          href="https://dnschecker.org/all-dns-records-of-domain.php"
+          target="_blank"
+        >
+          DNS Lookup
+        </a>
+      </div>
 
-      updateProduct(product.id, {
-        customDomains: [result, ...(product.customDomains || [])]
-      })
-      close()
-    },
-    [product.customDomains, product.id]
+      {DnsRecordTable}
+
+      <Button type="success" loading={loading} onClick={request}>
+        Save
+      </Button>
+
+      {error && <div className="form-item-error">{error.message}</div>}
+    </div>
   )
+}
+
+const CustomURL: FC = () => {
+  const product = useProduct()
+  const { updateProduct } = useStore()
+  const [visible, open, close] = useVisible()
+
+  const [isEditing, setEditing] = useState(true)
+  const [domain, setDomain] = useState<string>()
+
+  const { loading, error, request } = useRequest(async () => {
+    const result = await CustomDomainService.create(product.id, domain!)
+
+    updateProduct(product.id, {
+      customDomains: [result, ...(product.customDomains || [])]
+    })
+    close()
+  }, [product.customDomains, product.id, domain])
 
   const handleSetPrimary = useCallback(
     (domainId: number) => {
@@ -289,6 +374,15 @@ const CustomURL: FC = () => {
     [product.customDomains, product.id]
   )
 
+  function handleClick() {
+    setEditing(true)
+  }
+
+  function handleDomainChange(domain: string) {
+    setDomain(domain)
+    setEditing(false)
+  }
+
   return (
     <>
       <PlanCheck className="cursor-pointer" minimalLevel={PLAN_LEVELS.plan_superior}>
@@ -319,43 +413,31 @@ const CustomURL: FC = () => {
         <div className="space-y-6">
           <div>
             <h1 className="text-lg leading-6 font-medium text-slate-900">New custom URL</h1>
-            <div className="text-sm text-slate-500">
-              <p className="mb-4">
-                Add these DNS records below to your domain name provider's DNS settings.{' '}
-                <strong>You may not need to add A record</strong> if your domain support{' '}
-                <a
-                  href="https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root/"
-                  target="_blank"
-                >
-                  CNAME Flattening
-                </a>
-                .
-              </p>
-              {DnsRecordTable}
+            <div className="mb-4 text-sm text-slate-500">
+              Follow the guide and add a CNAME DNS record. Make sure to disable the proxy for it to
+              work properly.
             </div>
           </div>
 
-          <Form.Custom
-            submitText="Add custom URL"
-            submitOptions={{
-              type: 'success'
-            }}
-            onlySubmitOnValueChange
-            request={handleFinish}
-          >
-            <Form.Item
-              className="!mb-4"
-              name="domain"
-              label="Your domain name"
-              rules={[
-                {
-                  required: true
-                }
-              ]}
-            >
-              <Input placeholder="Domain name e.g., example.com, app.example.com" />
-            </Form.Item>
-          </Form.Custom>
+          <div>
+            {isEditing ? (
+              <DomainComponent domain={domain} onChange={handleDomainChange} />
+            ) : (
+              <div className="mb-6 flex items-center justify-between text-sm text-slate-700">
+                <div>
+                  <div className="font-bold">Your domain name</div>
+                  <div className="text-slate-900">{domain}</div>
+                </div>
+                <Button.Link className="font-semibold" type="success" onClick={handleClick}>
+                  Change domain
+                </Button.Link>
+              </div>
+            )}
+
+            {isValid(domain) && !isEditing && (
+              <ValidateComponent domain={domain!} onFinish={close} />
+            )}
+          </div>
         </div>
       </Modal>
     </>

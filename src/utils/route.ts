@@ -1,6 +1,7 @@
 import { qs } from '@nily/utils'
 import { NextRequest } from 'next/server'
 import { pathToRegexp } from 'path-to-regexp'
+import isFQDN from 'validator/lib/isFQDN'
 
 const routeRegexps: AnyMap<RegExp> = {}
 
@@ -18,4 +19,30 @@ export function isMatchRoutes(req: NextRequest, routes: string[]) {
 
 export function urlBuilder(uri: string, query: AnyMap<string>) {
   return uri + (uri.includes('?') ? '&' : '?') + qs.stringify(query)
+}
+
+export function getSubdomain(domain: string) {
+  if (!isValidDomain(domain)) {
+    return
+  }
+
+  const arr = domain.split('.')
+
+  if (arr.length === 2) {
+    return '@'
+  }
+
+  return arr[0]
+}
+
+export function isValidDomain(domain: string) {
+  if (!isFQDN(domain, {
+    allow_underscores: true,
+    allow_numeric_tld: true,
+    allow_wildcard: true
+  })) {
+    return false
+  }
+
+  return domain.split('.').length <= 3
 }
