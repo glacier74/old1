@@ -16,7 +16,7 @@ export interface FaqProps extends BlockProps {
 
 interface FaqItemProps extends ComponentProps {
   paragraphBlock: ParagraphBlock
-  allowDeletion?: boolean
+  deletable?: boolean
   onDelete: (paragraphBlock: ParagraphBlock) => void
 }
 
@@ -72,7 +72,7 @@ export const FaqPreview: FC<FaqProps> = ({ block, ...restProps }) => {
   )
 }
 
-const FaqItem: FC<FaqItemProps> = ({ paragraphBlock, allowDeletion, onDelete }) => {
+const FaqItem: FC<FaqItemProps> = ({ paragraphBlock, deletable, onDelete }) => {
   const { t } = useTranslation()
 
   function handleDelete() {
@@ -99,7 +99,7 @@ const FaqItem: FC<FaqItemProps> = ({ paragraphBlock, allowDeletion, onDelete }) 
         newBlockType="paragraph"
       />
 
-      {allowDeletion && (
+      {deletable && (
         <Tooltip ariaLabel={t('builder.faq.deleteItem')}>
           <button className="block-faq-delete-button" onClick={handleDelete}>
             <IconTrash className="w-5 h-5" />
@@ -158,7 +158,7 @@ export const Faq: FC<FaqProps> = ({ block, ...restProps }) => {
             <FaqItem
               key={paragraphBlock.id}
               paragraphBlock={paragraphBlock}
-              allowDeletion={block.content.content.length > 0}
+              deletable={block.content.content.length > 1}
               onDelete={handleDeleteItem}
             />
           ))}
