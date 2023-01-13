@@ -260,14 +260,18 @@ export function deleteBlock(state: IState, payload: DeleteBlockAction['payload']
     const index = getBlockIndex(blocks, payload.blockId)
 
     if (index > -1) {
-      const focusIndex = Math.max(0, index - 1)
-
-      // Focus on previous root block
-      state = selectBlock(state, {
-        blockId: blocks[focusIndex].id
-      })
-
       blocks.splice(index, 1)
+
+      if (blocks.length > 1) {
+        const focusIndex = Math.max(0, index - 1)
+
+        // Focus on previous root block
+        state = selectBlock(state, {
+          blockId: blocks[focusIndex].id
+        })
+      } else {
+        state.selectBlockId = undefined
+      }
     }
   }
 
