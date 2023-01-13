@@ -63,8 +63,8 @@ export const Feature: FC<FeatureProps> = ({ block, placeholder, ...restProps }) 
               ...block.image,
               width: IMAGE_WIDTH
             }}
-            tip1="builder.feature.uploadTip1"
-            tip2="builder.feature.uploadTip2"
+            tip1={t('builder.feature.uploadTip1')}
+            tip2={t('builder.feature.uploadTip2')}
           />
         </div>
 

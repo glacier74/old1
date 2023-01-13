@@ -1,5 +1,5 @@
-import { Button } from '@heyforms/ui'
-import { IconPhotoEdit } from '@tabler/icons'
+import { Button, Tooltip } from '@heyforms/ui'
+import { IconPhotoEdit, IconTrash } from '@tabler/icons'
 import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
 import { FC, useMemo } from 'react'
@@ -74,6 +74,18 @@ const ImageComponent: FC<ImageProps> = ({ block, namespace, tip1, tip2, ...reset
     })
   }
 
+  function handleDelete() {
+    dispatch({
+      type: 'updateBlock',
+      payload: {
+        blockId: block.id,
+        updates: {
+          source: undefined
+        }
+      }
+    })
+  }
+
   return (
     <>
       <BlockComponent className={`block-image-align-${block.align}`} block={block} {...resetProps}>
@@ -101,10 +113,13 @@ const ImageComponent: FC<ImageProps> = ({ block, namespace, tip1, tip2, ...reset
                 height={block.height}
               />
             )}
-            <div className="block-image-toolbar">
-              <Button className="!px-3 !py-2" leading={<IconPhotoEdit />} onClick={open}>
-                {t('common.change')}
-              </Button>
+            <div className="block-image-toolbar space-x-1.5">
+              <Tooltip ariaLabel="Change">
+                <Button leading={<IconPhotoEdit />} onClick={open} />
+              </Tooltip>
+              <Tooltip ariaLabel="Delete">
+                <Button leading={<IconTrash />} onClick={handleDelete} />
+              </Tooltip>
             </div>
           </div>
         ) : (
