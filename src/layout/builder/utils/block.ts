@@ -68,7 +68,7 @@ export function blockByType(type: BlockType, blockId?: string): Block {
         heading: {
           id: uuidv4(),
           type: 'heading',
-          level: 3,
+          level: 2,
           html: ''
         },
         content: {
