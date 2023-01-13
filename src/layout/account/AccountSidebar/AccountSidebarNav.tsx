@@ -38,7 +38,7 @@ export const AccountSidebarNav: FC<SidebarNavProps> = ({ isMobile = false }) => 
           href="/"
         >
           <IconChevronLeft className="w-5 h-5 text-slate-500" />
-          <span className="ml-1">{t('account.heading')}</span>
+          <span className="ml-1">Dashboard</span>
         </Link>
       </div>
 
