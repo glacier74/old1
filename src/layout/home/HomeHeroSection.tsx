@@ -60,7 +60,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
         <div className="max-w-3xl mx-auto text-center mb-24">
           <div className="flex place-content-center">
             <div className="text-sm sm:text-base text-slate-700 mb-4">
-              Helping <span className="font-medium">{usersCount}+</span> makers and startups build their beautiful landing pages
+              Helping <span className="font-medium">{new Intl.NumberFormat().format(usersCount)}</span> makers and startups build their beautiful landing pages
             </div>
             <Tooltip ariaLabel="Real-time data updated hourly">
               <div className="group ml-3 flex h-3 w-3">
