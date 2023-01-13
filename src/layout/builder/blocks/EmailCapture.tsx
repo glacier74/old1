@@ -19,7 +19,7 @@ export const EmailCapturePreview: FC<EmailCaptureProps & { product: Product }> =
   const { t } = useTranslation()
 
   async function handleFinish(values: AnyMap<string>) {
-    await StripeService.createContact(product.id!, values.name, values.email)
+    await StripeService.createContact(product.id!, block.id, values.name, values.email)
 
     notification.success({
       title: t('publicSite.successfullySubmitted')

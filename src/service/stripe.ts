@@ -29,8 +29,9 @@ export class StripeService {
     return axios.post('/payment/stripe/checkout', input)
   }
 
-  static async createContact(productId: number, name: string, email: string) {
+  static async createContact(productId: number, blockId: string, name: string, email: string) {
     return axios.put(`/product/${productId}/contacts`, {
+      blockId,
       name,
       email
     })
