@@ -12,9 +12,9 @@ export const ShowcaseHero: FC = () => {
 
   return (
     <section>
-      <div className="relative text-slate-900 max-w-7xl mx-auto px-12 z-10">
-        <div className="pt-40 text-center">
-          <h1 className="text-3xl leading-tight md:text-7xl font-extrabold md:leading-none">
+      <div className="relative text-slate-900 max-w-7xl mx-auto pt-36 px-12 z-10">
+        <div className="pt-16 text-center">
+          <h1 className="text-3xl leading-tight md:text-6xl font-extrabold md:leading-none">
             Proudly{' '}
             <span className="relative whitespace-nowrap text-emerald-500">
               <svg
@@ -28,40 +28,11 @@ export const ShowcaseHero: FC = () => {
               <span className="relative">#MadeWithEarlyBird</span>
             </span>
           </h1>
-          <div className="max-w-2xl mx-auto text-slate-700 text-lg md:text-2xl mt-8 font-medium">
+          <div className="max-w-2xl mx-auto text-slate-700 text-lg md:text-xl mt-8 font-medium">
             Check out these incredible landing pages created using EarlyBird!
           </div>
         </div>
 
-        <div className="mt-12 pb-8">
-          <div className="flex justify-center flex-col md:flex-row items-center space-y-5 space-x-0 md:space-y-0 md:space-x-5">
-            <Link
-              href="/sign-up"
-              className="w-full md:w-auto px-4 py-3 md:px-6 md:py-3 text-lg text-center font-medium border border-emerald-500 bg-emerald-500 rounded-md text-white"
-              title={t('home.signUp')}
-            >
-              Build your own today!
-            </Link>
-          </div>
-        </div>
-
-        <div className="max-w-3xl mx-auto text-center mb-24">
-          <div className="text-sm sm:text-base text-slate-700 mb-4">
-            700+ makers are building their beautiful landing pages with EarlyBird everyday.
-          </div>
-          <Image
-            src={UserAvatar1}
-            alt="People using EarlyBird"
-            className="inline-block"
-            quality={100}
-          />
-          <Image
-            src={UserAvatar2}
-            alt="People using EarlyBird"
-            className="hidden md:inline-block"
-            quality={100}
-          />
-        </div>
       </div>
     </section>
   )
