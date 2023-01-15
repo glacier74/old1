@@ -1390,6 +1390,12 @@ button.block-header-button {
   }
 }
 
+.block-settings-modal {
+  .rich-text {
+    @apply px-3 py-2 min-h-[8.5rem] sm:text-sm rounded-md border border-gray-300 shadow-sm text-slate-900 cursor-text;
+  }
+}
+
 .user-modal {
   .modal-content {
     @apply w-[1150px] max-h-[720px] overflow-hidden;

@@ -4,9 +4,52 @@ import { FC, useCallback } from 'react'
 
 import { useBuilderContext } from '~/layout/builder/context'
 
+import { EmailNotification } from './EmailNotification'
+
 export const EmailCaptureSettings: FC<{ block: EmailCaptureBlock }> = ({ block }) => {
   const { dispatch } = useBuilderContext()
   const { t } = useTranslation()
+
+  const defaultSubject = 'You got {product.name}'
+  const defaultMessage = `
+    <div>Dear {contact.name},</div>
+    <div><br /></div>
+    <div>Thank you for joining {product.name}. I appreciate your support.</div>
+    <div><br /></div>
+    <div>Sincerely,</div>
+    <div>{product.owner.name}</div>
+  `
+  const variables = [
+    {
+      variable: 'contact.name',
+      description: (
+        <span>
+          Email capture respondent's name{' '}
+          <span className="text-slate-500">(could be empty if name is not required)</span>
+        </span>
+      )
+    },
+    {
+      variable: 'contact.email',
+      description: "Email capture respondent's email"
+    },
+    {
+      variable: 'product.name',
+      description: 'Product name'
+    },
+    {
+      variable: 'product.url',
+      description: 'The landing page URL'
+    },
+    {
+      variable: 'product.owner.name',
+      description: "Product owner's name"
+    },
+    {
+      variable: 'product.owner.email',
+      description: "Product owner's email"
+    }
+  ]
 
   const handleChange = useCallback(
     (isNameRequired: any) => {
@@ -24,11 +67,20 @@ export const EmailCaptureSettings: FC<{ block: EmailCaptureBlock }> = ({ block }
   )
 
   return (
-    <div className="px-4">
+    <div className="px-4 space-y-1">
       <div className="flex items-center justify-between text-sm text-slate-700">
         <span>{t('builder.emailCapture.nameRequired')}</span>
         <Switch value={block.isNameRequired} onChange={handleChange} />
       </div>
+
+      <EmailNotification
+        block={block}
+        heading="Email Notification"
+        description="Send a customized email to respondents after email capture submission."
+        defaultSubject={defaultSubject}
+        defaultMessage={defaultMessage}
+        variables={variables}
+      />
     </div>
   )
 }

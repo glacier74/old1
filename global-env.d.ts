@@ -383,6 +383,9 @@ declare global {
     priceId?: string
     currency: string
     amount: number
+    enableEmailNotification: boolean
+    emailNotificationSubject: string
+    emailNotificationMessage: string
     stripeAccount?: string
     stripeEmail?: string
     heading: HeadingBlock
@@ -398,6 +401,9 @@ declare global {
   interface EmailCaptureBlock extends Pick<Block, 'id' | 'type'> {
     type: 'emailCapture'
     isNameRequired?: boolean
+    enableEmailNotification: boolean
+    emailNotificationSubject: string
+    emailNotificationMessage: string
     heading: HeadingBlock
     description: TextBlock
     button: ButtonBlock

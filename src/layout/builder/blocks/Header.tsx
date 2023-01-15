@@ -1,5 +1,5 @@
 import { Button } from '@heyforms/ui'
-import { isEmpty } from '@nily/utils'
+import { isEmpty, isValidArray } from '@nily/utils'
 import { IconMenu2, IconX } from '@tabler/icons'
 import { FC, useState } from 'react'
 import { useLockBodyScroll } from 'react-use'
@@ -44,11 +44,13 @@ export const HeaderPreview: FC<HeaderProps & { product: Product }> = ({ block, p
       </div>
 
       <div className="md:hidden">
-        <Button.Link
-          className="block-header-button"
-          leading={isOpen ? <IconX /> : <IconMenu2 />}
-          onClick={handleClick}
-        />
+        {isValidArray(block.links) && (
+          <Button.Link
+            className="block-header-button"
+            leading={isOpen ? <IconX /> : <IconMenu2 />}
+            onClick={handleClick}
+          />
+        )}
       </div>
 
       {isOpen && (
