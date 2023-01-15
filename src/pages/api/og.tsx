@@ -1,7 +1,7 @@
 import { ImageResponse } from '@vercel/og'
-import { NextRequest } from 'next/server'
-import AES from 'crypto-js/aes'
 import { enc } from 'crypto-js'
+import AES from 'crypto-js/aes'
+import { NextRequest } from 'next/server'
 
 export const config = {
   runtime: 'experimental-edge'

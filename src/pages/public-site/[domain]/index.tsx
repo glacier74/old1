@@ -1,12 +1,13 @@
 import { EmptyStates, Form, Input } from '@heyforms/ui'
 import { isValid } from '@nily/utils'
+import { enc } from 'crypto-js'
+import AES from 'crypto-js/aes'
 import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import { NextSeoProps } from 'next-seo'
 import Link from 'next/link'
 import Script from 'next/script'
 import { FC } from 'react'
-import AES from 'crypto-js/aes'
 
 import { IconLogo } from '~/components'
 import { PublicSiteLayout } from '~/layout'
@@ -24,7 +25,6 @@ import { SlideGalleryPreview } from '~/layout/builder/blocks/SlideGallery'
 import { TextPreview } from '~/layout/builder/blocks/Text'
 import { ProductService } from '~/service'
 import { cropImage, getPrivateToken, setPrivateToken, withTranslations } from '~/utils'
-import { enc } from 'crypto-js'
 
 interface PublicSiteProps {
   isSiteAccessible?: boolean

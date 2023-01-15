@@ -2,7 +2,6 @@ import Image from 'next/image'
 import { FC } from 'react'
 
 import FeatureBuildImage from '~public/static/feature-build.png'
-import FeatureComponentImage from '~public/static/feature-component.png'
 import FeaturePitchImage from '~public/static/feature-pitch.png'
 import FeatureValidateImage from '~public/static/feature-validate.png'
 

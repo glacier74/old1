@@ -210,7 +210,9 @@ const DomainComponent: FC<{ domain?: string; onChange: (domain: string) => void 
                 }
 
                 if (!isValidDomain(value)) {
-                  throw new Error('The domain is not a valid, it should be like e.g., example.com, app.example.com')
+                  throw new Error(
+                    'The domain is not a valid, it should be like e.g., example.com, app.example.com'
+                  )
                 }
               }
             }

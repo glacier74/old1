@@ -25,6 +25,6 @@ export const PricingCTA: FC = () => {
           </div>
         </div>
       </div>
-  </section>
+    </section>
   )
 }

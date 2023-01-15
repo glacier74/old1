@@ -32,7 +32,6 @@ export const ShowcaseHero: FC = () => {
             Check out these incredible landing pages created using EarlyBird!
           </div>
         </div>
-
       </div>
     </section>
   )

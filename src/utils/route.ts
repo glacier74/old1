@@ -36,11 +36,13 @@ export function getSubdomain(domain: string) {
 }
 
 export function isValidDomain(domain: string) {
-  if (!isFQDN(domain, {
-    allow_underscores: true,
-    allow_numeric_tld: true,
-    allow_wildcard: true
-  })) {
+  if (
+    !isFQDN(domain, {
+      allow_underscores: true,
+      allow_numeric_tld: true,
+      allow_wildcard: true
+    })
+  ) {
     return false
   }
 

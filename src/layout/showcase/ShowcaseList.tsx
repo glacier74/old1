@@ -9,10 +9,7 @@ export const ShowcaseList: FC = () => {
   return (
     <section className="pt-16 pb-32">
       <div className="max-w-7xl mx-auto">
-        <ul
-          role="list"
-          className="px-8 grid grid-col-1 md:grid-cols-3 gap-x-8 gap-y-8"
-        >
+        <ul role="list" className="px-8 grid grid-col-1 md:grid-cols-3 gap-x-8 gap-y-8">
           {showcases.map(showcase => (
             <li key={showcase.url} className="relative bg-white border border-slate-200 rounded-lg">
               <a href={showcase.url}>
@@ -32,8 +29,7 @@ export const ShowcaseList: FC = () => {
                   {showcase.title}
                 </p>
               </a>
-              <p className="block text-sm font-medium text-slate-500 pointer-events-none">
-              </p>
+              <p className="block text-sm font-medium text-slate-500 pointer-events-none"></p>
             </li>
           ))}
         </ul>
