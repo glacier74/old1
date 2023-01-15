@@ -85,7 +85,7 @@ export const EmailNotification: FC<EmailNotificationProps> = ({
   return (
     <>
       <div className="flex items-center justify-between">
-        <span className="text-sm text-slate-900">Email Notification</span>
+        <span className="text-sm text-slate-900">Automated Email</span>
         <div className="flex items-center space-x-1">
           {block.enableEmailNotification && (
             <Tooltip ariaLabel="Edit email template">
