@@ -127,8 +127,7 @@ export const EmailNotification: FC<EmailNotificationProps> = ({
 
           <div>
             <div className="mb-2 text-sm text-slate-700">
-              You can use the following variables enclosed in curly braces, which will be replaced
-              with the corresponding values.
+              You can use the following variables enclosed in curly braces {}, which will be replaced with their corresponding values.
             </div>
             <Table<EmailNotificationVariable> columns={columns} data={variables} />
           </div>

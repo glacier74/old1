@@ -76,7 +76,7 @@ export const EmailCaptureSettings: FC<{ block: EmailCaptureBlock }> = ({ block }
       <EmailNotification
         block={block}
         heading="Email Notification"
-        description="Send a customized email to respondents after email capture submission."
+        description="Send a personalized email to your audience to congratulate them on successfully signing up for your email list!"
         defaultSubject={defaultSubject}
         defaultMessage={defaultMessage}
         variables={variables}

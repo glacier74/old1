@@ -81,7 +81,7 @@ export const PaymentSettings: FC<{ block: PaymentBlock }> = ({ block }) => {
       <EmailNotification
         block={block}
         heading="Email Notification"
-        description="Send a customized email to customer after successful payment."
+        description="Send a personalized email to your customer to congratulate them on a successful payment."
         defaultSubject={defaultSubject}
         defaultMessage={defaultMessage}
         variables={variables}
