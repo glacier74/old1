@@ -8,7 +8,6 @@ import type { FC } from 'react'
 import { startTransition, useCallback, useMemo, useState } from 'react'
 
 import { BLOCK_GROUP_OPTIONS, BLOCK_OPTIONS } from '~/constants'
-import { useProduct } from '~/layout'
 import { BlockIcon } from '~/layout/builder/views/LeftSidebar/BlockCard'
 
 import { useBuilderContext } from '../../context'
@@ -91,7 +90,7 @@ const Menu: FC<MenuProps> = ({ onClick }) => {
   return (
     <div className="flex flex-col rounded-md shadow-lg bg-white">
       <Input.Search
-        className="insert-block-search px-4 !border-x-0 !border-t-0 border-gray-100 outline-none shadow-none rounded-none"
+        className="insert-block-search px-4 !border-x-0 !border-t-0 border-slate-100 outline-none shadow-none rounded-none"
         placeholder={t('builder.searchBlockType')}
         onChange={handleKeywordChangeCallback}
       />
@@ -115,16 +114,23 @@ export const InsertBlock = () => {
   const { state, dispatch } = useBuilderContext()
   const [visible, setVisible] = useState(false)
 
-  const handleCreateField = useCallback(
+  const handleAddBlock = useCallback(
     (type: BlockType) => {
       setVisible(false)
+
+      const block = blockByType(type)
+
       dispatch({
         type: 'addBlock',
         payload: {
-          block: blockByType(type),
+          block,
           afterId: state.selectBlockId
         }
       })
+
+      setTimeout(() => {
+        document.getElementById(`block-${block.id}`)?.scrollIntoView()
+      }, 100)
     },
     [state.selectBlockId]
   )
@@ -139,7 +145,7 @@ export const InsertBlock = () => {
     []
   )
   const dropdownOverlay = useMemo(
-    () => (visible ? <Menu onClick={handleCreateField} /> : <></>),
+    () => (visible ? <Menu onClick={handleAddBlock} /> : <></>),
     [visible]
   )
 
