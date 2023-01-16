@@ -31,7 +31,7 @@ export const EmailCaptureSettings: FC<{ block: EmailCaptureBlock }> = ({ block }
     },
     {
       variable: 'contact.email',
-      description: "Email capture respondent's email"
+      description: "Email capture respondent's email address"
     },
     {
       variable: 'product.name',
@@ -47,7 +47,7 @@ export const EmailCaptureSettings: FC<{ block: EmailCaptureBlock }> = ({ block }
     },
     {
       variable: 'product.owner.email',
-      description: "Product owner's email"
+      description: "Product owner's email address"
     }
   ]
 

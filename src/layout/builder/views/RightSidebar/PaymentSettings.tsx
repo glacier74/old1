@@ -34,11 +34,15 @@ export const PaymentSettings: FC<{ block: PaymentBlock }> = ({ block }) => {
     },
     {
       variable: 'payment.email',
-      description: "Customer's email"
+      description: "Customer's email address"
     },
     {
       variable: 'payment.formattedAmount',
-      description: 'Payment amount e.g., $100.00'
+      description: (
+        <span>
+          Payment amount <span className="text-slate-500">(e.g., $100.00)</span>
+        </span>
+      )
     },
     {
       variable: 'product.name',
@@ -54,7 +58,7 @@ export const PaymentSettings: FC<{ block: PaymentBlock }> = ({ block }) => {
     },
     {
       variable: 'product.owner.email',
-      description: "Product owner's email"
+      description: "Product owner's email address"
     }
   ]
 
