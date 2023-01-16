@@ -903,6 +903,10 @@ button.block-header-button {
       &:hover {
         @apply bg-green-100;
       }
+
+      .button-leading {
+        @apply text-slate-900 #{!important};
+      }
     }
 
     .button-leading {
@@ -979,7 +983,6 @@ button.block-header-button {
   }
 
   .block-text {
-
     color: var(--earlybird-text-light);
   }
 
@@ -992,18 +995,20 @@ button.block-header-button {
       @apply w-full;
     }
 
-    .block-feature-col:nth-of-type(2) {
-      @apply pl-12;
-    }
-
-    &.block-feature-right {
+    &.block-feature-left {
       .block-feature-col:nth-of-type(2) {
         @apply pl-0 pr-12;
       }
     }
+
+    &.block-feature-right {
+      .block-feature-col:nth-of-type(2) {
+        @apply pl-12 pr-0;
+      }
+    }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     @apply py-8 space-y-4;
 
     &,
