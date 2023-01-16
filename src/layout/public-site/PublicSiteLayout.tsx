@@ -6,11 +6,14 @@ import Head from 'next/head'
 import { THEMES } from '~/constants'
 import { fontLink, themeToStyle } from '~/layout/builder/utils'
 
+import { PublicSiteIntegration } from './PublicSiteIntegration'
+
 export function PublicSiteLayout({
   favicon,
   shortName,
   seo,
   theme: rawTheme,
+  integrations = [],
   children
 }: PublicSiteLayoutProps): JSX.Element {
   const { t } = useTranslation()
@@ -42,6 +45,10 @@ export function PublicSiteLayout({
             <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
           </>
         )}
+
+        {integrations.map(integration => (
+          <PublicSiteIntegration key={integration.type} integration={integration} />
+        ))}
       </Head>
 
       {/* SEO */}

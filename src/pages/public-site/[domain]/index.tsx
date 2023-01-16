@@ -1,6 +1,5 @@
 import { EmptyStates, Form, Input } from '@heyforms/ui'
 import { isValid } from '@nily/utils'
-import { enc } from 'crypto-js'
 import AES from 'crypto-js/aes'
 import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
@@ -199,6 +198,7 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
       favicon={cropImage(product.logo, 120, 120)}
       seo={seo}
       theme={product.siteSetting.theme}
+      integrations={product.integrations}
     >
       {paymentStatus === 'success' ? (
         <EmptyStates

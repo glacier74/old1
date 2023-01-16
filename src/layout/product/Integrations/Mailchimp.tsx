@@ -21,7 +21,10 @@ export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => 
   const [visible, open, close] = useVisible()
 
   const isConfigured = useMemo(() => {
-    return integration.lastConfiguredAt && isValid(integration.settings?.audienceId)
+    return (
+      integration.lastConfiguredAt &&
+      isValid((integration.settings as MailchimpSettings)?.audienceId)
+    )
   }, [integration.lastConfiguredAt, integration.settings])
 
   const [isConnected, setConnected] = useState(isConfigured)

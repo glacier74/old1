@@ -25,6 +25,7 @@ declare global {
     favicon?: string
     shortName?: string
     theme?: Theme
+    integrations?: Integration[]
   }
 
   type NextPageFunction = (
@@ -165,6 +166,7 @@ declare global {
     ownerId: number
     subscription?: Subscription
     siteSetting: SiteSettings
+    integrations?: Integration[]
     canonicalURL: string
     isRestricted: boolean
     isBrandingRemoved: boolean
@@ -448,8 +450,25 @@ declare global {
     socialMedias: SocialMedia[]
   }
 
+  interface MailchimpSettings {
+    audienceId: string
+  }
+
+  interface SendySettings {
+    serverUri: string
+    apiKey: string
+    brandId: string
+    listId: string
+  }
+
+  interface CrispSettings {
+    websiteId: string
+  }
+
+  type IntegrationSettings = MailchimpSettings | SendySettings | CrispSettings
+
   interface Integration {
-    type: 'webhook' | 'mailchimp' | 'sendy'
+    type: 'webhook' | 'mailchimp' | 'sendy' | 'crisp' | 'zapier'
 
     // Webhook
     webhookId: number
@@ -464,17 +483,6 @@ declare global {
 
     isEnabled: boolean
     settings: IntegrationSettings
-  }
-
-  interface IntegrationSettings {
-    // Mailchimp
-    audienceId: string
-
-    // Sendy
-    serverUri: string
-    apiKey: string
-    brandId: string
-    listId: string
   }
 
   interface WebhookLog {
@@ -502,18 +510,11 @@ declare global {
     name: string
   }
 
-  interface SendySettings {
-    serverUri: string
-    apiKey: string
-    brandId: string
-    listId: string
-  }
-
   interface OpenApp {
-    id: number;
-    name: string;
-    shortName: string;
-    createdAt: Date;
-    updatedAt: Date;
-}
+    id: number
+    name: string
+    shortName: string
+    createdAt: Date
+    updatedAt: Date
+  }
 }

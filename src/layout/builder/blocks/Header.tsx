@@ -24,11 +24,7 @@ export const HeaderPreview: FC<HeaderProps & { product: Product }> = ({ block, p
 
   return (
     <BlockPreview block={block}>
-      <a
-        className="block-header-logo"
-        href={`https://${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`}
-        title={product.name}
-      >
+      <a className="block-header-logo" href="/" title={product.name}>
         {product.logo ? (
           <img src={cropImage(product.logo, 120, 120)} />
         ) : (

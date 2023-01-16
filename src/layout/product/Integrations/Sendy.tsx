@@ -21,12 +21,12 @@ export const Sendy: FC<{ integration: Integration }> = ({ integration }) => {
   const [form] = useForm()
   const [settingsVisible, openSettings, closeSettings] = useVisible()
 
-  const [values, setValues] = useState((integration.settings || {}) as unknown as SendySettings)
+  const [values, setValues] = useState((integration.settings || {}) as SendySettings)
   const [brands, setBrands] = useState<SendyBrand[]>([])
   const [lists, setLists] = useState<SendyBrand[]>([])
 
   const isConfigured = useMemo(() => {
-    const { settings } = integration
+    const settings = integration.settings as SendySettings
 
     return (
       isValid(settings) &&

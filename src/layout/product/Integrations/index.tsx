@@ -1,8 +1,10 @@
 import { FC } from 'react'
 
+import { Crisp } from './Crisp'
 import { Mailchimp } from './Mailchimp'
 import { Sendy } from './Sendy'
 import { Webhook } from './Webhook'
+import { Zapier } from './Zapier'
 
 const Integration: FC<{ integration: Integration }> = ({ integration }) => {
   switch (integration.type) {
@@ -14,6 +16,15 @@ const Integration: FC<{ integration: Integration }> = ({ integration }) => {
 
     case 'sendy':
       return <Sendy integration={integration} />
+
+    case 'crisp':
+      return <Crisp integration={integration} />
+
+    case 'zapier':
+      return <Zapier />
+
+    default:
+      return null
   }
 }
 

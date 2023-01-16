@@ -23,7 +23,7 @@ const Home = ({ isLoggedIn, usersCount }: HomeProps): JSX.Element => {
   /**
    * 如果用户已经登录，拉取 user 和 product 信息
    * 如果 token 过期，请求 /logout 接口退出登录
-   * 如果 products 为空，重定向到 /createProduct 页面
+   * 如果 products 为空，重定向到 /create-product 页面
    */
   if (isLoggedIn) {
     return <HomeAuthorizedLayout />
