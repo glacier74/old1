@@ -1157,7 +1157,7 @@ button.block-header-button {
 }
 
 .block-payment-product {
-  @apply rounded-lg overflow-hidden text-lg md:text-xl shadow w-full md:w-[28rem] mx-auto;
+  @apply rounded-lg overflow-hidden text-base shadow w-full md:w-[28rem] mx-auto;
   background: var(--earlybird-background);
 }
 
