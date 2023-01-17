@@ -18,6 +18,16 @@ export const PAYMENT_STATUS: AnyMap<string> = {
   succeeded: 'engagements.succeeded'
 }
 
+export const SUBSCRIPTION_STATUS: AnyMap<string> = {
+  trialing: 'engagements.trialing',
+  active: 'engagements.active',
+  incomplete: 'engagements.incomplete',
+  incompleteExpired: 'engagements.incomplete_expired',
+  pastDue: 'engagements.past_due',
+  canceled: 'engagements.canceled',
+  unpaid: 'engagements.unpaid'
+}
+
 export const PAYMENT_TYPES: AnyMap<string> = {
   one_time: 'engagements.oneTime',
   recurring: 'engagements.recurring'

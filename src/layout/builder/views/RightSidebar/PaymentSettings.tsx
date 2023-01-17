@@ -85,7 +85,26 @@ export const PaymentSettings: FC<{ block: PaymentBlock }> = ({ block }) => {
       <EmailNotification
         block={block}
         heading="Automated Email"
-        description="Send a personalized email to your customer to congratulate them on a successful payment."
+        description={
+          <div className="space-y-0.5">
+            <p>
+              Send a personalized email to your customer to congratulate them on a successful
+              payment.
+            </p>
+            <p>
+              <strong>For subscription products</strong>, you need to activate{' '}
+              <a
+                className="text-green-500"
+                href="https://dashboard.stripe.com/settings/billing/portal"
+                target="_blank"
+              >
+                Stripe customer portal
+              </a>{' '}
+              link, then copy the link and paste below, so that users can manage their subscriptions
+              through this link.
+            </p>
+          </div>
+        }
         defaultSubject={defaultSubject}
         defaultMessage={defaultMessage}
         variables={variables}

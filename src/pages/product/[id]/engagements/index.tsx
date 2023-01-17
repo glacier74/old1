@@ -2,13 +2,14 @@ import { EmptyStates, Table } from '@heyforms/ui'
 import { TableColumn } from '@heyforms/ui/types/table'
 import { conv } from '@nily/utils'
 import { IconDatabase } from '@tabler/icons'
+import dayjs from 'dayjs'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import * as timeago from 'timeago.js'
 
 import { Pagination, RoundImage } from '~/components'
-import { PAYMENT_STATUS, PAYMENT_TYPES } from '~/constants'
+import { PAYMENT_STATUS, PAYMENT_TYPES, SUBSCRIPTION_STATUS } from '~/constants'
 import { EngagementLayout, useProductId } from '~/layout'
 import { ProductService } from '~/service'
 import { currencyFormatter, withTranslations } from '~/utils'
@@ -36,22 +37,19 @@ const ProductEngagements = (): JSX.Element => {
             </div>
             <div className="flex-1 px-4">
               <p className="text-sm font-semibold text-slate-800">{row.email}</p>
+              {row.paymentType === 'recurring' && row.endsAt && (
+                <p className="mt-0.5 font-normal text-sm text-slate-500">
+                  Expires on {dayjs.unix(row.endsAt).format('MMM DD, YYYY')}
+                </p>
+              )}
               {row.paidAt! > 0 && (
                 <p className="mt-0.5 font-normal text-sm text-slate-500">
-                  {timeago.format(row.paidAt! * 1_000)}
+                  Paid at {timeago.format(row.paidAt! * 1_000)}
                 </p>
               )}
             </div>
           </div>
         )
-      }
-    },
-    {
-      key: 'status',
-      name: '',
-      width: '30%',
-      render(row) {
-        return t(PAYMENT_STATUS[row.status])
       }
     },
     {
@@ -65,9 +63,27 @@ const ProductEngagements = (): JSX.Element => {
     {
       key: 'amount',
       name: '',
+      width: '30%',
+      render(row) {
+        const amount = currencyFormatter(row.currency, row.amount)
+
+        if (row.paymentType === 'recurring') {
+          return `${amount}/${row.interval}`
+        }
+
+        return amount
+      }
+    },
+    {
+      key: 'status',
+      name: '',
       align: 'right',
       render(row) {
-        return currencyFormatter(row.currency, row.amount)
+        if (row.paymentType === 'recurring') {
+          return t(SUBSCRIPTION_STATUS[row.status])
+        }
+
+        return t(PAYMENT_STATUS[row.status])
       }
     }
   ]

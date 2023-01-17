@@ -189,6 +189,10 @@ declare global {
     receiptUrl?: string
     failureMessage: any
     paidAt?: number
+    subscriptionId: string
+    interval: string
+    canceledAt: number
+    endsAt: number
     status: string
     createdAt: string
     updatedAt: string
@@ -383,8 +387,10 @@ declare global {
     productName?: string
     productDescription?: string
     priceId?: string
+    priceType?: string
     currency: string
     amount: number
+    interval?: string
     enableEmailNotification: boolean
     emailNotificationSubject: string
     emailNotificationMessage: string

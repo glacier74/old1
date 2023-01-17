@@ -64,6 +64,7 @@ export const PaymentPreview: FC<PaymentProps & { product: Product }> = ({
                 <div className="block-payment-description">{block.productDescription}</div>
                 <div className="block-payment-amount">
                   {currencyFormatter(block.currency, block.amount)}
+                  {block.priceType === 'recurring' && `/${block.interval}`}
                 </div>
                 <Form.Custom
                   submitText={t('publicSite.checkOut')}
@@ -146,6 +147,7 @@ const PaymentComponent: FC<PaymentProps> = ({ block, ...restProps }) => {
                 <div className="block-payment-description">{block.productDescription}</div>
                 <div className="block-payment-amount">
                   {currencyFormatter(block.currency, block.amount)}
+                  {block.priceType === 'recurring' && `/${block.interval}`}
                 </div>
                 <div className="input mt-6 !cursor-default">
                   <span className="block-text-placeholder">{t('publicSite.email')}</span>

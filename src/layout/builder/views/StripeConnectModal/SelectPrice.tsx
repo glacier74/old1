@@ -18,14 +18,10 @@ interface SelectPriceItemProps {
 
 const SelectPriceItem: FC<SelectPriceItemProps> = ({ value, price, onClick }) => {
   const { t } = useTranslation()
-
   const isActive = useMemo(() => value === price.id, [value, price.id])
-  const isDisabled = useMemo(() => price.type !== 'one_time', [price.type])
 
   function handleClick() {
-    if (!isDisabled) {
-      onClick(price.id)
-    }
+    onClick(price.id)
   }
 
   return (
@@ -33,8 +29,7 @@ const SelectPriceItem: FC<SelectPriceItemProps> = ({ value, price, onClick }) =>
       className={clsx(
         'bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer flex justify-between items-center focus:outline-none border-gray-300 undefined',
         {
-          'ring-2 ring-green-500 border-transparent': isActive,
-          'stripe-price-disabled': isDisabled
+          'ring-2 ring-green-500 border-transparent': isActive
         }
       )}
       onClick={handleClick}
@@ -44,9 +39,6 @@ const SelectPriceItem: FC<SelectPriceItemProps> = ({ value, price, onClick }) =>
           {currencyFormatter(price.currency, price.unit_amount)}
         </div>
         <div className="text-gray-500">{t(PAYMENT_TYPES[price.type])}</div>
-        {price.type !== 'one_time' && (
-          <p className="text-red-700 text-xs">At present, only one-time price is supported</p>
-        )}
       </div>
       {isActive && <IconCircleCheck className="ml-4 w-5 h-5 text-green-500" />}
     </div>
@@ -82,8 +74,10 @@ export const SelectPrice: FC = () => {
           updates: {
             ...state.stripeConnectBlock,
             priceId,
+            priceType: price.type,
             currency: price.currency,
-            amount: price.unit_amount
+            amount: price.unit_amount,
+            interval: price.recurring?.interval
           }
         }
       })

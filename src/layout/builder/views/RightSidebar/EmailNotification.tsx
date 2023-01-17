@@ -85,7 +85,7 @@ export const EmailNotification: FC<EmailNotificationProps> = ({
   return (
     <>
       <div className="flex items-center justify-between">
-        <span className="text-sm text-slate-900">Automated Email</span>
+        <span className="text-sm text-slate-900">{heading}</span>
         <div className="flex items-center space-x-1">
           {block.enableEmailNotification && (
             <Tooltip ariaLabel="Edit email template">
@@ -127,9 +127,15 @@ export const EmailNotification: FC<EmailNotificationProps> = ({
 
           <div>
             <div className="mb-2 text-sm text-slate-700">
-              You can use the following variables enclosed in curly braces {}, which will be replaced with their corresponding values.
+              You can use the following variables enclosed in curly braces {}, which will be
+              replaced with their corresponding values.
             </div>
-            <Table<EmailNotificationVariable> columns={columns} data={variables} />
+
+            <Table<EmailNotificationVariable>
+              className="table-compact"
+              columns={columns}
+              data={variables}
+            />
           </div>
         </div>
       </Modal>
