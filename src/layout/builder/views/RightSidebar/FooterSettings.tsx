@@ -8,7 +8,6 @@ import { v4 as uuidv4 } from 'uuid'
 import { SocialMediaIcon } from '~/components'
 import { SOCIAL_MEDIA_SETTINGS } from '~/constants'
 import { useBuilderContext } from '~/layout/builder/context'
-import { removeBlocksProperties } from '~/layout/builder/utils'
 
 interface SocialMediaProps {
   socialMedia: SocialMedia
@@ -100,7 +99,11 @@ const SocialMedia: FC<SocialMediaProps> = ({ socialMedia, onChange, onDelete }) 
           </div>
 
           <div className="pb-2">
-            <Checkbox value={socialMedia.openInNewTab} onChange={handleCheckboxChange}>
+            <Checkbox
+              value={true}
+              checked={socialMedia.openInNewTab}
+              onChange={handleCheckboxChange}
+            >
               Open in new tab
             </Checkbox>
           </div>
@@ -115,7 +118,6 @@ export const FooterSettings: FC<{ block: FooterBlock }> = ({ block }) => {
 
   const handleSetSocialMedias = useCallback(
     (socialMedias: SocialMedia[]) => {
-      removeBlocksProperties(socialMedias)
       dispatch({
         type: 'updateBlock',
         payload: {
