@@ -56,7 +56,7 @@ const Current: FC = () => {
 
   return (
     <button className="flex items-center w-full rounded-md text-sm text-left text-slate-700 hover:text-slate-900">
-      <span className="flex flex-1 items-center justify-between space-x-3">
+      <span className="flex flex-1 items-center space-x-3">
         <RoundImage
           className="w-6 h-6 rounded-full flex-shrink-0"
           src={product?.logo}
