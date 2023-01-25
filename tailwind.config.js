@@ -10,7 +10,13 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['Proxima Vara', ...defaultTheme.fontFamily.sans]
-    }
+    },
+    screens: {
+      sm: { max: '897px' },
+      md: { min: '898px' },
+      lg: { min: '1200px' }, 
+      xl: { min: '1159px' }, 
+    },
   },
   plugins: [require('@tailwindcss/aspect-ratio'), require('@tailwindcss/forms')]
 }

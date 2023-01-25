@@ -80,10 +80,17 @@ export const HomeHeader: FC = () => {
             <div className="hidden items-center text-slate-900 font-medium space-x-5 md:flex">
               <Link
                 href="/login"
-                className="py-2 px-4 border border-slate-900 rounded-md text-slate-900 font-medium"
-                title={t('common.name')}
+                className="py-2 px-4 rounded-md text-slate-900 font-medium"
+                title={t('common.login')}
               >
                 Log in
+              </Link>
+              <Link
+                href="/sign-up"
+                className="py-2 px-4 border border-emerald-500 rounded-md text-white bg-emerald-500 font-medium"
+                title={t('common.signup')}
+              >
+                Sign up
               </Link>
             </div>
 

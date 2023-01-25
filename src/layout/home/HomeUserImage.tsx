@@ -13,7 +13,7 @@ export const HomeUserImage: FC = () => {
       <div className="max-w-7xl mx-auto px-5 grid md:grid-cols-4 gap-4 place-items-center">
         <div className="col-span-2">
           <div className="py-16 md:py-32 px-8 text-slate-900">
-            <h2 className="w-full text-3xl md:text-5xl text-left font-extrabold">
+            <h2 className="w-full text-3xl md:text-5xl text-left font-bold">
               Avoid burning time and money at early stage
             </h2>
             <div className="w-full mt-4 text-lg md:text-xl text-slate-900">

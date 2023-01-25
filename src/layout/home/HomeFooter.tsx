@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import { FC } from 'react'
 
-import { IconFacebook, IconLinkedin, IconTwitter, IconYoutube } from '~/components'
+import { IconFacebook, IconLinkedin, IconTwitterGray, IconYoutube } from '~/components'
 
 export const HomeFooter: FC = () => {
   const { t } = useTranslation()
@@ -33,7 +33,7 @@ export const HomeFooter: FC = () => {
 
         <div className="flex items-center justify-center md:justify-end mt-4 md:mt-0 text-slate-400 space-x-3">
           <a href="https://twitter.com/earlybirdim" target="_blank" aria-label="Twitter">
-            <IconTwitter />
+            <IconTwitterGray />
           </a>
           <a href="https://facebook.com/earlybirdim" target="_blank" aria-label="Facebook">
             <IconFacebook />
