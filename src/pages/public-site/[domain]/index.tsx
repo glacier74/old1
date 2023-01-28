@@ -21,6 +21,7 @@ import { ImagePreview } from '~/layout/builder/blocks/Image'
 import { ListPreview } from '~/layout/builder/blocks/List'
 import { PaymentPreview } from '~/layout/builder/blocks/Payment'
 import { SlideGalleryPreview } from '~/layout/builder/blocks/SlideGallery'
+import { TestimonialPreview } from '~/layout/builder/blocks/Testimonial'
 import { TextPreview } from '~/layout/builder/blocks/Text'
 import { ProductService } from '~/service'
 import { cropImage, getPrivateToken, setPrivateToken, withTranslations } from '~/utils'
@@ -65,6 +66,9 @@ const Block: FC<{ product: Product; block: any }> = ({ product, block }) => {
 
     case 'faq':
       return <FaqPreview key={block.id} block={block} />
+
+    case 'testimonial':
+      return <TestimonialPreview key={block.id} block={block} />
 
     default:
       return <TextPreview key={block.id} block={block} />

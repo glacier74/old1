@@ -422,6 +422,11 @@
       "answer": "Provide an answer with helpful and relevant information. Keep it precise.",
       "addItem": "Add an item",
       "deleteItem": "Delete the item"
+    },
+    "testimonial": {
+      "name": "Testimonial",
+      "heading": "Wall of Love",
+      "description": "Let's hear from our customers"
     }
   },
   "invite": {

@@ -285,6 +285,8 @@ declare global {
     | 'slideGallery'
     | 'emailCapture'
     | 'faq'
+    | 'embed'
+    | 'testimonial'
 
   interface BlockOption {
     type: BlockType
@@ -441,6 +443,20 @@ declare global {
     heading: HeadingBlock
     description: TextBlock
     content: ListBlock<ParagraphBlock>
+  }
+
+  interface EmbedBlock extends Pick<Block, 'id' | 'type'> {
+    type: 'embed'
+    source: string
+    width?: number | string
+    height?: number | string
+  }
+
+  interface TestimonialBlock extends Pick<Block, 'id' | 'type'> {
+    type: 'testimonial'
+    heading: HeadingBlock
+    description: TextBlock
+    embedCode: string
   }
 
   interface SocialMedia {

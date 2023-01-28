@@ -1331,7 +1331,40 @@ button.block-header-button {
   }
 }
 
-.block-faq-create {
+.block-testimonial-container {
+  @apply py-16;
+
+  .rich-text {
+    @apply text-center;
+  }
+
+  .input-disabled {
+    @apply bg-transparent;
+
+    &,
+    input {
+      @apply cursor-default;
+    }
+  }
+}
+
+.block-testimonial-heading {
+  .rich-text {
+    @apply text-5xl font-extrabold;
+  }
+}
+
+.block-testimonial-description {
+  @apply max-w-3xl mt-2 mx-auto;
+
+  .rich-text {
+
+    color: var(--earlybird-text-light);
+  }
+}
+
+.block-testimonial-content {
+  @apply mt-4;
 }
 
 .block-settings {

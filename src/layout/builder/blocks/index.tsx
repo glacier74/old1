@@ -2,6 +2,7 @@ import { FC } from 'react'
 
 import { BlockProps } from './Block'
 import { EmailCapture, EmailCaptureProps } from './EmailCapture'
+import { Embed, EmbedProps } from './Embed'
 import { Faq, FaqProps } from './Faq'
 import { Feature, FeatureProps } from './Feature'
 import { Footer, FooterProps } from './Footer'
@@ -12,6 +13,7 @@ import { Image, ImageProps } from './Image'
 import { List, ListProps } from './List'
 import { Payment, PaymentProps } from './Payment'
 import { SlideGallery, SlideGalleryProps } from './SlideGallery'
+import { Testimonial, TestimonialProps } from './Testimonial'
 import { Text, TextProps } from './Text'
 
 export const BlockWrapper: FC<BlockProps> = props => {
@@ -48,6 +50,12 @@ export const BlockWrapper: FC<BlockProps> = props => {
 
     case 'faq':
       return <Faq key={props.block.id} {...(props as FaqProps)} />
+
+    case 'testimonial':
+      return <Testimonial key={props.block.id} {...(props as TestimonialProps)} />
+
+    case 'embed':
+      return <Embed key={props.block.id} {...(props as EmbedProps)} />
 
     default:
       return <Text key={props.block.id} {...(props as TextProps)} />

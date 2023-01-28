@@ -12,6 +12,7 @@ import { FooterSettings } from './FooterSettings'
 import { HeaderSettings } from './HeaderSettings'
 import { HeroSectionSettings } from './HeroSectionSettings'
 import { PaymentSettings } from './PaymentSettings'
+import { TestimonialSettings } from './TestimonialSettings'
 
 export const RightSidebar: FC = () => {
   const { t } = useTranslation()
@@ -36,6 +37,9 @@ export const RightSidebar: FC = () => {
 
         case 'payment':
           return <PaymentSettings block={block! as PaymentBlock} />
+
+        case 'testimonial':
+          return <TestimonialSettings block={block! as TestimonialBlock} />
 
         case 'footer':
           return <FooterSettings block={block! as FooterBlock} />

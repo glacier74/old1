@@ -183,6 +183,23 @@ export function blockByType(type: BlockType, blockId?: string): Block {
       } as FaqBlock
       break
 
+    case 'testimonial':
+      block = {
+        ...block,
+        heading: {
+          id: uuidv4(),
+          type: 'heading',
+          level: 3,
+          html: ''
+        },
+        description: {
+          id: uuidv4(),
+          type: 'text',
+          html: ''
+        }
+      } as TestimonialBlock
+      break
+
     case 'heading':
       block = {
         ...block,
@@ -320,6 +337,36 @@ function contactBlockPaths(
 
   // Add to focusable blocks
   focusableBlockMap[block.id] = [block.heading.id, block.description.id, block.button.id]
+}
+
+function testimonialBlockPaths(
+  block: TestimonialBlock,
+  flattedBlocks: FlattedBlock[],
+  focusableBlockMap: Record<string, string[]>,
+  path: Array<string | number>
+) {
+  // Testimonial Block
+  flattedBlocks.push({
+    id: block.id,
+    path
+  })
+
+  // Heading
+  flattedBlocks.push({
+    id: block.heading.id,
+    rootId: block.id,
+    path: [...path, 'heading']
+  })
+
+  // Description
+  flattedBlocks.push({
+    id: block.description.id,
+    rootId: block.id,
+    path: [...path, 'description']
+  })
+
+  // Add to focusable blocks
+  focusableBlockMap[block.id] = [block.heading.id, block.description.id]
 }
 
 function paymentBlockPaths(
@@ -521,6 +568,10 @@ export function flattenBlocks(blocks: Block[]) {
 
       case 'faq':
         faqBlockPaths(block as FaqBlock, flattedBlocks, focusableBlockMap, [index])
+        break
+
+      case 'testimonial':
+        testimonialBlockPaths(block as TestimonialBlock, flattedBlocks, focusableBlockMap, [index])
         break
 
       case 'image':
