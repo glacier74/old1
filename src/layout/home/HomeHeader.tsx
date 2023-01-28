@@ -38,7 +38,7 @@ export const HomeHeader: FC = () => {
     <header className="relative sticky top-0 z-20">
       <div className="header-container absolute top-0 left-0 w-full z-20">
         <div className="max-w-7xl mx-auto md:px-5">
-          <div className="py-6 flex items-center justify-between">
+          <div className="py-3 flex items-center justify-between">
             <div className="flex items-center text-slate-900 text-base font-medium md:space-x-8">
               <Link
                 href="/"
@@ -87,7 +87,7 @@ export const HomeHeader: FC = () => {
               </Link>
               <Link
                 href="/sign-up"
-                className="py-2 px-4 border border-emerald-500 rounded-md text-white bg-emerald-500 font-medium"
+                className="py-2 px-4 rounded-md text-white bg-emerald-500 font-medium"
                 title={t('common.signup')}
               >
                 Sign up
