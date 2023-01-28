@@ -424,9 +424,9 @@
       "deleteItem": "Delete the item"
     },
     "testimonial": {
-      "name": "Testimonial",
+      "name": "Testimonials",
       "heading": "Wall of Love",
-      "description": "Let's hear from our customers"
+      "description": "Don't take our word for it. Hear what our customers say."
     }
   },
   "invite": {
