@@ -116,7 +116,7 @@ export const PricingPlans: FC<{
                   </p>
                   <a
                     href={tier.href}
-                    className="mt-8 block w-full bg-emerald-500 border border-emerald-500 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-emerald-600"
+                    className="mt-8 block w-full bg-slate-900 rounded-md py-2 text-sm font-semibold text-white text-center"
                   >
                     Join as a {tier.name}
                   </a>

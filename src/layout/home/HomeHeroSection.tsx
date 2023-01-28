@@ -49,7 +49,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
           <div className="flex justify-center flex-col md:flex-row items-center space-y-5 space-x-0 md:space-y-0 md:space-x-5">
             <Link
               href="/sign-up"
-              className="w-auto px-4 py-3 md:px-6 md:py-3 text-lg text-center font-medium border border-emerald-500 bg-emerald-500 rounded-md text-white"
+              className="w-auto px-4 py-3 md:px-6 md:py-3 text-base text-center font-medium bg-slate-900 rounded-md text-white shadow-lg"
               title={t('home.signUp')}
             >
               Sign up today, it's FREE!

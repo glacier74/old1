@@ -87,7 +87,7 @@ export const HomeHeader: FC = () => {
               </Link>
               <Link
                 href="/sign-up"
-                className="py-2 px-4 rounded-md text-white bg-emerald-500 font-medium"
+                className="py-2 px-4 rounded-md text-white bg-slate-900 font-medium"
                 title={t('common.signup')}
               >
                 Sign up

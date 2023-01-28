@@ -233,7 +233,7 @@ export const PricingComparison: FC<{
                       </p>
                       <a
                         href={tier.href}
-                        className="absolute bottom-0 flex-grow block w-full bg-emerald-500 border border-emerald-500 rounded-md 5 py-2 text-sm font-semibold text-white text-center hover:bg-emerald-600"
+                        className="absolute bottom-0 flex-grow block w-full bg-slate-900 rounded-md 5 py-2 text-sm font-semibold text-white text-center"
                       >
                         Join as a {tier.name}
                       </a>
@@ -252,7 +252,7 @@ export const PricingComparison: FC<{
                   <td key={tier.name} className="pt-5 px-6">
                     <a
                       href={tier.href}
-                      className="block w-full bg-emerald-500 border border-emerald-500 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-emerald-600"
+                      className="block w-full bg-slate-900 rounded-md py-2 text-sm font-semibold text-white text-center"
                     >
                       Join as a {tier.name}
                     </a>
