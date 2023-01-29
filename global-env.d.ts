@@ -490,7 +490,20 @@ declare global {
   type IntegrationSettings = MailchimpSettings | SendySettings | CrispSettings
 
   interface Integration {
-    type: 'webhook' | 'mailchimp' | 'sendy' | 'crisp' | 'zapier'
+    type:
+      | 'webhook'
+      | 'mailchimp'
+      | 'sendy'
+      | 'crisp'
+      | 'zapier'
+      | 'airtable'
+      | 'notion'
+      | 'google-sheets'
+      | 'excel'
+      | 'hubspot'
+      | 'slack'
+      | 'active-campaign'
+      | 'salesforce'
 
     // Webhook
     webhookId: number

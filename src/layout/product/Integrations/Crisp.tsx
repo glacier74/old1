@@ -48,7 +48,7 @@ export const Crisp: FC<{ integration: Integration }> = ({ integration }) => {
 
   return (
     <>
-      <div className="py-4 space-y-2">
+      <div className="py-2 space-y-2">
         <div className="flex items-center space-x-4">
           <div className="flex-shrink-0">
             <div className="flex items-center justify-center p-2 rounded-full shadow">
