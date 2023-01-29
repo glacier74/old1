@@ -5,7 +5,6 @@ import {
   Input,
   Menus,
   Modal,
-  Stepper,
   Table,
   Tooltip,
   notification
@@ -13,11 +12,10 @@ import {
 import { TableColumn } from '@heyforms/ui/types/table'
 import { isValid, isValidArray } from '@nily/utils'
 import { IconDotsVertical } from '@tabler/icons'
-import { divide, isEmpty } from 'lodash'
+import { isEmpty } from 'lodash'
 import { useTranslation } from 'next-i18next'
 import React, { FC, useCallback, useMemo, useState } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
-import isFQDN from 'validator/lib/isFQDN'
 
 import { Expandable } from '~/components'
 import { PLAN_LEVELS } from '~/constants'
@@ -290,6 +288,13 @@ const ValidateComponent: FC<{ domain: string; onFinish: () => void }> = ({ domai
         value: cnameValue,
         ttl: 'Auto / Default',
         status: 'DNS Only'
+      },
+      {
+        recordType: 'TXT',
+        name: getSubdomain(domain),
+        value: cnameValue,
+        ttl: 'Auto / Default',
+        status: 'DNS Only'
       }
     ]
 
@@ -328,15 +333,6 @@ const CustomURL: FC = () => {
 
   const [isEditing, setEditing] = useState(true)
   const [domain, setDomain] = useState<string>()
-
-  const { loading, error, request } = useRequest(async () => {
-    const result = await CustomDomainService.create(product.id, domain!)
-
-    updateProduct(product.id, {
-      customDomains: [result, ...(product.customDomains || [])]
-    })
-    close()
-  }, [product.customDomains, product.id, domain])
 
   const handleSetPrimary = useCallback(
     (domainId: number) => {
