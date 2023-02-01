@@ -4,7 +4,6 @@ import AES from 'crypto-js/aes'
 import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import { NextSeoProps } from 'next-seo'
-import Link from 'next/link'
 import Script from 'next/script'
 import { FC } from 'react'
 
@@ -23,6 +22,7 @@ import { PaymentPreview } from '~/layout/builder/blocks/Payment'
 import { SlideGalleryPreview } from '~/layout/builder/blocks/SlideGallery'
 import { TestimonialPreview } from '~/layout/builder/blocks/Testimonial'
 import { TextPreview } from '~/layout/builder/blocks/Text'
+import { PublicSiteDangerouslyHTML } from '~/layout/public-site/PublicSiteDangerouslyHTML'
 import { ProductService } from '~/service'
 import { cropImage, getPrivateToken, setPrivateToken, withTranslations } from '~/utils'
 
@@ -211,9 +211,9 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
           description="Thank you for your payment! An automated payment receipt will be sent to the email address provided very shortly."
           icon="🎉"
           action={
-            <Link href="/" className="link-button link-button-success">
+            <a href="/" className="link-button link-button-success">
               Back to {product.name}
-            </Link>
+            </a>
           }
         />
       ) : (
@@ -231,6 +231,8 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
           </a>
         </div>
       )}
+
+      <PublicSiteDangerouslyHTML html={product.customCode} />
 
       <Script
         data-domain={product.analyticId}

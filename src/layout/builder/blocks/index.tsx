@@ -2,7 +2,6 @@ import { FC } from 'react'
 
 import { BlockProps } from './Block'
 import { EmailCapture, EmailCaptureProps } from './EmailCapture'
-import { Embed, EmbedProps } from './Embed'
 import { Faq, FaqProps } from './Faq'
 import { Feature, FeatureProps } from './Feature'
 import { Footer, FooterProps } from './Footer'
@@ -53,9 +52,6 @@ export const BlockWrapper: FC<BlockProps> = props => {
 
     case 'testimonial':
       return <Testimonial key={props.block.id} {...(props as TestimonialProps)} />
-
-    case 'embed':
-      return <Embed key={props.block.id} {...(props as EmbedProps)} />
 
     default:
       return <Text key={props.block.id} {...(props as TextProps)} />

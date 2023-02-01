@@ -560,6 +560,12 @@ button.switch-checked {
   height: calc(100vh - 3.75rem);
 }
 
+.builder-left-sidebar,
+.builder-right-sidebar,
+.builder-design-sidebar {
+  z-index: 100000000;
+}
+
 .builder-main {
   @apply flex-1;
   font-family: var(--earlybird-font-family);

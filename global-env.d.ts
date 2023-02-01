@@ -160,6 +160,7 @@ declare global {
     metaDescription: string
     openGraphImage: string
     tempOpenGraphImage: string
+    customCode: string
     inviteCode: string
     inviteExpiredAt: number
     users: User[]
@@ -285,7 +286,6 @@ declare global {
     | 'slideGallery'
     | 'emailCapture'
     | 'faq'
-    | 'embed'
     | 'testimonial'
 
   interface BlockOption {
@@ -443,13 +443,6 @@ declare global {
     heading: HeadingBlock
     description: TextBlock
     content: ListBlock<ParagraphBlock>
-  }
-
-  interface EmbedBlock extends Pick<Block, 'id' | 'type'> {
-    type: 'embed'
-    source: string
-    width?: number | string
-    height?: number | string
   }
 
   interface TestimonialBlock extends Pick<Block, 'id' | 'type'> {

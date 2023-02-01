@@ -57,15 +57,15 @@ const Invite = () => {
   }, [error])
 
   return (
-    <CreateProductLayout seo={{ title: t('invite.title') }}>
-      <Link
-        className="group fixed top-5 left-5 flex items-center text-sm hover:text-green-500"
-        href="/"
-      >
-        <IconChevronLeft className="w-4 h-4 text-slate-500 -ml-2 group-hover:text-green-500" />
-        <span className="ml-1">{t('invite.backHome')}</span>
-      </Link>
-
+    <CreateProductLayout
+      seo={{ title: t('invite.title') }}
+      logoElement={
+        <Link className="group flex items-center text-sm hover:text-green-500" href="/">
+          <IconChevronLeft className="w-4 h-4 text-slate-500 -ml-2 group-hover:text-green-500" />
+          <span className="ml-1">{t('invite.backHome')}</span>
+        </Link>
+      }
+    >
       <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
         {invitation ? (
           <div className="space-y-6 text-center">

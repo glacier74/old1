@@ -30,6 +30,7 @@
     "dayjs": "^1.11.6",
     "dotenv": "^16.0.3",
     "fast-equals": "^4.0.3",
+    "html-react-parser": "^3.0.8",
     "i18next": "^22.0.6",
     "js-cookie": "^3.0.1",
     "lodash": "^4.17.21",
