@@ -71,14 +71,6 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
     [product?.ownerId, user.id]
   )
 
-  const crispLink = useMemo(() => {
-    return urlBuilder('https://go.crisp.chat/chat/embed/', {
-      website_id: 'd57ec6f7-1ed8-4b02-bd44-add83a2eff72',
-      user_email: user?.email,
-      user_nickname: user?.name
-    })
-  }, [user?.email, user?.name])
-
   function handleCloseSidebar() {
     //
   }
@@ -173,7 +165,7 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
             icon={IconHelp}
             title={t('sidebar.helpCenter')}
           />
-          <ExternalLink href={crispLink} icon={IconMessageDots} title={t('sidebar.chatWithUs')} />
+          <ExternalLink href="https://discord.gg/ZCwzSnnkDZ" icon={IconMessageDots} title={t('sidebar.joinCommunity')} />
           <ExternalLink
             href="mailto:support@earlybird.im"
             icon={IconMail}
