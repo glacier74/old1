@@ -165,7 +165,11 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
             icon={IconHelp}
             title={t('sidebar.helpCenter')}
           />
-          <ExternalLink href="https://discord.gg/ZCwzSnnkDZ" icon={IconMessageDots} title={t('sidebar.joinCommunity')} />
+          <ExternalLink
+            href="https://vue.mx/discord"
+            icon={IconMessageDots}
+            title={t('sidebar.joinCommunity')}
+          />
           <ExternalLink
             href="mailto:support@earlybird.im"
             icon={IconMail}
