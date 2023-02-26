@@ -1,4 +1,4 @@
-@import "@heyforms/ui/style.css";
+@import "../../node_modules/@heyforms/ui/style.css";
 
 @tailwind base;
 @tailwind components;
@@ -106,7 +106,7 @@ body {
   path,
   polyline,
   circle,
-  line,rect {
+  line, rect {
     vector-effect: non-scaling-stroke;
   }
 }
@@ -329,7 +329,7 @@ button.switch-checked {
     @apply opacity-0;
   }
 
-  .sidebar-wrapper  {
+  .sidebar-wrapper {
     @apply -translate-x-full;
   }
 }
@@ -356,7 +356,7 @@ button.switch-checked {
     @apply opacity-0;
   }
 
-  .sidebar-wrapper  {
+  .sidebar-wrapper {
     @apply translate-x-full;
   }
 }
@@ -564,18 +564,6 @@ button.switch-checked {
   @apply flex-1;
   font-family: var(--earlybird-font-family);
   background: var(--earlybird-background);
-}
-
-.block-root {
-  @apply border-2 border-dashed border-transparent;
-
-  &.block-root-selected {
-    @apply border-green-400;
-  }
-
-  .block-root {
-    @apply border-0 border-none;
-  }
 }
 
 .rich-text {
@@ -937,7 +925,7 @@ button.block-header-button {
 }
 
 .block-feature-content {
-  @apply  leading-4;
+  @apply leading-4;
   color: var(--earlybird-text-light);
 }
 
@@ -1447,5 +1435,289 @@ button.block-header-button {
 
   .modal-body {
     padding: 0;
+  }
+}
+
+// --------------------------------------------------------------------------------------------------------------------
+// Builder
+.frame-content {
+  @apply relative;
+}
+
+.icon-picker,
+.emoji-picker,
+.svg-icon-picker {
+  @apply w-[22rem];
+}
+
+.icon-picker {
+  @apply mb-3;
+
+  .tabs-nav {
+    @apply ml-3 py-2 #{!important};
+  }
+}
+
+.svg-icon-picker,
+.emoji-picker em-emoji-picker,
+.file-uploader {
+  --shadow: none;
+  height: 50vh;
+  min-height: 400px;
+  max-height: 800px;
+}
+
+.file-uploader {
+  @apply p-3;
+}
+
+.svg-icon-picker {
+  @apply flex flex-col pt-3;
+
+  .input-search {
+    @apply border-none shadow-none py-[0.58rem] bg-black/5 rounded-[10px];
+
+    &.input-focused {
+      @apply bg-white;
+    }
+
+    .input-leading {
+      @apply pr-1;
+
+      svg {
+        @apply w-4 h-4 text-gray-700;
+      }
+    }
+
+    input {
+      @apply text-gray-900;
+    }
+  }
+
+  .switch-group {
+    @apply ml-2 bg-black/5;
+
+    button.switch-button {
+      @apply px-2 py-1;
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.builder-main {
+  @apply flex flex-1;
+  height: calc(100vh - 3.5rem);
+}
+
+.builder-editor {
+  @apply flex-1;
+
+  iframe {
+    @apply bg-white;
+  }
+}
+
+.builder-editor-mobile {
+  @apply py-12 bg-gray-100;
+
+  iframe {
+    @apply mx-auto w-[375px] shadow-md;
+  }
+}
+
+.block-root {
+  @apply relative;
+
+  &:after {
+    content: attr(data-block-type);
+    @apply absolute top-0 left-0 px-1 py-0.5 text-xs text-[#10b981] uppercase hidden;
+  }
+
+  &:hover {
+    .earlybird-block-v2 {
+      box-shadow: inset 0 0 0 2px #10b981;
+    }
+
+    &:after {
+      @apply block;
+    }
+  }
+}
+
+.block-root-selected {
+  .earlybird-block-v2 {
+    box-shadow: inset 0 0 0 2px #10b981;
+  }
+
+  &:after {
+    @apply block text-white bg-[#10b981];
+  }
+}
+
+.plain-text-editor {
+  @apply outline-none;
+}
+
+.builder-setting-image-preview {
+  @apply w-[3.05rem] h-[3.05rem] bg-white border border-gray-200 rounded;
+
+  img {
+    @apply object-contain;
+    height: inherit;
+  }
+}
+
+.builder-setting {
+  @apply border-b border-gray-100;
+}
+
+.builder-setting-text-title {
+  @apply mb-1 text-sm text-gray-700;
+}
+
+.rich-text-editor {
+  .ProseMirror {
+    @apply min-h-[4.75rem] px-3 py-2 sm:text-sm rounded-md bg-white border border-gray-300 shadow-sm cursor-text;
+
+    &.ProseMirror-focused {
+      @apply outline-none ring-1 ring-green-600 border-green-600;
+    }
+
+    a {
+      @apply text-green-700;
+    }
+  }
+}
+
+.editor__menu-wrapper,
+.editor__color-menu {
+  @apply px-2 py-1.5 sm:text-sm rounded-md bg-white border border-gray-300 shadow-lg;
+}
+
+.editor__bubble-menu {
+  @apply flex items-center space-x-2.5;
+
+  & > button {
+    @apply p-0.5 rounded-md text-gray-700 select-none hover:bg-gray-100;
+
+    svg,
+    span {
+      @apply w-[1.125rem] h-[1.125rem];
+    }
+
+    span {
+      @apply block text-base;
+      line-height: 1.125rem;
+    }
+
+    &.is-active {
+      @apply text-green-700 bg-green-100 hover:bg-green-100;
+    }
+  }
+}
+
+.editor__link-menu {
+  @apply flex items-center space-x-1;
+
+  .input {
+    @apply flex-1 border-none bg-gray-100 p-0.5;
+  }
+
+  .button {
+    @apply px-1 py-0.5;
+  }
+}
+
+.editor__color-menu {
+  @apply px-3 py-3 space-y-3;
+}
+
+.editor__text-color-item,
+.editor__background-color-item {
+  @apply border-2 border-transparent p-px rounded-md;
+
+  span {
+    @apply flex items-center justify-center w-5 h-5 rounded-md;
+  }
+
+  &.is-active {
+    @apply border-green-500;
+  }
+}
+
+.editor__text-color-item {
+  span {
+    @apply border;
+  }
+}
+
+.editor__background-color-transparent {
+  @apply relative;
+
+  span {
+    @apply border border-gray-200;
+  }
+
+  &:after {
+    content: "";
+    @apply absolute w-px h-[44px] top-[4px] left-[20px] bg-gray-700;
+    transform: rotate(45deg) scale(.5);
+    transform-origin: -1px -2px;
+  }
+}
+
+.color-picker-v2 {
+  @apply flex items-center px-1 py-0.5 w-[7.5rem] h-[1.875rem] bg-gray-200 rounded-md cursor-pointer;
+}
+
+.color-picker__background {
+  @apply flex items-center justify-center w-5 h-5 bg-white rounded-md cursor-pointer;
+   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.color-picker__value {
+  @apply ml-2 text-sm text-gray-800 truncate;
+}
+
+.sidebar-blocks {
+  @apply fixed top-[3.5rem] left-9 w-[18rem] py-4 bg-white border-r border-gray-200;
+  height: calc(100vh - 3.5rem);
+}
+
+.block-item {
+  @apply flex items-center p-1.5 pl-2 rounded-md cursor-pointer select-none hover:bg-gray-50;
+
+  &:hover {
+    .block-item-menu {
+      @apply opacity-100;
+    }
+  }
+}
+
+.block-item-menu {
+  @apply flex items-center w-6 h-6 opacity-0;
+}
+
+.block-item-menu-open {
+  @apply opacity-100;
+}
+
+.block-item-selected {
+  @apply bg-gray-100 hover:bg-gray-100;
+
+  .block-item-menu {
+    @apply opacity-100;
+  }
+}
+
+.add-block-modal {
+  @apply max-w-6xl;
+
+  .modal-body {
+    @apply p-0;
   }
 }

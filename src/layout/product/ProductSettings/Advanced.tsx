@@ -2,7 +2,7 @@ import { Form, Input } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { FC } from 'react'
 
-import { Expandable, SwitchField } from '~/components'
+import { SwitchField } from '~/components'
 import { PLAN_LEVELS } from '~/constants'
 import { PlanBadge, PlanCheck } from '~/layout/product/PlanCheck'
 
@@ -55,22 +55,6 @@ export const Advanced: FC<{ values: any }> = ({ values }) => {
             </Form.Item>
           </PlanCheck>
         </div>
-
-        <PlanCheck className="cursor-pointer" minimalLevel={PLAN_LEVELS.plan_shipper}>
-          <Expandable
-            title={
-              <>
-                <span>Code injection</span>
-                <PlanBadge className="ml-2" minimalLevel={PLAN_LEVELS.plan_shipper} />
-              </>
-            }
-            description="EarlyBird allows you to inject code into the bottom of your landing page. This allows for quick modifications to insert useful things like tracking codes and meta tags."
-          >
-            <Form.Item className="mb-0" name="customCode">
-              <Input.Textarea className="w-full !max-w-full" rows={8} />
-            </Form.Item>
-          </Expandable>
-        </PlanCheck>
       </div>
     </div>
   )

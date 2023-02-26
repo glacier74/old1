@@ -10,12 +10,26 @@ export const IconFeature = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="M19.5 4h-15C3.12 4 2 4.895 2 6v12c0 1.105 1.12 2 2.5 2h15c1.38 0 2.5-.895 2.5-2V6c0-1.105-1.12-2-2.5-2zM14 10h4M14 14h4"
+      d="M18.75 4H5.25C4.00736 4 3 4.89543 3 6V18C3 19.1046 4.00736 20 5.25 20H18.75C19.9926 20 21 19.1046 21 18V6C21 4.89543 19.9926 4 18.75 4Z"
       stroke="currentColor"
-      strokeWidth={2}
+      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <rect x={5} y={9} width={6} height={6} rx={2} fill="currentColor" />
+    <path
+      d="M13.5 10H17.5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M13.5 14H17.5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <rect x="5.5" y="8" width="5.5" height="8" rx="1" fill="currentColor" />
   </svg>
 )

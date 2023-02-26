@@ -1,0 +1,301 @@
+// --------------------------------------------------------------------------------------------------------------------
+// Header
+.earlybird-block-header1 {
+  .header__container {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .header__wrapper {
+    @apply px-6 lg:px-8 py-6;
+
+    &.header__wrapper-open {
+      @apply fixed inset-0 justify-start;
+    }
+  }
+
+  .header__nav {
+    @apply relative flex items-center justify-between w-full text-base font-medium;
+
+    a {
+      @apply hover:opacity-80;
+    }
+  }
+
+  .header__nav-menu {
+    @apply block lg:hidden;
+
+    button {
+      @apply -m-2.5 inline-flex items-center justify-center rounded-md p-2.5;
+    }
+
+    .earlybird-icon {
+      @apply h-6 w-6;
+    }
+  }
+
+  .header__logo {
+    &,
+    img {
+      @apply h-[2rem] md:h-[2.25rem];
+    }
+
+    img {
+      @apply w-auto hover:opacity-80;
+    }
+  }
+
+  .header__nav-left {
+    @apply w-full flex items-center justify-between md:w-auto md:justify-start;
+  }
+
+  .header__nav-right {
+    @apply hidden md:flex md:flex-row md:items-center md:ml-8 space-x-8;
+  }
+
+  .header__navigation {
+    @apply flex items-center md:space-x-8;
+  }
+
+  .header__cta {
+    @apply flex items-center md:space-x-5;
+
+    a {
+      @apply flex items-center py-1.5 pl-3 pr-4 rounded-full font-medium;
+    }
+
+    .earlybird-icon {
+      @apply mr-2;
+
+      svg {
+        @apply w-5 h-5;
+      }
+    }
+  }
+
+  .header__container-open {
+    @apply fixed inset-0 max-w-full z-10 bg-white/90 backdrop-blur-lg;
+
+    .header__wrapper {
+      @apply w-full h-full;
+    }
+
+    .header__nav {
+      @apply flex-col items-start justify-start;
+    }
+
+    .header__nav-right {
+      @apply w-full flex flex-col divide-y divide-gray-500/10;
+    }
+
+    .header__navigation,
+    .header__cta {
+      @apply flex-col items-start space-y-2 py-6;
+
+      a {
+        @apply text-base font-semibold leading-7;
+      }
+    }
+
+    .header__navigation {
+      a {
+        @apply py-2;
+      }
+    }
+
+    .header__cta {
+      @apply ml-0 #{!important};
+    }
+  }
+}
+
+// --------------------------------------------------------------------------------------------------------------------
+// Hero
+.hero__container {
+}
+
+.hero__wrapper {
+  @apply mx-auto max-w-7xl px-6 py-20 md:py-28 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-32;
+}
+
+.hero__left {
+  @apply mx-auto max-w-2xl lg:mx-0 lg:flex-auto;
+}
+
+.hero__announcement-wrapper {
+  @apply mb-10;
+}
+
+.hero__announcement {
+  @apply relative block rounded-full py-1.5 px-3 text-sm leading-6 border;
+
+  &,
+  p {
+    @apply md:inline;
+  }
+}
+
+.hero__title {
+  @apply max-w-xl text-4xl font-bold tracking-tight sm:text-6xl;
+}
+
+.hero__subtitle {
+  @apply mt-6 text-lg leading-8;
+}
+
+.hero__cta {
+  @apply mt-10;
+}
+
+.hero__cta-buttons {
+  @apply flex items-center space-x-1;
+
+  .earlybird-link {
+    @apply py-2.5 px-4 rounded-md font-medium;
+
+    svg {
+      @apply mr-2 w-5 h-5;
+    }
+  }
+}
+
+.hero__cta-bottom-text {
+  @apply mt-4 text-sm text-gray-500;
+}
+
+.hero__right {
+  @apply mt-16 sm:mt-24 lg:mt-0 lg:flex-shrink-0 lg:flex-grow;
+
+  img {
+    @apply mx-auto max-w-full;
+  }
+}
+
+// --------------------------------------------------------------------------------------------------------------------
+// Feature
+.feature__container {
+  @apply py-24 sm:py-32;
+}
+
+.feature__wrapper {
+  @apply mx-auto max-w-7xl px-6 lg:px-8 text-center;
+}
+
+.feature__header {
+  @apply mx-auto max-w-2xl lg:text-center;
+}
+
+.feature__caption {
+  @apply text-lg font-semibold leading-8 tracking-tight text-blue-600;
+}
+
+.feature__title {
+  @apply text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl;
+}
+
+.feature__subtitle {
+  @apply mt-3 text-lg leading-8 text-gray-600;
+}
+
+.feature__list {
+  @apply mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none;
+}
+
+.feature__list-wrapper {
+  @apply grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3;
+}
+
+.feature__item-icon {
+  @apply mx-auto mb-6 flex h-14 w-14 text-[2rem] items-center justify-center rounded-lg bg-gray-100;
+
+  .icon {
+    @apply w-9 h-9 text-gray-800;
+  }
+}
+
+.feature__item-title {
+  @apply text-base font-semibold leading-7 text-gray-900;
+}
+
+.feature__item-subtitle {
+  @apply mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600 md:px-8;
+}
+
+// --------------------------------------------------------------------------------------------------------------------
+// FAQ
+.faq__container {
+  @apply mx-auto max-w-7xl py-16 px-6 sm:py-24 lg:px-8;
+}
+
+.faq__header {
+  @apply mx-auto max-w-2xl text-center;
+}
+
+.faq__title {
+  @apply text-2xl font-bold leading-10 tracking-tight text-gray-900;
+}
+
+.faq__subtitle {
+  @apply mt-4 text-base leading-7 text-gray-600;
+}
+
+.faq__list {
+  @apply mt-20 space-y-16 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-16 sm:space-y-0 lg:grid-cols-3 lg:gap-x-10;
+}
+
+.faq__item-question {
+  @apply text-base font-semibold leading-7 text-gray-900;
+}
+
+.faq__item-answer {
+  @apply mt-2 text-base leading-7 text-gray-600;
+}
+
+// --------------------------------------------------------------------------------------------------------------------
+// Footer
+.footer__container {
+  @apply mx-auto max-w-7xl py-12 px-6 md:flex md:items-center md:justify-between lg:px-8;
+}
+
+.footer__copyright {
+  @apply text-sm;
+}
+
+.footer__left {
+  @apply flex justify-center space-x-3 md:order-2;
+
+  a {
+    svg {
+      @apply h-6 w-6;
+    }
+  }
+}
+
+.footer__right {
+  @apply block sm:flex sm:items-center sm:justify-center md:justify-start mt-8 md:order-1 md:mt-0 text-sm leading-5 text-center sm:text-left;
+}
+
+// --------------------------------------------------------------------------------------------------------------------
+// Email Capture
+.email-capture__container {
+  @apply mx-auto max-w-7xl py-12 px-6 lg:py-16 lg:px-8;
+}
+
+.email-capture__title {
+  @apply inline text-3xl font-bold tracking-tight sm:block sm:text-4xl;
+}
+
+.email-capture__subtitle {
+  @apply inline text-3xl font-bold tracking-tight sm:block sm:text-4xl;
+}
+
+.email-capture__form {
+  @apply mt-8 space-x-0 space-y-3 md:space-x-3 md:space-y-0 sm:flex border-gray-300;
+
+  input {
+    @apply w-full rounded-md border px-5 py-3 sm:max-w-xs;
+  }
+
+  button {
+    @apply w-full md:w-auto rounded-md border px-5 py-3 text-base text-center font-medium;
+  }
+}

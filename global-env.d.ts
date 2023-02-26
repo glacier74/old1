@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import { CSSProperties, FC, ReactNode } from 'react'
 
 export {}
 
@@ -544,5 +544,24 @@ declare global {
     shortName: string
     createdAt: Date
     updatedAt: Date
+  }
+
+  type BlockStyle = Pick<CSSProperties, 'background' | 'paddingTop' | 'paddingBottom'>
+
+  interface BlockData<T extends object> {
+    id: string
+    type:
+      | 'header'
+      | 'hero'
+      | 'feature'
+      | 'cta'
+      | 'email_capture'
+      | 'testimonial'
+      | 'faq'
+      | 'pricing_table'
+      | 'footer'
+    componentId: string
+    setting: T
+    style?: BlockStyle
   }
 }

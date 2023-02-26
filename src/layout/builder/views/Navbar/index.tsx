@@ -115,7 +115,7 @@ export const Navbar: FC = () => {
       }
 
       setTimeout(() => {
-        setSteps(steps)
+        //setSteps(steps)
         setCurrentStep(0)
         setIsOpen(true)
         setValue(true)
