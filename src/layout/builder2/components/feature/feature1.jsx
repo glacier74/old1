@@ -94,7 +94,7 @@ const settingSchemas = [
               width: 36,
               height: 36,
               style: {
-                color: '#111827',
+                color: '#2563eb',
                 background: '#f3f4f6'
               }
             },
@@ -140,7 +140,7 @@ const settingSchemas = [
               width: 36,
               height: 36,
               style: {
-                color: '#111827',
+                color: '#2563eb',
                 background: '#f3f4f6'
               }
             },
@@ -163,7 +163,7 @@ const settingSchemas = [
             name: 'Html1',
             title: 'Subtitle',
             default: {
-              html: '\r\n                Show testimonials and ratings to build trust and \r\n                <strong>credibility with potential customers</strong>.\r\n              ',
+              html: '\r\n                Show testimonials and ratings to build trust and credibility with potential\r\n                customers.\r\n              ',
               style: {
                 color: '#4b5563'
               },
@@ -186,7 +186,7 @@ const settingSchemas = [
               width: 36,
               height: 36,
               style: {
-                color: '#111827',
+                color: '#2563eb',
                 background: '#f3f4f6'
               }
             },
@@ -232,7 +232,7 @@ const settingSchemas = [
               width: 36,
               height: 36,
               style: {
-                color: '#111827',
+                color: '#2563eb',
                 background: '#f3f4f6'
               }
             },
@@ -278,7 +278,7 @@ const settingSchemas = [
               width: 36,
               height: 36,
               style: {
-                color: '#111827',
+                color: '#2563eb',
                 background: '#f3f4f6'
               }
             },
@@ -324,7 +324,7 @@ const settingSchemas = [
               width: 36,
               height: 36,
               style: {
-                color: '#111827',
+                color: '#2563eb',
                 background: '#f3f4f6'
               }
             },

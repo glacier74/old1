@@ -558,7 +558,7 @@ declare global {
       | 'email_capture'
       | 'testimonial'
       | 'faq'
-      | 'pricing_table'
+      | 'payment'
       | 'footer'
     componentId: string
     setting: T

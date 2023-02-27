@@ -232,7 +232,7 @@ const settingSchemas = [
           appearance: 'filled',
           style: {
             color: '#1a91ff',
-            background: 'rgba(26,145,255,0.1)'
+            background: '#eff6ff'
           },
           type: 'link'
         },

@@ -75,7 +75,7 @@ export const Editor: FC = () => {
       {isMounted && (
         <Frame
           className="w-full h-full"
-          initialContent="<!DOCTYPE html><html><head></head><body><div></div></body></html>"
+          initialContent="<!DOCTYPE html><html><head></head><body class='scrollbar'><div></div></body></html>"
         >
           <FrameScript styles={styles} />
           {state.blockDatalist.map((data: any) => (

@@ -146,7 +146,7 @@ const settingSchemas = [
       },
       {
         name: 'Text1',
-        title: 'Bottom Text',
+        title: 'Bottom text',
         default: {
           html: 'No coding skills required',
           style: {
@@ -160,7 +160,7 @@ const settingSchemas = [
   },
   {
     name: 'Image1',
-    title: 'Right Side Image',
+    title: 'Right side image',
     default: {
       src: 'https://storage.earlybird.im/example/3d2.png',
       alt: 'EarlyBird',

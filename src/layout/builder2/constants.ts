@@ -20,8 +20,8 @@ export const BLOCKS = [
     label: 'Testimonials'
   },
   {
-    type: 'pricing_table',
-    label: 'Pricing table'
+    type: 'payment',
+    label: 'Payment'
   },
   {
     type: 'faq',

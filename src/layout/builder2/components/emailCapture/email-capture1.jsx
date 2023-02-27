@@ -3,10 +3,16 @@ import { $EmailCapture as EmailCapture, $H2 as H2, $Html as Html } from '@earlyb
 const render = function ({ data }) {
   return (
     <div className="email-capture__container">
-      <H2 className="email-capture__title" {...data.setting.H21} />
-      <Html as="p" className="email-capture__subtitle" {...data.setting.Html1} />
+      <div className="email-capture__wrapper">
+        <div className="email-capture__left">
+          <H2 className="email-capture__title" {...data.setting.H21} />
+          <Html as="p" className="email-capture__subtitle" {...data.setting.Html1} />
+        </div>
 
-      <EmailCapture className="email-capture__form" {...data.setting.EmailCapture1} />
+        <div className="email-capture__right">
+          <EmailCapture className="email-capture__form" {...data.setting.EmailCapture1} />
+        </div>
+      </div>
     </div>
   )
 }
@@ -17,9 +23,9 @@ const settingSchemas = [
     title: 'Title',
     default: {
       as: 'h2',
-      html: '\r\n        Want product news and updates?\r\n      ',
+      html: '\r\n            Join the newsletter!\r\n          ',
       style: {
-        color: '#111827'
+        color: '#fff'
       },
       type: 'html'
     },
@@ -30,9 +36,9 @@ const settingSchemas = [
     title: 'Subtitle',
     default: {
       as: 'p',
-      html: '\r\n        Sign up for our newsletter.\r\n      ',
+      html: '\r\n            Subscribe now for hand-pickerd holiday deals, inspiration and the latest tips, straight\r\n            to your inbox.\r\n          ',
       style: {
-        color: '#2563eb'
+        color: '#bfdbfe'
       },
       type: 'html'
     },
@@ -40,7 +46,7 @@ const settingSchemas = [
   },
   {
     name: 'EmailCapture1',
-    title: 'Email Capture',
+    title: 'Email capture',
     default: {
       email: {
         style: {
@@ -50,7 +56,7 @@ const settingSchemas = [
         }
       },
       button: {
-        text: 'Notify me',
+        text: 'Subscribe',
         style: {
           color: '#fff',
           background: '#2563eb'

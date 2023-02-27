@@ -43,6 +43,24 @@ const BLOCKS = [
     ]
   },
   {
+    title: 'Payment',
+    type: 'payment',
+    components: [
+      {
+        componentId: 'payment1'
+      }
+    ]
+  },
+  {
+    title: 'FAQ',
+    type: 'faq',
+    components: [
+      {
+        componentId: 'faq1'
+      }
+    ]
+  },
+  {
     title: 'Footer',
     type: 'footer',
     components: [

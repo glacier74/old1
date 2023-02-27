@@ -21,7 +21,7 @@ const render = function ({ data }) {
 const settingSchemas = [
   {
     name: 'List1',
-    title: 'Social Networks',
+    title: 'Social networks',
     propertyName: 'List1',
     type: 'schema_list',
     children: [

@@ -1,10 +1,8 @@
 import { $Image } from '@earlybirdim/blocks'
 import { Icon } from '@earlybirdim/icons'
 import { Button, Dropdown } from '@heyforms/ui'
-import { isValid } from '@nily/utils'
 import { FC } from 'react'
 
-import { StylePicker } from '~/components'
 import { IconPicker } from '~/components/IconPicker'
 import { useBlockSetting } from '~/layout/builder2/context'
 
@@ -35,10 +33,6 @@ const IconPreview: FC<any> = ({ type, src, alt, name, text }) => {
 export const IconSettingField: FC<SettingFieldProps> = ({ schema }) => {
   const { setting, updateSetting } = useBlockSetting<any>(schema.name)
 
-  function handleAltChange(alt: any) {
-    updateSetting(alt, 'alt')
-  }
-
   function handleIconChange(type: string, value: string) {
     updateSetting(type, 'type')
 
@@ -63,40 +57,22 @@ export const IconSettingField: FC<SettingFieldProps> = ({ schema }) => {
     updateSetting(undefined, 'text')
   }
 
-  function handleStyleChange(property: string, value: string) {
-    updateSetting(value, `style.${property}`)
-  }
-
   return (
-    <div className="builder-setting-icon space-y-1">
-      <div>
-        <div className="pt-2 text-sm text-gray-700 font-medium select-none">Icon</div>
-        <div className="flex items-center">
-          <div className="builder-setting-image-preview">
-            <IconPreview {...(setting as any)} />
-          </div>
+    <div className="builder-setting-icon">
+      <div className="flex items-center">
+        <div className="builder-setting-image-preview">
+          <IconPreview {...(setting as any)} />
+        </div>
 
-          <div className="ml-4 flex items-center space-x-2">
-            <Dropdown placement="left" overlay={<IconPicker onChange={handleIconChange} />}>
-              <Button className="!p-1">Change</Button>
-            </Dropdown>
-            <Button className="!p-1" onClick={handleClear}>
-              Clear
-            </Button>
-          </div>
+        <div className="ml-4 flex items-center space-x-2">
+          <Dropdown placement="left" overlay={<IconPicker onChange={handleIconChange} />}>
+            <Button className="!p-1">Change</Button>
+          </Dropdown>
+          <Button className="!p-1" onClick={handleClear}>
+            Clear
+          </Button>
         </div>
       </div>
-
-      {isValid(setting?.style) && (
-        <div className="flex items-center justify-between">
-          <div className="text-sm">Style</div>
-          <StylePicker
-            properties={Object.keys(setting.style)}
-            value={setting.style}
-            onChange={handleStyleChange}
-          />
-        </div>
-      )}
     </div>
   )
 }

@@ -1,10 +1,6 @@
-import { Input } from '@heyforms/ui'
 import { IconChevronDown, IconChevronUp } from '@tabler/icons'
 import clsx from 'clsx'
 import { FC, useCallback, useMemo, useState } from 'react'
-
-import { ColorPicker } from '~/components/ColorPicker'
-import { useBlockData, useBuilderContext } from '~/layout/builder2/context'
 
 import { SettingField } from './fields'
 
@@ -66,9 +62,6 @@ export const StylesItem: FC<SettingItemProps> = ({
   onSelect,
   ...restProps
 }) => {
-  const blockData = useBlockData()
-  const { dispatch } = useBuilderContext()
-
   const isOpen = useMemo(() => schema.name === selectedName, [schema.name, selectedName])
   const icon = useMemo(
     () =>
@@ -79,42 +72,6 @@ export const StylesItem: FC<SettingItemProps> = ({
       ),
     [isOpen]
   )
-
-  function handlePaddingTopChange(paddingTop: any) {
-    dispatch({
-      type: 'updateBlock',
-      payload: {
-        blockId: blockData!.id,
-        updates: {
-          'style.paddingTop': paddingTop
-        }
-      }
-    })
-  }
-
-  function handlePaddingBottomChange(paddingBottom: any) {
-    dispatch({
-      type: 'updateBlock',
-      payload: {
-        blockId: blockData!.id,
-        updates: {
-          'style.paddingBottom': paddingBottom
-        }
-      }
-    })
-  }
-
-  function handleBackgroundChange(background: string) {
-    dispatch({
-      type: 'updateBlock',
-      payload: {
-        blockId: blockData!.id,
-        updates: {
-          'style.background': background
-        }
-      }
-    })
-  }
 
   function handleClick() {
     onSelect(schema.name)
@@ -129,38 +86,6 @@ export const StylesItem: FC<SettingItemProps> = ({
         <span className="text-sm font-semibold">{schema.title}</span>
         {icon}
       </div>
-
-      {isOpen && (
-        <div className="px-4 py-3 bg-gray-50">
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <div className="text-sm">Background</div>
-              <ColorPicker
-                value={blockData?.style?.background as string}
-                onChange={handleBackgroundChange}
-              />
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="text-sm">Padding Top</div>
-              <Input
-                type="number"
-                className="!px-2.5 !py-1.5 w-20"
-                value={blockData?.style?.paddingTop || 0}
-                onChange={handlePaddingTopChange}
-              />
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="text-sm">Padding Bottom</div>
-              <Input
-                type="number"
-                className="!px-2.5 !py-1.5 w-20"
-                value={blockData?.style?.paddingBottom || 0}
-                onChange={handlePaddingBottomChange}
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   )
 }
@@ -185,15 +110,6 @@ export const Setting: FC<SettingProps> = ({ schemas }) => {
           onSelect={handleSelect}
         />
       ))}
-
-      <StylesItem
-        schema={{
-          name: 'style',
-          title: 'Style'
-        }}
-        selectedName={selectedName}
-        onSelect={handleSelect}
-      />
     </div>
   )
 }

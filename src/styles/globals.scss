@@ -1453,8 +1453,12 @@ button.block-header-button {
 .icon-picker {
   @apply mb-3;
 
+  .tabs-nav-list {
+    @apply px-3 space-x-6;
+  }
+
   .tabs-nav {
-    @apply ml-3 py-2 #{!important};
+    @apply py-2 #{!important};
   }
 }
 
@@ -1720,4 +1724,8 @@ button.block-header-button {
   .modal-body {
     @apply p-0;
   }
+}
+
+.builder-publish {
+  @apply py-1.5 #{!important};
 }

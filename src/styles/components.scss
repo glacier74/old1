@@ -57,15 +57,13 @@
   }
 
   .header__cta {
-    @apply flex items-center md:space-x-5;
+    @apply flex items-center md:space-x-3;
 
     a {
-      @apply flex items-center py-1.5 pl-3 pr-4 rounded-full font-medium;
+      @apply flex items-center pl-3 pr-4 py-1.5 space-x-2 rounded-full font-medium;
     }
 
     .earlybird-icon {
-      @apply mr-2;
-
       svg {
         @apply w-5 h-5;
       }
@@ -222,32 +220,64 @@
 
 // --------------------------------------------------------------------------------------------------------------------
 // FAQ
-.faq__container {
-  @apply mx-auto max-w-7xl py-16 px-6 sm:py-24 lg:px-8;
-}
+.earlybird-block-faq1 {
+  .faq__container {
+    @apply mx-auto max-w-7xl py-16 px-6 sm:py-24 lg:px-8;
+  }
 
-.faq__header {
-  @apply mx-auto max-w-2xl text-center;
-}
+  .faq__wrapper {
+    @apply mx-auto max-w-4xl;
+  }
 
-.faq__title {
-  @apply text-2xl font-bold leading-10 tracking-tight text-gray-900;
-}
+  .faq__title {
+    @apply text-2xl font-bold leading-10 tracking-tight text-gray-900;
+  }
 
-.faq__subtitle {
-  @apply mt-4 text-base leading-7 text-gray-600;
-}
+  .faq__subtitle {
+    @apply mt-2 text-base leading-7 text-gray-600;
+  }
 
-.faq__list {
-  @apply mt-20 space-y-16 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-16 sm:space-y-0 lg:grid-cols-3 lg:gap-x-10;
-}
+  .faq__list {
+    @apply mt-4 divide-y divide-gray-900/10;
+  }
 
-.faq__item-question {
-  @apply text-base font-semibold leading-7 text-gray-900;
-}
+  .faq__item {
+    &:hover {
+      .faq__item-icon {
+        @apply text-gray-900;
+      }
+    }
+  }
 
-.faq__item-answer {
-  @apply mt-2 text-base leading-7 text-gray-600;
+  .faq__item-header {
+    @apply py-6 flex w-full items-center justify-between text-left text-gray-900 cursor-pointer;
+  }
+
+  .faq__item-question {
+    @apply text-base font-semibold leading-7;
+  }
+
+  .faq__item-icon {
+    @apply ml-6 flex items-center text-gray-500;
+
+    svg {
+      @apply w-6 h-6;
+    }
+  }
+
+  .faq__item-answer {
+    @apply hidden pb-6 text-base leading-7 text-gray-600;
+  }
+
+  .faq__item-open {
+    .faq__item-header {
+      @apply pb-2;
+    }
+
+    .faq__item-answer {
+      @apply block;
+    }
+  }
 }
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -297,5 +327,102 @@
 
   button {
     @apply w-full md:w-auto rounded-md border px-5 py-3 text-base text-center font-medium;
+  }
+}
+
+// --------------------------------------------------------------------------------------------------------------------
+// Payment
+.earlybird-block-payment1 {
+  .payment__container {
+    @apply py-24 sm:py-32;
+  }
+
+  .payment__wrapper {
+    @apply mx-auto max-w-7xl px-6 lg:px-8 text-center;
+  }
+
+  .payment__header {
+    @apply mx-auto max-w-2xl lg:text-center;
+  }
+
+  .payment__caption {
+    @apply text-lg font-semibold leading-8 tracking-tight text-blue-600;
+  }
+
+  .payment__title {
+    @apply text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl;
+  }
+
+  .payment__subtitle {
+    @apply mt-3 text-lg leading-8 text-gray-600;
+  }
+
+  .payment__interval-switcher {
+    @apply mt-8 flex justify-center;
+  }
+
+  .payment__interval-monthly,
+  .payment__interval-yearly {
+    @apply border border-gray-300 py-2 px-3.5 text-sm text-gray-700 outline-2 outline-offset-2 hover:border-gray-400;
+  }
+
+  .payment__interval-monthly {
+    @apply rounded-l-lg border-r-blue-700;
+  }
+
+  .payment__interval-yearly {
+    @apply rounded-r-lg border-l-0;
+  }
+
+  .payment__active {
+    @apply text-white bg-blue-700 border-blue-700;
+  }
+
+  .payment__plans {
+    @apply mx-auto mt-14 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none;
+  }
+
+  .payment__plans-wrapper {
+    @apply grid md:max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3;
+  }
+
+  .payment__plan {
+    @apply p-6 border border-gray-200 rounded-3xl p-6 bg-white text-left;
+  }
+
+  .payment__plan-name {
+    @apply text-xl leading-6 font-bold text-gray-900;
+  }
+
+  .payment__plan-description {
+    @apply mt-2 text-base text-gray-700 leading-tight;
+  }
+
+  .payment__plan-price {
+    @apply mt-8;
+
+    span {
+      @apply text-4xl font-bold text-gray-900;
+    }
+
+    .payment__plan-interval {
+      @apply pl-1 text-base font-medium text-gray-500;
+    }
+  }
+
+  .payment__payment-button {
+    @apply mt-6 block w-full bg-gray-900 rounded-md py-2 text-sm font-semibold text-white text-center;
+  }
+
+  .payment__features {
+    @apply mt-6 space-y-3;
+
+    li {
+      @apply flex items-center;
+
+      svg {
+        @apply mr-2 w-5 h-5 text-blue-700;
+      }
+    }
   }
 }

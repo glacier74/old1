@@ -1,14 +1,14 @@
 import { FC } from 'react'
 
-import { EmailCaptureSettingField } from '~/layout/builder2/rightSidebar/fields/EmailCaptureSettingField'
-
 import { ButtonSettingField } from './ButtonSettingField'
+import { EmailCaptureSettingField } from './EmailCaptureSettingField'
 import { GroupSettingField } from './GroupSettingField'
 import { HtmlSettingField } from './HtmlSettingField'
 import { IconSettingField } from './IconSettingField'
 import { ImageSettingField } from './ImageSettingField'
 import { LinkSettingField } from './LinkSettingField'
 import { ListSettingField } from './ListSettingField'
+import { PaymentSettingField } from './PaymentSettingField'
 import { TextSettingField } from './TextSettingField'
 
 export interface SettingFieldProps {
@@ -47,6 +47,9 @@ export const SettingField: FC<SettingFieldProps> = ({ schema }) => {
 
     case 'schema_email_capture':
       return <EmailCaptureSettingField schema={schema} />
+
+    case 'schema_payment':
+      return <PaymentSettingField schema={schema} />
 
     default:
       return null

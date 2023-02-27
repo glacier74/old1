@@ -29,7 +29,7 @@ export interface UpdateStateAction {
 export interface SelectBlockAction {
   type: 'selectBlock'
   payload: {
-    blockId: string
+    blockId?: string
   }
 }
 
