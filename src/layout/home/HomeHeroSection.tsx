@@ -37,11 +37,10 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
               <span className="relative">landing pages</span>
             </span>{' '}
             that <br />
-            convert ideas into customers
+            transform ideas into customers
           </h1>
           <div className="max-w-2xl mx-auto text-slate-700 text-lg md:text-xl mt-8 font-medium">
-            Effortlessly create, pitch, and validate your early-stage business with our no-code
-            landing page builder.
+          Your ideas could be worth millions if validated, and you don't need any technical knowledge to get started!
           </div>
         </div>
 
@@ -49,7 +48,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
           <div className="flex justify-center flex-col md:flex-row items-center space-y-5 space-x-0 md:space-y-0 md:space-x-5">
             <Link
               href="/sign-up"
-              className="w-auto px-4 py-3 md:px-6 md:py-3 text-base text-center font-medium bg-slate-900 rounded-md text-white shadow-lg"
+              className="w-auto px-4 py-3 md:px-6 md:py-3 text-lg text-center font-bold bg-slate-900 rounded-md text-white"
               title={t('home.signUp')}
             >
               Sign up today, it's FREE!
