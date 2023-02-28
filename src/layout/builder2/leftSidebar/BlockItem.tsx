@@ -1,5 +1,5 @@
 import { Button, Dropdown, Menus, stopPropagation } from '@heyforms/ui'
-import { IconDotsVertical } from '@tabler/icons'
+import { IconCreditCard, IconDotsVertical } from '@tabler/icons'
 import clsx from 'clsx'
 import { FC, useMemo, useState } from 'react'
 
@@ -40,6 +40,9 @@ const Icon: FC<BlockTypeProps> = ({ type, ...restProps }) => {
 
     case 'testimonial':
       return <IconTestimonial {...restProps} />
+
+    case 'payment':
+      return <IconCreditCard {...restProps} />
 
     case 'faq':
       return <IconFaq {...restProps} />
@@ -83,10 +86,13 @@ export const BlockItem: FC<BlockItemProps> = ({ className, block, selectedId, ..
 
   function handleMenuClick(name?: any) {
     switch (name) {
-      case 'duplicate':
-        break
-
       case 'delete':
+        dispatch({
+          type: 'deleteBlock',
+          payload: {
+            blockId: block.id
+          }
+        })
         break
     }
   }
@@ -105,7 +111,6 @@ export const BlockItem: FC<BlockItemProps> = ({ className, block, selectedId, ..
   const DropdownOverlay = useMemo(
     () => (
       <Menus className="text-sm" onClick={handleMenuClick}>
-        <Menus.Item value="duplicate" label="Duplicate" />
         <Menus.Item value="delete" className="text-red-700" label="Delete" />
       </Menus>
     ),

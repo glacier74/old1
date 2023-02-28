@@ -85,6 +85,72 @@ body {
   }
 }
 
+.iframe-scrollbar {
+  overflow-y: auto;
+  overflow-y: overlay;
+  scrollbar-gutter: stable;
+
+  &::-webkit-scrollbar {
+    height: 12px;
+    width: 12px
+  }
+
+  &::-webkit-scrollbar-thumb:vertical {
+    background-color: transparent;
+    border-radius: 6px
+  }
+
+  &:hover::-webkit-scrollbar-thumb:vertical {
+    border: 3px solid transparent;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-clip: content-box;
+  }
+
+  &::-webkit-scrollbar-button:vertical {
+    display: block
+  }
+
+  &::-webkit-scrollbar-button:start:decrement {
+    display: block
+  }
+
+  &::-webkit-scrollbar-button:end:increment {
+    display: block
+  }
+
+  &::-webkit-scrollbar-button:vertical:start:increment {
+    display: none
+  }
+
+  &::-webkit-scrollbar-button:vertical:end:decrement {
+    display: none
+  }
+
+  &::-webkit-scrollbar-button:vertical:increment {
+    display: none
+  }
+
+  &::-webkit-scrollbar-button:vertical:decrement {
+    display: none
+  }
+
+  &::-webkit-scrollbar-track:vertical {
+    display: none
+  }
+
+  &::-webkit-scrollbar-track-piece {
+    background-color: transparent
+  }
+
+  &::-webkit-scrollbar-corner:vertical {
+    background-color: transparent
+  }
+
+  &::-webkit-scrollbar-resizer:vertical {
+    background-color: transparent
+  }
+}
+
 @keyframes skeleton {
   from {
     background-position: 100% 50%
@@ -1687,7 +1753,7 @@ button.block-header-button {
   @apply ml-2 text-sm text-gray-800 truncate;
 }
 
-.sidebar-blocks {
+.sidebar-container {
   @apply fixed top-[3.5rem] left-9 w-[18rem] py-4 bg-white border-r border-gray-200;
   height: calc(100vh - 3.5rem);
 }

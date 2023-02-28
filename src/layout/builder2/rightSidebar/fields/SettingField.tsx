@@ -9,6 +9,7 @@ import { ImageSettingField } from './ImageSettingField'
 import { LinkSettingField } from './LinkSettingField'
 import { ListSettingField } from './ListSettingField'
 import { PaymentSettingField } from './PaymentSettingField'
+import { TestimonialSettingField } from './TestimonialSettingField'
 import { TextSettingField } from './TextSettingField'
 
 export interface SettingFieldProps {
@@ -50,6 +51,9 @@ export const SettingField: FC<SettingFieldProps> = ({ schema }) => {
 
     case 'schema_payment':
       return <PaymentSettingField schema={schema} />
+
+    case 'schema_testimonial':
+      return <TestimonialSettingField schema={schema} />
 
     default:
       return null

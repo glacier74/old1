@@ -306,27 +306,45 @@
 
 // --------------------------------------------------------------------------------------------------------------------
 // Email Capture
-.email-capture__container {
-  @apply mx-auto max-w-7xl py-12 px-6 lg:py-16 lg:px-8;
-}
-
-.email-capture__title {
-  @apply inline text-3xl font-bold tracking-tight sm:block sm:text-4xl;
-}
-
-.email-capture__subtitle {
-  @apply inline text-3xl font-bold tracking-tight sm:block sm:text-4xl;
-}
-
-.email-capture__form {
-  @apply mt-8 space-x-0 space-y-3 md:space-x-3 md:space-y-0 sm:flex border-gray-300;
-
-  input {
-    @apply w-full rounded-md border px-5 py-3 sm:max-w-xs;
+.earlybird-block-email_capture1 {
+  .email-capture__container {
+    @apply mx-auto max-w-7xl py-12 px-6 lg:py-16 lg:px-8;
   }
 
-  button {
-    @apply w-full md:w-auto rounded-md border px-5 py-3 text-base text-center font-medium;
+  .email-capture__wrapper {
+    @apply rounded-lg bg-blue-700 px-6 py-6 md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center;
+  }
+
+  .email-capture__left {
+    @apply w-full lg:w-auto lg:flex-1;
+  }
+
+  .email-capture__title {
+    @apply text-2xl font-bold tracking-tight text-white sm:text-3xl;
+  }
+
+  .email-capture__subtitle {
+    @apply mt-3 max-w-3xl text-lg leading-6 text-blue-200;
+  }
+
+  .email-capture__right {
+    @apply mt-8 xl:mt-0 xl:ml-8;
+  }
+
+  .email-capture__form {
+    @apply space-x-0 space-y-3 sm:space-x-3 sm:space-y-0 sm:flex border-gray-300;
+
+    input {
+      @apply w-full sm:w-auto rounded-md border px-5 py-3 lg:w-[18rem];
+
+      &:focus {
+        @apply ring-1 border-blue-500 ring-blue-500 #{!important};
+      }
+    }
+
+    button {
+      @apply w-full sm:w-auto rounded-md border px-5 py-3 text-base text-center font-medium;
+    }
   }
 }
 
@@ -424,5 +442,29 @@
         @apply mr-2 w-5 h-5 text-blue-700;
       }
     }
+  }
+}
+
+// --------------------------------------------------------------------------------------------------------------------
+// Testimonial
+.earlybird-block-testimonial1 {
+  .testimonial__container {
+    @apply py-24 sm:py-32;
+
+    .earlybird-testimonial {
+      @apply mt-16;
+    }
+  }
+
+  .testimonial__wrapper {
+    @apply mx-auto max-w-7xl px-6 lg:px-8 text-center;
+  }
+
+  .testimonial__title {
+    @apply text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl;
+  }
+
+  .testimonial__subtitle {
+    @apply mt-3 mx-auto max-w-4xl text-lg leading-8 text-gray-600;
   }
 }

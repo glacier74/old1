@@ -16,6 +16,7 @@ import { getObjectPath } from '~/layout/builder2/utils'
 import * as Actions from './actions'
 import {
   AddBlockAction,
+  DeleteBlockAction,
   IState,
   InitStateAction,
   SelectBlockAction,
@@ -31,6 +32,7 @@ type IAction =
   | AddBlockAction
   | SelectBlockAction
   | UpdateBlockAction
+  | DeleteBlockAction
 
 interface IContext {
   state: IState
@@ -112,6 +114,7 @@ const reducer = (state: IState, action: IAction) => {
     case 'addBlock':
     case 'updateBlock':
     case 'setBlocks':
+    case 'deleteBlock':
       return updateState(state, action)
 
     default:

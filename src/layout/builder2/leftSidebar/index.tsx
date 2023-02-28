@@ -1,43 +1,91 @@
 import { Tooltip } from '@heyforms/ui'
-import { IconCodeCircle, IconLayoutGrid } from '@tabler/icons'
-import { FC } from 'react'
+import { IconBolt, IconCode, IconDatabase, IconLayoutGrid, IconSettings } from '@tabler/icons'
+import Link from 'next/link'
+import { FC, useCallback } from 'react'
 
+import { useProductId } from '~/layout'
 import { useBuilderContext } from '~/layout/builder2/context'
-import { Blocks } from '~/layout/builder2/leftSidebar/Blocks'
+
+import { AddBlockModal } from './AddBlockModal'
+import { Blocks } from './Blocks'
+import { CodeInjection } from './CodeInjection'
 
 export const LeftSidebar: FC = () => {
   const { state, dispatch } = useBuilderContext()
+  const productId = useProductId()
 
-  function handleToggleBlocks() {
-    dispatch({
-      type: 'updateState',
-      payload: {
-        updates: {
-          isBlocksOpen: !state.isBlocksOpen
+  const handleClick = useCallback(
+    (activeTabName: string) => {
+      dispatch({
+        type: 'updateState',
+        payload: {
+          updates: {
+            activeTabName: state.activeTabName !== activeTabName ? activeTabName : undefined
+          }
         }
-      }
-    })
-  }
+      })
+    },
+    [state.activeTabName]
+  )
 
   return (
     <>
       <div className="flex flex-col w-9 h-full bg-white border-r border-gray-200 duration-150 select-none">
-        <div
-          className="flex items-center justify-center w-9 h-9 text-gray-600 hover:bg-gray-100 cursor-pointer"
-          onClick={handleToggleBlocks}
-        >
-          <Tooltip ariaLabel="Blocks" placement="right">
-            <IconLayoutGrid />
-          </Tooltip>
-        </div>
-        <div className="flex items-center justify-center w-9 h-9 text-gray-600 hover:bg-gray-100 cursor-pointer">
-          <Tooltip ariaLabel="Code Injection" placement="right">
-            <IconCodeCircle />
-          </Tooltip>
-        </div>
+        <Tooltip ariaLabel="Blocks" placement="right">
+          <div
+            className="flex items-center justify-center w-9 h-9 text-gray-600 hover:bg-gray-100 cursor-pointer"
+            onClick={() => handleClick('blocks')}
+          >
+            <IconLayoutGrid className="w-5 h-5 text-gray-700" />
+          </div>
+        </Tooltip>
+
+        <Tooltip ariaLabel="Code injection" placement="right">
+          <div
+            className="flex items-center justify-center w-9 h-9 text-gray-600 hover:bg-gray-100 cursor-pointer"
+            onClick={() => handleClick('codeInjection')}
+          >
+            <IconCode className="w-5 h-5 text-gray-700" />
+          </div>
+        </Tooltip>
+
+        <Tooltip ariaLabel="Lead capture" placement="right">
+          <div className="flex items-center justify-center w-9 h-9 text-gray-600 hover:bg-gray-100 cursor-pointer">
+            <Link
+              href={`/product/${productId}/engagements`}
+              className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100 pageSettings"
+            >
+              <IconDatabase className="w-5 h-5 text-gray-700" />
+            </Link>
+          </div>
+        </Tooltip>
+
+        <Tooltip ariaLabel="Integrations" placement="right">
+          <div className="flex items-center justify-center w-9 h-9 text-gray-600 hover:bg-gray-100 cursor-pointer">
+            <Link
+              href={`/product/${productId}/integrations`}
+              className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100 pageSettings"
+            >
+              <IconBolt className="w-5 h-5 text-gray-700" />
+            </Link>
+          </div>
+        </Tooltip>
+
+        <Tooltip ariaLabel="Settings" placement="right">
+          <div className="flex items-center justify-center w-9 h-9 text-gray-600 hover:bg-gray-100 cursor-pointer">
+            <Link
+              href={`/product/${productId}/settings`}
+              className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100 pageSettings"
+            >
+              <IconSettings className="w-5 h-5 text-gray-700" />
+            </Link>
+          </div>
+        </Tooltip>
       </div>
 
-      {state.isBlocksOpen && <Blocks />}
+      <Blocks />
+      <CodeInjection />
+      <AddBlockModal />
     </>
   )
 }

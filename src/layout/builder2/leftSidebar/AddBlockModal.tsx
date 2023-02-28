@@ -52,6 +52,15 @@ const BLOCKS = [
     ]
   },
   {
+    title: 'Testimonial',
+    type: 'testimonial',
+    components: [
+      {
+        componentId: 'testimonial1'
+      }
+    ]
+  },
+  {
     title: 'FAQ',
     type: 'faq',
     components: [
@@ -79,7 +88,7 @@ export const AddBlockModal = () => {
       type: 'updateState',
       payload: {
         updates: {
-          isBlockModalOpen: false
+          isCreateBlockModalOpen: false
         }
       }
     })
@@ -114,7 +123,7 @@ export const AddBlockModal = () => {
   return (
     <Modal
       contentClassName="add-block-modal"
-      visible={state.isBlockModalOpen}
+      visible={state.isCreateBlockModalOpen}
       showCloseIcon
       onClose={handleModalClose}
     >

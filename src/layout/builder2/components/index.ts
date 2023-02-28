@@ -5,6 +5,7 @@ import { Footer1 } from './footer/footer1'
 import { Header1 } from './header/header1'
 import { Hero1 } from './hero/hero1'
 import { Payment1 } from './payment/payment1'
+import { Testimonial1 } from './testimonial/testimonial1'
 
 const components: AnyMap<any> = {
   header1: Header1,
@@ -13,7 +14,8 @@ const components: AnyMap<any> = {
   email_capture1: EmailCapture1,
   faq1: Faq1,
   payment1: Payment1,
-  footer1: Footer1
+  footer1: Footer1,
+  testimonial1: Testimonial1
 }
 
 export default components

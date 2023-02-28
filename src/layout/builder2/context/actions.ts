@@ -8,8 +8,8 @@ export interface IState {
   previewMode: 'desktop' | 'mobile'
 
   // Left sidebar
-  isBlocksOpen?: boolean
-  isBlockModalOpen?: boolean
+  activeTabName?: string
+  isCreateBlockModalOpen?: boolean
 }
 
 export interface InitStateAction {
@@ -55,6 +55,13 @@ export interface UpdateBlockAction {
   }
 }
 
+export interface DeleteBlockAction {
+  type: 'deleteBlock'
+  payload: {
+    blockId?: string
+  }
+}
+
 export function initState(state: IState, payload: InitStateAction['payload']): IState {
   state.blockDatalist = payload.blockDatalist
 
@@ -81,6 +88,12 @@ export function addBlock(state: IState, payload: AddBlockAction['payload']) {
 
 export function selectBlock(state: IState, payload: SelectBlockAction['payload']) {
   state.selectedBlockId = payload.blockId
+
+  return state
+}
+
+export function deleteBlock(state: IState, payload: DeleteBlockAction['payload']) {
+  state.blockDatalist = state.blockDatalist.filter(b => b.id !== payload.blockId)
 
   return state
 }

@@ -131,6 +131,7 @@ declare global {
     productId: number
     blocks: Block[]
     theme: Theme
+    customCode: string
   }
 
   interface CustomDomain {
@@ -160,7 +161,6 @@ declare global {
     metaDescription: string
     openGraphImage: string
     tempOpenGraphImage: string
-    customCode: string
     inviteCode: string
     inviteExpiredAt: number
     users: User[]

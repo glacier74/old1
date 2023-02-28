@@ -21,7 +21,7 @@ export const ColorPickerItem: FC<ColorPickerItemProps> = ({ label, name, value, 
   const Overlay = (
     <Menus className="w-[15rem]">
       <div className="py-3 px-4" onClick={stopPropagation}>
-        <ColorPicker color={value} presetColors={THEME_PRESET_COLORS} onChange={handleChange} />
+        <ColorPicker color={value} presets={THEME_PRESET_COLORS} onChange={handleChange} />
       </div>
     </Menus>
   )

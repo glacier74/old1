@@ -1,9 +1,13 @@
+import { Button, EmptyStates } from '@heyforms/ui'
+import { isValidArray } from '@nily/utils'
+import { IconLayoutGrid } from '@tabler/icons'
 import { FC, useContext, useEffect, useState } from 'react'
 import Frame, { FrameContext } from 'react-frame-component'
 
 import { useBuilderContext } from '~/layout/builder2/context'
-import { BlockWrapper } from '~/layout/builder2/editor/BlockWrapper'
 import { useStore } from '~/store'
+
+import { BlockWrapper } from './BlockWrapper'
 
 const FrameScript: FC<{ styles?: string }> = ({ styles }) => {
   const { document } = useContext(FrameContext)
@@ -39,6 +43,17 @@ export const Editor: FC = () => {
     return head
   }
 
+  function handleModalOpen() {
+    dispatch({
+      type: 'updateState',
+      payload: {
+        updates: {
+          isCreateBlockModalOpen: true
+        }
+      }
+    })
+  }
+
   useEffect(() => {
     dispatch({
       type: 'initState',
@@ -60,28 +75,32 @@ export const Editor: FC = () => {
     })
 
     setStyles(getStyles())
-    setMounted(true)
 
     return () => {
       observer.disconnect()
     }
   }, [])
 
-  // https://github.com/ryanseddon/react-frame-component/pull/207#issuecomment-1043023525
-  const [isMounted, setMounted] = useState(false)
-
   return (
     <div className={`builder-editor builder-editor-${state.previewMode}`}>
-      {isMounted && (
+      {isValidArray(state.blockDatalist) ? (
         <Frame
-          className="w-full h-full"
-          initialContent="<!DOCTYPE html><html><head></head><body class='scrollbar'><div></div></body></html>"
+          className="w-full h-full scrollbar"
+          initialContent="<!DOCTYPE html><html><head></head><body class='iframe-scrollbar'><div></div></body></html>"
         >
           <FrameScript styles={styles} />
           {state.blockDatalist.map((data: any) => (
             <BlockWrapper key={data.id} data={data} />
           ))}
         </Frame>
+      ) : (
+        <EmptyStates
+          className="pt-[18rem]"
+          icon={<IconLayoutGrid className="non-scaling-stroke" />}
+          title="This page currently has no blocks"
+          description="A block is a modular element of a webpage that can contain different types of content. You can click the button below to add one."
+          action={<Button onClick={handleModalOpen}>Add block</Button>}
+        />
       )}
     </div>
   )

@@ -232,7 +232,7 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
         </div>
       )}
 
-      <PublicSiteDangerouslyHTML html={product.customCode} />
+      <PublicSiteDangerouslyHTML html={product.siteSetting.customCode} />
 
       <Script
         data-domain={product.analyticId}
