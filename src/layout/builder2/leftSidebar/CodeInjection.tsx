@@ -24,11 +24,11 @@ export const CodeInjection: FC = () => {
   }
 
   async function handleFinish(values: any) {
-    const updates = {
+    const updates: Partial<SiteSettings> = {
       customCode: values.customCode
     }
 
-    await SiteSettingsService.update(productId, updates)
+    await SiteSettingsService.updateSettings(productId, updates)
     updateSiteSettings(updates)
 
     notification.success({

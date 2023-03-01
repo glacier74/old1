@@ -23,6 +23,7 @@ const TextColorItem: FC<TextColorItemProps> = ({ isActive, value, onClick }) => 
 
   return (
     <button
+      type="button"
       className={clsx('editor__text-color-item', {
         'is-active': isActive
       })}
@@ -47,6 +48,7 @@ const BackgroundColorItem: FC<TextColorItemProps> = ({ isActive, value, onClick 
 
   return (
     <button
+      type="button"
       className={clsx('editor__background-color-item', {
         'editor__background-color-transparent': isUndefined(value),
         'is-active': isActive

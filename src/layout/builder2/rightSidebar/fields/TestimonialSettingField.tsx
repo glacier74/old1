@@ -44,12 +44,7 @@ export const TestimonialSettingField: FC<SettingFieldProps> = ({ schema }) => {
           , but if your code doesn't parse correctly, please contact our support team.
         </p>
       </div>
-      <Input.Textarea
-        value={setting?.code}
-        placeholder={schema.placeholder}
-        rows={6}
-        onChange={handleChange}
-      />
+      <Input.Textarea value={setting?.code} rows={6} onChange={handleChange} />
     </div>
   )
 }

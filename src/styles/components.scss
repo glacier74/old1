@@ -1,4 +1,13 @@
 // --------------------------------------------------------------------------------------------------------------------
+// Common
+.earlybird-payment,
+.earlybird-email-capture__submit-button {
+  .spin {
+    @apply inline;
+  }
+}
+
+// --------------------------------------------------------------------------------------------------------------------
 // Header
 .earlybird-block-header1 {
   .header__container {
@@ -29,7 +38,9 @@
     }
 
     .earlybird-icon {
-      @apply h-6 w-6;
+      svg {
+        @apply h-6 w-6;
+      }
     }
   }
 
@@ -316,7 +327,7 @@
   }
 
   .email-capture__left {
-    @apply w-full lg:w-auto lg:flex-1;
+    @apply xl:w-0 xl:flex-1;
   }
 
   .email-capture__title {
@@ -335,7 +346,7 @@
     @apply space-x-0 space-y-3 sm:space-x-3 sm:space-y-0 sm:flex border-gray-300;
 
     input {
-      @apply w-full sm:w-auto rounded-md border px-5 py-3 lg:w-[18rem];
+      @apply w-full sm:w-[16rem] rounded-md border px-5 py-3;
 
       &:focus {
         @apply ring-1 border-blue-500 ring-blue-500 #{!important};

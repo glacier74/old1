@@ -1,32 +1,44 @@
 import { Button, Switch } from '@heyforms/ui'
-import { IconChevronLeft, IconDeviceDesktop, IconDeviceMobile } from '@tabler/icons'
+import { IconChevronLeft } from '@tabler/icons'
 import Link from 'next/link'
 import { FC, useMemo } from 'react'
 
+import { useProductId } from '~/layout'
 import { useBuilderContext } from '~/layout/builder2/context'
+import { SiteSettingsService } from '~/service'
+import { useStore } from '~/store'
+import { useRequest } from '~/utils'
 
 export const Navbar: FC = () => {
+  const { siteSettings, updateSiteSettings } = useStore()
   const { state, dispatch } = useBuilderContext()
+  const productId = useProductId()
+
+  const { loading, request } = useRequest(async () => {
+    await SiteSettingsService.publish(productId, {
+      draft: state.blocks as any,
+      version: siteSettings.version
+    })
+
+    updateSiteSettings({
+      draft: state.blocks as any,
+      canPublish: false
+    })
+  }, [siteSettings.version, state.blocks])
 
   const previewModeOptions: any[] = useMemo(
     () => [
       {
         value: 'desktop',
-        label: (
-          <div className="flex items-center px-1.5 space-x-1.5">
-            <IconDeviceDesktop className="w-4 h-4" />
-            <span>Desktop</span>
-          </div>
-        )
+        label: 'Desktop'
       },
       {
-        value: 'mobile',
-        label: (
-          <div className="flex items-center px-1.5 space-x-1.5">
-            <IconDeviceMobile className="w-4 h-4" />
-            <span>Mobile</span>
-          </div>
-        )
+        value: 'tablet',
+        label: 'Tablet'
+      },
+      {
+        value: 'phone',
+        label: 'Phone'
       }
     ],
     []
@@ -65,7 +77,13 @@ export const Navbar: FC = () => {
       </div>
 
       <div className="flex-1 flex items-center justify-end">
-        <Button type="success" className="!py-1.5">
+        <Button
+          type="success"
+          className="!py-1.5"
+          loading={loading}
+          disabled={!siteSettings.canPublish}
+          onClick={request}
+        >
           Publish
         </Button>
       </div>

@@ -1,13 +1,33 @@
 import { Button, EmptyStates } from '@heyforms/ui'
 import { isValidArray } from '@nily/utils'
 import { IconLayoutGrid } from '@tabler/icons'
-import { FC, useContext, useEffect, useState } from 'react'
+import { FC, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import Frame, { FrameContext } from 'react-frame-component'
 
+import { useProductId } from '~/layout'
 import { useBuilderContext } from '~/layout/builder2/context'
+import { SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
+import { Queue } from '~/utils'
 
 import { BlockWrapper } from './BlockWrapper'
+
+function getStyles() {
+  let head = ''
+
+  const stylesheets = Array.from(document.querySelectorAll('link[rel=stylesheet]'))
+  const inlineStyles = Array.from(document.querySelectorAll('head style'))
+
+  stylesheets.forEach(link => {
+    head += link.outerHTML
+  })
+
+  inlineStyles.forEach(style => {
+    head += style.outerHTML
+  })
+
+  return head
+}
 
 const FrameScript: FC<{ styles?: string }> = ({ styles }) => {
   const { document } = useContext(FrameContext)
@@ -22,26 +42,18 @@ const FrameScript: FC<{ styles?: string }> = ({ styles }) => {
 }
 
 export const Editor: FC = () => {
-  const { siteSettings } = useStore()
+  const { siteSettings, updateSiteSettings } = useStore()
   const { state, dispatch } = useBuilderContext()
+  const productId = useProductId()
   const [styles, setStyles] = useState<string>()
 
-  function getStyles() {
-    let head = ''
-
-    const stylesheets = Array.from(document.querySelectorAll('link[rel=stylesheet]'))
-    const inlineStyles = Array.from(document.querySelectorAll('head style'))
-
-    stylesheets.forEach(link => {
-      head += link.outerHTML
+  const queue = useMemo(() => {
+    return new Queue({
+      concurrency: 1,
+      scheduleInterval: 2_400,
+      taskIntervalTime: 10_000
     })
-
-    inlineStyles.forEach(style => {
-      head += style.outerHTML
-    })
-
-    return head
-  }
+  }, [])
 
   function handleModalOpen() {
     dispatch({
@@ -58,7 +70,7 @@ export const Editor: FC = () => {
     dispatch({
       type: 'initState',
       payload: {
-        blockDatalist: (siteSettings.blocks as any[]) || []
+        blocks: (siteSettings.blocks as any[]) || []
       }
     })
   }, [siteSettings?.blocks])
@@ -78,19 +90,47 @@ export const Editor: FC = () => {
 
     return () => {
       observer.disconnect()
+      queue.clear()
     }
   }, [])
 
+  useEffect(() => {
+    dispatch({
+      type: 'initState',
+      payload: {
+        blocks: (siteSettings.draft as any) || []
+      }
+    })
+  }, [siteSettings?.draft])
+
+  const sync = useCallback(async () => {
+    const result = await SiteSettingsService.updateDraft(productId, {
+      draft: state.blocks as any,
+      version: siteSettings.version
+    })
+
+    updateSiteSettings(result)
+  }, [productId, siteSettings.version, state.blocks])
+
+  // Auto save
+  useEffect(() => {
+    if (state.version > 0) {
+      queue.add(async () => {
+        await sync()
+      })
+    }
+  }, [state.version])
+
   return (
     <div className={`builder-editor builder-editor-${state.previewMode}`}>
-      {isValidArray(state.blockDatalist) ? (
+      {isValidArray(state.blocks) ? (
         <Frame
           className="w-full h-full scrollbar"
           initialContent="<!DOCTYPE html><html><head></head><body class='iframe-scrollbar'><div></div></body></html>"
         >
           <FrameScript styles={styles} />
-          {state.blockDatalist.map((data: any) => (
-            <BlockWrapper key={data.id} data={data} />
+          {state.blocks.map((block: any) => (
+            <BlockWrapper key={block.id} block={block} />
           ))}
         </Frame>
       ) : (

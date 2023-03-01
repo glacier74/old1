@@ -10,11 +10,11 @@ import { BlockItem } from './BlockItem'
 export const Blocks: FC = () => {
   const { state, dispatch } = useBuilderContext()
 
-  function handleSetList(blockDatalist: any[]) {
+  function handleSetList(blocks: any[]) {
     dispatch({
       type: 'setBlocks',
       payload: {
-        blockDatalist
+        blocks
       }
     })
   }
@@ -57,12 +57,12 @@ export const Blocks: FC = () => {
           chosenClass="field-card-chosen"
           dragClass="field-card-dragging"
           fallbackClass="field-card-cloned"
-          list={state.blockDatalist}
+          list={state.blocks}
           setList={handleSetList}
           delay={10}
           animation={150}
         >
-          {state.blockDatalist.map(block => (
+          {state.blocks.map(block => (
             <BlockItem key={block.id} block={block} selectedId={state.selectedBlockId} />
           ))}
         </ReactSortable>

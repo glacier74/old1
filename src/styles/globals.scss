@@ -1584,15 +1584,29 @@ button.block-header-button {
 }
 
 .builder-editor {
-  @apply flex-1;
+  @apply flex-1 bg-gray-100;
 
   iframe {
     @apply bg-white;
   }
 }
 
-.builder-editor-mobile {
-  @apply py-12 bg-gray-100;
+.builder-mode {
+  .button {
+    @apply w-[4.5rem];
+  }
+}
+
+.builder-editor-tablet {
+  @apply py-12;
+
+  iframe {
+    @apply mx-auto w-[768px] shadow-md;
+  }
+}
+
+.builder-editor-phone {
+  @apply py-12;
 
   iframe {
     @apply mx-auto w-[375px] shadow-md;
@@ -1643,6 +1657,11 @@ button.block-header-button {
 
 .builder-setting {
   @apply border-b border-gray-100;
+
+  .input,
+  .textarea {
+    @apply bg-white;
+  }
 }
 
 .builder-setting-text-title {
@@ -1794,4 +1813,19 @@ button.block-header-button {
 
 .builder-publish {
   @apply py-1.5 #{!important};
+}
+
+.builder-list-title,
+.builder-group-title {
+  @apply mb-2 text-sm text-gray-700 font-medium select-none;
+}
+
+.builder-text-title {
+  @apply mb-1 text-sm text-gray-700;
+}
+
+.builder-group-title + .builder-setting-text {
+  .builder-text-title {
+    @apply hidden;
+  }
 }

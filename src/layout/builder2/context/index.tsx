@@ -54,7 +54,7 @@ export function useBlockData() {
   const { state } = useBuilderContext()
 
   if (isValid(state.selectedBlockId)) {
-    return state.blockDatalist.find(b => b.id === state.selectedBlockId)
+    return state.blocks.find(b => b.id === state.selectedBlockId)
   }
 }
 
@@ -95,12 +95,18 @@ export function useBlockSetting<T extends object>(path: string, defaults?: T) {
   }
 }
 
+const SYNC_ACTION_TYPES = ['setBlocks', 'addBlock', 'updateBlock', 'deleteBlock']
+
 function updateState(state: IState, action: IAction): IState {
   const clonedState = deepClone(state)
   const newState: IState = (Actions as any)[action.type](clonedState as any, action.payload as any)
 
   if (deepEqual(newState, state)) {
     return state
+  }
+
+  if (SYNC_ACTION_TYPES.includes(action.type)) {
+    newState.version += 1
   }
 
   return newState
@@ -125,8 +131,10 @@ const reducer = (state: IState, action: IAction) => {
 export const BuilderProvider: FC<IComponentProps> = ({ children }) => {
   const initialState: IState = useMemo(
     () => ({
-      blockDatalist: [],
-      previewMode: 'desktop'
+      isBuilderMode: true,
+      blocks: [],
+      previewMode: 'desktop',
+      version: 0
     }),
     []
   )

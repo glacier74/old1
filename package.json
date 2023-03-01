@@ -19,7 +19,7 @@
     "@emoji-mart/data": "^1.1.2",
     "@emoji-mart/react": "^1.1.1",
     "@headlessui/react": "^1.7.12",
-    "@heyforms/ui": "^2023.2.2",
+    "@heyforms/ui": "2023.2.2",
     "@nily/utils": "^0.3.6",
     "@reactour/tour": "^3.2.1",
     "@tabler/icons": "^1.119.0",

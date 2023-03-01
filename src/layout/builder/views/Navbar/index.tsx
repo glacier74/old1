@@ -36,7 +36,7 @@ export const Navbar: FC = () => {
   const [shareModalVisible, openShareModal, closeShareModal] = useVisible()
 
   const { loading, error, request } = useRequest(async () => {
-    await SiteSettingsService.update(productId, {
+    await SiteSettingsService.updateSettings(productId, {
       blocks: state.blocks,
       theme: state.theme
     })

@@ -144,28 +144,39 @@ export const RichTextEditor: FC<RichTextEditorProps> = ({
             </div>
           ) : (
             <div className="editor__bubble-menu">
-              <button className={editor.isActive('bold') ? 'is-active' : ''} onClick={handleBold}>
+              <button
+                type="button"
+                className={editor.isActive('bold') ? 'is-active' : ''}
+                onClick={handleBold}
+              >
                 <IconBold />
               </button>
               <button
+                type="button"
                 className={editor.isActive('italic') ? 'is-active' : ''}
                 onClick={handleItalic}
               >
                 <IconItalic />
               </button>
               <button
+                type="button"
                 className={editor.isActive('strike') ? 'is-active' : ''}
                 onClick={handleStrike}
               >
                 <IconStrikethrough />
               </button>
               <button
+                type="button"
                 className={editor.isActive('underline') ? 'is-active' : ''}
                 onClick={handleUnderline}
               >
                 <IconUnderline />
               </button>
-              <button className={editor.isActive('link') ? 'is-active' : ''} onClick={handleLink}>
+              <button
+                type="button"
+                className={editor.isActive('link') ? 'is-active' : ''}
+                onClick={handleLink}
+              >
                 <IconLink />
               </button>
               <Tippy
@@ -184,6 +195,7 @@ export const RichTextEditor: FC<RichTextEditorProps> = ({
                 )}
               >
                 <button
+                  type="button"
                   style={{
                     color: editor.getAttributes('textStyle').color,
                     background: editor.getAttributes('textStyle').backgroundColor

@@ -11,6 +11,7 @@ declare global {
   type StringMap = AnyMap<string>
 
   interface ComponentProps {
+    id?: string
     className?: string
     style?: CSSProperties
     children?: ReactNode
@@ -130,8 +131,12 @@ declare global {
   interface SiteSettings {
     productId: number
     blocks: Block[]
+    draft: Block[]
+    version: number
     theme: Theme
     customCode: string
+    schema: number
+    canPublish?: boolean
   }
 
   interface CustomDomain {

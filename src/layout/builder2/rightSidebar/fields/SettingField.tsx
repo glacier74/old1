@@ -8,6 +8,7 @@ import { IconSettingField } from './IconSettingField'
 import { ImageSettingField } from './ImageSettingField'
 import { LinkSettingField } from './LinkSettingField'
 import { ListSettingField } from './ListSettingField'
+import { OptionalSettingField } from './OptionalSettingField'
 import { PaymentSettingField } from './PaymentSettingField'
 import { TestimonialSettingField } from './TestimonialSettingField'
 import { TextSettingField } from './TextSettingField'
@@ -54,6 +55,9 @@ export const SettingField: FC<SettingFieldProps> = ({ schema }) => {
 
     case 'schema_testimonial':
       return <TestimonialSettingField schema={schema} />
+
+    case 'schema_optional':
+      return <OptionalSettingField schema={schema} />
 
     default:
       return null

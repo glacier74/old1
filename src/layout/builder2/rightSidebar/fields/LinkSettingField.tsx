@@ -22,9 +22,7 @@ export const LinkSettingField: FC<SettingFieldProps> = ({ schema }) => {
       <div className="builder-setting-group space-y-2">
         {(schema as any).children.map((childSchema: any) => (
           <div key={childSchema.name}>
-            <div className="mb-2 text-sm text-gray-700 font-medium select-none">
-              {childSchema.title}
-            </div>
+            <div className="builder-list-title">{childSchema.title}</div>
             <SettingField
               schema={{
                 ...childSchema,

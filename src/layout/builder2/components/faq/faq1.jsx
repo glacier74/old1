@@ -1,10 +1,10 @@
 import {
-  $Condition as Condition,
   $Group as Group,
   $H2 as H2,
   $H3 as H3,
   $Html as Html,
-  $List as List
+  $List as List,
+  $Toggle as Toggle
 } from '@earlybirdim/blocks'
 import { IconAdd, IconRemove } from '@earlybirdim/icons'
 
@@ -16,7 +16,7 @@ const render = function ({ data }) {
 
         <List className="faq__list">
           {data.setting.List1?.map(List1 => (
-            <Condition key={List1.id}>
+            <Toggle key={List1.id}>
               {(isActive, toggle) => (
                 <Group className={`faq__item ${isActive ? 'faq__item-open' : ''}`}>
                   <div className="faq__item-header" onClick={toggle}>
@@ -27,7 +27,7 @@ const render = function ({ data }) {
                   <Html className="faq__item-answer" {...List1.Group1.Html1} />
                 </Group>
               )}
-            </Condition>
+            </Toggle>
           ))}
         </List>
       </div>

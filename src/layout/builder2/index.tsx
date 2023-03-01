@@ -25,16 +25,14 @@ export const Builder2 = () => {
       deps={[product.id]}
     >
       <BuilderProvider>
-        <BuilderProvider>
-          <div className="flex flex-col h-full h-screen overflow-hidden">
-            <Navbar />
-            <div className="builder-main">
-              <LeftSidebar />
-              <Editor />
-              <RightSidebar />
-            </div>
+        <div className="flex flex-col w-full w-screen h-full h-screen overflow-hidden">
+          <Navbar />
+          <div className="builder-main">
+            <LeftSidebar />
+            <Editor />
+            <RightSidebar />
           </div>
-        </BuilderProvider>
+        </div>
       </BuilderProvider>
     </AsyncRequest>
   )

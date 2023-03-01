@@ -5,7 +5,21 @@ export class SiteSettingsService {
     return axios.get(`/products/${productId}/site-settings`)
   }
 
-  static async update(productId: number, updates: Partial<SiteSettings>): Promise<void> {
+  static async updateDraft(
+    productId: number,
+    updates: Pick<SiteSettings, 'draft' | 'version'>
+  ): Promise<Partial<SiteSettings>> {
+    return axios.put(`/products/${productId}/site-settings/draft`, updates)
+  }
+
+  static async publish(
+    productId: number,
+    updates: Pick<SiteSettings, 'draft' | 'version'>
+  ): Promise<void> {
+    return axios.post(`/products/${productId}/site-settings/publish`, updates)
+  }
+
+  static async updateSettings(productId: number, updates: Partial<SiteSettings>): Promise<void> {
     return axios.patch(`/products/${productId}/site-settings`, updates)
   }
 }

@@ -3,6 +3,7 @@ import {
   $H2 as H2,
   $Html as Html,
   $List as List,
+  $Optional as Optional,
   $Payment as Payment,
   $Text as Text
 } from '@earlybirdim/blocks'
@@ -19,22 +20,26 @@ const render = function ({ data }) {
           <Html as="p" className="payment__subtitle" {...data.setting.Html1} />
         </div>
 
-        <div className="payment__interval-switcher">
-          <button
-            className={`payment__interval-monthly ${
-              interval === 'monthly' ? 'payment__active' : ''
-            }`}
-            onClick={() => setInterval('monthly')}
-          >
-            Monthly
-          </button>
-          <button
-            className={`payment__interval-yearly ${interval === 'yearly' ? 'payment__active' : ''}`}
-            onClick={() => setInterval('yearly')}
-          >
-            Yearly
-          </button>
-        </div>
+        <Optional {...data.setting.Optional1}>
+          <div className="payment__interval-switcher">
+            <button
+              className={`payment__interval-monthly ${
+                interval === 'monthly' ? 'payment__active' : ''
+              }`}
+              onClick={() => setInterval('monthly')}
+            >
+              Monthly
+            </button>
+            <button
+              className={`payment__interval-yearly ${
+                interval === 'yearly' ? 'payment__active' : ''
+              }`}
+              onClick={() => setInterval('yearly')}
+            >
+              Yearly
+            </button>
+          </div>
+        </Optional>
 
         <div className="payment__plans">
           <List className="payment__plans-wrapper">
@@ -47,16 +52,10 @@ const render = function ({ data }) {
                 {interval === 'monthly' ? (
                   <div className="payment__plan-price">
                     <Text {...List1.Group1.Text3} />
-                    <span className="payment__plan-interval" color="#4b5563">
-                      /month
-                    </span>
                   </div>
                 ) : (
                   <div className="payment__plan-price">
                     <Text {...List1.Group1.Text4} />
-                    <span className="payment__plan-interval" color="#4b5563">
-                      /year
-                    </span>
                   </div>
                 )}
 
@@ -106,6 +105,15 @@ const settingSchemas = [
       type: 'html'
     },
     type: 'schema_html'
+  },
+  {
+    name: 'Optional1',
+    title: 'Billing cycle',
+    default: {
+      show: true
+    },
+    type: 'schema_optional',
+    children: []
   },
   {
     name: 'List1',

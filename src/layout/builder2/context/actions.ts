@@ -1,8 +1,10 @@
 import { objectPath } from '@nily/utils'
 
 export interface IState {
-  blockDatalist: BlockData<any>[]
+  isBuilderMode: boolean
+  blocks: BlockData<any>[]
   selectedBlockId?: string
+  version: number
 
   // View the desktop or mobile version of the landing page
   previewMode: 'desktop' | 'mobile'
@@ -15,7 +17,7 @@ export interface IState {
 export interface InitStateAction {
   type: 'initState'
   payload: {
-    blockDatalist: BlockData<any>[]
+    blocks: BlockData<any>[]
   }
 }
 
@@ -36,7 +38,7 @@ export interface SelectBlockAction {
 export interface SetBlocksAction {
   type: 'setBlocks'
   payload: {
-    blockDatalist: BlockData<any>[]
+    blocks: BlockData<any>[]
   }
 }
 
@@ -63,7 +65,7 @@ export interface DeleteBlockAction {
 }
 
 export function initState(state: IState, payload: InitStateAction['payload']): IState {
-  state.blockDatalist = payload.blockDatalist
+  state.blocks = payload.blocks
 
   return state
 }
@@ -76,13 +78,13 @@ export function updateState(state: IState, payload: UpdateStateAction['payload']
 }
 
 export function setBlocks(state: IState, payload: SetBlocksAction['payload']): IState {
-  state.blockDatalist = payload.blockDatalist
+  state.blocks = payload.blocks
 
   return state
 }
 
 export function addBlock(state: IState, payload: AddBlockAction['payload']) {
-  state.blockDatalist.push(payload.block)
+  state.blocks.push(payload.block)
   return state
 }
 
@@ -93,13 +95,13 @@ export function selectBlock(state: IState, payload: SelectBlockAction['payload']
 }
 
 export function deleteBlock(state: IState, payload: DeleteBlockAction['payload']) {
-  state.blockDatalist = state.blockDatalist.filter(b => b.id !== payload.blockId)
+  state.blocks = state.blocks.filter(b => b.id !== payload.blockId)
 
   return state
 }
 
 export function updateBlock(state: IState, payload: UpdateBlockAction['payload']) {
-  const blockData = state.blockDatalist.find(b => b.id === payload.blockId)
+  const blockData = state.blocks.find(b => b.id === payload.blockId)
 
   if (blockData) {
     Object.keys(payload.updates).forEach(path => {

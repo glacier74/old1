@@ -30,7 +30,6 @@ function findListTitle(setting: any) {
   if (isObject(setting)) {
     for (const key of Object.keys(setting)) {
       const value = setting[key]
-      console.log(key, value)
 
       if (value.type === 'text' || value.type === 'html') {
         title = convert(value.html, { wordwrap: 20 })
@@ -143,7 +142,7 @@ const ListSettingItem: FC<ListSettingItemProps> = ({
 
 export const ListSettingField: FC<SettingFieldProps> = ({ schema }) => {
   const { setting, updateSetting } = useBlockSetting<any[]>(schema.name, [])
-  const [opened, setOpened] = useState<string[]>([])
+  const [openedId, setOpenedId] = useState<string>()
 
   function handleUpdate(newState: any[]) {
     updateSetting(
@@ -158,9 +157,9 @@ export const ListSettingField: FC<SettingFieldProps> = ({ schema }) => {
 
   const handleToggle = useCallback(
     (id: string) => {
-      setOpened(opened.includes(id) ? opened.filter(n => n !== id) : [...opened, id])
+      setOpenedId(id === openedId ? undefined : id)
     },
-    [opened]
+    [openedId]
   )
 
   const handleCreate = useCallback(() => {
@@ -190,9 +189,12 @@ export const ListSettingField: FC<SettingFieldProps> = ({ schema }) => {
   const handleDelete = useCallback(
     (id: string) => {
       handleUpdate(setting!.filter(p => p.id !== id))
-      setOpened(opened.filter(n => n !== id))
+
+      if (openedId === id) {
+        setOpenedId(undefined)
+      }
     },
-    [opened, setting]
+    [openedId, setting]
   )
 
   return (
@@ -212,7 +214,7 @@ export const ListSettingField: FC<SettingFieldProps> = ({ schema }) => {
             index={index}
             path={getObjectPath(schema.name, index)}
             setting={childSetting}
-            isOpen={opened.includes(childSetting.id)}
+            isOpen={openedId === childSetting.id}
             onToggle={handleToggle}
             onDelete={handleDelete}
             onDuplicate={handleDuplicate}

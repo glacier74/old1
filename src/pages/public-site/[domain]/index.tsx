@@ -1,3 +1,4 @@
+import { Block as Block2 } from '@earlybirdim/blocks'
 import { EmptyStates, Form, Input } from '@heyforms/ui'
 import { isValid } from '@nily/utils'
 import AES from 'crypto-js/aes'
@@ -5,10 +6,11 @@ import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import { NextSeoProps } from 'next-seo'
 import Script from 'next/script'
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 
 import { IconLogo } from '~/components'
 import { PublicSiteLayout } from '~/layout'
+import components from '~/layout/builder2/components'
 import { EmailCapturePreview } from '~/layout/builder/blocks/EmailCapture'
 import { FaqPreview } from '~/layout/builder/blocks/Faq'
 import { FeaturePreview } from '~/layout/builder/blocks/Feature'
@@ -32,7 +34,29 @@ interface PublicSiteProps {
   paymentStatus?: 'success'
 }
 
-const Block: FC<{ product: Product; block: any }> = ({ product, block }) => {
+const Block: FC<{ product: Product; schema: number; block: any }> = ({
+  product,
+  schema,
+  block
+}) => {
+  const component = useMemo(() => {
+    if (block.componentId) {
+      return components[block.componentId]
+    }
+  }, [block.componentId])
+
+  if (schema === 2) {
+    if (!component) {
+      return null
+    }
+
+    return (
+      <Block2 productId={product.id} block={block}>
+        <component.render data={block} />
+      </Block2>
+    )
+  }
+
   switch (block.type) {
     case 'header':
       return <HeaderPreview key={block.id} block={block} product={product} />
@@ -219,7 +243,12 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
       ) : (
         <div className="earlybird-blocks">
           {product.siteSetting.blocks.map(block => (
-            <Block key={block.id} product={product} block={block} />
+            <Block
+              key={block.id}
+              product={product}
+              schema={product.siteSetting.schema}
+              block={block}
+            />
           ))}
         </div>
       )}

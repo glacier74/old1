@@ -14,15 +14,8 @@ export const TextSettingField: FC<SettingFieldProps> = ({ schema }) => {
 
   return (
     <div className="builder-setting-text">
-      <div className="flex items-center justify-between">
-        <div className="mb-1 text-sm text-gray-700">{schema.title || 'Content'}</div>
-        <Input
-          className="!px-2 !py-1.5"
-          value={setting?.html}
-          placeholder={schema.placeholder}
-          onChange={handleChange}
-        />
-      </div>
+      <div className="builder-text-title">{schema.title || 'Content'}</div>
+      <Input className="!px-2 !py-1.5" value={setting?.html} onChange={handleChange} />
     </div>
   )
 }
