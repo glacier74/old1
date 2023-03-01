@@ -8,6 +8,7 @@ import { IconSettingField } from './IconSettingField'
 import { ImageSettingField } from './ImageSettingField'
 import { LinkSettingField } from './LinkSettingField'
 import { ListSettingField } from './ListSettingField'
+import { MediaSettingField } from './MediaSettingField'
 import { OptionalSettingField } from './OptionalSettingField'
 import { PaymentSettingField } from './PaymentSettingField'
 import { TestimonialSettingField } from './TestimonialSettingField'
@@ -26,8 +27,7 @@ export const SettingField: FC<SettingFieldProps> = ({ schema }) => {
       return <ListSettingField schema={schema} />
 
     case 'schema_media':
-      // TODO - change to MediaSettingField
-      return <ImageSettingField schema={schema} />
+      return <MediaSettingField schema={schema} />
 
     case 'schema_link':
       return <LinkSettingField schema={schema} />

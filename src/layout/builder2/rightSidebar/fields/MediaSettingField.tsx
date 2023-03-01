@@ -7,11 +7,12 @@ import { useBlockSetting } from '~/layout/builder2/context'
 
 import { SettingFieldProps } from './SettingField'
 
-export const ImageSettingField: FC<SettingFieldProps> = ({ schema }) => {
+export const MediaSettingField: FC<SettingFieldProps> = ({ schema }) => {
   const { setting, updateSetting } = useBlockSetting<any>(schema.name)
   const [visible, setVisible] = useState(false)
 
-  function handleImageChange(_: string, src: string) {
+  function handleImageChange(type: string, src: string) {
+    updateSetting(type, 'type')
     updateSetting(src, 'src')
     setVisible(false)
   }
@@ -27,10 +28,10 @@ export const ImageSettingField: FC<SettingFieldProps> = ({ schema }) => {
   return (
     <div className="builder-setting-image space-y-3">
       <div>
-        <div className="mb-1 text-sm text-gray-700">Image</div>
+        <div className="mb-1 text-sm text-gray-700">Media</div>
         <div className="flex items-center">
           <div className="builder-setting-image-preview">
-            {setting?.src && (
+            {setting?.src && setting?.type === 'image' && (
               <$Image src={setting?.src} alt={setting?.alt} width={48} height={48} />
             )}
           </div>
@@ -39,7 +40,7 @@ export const ImageSettingField: FC<SettingFieldProps> = ({ schema }) => {
             <Dropdown
               visible={visible}
               placement="left"
-              overlay={<MediaPicker allowed={['image']} onChange={handleImageChange} />}
+              overlay={<MediaPicker onChange={handleImageChange} />}
               onDropdownVisibleChange={setVisible}
             >
               <Button className="!p-1">Change</Button>

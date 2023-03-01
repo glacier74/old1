@@ -51,7 +51,7 @@ export const Blocks: FC = () => {
         <span>Blocks</span>
         <Button.Link className="-mr-3.5" leading={<IconX />} onClick={handleClose} />
       </div>
-      <div className="flex-1 px-2 scrollbar">
+      <div className="flex-1 px-2 pb-2 scrollbar">
         <ReactSortable
           ghostClass="field-card-ghost"
           chosenClass="field-card-chosen"

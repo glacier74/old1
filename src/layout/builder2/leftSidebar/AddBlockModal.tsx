@@ -127,20 +127,20 @@ export const AddBlockModal = () => {
       showCloseIcon
       onClose={handleModalClose}
     >
-      <div className="px-4 py-[0.875rem]">
+      <div className="add-block-modal-header">
         <h1 className="text-lg leading-6 font-medium text-slate-900">Add a block</h1>
       </div>
-      <div className="flex flex-1">
-        <div className="w-[12.5rem] bg-gray-100">
+      <div className="add-block-modal-body">
+        <div className="add-block-modal-sidebar">
           {BLOCKS.map(block => (
             <div key={block.title} className="px-4 py-2 text-sm text-gray-700">
               <a href={`#${block.title}`}>{block.title}</a>
             </div>
           ))}
         </div>
-        <div className="flex-1 pl-5 pb-4 scrollbar">
+        <div className="add-block-modal-right">
           {BLOCKS.map(block => (
-            <div key={block.title}>
+            <div key={block.title} id={block.title}>
               <div className="py-1 text-base text-gray-700">{block.title}</div>
               <div className="mb-4 grid grid-cols-3">
                 {block.components.map(component => (

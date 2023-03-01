@@ -1,7 +1,7 @@
 import { $Image } from '@earlybirdim/blocks'
 import { Icon } from '@earlybirdim/icons'
 import { Button, Dropdown } from '@heyforms/ui'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 import { IconPicker } from '~/components/IconPicker'
 import { useBlockSetting } from '~/layout/builder2/context'
@@ -32,6 +32,7 @@ const IconPreview: FC<any> = ({ type, src, alt, name, text }) => {
 
 export const IconSettingField: FC<SettingFieldProps> = ({ schema }) => {
   const { setting, updateSetting } = useBlockSetting<any>(schema.name)
+  const [visible, setVisible] = useState(false)
 
   function handleIconChange(type: string, value: string) {
     updateSetting(type, 'type')
@@ -57,6 +58,10 @@ export const IconSettingField: FC<SettingFieldProps> = ({ schema }) => {
     updateSetting(undefined, 'text')
   }
 
+  function handleClose() {
+    setVisible(false)
+  }
+
   return (
     <div className="builder-setting-icon">
       <div className="flex items-center">
@@ -65,7 +70,12 @@ export const IconSettingField: FC<SettingFieldProps> = ({ schema }) => {
         </div>
 
         <div className="ml-4 flex items-center space-x-2">
-          <Dropdown placement="left" overlay={<IconPicker onChange={handleIconChange} />}>
+          <Dropdown
+            visible={visible}
+            placement="left"
+            overlay={<IconPicker onChange={handleIconChange} onClose={handleClose} />}
+            onDropdownVisibleChange={setVisible}
+          >
             <Button className="!p-1">Change</Button>
           </Dropdown>
           <Button className="!p-1" onClick={handleClear}>

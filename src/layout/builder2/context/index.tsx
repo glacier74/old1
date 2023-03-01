@@ -134,7 +134,8 @@ export const BuilderProvider: FC<IComponentProps> = ({ children }) => {
       isBuilderMode: true,
       blocks: [],
       previewMode: 'desktop',
-      version: 0
+      version: 0,
+      isCreateBlockModalOpen: false
     }),
     []
   )

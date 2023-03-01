@@ -1510,12 +1510,14 @@ button.block-header-button {
   @apply relative;
 }
 
+.media-picker,
 .icon-picker,
 .emoji-picker,
 .svg-icon-picker {
   @apply w-[22rem];
 }
 
+.media-picker,
 .icon-picker {
   @apply mb-3;
 
@@ -1804,11 +1806,30 @@ button.block-header-button {
 }
 
 .add-block-modal {
-  @apply max-w-6xl;
+  @apply  max-w-6xl;
 
   .modal-body {
-    @apply p-0;
+    @apply p-0 overflow-hidden;
   }
+}
+
+.add-block-modal-header {
+  @apply w-full px-4 py-[0.875rem];
+}
+
+.add-block-modal-body {
+  @apply flex;
+}
+
+.add-block-modal-sidebar {
+  @extend .scrollbar;
+  @apply w-[12.5rem] py-4 bg-gray-100 rounded-bl-lg;
+}
+
+.add-block-modal-right {
+  @extend .scrollbar;
+  @apply flex-1 pl-5 py-4;
+  height: calc(100vh - 7.25rem);
 }
 
 .builder-publish {

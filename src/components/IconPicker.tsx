@@ -116,13 +116,18 @@ export const SvgIconPicker: FC<EmojiPickerProps> = ({ onChange }) => {
 
 interface IconPickerProps {
   onChange?: (type: string, value: string) => void
+  onClose?: () => void
 }
 
-export const IconPicker: FC<IconPickerProps> = ({ onChange }) => {
+export const IconPicker: FC<IconPickerProps> = ({ onChange, onClose }) => {
   const [activeName, setActiveName] = useState('emoji')
 
   function handleChange(value: string) {
     onChange?.(activeName, value)
+
+    if (activeName === 'image') {
+      onClose?.()
+    }
   }
 
   function handleActiveNameChange(activeName: any) {
