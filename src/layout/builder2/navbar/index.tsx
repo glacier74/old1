@@ -5,6 +5,7 @@ import { FC, useCallback, useMemo } from 'react'
 
 import { useProduct } from '~/layout'
 import { useBuilderContext } from '~/layout/builder2/context'
+import { AlertModal } from '~/layout/builder2/editor/AlertModal'
 import { ShareModal } from '~/layout/builder/views/Navbar/ShareModal'
 import { SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
@@ -16,17 +17,24 @@ export const Navbar: FC = () => {
   const product = useProduct()
 
   const [shareModalVisible, openShareModal, closeShareModal] = useVisible()
+  const [alertModalVisible, openAlertModal] = useVisible()
 
   const { loading, request } = useRequest(async () => {
-    await SiteSettingsService.publish(product.id, {
-      draft: state.blocks as any,
-      version: siteSettings.version
-    })
+    try {
+      await SiteSettingsService.publish(product.id, {
+        draft: state.blocks as any,
+        version: siteSettings.version
+      })
 
-    updateSiteSettings({
-      draft: state.blocks as any,
-      canPublish: false
-    })
+      updateSiteSettings({
+        draft: state.blocks as any,
+        canPublish: false
+      })
+    } catch (err: any) {
+      if (err.error === 'invalid_draft_version') {
+        openAlertModal()
+      }
+    }
   }, [siteSettings.version, state.blocks])
 
   const previewModeOptions: any[] = useMemo(
@@ -110,6 +118,7 @@ export const Navbar: FC = () => {
       </div>
 
       <ShareModal visible={shareModalVisible} onClose={closeShareModal} />
+      <AlertModal visible={alertModalVisible} />
     </>
   )
 }
