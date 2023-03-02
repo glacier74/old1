@@ -27,7 +27,7 @@ export const LinkSettingField: FC<SettingFieldProps> = ({ schema }) => {
         disabled: true
       },
       ...state.blocks
-        .filter(b => b.id === state.selectedBlockId)
+        .filter(b => b.id !== state.selectedBlockId)
         .map(b => ({
           value: `#earlybird-block-${b.id}`,
           type: b.type
