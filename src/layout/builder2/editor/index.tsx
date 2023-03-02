@@ -53,7 +53,7 @@ export const Editor: FC = () => {
   const queue = useMemo(() => {
     return new Queue({
       concurrency: 1,
-      scheduleInterval: 2_400,
+      scheduleInterval: 1_500,
       taskIntervalTime: 10_000
     })
   }, [])
@@ -68,15 +68,6 @@ export const Editor: FC = () => {
       }
     })
   }
-
-  useEffect(() => {
-    dispatch({
-      type: 'initState',
-      payload: {
-        blocks: (siteSettings.blocks as any[]) || []
-      }
-    })
-  }, [siteSettings?.blocks])
 
   useEffect(() => {
     const observer = new MutationObserver(() => {
@@ -97,15 +88,6 @@ export const Editor: FC = () => {
     }
   }, [])
 
-  useEffect(() => {
-    dispatch({
-      type: 'initState',
-      payload: {
-        blocks: (siteSettings.draft as any) || []
-      }
-    })
-  }, [siteSettings?.draft])
-
   const sync = useCallback(async () => {
     try {
       const result = await SiteSettingsService.updateDraft(productId, {
@@ -121,11 +103,15 @@ export const Editor: FC = () => {
     }
   }, [productId, siteSettings.version, state.blocks])
 
+  queue.onStart(task => {
+    task.op = sync
+  })
+
   // Auto save
   useEffect(() => {
     if (state.version > 0) {
       queue.add(async () => {
-        await sync()
+        // do nothing
       })
     }
   }, [state.version])

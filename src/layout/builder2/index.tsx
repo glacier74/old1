@@ -10,7 +10,7 @@ import { Navbar } from './navbar'
 import { RightSidebar } from './rightSidebar'
 
 export const Builder2 = () => {
-  const { setSiteSettings } = useStore()
+  const { siteSettings, setSiteSettings } = useStore()
   const product = useProduct()
 
   async function fetchSiteSettings() {
@@ -24,7 +24,11 @@ export const Builder2 = () => {
       request={fetchSiteSettings}
       deps={[product.id]}
     >
-      <BuilderProvider>
+      <BuilderProvider
+        initialState={{
+          blocks: siteSettings.draft as any
+        }}
+      >
         <div className="flex flex-col w-full w-screen h-full h-screen overflow-hidden">
           <Navbar />
           <div className="builder-main">

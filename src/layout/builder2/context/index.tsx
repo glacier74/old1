@@ -18,7 +18,6 @@ import {
   AddBlockAction,
   DeleteBlockAction,
   IState,
-  InitStateAction,
   SelectBlockAction,
   SetBlocksAction,
   UpdateBlockAction,
@@ -26,7 +25,6 @@ import {
 } from './actions'
 
 type IAction =
-  | InitStateAction
   | UpdateStateAction
   | SetBlocksAction
   | AddBlockAction
@@ -114,7 +112,6 @@ function updateState(state: IState, action: IAction): IState {
 
 const reducer = (state: IState, action: IAction) => {
   switch (action.type) {
-    case 'initState':
     case 'updateState':
     case 'selectBlock':
     case 'addBlock':
@@ -128,14 +125,23 @@ const reducer = (state: IState, action: IAction) => {
   }
 }
 
-export const BuilderProvider: FC<IComponentProps> = ({ children }) => {
+interface BuilderProviderProps extends IComponentProps {
+  initialState?: Partial<IState>
+}
+
+export const BuilderProvider: FC<BuilderProviderProps> = ({
+  initialState: rawInitialState,
+  children
+}) => {
   const initialState: IState = useMemo(
     () => ({
+      isInitialed: false,
       isBuilderMode: true,
       blocks: [],
       previewMode: 'desktop',
       version: 0,
-      isCreateBlockModalOpen: false
+      isCreateBlockModalOpen: false,
+      ...rawInitialState
     }),
     []
   )

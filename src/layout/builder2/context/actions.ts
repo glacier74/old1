@@ -14,13 +14,6 @@ export interface IState {
   isCreateBlockModalOpen?: boolean
 }
 
-export interface InitStateAction {
-  type: 'initState'
-  payload: {
-    blocks: BlockData<any>[]
-  }
-}
-
 export interface UpdateStateAction {
   type: 'updateState'
   payload: {
@@ -62,12 +55,6 @@ export interface DeleteBlockAction {
   payload: {
     blockId?: string
   }
-}
-
-export function initState(state: IState, payload: InitStateAction['payload']): IState {
-  state.blocks = payload.blocks
-
-  return state
 }
 
 export function updateState(state: IState, payload: UpdateStateAction['payload']): IState {
