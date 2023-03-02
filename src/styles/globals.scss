@@ -1850,3 +1850,13 @@ button.block-header-button {
     @apply hidden;
   }
 }
+
+.builder-setting-link-select {
+  .select-button {
+    @apply pr-3;
+  }
+
+  .select-arrow-icon {
+    @apply hidden;
+  }
+}

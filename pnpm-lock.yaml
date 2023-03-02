@@ -5,7 +5,7 @@ specifiers:
   '@emoji-mart/data': ^1.1.2
   '@emoji-mart/react': ^1.1.1
   '@headlessui/react': ^1.7.12
-  '@heyforms/ui': 2023.2.2
+  '@heyforms/ui': ^2023.2.8
   '@nily/utils': ^0.3.6
   '@reactour/tour': ^3.2.1
   '@tabler/icons': ^1.119.0
@@ -98,7 +98,7 @@ dependencies:
   '@emoji-mart/data': 1.1.2
   '@emoji-mart/react': 1.1.1_kyrnz3vmphzqyjjk2ivrm6bcsu
   '@headlessui/react': 1.7.12_biqbaboplfbrettd7655fr4n2y
-  '@heyforms/ui': 2023.2.2_4xfoqtw6w27xro2cdnybx6udgq
+  '@heyforms/ui': 2023.2.8_4xfoqtw6w27xro2cdnybx6udgq
   '@nily/utils': 0.3.6
   '@reactour/tour': 3.2.1_react@18.2.0
   '@tabler/icons': 1.119.0_biqbaboplfbrettd7655fr4n2y
@@ -537,8 +537,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@heyforms/ui/2023.2.2_4xfoqtw6w27xro2cdnybx6udgq:
-    resolution: {integrity: sha512-VuxwGbFst+dK2ddMUF13bvEvUQ41fBN3MgXxdO9qEexBqy7ZKjGD2erNSWvntImUAESISuFf6vt7IPGnFR+GwA==}
+  /@heyforms/ui/2023.2.8_4xfoqtw6w27xro2cdnybx6udgq:
+    resolution: {integrity: sha512-dEY0FowUMinw/phgsFh5ilTDu8+yxGvMtM8adYja+kK9tEfSkeEjmRhb2gs07X+wJsNJbpFqJ3ZEROswAKbEdw==}
     peerDependencies:
       '@headlessui/react': ^1.6.6
       '@tailwindcss/forms': ^0.5.2
