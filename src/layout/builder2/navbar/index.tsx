@@ -100,14 +100,14 @@ export const Navbar: FC = () => {
           />
         </div>
 
-        <div className="flex-1 flex items-center justify-end space-x-4">
-          <Button className="!py-1.5" onClick={handleShare}>
+        <div className="flex-1 flex items-center justify-end space-x-2">
+          <Button className="!py-1.5 !rounded" onClick={handleShare}>
             Share
           </Button>
 
           <Button
             type="success"
-            className="!py-1.5"
+            className="!py-1.5 !rounded"
             loading={loading}
             disabled={!siteSettings.canPublish}
             onClick={request}

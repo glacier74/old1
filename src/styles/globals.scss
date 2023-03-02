@@ -1557,7 +1557,7 @@ button.block-header-button {
       @apply pr-1;
 
       svg {
-        @apply w-4 h-4 text-gray-700;
+        @apply w-4 h-4 text-slate-700;
       }
     }
 
@@ -1586,7 +1586,7 @@ button.block-header-button {
 }
 
 .builder-editor {
-  @apply flex-1 bg-gray-100;
+  @apply flex-1 bg-slate-50;
 
   iframe {
     @apply bg-white;
@@ -1594,8 +1594,18 @@ button.block-header-button {
 }
 
 .builder-mode {
+  @apply rounded p-0;
+
   .button {
-    @apply w-[4.5rem];
+    @apply w-[4.5rem] rounded text-sm;
+  }
+
+  button.switch-button.switch-button-active {
+    @apply bg-slate-700 text-white;
+  }
+
+  button.switch-button.switch-button-active:hover {
+    @apply bg-slate-700 text-white;
   }
 }
 
@@ -1667,7 +1677,7 @@ button.block-header-button {
 }
 
 .builder-setting-text-title {
-  @apply mb-1 text-sm text-gray-700;
+  @apply mb-1 text-sm text-slate-700;
 }
 
 .rich-text-editor {
@@ -1693,7 +1703,7 @@ button.block-header-button {
   @apply flex items-center space-x-2.5;
 
   & > button {
-    @apply p-0.5 rounded-md text-gray-700 select-none hover:bg-gray-100;
+    @apply p-0.5 rounded-md text-slate-700 select-none hover:bg-slate-100;
 
     svg,
     span {
@@ -1715,7 +1725,7 @@ button.block-header-button {
   @apply flex items-center space-x-1;
 
   .input {
-    @apply flex-1 border-none bg-gray-100 p-0.5;
+    @apply flex-1 border-none bg-slate-100 p-0.5;
   }
 
   .button {
@@ -1798,7 +1808,7 @@ button.block-header-button {
 }
 
 .block-item-selected {
-  @apply bg-gray-100 hover:bg-gray-100;
+  @apply bg-slate-100 hover:bg-slate-100;
 
   .block-item-menu {
     @apply opacity-100;
@@ -1823,7 +1833,7 @@ button.block-header-button {
 
 .add-block-modal-sidebar {
   @extend .scrollbar;
-  @apply w-[12.5rem] py-4 bg-gray-100 rounded-bl-lg;
+  @apply w-[12.5rem] py-4 bg-slate-50 rounded-bl-lg;
 }
 
 .add-block-modal-right {
@@ -1838,11 +1848,11 @@ button.block-header-button {
 
 .builder-list-title,
 .builder-group-title {
-  @apply mb-2 text-sm text-gray-700 font-medium select-none;
+  @apply mb-2 text-sm text-slate-700 font-medium select-none;
 }
 
 .builder-text-title {
-  @apply mb-1 text-sm text-gray-700;
+  @apply mb-1 text-sm text-slate-700;
 }
 
 .builder-group-title + .builder-setting-text {
