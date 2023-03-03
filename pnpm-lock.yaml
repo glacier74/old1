@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@earlybirdim/icons': ^1.5.0
+  '@earlybirdim/icons': ^2.0.1
   '@emoji-mart/data': ^1.1.2
   '@emoji-mart/react': ^1.1.1
   '@headlessui/react': ^1.7.12
@@ -94,7 +94,7 @@ specifiers:
   validator: ^13.9.0
 
 dependencies:
-  '@earlybirdim/icons': 1.5.0_react@18.2.0
+  '@earlybirdim/icons': 2.0.1_react@18.2.0
   '@emoji-mart/data': 1.1.2
   '@emoji-mart/react': 1.1.1_kyrnz3vmphzqyjjk2ivrm6bcsu
   '@headlessui/react': 1.7.12_biqbaboplfbrettd7655fr4n2y
@@ -442,8 +442,8 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@earlybirdim/icons/1.5.0_react@18.2.0:
-    resolution: {integrity: sha512-2PBEU+RJvJaCp+OSbntqgJq+3Nb4uDx5WQZOngQOB4X81P/id4s1Kn3FB3U9Wwcdmu5rEFxqfgCfwouEfw4I4w==}
+  /@earlybirdim/icons/2.0.1_react@18.2.0:
+    resolution: {integrity: sha512-xhxk+OOeWARmKh7kQy8V6jJ6H/vc9KZaDsWSFlo/LzRSE113zv+z+9bKtjCo7VFkX12Ee7RKQd8OgvROCveivQ==}
     peerDependencies:
       react: ^18.2.0
     dependencies:

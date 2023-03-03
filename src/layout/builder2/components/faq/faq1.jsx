@@ -6,7 +6,7 @@ import {
   $List as List,
   $Toggle as Toggle
 } from '@earlybirdim/blocks'
-import { IconAdd, IconRemove } from '@earlybirdim/icons'
+import { IconMinus, IconPlus } from '@earlybirdim/icons'
 
 const render = function ({ data }) {
   return (
@@ -21,7 +21,7 @@ const render = function ({ data }) {
                 <Group className={`faq__item ${isActive ? 'faq__item-open' : ''}`}>
                   <div className="faq__item-header" onClick={toggle}>
                     <H3 className="faq__item-question" {...List1.Group1.H31} />
-                    <div className="faq__item-icon">{isActive ? <IconRemove /> : <IconAdd />}</div>
+                    <div className="faq__item-icon">{isActive ? <IconMinus /> : <IconPlus />}</div>
                   </div>
 
                   <Html className="faq__item-answer" {...List1.Group1.Html1} />

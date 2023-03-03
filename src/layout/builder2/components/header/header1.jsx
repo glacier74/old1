@@ -110,7 +110,7 @@ const settingSchemas = [
         title: 'Close Icon',
         default: {
           type: 'svg',
-          name: 'close',
+          name: 'multiply',
           style: {
             color: '#374151'
           }
