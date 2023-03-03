@@ -20,7 +20,7 @@ const SocialLoginItem: FC<SocialLoginItemProps> = ({ label, icon: Icon, provider
   return (
     <div>
       <div
-        className="w-full inline-flex justify-center py-2 px-4 border border-slate-300 rounded-md shadow-sm bg-white text-sm font-medium text-slate-500 cursor-pointer hover:bg-slate-50"
+        className="w-full inline-flex justify-center py-2 px-4 border border-slate-200 rounded shadow-sm bg-white text-sm font-medium text-slate-700 cursor-pointer hover:bg-slate-50"
         onClick={handleClick}
       >
         <Icon className="w-5 h-5" />

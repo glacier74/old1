@@ -1596,8 +1596,16 @@ button.block-header-button {
 .builder-mode {
   @apply rounded p-0;
 
+  &:hover {
+    @apply bg-slate-100;
+  }
+
   .button {
     @apply w-[4.5rem] rounded text-sm;
+  }
+
+  button.switch-button {
+    @apply text-slate-800
   }
 
   button.switch-button.switch-button-active {

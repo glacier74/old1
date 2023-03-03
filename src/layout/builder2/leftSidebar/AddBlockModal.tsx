@@ -141,12 +141,12 @@ export const AddBlockModal = () => {
         <div className="add-block-modal-right">
           {BLOCKS.map(block => (
             <div key={block.title} id={block.title}>
-              <div className="py-1 text-base text-gray-700">{block.title}</div>
+              <div className="py-1 text-lg font-bold text-slate-700">{block.title}</div>
               <div className="mb-4 grid grid-cols-3">
                 {block.components.map(component => (
                   <div
                     key={component.componentId}
-                    className="h-32 rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer"
+                    className="h-32 rounded-lg bg-slate-100 hover:bg-slate-200 cursor-pointer"
                     onClick={() => handleClick(block.type, component.componentId)}
                   ></div>
                 ))}

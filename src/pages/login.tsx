@@ -50,7 +50,7 @@ const Login = (): JSX.Element => {
       </div>
 
       <div className="mt-8 mx-5 md:mx-0">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 shadow">
           <div>
             <p className="text-sm font-medium text-slate-700"> {t('login.signInWith')}</p>
             <SocialLogin />
