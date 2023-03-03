@@ -1,6 +1,6 @@
 import { Icon } from '@earlybirdim/icons'
-import FilledIcons from '@earlybirdim/icons/filled.json'
-import OutlineIcons from '@earlybirdim/icons/outline.json'
+import LineIcons from '@earlybirdim/icons/line.json'
+import SolidIcons from '@earlybirdim/icons/solid.json'
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
 import { Input, Menus, Switch, Tabs, stopPropagation } from '@heyforms/ui'
@@ -32,12 +32,12 @@ export const EmojiPicker: FC<EmojiPickerProps> = ({ onChange }) => {
 
 const svgCompactOptions = [
   {
-    value: 'outline',
-    label: 'Outline'
+    value: 'line',
+    label: 'Line'
   },
   {
-    value: 'filled',
-    label: 'Filled'
+    value: 'solid',
+    label: 'Solid'
   }
 ]
 
@@ -67,14 +67,16 @@ const SvgIconItem: FC<SvgIconItemProps> = ({ icon, onClick }) => {
 }
 
 export const SvgIconPicker: FC<EmojiPickerProps> = ({ onChange }) => {
-  const [compact, setCompact] = useState<string>('filled')
+  const [compact, setCompact] = useState<string>('solid')
   const [keyword, setKeyword] = useState<string>()
 
   const Icons = useMemo(() => {
-    const _icons = compact === 'outline' ? OutlineIcons : FilledIcons
+    const _icons = compact === 'line' ? LineIcons : SolidIcons
 
     if (isValid(keyword)) {
-      return _icons.filter(icon => icon.name.toLowerCase().includes(keyword!.toLowerCase()))
+      return _icons.filter(icon =>
+        icon.icons.some(i => i.name.toLowerCase().includes(keyword!.toLowerCase()))
+      )
     }
 
     return _icons
@@ -104,11 +106,16 @@ export const SvgIconPicker: FC<EmojiPickerProps> = ({ onChange }) => {
         />
       </div>
       <div className="flex-1 px-1.5 py-2 select-none scrollbar">
-        <div className="grid grid-cols-10">
-          {Icons.map(icon => (
-            <SvgIconItem key={icon.name} icon={icon} onClick={handleChange} />
-          ))}
-        </div>
+        {Icons.map(row => (
+          <div key={row.category}>
+            <div className="py-1 text-base text-gray-800">{row.category}</div>
+            <div className="grid grid-cols-10">
+              {row.icons.map(icon => (
+                <SvgIconItem key={icon.name} icon={icon} onClick={handleChange} />
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   )

@@ -7,7 +7,7 @@ import {
   $Payment as Payment,
   $Text as Text
 } from '@earlybirdim/blocks'
-import { IconCheckmarkCircleOutline } from '@earlybirdim/icons'
+import { IconCheckCircleLine } from '@earlybirdim/icons'
 import { useState } from 'react'
 
 const render = function ({ data }) {
@@ -64,7 +64,7 @@ const render = function ({ data }) {
                 <List as="ul" className="payment__features">
                   {List1.Group1.List1?.map(List1 => (
                     <Group as="li" key={List1.id}>
-                      <IconCheckmarkCircleOutline />
+                      <IconCheckCircleLine />
 
                       <Text {...List1.Group1.Text1} />
                     </Group>

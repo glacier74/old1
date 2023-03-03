@@ -31,7 +31,7 @@
   }
 
   .header__nav-menu {
-    @apply block lg:hidden;
+    @apply block md:hidden;
 
     button {
       @apply -m-2.5 inline-flex items-center justify-center rounded-md p-2.5;
@@ -73,7 +73,9 @@
     a {
       @apply flex items-center pl-3 pr-4 py-1.5 space-x-2 rounded-full font-medium;
     }
+  }
 
+  .header__cta {
     .earlybird-icon {
       svg {
         @apply w-5 h-5;
