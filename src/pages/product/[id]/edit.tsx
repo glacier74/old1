@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next'
 
-import { AuthorizedLayout, useProduct } from '~/layout'
+import { ProductLayout, useProduct } from '~/layout'
 import { Builder2 } from '~/layout/builder2'
 import { withTranslations } from '~/utils'
 
@@ -9,13 +9,13 @@ const ProductEdit = (): JSX.Element => {
   const product = useProduct()
 
   return (
-    <AuthorizedLayout
+    <ProductLayout
       seo={{
         title: t('product.title', { name: product?.name || '' })
       }}
     >
       <Builder2 />
-    </AuthorizedLayout>
+    </ProductLayout>
   )
 }
 

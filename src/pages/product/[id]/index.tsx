@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 import { RoundImage } from '~/components'
-import { Breakdown, MainGraph, ProductLayout, useProduct } from '~/layout'
+import { Breakdown, MainGraph, ProductSidebarLayout, useProduct } from '~/layout'
 import { useStore } from '~/store'
 import { withTranslations } from '~/utils'
 
@@ -68,7 +68,7 @@ const Product = (): JSX.Element => {
   }
 
   return (
-    <ProductLayout seo={{ title: 'product.title' }}>
+    <ProductSidebarLayout seo={{ title: 'product.title' }}>
       <div>
         <div className="relative md:flex md:items-center md:justify-between">
           {isReady ? (
@@ -171,7 +171,7 @@ const Product = (): JSX.Element => {
           />
         </div>
       </div>
-    </ProductLayout>
+    </ProductSidebarLayout>
   )
 }
 

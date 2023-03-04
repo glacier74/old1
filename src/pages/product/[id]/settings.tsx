@@ -2,7 +2,7 @@ import { Button, notification, useForm } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
-import { ProductLayout, ProductSettings as Settings, useProductId } from '~/layout'
+import { ProductSidebarLayout, ProductSettings as Settings, useProductId } from '~/layout'
 import { ProductService } from '~/service'
 import { useStore } from '~/store'
 import { withTranslations } from '~/utils'
@@ -51,7 +51,7 @@ const ProductSettings = (): JSX.Element => {
   }
 
   return (
-    <ProductLayout seo={{ title: 'productSettings.title' }}>
+    <ProductSidebarLayout seo={{ title: 'productSettings.title' }}>
       <div className="flex items-center justify-between">
         <h1 className="mb-4 text-3xl leading-6 font-bold text-slate-900">
           {t('productSettings.heading')}
@@ -79,7 +79,7 @@ const ProductSettings = (): JSX.Element => {
       ) : (
         <Skeleton />
       )}
-    </ProductLayout>
+    </ProductSidebarLayout>
   )
 }
 

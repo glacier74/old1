@@ -1,5 +1,6 @@
 import { IconMenu2 } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
+import { useEffect } from 'react'
 
 import { AuthorizedLayout } from '~/layout'
 import { useStore } from '~/store'
@@ -8,14 +9,36 @@ import { useProduct } from '../hook'
 import { ProductMemberModal } from './Members'
 import { Sidebar } from './Sidebar'
 
+const productIdKey = process.env.NEXT_PUBLIC_PRODUCT_ID_STORAGE_NAME!
+
 export function ProductLayout({ seo, children }: LayoutProps) {
+  const { t } = useTranslation()
+  const product = useProduct()
+
+  useEffect(() => {
+    window.localStorage.setItem(productIdKey, product.id.toString())
+  }, [product.id])
+
+  return (
+    <AuthorizedLayout
+      seo={{
+        ...seo,
+        title: t(seo.title, { name: product?.name || '' })
+      }}
+    >
+      {children}
+    </AuthorizedLayout>
+  )
+}
+
+export function ProductSidebarLayout({ seo, children }: LayoutProps) {
   const { t } = useTranslation()
   const { isMemberListShow, openSidebar } = useStore()
   const product = useProduct()
 
   return (
     <>
-      <AuthorizedLayout
+      <ProductLayout
         seo={{
           ...seo,
           title: t(seo.title, { name: product?.name || '' })
@@ -41,7 +64,7 @@ export function ProductLayout({ seo, children }: LayoutProps) {
             </main>
           </div>
         </div>
-      </AuthorizedLayout>
+      </ProductLayout>
 
       <ProductMemberModal visible={isMemberListShow} />
     </>

@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 
 import { AsyncRequest, AsyncRequestProps } from '~/components'
-import { ProductLayout, useProductId } from '~/layout'
+import { ProductSidebarLayout, useProductId } from '~/layout'
 
 const Skeleton = () => {
   return (
@@ -56,7 +56,7 @@ export function EngagementLayout({
   const productId = useProductId()
 
   return (
-    <ProductLayout seo={seo}>
+    <ProductSidebarLayout seo={seo}>
       <h1 className="mb-4 text-3xl leading-6 font-bold text-slate-900">
         {t('engagements.heading')}
       </h1>
@@ -81,6 +81,6 @@ export function EngagementLayout({
           {children}
         </AsyncRequest>
       </div>
-    </ProductLayout>
+    </ProductSidebarLayout>
   )
 }

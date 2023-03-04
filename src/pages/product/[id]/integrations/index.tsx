@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next'
 import { useRef, useState } from 'react'
 
 import { AsyncRequest, AsyncRequestInstance } from '~/components'
-import { Integrations, ProductLayout, useProductId } from '~/layout'
+import { Integrations, ProductSidebarLayout, useProductId } from '~/layout'
 import { IntegrationsProvider } from '~/layout/product/Integrations/context'
 import { IntegrationService } from '~/service'
 import { withTranslations } from '~/utils'
@@ -56,7 +56,7 @@ const ProductIntegrations = (): JSX.Element => {
   }
 
   return (
-    <ProductLayout seo={{ title: 'integrations.title' }}>
+    <ProductSidebarLayout seo={{ title: 'integrations.title' }}>
       <h1 className="mb-4 text-3xl leading-6 font-bold text-slate-900">
         {t('integrations.heading')}
       </h1>
@@ -73,7 +73,7 @@ const ProductIntegrations = (): JSX.Element => {
           <Integrations integrations={integrations} />
         </IntegrationsProvider>
       </AsyncRequest>
-    </ProductLayout>
+    </ProductSidebarLayout>
   )
 }
 
