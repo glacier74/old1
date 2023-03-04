@@ -85,7 +85,7 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
     <div className="builder-setting-text space-y-2">
       <div>
         <div className="flex items-center justify-between mb-1">
-          <div className="mb-1 text-sm text-gray-700">Full name</div>
+          <div className="mb-1 text-sm text-slate-700">Full name</div>
           <Switch value={isValid(setting?.fullName)} onChange={handleEnableFullName} />
         </div>
         {isValid(setting?.fullName) && (
@@ -97,7 +97,7 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
       </div>
 
       <div>
-        <div className="mb-1 text-sm text-gray-700">Email address</div>
+        <div className="mb-1 text-sm text-slate-700">Email address</div>
         <Input
           value={setting?.email.placeholder || 'Enter email address'}
           onChange={handleEmailAddressChange}
@@ -105,12 +105,12 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
       </div>
 
       <div>
-        <div className="mb-1 text-sm text-gray-700">Button Text</div>
+        <div className="mb-1 text-sm text-slate-700">Button Text</div>
         <Input value={setting?.button.text} onChange={handleChange} />
       </div>
 
       <div>
-        <div className="mb-1 text-sm text-gray-700">Success message</div>
+        <div className="mb-1 text-sm text-slate-700">Success message</div>
         <Input value={setting?.message} onChange={handleMessageChange} />
       </div>
 

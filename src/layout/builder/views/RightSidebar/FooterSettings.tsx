@@ -49,7 +49,7 @@ const SocialMedia: FC<SocialMediaProps> = ({ socialMedia, onChange, onDelete }) 
   }
 
   return (
-    <div className="relative block bg-white border rounded-md px-3 py-1.5 border-gray-300">
+    <div className="relative block bg-white border rounded-md px-3 py-1.5 border-slate-300">
       <div className="flex items-center justify-between">
         <div className="flex items-center text-sm text-slate-700 space-x-2">
           <SocialMediaIcon className="w-5 h-5 text-slate-500" type={socialMedia.type} />

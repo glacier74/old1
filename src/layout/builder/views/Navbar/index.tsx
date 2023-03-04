@@ -173,7 +173,7 @@ export const Navbar: FC = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between h-[3.75rem] px-4 border-b border-gray-200">
+      <div className="flex items-center justify-between h-[3.75rem] px-4 border-b border-slate-200">
         <div className="flex-1">
           <Link
             className="inline-flex items-center text-sm -ml-2 pl-1 pr-3 py-1.5 rounded hover:bg-slate-100"
@@ -208,7 +208,7 @@ export const Navbar: FC = () => {
             <span className="text-[0.6875rem]">Share</span>
           </div>
 
-          <div className="mx-1.5 w-px h-5 bg-gray-200" />
+          <div className="mx-1.5 w-px h-5 bg-slate-200" />
 
           <Link
             href={`/product/${productId}/engagements`}
@@ -248,7 +248,7 @@ export const Navbar: FC = () => {
           {/*  onChange={handleModeChange}*/}
           {/*/>*/}
 
-          {/*<div className="mx-4 w-px h-5 bg-gray-200" />*/}
+          {/*<div className="mx-4 w-px h-5 bg-slate-200" />*/}
 
           <Button
             type="success"

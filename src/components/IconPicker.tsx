@@ -57,7 +57,7 @@ const SvgIconItem: FC<SvgIconItemProps> = ({ icon, onClick }) => {
   return (
     <button
       key={icon.name}
-      className="w-8 h-8 p-1 rounded-full text-gray-900 hover:bg-gray-400/10"
+      className="w-8 h-8 p-1 rounded-full text-slate-900 hover:bg-slate-400/10"
       title={icon.title}
       onClick={handleClick}
     >
@@ -108,7 +108,7 @@ export const SvgIconPicker: FC<EmojiPickerProps> = ({ onChange }) => {
       <div className="flex-1 px-1.5 py-2 select-none scrollbar">
         {Icons.map(row => (
           <div key={row.category}>
-            <div className="py-1 text-base text-gray-800">{row.category}</div>
+            <div className="py-1 text-base text-slate-800">{row.category}</div>
             <div className="grid grid-cols-10">
               {row.icons.map(icon => (
                 <SvgIconItem key={icon.name} icon={icon} onClick={handleChange} />

@@ -25,9 +25,9 @@ const SettingItem: FC<SettingItemProps> = ({
   const icon = useMemo(
     () =>
       isOpen ? (
-        <IconChevronUp className="w-5 h-5 text-gray-500" />
+        <IconChevronUp className="w-5 h-5 text-slate-500" />
       ) : (
-        <IconChevronDown className="w-5 h-5 text-gray-500" />
+        <IconChevronDown className="w-5 h-5 text-slate-500" />
       ),
     [isOpen]
   )
@@ -39,7 +39,7 @@ const SettingItem: FC<SettingItemProps> = ({
   return (
     <div className={clsx('builder-setting', className)} {...restProps}>
       <div
-        className="flex items-center justify-between px-4 py-3 text-gray-700 select-none cursor-pointer"
+        className="flex items-center justify-between px-4 py-3 text-slate-700 select-none cursor-pointer"
         onClick={handleClick}
       >
         <span className="text-sm font-semibold">{schema.title}</span>
@@ -47,7 +47,7 @@ const SettingItem: FC<SettingItemProps> = ({
       </div>
 
       {isOpen && (
-        <div className="px-4 py-3 bg-gray-50">
+        <div className="px-4 py-3 bg-slate-50">
           <SettingField schema={schema} />
         </div>
       )}
@@ -66,9 +66,9 @@ export const StylesItem: FC<SettingItemProps> = ({
   const icon = useMemo(
     () =>
       isOpen ? (
-        <IconChevronUp className="w-5 h-5 text-gray-500" />
+        <IconChevronUp className="w-5 h-5 text-slate-500" />
       ) : (
-        <IconChevronDown className="w-5 h-5 text-gray-500" />
+        <IconChevronDown className="w-5 h-5 text-slate-500" />
       ),
     [isOpen]
   )
@@ -80,7 +80,7 @@ export const StylesItem: FC<SettingItemProps> = ({
   return (
     <div className={clsx('builder-setting', className)} {...restProps}>
       <div
-        className="flex items-center justify-between px-4 py-3 text-gray-700 select-none cursor-pointer"
+        className="flex items-center justify-between px-4 py-3 text-slate-700 select-none cursor-pointer"
         onClick={handleClick}
       >
         <span className="text-sm font-semibold">{schema.title}</span>

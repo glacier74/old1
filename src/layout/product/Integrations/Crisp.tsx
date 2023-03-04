@@ -57,10 +57,10 @@ export const Crisp: FC<{ integration: Integration }> = ({ integration }) => {
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center">
-              <div className="text-sm font-medium text-gray-900 truncate">Crisp</div>
+              <div className="text-sm font-medium text-slate-900 truncate">Crisp</div>
               {integration.isEnabled && <span className="ml-2 w-2 h-2 bg-green-500 rounded-full" />}
             </div>
-            <p className="text-sm text-gray-500 truncate">
+            <p className="text-sm text-slate-500 truncate">
               Free and beautiful chat for customer support on your landing page.
             </p>
           </div>

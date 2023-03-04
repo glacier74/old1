@@ -277,7 +277,7 @@ const ProducthuntBadge: FC<{ block: HeroSectionBlock }> = ({ block }) => {
   )
 
   return (
-    <div className="p-4 border-t border-gray-100">
+    <div className="p-4 border-t border-slate-100">
       <div className="flex items-center">
         <div className="text-sm font-medium">Product Hunt badge</div>
       </div>

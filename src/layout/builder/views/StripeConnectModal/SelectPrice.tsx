@@ -27,7 +27,7 @@ const SelectPriceItem: FC<SelectPriceItemProps> = ({ value, price, onClick }) =>
   return (
     <div
       className={clsx(
-        'bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer flex justify-between items-center focus:outline-none border-gray-300 undefined',
+        'bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer flex justify-between items-center focus:outline-none border-slate-300 undefined',
         {
           'ring-2 ring-green-500 border-transparent': isActive
         }
@@ -35,10 +35,10 @@ const SelectPriceItem: FC<SelectPriceItemProps> = ({ value, price, onClick }) =>
       onClick={handleClick}
     >
       <div className="flex-1">
-        <div className="font-medium text-gray-900">
+        <div className="font-medium text-slate-900">
           {currencyFormatter(price.currency, price.unit_amount)}
         </div>
-        <div className="text-gray-500">{t(PAYMENT_TYPES[price.type])}</div>
+        <div className="text-slate-500">{t(PAYMENT_TYPES[price.type])}</div>
       </div>
       {isActive && <IconCircleCheck className="ml-4 w-5 h-5 text-green-500" />}
     </div>

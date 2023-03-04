@@ -37,7 +37,7 @@ export const LinkSettingField: FC<SettingFieldProps> = ({ schema }) => {
 
   function optionRender(option: any) {
     if (option.type === 'blocks') {
-      return <div className="px-2 py-1 pointer-events-none text-gray-500">{option.label}</div>
+      return <div className="px-2 py-1 pointer-events-none text-slate-500">{option.label}</div>
     }
 
     return (
@@ -62,7 +62,7 @@ export const LinkSettingField: FC<SettingFieldProps> = ({ schema }) => {
       </div>
 
       <div>
-        <div className="mb-1 text-sm text-gray-700">Link to</div>
+        <div className="mb-1 text-sm text-slate-700">Link to</div>
         <Select
           className="builder-setting-link-select"
           options={options}

@@ -52,7 +52,7 @@ export const ButtonSettingField: FC<SettingFieldProps> = ({ schema }) => {
   return (
     <div className="builder-setting-button space-y-2">
       <div>
-        <div className="mb-1 text-sm text-gray-700">Text</div>
+        <div className="mb-1 text-sm text-slate-700">Text</div>
         <Input
           value={setting?.text}
           trailing={TextColorPicker}
@@ -64,7 +64,7 @@ export const ButtonSettingField: FC<SettingFieldProps> = ({ schema }) => {
       {Background}
 
       <div>
-        <div className="mb-1 text-sm text-gray-700">URL</div>
+        <div className="mb-1 text-sm text-slate-700">URL</div>
         <Input
           value={setting?.url}
           placeholder="Enter button URL, etc, https://example.com"

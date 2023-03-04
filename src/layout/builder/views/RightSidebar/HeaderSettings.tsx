@@ -43,7 +43,7 @@ const LinkItem: FC<LinkItemProps> = ({ link, onChange, onDelete }) => {
   }
 
   return (
-    <div className="relative block bg-white border rounded-md px-3 py-1.5 border-gray-300">
+    <div className="relative block bg-white border rounded-md px-3 py-1.5 border-slate-300">
       <div className="flex items-center justify-between">
         <span className="text-sm text-slate-700">{link.title}</span>
         <div className="flex items-center space-x-1">

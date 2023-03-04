@@ -133,7 +133,7 @@ export const AddBlockModal = () => {
       <div className="add-block-modal-body">
         <div className="add-block-modal-sidebar">
           {BLOCKS.map(block => (
-            <div key={block.title} className="px-4 py-2 text-sm text-gray-700">
+            <div key={block.title} className="px-4 py-2 text-sm text-slate-700">
               <a href={`#${block.title}`}>{block.title}</a>
             </div>
           ))}

@@ -67,9 +67,9 @@ const ListSettingItem: FC<ListSettingItemProps> = ({
   const Icon = useMemo(
     () =>
       isOpen ? (
-        <IconChevronUp className="w-4 h-4 text-gray-700" />
+        <IconChevronUp className="w-4 h-4 text-slate-700" />
       ) : (
-        <IconChevronDown className="w-4 h-4 text-gray-700" />
+        <IconChevronDown className="w-4 h-4 text-slate-700" />
       ),
     [isOpen]
   )
@@ -107,27 +107,27 @@ const ListSettingItem: FC<ListSettingItemProps> = ({
   }, [index, setting])
 
   return (
-    <div className="bg-white border border-gray-200 rounded">
+    <div className="bg-white border border-slate-200 rounded">
       <div className="flex items-center">
-        <div className="builder-setting-handle min-w-0 h-9 pl-3 py-2 flex-1 text-sm text-gray-700 font-medium truncate select-none cursor-move">
+        <div className="builder-setting-handle min-w-0 h-9 pl-3 py-2 flex-1 text-sm text-slate-700 font-medium truncate select-none cursor-move">
           {Title}
         </div>
 
         <div className="px-2 flex items-center">
           <Dropdown
-            className="w-6 h-6 p-1 rounded cursor-pointer hover:bg-gray-100"
+            className="w-6 h-6 p-1 rounded cursor-pointer hover:bg-slate-100"
             overlay={Overlay}
           >
-            <IconDotsVertical className="w-4 h-4 text-gray-700" />
+            <IconDotsVertical className="w-4 h-4 text-slate-700" />
           </Dropdown>
-          <div className="p-1 rounded cursor-pointer hover:bg-gray-100" onClick={handleToggle}>
+          <div className="p-1 rounded cursor-pointer hover:bg-slate-100" onClick={handleToggle}>
             {Icon}
           </div>
         </div>
       </div>
 
       {isOpen && (
-        <div className="px-3 pb-3 space-y-2 border-t border-gray-100">
+        <div className="px-3 pb-3 space-y-2 border-t border-slate-100">
           <SettingField
             schema={{
               ...childSchema,

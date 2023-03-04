@@ -15,7 +15,7 @@ export const OptionalSettingField: FC<SettingFieldProps> = ({ schema }) => {
   return (
     <div className="builder-setting-text space-y-2">
       <div className="flex items-center justify-between">
-        <div className="mb-1 text-sm text-gray-700">{schema.title || 'Enable'}</div>
+        <div className="mb-1 text-sm text-slate-700">{schema.title || 'Enable'}</div>
         <Switch value={setting?.show} onChange={handleChange} />
       </div>
     </div>

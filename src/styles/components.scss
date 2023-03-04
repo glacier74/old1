@@ -170,7 +170,7 @@
 }
 
 .hero__cta-bottom-text {
-  @apply mt-4 text-sm text-gray-500;
+  @apply mt-4 text-sm text-slate-500;
 }
 
 .hero__right {
@@ -200,11 +200,11 @@
 }
 
 .feature__title {
-  @apply text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl;
+  @apply text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl;
 }
 
 .feature__subtitle {
-  @apply mt-3 text-lg leading-8 text-gray-600;
+  @apply mt-3 text-lg leading-8 text-slate-600;
 }
 
 .feature__list {
@@ -216,19 +216,19 @@
 }
 
 .feature__item-icon {
-  @apply mx-auto mb-6 flex h-14 w-14 text-[2rem] items-center justify-center rounded-lg bg-gray-100;
+  @apply mx-auto mb-6 flex h-14 w-14 text-[2rem] items-center justify-center rounded-lg bg-slate-100;
 
   .icon {
-    @apply w-9 h-9 text-gray-800;
+    @apply w-9 h-9 text-slate-800;
   }
 }
 
 .feature__item-title {
-  @apply text-base font-semibold leading-7 text-gray-900;
+  @apply text-base font-semibold leading-7 text-slate-900;
 }
 
 .feature__item-subtitle {
-  @apply mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600 md:px-8;
+  @apply mt-1 flex flex-auto flex-col text-base leading-7 text-slate-600 md:px-8;
 }
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -243,11 +243,11 @@
   }
 
   .faq__title {
-    @apply text-2xl font-bold leading-10 tracking-tight text-gray-900;
+    @apply text-2xl font-bold leading-10 tracking-tight text-slate-900;
   }
 
   .faq__subtitle {
-    @apply mt-2 text-base leading-7 text-gray-600;
+    @apply mt-2 text-base leading-7 text-slate-600;
   }
 
   .faq__list {
@@ -257,13 +257,13 @@
   .faq__item {
     &:hover {
       .faq__item-icon {
-        @apply text-gray-900;
+        @apply text-slate-900;
       }
     }
   }
 
   .faq__item-header {
-    @apply py-6 flex w-full items-center justify-between text-left text-gray-900 cursor-pointer;
+    @apply py-6 flex w-full items-center justify-between text-left text-slate-900 cursor-pointer;
   }
 
   .faq__item-question {
@@ -271,7 +271,7 @@
   }
 
   .faq__item-icon {
-    @apply ml-6 flex items-center text-gray-500;
+    @apply ml-6 flex items-center text-slate-500;
 
     svg {
       @apply w-6 h-6;
@@ -279,7 +279,7 @@
   }
 
   .faq__item-answer {
-    @apply hidden pb-6 text-base leading-7 text-gray-600;
+    @apply hidden pb-6 text-base leading-7 text-slate-600;
   }
 
   .faq__item-open {
@@ -345,7 +345,7 @@
   }
 
   .email-capture__form {
-    @apply space-x-0 space-y-3 sm:space-x-3 sm:space-y-0 sm:flex border-gray-300;
+    @apply space-x-0 space-y-3 sm:space-x-3 sm:space-y-0 sm:flex border-slate-300;
 
     input {
       @apply w-full sm:w-[16rem] rounded-md border px-5 py-3;
@@ -381,11 +381,11 @@
   }
 
   .payment__title {
-    @apply text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl;
+    @apply text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl;
   }
 
   .payment__subtitle {
-    @apply mt-3 text-lg leading-8 text-gray-600;
+    @apply mt-3 text-lg leading-8 text-slate-600;
   }
 
   .payment__interval-switcher {
@@ -394,7 +394,7 @@
 
   .payment__interval-monthly,
   .payment__interval-yearly {
-    @apply border border-gray-300 py-2 px-3.5 text-sm text-gray-700 outline-2 outline-offset-2 hover:border-gray-400;
+    @apply border border-slate-300 py-2 px-3.5 text-sm text-slate-700 outline-2 outline-offset-2 hover:border-slate-400;
   }
 
   .payment__interval-monthly {
@@ -418,31 +418,31 @@
   }
 
   .payment__plan {
-    @apply p-6 border border-gray-200 rounded-3xl p-6 bg-white text-left;
+    @apply p-6 border border-slate-200 rounded-3xl p-6 bg-white text-left;
   }
 
   .payment__plan-name {
-    @apply text-xl leading-6 font-bold text-gray-900;
+    @apply text-xl leading-6 font-bold text-slate-900;
   }
 
   .payment__plan-description {
-    @apply mt-2 text-base text-gray-700 leading-tight;
+    @apply mt-2 text-base text-slate-700 leading-tight;
   }
 
   .payment__plan-price {
     @apply mt-8;
 
     span {
-      @apply text-4xl font-bold text-gray-900;
+      @apply text-4xl font-bold text-slate-900;
     }
 
     .payment__plan-interval {
-      @apply pl-1 text-base font-medium text-gray-500;
+      @apply pl-1 text-base font-medium text-slate-500;
     }
   }
 
   .payment__payment-button {
-    @apply mt-6 block w-full bg-gray-900 rounded-md py-2 text-sm font-semibold text-white text-center;
+    @apply mt-6 block w-full bg-slate-900 rounded-md py-2 text-sm font-semibold text-white text-center;
   }
 
   .payment__features {
@@ -474,10 +474,10 @@
   }
 
   .testimonial__title {
-    @apply text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl;
+    @apply text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl;
   }
 
   .testimonial__subtitle {
-    @apply mt-3 mx-auto max-w-4xl text-lg leading-8 text-gray-600;
+    @apply mt-3 mx-auto max-w-4xl text-lg leading-8 text-slate-600;
   }
 }

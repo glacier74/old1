@@ -75,7 +75,7 @@ export const RightSidebar: FC = () => {
       unmountOnExit={false}
     >
       <div className="builder-right-sidebar fixed top-[3.75rem] right-0">
-        <div className="sidebar-wrapper flex flex-col w-[18.75rem] h-full scrollbar bg-white border-l border-gray-200 duration-150 ease-in-out">
+        <div className="sidebar-wrapper flex flex-col w-[18.75rem] h-full scrollbar bg-white border-l border-slate-200 duration-150 ease-in-out">
           <div className="py-6 space-y-4">
             <div className="flex items-center justify-between px-4">
               <div className="text-base font-medium">{t('builder.settings')}</div>
@@ -86,7 +86,7 @@ export const RightSidebar: FC = () => {
 
             {Settings}
 
-            <div className="px-4 pt-4 border-t border-gray-100">
+            <div className="px-4 pt-4 border-t border-slate-100">
               <Button.Link type="danger" onClick={handleDelete}>
                 Delete block
               </Button.Link>

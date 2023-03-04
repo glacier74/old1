@@ -80,7 +80,7 @@ export const Navbar: FC = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between h-[3.5rem] px-4 border-b border-gray-200">
+      <div className="flex items-center justify-between h-[3.5rem] px-4 border-b border-slate-200">
         <div className="flex-1">
           <Link
             className="inline-flex items-center text-sm -ml-3 pl-1 pr-3 py-1.5 rounded hover:bg-slate-100"

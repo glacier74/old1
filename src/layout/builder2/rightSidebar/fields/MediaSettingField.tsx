@@ -28,7 +28,7 @@ export const MediaSettingField: FC<SettingFieldProps> = ({ schema }) => {
   return (
     <div className="builder-setting-image space-y-3">
       <div>
-        <div className="mb-1 text-sm text-gray-700">Media</div>
+        <div className="mb-1 text-sm text-slate-700">Media</div>
         <div className="flex items-center">
           <div className="builder-setting-image-preview">
             {setting?.src && setting?.type === 'image' && (
@@ -53,7 +53,7 @@ export const MediaSettingField: FC<SettingFieldProps> = ({ schema }) => {
       </div>
 
       <div>
-        <div className="mb-1 text-sm text-gray-700">Alt Text</div>
+        <div className="mb-1 text-sm text-slate-700">Alt Text</div>
         <Input value={setting?.alt} placeholder="Enter image alt here" onChange={handleAltChange} />
       </div>
     </div>

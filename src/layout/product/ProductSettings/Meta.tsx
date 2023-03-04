@@ -35,7 +35,7 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
                 className="mb-4"
                 label="Meta title"
                 extra={value => (
-                  <div className="text-xs text-gray-500">
+                  <div className="text-xs text-slate-500">
                     Recommended: <strong>70</strong> characters. You've used{' '}
                     <span className="text-green-500 font-semibold">{value?.length || 0}</span>
                   </div>
@@ -49,7 +49,7 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
                 className="mb-4"
                 label="Meta description"
                 extra={value => (
-                  <div className="text-xs text-gray-500">
+                  <div className="text-xs text-slate-500">
                     Recommended: <strong>156</strong> characters. You've used{' '}
                     <span className="text-green-500 font-semibold">{value?.length || 0}</span>
                   </div>
@@ -62,12 +62,12 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
             {/* Preview */}
             <div className="w-full lg:w-1/2 lg:flex-1">
               <div className="text-sm text-slate-700">Search engine result preview</div>
-              <div className="w-full p-4 mt-1 border border-gray-300 bg-white shadow-sm rounded-md">
+              <div className="w-full p-4 mt-1 border border-slate-300 bg-white shadow-sm rounded-md">
                 <div className="flex flex-col">
                   <div className="flex items-center mb-4">
                     <IconGoogle2 className="h-[1.875rem] mr-8" />
-                    <div className="flex items-center justify-end w-full h-7 bg-gray-100 rounded-[0.875rem]">
-                      <IconSearch className="w-5 h-5 mr-3 text-gray-400" />
+                    <div className="flex items-center justify-end w-full h-7 bg-slate-100 rounded-[0.875rem]">
+                      <IconSearch className="w-5 h-5 mr-3 text-slate-400" />
                     </div>
                   </div>
                   <div className="my-0.5 max-w-[21.25rem] font-serif text-[0.875rem] leading-[1.3] text-[#202124] whitespace-nowrap break-words text-ellipsis overflow-hidden">
@@ -104,7 +104,7 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
                 >
                   <ImagePickerField
                     className="!w-full !h-[12rem] md:!h-[20rem]"
-                    pickerButtonClassName="!bg-white rounded-md border border-gray-300 shadow-sm"
+                    pickerButtonClassName="!bg-white rounded-md border border-slate-300 shadow-sm"
                     namespace="openGraphImage"
                     width={800}
                     height={420}
@@ -119,7 +119,7 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
             {/* Preview */}
             <div className="w-full lg:w-1/2 lg:flex-1">
               <div className="text-sm text-slate-700">Search engine result preview</div>
-              <div className="max-w-full mt-1 overflow-hidden text-black border border-gray-300 bg-white shadow-sm rounded-md">
+              <div className="max-w-full mt-1 overflow-hidden text-black border border-slate-300 bg-white shadow-sm rounded-md">
                 <div className="flex h-full flex-col items-center justify-center rounded-t-md">
                   <OpenGraphImage
                     text={values.metaTitle || values.name}
@@ -127,7 +127,7 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
                     height={630}
                   />
                 </div>
-                <div className="font-serif break-words border-t border-gray-300 p-4 antialiased">
+                <div className="font-serif break-words border-t border-slate-300 p-4 antialiased">
                   <div className="mb-[0.15em] truncate text-[14px] font-semibold leading-[18px]">
                     {values.metaTitle || values.name}
                   </div>

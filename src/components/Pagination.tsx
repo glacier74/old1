@@ -33,7 +33,7 @@ export const Pagination: FC<PaginationProps> = ({ uri, total, page = 1, limit = 
 
   return (
     <nav
-      className="py-4 flex items-center justify-between border-t border-gray-100"
+      className="py-4 flex items-center justify-between border-t border-slate-100"
       aria-label="Pagination"
     >
       <div className="hidden sm:block">
@@ -99,7 +99,7 @@ export const Pagination2: FC<Pagination2Props> = ({ total, page = 1, limit = 20,
 
   return (
     <nav
-      className="py-4 flex items-center justify-between border-t border-gray-100"
+      className="py-4 flex items-center justify-between border-t border-slate-100"
       aria-label="Pagination"
     >
       <div className="hidden sm:block">

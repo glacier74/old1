@@ -9,9 +9,9 @@ export const Zapier = () => {
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center">
-            <div className="text-sm font-medium text-gray-900 truncate">Zapier</div>
+            <div className="text-sm font-medium text-slate-900 truncate">Zapier</div>
           </div>
-          <p className="text-sm text-gray-500 truncate">
+          <p className="text-sm text-slate-500 truncate">
             Send lead captures to your favorite tools.
           </p>
         </div>

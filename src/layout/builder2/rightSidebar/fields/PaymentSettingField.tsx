@@ -116,10 +116,10 @@ export const PaymentSettingField: FC<SettingFieldProps> = ({ schema }) => {
   return (
     <div className="builder-setting-text space-y-2">
       <div>
-        <div className="mb-1 text-sm text-gray-700">Stripe</div>
+        <div className="mb-1 text-sm text-slate-700">Stripe</div>
         <div>
           {setting?.stripeAccount ? (
-            <div className="text-sm text-gray-700">Connected with: {setting?.stripeEmail}</div>
+            <div className="text-sm text-slate-700">Connected with: {setting?.stripeEmail}</div>
           ) : (
             <Button
               className="w-full"
@@ -136,13 +136,13 @@ export const PaymentSettingField: FC<SettingFieldProps> = ({ schema }) => {
 
       {setting?.stripeAccount && (
         <div>
-          <div className="mb-1 text-sm text-gray-700">Price</div>
+          <div className="mb-1 text-sm text-slate-700">Price</div>
           <Input value={setting?.priceId} onChange={handlePriceIdChange} />
         </div>
       )}
 
       <div>
-        <div className="mb-1 text-sm text-gray-700">Button text</div>
+        <div className="mb-1 text-sm text-slate-700">Button text</div>
         <Input value={setting?.html} onChange={handleChange} />
       </div>
 

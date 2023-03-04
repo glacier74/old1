@@ -9,12 +9,12 @@ export const Slack = () => {
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center space-x-2">
-            <div className="text-sm font-medium text-gray-900 truncate">Slack</div>
+            <div className="text-sm font-medium text-slate-900 truncate">Slack</div>
             <div className="px-1 py-0.5 text-[11px] leading-[1] font-bold uppercase rounded bg-yellow-500 text-white">
               By Zapier
             </div>
           </div>
-          <p className="text-sm text-gray-500 truncate">
+          <p className="text-sm text-slate-500 truncate">
             Send Slack messages for new lead captures.
           </p>
         </div>

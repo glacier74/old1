@@ -593,7 +593,7 @@ button.switch-checked {
 // Builder
 .insert-block-popup {
   .input-focused {
-    @apply ring-0 outline-0 shadow-none border-gray-100 #{!important};
+    @apply ring-0 outline-0 shadow-none border-slate-100 #{!important};
   }
 }
 
@@ -1360,7 +1360,7 @@ button.block-header-button {
 }
 
 .block-faq-delete-button {
-  @apply absolute top-0 left-1/2 -translate-x-1/2 hidden p-1 border border-gray-300 shadow-sm sm:text-sm font-medium rounded-md text-slate-900 bg-white;
+  @apply absolute top-0 left-1/2 -translate-x-1/2 hidden p-1 border border-slate-300 shadow-sm sm:text-sm font-medium rounded-md text-slate-900 bg-white;
 }
 
 .block-faq-add-button {
@@ -1488,7 +1488,7 @@ button.block-header-button {
 
 .block-settings-modal {
   .rich-text {
-    @apply px-3 py-2 min-h-[8.5rem] sm:text-sm rounded-md border border-gray-300 shadow-sm text-slate-900 cursor-text;
+    @apply px-3 py-2 min-h-[8.5rem] sm:text-sm rounded-md border border-slate-300 shadow-sm text-slate-900 cursor-text;
   }
 }
 
@@ -1562,7 +1562,7 @@ button.block-header-button {
     }
 
     input {
-      @apply text-gray-900;
+      @apply text-slate-900;
     }
   }
 
@@ -1667,7 +1667,7 @@ button.block-header-button {
 }
 
 .builder-setting-image-preview {
-  @apply w-[3.05rem] h-[3.05rem] bg-white border border-gray-200 rounded;
+  @apply w-[3.05rem] h-[3.05rem] bg-white border border-slate-200 rounded;
 
   img {
     @apply object-contain;
@@ -1676,7 +1676,7 @@ button.block-header-button {
 }
 
 .builder-setting {
-  @apply border-b border-gray-100;
+  @apply border-b border-slate-100;
 
   .input,
   .textarea {
@@ -1690,7 +1690,7 @@ button.block-header-button {
 
 .rich-text-editor {
   .ProseMirror {
-    @apply min-h-[4.75rem] px-3 py-2 sm:text-sm rounded-md bg-white border border-gray-300 shadow-sm cursor-text;
+    @apply min-h-[4.75rem] px-3 py-2 sm:text-sm rounded-md bg-white border border-slate-300 shadow-sm cursor-text;
 
     &.ProseMirror-focused {
       @apply outline-none ring-1 ring-green-600 border-green-600;
@@ -1704,7 +1704,7 @@ button.block-header-button {
 
 .editor__menu-wrapper,
 .editor__color-menu {
-  @apply px-2 py-1.5 sm:text-sm rounded-md bg-white border border-gray-300 shadow-lg;
+  @apply px-2 py-1.5 sm:text-sm rounded-md bg-white border border-slate-300 shadow-lg;
 }
 
 .editor__bubble-menu {
@@ -1768,19 +1768,19 @@ button.block-header-button {
   @apply relative;
 
   span {
-    @apply border border-gray-200;
+    @apply border border-slate-200;
   }
 
   &:after {
     content: "";
-    @apply absolute w-px h-[44px] top-[4px] left-[20px] bg-gray-700;
+    @apply absolute w-px h-[44px] top-[4px] left-[20px] bg-slate-700;
     transform: rotate(45deg) scale(.5);
     transform-origin: -1px -2px;
   }
 }
 
 .color-picker-v2 {
-  @apply flex items-center px-1 py-0.5 w-[7.5rem] h-[1.875rem] bg-gray-200 rounded-md cursor-pointer;
+  @apply flex items-center px-1 py-0.5 w-[7.5rem] h-[1.875rem] bg-slate-200 rounded-md cursor-pointer;
 }
 
 .color-picker__background {
@@ -1789,16 +1789,16 @@ button.block-header-button {
 }
 
 .color-picker__value {
-  @apply ml-2 text-sm text-gray-800 truncate;
+  @apply ml-2 text-sm text-slate-800 truncate;
 }
 
 .sidebar-container {
-  @apply fixed top-[3.5rem] left-9 w-[18rem] py-4 bg-white border-r border-gray-200;
+  @apply fixed top-[3.5rem] left-9 w-[18rem] py-4 bg-white border-r border-slate-200;
   height: calc(100vh - 3.5rem);
 }
 
 .block-item {
-  @apply flex items-center p-1.5 pl-2 rounded-md cursor-pointer select-none hover:bg-gray-50;
+  @apply flex items-center p-1.5 pl-2 rounded-md cursor-pointer select-none hover:bg-slate-50;
 
   &:hover {
     .block-item-menu {
