@@ -14,7 +14,7 @@ export const General: FC = () => {
     <div className="space-y-2">
       <div className="text-xs text-slate-900 uppercase">{t('productSettings.general.heading')}</div>
 
-      <div className="bg-slate-50 rounded-lg divide-y divide-gray-100">
+      <div className="bg-slate-50 rounded-lg divide-y divide-slate-100">
         <Expandable
           title="Product"
           description="The details used to identify your landing page around the web."

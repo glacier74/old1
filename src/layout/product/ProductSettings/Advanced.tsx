@@ -13,7 +13,7 @@ export const Advanced: FC<{ values: any }> = ({ values }) => {
     <div className="space-y-2">
       <div className="text-xs text-slate-900 uppercase">Advanced</div>
 
-      <div className="bg-slate-50 rounded-lg divide-y divide-gray-100">
+      <div className="bg-slate-50 rounded-lg divide-y divide-slate-100">
         <div className="expandable expandable-advanced px-6 pt-5 py-5">
           <Form.Item name="isSitePrivate">
             <SwitchField

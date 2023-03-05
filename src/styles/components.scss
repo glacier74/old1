@@ -95,7 +95,7 @@
     }
 
     .header__nav-right {
-      @apply w-full flex flex-col divide-y divide-gray-500/10;
+      @apply w-full flex flex-col divide-y divide-slate-500/10;
     }
 
     .header__navigation,
@@ -251,7 +251,7 @@
   }
 
   .faq__list {
-    @apply mt-4 divide-y divide-gray-900/10;
+    @apply mt-4 divide-y divide-slate-900/10;
   }
 
   .faq__item {

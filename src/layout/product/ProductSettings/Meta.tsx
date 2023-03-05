@@ -23,7 +23,7 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
     <div className="space-y-2">
       <div className="text-xs text-slate-900 uppercase">Site meta settings</div>
 
-      <div className="bg-slate-50 rounded-lg divide-y divide-gray-100">
+      <div className="bg-slate-50 rounded-lg divide-y divide-slate-100">
         <Expandable
           title="Meta title & description"
           description="The details used to identify your landing page around the web."

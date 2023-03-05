@@ -76,7 +76,7 @@ export const DangerZone = () => {
       <div className="mt-12 space-y-2">
         <div className="text-xs text-slate-900 uppercase">Danger zone</div>
 
-        <div className="bg-slate-50 rounded-lg divide-y divide-gray-100">
+        <div className="bg-slate-50 rounded-lg divide-y divide-slate-100">
           <div className="px-6 py-5 flex items-center justify-between">
             <div>
               <div className="block text-base text-slate-900 font-bold">
