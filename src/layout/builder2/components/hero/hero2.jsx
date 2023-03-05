@@ -3,41 +3,37 @@ import {
   $Group as Group,
   $H1 as H1,
   $Html as Html,
-  $Image as Image,
   $Link as Link,
   $List as List,
+  $Media as Media,
   $Text as Text
 } from '@earlybirdim/blocks'
 
 const render = function ({ productId, block }) {
   return (
     <Block productId={productId} block={block}>
-      <div className="hero1__container">
-        <div className="hero1__wrapper">
-          <div className="hero1__left">
-            <div className="hero1__announcement-wrapper">
-              <Html as="p" className="hero1__announcement" {...block.setting.Html1} />
-            </div>
-
-            <H1 className="hero1__title" {...block.setting.H11} />
-
-            <Html as="p" className="hero1__subtitle" {...block.setting.Html2} />
-
-            <Group className="hero1__cta">
-              <List className="hero1__cta-buttons">
-                {block.setting.Group1.List1?.map(List1 => (
-                  <Link {...List1.Link1} key={List1.id}>
-                    <Text {...List1.Link1.Text1} />
-                  </Link>
-                ))}
-              </List>
-
-              <Text as="p" className="hero1__cta-bottom-text" {...block.setting.Group1.Text1} />
-            </Group>
+      <div className="hero2__container">
+        <div className="hero2__wrapper">
+          <div className="hero2__announcement-wrapper">
+            <Html as="p" className="hero2__announcement" {...block.setting.Html1} />
           </div>
 
-          <div className="hero1__right">
-            <Image {...block.setting.Image1} />
+          <H1 className="hero2__title" {...block.setting.H11} />
+
+          <Html as="p" className="hero2__subtitle" {...block.setting.Html2} />
+
+          <Group className="hero2__cta">
+            <List className="hero2__cta-buttons">
+              {block.setting.Group1.List1?.map(List1 => (
+                <Link {...List1.Link1} key={List1.id}>
+                  <Text {...List1.Link1.Text1} />
+                </Link>
+              ))}
+            </List>
+          </Group>
+
+          <div className="hero2__media">
+            <Media {...block.setting.Media1} />
           </div>
         </div>
       </div>
@@ -61,7 +57,7 @@ const settingSchemas = [
     title: 'Caption',
     default: {
       as: 'p',
-      html: '\r\n                Take a look at our latest <a href="#">blog post</a>.\r\n              ',
+      html: '\r\n              Take a look at our latest <a href="#">blog post</a>.\r\n            ',
       style: {
         color: '#4b5563'
       },
@@ -74,7 +70,7 @@ const settingSchemas = [
     title: 'Title',
     default: {
       as: 'h1',
-      html: '\r\n              A better way to ship your projects\r\n            ',
+      html: '\r\n            A better way to ship your projects\r\n          ',
       style: {
         color: '#111827'
       },
@@ -87,7 +83,7 @@ const settingSchemas = [
     title: 'Subtitle',
     default: {
       as: 'p',
-      html: '\r\n              Effortlessly create, pitch, and validate your early-stage business with our no-code\r\n              landing page builder.\r\n            ',
+      html: '\r\n            Effortlessly create, pitch, and validate your early-stage business with our no-code\r\n            landing page builder.\r\n          ',
       style: {
         color: '#4b5563'
       },
@@ -156,36 +152,24 @@ const settingSchemas = [
             ]
           }
         ]
-      },
-      {
-        name: 'Text1',
-        title: 'Bottom text',
-        default: {
-          html: 'No coding skills required',
-          style: {
-            color: '#6b7280'
-          },
-          type: 'text'
-        },
-        type: 'schema_text'
       }
     ]
   },
   {
-    name: 'Image1',
-    title: 'Right side image',
+    name: 'Media1',
+    title: 'Image',
     default: {
-      src: 'https://storage.earlybird.im/example/3d51.png',
+      type: 'image',
+      src: 'https://storage.earlybird.im/example/feature-light.png',
       alt: 'EarlyBird',
-      width: 504,
-      height: 0,
-      type: 'image'
+      width: 1216,
+      height: 0
     },
-    type: 'schema_image'
+    type: 'schema_media'
   }
 ]
 
-export const Hero1 = {
+export const Hero2 = {
   type: 'hero',
   settingSchemas,
   render

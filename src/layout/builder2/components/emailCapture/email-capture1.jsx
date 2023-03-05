@@ -1,29 +1,46 @@
-import { $EmailCapture as EmailCapture, $H2 as H2, $Html as Html } from '@earlybirdim/blocks'
+import {
+  $Block as Block,
+  $EmailCapture as EmailCapture,
+  $H2 as H2,
+  $Html as Html
+} from '@earlybirdim/blocks'
 
-const render = function ({ data }) {
+const render = function ({ productId, block }) {
   return (
-    <div className="email-capture__container">
-      <div className="email-capture__wrapper">
-        <div className="email-capture__left">
-          <H2 className="email-capture__title" {...data.setting.H21} />
-          <Html as="p" className="email-capture__subtitle" {...data.setting.Html1} />
-        </div>
+    <Block productId={productId} block={block}>
+      <div className="email-capture1__container">
+        <div className="email-capture1__wrapper">
+          <div className="email-capture1__left">
+            <H2 className="email-capture1__title" {...block.setting.H21} />
+            <Html as="p" className="email-capture1__subtitle" {...block.setting.Html1} />
+          </div>
 
-        <div className="email-capture__right">
-          <EmailCapture className="email-capture__form" {...data.setting.EmailCapture1} />
+          <div className="email-capture1__right">
+            <EmailCapture className="email-capture1__form" {...block.setting.EmailCapture1} />
+          </div>
         </div>
       </div>
-    </div>
+    </Block>
   )
 }
 
 const settingSchemas = [
   {
+    blockType: 'email_capture',
+    default: {
+      style: {
+        background: '#fff'
+      }
+    },
+    type: 'schema_block',
+    children: []
+  },
+  {
     name: 'H21',
     title: 'Title',
     default: {
       as: 'h2',
-      html: '\r\n            Join the newsletter!\r\n          ',
+      html: '\r\n              Join the newsletter!\r\n            ',
       style: {
         color: '#fff'
       },
@@ -36,7 +53,7 @@ const settingSchemas = [
     title: 'Subtitle',
     default: {
       as: 'p',
-      html: '\r\n            Subscribe now for hand-pickerd holiday deals, inspiration and the latest tips, straight\r\n            to your inbox.\r\n          ',
+      html: '\r\n              Subscribe now for hand-pickerd holiday deals, inspiration and the latest tips,\r\n              straight to your inbox.\r\n            ',
       style: {
         color: '#bfdbfe'
       },

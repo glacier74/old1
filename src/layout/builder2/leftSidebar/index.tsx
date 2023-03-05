@@ -3,8 +3,10 @@ import { IconBolt, IconCode, IconDatabase, IconLayoutGrid, IconSettings } from '
 import Link from 'next/link'
 import { FC, useCallback } from 'react'
 
+import { PLAN_LEVELS } from '~/constants'
 import { useProductId } from '~/layout'
 import { useBuilderContext } from '~/layout/builder2/context'
+import { PlanCheck } from '~/layout/product/PlanCheck'
 
 import { AddBlockModal } from './AddBlockModal'
 import { Blocks } from './Blocks'
@@ -41,11 +43,18 @@ export const LeftSidebar: FC = () => {
         </Tooltip>
 
         <Tooltip ariaLabel="Code injection" placement="right">
-          <div
-            className="flex items-center justify-center w-10 h-10 text-slate-600 hover:bg-slate-100 cursor-pointer"
-            onClick={() => handleClick('codeInjection')}
-          >
-            <IconCode className="w-5 h-5 text-slate-800" />
+          <div className="text-slate-600">
+            <PlanCheck
+              className="hover:bg-slate-100 cursor-pointer"
+              minimalLevel={PLAN_LEVELS.plan_shipper}
+            >
+              <div
+                className="w-10 h-10 flex items-center justify-center hover:bg-slate-100 cursor-pointer"
+                onClick={() => handleClick('codeInjection')}
+              >
+                <IconCode className="w-5 h-5 text-slate-800" />
+              </div>
+            </PlanCheck>
           </div>
         </Tooltip>
 

@@ -1,3 +1,4 @@
+import { isValid } from '@nily/utils'
 import clsx from 'clsx'
 import { FC, useMemo } from 'react'
 
@@ -35,11 +36,13 @@ interface $VideoProps extends ComponentProps {
 
 export const $Video: FC<$VideoProps> = ({ src: rawSrc, alt, className, ...restProps }) => {
   const src = useMemo(() => {
-    for (const rule of VIDEO_RULES) {
-      const matches = rawSrc.match(rule.regex)
+    if (isValid(rawSrc)) {
+      for (const rule of VIDEO_RULES) {
+        const matches = rawSrc.match(rule.regex)
 
-      if (matches) {
-        return rule.handler(matches)
+        if (matches) {
+          return rule.handler(matches)
+        }
       }
     }
 

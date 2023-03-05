@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import type { FC } from 'react'
 import { createContext, useContext } from 'react'
 
-export interface BlockProps<BlockSetting extends object> extends ComponentProps {
+export interface $BlockProps<BlockSetting extends object> extends ComponentProps {
   productId: number
   block: BlockData<BlockSetting>
 }
@@ -18,15 +18,14 @@ export function useBlockContext(): BlockContext {
   return useContext(Context)
 }
 
-export const Block: FC<BlockProps<any>> = ({ className, productId, block, children }) => {
+export const $Block: FC<$BlockProps<any>> = ({ productId, block, children }) => {
   return (
     <div
       id={`earlybird-block-${block.id}`}
       className={clsx(
-        'earlybird-block-v2',
+        'earlybird-block',
         `earlybird-block-${block.type}`,
-        `earlybird-block-${block.componentId}`,
-        className
+        `earlybird-block-${block.componentId}`
       )}
       style={block.style}
     >

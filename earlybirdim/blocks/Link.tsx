@@ -1,5 +1,8 @@
+import { stopEvent } from '@heyforms/ui'
 import clsx from 'clsx'
-import { FC } from 'react'
+import { FC, MouseEvent } from 'react'
+
+import { useBuilderContext } from '~/layout/builder2/context'
 
 import { linkStyle } from './helper'
 
@@ -21,6 +24,14 @@ export const $Link: FC<$LinkProps> = ({
   children,
   style
 }) => {
+  const { state } = useBuilderContext()
+
+  function handleClick(event: MouseEvent) {
+    if (state?.isBuilderMode) {
+      stopEvent(event)
+    }
+  }
+
   return (
     <a
       className={clsx('earlybird-link', className)}
@@ -29,6 +40,7 @@ export const $Link: FC<$LinkProps> = ({
       target={isInNewTab ? '_blank' : undefined}
       rel={isInNewTab ? 'noreferrer' : undefined}
       style={linkStyle(appearance, style)}
+      onClick={handleClick}
     >
       {children}
     </a>

@@ -1,4 +1,5 @@
 import {
+  $Block as Block,
   $Group as Group,
   $Icon as Icon,
   $Image as Image,
@@ -8,60 +9,74 @@ import {
 } from '@earlybirdim/blocks'
 import { useState } from 'react'
 
-const render = function ({ data }) {
+const render = function ({ productId, block }) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   function handleClick() {
     setMobileMenuOpen(isMobileMenuOpen => !isMobileMenuOpen)
   }
+
   return (
-    <div className={`header__container ${isMobileMenuOpen ? 'header__container-open' : ''}`}>
-      <div className="header__wrapper">
-        <div className="header__nav">
-          <div className="header__nav-left">
-            <Link className="header__logo" {...data.setting.Link1}>
-              <Image {...data.setting.Link1.Image1} />
-            </Link>
+    <Block productId={productId} block={block}>
+      <div className={`header1__container ${isMobileMenuOpen ? 'header1__container-open' : ''}`}>
+        <div className="header1__wrapper">
+          <div className="header1__nav">
+            <div className="header1__nav-left">
+              <Link className="header1__logo" {...block.setting.Link1}>
+                <Image {...block.setting.Link1.Image1} />
+              </Link>
 
-            <div className="header__nav-menu">
-              <button type="button" onClick={handleClick}>
-                <span className="sr-only">Open main menu</span>
-                <Group>
-                  {!isMobileMenuOpen ? (
-                    <Icon {...data.setting.Group1.Icon1} />
-                  ) : (
-                    <Icon {...data.setting.Group1.Icon2} />
-                  )}
-                </Group>
-              </button>
+              <div className="header1__nav-menu">
+                <button type="button" onClick={handleClick}>
+                  <span className="sr-only">Open main menu</span>
+                  <Group>
+                    {!isMobileMenuOpen ? (
+                      <Icon {...block.setting.Group1.Icon1} />
+                    ) : (
+                      <Icon {...block.setting.Group1.Icon2} />
+                    )}
+                  </Group>
+                </button>
+              </div>
             </div>
-          </div>
 
-          <div className="header__nav-right">
-            <List as="nav" className="header__navigation">
-              {data.setting.List1?.map(List1 => (
-                <Link {...List1.Link1} key={List1.id}>
-                  <Text {...List1.Link1.Text1} />
-                </Link>
-              ))}
-            </List>
+            <div className="header1__nav-right">
+              <List as="nav" className="header1__navigation">
+                {block.setting.List1?.map(List1 => (
+                  <Link {...List1.Link1} key={List1.id}>
+                    <Text {...List1.Link1.Text1} />
+                  </Link>
+                ))}
+              </List>
 
-            <List className="header__cta">
-              {data.setting.List2?.map(List2 => (
-                <Link {...List2.Link1} key={List2.id}>
-                  <Icon {...List2.Link1.Icon1} />
+              <List className="header1__cta">
+                {block.setting.List2?.map(List2 => (
+                  <Link {...List2.Link1} key={List2.id}>
+                    <Icon {...List2.Link1.Icon1} />
 
-                  <Text {...List2.Link1.Text1} />
-                </Link>
-              ))}
-            </List>
+                    <Text {...List2.Link1.Text1} />
+                  </Link>
+                ))}
+              </List>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Block>
   )
 }
 
 const settingSchemas = [
+  {
+    blockType: 'header',
+    default: {
+      style: {
+        background: '#fff'
+      }
+    },
+    type: 'schema_block',
+    children: []
+  },
   {
     name: 'Link1',
     title: 'Brand',
@@ -70,7 +85,7 @@ const settingSchemas = [
       style: {},
       type: 'link'
     },
-    propertyName: 'data.setting.Link1',
+    propertyName: 'block.setting.Link1',
     type: 'schema_link',
     children: [
       {
@@ -90,7 +105,7 @@ const settingSchemas = [
   {
     name: 'Group1',
     title: 'Mobile Menu',
-    propertyName: 'data.setting.Group1',
+    propertyName: 'block.setting.Group1',
     type: 'schema_group',
     children: [
       {

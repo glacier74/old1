@@ -22,4 +22,8 @@ export class SiteSettingsService {
   static async updateSettings(productId: number, updates: Partial<SiteSettings>): Promise<void> {
     return axios.patch(`/products/${productId}/site-settings`, updates)
   }
+
+  static async upgradeSchema(productId: number): Promise<void> {
+    return axios.post(`/products/${productId}/site-settings/upgrade`)
+  }
 }

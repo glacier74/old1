@@ -1,4 +1,4 @@
-import { Block, BlockProps } from '@earlybirdim/blocks'
+import { $BlockProps } from '@earlybirdim/blocks'
 import clsx from 'clsx'
 import { FC, useMemo } from 'react'
 
@@ -6,7 +6,7 @@ import { useProductId } from '~/layout'
 import components from '~/layout/builder2/components'
 import { useBuilderContext } from '~/layout/builder2/context'
 
-export const BlockWrapper: FC<Omit<BlockProps<any>, 'children' | 'productId'>> = ({ block }) => {
+export const BlockWrapper: FC<Omit<$BlockProps<any>, 'children' | 'productId'>> = ({ block }) => {
   const { state, dispatch } = useBuilderContext()
   const productId = useProductId()
 
@@ -36,9 +36,7 @@ export const BlockWrapper: FC<Omit<BlockProps<any>, 'children' | 'productId'>> =
       data-block-type={block.type.replaceAll('_', ' ')}
       onClick={handleClick}
     >
-      <Block productId={productId} block={block}>
-        <component.render data={block} />
-      </Block>
+      <component.render productId={productId} block={block} />
     </div>
   )
 }

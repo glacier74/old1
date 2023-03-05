@@ -1,4 +1,3 @@
-import { Block as Block2 } from '@earlybirdim/blocks'
 import { EmptyStates, Form, Input } from '@heyforms/ui'
 import { isValid } from '@nily/utils'
 import AES from 'crypto-js/aes'
@@ -50,11 +49,7 @@ const Block: FC<{ product: Product; schema: number; block: any }> = ({
       return null
     }
 
-    return (
-      <Block2 productId={product.id} block={block}>
-        <component.render data={block} />
-      </Block2>
-    )
+    return <component.render productId={product.id} block={block} />
   }
 
   switch (block.type) {

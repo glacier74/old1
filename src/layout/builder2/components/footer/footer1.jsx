@@ -1,24 +1,42 @@
-import { $Html as Html, $Icon as Icon, $Link as Link, $List as List } from '@earlybirdim/blocks'
+import {
+  $Block as Block,
+  $Html as Html,
+  $Icon as Icon,
+  $Link as Link,
+  $List as List
+} from '@earlybirdim/blocks'
 
-const render = function ({ data }) {
+const render = function ({ productId, block }) {
   return (
-    <div className="footer__container">
-      <List className="footer__left">
-        {data.setting.List1?.map(List1 => (
-          <Link {...List1.Link1} key={List1.id}>
-            <Icon {...List1.Link1.Icon1} />
-          </Link>
-        ))}
-      </List>
+    <Block productId={productId} block={block}>
+      <div className="footer1__container">
+        <List className="footer1__left">
+          {block.setting.List1?.map(List1 => (
+            <Link {...List1.Link1} key={List1.id}>
+              <Icon {...List1.Link1.Icon1} />
+            </Link>
+          ))}
+        </List>
 
-      <div className="footer__right">
-        <Html as="p" className="footer__copyright" {...data.setting.Html1} />
+        <div className="footer1__right">
+          <Html as="p" className="footer1__copyright" {...block.setting.Html1} />
+        </div>
       </div>
-    </div>
+    </Block>
   )
 }
 
 const settingSchemas = [
+  {
+    blockType: 'footer',
+    default: {
+      style: {
+        background: '#fff'
+      }
+    },
+    type: 'schema_block',
+    children: []
+  },
   {
     name: 'List1',
     title: 'Social networks',
@@ -107,7 +125,7 @@ const settingSchemas = [
     title: 'Copyright',
     default: {
       as: 'p',
-      html: '\r\n          © 2023 Your Company, Inc. All rights reserved.\r\n        ',
+      html: '\r\n            © 2023 Your Company, Inc. All rights reserved.\r\n          ',
       style: {
         color: '#6b7280'
       },

@@ -11,18 +11,18 @@ import {
 const render = function ({ productId, block }) {
   return (
     <Block productId={productId} block={block}>
-      <div className="feature1__container">
-        <div className="feature1__wrapper">
-          <div className="feature1__col-wrapper">
-            <div className="feature1__col1">
-              <div className="feature1__col1-body">
-                <Html as="p" className="feature1__caption" {...block.setting.Html1} />
+      <div className="feature2__container">
+        <div className="feature2__wrapper">
+          <div className="feature2__col-wrapper">
+            <div className="feature2__col1">
+              <div className="feature2__col1-body">
+                <Html as="p" className="feature2__caption" {...block.setting.Html1} />
 
-                <H2 className="feature1__title" {...block.setting.H21} />
+                <H2 className="feature2__title" {...block.setting.H21} />
 
-                <Html as="p" className="feature1__subtitle" {...block.setting.Html2} />
+                <Html as="p" className="feature2__subtitle" {...block.setting.Html2} />
 
-                <List className="feature1__buttons">
+                <List className="feature2__buttons">
                   {block.setting.List1?.map(List1 => (
                     <Link {...List1.Link1} key={List1.id}>
                       <Text {...List1.Link1.Text1} />
@@ -31,8 +31,8 @@ const render = function ({ productId, block }) {
                 </List>
               </div>
             </div>
-            <div className="feature1__col2">
-              <div className="feature1__image">
+            <div className="feature2__col2">
+              <div className="feature2__image">
                 <Image {...block.setting.Image1} />
               </div>
             </div>
@@ -120,7 +120,7 @@ const settingSchemas = [
   },
   {
     name: 'Image1',
-    title: 'Right side image',
+    title: 'Left side image',
     default: {
       src: 'https://storage.earlybird.im/example/feature3.png',
       width: 590,
@@ -131,7 +131,7 @@ const settingSchemas = [
   }
 ]
 
-export const Feature1 = {
+export const Feature2 = {
   type: 'feature',
   settingSchemas,
   render

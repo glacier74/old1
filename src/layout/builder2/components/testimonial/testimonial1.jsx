@@ -1,26 +1,43 @@
-import { $H1 as H1, $Html as Html, $Testimonial as Testimonial } from '@earlybirdim/blocks'
+import {
+  $Block as Block,
+  $H1 as H1,
+  $Html as Html,
+  $Testimonial as Testimonial
+} from '@earlybirdim/blocks'
 
-const render = function ({ data }) {
+const render = function ({ productId, block }) {
   return (
-    <div className="testimonial__container">
-      <div className="testimonial__wrapper">
-        <H1 className="testimonial__title" {...data.setting.H11} />
+    <Block productId={productId} block={block}>
+      <div className="testimonial1__container">
+        <div className="testimonial1__wrapper">
+          <H1 className="testimonial1__title" {...block.setting.H11} />
 
-        <Html as="p" className="testimonial__subtitle" {...data.setting.Html1} />
+          <Html as="p" className="testimonial1__subtitle" {...block.setting.Html1} />
 
-        <Testimonial {...data.setting.Testimonial1} />
+          <Testimonial {...block.setting.Testimonial1} />
+        </div>
       </div>
-    </div>
+    </Block>
   )
 }
 
 const settingSchemas = [
   {
+    blockType: 'testimonial',
+    default: {
+      style: {
+        background: '#fff'
+      }
+    },
+    type: 'schema_block',
+    children: []
+  },
+  {
     name: 'H11',
     title: 'Title',
     default: {
       as: 'h1',
-      html: '\r\n          What Clients Say\r\n        ',
+      html: '\r\n            What Clients Say\r\n          ',
       style: {
         color: '#111827'
       },
@@ -33,7 +50,7 @@ const settingSchemas = [
     title: 'Subtitle',
     default: {
       as: 'p',
-      html: '\r\n          We place huge value on strong relationships and have seen the benefit they bring to our\r\n          business. Customer feedback is vital in helping us to get it right.\r\n        ',
+      html: '\r\n            We place huge value on strong relationships and have seen the benefit they bring to our\r\n            business. Customer feedback is vital in helping us to get it right.\r\n          ',
       style: {
         color: '#4b5563'
       },

@@ -1,4 +1,5 @@
 import { Modal } from '@heyforms/ui'
+import Image from 'next/image'
 import { v4 } from 'uuid'
 
 import components from '~/layout/builder2/components'
@@ -11,7 +12,9 @@ const BLOCKS = [
     type: 'header',
     components: [
       {
-        componentId: 'header1'
+        componentId: 'header1',
+        title: 'Header',
+        thumbnail: '/static/templates/header1.png'
       }
     ]
   },
@@ -20,7 +23,14 @@ const BLOCKS = [
     type: 'hero',
     components: [
       {
-        componentId: 'hero1'
+        componentId: 'hero1',
+        title: 'Hero',
+        thumbnail: '/static/templates/hero1.png'
+      },
+      {
+        componentId: 'hero2',
+        title: 'Hero',
+        thumbnail: '/static/templates/hero2.png'
       }
     ]
   },
@@ -29,7 +39,19 @@ const BLOCKS = [
     type: 'feature',
     components: [
       {
-        componentId: 'feature1'
+        componentId: 'feature1',
+        title: 'Feature',
+        thumbnail: '/static/templates/feature1.png'
+      },
+      {
+        componentId: 'feature2',
+        title: 'Feature',
+        thumbnail: '/static/templates/feature2.png'
+      },
+      {
+        componentId: 'feature3',
+        title: 'Feature grid',
+        thumbnail: '/static/templates/feature3.png'
       }
     ]
   },
@@ -38,7 +60,9 @@ const BLOCKS = [
     type: 'email_capture',
     components: [
       {
-        componentId: 'email_capture1'
+        componentId: 'email_capture1',
+        title: 'Email capture',
+        thumbnail: '/static/templates/email_capture1.png'
       }
     ]
   },
@@ -47,7 +71,14 @@ const BLOCKS = [
     type: 'payment',
     components: [
       {
-        componentId: 'payment1'
+        componentId: 'payment1',
+        title: 'Payment',
+        thumbnail: '/static/templates/payment1.png'
+      },
+      {
+        componentId: 'payment2',
+        title: 'Pricing table',
+        thumbnail: '/static/templates/payment2.png'
       }
     ]
   },
@@ -56,7 +87,9 @@ const BLOCKS = [
     type: 'testimonial',
     components: [
       {
-        componentId: 'testimonial1'
+        componentId: 'testimonial1',
+        title: 'Testimonial',
+        thumbnail: '/static/templates/testimonial1.png'
       }
     ]
   },
@@ -65,7 +98,14 @@ const BLOCKS = [
     type: 'faq',
     components: [
       {
-        componentId: 'faq1'
+        componentId: 'faq1',
+        title: 'FAQ',
+        thumbnail: '/static/templates/faq1.png'
+      },
+      {
+        componentId: 'faq2',
+        title: 'FAQ',
+        thumbnail: '/static/templates/faq2.png'
       }
     ]
   },
@@ -74,7 +114,9 @@ const BLOCKS = [
     type: 'footer',
     components: [
       {
-        componentId: 'footer1'
+        componentId: 'footer1',
+        title: 'Footer',
+        thumbnail: '/static/templates/footer1.png'
       }
     ]
   }
@@ -100,7 +142,10 @@ export const AddBlockModal = () => {
       id: v4(),
       type,
       componentId,
-      setting: getBlockSetting(component.settingSchemas)
+      setting: getBlockSetting(
+        component.settingSchemas.filter((s: any) => s.type !== 'schema_block')
+      ),
+      ...component.settingSchemas.find((s: any) => s.type === 'schema_block')?.default
     }
 
     dispatch({
@@ -142,13 +187,24 @@ export const AddBlockModal = () => {
           {BLOCKS.map(block => (
             <div key={block.title} id={block.title}>
               <div className="py-1 text-lg font-bold text-slate-700">{block.title}</div>
-              <div className="mb-4 grid grid-cols-3">
+              <div className="mb-4 grid grid-cols-3 gap-5">
                 {block.components.map(component => (
                   <div
                     key={component.componentId}
-                    className="h-32 rounded-lg bg-slate-100 hover:bg-slate-200 cursor-pointer"
+                    className="cursor-pointer"
                     onClick={() => handleClick(block.type, component.componentId)}
-                  ></div>
+                  >
+                    <div className="h-56 p-1 rounded-lg bg-slate-50 hover:bg-slate-100">
+                      <Image
+                        className="object-contain w-full h-full"
+                        src={component.thumbnail}
+                        width={500}
+                        height={0}
+                        alt={component.title}
+                      />
+                    </div>
+                    <div className="mt-1 text-center text-sm text-gray-700">{component.title}</div>
+                  </div>
                 ))}
               </div>
             </div>

@@ -25,9 +25,9 @@ const SettingItem: FC<SettingItemProps> = ({
   const icon = useMemo(
     () =>
       isOpen ? (
-        <IconChevronUp className="w-5 h-5 text-slate-500" />
+        <IconChevronUp className="builder-setting-item-icon" />
       ) : (
-        <IconChevronDown className="w-5 h-5 text-slate-500" />
+        <IconChevronDown className="builder-setting-item-icon" />
       ),
     [isOpen]
   )
@@ -37,17 +37,23 @@ const SettingItem: FC<SettingItemProps> = ({
   }
 
   return (
-    <div className={clsx('builder-setting', className)} {...restProps}>
-      <div
-        className="flex items-center justify-between px-4 py-3 text-slate-700 select-none cursor-pointer"
-        onClick={handleClick}
-      >
+    <div
+      className={clsx(
+        'builder-setting',
+        {
+          'builder-setting-open': isOpen
+        },
+        className
+      )}
+      {...restProps}
+    >
+      <div className="builder-setting-title" onClick={handleClick}>
         <span className="text-sm font-semibold">{schema.title}</span>
         {icon}
       </div>
 
       {isOpen && (
-        <div className="px-4 py-3 bg-slate-50">
+        <div className="builder-setting-field">
           <SettingField schema={schema} />
         </div>
       )}

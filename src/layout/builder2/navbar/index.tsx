@@ -11,6 +11,26 @@ import { SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
 import { useRequest, useVisible } from '~/utils'
 
+export const ConversionNavbar: FC = () => {
+  const product = useProduct()
+
+  return (
+    <>
+      <div className="flex items-center justify-between h-[3.5rem] px-4 border-b border-slate-200">
+        <div className="flex-1">
+          <Link
+            className="inline-flex items-center text-sm -ml-3 pl-1 pr-3 py-1.5 rounded hover:bg-slate-100"
+            href={`/product/${product.id}`}
+          >
+            <IconChevronLeft className="w-5 h-5 text-slate-500" />
+            <span className="ml-1">{product.name}</span>
+          </Link>
+        </div>
+      </div>
+    </>
+  )
+}
+
 export const Navbar: FC = () => {
   const { siteSettings, updateSiteSettings } = useStore()
   const { state, dispatch } = useBuilderContext()

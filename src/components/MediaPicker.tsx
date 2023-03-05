@@ -40,7 +40,7 @@ export const MediaPicker: FC<MediaPickerProps> = ({ allowed = ['image', 'video']
 
           {allowed.includes('video') && (
             <Tabs.Pane name="video" title="Video">
-              <div className="pt-20">
+              <div className="px-4 py-36">
                 <div className="mb-4">
                   <IconVideo className="mx-auto h-12 w-12 text-slate-400 non-scaling-stroke" />
                   <div className="mt-1 text-sm text-slate-600 text-center">

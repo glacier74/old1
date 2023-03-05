@@ -29,12 +29,15 @@ export const RightSidebar: FC = () => {
   }
 
   return (
-    <div className="flex flex-col w-[19rem] 2xl:w-[22rem] h-full bg-white border-l border-slate-200 duration-150 scrollbar">
+    <div className="flex flex-col w-[18.5rem] 2xl:w-[22rem] h-full bg-white border-l border-slate-200 duration-150 scrollbar">
       <div className="flex items-center justify-between px-4 py-2">
         <span>Block Settings</span>
         <Button.Link className="-mr-3.5" leading={<IconX />} onClick={handleClose} />
       </div>
-      <Setting key={blockData!.id} schemas={component.settingSchemas} />
+      <Setting
+        key={blockData!.id}
+        schemas={component.settingSchemas.filter((s: any) => s.type !== 'schema_block')}
+      />
     </div>
   )
 }
