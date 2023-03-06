@@ -20,7 +20,13 @@ export class ProductService {
     })
   }
 
-  static async create(product: Partial<Product> & { timezone: string }): Promise<number> {
+  static async templates(): Promise<Template[]> {
+    return axios.get('/products/templates')
+  }
+
+  static async create(
+    product: Partial<Product> & { timezone: string; blocks: BlockData<any>[] }
+  ): Promise<number> {
     const result = await axios.post('/products', product)
     return (result as unknown as Product).id
   }

@@ -569,4 +569,13 @@ declare global {
     setting: T
     style?: BlockStyle
   }
+
+  interface Template {
+    id: string
+    name: string
+    url: string
+    blocks: BlockData<any>[]
+    createdAt: string
+    updatedAt: string
+  }
 }

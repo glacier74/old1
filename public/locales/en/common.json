@@ -132,10 +132,12 @@
     "createProductTitle": "Welcome to EarlyBird!",
     "createProductDesc": "To begin, you'll need to enter the required fields like name, tagline, etc. When you're done, you can save and continue to the landing page dashboard.",
     "createProduct": "Create the landing page",
+    "templates": "Templates",
     "invalidLogo": "The logo is not allowed to be empty",
     "invalidName": "The name is not allowed to be empty",
     "invalidTagline": "The tagline is not allowed to be empty",
-    "invalidDescription": "The description is not allowed to be empty"
+    "invalidDescription": "The description is not allowed to be empty",
+    "invalidTemplate": "The template is not allowed to be empty"
   },
   "account": {
     "title": "Account · EarlyBird",

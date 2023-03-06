@@ -202,6 +202,11 @@ button.button:not(:disabled):focus {
   @apply ring-green-500 border-green-500;
 }
 
+.input,
+.textarea {
+  @apply bg-white;
+}
+
 .input-focused {
   @apply ring-green-500 border-green-500;
 }
@@ -344,11 +349,6 @@ button.switch-checked {
     .form-item-label {
       @apply text-base font-bold;
     }
-  }
-
-  .input,
-  .textarea {
-    @apply bg-white;
   }
 
   .form-item:nth-last-of-type(1) {
@@ -1821,7 +1821,7 @@ button.block-header-button {
 }
 
 .sidebar-container {
-  @apply fixed top-[3.5rem] left-9 w-[18rem] py-4 bg-white border-r border-slate-200;
+  @apply fixed top-[3.5rem] left-[2.5rem] w-[18rem] py-4 bg-white border-r border-slate-200;
   height: calc(100vh - 3.5rem);
 }
 

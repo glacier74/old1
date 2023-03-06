@@ -14,7 +14,7 @@ const BLOCKS = [
       {
         componentId: 'header1',
         title: 'Header',
-        thumbnail: '/static/templates/header1.png'
+        thumbnail: '/static/block/header1.png'
       }
     ]
   },
@@ -25,12 +25,12 @@ const BLOCKS = [
       {
         componentId: 'hero1',
         title: 'Hero',
-        thumbnail: '/static/templates/hero1.png'
+        thumbnail: '/static/block/hero1.png'
       },
       {
         componentId: 'hero2',
         title: 'Hero',
-        thumbnail: '/static/templates/hero2.png'
+        thumbnail: '/static/block/hero2.png'
       }
     ]
   },
@@ -41,17 +41,17 @@ const BLOCKS = [
       {
         componentId: 'feature1',
         title: 'Feature',
-        thumbnail: '/static/templates/feature1.png'
+        thumbnail: '/static/block/feature1.png'
       },
       {
         componentId: 'feature2',
         title: 'Feature',
-        thumbnail: '/static/templates/feature2.png'
+        thumbnail: '/static/block/feature2.png'
       },
       {
         componentId: 'feature3',
         title: 'Feature grid',
-        thumbnail: '/static/templates/feature3.png'
+        thumbnail: '/static/block/feature3.png'
       }
     ]
   },
@@ -62,7 +62,7 @@ const BLOCKS = [
       {
         componentId: 'email_capture1',
         title: 'Email capture',
-        thumbnail: '/static/templates/email_capture1.png'
+        thumbnail: '/static/block/email_capture1.png'
       }
     ]
   },
@@ -73,12 +73,12 @@ const BLOCKS = [
       {
         componentId: 'payment1',
         title: 'Payment',
-        thumbnail: '/static/templates/payment1.png'
+        thumbnail: '/static/block/payment1.png'
       },
       {
         componentId: 'payment2',
         title: 'Pricing table',
-        thumbnail: '/static/templates/payment2.png'
+        thumbnail: '/static/block/payment2.png'
       }
     ]
   },
@@ -89,7 +89,7 @@ const BLOCKS = [
       {
         componentId: 'testimonial1',
         title: 'Testimonial',
-        thumbnail: '/static/templates/testimonial1.png'
+        thumbnail: '/static/block/testimonial1.png'
       }
     ]
   },
@@ -100,12 +100,12 @@ const BLOCKS = [
       {
         componentId: 'faq1',
         title: 'FAQ',
-        thumbnail: '/static/templates/faq1.png'
+        thumbnail: '/static/block/faq1.png'
       },
       {
         componentId: 'faq2',
         title: 'FAQ',
-        thumbnail: '/static/templates/faq2.png'
+        thumbnail: '/static/block/faq2.png'
       }
     ]
   },
@@ -116,7 +116,7 @@ const BLOCKS = [
       {
         componentId: 'footer1',
         title: 'Footer',
-        thumbnail: '/static/templates/footer1.png'
+        thumbnail: '/static/block/footer1.png'
       }
     ]
   }
