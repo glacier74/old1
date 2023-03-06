@@ -33,6 +33,13 @@ function getStyles() {
 
 const FrameScript: FC<{ styles?: string }> = ({ styles }) => {
   const { document } = useContext(FrameContext)
+  const { state } = useBuilderContext()
+
+  useEffect(() => {
+    if (state.selectedBlockId) {
+      document?.querySelector(`#earlybird-block-${state.selectedBlockId}`)?.scrollIntoView()
+    }
+  }, [document, state.selectedBlockId])
 
   useEffect(() => {
     if (document?.head && styles) {
@@ -148,7 +155,7 @@ export const Editor: FC = () => {
         {isValidArray(state.blocks) ? (
           <Frame
             className="w-full h-full scrollbar"
-            initialContent="<!DOCTYPE html><html><head></head><body class='iframe-scrollbar'><div></div></body></html>"
+            initialContent="<!DOCTYPE html><html class='scroll-smooth'><head></head><body class='iframe-scrollbar'><div></div></body></html>"
           >
             <FrameScript styles={styles} />
             {state.blocks.map((block: any) => (
