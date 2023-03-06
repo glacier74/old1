@@ -45,12 +45,12 @@ const BLOCKS = [
     components: [
       {
         componentId: 'feature1',
-        title: 'Feature',
+        title: 'Feature walkthrough (text + image)',
         thumbnail: '/static/block/feature1.png'
       },
       {
         componentId: 'feature2',
-        title: 'Feature',
+        title: 'Feature walkthrough (image + text)',
         thumbnail: '/static/block/feature2.png'
       },
       {
