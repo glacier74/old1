@@ -7,9 +7,10 @@ import Frame, { FrameContext } from 'react-frame-component'
 import { useProductId } from '~/layout'
 import { useBuilderContext } from '~/layout/builder2/context'
 import { AlertModal } from '~/layout/builder2/editor/AlertModal'
+import { Queue } from '~/layout/builder2/utils'
 import { SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
-import { Queue, useVisible } from '~/utils'
+import { useVisible } from '~/utils'
 
 import { BlockWrapper } from './BlockWrapper'
 
@@ -50,13 +51,7 @@ export const Editor: FC = () => {
   const [styles, setStyles] = useState<string>()
   const [alertModalVisible, openAlertModal] = useVisible()
 
-  const queue = useMemo(() => {
-    return new Queue({
-      concurrency: 1,
-      scheduleInterval: 1_500,
-      taskIntervalTime: 10_000
-    })
-  }, [])
+  const queue = useMemo(() => new Queue(), [])
 
   function handleModalOpen() {
     dispatch({
@@ -103,18 +98,49 @@ export const Editor: FC = () => {
     }
   }, [productId, siteSettings.version, state.blocks])
 
-  queue.onStart(task => {
-    task.op = sync
+  function updateSyncing(isSyncing: boolean, lastSyncedAt?: number) {
+    const updates: AnyMap<unknown> = {
+      isSyncing
+    }
+
+    if (lastSyncedAt) {
+      updates.lastSyncedAt = lastSyncedAt
+    }
+
+    dispatch({
+      type: 'updateState',
+      payload: {
+        updates
+      }
+    })
+  }
+
+  queue.on(event => {
+    switch (event) {
+      case 'start':
+        queue.sync(sync)
+        updateSyncing(true)
+        break
+
+      case 'complete':
+      case 'failed':
+        updateSyncing(false, queue.lastSyncedAt)
+        break
+    }
   })
 
   // Auto save
   useEffect(() => {
     if (state.version > 0) {
-      queue.add(async () => {
-        // do nothing
-      })
+      queue.add()
     }
   }, [state.version])
+
+  useEffect(() => {
+    return () => {
+      queue.clear()
+    }
+  }, [])
 
   return (
     <>

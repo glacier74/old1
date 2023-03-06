@@ -1,5 +1,6 @@
-import { Button, Switch } from '@heyforms/ui'
-import { IconChevronLeft } from '@tabler/icons'
+import { Button, Spin, Switch } from '@heyforms/ui'
+import { IconChevronLeft, IconCircleCheck } from '@tabler/icons'
+import dayjs from 'dayjs'
 import Link from 'next/link'
 import { FC, useCallback, useMemo } from 'react'
 
@@ -22,7 +23,7 @@ export const ConversionNavbar: FC = () => {
             className="inline-flex items-center text-sm -ml-3 pl-1 pr-3 py-1.5 rounded hover:bg-slate-100"
             href={`/product/${product.id}`}
           >
-            <IconChevronLeft className="w-5 h-5 text-slate-500" />
+            <IconCircleCheck className="w-5 h-5 text-slate-500" />
             <span className="ml-1">{product.name}</span>
           </Link>
         </div>
@@ -101,7 +102,7 @@ export const Navbar: FC = () => {
   return (
     <>
       <div className="flex items-center justify-between h-[3.5rem] px-4 border-b border-slate-200">
-        <div className="flex-1">
+        <div className="flex-1 flex items-center">
           <Link
             className="inline-flex items-center text-sm -ml-3 pl-1 pr-3 py-1.5 rounded hover:bg-slate-100"
             href={`/product/${product.id}`}
@@ -109,6 +110,22 @@ export const Navbar: FC = () => {
             <IconChevronLeft className="w-5 h-5 text-slate-500" />
             <span className="ml-1">{product.name}</span>
           </Link>
+
+          <div className="flex items-center text-sm text-slate-500">
+            {state.isSyncing ? (
+              <>
+                <Spin className="mr-1 w-4 h-4 text-slate-400" />
+                <span>Saving changes...</span>
+              </>
+            ) : state.lastSyncedAt > 0 ? (
+              <>
+                <IconCircleCheck className="mr-1 w-4 h-4 text-slate-400" />
+                <span>Saved at {dayjs(state.lastSyncedAt).format('h:mm A')}</span>
+              </>
+            ) : (
+              <span>Changes will be saved automatically</span>
+            )}
+          </div>
         </div>
 
         <div className="flex-[2_1_0%] flex items-center justify-center">
@@ -129,7 +146,7 @@ export const Navbar: FC = () => {
             type="success"
             className="!py-1.5 !rounded"
             loading={loading}
-            disabled={!siteSettings.canPublish}
+            disabled={!siteSettings.canPublish || state.isSyncing}
             onClick={request}
           >
             Publish

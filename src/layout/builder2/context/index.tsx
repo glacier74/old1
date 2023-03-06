@@ -141,6 +141,8 @@ export const BuilderProvider: FC<BuilderProviderProps> = ({
       previewMode: 'desktop',
       version: 0,
       isCreateBlockModalOpen: false,
+      isSyncing: false,
+      lastSyncedAt: 0,
       ...rawInitialState
     }),
     []

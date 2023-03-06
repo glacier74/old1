@@ -6,6 +6,9 @@ export interface IState {
   selectedBlockId?: string
   version: number
 
+  isSyncing: boolean
+  lastSyncedAt: number
+
   // View the desktop or mobile version of the landing page
   previewMode: 'desktop' | 'mobile'
 
