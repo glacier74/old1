@@ -39,7 +39,7 @@ const settingSchemas = [
   },
   {
     name: 'List1',
-    title: 'Social networks',
+    title: 'Social media',
     propertyName: 'List1',
     type: 'schema_list',
     children: [

@@ -157,7 +157,7 @@ const settingSchemas = [
   },
   {
     name: 'Media1',
-    title: 'Image',
+    title: 'Hero image',
     default: {
       type: 'image',
       src: 'https://storage.earlybird.im/example/feature-light.png',

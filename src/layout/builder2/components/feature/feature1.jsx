@@ -120,7 +120,7 @@ const settingSchemas = [
   },
   {
     name: 'Image1',
-    title: 'Right side image',
+    title: 'Feature image',
     default: {
       src: 'https://storage.earlybird.im/example/feature3.png',
       width: 590,

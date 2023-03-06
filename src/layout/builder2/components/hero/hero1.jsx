@@ -173,7 +173,7 @@ const settingSchemas = [
   },
   {
     name: 'Image1',
-    title: 'Right side image',
+    title: 'Hero image',
     default: {
       src: 'https://storage.earlybird.im/example/3d51.png',
       alt: 'EarlyBird',

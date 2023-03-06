@@ -231,7 +231,7 @@ const settingSchemas = [
   },
   {
     name: 'Group2',
-    title: 'Right side',
+    title: 'Hero image',
     default: {
       style: {
         background: '#eff6ff'
