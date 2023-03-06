@@ -131,6 +131,10 @@
   p {
     @apply inline;
   }
+
+  a {
+    @apply font-semibold text-blue-600;
+  }
 }
 
 .hero1__title {
@@ -192,6 +196,10 @@
   p {
     @apply inline;
   }
+
+  a {
+    @apply font-semibold text-blue-600;
+  }
 }
 
 .hero2__title {
@@ -232,6 +240,88 @@
   .earlybird-video {
     @apply w-full lg:h-[42.75rem];
     height: calc((100vw - 2.5rem) * 0.5625);
+  }
+}
+
+// --------------------------------------------------------------------------------------------------------------------
+// Hero 3
+.hero3__container {
+  @apply relative;
+}
+
+.hero3__wrapper {
+  @apply mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8;
+}
+
+.hero3__left {
+  @apply px-6 pt-10 pb-24 sm:pb-32 lg:col-span-7 lg:px-0 lg:pt-48 lg:pb-56 xl:col-span-6;
+}
+
+.hero3__left-body {
+  @apply mx-auto max-w-2xl lg:mx-0;
+}
+
+.hero3__logo {
+  @apply mb-32 sm:flex lg:mb-16;
+
+  img {
+    @apply h-11 w-auto;
+  }
+}
+
+.hero3__announcement-wrapper {
+  @apply mb-10;
+}
+
+.hero3__announcement {
+  @apply block md:inline rounded-full py-1.5 px-3 text-sm leading-6 text-gray-600 ring-1 ring-gray-800/10 hover:ring-gray-800/20;
+
+  p {
+    @apply inline;
+  }
+
+  a {
+    @apply font-semibold text-blue-600;
+  }
+}
+
+.hero3__title {
+  @apply text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl;
+}
+
+.hero3__subtitle {
+  @apply mt-6 text-lg leading-8 text-gray-600;
+}
+
+.hero3__cta {
+  @apply mt-10;
+}
+
+.hero3__cta-buttons {
+  @apply flex items-center space-x-6;
+
+  a {
+    @apply flex items-center py-2 px-4 text-white bg-slate-900 rounded-md font-medium;
+
+    svg {
+      @apply mr-2 w-5 h-5;
+    }
+  }
+}
+
+.hero3__cta-bottom-text {
+  @apply mt-4 text-sm text-gray-500;
+}
+
+.hero3__right {
+  @apply relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0 bg-blue-50;
+}
+
+.hero3__image {
+  @apply w-full h-full flex items-center justify-center;
+
+  img {
+    @apply max-w-[90%] max-h-[90%] object-contain;
   }
 }
 

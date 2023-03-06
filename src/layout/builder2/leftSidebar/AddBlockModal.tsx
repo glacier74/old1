@@ -31,6 +31,11 @@ const BLOCKS = [
         componentId: 'hero2',
         title: 'Hero 2 (centered)',
         thumbnail: '/static/block/hero2.png'
+      },
+      {
+        componentId: 'hero3',
+        title: 'Hero 3 (split)',
+        thumbnail: '/static/block/hero3.png'
       }
     ]
   },

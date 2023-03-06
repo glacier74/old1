@@ -140,7 +140,7 @@ export const RichTextEditor: FC<RichTextEditorProps> = ({
                 onKeyDown={handleKeyDown}
                 onChange={handleLinkURLChange}
               />
-              <Button type="success" leading={<IconCheck />} />
+              <Button type="success" leading={<IconCheck />} onClick={handleSetLink} />
             </div>
           ) : (
             <div className="editor__bubble-menu">

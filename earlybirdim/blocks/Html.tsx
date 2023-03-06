@@ -21,6 +21,7 @@ export const $Html: FC<$HtmlProps> = ({
       dangerouslySetInnerHTML={{
         __html: sanitizeHtml(html, {
           allowedAttributes: {
+            a: ['href', 'target', 'rel'],
             '*': ['style']
           }
         })
