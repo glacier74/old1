@@ -1,5 +1,5 @@
 import { Button, Spin, Switch } from '@heyforms/ui'
-import { IconChevronLeft, IconCircleCheck } from '@tabler/icons'
+import { IconChevronLeft, IconChecks } from '@tabler/icons'
 import dayjs from 'dayjs'
 import Link from 'next/link'
 import { FC, useCallback, useMemo } from 'react'
@@ -111,7 +111,7 @@ export const Navbar: FC = () => {
             <span className="ml-1">{product.name}</span>
           </Link>
 
-          <div className="flex items-center text-sm text-slate-500">
+          <div className="flex items-center text-xs ml-4 text-slate-500">
             {state.isSyncing ? (
               <>
                 <Spin className="mr-1 w-4 h-4 text-slate-400" />
@@ -119,7 +119,7 @@ export const Navbar: FC = () => {
               </>
             ) : state.lastSyncedAt > 0 ? (
               <>
-                <IconCircleCheck className="mr-1 w-4 h-4 text-slate-400" />
+                <IconChecks className="mr-1 w-4 h-4 text-slate-400" />
                 <span>Saved at {dayjs(state.lastSyncedAt).format('h:mm A')}</span>
               </>
             ) : (

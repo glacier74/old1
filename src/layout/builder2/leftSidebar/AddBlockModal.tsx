@@ -8,12 +8,12 @@ import { getBlockSetting } from '~/layout/builder2/utils'
 
 const BLOCKS = [
   {
-    title: 'Header',
+    title: 'Header Navigation',
     type: 'header',
     components: [
       {
         componentId: 'header1',
-        title: 'Header',
+        title: 'Header Navigation',
         thumbnail: '/static/block/header1.png'
       }
     ]
@@ -24,12 +24,12 @@ const BLOCKS = [
     components: [
       {
         componentId: 'hero1',
-        title: 'Hero',
+        title: 'Hero 1',
         thumbnail: '/static/block/hero1.png'
       },
       {
         componentId: 'hero2',
-        title: 'Hero',
+        title: 'Hero 2 (centered)',
         thumbnail: '/static/block/hero2.png'
       }
     ]
@@ -50,62 +50,62 @@ const BLOCKS = [
       },
       {
         componentId: 'feature3',
-        title: 'Feature grid',
+        title: 'Feature grids',
         thumbnail: '/static/block/feature3.png'
       }
     ]
   },
   {
-    title: 'Email Capture',
+    title: 'Pricing',
+    type: 'payment',
+    components: [
+      {
+        componentId: 'payment1',
+        title: 'Pricing section (single plan)',
+        thumbnail: '/static/block/payment1.png'
+      },
+      {
+        componentId: 'payment2',
+        title: 'Pricing table (multiple plans)',
+        thumbnail: '/static/block/payment2.png'
+      }
+    ]
+  },
+  {
+    title: 'Testimonials',
+    type: 'testimonial',
+    components: [
+      {
+        componentId: 'testimonial1',
+        title: 'Testimonials',
+        thumbnail: '/static/block/testimonial1.png'
+      }
+    ]
+  },
+  {
+    title: 'FAQs',
+    type: 'faq',
+    components: [
+      {
+        componentId: 'faq1',
+        title: 'FAQ 1',
+        thumbnail: '/static/block/faq1.png'
+      },
+      {
+        componentId: 'faq2',
+        title: 'FAQ 2',
+        thumbnail: '/static/block/faq2.png'
+      }
+    ]
+  },
+  {
+    title: 'CTA',
     type: 'email_capture',
     components: [
       {
         componentId: 'email_capture1',
         title: 'Email capture',
         thumbnail: '/static/block/email_capture1.png'
-      }
-    ]
-  },
-  {
-    title: 'Payment',
-    type: 'payment',
-    components: [
-      {
-        componentId: 'payment1',
-        title: 'Payment',
-        thumbnail: '/static/block/payment1.png'
-      },
-      {
-        componentId: 'payment2',
-        title: 'Pricing table',
-        thumbnail: '/static/block/payment2.png'
-      }
-    ]
-  },
-  {
-    title: 'Testimonial',
-    type: 'testimonial',
-    components: [
-      {
-        componentId: 'testimonial1',
-        title: 'Testimonial',
-        thumbnail: '/static/block/testimonial1.png'
-      }
-    ]
-  },
-  {
-    title: 'FAQ',
-    type: 'faq',
-    components: [
-      {
-        componentId: 'faq1',
-        title: 'FAQ',
-        thumbnail: '/static/block/faq1.png'
-      },
-      {
-        componentId: 'faq2',
-        title: 'FAQ',
-        thumbnail: '/static/block/faq2.png'
       }
     ]
   },
@@ -187,7 +187,7 @@ export const AddBlockModal = () => {
         </div>
         <div className="add-block-modal-right">
           {BLOCKS.map(block => (
-            <div key={block.title} id={block.title}>
+            <div key={block.title} id={block.title} className="mb-8">
               <div className="py-1 text-lg font-bold text-slate-700">{block.title}</div>
               <div className="mb-4 grid grid-cols-3 gap-5">
                 {block.components.map(component => (
@@ -205,7 +205,7 @@ export const AddBlockModal = () => {
                         alt={component.title}
                       />
                     </div>
-                    <div className="mt-1 text-center text-sm text-gray-700">{component.title}</div>
+                    <div className="mt-1 pl-1 pt-1 text-sm text-slate-700">{component.title}</div>
                   </div>
                 ))}
               </div>
