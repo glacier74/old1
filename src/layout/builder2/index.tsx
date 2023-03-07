@@ -1,5 +1,4 @@
 import { Button, EmptyStates } from '@heyforms/ui'
-import { IconTransform } from '@tabler/icons'
 import { useRef } from 'react'
 
 import { AsyncRequest, AsyncRequestInstance } from '~/components'
@@ -47,24 +46,21 @@ export const Builder2 = () => {
             <>
               <ConversionNavbar />
               <EmptyStates
-                className="flex-1 pt-60 bg-slate-50"
-                icon={<IconTransform />}
-                title="Block schema conversion"
+                className="flex-1 pt-48 max-w-2xl mx-auto text-left"
+                title="🔥 We've upgraded our builder"
                 description={
-                  <div className="space-y-2">
+                  <div className="space-y-2 text-lg text-left text-slate-500">
                     <p>
-                      Your landing page currently utilizes an older version of the block schema, and
-                      in order to make changes, you need to upgrade to the latest version.
+                    We've just launched our new builder with more UI blocks, and your landing page currently uses an older block schema version. To edit the landing page, you must upgrade the schema to the latest version.
                     </p>
                     <p>
-                      Nevertheless, your website remains accessible to visitors even if you decide
-                      not to upgrade.
+                    Your website will still be available to visitors even if you choose not to upgrade. However, you won't be able to make any further edits to it.
                     </p>
                   </div>
                 }
                 action={
-                  <Button loading={loading} onClick={request}>
-                    Upgrade to latest schema
+                  <Button loading={loading} onClick={request} className="!bg-emerald-500 !text-white !py-2 !text-lg">
+                    👉 Upgrade to the latest builder
                   </Button>
                 }
               />

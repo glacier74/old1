@@ -1429,6 +1429,11 @@ button.block-header-button {
   }
 }
 
+.empty-states-title {
+  @apply my-4 text-3xl font-bold;
+  color: var(--earlybird-primary);
+}
+
 .payment-successful {
   @apply flex flex-col items-center justify-center w-screen h-screen;
 
