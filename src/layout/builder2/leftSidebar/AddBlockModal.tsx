@@ -116,6 +116,11 @@ const BLOCKS = [
         componentId: 'email_capture1',
         title: 'Email capture',
         thumbnail: '/static/block/email_capture1.png'
+      },
+      {
+        componentId: 'email_capture2',
+        title: 'Email capture',
+        thumbnail: '/static/block/email_capture2.png'
       }
     ]
   },

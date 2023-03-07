@@ -698,6 +698,40 @@
 }
 
 // --------------------------------------------------------------------------------------------------------------------
+// Email capture2
+.email_capture2__container {
+  @apply py-24 sm:py-32;
+}
+
+.email_capture2__wrapper {
+  @apply mx-auto max-w-7xl px-6 lg:px-8 text-center;
+}
+
+.email_capture2__title {
+  @apply text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl;
+}
+
+.email_capture2__subtitle {
+  @apply mt-3 mx-auto max-w-4xl text-lg leading-8 text-slate-600;
+}
+
+.email-capture2__form {
+  @apply mt-12 sm:mx-auto sm:flex sm:max-w-lg space-x-0 space-y-3 sm:space-x-3 sm:space-y-0 sm:flex border-slate-300;
+
+  input {
+    @apply w-full sm:w-[20rem] rounded-md border px-5 py-3;
+
+    &:focus {
+      @apply ring-1 border-blue-500 ring-blue-500 #{!important};
+    }
+  }
+
+  button {
+    @apply w-full sm:w-auto rounded-md border px-5 py-3 text-base text-center font-medium;
+  }
+}
+
+// --------------------------------------------------------------------------------------------------------------------
 // FAQ 1
 .faq1__container {
   @apply py-24 sm:py-32;

@@ -1,4 +1,5 @@
 import { EmailCapture1 } from './emailCapture/email-capture1'
+import { EmailCapture2 } from './emailCapture/email-capture2'
 import { Faq1 } from './faq/faq1'
 import { Faq2 } from './faq/faq2'
 import { Feature1 } from './feature/feature1'
@@ -24,6 +25,7 @@ const components: AnyMap<any> = {
   feature2: Feature2,
   feature3: Feature3,
   email_capture1: EmailCapture1,
+  email_capture2: EmailCapture2,
   faq1: Faq1,
   faq2: Faq2,
   payment1: Payment1,
