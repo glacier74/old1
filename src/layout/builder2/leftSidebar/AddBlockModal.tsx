@@ -82,6 +82,17 @@ const BLOCKS = [
     ]
   },
   {
+    title: 'Image gallery',
+    type: 'image_gallery',
+    components: [
+      {
+        componentId: 'image_gallery1',
+        title: 'Image gallery',
+        thumbnail: '/static/block/image_gallery1.png'
+      }
+    ]
+  },
+  {
     title: 'Testimonials',
     type: 'testimonial',
     components: [

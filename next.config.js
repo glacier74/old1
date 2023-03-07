@@ -22,7 +22,11 @@ module.exports = {
   swcMinify: false,
   poweredByHeader: false,
   images: {
-    domains: ['storage.earlybird.im', 'devlopment-flybird.s3.us-west-004.backblazeb2.com']
+    domains: [
+      'storage.earlybird.im',
+      'devlopment-flybird.s3.us-west-004.backblazeb2.com',
+      'images.unsplash.com'
+    ]
   },
   // https://nextjs.org/docs/advanced-features/security-headers
   async headers() {

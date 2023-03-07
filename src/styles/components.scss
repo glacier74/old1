@@ -503,7 +503,6 @@
 
 .feature1__caption {
   @apply mb-2 text-lg font-semibold leading-8 tracking-tight text-blue-600;
-  // bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500;
 }
 
 .feature1__title {
@@ -1014,4 +1013,105 @@
 
 .testimonial1__subtitle {
   @apply mt-3 mx-auto max-w-4xl text-lg leading-8 text-slate-600;
+}
+
+// --------------------------------------------------------------------------------------------------------------------
+// Image gallery
+.image_gallery1__container {
+  @apply py-24 sm:py-32;
+}
+
+.image_gallery1__wrapper {
+  @apply mx-auto max-w-7xl px-6 lg:px-8 text-center;
+}
+
+.image_gallery1__caption {
+  @apply mb-2 text-lg font-semibold leading-8 tracking-tight text-blue-600;
+}
+
+.image_gallery1__title {
+  @apply text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl;
+}
+
+.image_gallery1__subtitle {
+  @apply mt-3 mx-auto max-w-4xl text-lg leading-8 text-slate-600;
+}
+
+.image_gallery1__list {
+  @apply mt-16 sm:mt-24 grid grid-cols-1 md:grid-cols-3 gap-8;
+
+  li {
+    @apply relative w-full cursor-zoom-in;
+    padding-top: 62.5%;
+    transition: box-shadow .2s, transform .2s, -webkit-transform .2s;
+
+    &:hover {
+      box-shadow: 0 24px 48px -20px rgba(16, 24, 40, .24);
+      transform: translate(0, -0.125rem);
+    }
+
+    img {
+      @apply absolute inset-0 w-full h-full rounded-md object-cover;
+    }
+  }
+}
+
+.image_swiper__root {
+  @apply fixed inset-0 py-14 md:px-14 bg-black/90 z-50;
+
+  .swiper,
+  .swiper-wrapper {
+    @apply w-full h-full;
+  }
+
+  .swiper {
+    @apply relative;
+  }
+
+  .swiper-slide {
+    @apply flex items-center justify-center;
+  }
+}
+
+.image_swiper__prev,
+.image_swiper__next,
+.image_swiper__close {
+  @apply absolute top-1/2 p-2 -mt-7 text-white text-opacity-70 hover:text-opacity-100 z-10;
+
+  svg {
+    @apply w-10 h-10;
+  }
+}
+
+.image_swiper__prev,
+.image_swiper__next {
+  @apply hidden md:block;
+}
+
+.image_swiper__prev {
+  @apply left-0;
+}
+
+.image_swiper__next {
+  @apply right-0;
+}
+
+.image_swiper__close {
+  @apply p-3 md:p-2 top-4 right-2 mt-0;
+
+  svg {
+    @apply w-6 h-6;
+  }
+}
+
+.image_swiper__pagination {
+  @apply absolute left-0 bottom-6 w-full flex items-center justify-center space-x-2;
+}
+
+.image_swiper__pagination-dot {
+  @apply w-2 h-2 rounded-full bg-white bg-opacity-50;
+}
+
+.image_swiper__pagination-active {
+  @apply bg-opacity-100;
 }

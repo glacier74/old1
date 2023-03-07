@@ -23,6 +23,7 @@ export const $Image: FC<$ImageProps> = ({
     <NextImage
       className={clsx('earlybird-image', className)}
       src={src}
+      data-src={src}
       alt={alt}
       width={width}
       height={height}

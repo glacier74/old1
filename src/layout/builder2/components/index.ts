@@ -11,6 +11,7 @@ import { Header2 } from './header/header2'
 import { Hero1 } from './hero/hero1'
 import { Hero2 } from './hero/hero2'
 import { Hero3 } from './hero/hero3'
+import { ImageGallery1 } from './imageGallery/image_gallery1'
 import { Payment1 } from './payment/payment1'
 import { Payment2 } from './payment/payment2'
 import { Testimonial1 } from './testimonial/testimonial1'
@@ -31,7 +32,8 @@ const components: AnyMap<any> = {
   payment1: Payment1,
   payment2: Payment2,
   footer1: Footer1,
-  testimonial1: Testimonial1
+  testimonial1: Testimonial1,
+  image_gallery1: ImageGallery1
 }
 
 export default components

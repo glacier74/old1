@@ -292,6 +292,7 @@ declare global {
     | 'emailCapture'
     | 'faq'
     | 'testimonial'
+    | 'image_gallery'
 
   interface BlockOption {
     type: BlockType
@@ -562,6 +563,7 @@ declare global {
       | 'cta'
       | 'email_capture'
       | 'testimonial'
+      | 'image_gallery'
       | 'faq'
       | 'payment'
       | 'footer'

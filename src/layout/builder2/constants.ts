@@ -20,6 +20,10 @@ export const BLOCKS = [
     label: 'Testimonials'
   },
   {
+    type: 'image_gallery',
+    label: 'Image gallery'
+  },
+  {
     type: 'payment',
     label: 'Payment'
   },
