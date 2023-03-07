@@ -6,6 +6,7 @@ import { Feature2 } from './feature/feature2'
 import { Feature3 } from './feature/feature3'
 import { Footer1 } from './footer/footer1'
 import { Header1 } from './header/header1'
+import { Header2 } from './header/header2'
 import { Hero1 } from './hero/hero1'
 import { Hero2 } from './hero/hero2'
 import { Hero3 } from './hero/hero3'
@@ -15,6 +16,7 @@ import { Testimonial1 } from './testimonial/testimonial1'
 
 const components: AnyMap<any> = {
   header1: Header1,
+  header2: Header2,
   hero1: Hero1,
   hero2: Hero2,
   hero3: Hero3,

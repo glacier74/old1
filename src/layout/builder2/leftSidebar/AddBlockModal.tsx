@@ -15,6 +15,11 @@ const BLOCKS = [
         componentId: 'header1',
         title: 'Header Navigation',
         thumbnail: '/static/block/header1.png'
+      },
+      {
+        componentId: 'header2',
+        title: 'Header Navigation',
+        thumbnail: '/static/block/header2.png'
       }
     ]
   },

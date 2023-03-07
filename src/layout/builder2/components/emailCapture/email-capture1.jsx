@@ -2,14 +2,15 @@ import {
   $Block as Block,
   $EmailCapture as EmailCapture,
   $H2 as H2,
-  $Html as Html
+  $Html as Html,
+  $Style as Style
 } from '@earlybirdim/blocks'
 
 const render = function ({ productId, block }) {
   return (
     <Block productId={productId} block={block}>
       <div className="email-capture1__container">
-        <div className="email-capture1__wrapper">
+        <Style className="email-capture1__wrapper" {...block.setting.Style1}>
           <div className="email-capture1__left">
             <H2 className="email-capture1__title" {...block.setting.H21} />
             <Html as="p" className="email-capture1__subtitle" {...block.setting.Html1} />
@@ -18,7 +19,7 @@ const render = function ({ productId, block }) {
           <div className="email-capture1__right">
             <EmailCapture className="email-capture1__form" {...block.setting.EmailCapture1} />
           </div>
-        </div>
+        </Style>
       </div>
     </Block>
   )
@@ -33,6 +34,18 @@ const settingSchemas = [
       }
     },
     type: 'schema_block',
+    children: []
+  },
+  {
+    name: 'Style1',
+    title: 'Style',
+    default: {
+      style: {
+        background: '#1d4ed8'
+      }
+    },
+    propertyName: 'block.setting.Style1',
+    type: 'schema_style',
     children: []
   },
   {
