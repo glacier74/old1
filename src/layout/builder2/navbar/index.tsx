@@ -1,5 +1,5 @@
 import { Button, Spin, Switch } from '@heyforms/ui'
-import { IconChevronLeft, IconChecks } from '@tabler/icons'
+import { IconChecks, IconChevronLeft } from '@tabler/icons'
 import dayjs from 'dayjs'
 import Link from 'next/link'
 import { FC, useCallback, useMemo } from 'react'
@@ -23,7 +23,7 @@ export const ConversionNavbar: FC = () => {
             className="inline-flex items-center text-sm -ml-3 pl-1 pr-3 py-1.5 rounded hover:bg-slate-100"
             href={`/product/${product.id}`}
           >
-            <IconChecks className="w-5 h-5 text-slate-500" />
+            <IconChevronLeft className="w-5 h-5 text-slate-500" />
             <span className="ml-1">{product.name}</span>
           </Link>
         </div>
