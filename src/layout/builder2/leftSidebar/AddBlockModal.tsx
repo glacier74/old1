@@ -13,12 +13,12 @@ const BLOCKS = [
     components: [
       {
         componentId: 'header1',
-        title: 'Header Navigation',
+        title: 'Header Navigation (right-aligned)',
         thumbnail: '/static/block/header1.png'
       },
       {
         componentId: 'header2',
-        title: 'Header Navigation',
+        title: 'Header Navigation (constrained)',
         thumbnail: '/static/block/header2.png'
       }
     ]
@@ -125,12 +125,12 @@ const BLOCKS = [
     components: [
       {
         componentId: 'email_capture1',
-        title: 'Email capture',
+        title: 'Email capture 1',
         thumbnail: '/static/block/email_capture1.png'
       },
       {
         componentId: 'email_capture2',
-        title: 'Email capture',
+        title: 'Email capture 2',
         thumbnail: '/static/block/email_capture2.png'
       }
     ]
