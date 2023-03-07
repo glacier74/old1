@@ -220,6 +220,7 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
       shortName={product.name}
       favicon={cropImage(product.logo, 120, 120)}
       seo={seo}
+      schema={product.siteSetting.schema}
       theme={product.siteSetting.theme}
       integrations={product.integrations}
     >

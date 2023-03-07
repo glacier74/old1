@@ -19,6 +19,10 @@ export const $Image: FC<$ImageProps> = ({
   className,
   ...restProps
 }) => {
+  if (!src) {
+    return null
+  }
+
   return (
     <NextImage
       className={clsx('earlybird-image', className)}

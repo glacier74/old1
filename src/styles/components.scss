@@ -232,6 +232,10 @@
 .hero1__announcement {
   @apply relative block md:inline rounded-full py-1.5 px-3 text-sm leading-6 border;
 
+  &:empty {
+    @apply hidden;
+  }
+
   p {
     @apply inline;
   }
@@ -296,6 +300,10 @@
 
 .hero2__announcement {
   @apply relative block md:inline rounded-full py-1.5 px-3 text-sm text-center leading-6 border;
+
+  &:empty {
+    @apply hidden;
+  }
 
   p {
     @apply inline;
@@ -379,6 +387,10 @@
 
 .hero3__announcement {
   @apply block md:inline rounded-full py-1.5 px-3 text-sm leading-6 text-gray-600 ring-1 ring-gray-800/10 hover:ring-gray-800/20;
+
+  &:empty {
+    @apply hidden;
+  }
 
   p {
     @apply inline;

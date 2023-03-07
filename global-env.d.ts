@@ -25,6 +25,7 @@ declare global {
   interface PublicSiteLayoutProps extends LayoutProps {
     favicon?: string
     shortName?: string
+    schema?: number
     theme?: Theme
     integrations?: Integration[]
   }
