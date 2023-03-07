@@ -34,7 +34,7 @@ const ScratchItem: FC<Omit<TemplateItemProps, 'template'>> = ({ isSelected, onCl
       <div className="flex items-center justify-center border border-slate-200 h-[120px] rounded-md">
         <IconLayoutGrid className="w-8 h-8 non-scaling-stroke text-slate-500" />
       </div>
-      <div className="mt-2 text-sm text-slate-700">Scratch</div>
+      <div className="mt-2 text-sm text-slate-700">Start from scratch</div>
     </div>
   )
 }

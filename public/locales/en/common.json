@@ -130,7 +130,7 @@
     "publicSiteURL": "Public site URL",
     "invalidDomain": "The domain must have at least 3 characters, including uppercase, lowercase, number or \"-\"",
     "createProductTitle": "Welcome to EarlyBird!",
-    "createProductDesc": "To begin, you'll need to enter the required fields like name, tagline, etc. When you're done, you can save and continue to the landing page dashboard.",
+    "createProductDesc": "To begin, please enter the required fields like name, tagline, and public site URL. Click on Create the landing page after that.",
     "createProduct": "Create the landing page",
     "templates": "Templates",
     "invalidLogo": "The logo is not allowed to be empty",

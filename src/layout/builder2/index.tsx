@@ -51,15 +51,22 @@ export const Builder2 = () => {
                 description={
                   <div className="space-y-2 text-lg text-left text-slate-500">
                     <p>
-                    We've just launched our new builder with more UI blocks, and your landing page currently uses an older block schema version. To edit the landing page, you must upgrade the schema to the latest version.
+                      We've just launched our new builder with more UI blocks, and your landing page
+                      currently uses an older block schema version. To edit the landing page, you
+                      must upgrade the schema to the latest version.
                     </p>
                     <p>
-                    Your website will still be available to visitors even if you choose not to upgrade. However, you won't be able to make any further edits to it.
+                      Your website will still be available to visitors even if you choose not to
+                      upgrade. However, you won't be able to make any further edits to it.
                     </p>
                   </div>
                 }
                 action={
-                  <Button loading={loading} onClick={request} className="!bg-emerald-500 !text-white !py-2 !text-lg">
+                  <Button
+                    loading={loading}
+                    onClick={request}
+                    className="!bg-emerald-500 !text-white !py-2 !text-lg"
+                  >
                     👉 Upgrade to the latest builder
                   </Button>
                 }
