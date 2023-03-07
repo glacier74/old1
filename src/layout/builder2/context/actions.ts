@@ -74,7 +74,16 @@ export function setBlocks(state: IState, payload: SetBlocksAction['payload']): I
 }
 
 export function addBlock(state: IState, payload: AddBlockAction['payload']) {
-  state.blocks.push(payload.block)
+  const { blocks, selectedBlockId } = state
+  const index = blocks.findIndex(b => b.id === selectedBlockId)
+
+  if (index > -1) {
+    blocks.splice(index + 1, 0, payload.block)
+  } else {
+    blocks.push(payload.block)
+  }
+
+  state.blocks = blocks
   return state
 }
 

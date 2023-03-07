@@ -7,6 +7,7 @@ import {
   $Image as Image,
   $Link as Link,
   $List as List,
+  $Style as Style,
   $Text as Text
 } from '@earlybirdim/blocks'
 
@@ -45,11 +46,11 @@ const render = function ({ productId, block }) {
             </div>
           </div>
 
-          <Group className="hero3__right">
+          <Style className="hero3__right" {...block.setting.Style1}>
             <div className="hero3__image">
-              <Image {...block.setting.Group2.Image1} />
+              <Image {...block.setting.Image1} />
             </div>
-          </Group>
+          </Style>
         </div>
       </div>
     </Block>
@@ -133,9 +134,6 @@ const settingSchemas = [
   {
     name: 'Group1',
     title: 'Call-to-action',
-    default: {
-      style: {}
-    },
     propertyName: 'block.setting.Group1',
     type: 'schema_group',
     children: [
@@ -230,29 +228,28 @@ const settingSchemas = [
     ]
   },
   {
-    name: 'Group2',
-    title: 'Hero image',
+    name: 'Style1',
+    title: 'Right side',
     default: {
       style: {
         background: '#eff6ff'
       }
     },
-    propertyName: 'block.setting.Group2',
-    type: 'schema_group',
-    children: [
-      {
-        name: 'Image1',
-        title: 'Image',
-        default: {
-          src: 'https://storage.earlybird.im/example/app-light3.png',
-          alt: 'EarlyBird',
-          width: 500,
-          height: 0,
-          type: 'image'
-        },
-        type: 'schema_image'
-      }
-    ]
+    propertyName: 'block.setting.Style1',
+    type: 'schema_style',
+    children: []
+  },
+  {
+    name: 'Image1',
+    title: 'Hero image',
+    default: {
+      src: 'https://storage.earlybird.im/example/app-light3.png',
+      alt: 'EarlyBird',
+      width: 500,
+      height: 0,
+      type: 'image'
+    },
+    type: 'schema_image'
   }
 ]
 

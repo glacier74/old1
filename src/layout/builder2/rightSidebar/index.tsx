@@ -36,7 +36,9 @@ export const RightSidebar: FC = () => {
       </div>
       <Setting
         key={blockData!.id}
-        schemas={component.settingSchemas.filter((s: any) => s.type !== 'schema_block')}
+        schemas={component.settingSchemas.filter(
+          (s: any) => s.type !== 'schema_block' && s.type !== 'schema_style'
+        )}
       />
     </div>
   )

@@ -85,7 +85,7 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
     <div className="builder-setting-text space-y-2">
       <div>
         <div className="flex items-center justify-between mb-1">
-          <div className="mb-1 text-sm text-slate-700">Capture name</div>
+          <div className="mb-1 text-sm text-slate-700">Full name</div>
           <Switch value={isValid(setting?.fullName)} onChange={handleEnableFullName} />
         </div>
         {isValid(setting?.fullName) && (

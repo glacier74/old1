@@ -15,6 +15,11 @@ const BLOCKS = [
         componentId: 'header1',
         title: 'Header Navigation',
         thumbnail: '/static/block/header1.png'
+      },
+      {
+        componentId: 'header2',
+        title: 'Header Navigation',
+        thumbnail: '/static/block/header2.png'
       }
     ]
   },
@@ -111,6 +116,11 @@ const BLOCKS = [
         componentId: 'email_capture1',
         title: 'Email capture',
         thumbnail: '/static/block/email_capture1.png'
+      },
+      {
+        componentId: 'email_capture2',
+        title: 'Email capture',
+        thumbnail: '/static/block/email_capture2.png'
       }
     ]
   },
