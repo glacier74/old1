@@ -10,6 +10,7 @@ import {
   IconFooter,
   IconHeader,
   IconHero,
+  IconPhoto,
   IconTestimonial
 } from '~/components'
 import { BLOCKS } from '~/layout/builder2/constants'
@@ -46,6 +47,9 @@ const Icon: FC<BlockTypeProps> = ({ type, ...restProps }) => {
 
     case 'faq':
       return <IconFaq {...restProps} />
+
+    case 'image_gallery':
+      return <IconPhoto {...restProps} />
 
     case 'footer':
       return <IconFooter {...restProps} />

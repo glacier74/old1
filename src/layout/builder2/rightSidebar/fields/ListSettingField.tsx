@@ -87,7 +87,7 @@ const ListSettingItem: FC<ListSettingItemProps> = ({
   }
 
   const Overlay = (
-    <Menus>
+    <Menus className="w-32">
       <Menus.Item label="Duplicate" onClick={handleDuplicate} />
       <Menus.Item className="text-red-600" label="Delete" onClick={handleDelete} />
     </Menus>
@@ -100,11 +100,15 @@ const ListSettingItem: FC<ListSettingItemProps> = ({
     if (title) {
       return <span>{title}</span>
     } else if (icon) {
-      return <$Icon className="w-5 h-5" {...icon} />
+      return (
+        <div className="builder-list-image-preview">
+          <$Icon className="w-5 h-5" {...icon} width={24} height={24} />
+        </div>
+      )
     } else {
-      return <span>{index}</span>
+      return <span className="text-slate-500 italic">{parentSchema.title}</span>
     }
-  }, [index, setting])
+  }, [parentSchema.title, setting])
 
   return (
     <div className="bg-white border border-slate-200 rounded">

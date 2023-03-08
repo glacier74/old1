@@ -9,7 +9,7 @@ export function getObjectPath(...paths: any[]) {
   return paths.filter(isValid).join('.')
 }
 
-function schemaToSetting(schema: any) {
+function schemaToSetting(schema: any, isNewListChild: boolean) {
   const setting = {
     type: schema.type,
     ...schema.default
@@ -20,49 +20,60 @@ function schemaToSetting(schema: any) {
     setting.id = v4()
   }
 
+  if (isNewListChild) {
+    if (setting.type === 'text' || setting.type === 'html') {
+      setting.html = ''
+    }
+  }
+
   return setting
 }
 
-export function getBlockSetting(schemas: any) {
-  return schemas.reduce((prev: any, curr: any) => {
-    let setting = isValid(curr.name)
-      ? {
-          [curr.name]: schemaToSetting(curr)
+export function getBlockSetting(schemas: any, isNewListChild = false) {
+  return schemas.reduce(
+    (prev: any, curr: any) => {
+      let setting = isValid(curr.name)
+        ? {
+            [curr.name]: schemaToSetting(curr, isNewListChild)
+          }
+        : schemaToSetting(curr, isNewListChild)
+
+      if (curr.type === 'schema_group' || curr.type === 'schema_link') {
+        const children = curr.children
+
+        if (isValid(children)) {
+          const groupSetting = {
+            ...schemaToSetting(curr, isNewListChild),
+            ...getBlockSetting(children, isNewListChild)
+          }
+
+          if (curr.name) {
+            setting[curr.name] = groupSetting
+          } else {
+            setting = groupSetting
+          }
         }
-      : schemaToSetting(curr)
+      } else if (curr.type === 'schema_list') {
+        const children = curr.children
 
-    if (curr.type === 'schema_group' || curr.type === 'schema_link') {
-      const children = curr.children
-
-      if (isValid(children)) {
-        const groupSetting = {
-          ...schemaToSetting(curr),
-          ...getBlockSetting(children)
-        }
-
-        if (curr.name) {
-          setting[curr.name] = groupSetting
-        } else {
-          setting = groupSetting
+        if (isValid(children)) {
+          setting[curr.name] = children.map((c: any) => ({
+            id: v4(),
+            ...getBlockSetting([c], isNewListChild)
+          }))
         }
       }
-    } else if (curr.type === 'schema_list') {
-      const children = curr.children
 
-      if (isValid(children)) {
-        setting[curr.name] = children.map((c: any) => ({
-          id: v4(),
-          ...getBlockSetting([c])
-        }))
-      }
+      return { ...prev, ...setting }
+    },
+    {
+      id: v4()
     }
-
-    return { ...prev, ...setting }
-  }, {})
+  )
 }
 
 export function createListChildSetting(schema: any) {
-  const setting = getBlockSetting([schema.children[0] as any])
+  const setting = getBlockSetting([schema.children[0] as any], true)
 
   switch (setting.type) {
     case 'button':

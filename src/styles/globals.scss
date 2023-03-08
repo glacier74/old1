@@ -1524,7 +1524,7 @@ button.block-header-button {
 
 .media-picker,
 .icon-picker {
-  @apply mb-3;
+  @apply mb-3 mr-20;
 
   .tabs-nav-list {
     @apply px-3 space-x-6;
@@ -1913,5 +1913,15 @@ button.block-header-button {
 
   .select-arrow-icon {
     @apply hidden;
+  }
+}
+
+.builder-list-image-preview {
+  @apply flex items-center;
+
+  .earlybird-icon-image {
+    img {
+      @apply w-full h-full object-cover;
+    }
   }
 }
