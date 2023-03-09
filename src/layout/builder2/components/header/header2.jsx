@@ -11,11 +11,9 @@ import { useState } from 'react'
 
 const render = function ({ productId, block }) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
-
   function handleClick() {
     setMobileMenuOpen(isMobileMenuOpen => !isMobileMenuOpen)
   }
-
   return (
     <Block productId={productId} block={block}>
       <div className={`header2__container ${isMobileMenuOpen ? 'header2__container-open' : ''}`}>
@@ -23,6 +21,8 @@ const render = function ({ productId, block }) {
           <div className="header2__left">
             <Link className="header2__logo" {...block.setting.Link1}>
               <Image {...block.setting.Link1.Image1} />
+
+              <Text {...block.setting.Link1.Text1} />
             </Link>
 
             <div className="header2__menu">
@@ -89,12 +89,24 @@ const settingSchemas = [
         title: 'Brand logo',
         default: {
           src: 'https://storage.earlybird.im/example/logo.png',
-          alt: 'EarlyBird',
-          width: 36,
-          height: 18,
+          alt: 'Your company',
+          width: 200,
+          height: 36,
           type: 'image'
         },
         type: 'schema_image'
+      },
+      {
+        name: 'Text1',
+        title: 'Brand name',
+        default: {
+          html: '',
+          style: {
+            color: '#0f172a'
+          },
+          type: 'text'
+        },
+        type: 'schema_text'
       }
     ]
   },
