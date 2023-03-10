@@ -2,6 +2,7 @@ import { Button, Input, notification } from '@heyforms/ui'
 import { IconArrowUpRight } from '@tabler/icons'
 import { FC, useState } from 'react'
 
+import { StylePicker } from '~/components'
 import { useBlockSetting } from '~/layout/builder2/context'
 import { StripeService } from '~/service'
 import { useRequest, useWindow } from '~/utils'
@@ -113,6 +114,10 @@ export const PaymentSettingField: FC<SettingFieldProps> = ({ schema }) => {
     updateSetting(value, 'priceId')
   }
 
+  function handleStyleChange(property: string, value: string) {
+    updateSetting(value, `style.${property}`)
+  }
+
   return (
     <div className="builder-setting-text space-y-2">
       <div>
@@ -141,9 +146,18 @@ export const PaymentSettingField: FC<SettingFieldProps> = ({ schema }) => {
         </div>
       )}
 
-      <div>
-        <div className="mb-1 text-sm text-slate-700">Button text</div>
+      <div className="flex items-center justify-between">
+        <div className="text-sm">Button text</div>
         <Input value={setting?.html} onChange={handleChange} />
+      </div>
+
+      <div className="flex items-center justify-between">
+        <div className="text-sm">Button style</div>
+        <StylePicker
+          properties={Object.keys(setting!.style)}
+          value={setting!.style}
+          onChange={handleStyleChange}
+        />
       </div>
 
       <div>

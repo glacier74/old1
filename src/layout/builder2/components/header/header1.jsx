@@ -1,14 +1,13 @@
 import {
   $Block as Block,
-  $Group as Group,
-  $Icon as Icon,
-  $Image as Image,
   $Link as Link,
+  $Image as Image,
   $List as List,
-  $Text as Text
+  $Text as Text,
+  $Icon as Icon,
+  $Group as Group
 } from '@earlybirdim/blocks'
 import { useState } from 'react'
-
 const render = function ({ productId, block }) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
   function handleClick() {

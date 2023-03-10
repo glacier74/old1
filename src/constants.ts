@@ -236,29 +236,50 @@ export const THEME_COLOR_KEYS = [
 ]
 
 export const THEME_PRESET_COLORS = [
-  '#fff',
-  '#f9fafb',
+  '#ffffff',
   '#fef2f2',
+  '#fff7ed',
   '#fefce8',
   '#f0fdf4',
+  '#ecfeff',
   '#eff6ff',
   '#faf5ff',
 
-  '#d1d5db',
-  '#9ca3af',
+  '#e4e4e7',
+  '#fecaca',
+  '#fed7aa',
+  '#fef08a',
+  '#bbf7d0',
+  '#a5f3fc',
+  '#bfdbfe',
+  '#e9d5ff',
+
+  '#a1a1aa',
+  '#f87171',
+  '#fb923c',
+  '#facc15',
+  '#4ade80',
+  '#22d3ee',
+  '#60a5fa',
+  '#c084fc',
+
+  '#71717a',
   '#ef4444',
+  '#f97316',
   '#eab308',
   '#22c55e',
+  '#06b6d4',
   '#3b82f6',
   '#a855f7',
 
-  '#4b5563',
-  '#000',
-  '#991b1b',
-  '#854d0e',
-  '#166534',
-  '#1e40af',
-  '#6b21a8'
+  '#52525b',
+  '#dc2626',
+  '#ea580c',
+  '#ca8a04',
+  '#16a34a',
+  '#0891b2',
+  '#2563eb',
+  '#9333ea'
 ]
 
 export const THEMES: Theme[] = [

@@ -42,18 +42,23 @@ export const ImageSettingField: FC<SettingFieldProps> = ({ schema }) => {
               overlay={<MediaPicker allowed={['image']} onChange={handleImageChange} />}
               onDropdownVisibleChange={setVisible}
             >
-              <Button className="!p-1">Change</Button>
+              <Button className="!py-1 !px-1.5">Change</Button>
             </Dropdown>
-            <Button className="!p-1" onClick={handleClear}>
+            <Button.Link className="!p-1" onClick={handleClear}>
               Clear
-            </Button>
+            </Button.Link>
           </div>
         </div>
       </div>
 
-      <div>
-        <div className="mb-1 text-sm text-slate-700">Alt Text</div>
-        <Input value={setting?.alt} placeholder="Enter image alt here" onChange={handleAltChange} />
+      <div className="flex items-center justify-between">
+        <div className="mb-1 text-sm text-slate-700">Alt text</div>
+        <Input
+          className="!px-2 !py-[0.34rem]"
+          value={setting?.alt}
+          placeholder="Enter image alt here"
+          onChange={handleAltChange}
+        />
       </div>
     </div>
   )

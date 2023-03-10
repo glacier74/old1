@@ -12,6 +12,9 @@ interface StylePickerProps {
 const propertyNames: AnyMap<string> = {
   color: 'Color',
   background: 'Background',
+  tintColor: 'Tint color',
+  tintBackground: 'Tint background',
+  borderColor: 'Border',
   paddingTop: 'Padding Top',
   paddingBottom: 'Padding Bottom'
 }
@@ -37,7 +40,7 @@ export const StylePickerItem: FC<StylePickerItemProps> = ({ property, value, onC
 
 export const StylePicker: FC<StylePickerProps> = ({ value, properties, onChange }) => {
   const Overlay = (
-    <Menus className="w-[15rem]">
+    <Menus className="w-[16.5rem]">
       <div className="py-3 px-4 space-y-1" onClick={stopPropagation}>
         <div className="mb-2 text-sm font-bold">Style</div>
 
@@ -54,8 +57,11 @@ export const StylePicker: FC<StylePickerProps> = ({ value, properties, onChange 
 
   return (
     <Dropdown overlay={Overlay}>
-      <div className="color-picker__background" style={value}>
-        <span>A</span>
+      <div className="color-picker-v2">
+        <div className="color-picker__background" style={value}>
+          {properties.includes('color') && <span>A</span>}
+        </div>
+        <div className="ml-1.5 text-sm">Style</div>
       </div>
     </Dropdown>
   )

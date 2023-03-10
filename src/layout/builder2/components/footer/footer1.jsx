@@ -1,11 +1,10 @@
 import {
   $Block as Block,
-  $Html as Html,
-  $Icon as Icon,
   $Link as Link,
-  $List as List
+  $List as List,
+  $Html as Html,
+  $Icon as Icon
 } from '@earlybirdim/blocks'
-
 const render = function ({ productId, block }) {
   return (
     <Block productId={productId} block={block}>

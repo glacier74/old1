@@ -4,7 +4,6 @@ import {
   $Html as Html,
   $Testimonial as Testimonial
 } from '@earlybirdim/blocks'
-
 const render = function ({ productId, block }) {
   return (
     <Block productId={productId} block={block}>
@@ -50,7 +49,7 @@ const settingSchemas = [
     title: 'Subtitle',
     default: {
       as: 'p',
-      html: '\r\n            We place huge value on strong relationships and have seen the benefit they bring to our\r\n            business. Customer feedback is vital in helping us to get it right.\r\n          ',
+      html: '\r\n            We place huge value on strong relationships and have seen the\r\n            benefit they bring to our business. Customer feedback is vital in\r\n            helping us to get it right.\r\n          ',
       style: {
         color: '#4b5563'
       },

@@ -1,15 +1,17 @@
 import {
   $Block as Block,
-  $Group as Group,
-  $H2 as H2,
-  $Html as Html,
   $List as List,
+  $Text as Text,
+  $Html as Html,
+  $H2 as H2,
+  $Group as Group,
   $Payment as Payment,
-  $Text as Text
+  $Icon as Icon,
+  $Style as Style,
+  $SwitchGroup as SwitchGroup,
+  SwitchItem
 } from '@earlybirdim/blocks'
-import { IconCheckCircleLine } from '@earlybirdim/icons'
 import { useState } from 'react'
-
 const render = function ({ productId, block }) {
   const [interval, setInterval] = useState('monthly')
   return (
@@ -22,55 +24,50 @@ const render = function ({ productId, block }) {
           </div>
 
           <div className="payment2__interval-switcher">
-            <button
-              className={`payment2__interval-monthly ${
-                interval === 'monthly' ? 'payment2__active' : ''
-              }`}
-              onClick={() => setInterval('monthly')}
+            <SwitchGroup
+              defaultValue="monthly"
+              onChange={setInterval}
+              {...block.setting.SwitchGroup1}
             >
-              Monthly
-            </button>
-            <button
-              className={`payment2__interval-yearly ${
-                interval === 'yearly' ? 'payment2__active' : ''
-              }`}
-              onClick={() => setInterval('yearly')}
-            >
-              Yearly
-            </button>
+              <SwitchItem value="monthly">Monthly</SwitchItem>
+              <SwitchItem value="yearly">Yearly</SwitchItem>
+            </SwitchGroup>
           </div>
 
           <div className="payment2__plans">
             <List className="payment2__plans-wrapper">
               {block.setting.List1?.map(List1 => (
                 <Group as="li" className="payment2__plan" key={List1.id}>
-                  <Text as="h2" className="payment2__plan-name" {...List1.Group1.Text1} />
+                  <Style className="payment2__plan-container" {...List1.Group1.Style1}>
+                    <Text as="h2" className="payment2__plan-name" {...List1.Group1.Text1} />
+                    <Text as="p" className="payment2__plan-description" {...List1.Group1.Text2} />
 
-                  <Text as="p" className="payment2__plan-description" {...List1.Group1.Text2} />
+                    <Style className="payment2__plan-price" {...List1.Group1.Style2}>
+                      {interval === 'monthly' ? (
+                        <>
+                          <Text {...List1.Group1.Text3} />
+                          <span className="payment2__plan-interval">/month</span>
+                        </>
+                      ) : (
+                        <>
+                          <Text {...List1.Group1.Text4} />
+                          <span className="payment2__plan-interval">/year</span>
+                        </>
+                      )}
+                    </Style>
 
-                  {interval === 'monthly' ? (
-                    <div className="payment2__plan-price">
-                      <Text {...List1.Group1.Text3} />
-                      <span className="payment2__plan-interval">/month</span>
-                    </div>
-                  ) : (
-                    <div className="payment2__plan-price">
-                      <Text {...List1.Group1.Text4} />
-                      <span className="payment2__plan-interval">/year</span>
-                    </div>
-                  )}
+                    <Payment className="payment2__payment-button" {...List1.Group1.Payment1} />
 
-                  <Payment className="payment2__payment-button" {...List1.Group1.Payment1} />
+                    <List as="ul" className="payment2__features">
+                      {List1.Group1.List1?.map(List1 => (
+                        <Group as="li" key={List1.id}>
+                          <Icon {...List1.Group1.Icon1} />
 
-                  <List as="ul" className="payment2__features">
-                    {List1.Group1.List1?.map(List1 => (
-                      <Group as="li" key={List1.id}>
-                        <IconCheckCircleLine />
-
-                        <Text {...List1.Group1.Text1} />
-                      </Group>
-                    ))}
-                  </List>
+                          <Text {...List1.Group1.Text1} />
+                        </Group>
+                      ))}
+                    </List>
+                  </Style>
                 </Group>
               ))}
             </List>
@@ -110,13 +107,28 @@ const settingSchemas = [
     title: 'Subtitle',
     default: {
       as: 'p',
-      html: '\r\n              EarlyBird is free to get started and scales with you as you grow.\r\n            ',
+      html: '\r\n              Your company is free to get started and scales with you as you grow.\r\n            ',
       style: {
         color: '#4b5563'
       },
       type: 'html'
     },
     type: 'schema_html'
+  },
+  {
+    name: 'SwitchGroup1',
+    title: 'Billing cycle',
+    default: {
+      style: {
+        color: '#111827',
+        background: '#fff',
+        tintColor: '#fff',
+        tintBackground: '#2563eb'
+      }
+    },
+    propertyName: 'block.setting.SwitchGroup1',
+    type: 'schema_switch_group',
+    children: []
   },
   {
     name: 'List1',
@@ -129,6 +141,18 @@ const settingSchemas = [
         propertyName: 'List1.Group1',
         type: 'schema_group',
         children: [
+          {
+            name: 'Style1',
+            title: 'Background',
+            default: {
+              style: {
+                background: '#fff'
+              }
+            },
+            propertyName: 'List1.Group1.Style1',
+            type: 'schema_style',
+            children: []
+          },
           {
             name: 'Text1',
             title: 'Plan name',
@@ -154,13 +178,23 @@ const settingSchemas = [
             type: 'schema_text'
           },
           {
+            name: 'Style2',
+            title: 'Price style',
+            default: {
+              style: {
+                color: '#111827'
+              }
+            },
+            propertyName: 'List1.Group1.Style2',
+            type: 'schema_style',
+            children: []
+          },
+          {
             name: 'Text3',
             title: 'Monthly price',
             default: {
               html: '$0',
-              style: {
-                color: '#111827'
-              },
+              style: {},
               type: 'text'
             },
             type: 'schema_text'
@@ -170,16 +204,14 @@ const settingSchemas = [
             title: 'Yearly price',
             default: {
               html: '$0',
-              style: {
-                color: '#111827'
-              },
+              style: {},
               type: 'text'
             },
             type: 'schema_text'
           },
           {
             name: 'Payment1',
-            title: 'Payment',
+            title: 'Payment button',
             default: {
               html: 'Get started for free',
               style: {
@@ -202,6 +234,17 @@ const settingSchemas = [
                 type: 'schema_group',
                 children: [
                   {
+                    name: 'Icon1',
+                    default: {
+                      type: 'svg',
+                      name: 'check-circle-line',
+                      style: {
+                        color: '#2563eb'
+                      }
+                    },
+                    type: 'schema_icon'
+                  },
+                  {
                     name: 'Text1',
                     default: {
                       html: '50 conversion actions included',
@@ -219,6 +262,17 @@ const settingSchemas = [
                 propertyName: 'List1.Group1',
                 type: 'schema_group',
                 children: [
+                  {
+                    name: 'Icon1',
+                    default: {
+                      type: 'svg',
+                      name: 'check-circle-line',
+                      style: {
+                        color: '#2563eb'
+                      }
+                    },
+                    type: 'schema_icon'
+                  },
                   {
                     name: 'Text1',
                     default: {
@@ -238,6 +292,17 @@ const settingSchemas = [
                 type: 'schema_group',
                 children: [
                   {
+                    name: 'Icon1',
+                    default: {
+                      type: 'svg',
+                      name: 'check-circle-line',
+                      style: {
+                        color: '#2563eb'
+                      }
+                    },
+                    type: 'schema_icon'
+                  },
+                  {
                     name: 'Text1',
                     default: {
                       html: 'Real-time analytics',
@@ -255,6 +320,17 @@ const settingSchemas = [
                 propertyName: 'List1.Group1',
                 type: 'schema_group',
                 children: [
+                  {
+                    name: 'Icon1',
+                    default: {
+                      type: 'svg',
+                      name: 'check-circle-line',
+                      style: {
+                        color: '#2563eb'
+                      }
+                    },
+                    type: 'schema_icon'
+                  },
                   {
                     name: 'Text1',
                     default: {
@@ -277,6 +353,18 @@ const settingSchemas = [
         propertyName: 'List1.Group1',
         type: 'schema_group',
         children: [
+          {
+            name: 'Style1',
+            title: 'Background',
+            default: {
+              style: {
+                background: '#fff'
+              }
+            },
+            propertyName: 'List1.Group1.Style1',
+            type: 'schema_style',
+            children: []
+          },
           {
             name: 'Text1',
             title: 'Plan name',
@@ -302,13 +390,22 @@ const settingSchemas = [
             type: 'schema_text'
           },
           {
+            name: 'Style2',
+            default: {
+              style: {
+                color: '#111827'
+              }
+            },
+            propertyName: 'List1.Group1.Style2',
+            type: 'schema_style',
+            children: []
+          },
+          {
             name: 'Text3',
             title: 'Monthly price',
             default: {
               html: '$9',
-              style: {
-                color: '#111827'
-              },
+              style: {},
               type: 'text'
             },
             type: 'schema_text'
@@ -318,16 +415,14 @@ const settingSchemas = [
             title: 'Yearly price',
             default: {
               html: '$99',
-              style: {
-                color: '#111827'
-              },
+              style: {},
               type: 'text'
             },
             type: 'schema_text'
           },
           {
             name: 'Payment1',
-            title: 'Payment',
+            title: 'Payment button',
             default: {
               html: 'Subscribe',
               style: {
@@ -350,6 +445,17 @@ const settingSchemas = [
                 type: 'schema_group',
                 children: [
                   {
+                    name: 'Icon1',
+                    default: {
+                      type: 'svg',
+                      name: 'check-circle-line',
+                      style: {
+                        color: '#2563eb'
+                      }
+                    },
+                    type: 'schema_icon'
+                  },
+                  {
                     name: 'Text1',
                     default: {
                       html: 'All Free features',
@@ -367,6 +473,17 @@ const settingSchemas = [
                 propertyName: 'List1.Group1',
                 type: 'schema_group',
                 children: [
+                  {
+                    name: 'Icon1',
+                    default: {
+                      type: 'svg',
+                      name: 'check-circle-line',
+                      style: {
+                        color: '#2563eb'
+                      }
+                    },
+                    type: 'schema_icon'
+                  },
                   {
                     name: 'Text1',
                     default: {
@@ -386,6 +503,17 @@ const settingSchemas = [
                 type: 'schema_group',
                 children: [
                   {
+                    name: 'Icon1',
+                    default: {
+                      type: 'svg',
+                      name: 'check-circle-line',
+                      style: {
+                        color: '#2563eb'
+                      }
+                    },
+                    type: 'schema_icon'
+                  },
+                  {
                     name: 'Text1',
                     default: {
                       html: 'Access to all UI blocks',
@@ -404,6 +532,17 @@ const settingSchemas = [
                 type: 'schema_group',
                 children: [
                   {
+                    name: 'Icon1',
+                    default: {
+                      type: 'svg',
+                      name: 'check-circle-line',
+                      style: {
+                        color: '#2563eb'
+                      }
+                    },
+                    type: 'schema_icon'
+                  },
+                  {
                     name: 'Text1',
                     default: {
                       html: 'Real-time analytics',
@@ -421,6 +560,17 @@ const settingSchemas = [
                 propertyName: 'List1.Group1',
                 type: 'schema_group',
                 children: [
+                  {
+                    name: 'Icon1',
+                    default: {
+                      type: 'svg',
+                      name: 'check-circle-line',
+                      style: {
+                        color: '#2563eb'
+                      }
+                    },
+                    type: 'schema_icon'
+                  },
                   {
                     name: 'Text1',
                     default: {
@@ -443,6 +593,18 @@ const settingSchemas = [
         propertyName: 'List1.Group1',
         type: 'schema_group',
         children: [
+          {
+            name: 'Style1',
+            title: 'Background',
+            default: {
+              style: {
+                background: '#fff'
+              }
+            },
+            propertyName: 'List1.Group1.Style1',
+            type: 'schema_style',
+            children: []
+          },
           {
             name: 'Text1',
             title: 'Plan name',
@@ -468,13 +630,22 @@ const settingSchemas = [
             type: 'schema_text'
           },
           {
+            name: 'Style2',
+            default: {
+              style: {
+                color: '#111827'
+              }
+            },
+            propertyName: 'List1.Group1.Style2',
+            type: 'schema_style',
+            children: []
+          },
+          {
             name: 'Text3',
             title: 'Monthly price',
             default: {
               html: '$19',
-              style: {
-                color: '#111827'
-              },
+              style: {},
               type: 'text'
             },
             type: 'schema_text'
@@ -484,16 +655,14 @@ const settingSchemas = [
             title: 'Yearly price',
             default: {
               html: '$199',
-              style: {
-                color: '#111827'
-              },
+              style: {},
               type: 'text'
             },
             type: 'schema_text'
           },
           {
             name: 'Payment1',
-            title: 'Payment',
+            title: 'Payment button',
             default: {
               html: 'Subscribe',
               style: {
@@ -516,6 +685,17 @@ const settingSchemas = [
                 type: 'schema_group',
                 children: [
                   {
+                    name: 'Icon1',
+                    default: {
+                      type: 'svg',
+                      name: 'check-circle-line',
+                      style: {
+                        color: '#2563eb'
+                      }
+                    },
+                    type: 'schema_icon'
+                  },
+                  {
                     name: 'Text1',
                     default: {
                       html: 'All Standard features',
@@ -533,6 +713,17 @@ const settingSchemas = [
                 propertyName: 'List1.Group1',
                 type: 'schema_group',
                 children: [
+                  {
+                    name: 'Icon1',
+                    default: {
+                      type: 'svg',
+                      name: 'check-circle-line',
+                      style: {
+                        color: '#2563eb'
+                      }
+                    },
+                    type: 'schema_icon'
+                  },
                   {
                     name: 'Text1',
                     default: {
@@ -552,6 +743,17 @@ const settingSchemas = [
                 type: 'schema_group',
                 children: [
                   {
+                    name: 'Icon1',
+                    default: {
+                      type: 'svg',
+                      name: 'check-circle-line',
+                      style: {
+                        color: '#2563eb'
+                      }
+                    },
+                    type: 'schema_icon'
+                  },
+                  {
                     name: 'Text1',
                     default: {
                       html: '50,000 visits/mo',
@@ -570,6 +772,17 @@ const settingSchemas = [
                 type: 'schema_group',
                 children: [
                   {
+                    name: 'Icon1',
+                    default: {
+                      type: 'svg',
+                      name: 'check-circle-line',
+                      style: {
+                        color: '#2563eb'
+                      }
+                    },
+                    type: 'schema_icon'
+                  },
+                  {
                     name: 'Text1',
                     default: {
                       html: 'Real-time analytics',
@@ -587,6 +800,17 @@ const settingSchemas = [
                 propertyName: 'List1.Group1',
                 type: 'schema_group',
                 children: [
+                  {
+                    name: 'Icon1',
+                    default: {
+                      type: 'svg',
+                      name: 'check-circle-line',
+                      style: {
+                        color: '#2563eb'
+                      }
+                    },
+                    type: 'schema_icon'
+                  },
                   {
                     name: 'Text1',
                     default: {

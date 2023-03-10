@@ -327,6 +327,10 @@ button.switch-checked {
   }
 }
 
+.select-popup-content {
+  @extend .scrollbar;
+}
+
 // Main
 .root-container {
   @media (min-width: 768px) {
@@ -1695,7 +1699,7 @@ button.block-header-button {
 
 .builder-setting-open {
   .builder-setting-title {
-    @apply text-slate-900 bg-slate-50 pb-0;
+    @apply text-slate-900 bg-slate-50 border-b border-slate-100;
   }
 
   .builder-setting-item-icon {
@@ -1817,7 +1821,15 @@ button.block-header-button {
 }
 
 .color-picker-v2 {
-  @apply flex items-center px-1 py-0.5 w-[7.5rem] h-[1.875rem] bg-slate-200 rounded-md cursor-pointer;
+  @apply flex items-center px-1.5 py-0.5 w-[7.125rem] h-[1.875rem] bg-white border border-gray-300 shadow-sm rounded-md cursor-pointer;
+}
+
+.color-picker-presets {
+  @apply -mb-2;
+}
+
+.color-picker-preset {
+  @apply mb-2;
 }
 
 .color-picker__background {
@@ -1900,15 +1912,21 @@ button.block-header-button {
   @apply mb-1 text-sm text-slate-700;
 }
 
-.builder-group-title + .builder-setting-text {
-  .builder-text-title {
-    @apply hidden;
-  }
-}
+//.builder-group-title + .builder-setting-text {
+//  .builder-text-title {
+//    @apply hidden;
+//  }
+//}
 
 .builder-setting-link-select {
+  @apply w-[13rem];
+
   .select-button {
-    @apply pr-3;
+    @apply px-2 py-0.5 h-[2rem] rounded-md cursor-pointer;
+  }
+
+  .input {
+    @apply h-full bg-transparent;
   }
 
   .select-arrow-icon {

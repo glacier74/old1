@@ -1,17 +1,15 @@
 import {
   $Block as Block,
-  $Group as Group,
-  $H2 as H2,
-  $Html as Html,
   $List as List,
+  $Text as Text,
+  $Html as Html,
+  $H2 as H2,
+  $Group as Group,
   $Payment as Payment,
-  $Text as Text
+  $Style as Style,
+  $Icon as Icon
 } from '@earlybirdim/blocks'
-import { IconCheckLine } from '@earlybirdim/icons'
-import { useState } from 'react'
-
 const render = function ({ productId, block }) {
-  const [interval, setInterval] = useState('monthly')
   return (
     <Block productId={productId} block={block}>
       <div className="payment1__container">
@@ -29,7 +27,7 @@ const render = function ({ productId, block }) {
               <List as="ul" className="payment1__features">
                 {block.setting.List1?.map(List1 => (
                   <Group as="li" key={List1.id}>
-                    <IconCheckLine />
+                    <Icon {...List1.Group1.Icon1} />
 
                     <Text {...List1.Group1.Text1} />
                   </Group>
@@ -38,7 +36,7 @@ const render = function ({ productId, block }) {
             </div>
 
             <div className="payment1__right">
-              <div className="payment1__right-wrapper">
+              <Style className="payment1__right-wrapper" {...block.setting.Style1}>
                 <div className="payment1__right-main">
                   <div className="payment1__price">
                     <Text {...block.setting.Text3} />
@@ -48,7 +46,7 @@ const render = function ({ productId, block }) {
 
                   <Html as="p" className="payment1__bottom-text" {...block.setting.Html2} />
                 </div>
-              </div>
+              </Style>
             </div>
           </div>
         </div>
@@ -86,7 +84,7 @@ const settingSchemas = [
     title: 'Subtitle',
     default: {
       as: 'p',
-      html: '\r\n              EarlyBird is free to get started and scales with you as you grow.\r\n            ',
+      html: '\r\n              Your company is free to get started and scales with you as you grow.\r\n            ',
       style: {
         color: '#4b5563'
       },
@@ -130,6 +128,17 @@ const settingSchemas = [
         type: 'schema_group',
         children: [
           {
+            name: 'Icon1',
+            default: {
+              type: 'svg',
+              name: 'check-line',
+              style: {
+                color: '#2563eb'
+              }
+            },
+            type: 'schema_icon'
+          },
+          {
             name: 'Text1',
             default: {
               html: '50 conversion actions included',
@@ -147,6 +156,17 @@ const settingSchemas = [
         propertyName: 'List1.Group1',
         type: 'schema_group',
         children: [
+          {
+            name: 'Icon1',
+            default: {
+              type: 'svg',
+              name: 'check-line',
+              style: {
+                color: '#2563eb'
+              }
+            },
+            type: 'schema_icon'
+          },
           {
             name: 'Text1',
             default: {
@@ -166,6 +186,17 @@ const settingSchemas = [
         type: 'schema_group',
         children: [
           {
+            name: 'Icon1',
+            default: {
+              type: 'svg',
+              name: 'check-line',
+              style: {
+                color: '#2563eb'
+              }
+            },
+            type: 'schema_icon'
+          },
+          {
             name: 'Text1',
             default: {
               html: 'Real-time analytics',
@@ -183,6 +214,17 @@ const settingSchemas = [
         propertyName: 'List1.Group1',
         type: 'schema_group',
         children: [
+          {
+            name: 'Icon1',
+            default: {
+              type: 'svg',
+              name: 'check-line',
+              style: {
+                color: '#2563eb'
+              }
+            },
+            type: 'schema_icon'
+          },
           {
             name: 'Text1',
             default: {
@@ -202,6 +244,17 @@ const settingSchemas = [
         type: 'schema_group',
         children: [
           {
+            name: 'Icon1',
+            default: {
+              type: 'svg',
+              name: 'check-line',
+              style: {
+                color: '#2563eb'
+              }
+            },
+            type: 'schema_icon'
+          },
+          {
             name: 'Text1',
             default: {
               html: 'Real-time analytics',
@@ -220,6 +273,17 @@ const settingSchemas = [
         type: 'schema_group',
         children: [
           {
+            name: 'Icon1',
+            default: {
+              type: 'svg',
+              name: 'check-line',
+              style: {
+                color: '#2563eb'
+              }
+            },
+            type: 'schema_icon'
+          },
+          {
             name: 'Text1',
             default: {
               html: 'Custom domain',
@@ -235,6 +299,18 @@ const settingSchemas = [
     ]
   },
   {
+    name: 'Style1',
+    title: 'Payment background',
+    default: {
+      style: {
+        background: '#f9fafb'
+      }
+    },
+    propertyName: 'block.setting.Style1',
+    type: 'schema_style',
+    children: []
+  },
+  {
     name: 'Text3',
     title: 'Price',
     default: {
@@ -248,7 +324,7 @@ const settingSchemas = [
   },
   {
     name: 'Payment1',
-    title: 'Payment',
+    title: 'Payment button',
     default: {
       html: 'Get access',
       style: {

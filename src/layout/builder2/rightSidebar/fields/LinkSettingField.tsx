@@ -1,6 +1,9 @@
 import { Select, Switch } from '@heyforms/ui'
+import { isValid } from '@nily/utils'
+import clsx from 'clsx'
 import { FC, useMemo } from 'react'
 
+import { StylePicker } from '~/components'
 import { useBlockSetting, useBuilderContext } from '~/layout/builder2/context'
 import { BlockIconText } from '~/layout/builder2/leftSidebar/BlockItem'
 import { getObjectPath } from '~/layout/builder2/utils'
@@ -17,6 +20,10 @@ export const LinkSettingField: FC<SettingFieldProps> = ({ schema }) => {
 
   function handleInNewTabChange(isInNewTab: boolean) {
     updateSetting(isInNewTab, 'isInNewTab')
+  }
+
+  function handleStyleChange(property: string, value: string) {
+    updateSetting(value, `style.${property}`)
   }
 
   const options = useMemo(() => {
@@ -47,9 +54,9 @@ export const LinkSettingField: FC<SettingFieldProps> = ({ schema }) => {
 
   return (
     <div className="builder-setting-link space-y-2">
-      <div className="builder-setting-group space-y-2">
-        {(schema as any).children.map((childSchema: any) => (
-          <div key={childSchema.name}>
+      <div className="builder-setting-group divide-y divide-slate-200 space-y-2">
+        {(schema as any).children.map((childSchema: any, index: number) => (
+          <div key={childSchema.name} className={clsx({ 'pt-4': index > 0 })}>
             <div className="builder-list-title">{childSchema.title}</div>
             <SettingField
               schema={{
@@ -61,7 +68,7 @@ export const LinkSettingField: FC<SettingFieldProps> = ({ schema }) => {
         ))}
       </div>
 
-      <div>
+      <div className="flex items-center justify-between">
         <div className="mb-1 text-sm text-slate-700">Link to</div>
         <Select
           className="builder-setting-link-select"
@@ -75,10 +82,23 @@ export const LinkSettingField: FC<SettingFieldProps> = ({ schema }) => {
         />
       </div>
 
-      <div className="flex items-center justify-between">
-        <div className="text-sm">Open in a new tab</div>
-        <Switch value={setting?.isInNewTab} onChange={handleInNewTabChange} />
-      </div>
+      {!setting?.href?.startsWith('#') && (
+        <div className="flex items-center justify-between">
+          <div className="text-sm">Open in a new tab</div>
+          <Switch value={setting?.isInNewTab} onChange={handleInNewTabChange} />
+        </div>
+      )}
+
+      {isValid(setting?.style) && (
+        <div className="flex items-center justify-between">
+          <div className="text-sm">Style</div>
+          <StylePicker
+            properties={Object.keys(setting!.style)}
+            value={setting!.style}
+            onChange={handleStyleChange}
+          />
+        </div>
+      )}
     </div>
   )
 }

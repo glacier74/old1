@@ -1,13 +1,12 @@
 import {
   $Block as Block,
-  $Group as Group,
+  $List as List,
+  $Icon as Icon,
+  $Html as Html,
   $H2 as H2,
   $H3 as H3,
-  $Html as Html,
-  $Icon as Icon,
-  $List as List
+  $Group as Group
 } from '@earlybirdim/blocks'
-
 const render = function ({ productId, block }) {
   return (
     <Block productId={productId} block={block}>
@@ -80,7 +79,7 @@ const settingSchemas = [
     title: 'Subtitle',
     default: {
       as: 'p',
-      html: '\r\n              Convince the audience that your idea is worth their attention and investment, and\r\n              encourage them to take the desired action.\r\n            ',
+      html: '\r\n              Convince the audience that your idea is worth their attention and\r\n              investment, and encourage them to take the desired action.\r\n            ',
       style: {
         color: '#4b5563'
       },
@@ -130,7 +129,7 @@ const settingSchemas = [
             name: 'Html1',
             title: 'Subtitle',
             default: {
-              html: '\r\n                  Add your own logo, colors, and other branding elements to reflect your own brand.\r\n                ',
+              html: '\r\n                  Add your own logo, colors, and other branding elements to\r\n                  reflect your own brand.\r\n                ',
               style: {
                 color: '#4b5563'
               },
@@ -176,7 +175,7 @@ const settingSchemas = [
             name: 'Html1',
             title: 'Subtitle',
             default: {
-              html: '\r\n                  Show testimonials and ratings to build trust and credibility with potential\r\n                  customers.\r\n                ',
+              html: '\r\n                  Show testimonials and ratings to build trust and credibility\r\n                  with potential customers.\r\n                ',
               style: {
                 color: '#4b5563'
               },
@@ -222,7 +221,7 @@ const settingSchemas = [
             name: 'Html1',
             title: 'Subtitle',
             default: {
-              html: '\r\n                  Showcase your product, service, or other visual content in an engaging way to your\r\n                  customers that your offering is worth investing in.\r\n                ',
+              html: '\r\n                  Showcase your product, service, or other visual content in an\r\n                  engaging way to your customers that your offering is worth\r\n                  investing in.\r\n                ',
               style: {
                 color: '#4b5563'
               },
@@ -268,7 +267,7 @@ const settingSchemas = [
             name: 'Html1',
             title: 'Subtitle',
             default: {
-              html: '\r\n                  Highlight the key benefits and features of your product, and explain how it solves\r\n                  specific problems that your target customers have.\r\n                ',
+              html: '\r\n                  Highlight the key benefits and features of your product, and\r\n                  explain how it solves specific problems that your target\r\n                  customers have.\r\n                ',
               style: {
                 color: '#4b5563'
               },
@@ -314,7 +313,7 @@ const settingSchemas = [
             name: 'Html1',
             title: 'Subtitle',
             default: {
-              html: '\r\n                  Get your content stand out and attract more attention on social media with custom\r\n                  title, description, image, and other information.\r\n                ',
+              html: '\r\n                  Get your content stand out and attract more attention on\r\n                  social media with custom title, description, image, and other\r\n                  information.\r\n                ',
               style: {
                 color: '#4b5563'
               },
@@ -360,7 +359,7 @@ const settingSchemas = [
             name: 'Html1',
             title: 'Subtitle',
             default: {
-              html: '\r\n                  Use your own domain name to create a more professional-looking and cohesive\r\n                  experience for your customers.\r\n                ',
+              html: '\r\n                  Use your own domain name to create a more professional-looking\r\n                  and cohesive experience for your customers.\r\n                ',
               style: {
                 color: '#4b5563'
               },

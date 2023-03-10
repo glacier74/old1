@@ -1,14 +1,13 @@
 import {
   $Block as Block,
-  $Group as Group,
-  $H1 as H1,
-  $Html as Html,
-  $Image as Image,
   $Link as Link,
   $List as List,
-  $Text as Text
+  $Html as Html,
+  $Text as Text,
+  $H1 as H1,
+  $Group as Group,
+  $Image as Image
 } from '@earlybirdim/blocks'
-
 const render = function ({ productId, block }) {
   return (
     <Block productId={productId} block={block}>
@@ -61,7 +60,7 @@ const settingSchemas = [
     title: 'Caption',
     default: {
       as: 'p',
-      html: '\r\n                Take a look at our latest <a href="#">blog post</a>.\r\n              ',
+      html: '\r\n                Take a look at our latest \r\n                <a href="#" style="color:#2563eb">\r\n                  blog post\r\n                </a>\r\n                .\r\n              ',
       style: {
         color: '#4b5563'
       },
@@ -87,7 +86,7 @@ const settingSchemas = [
     title: 'Subtitle',
     default: {
       as: 'p',
-      html: '\r\n              Effortlessly create, pitch, and validate your early-stage business with our no-code\r\n              landing page builder.\r\n            ',
+      html: '\r\n              Effortlessly create, pitch, and validate your early-stage business\r\n              with our no-code landing page builder.\r\n            ',
       style: {
         color: '#4b5563'
       },
@@ -176,7 +175,7 @@ const settingSchemas = [
     title: 'Hero image',
     default: {
       src: 'https://storage.earlybird.im/example/3d51.png',
-      alt: 'EarlyBird',
+      alt: 'Your company',
       width: 504,
       height: 0,
       type: 'image'

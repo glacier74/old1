@@ -1,12 +1,11 @@
 import {
   $Block as Block,
+  $List as List,
   $Group as Group,
   $H2 as H2,
-  $H3 as H3,
   $Html as Html,
-  $List as List
+  $H3 as H3
 } from '@earlybirdim/blocks'
-
 const render = function ({ productId, block }) {
   return (
     <Block productId={productId} block={block}>
@@ -46,7 +45,9 @@ const settingSchemas = [
     default: {
       as: 'h2',
       html: '\r\n            Frequently asked questions\r\n          ',
-      style: {},
+      style: {
+        color: '#0f172a'
+      },
       type: 'html'
     },
     type: 'schema_html'
@@ -68,7 +69,9 @@ const settingSchemas = [
             default: {
               as: 'h3',
               html: '\r\n                How does the pricing work?\r\n              ',
-              style: {},
+              style: {
+                color: '#111827'
+              },
               type: 'html'
             },
             type: 'schema_html'
@@ -77,8 +80,10 @@ const settingSchemas = [
             name: 'Html1',
             title: 'Answer',
             default: {
-              html: '\r\n                Our business plan is based on volume and the packages and add-ons you choose. We\r\n                tailor our plans to best fit your needs and volume, so please contact us for a\r\n                custom quote.\r\n              ',
-              style: {},
+              html: '\r\n                Our business plan is based on volume and the packages and\r\n                add-ons you choose. We tailor our plans to best fit your needs\r\n                and volume, so please contact us for a custom quote.\r\n              ',
+              style: {
+                color: '#4b5563'
+              },
               type: 'html'
             },
             type: 'schema_html'
@@ -96,7 +101,9 @@ const settingSchemas = [
             default: {
               as: 'h3',
               html: '\r\n                I have a large database of contacts. Can you help?\r\n              ',
-              style: {},
+              style: {
+                color: '#111827'
+              },
               type: 'html'
             },
             type: 'schema_html'
@@ -105,8 +112,10 @@ const settingSchemas = [
             name: 'Html1',
             title: 'Answer',
             default: {
-              html: '\r\n                Yes, our integrations and infrastructure are designed to handle large volumes of\r\n                contacts. If you have more than 1 million contacts, contact us for a match test to\r\n                get an idea of how much data we can return.\r\n              ',
-              style: {},
+              html: '\r\n                Yes, our integrations and infrastructure are designed to handle\r\n                large volumes of contacts. If you have more than 1 million\r\n                contacts, contact us for a match test to get an idea of how much\r\n                data we can return.\r\n              ',
+              style: {
+                color: '#4b5563'
+              },
               type: 'html'
             },
             type: 'schema_html'
@@ -124,7 +133,9 @@ const settingSchemas = [
             default: {
               as: 'h3',
               html: '\r\n                Can I cancel my plan anytime?\r\n              ',
-              style: {},
+              style: {
+                color: '#111827'
+              },
               type: 'html'
             },
             type: 'schema_html'
@@ -133,8 +144,10 @@ const settingSchemas = [
             name: 'Html1',
             title: 'Answer',
             default: {
-              html: '\r\n                Yes, you can cancel your plan at any time through your dashboard. Simply log in to\r\n                your dashboard and navigate to the billing section to cancel your plan.\r\n              ',
-              style: {},
+              html: '\r\n                Yes, you can cancel your plan at any time through your\r\n                dashboard. Simply log in to your dashboard and navigate to the\r\n                billing section to cancel your plan.\r\n              ',
+              style: {
+                color: '#4b5563'
+              },
               type: 'html'
             },
             type: 'schema_html'
@@ -152,7 +165,9 @@ const settingSchemas = [
             default: {
               as: 'h3',
               html: '\r\n                Do you provide premium support?\r\n              ',
-              style: {},
+              style: {
+                color: '#111827'
+              },
               type: 'html'
             },
             type: 'schema_html'
@@ -162,7 +177,9 @@ const settingSchemas = [
             title: 'Answer',
             default: {
               html: '\r\n                Yes! All business plans include a dedicated account manager.\r\n              ',
-              style: {},
+              style: {
+                color: '#4b5563'
+              },
               type: 'html'
             },
             type: 'schema_html'
@@ -180,7 +197,9 @@ const settingSchemas = [
             default: {
               as: 'h3',
               html: '\r\n                Can you invoice me?\r\n              ',
-              style: {},
+              style: {
+                color: '#111827'
+              },
               type: 'html'
             },
             type: 'schema_html'
@@ -189,8 +208,10 @@ const settingSchemas = [
             name: 'Html1',
             title: 'Answer',
             default: {
-              html: '\r\n                Yes! We offer invoicing for business and startup plans. Please contact us for\r\n                details.\r\n              ',
-              style: {},
+              html: '\r\n                Yes! We offer invoicing for business and startup plans. Please\r\n                contact us for details.\r\n              ',
+              style: {
+                color: '#4b5563'
+              },
               type: 'html'
             },
             type: 'schema_html'
@@ -208,7 +229,9 @@ const settingSchemas = [
             default: {
               as: 'h3',
               html: '\r\n                I have more questions!\r\n              ',
-              style: {},
+              style: {
+                color: '#111827'
+              },
               type: 'html'
             },
             type: 'schema_html'
@@ -218,7 +241,9 @@ const settingSchemas = [
             title: 'Answer',
             default: {
               html: "\r\n                Just contact us and we'll be more than happy to help.\r\n              ",
-              style: {},
+              style: {
+                color: '#4b5563'
+              },
               type: 'html'
             },
             type: 'schema_html'

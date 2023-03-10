@@ -2,12 +2,11 @@ import {
   $Block as Block,
   $H2 as H2,
   $Html as Html,
-  $Image as Image,
   $Link as Link,
   $List as List,
-  $Text as Text
+  $Text as Text,
+  $Image as Image
 } from '@earlybirdim/blocks'
-
 const render = function ({ productId, block }) {
   return (
     <Block productId={productId} block={block}>
@@ -60,7 +59,9 @@ const settingSchemas = [
     default: {
       as: 'p',
       html: '\r\n                  Turn your idea into a reality\r\n                ',
-      style: {},
+      style: {
+        color: '#2563eb'
+      },
       type: 'html'
     },
     type: 'schema_html'
@@ -71,7 +72,9 @@ const settingSchemas = [
     default: {
       as: 'h2',
       html: '\r\n                  Pitch an idea and convince the audience\r\n                ',
-      style: {},
+      style: {
+        color: '#111827'
+      },
       type: 'html'
     },
     type: 'schema_html'
@@ -81,8 +84,10 @@ const settingSchemas = [
     title: 'Subtitle',
     default: {
       as: 'p',
-      html: '\r\n                  Convince the audience that your idea is worth their attention and investment, and\r\n                  encourage them to take the desired action.\r\n                ',
-      style: {},
+      html: '\r\n                  Convince the audience that your idea is worth their attention\r\n                  and investment, and encourage them to take the desired action.\r\n                ',
+      style: {
+        color: '#4b5563'
+      },
       type: 'html'
     },
     type: 'schema_html'
@@ -120,7 +125,7 @@ const settingSchemas = [
   },
   {
     name: 'Image1',
-    title: 'Left side image',
+    title: 'Feature image',
     default: {
       src: 'https://storage.earlybird.im/example/feature3.png',
       width: 590,

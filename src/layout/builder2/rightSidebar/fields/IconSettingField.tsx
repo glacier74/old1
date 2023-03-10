@@ -3,6 +3,7 @@ import { Icon } from '@earlybirdim/icons'
 import { Button, Dropdown } from '@heyforms/ui'
 import { FC, useState } from 'react'
 
+import { ColorPicker } from '~/components/ColorPicker'
 import { IconPicker } from '~/components/IconPicker'
 import { useBlockSetting } from '~/layout/builder2/context'
 
@@ -62,8 +63,16 @@ export const IconSettingField: FC<SettingFieldProps> = ({ schema }) => {
     setVisible(false)
   }
 
+  function handleColorChange(color: string) {
+    updateSetting(color, 'style.color')
+  }
+
+  function handleBackgroundChange(background: string) {
+    updateSetting(background, 'style.background')
+  }
+
   return (
-    <div className="builder-setting-icon">
+    <div className="builder-setting-icon space-y-2">
       <div className="flex items-center">
         <div className="builder-setting-image-preview">
           <IconPreview {...(setting as any)} />
@@ -76,13 +85,30 @@ export const IconSettingField: FC<SettingFieldProps> = ({ schema }) => {
             overlay={<IconPicker onChange={handleIconChange} onClose={handleClose} />}
             onDropdownVisibleChange={setVisible}
           >
-            <Button className="!p-1">Change</Button>
+            <Button className="!py-1 !px-1.5">Change</Button>
           </Dropdown>
-          <Button className="!p-1" onClick={handleClear}>
+          <Button.Link className="!p-1" onClick={handleClear}>
             Clear
-          </Button>
+          </Button.Link>
         </div>
       </div>
+
+      {setting?.style?.color && setting?.type === 'svg' && (
+        <div className="flex items-center justify-between">
+          <div className="text-sm">Color</div>
+          <ColorPicker value={setting?.style?.color as string} onChange={handleColorChange} />
+        </div>
+      )}
+
+      {setting?.style?.background && (
+        <div className="flex items-center justify-between">
+          <div className="text-sm">Background</div>
+          <ColorPicker
+            value={setting?.style?.background as string}
+            onChange={handleBackgroundChange}
+          />
+        </div>
+      )}
     </div>
   )
 }

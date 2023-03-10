@@ -6,7 +6,7 @@ import { SettingField, SettingFieldProps } from './SettingField'
 
 export const GroupSettingField: FC<SettingFieldProps> = ({ schema: groupSchema }) => {
   return (
-    <div className="builder-setting-group divide-y divide-slate-200 space-y-3">
+    <div className="builder-setting-group divide-y divide-slate-200 space-y-4">
       {(groupSchema as any).children.map((childSchema: any) => (
         <div key={childSchema.name} className="py-2">
           <div className="builder-group-title">{childSchema.title}</div>

@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
+import { StyleSettingField } from '~/layout/builder2/rightSidebar/fields/StyleSettingField'
+
 import { ButtonSettingField } from './ButtonSettingField'
 import { EmailCaptureSettingField } from './EmailCaptureSettingField'
 import { GroupSettingField } from './GroupSettingField'
@@ -11,6 +13,7 @@ import { ListSettingField } from './ListSettingField'
 import { MediaSettingField } from './MediaSettingField'
 import { OptionalSettingField } from './OptionalSettingField'
 import { PaymentSettingField } from './PaymentSettingField'
+import { SwitchGroupSettingField } from './SwitchGroupSettingField'
 import { TestimonialSettingField } from './TestimonialSettingField'
 import { TextSettingField } from './TextSettingField'
 
@@ -58,6 +61,12 @@ export const SettingField: FC<SettingFieldProps> = ({ schema }) => {
 
     case 'schema_optional':
       return <OptionalSettingField schema={schema} />
+
+    case 'schema_style':
+      return <StyleSettingField schema={schema} />
+
+    case 'schema_switch_group':
+      return <SwitchGroupSettingField schema={schema} />
 
     default:
       return null

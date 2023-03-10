@@ -84,7 +84,7 @@ const settingSchemas = [
         title: 'Brand logo',
         default: {
           src: 'https://storage.earlybird.im/example/logo.png',
-          alt: 'EarlyBird',
+          alt: 'Your company',
           width: 36,
           height: 18,
           type: 'image'
@@ -97,7 +97,7 @@ const settingSchemas = [
     name: 'Html1',
     title: 'Caption',
     default: {
-      html: '\r\n                  Brand-new version v3.0.0 released. <a href="#">Upgrade now →</a>\r\n                ',
+      html: '\r\n                  Brand-new version v3.0.0 released. \r\n                  <a href="#" style="color:#2563eb">\r\n                    Upgrade now →\r\n                  </a>\r\n                ',
       style: {
         color: '#4b5563'
       },
@@ -123,7 +123,7 @@ const settingSchemas = [
     title: 'Subtitle',
     default: {
       as: 'p',
-      html: '\r\n                Effortlessly create, pitch, and validate your early-stage business with our no-code\r\n                landing page builder.\r\n              ',
+      html: '\r\n                Effortlessly create, pitch, and validate your early-stage\r\n                business with our no-code landing page builder.\r\n              ',
       style: {
         color: '#4b5563'
       },
@@ -229,7 +229,7 @@ const settingSchemas = [
   },
   {
     name: 'Style1',
-    title: 'Right side',
+    title: 'Hero background',
     default: {
       style: {
         background: '#eff6ff'
@@ -244,7 +244,7 @@ const settingSchemas = [
     title: 'Hero image',
     default: {
       src: 'https://storage.earlybird.im/example/app-light3.png',
-      alt: 'EarlyBird',
+      alt: 'Your company',
       width: 500,
       height: 0,
       type: 'image'

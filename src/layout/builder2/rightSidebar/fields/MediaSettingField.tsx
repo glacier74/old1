@@ -43,11 +43,11 @@ export const MediaSettingField: FC<SettingFieldProps> = ({ schema }) => {
               overlay={<MediaPicker onChange={handleImageChange} />}
               onDropdownVisibleChange={setVisible}
             >
-              <Button className="!p-1">Change</Button>
+              <Button className="!py-1 !px-1.5">Change</Button>
             </Dropdown>
-            <Button className="!p-1" onClick={handleClear}>
+            <Button.Link className="!p-1" onClick={handleClear}>
               Clear
-            </Button>
+            </Button.Link>
           </div>
         </div>
       </div>

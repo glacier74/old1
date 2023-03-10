@@ -1,11 +1,10 @@
 import {
   $Block as Block,
   $EmailCapture as EmailCapture,
+  $Style as Style,
   $H2 as H2,
-  $Html as Html,
-  $Style as Style
+  $Html as Html
 } from '@earlybirdim/blocks'
-
 const render = function ({ productId, block }) {
   return (
     <Block productId={productId} block={block}>
@@ -38,7 +37,7 @@ const settingSchemas = [
   },
   {
     name: 'Style1',
-    title: 'Style',
+    title: 'Container',
     default: {
       style: {
         background: '#1d4ed8'
@@ -66,7 +65,7 @@ const settingSchemas = [
     title: 'Subtitle',
     default: {
       as: 'p',
-      html: '\r\n              Subscribe now for hand-pickerd holiday deals, inspiration and the latest tips,\r\n              straight to your inbox.\r\n            ',
+      html: '\r\n              Subscribe now for hand-pickerd holiday deals, inspiration and the\r\n              latest tips, straight to your inbox.\r\n            ',
       style: {
         color: '#bfdbfe'
       },
@@ -78,6 +77,14 @@ const settingSchemas = [
     name: 'EmailCapture1',
     title: 'Email capture',
     default: {
+      isNameRequired: false,
+      fullName: {
+        style: {
+          color: '#111827',
+          background: '#fff',
+          borderColor: '#d1d5db'
+        }
+      },
       email: {
         style: {
           color: '#111827',
@@ -86,6 +93,7 @@ const settingSchemas = [
         }
       },
       button: {
+        appearance: 'filled',
         text: 'Subscribe',
         style: {
           color: '#fff',

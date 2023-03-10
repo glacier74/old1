@@ -15,6 +15,7 @@ interface $EmailCaptureStyle {
 }
 
 interface $EmailCaptureProps extends ComponentProps {
+  isNameRequired?: boolean
   fullName?: {
     placeholder?: string
     style?: $EmailCaptureStyle
@@ -34,6 +35,7 @@ interface $EmailCaptureProps extends ComponentProps {
 export const $EmailCapture: FC<$EmailCaptureProps> = ({
   id,
   className,
+  isNameRequired,
   fullName,
   email: $email,
   button,
@@ -89,16 +91,31 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
   }
 
   return (
-    <form className={clsx('earlybird-email-capture', className)} onSubmit={handleSubmit}>
-      {fullName && (
+    <form
+      id={`earlybird-email-capture-${id}`}
+      className={clsx('earlybird-email-capture', className)}
+      onSubmit={handleSubmit}
+    >
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `#earlybird-email-capture-${id} .earlybird-email-capture__name-input::placeholder {
+            color: ${fullName?.style?.color};
+          }
+          #earlybird-email-capture-${id} .earlybird-email-capture_email-input::placeholder {
+            color: ${$email?.style?.color};
+          };`
+        }}
+      />
+      {isNameRequired && (
         <input
           name="name"
           type="text"
           autoComplete="text"
           className="earlybird-email-capture__name-input"
-          placeholder={fullName.placeholder || 'Your name'}
+          placeholder={fullName?.placeholder || 'Your name'}
           required={true}
-          style={inputStyle(fullName.style)}
+          style={inputStyle(fullName?.style)}
+          data-color={fullName?.style?.color}
           onChange={handleNameChange}
         />
       )}
@@ -106,10 +123,11 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
         name="email"
         type="email"
         autoComplete="email"
-        className="earlybird-email-capture_$email-input"
+        className="earlybird-email-capture_email-input"
         placeholder={$email?.placeholder || 'Enter email address'}
         required={true}
         style={inputStyle($email?.style)}
+        data-color={$email?.style?.color}
         onChange={handleEmailChange}
       />
       <button
