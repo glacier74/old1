@@ -96,16 +96,6 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
       className={clsx('earlybird-email-capture', className)}
       onSubmit={handleSubmit}
     >
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `#earlybird-email-capture-${id} .earlybird-email-capture__name-input::placeholder {
-            color: ${fullName?.style?.color};
-          }
-          #earlybird-email-capture-${id} .earlybird-email-capture_email-input::placeholder {
-            color: ${$email?.style?.color};
-          };`
-        }}
-      />
       {isNameRequired && (
         <input
           name="name"
@@ -137,6 +127,16 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
       >
         {loading ? <Spin /> : button?.text}
       </button>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `#earlybird-email-capture-${id} .earlybird-email-capture__name-input::placeholder {
+            color: ${fullName?.style?.color};
+          }
+          #earlybird-email-capture-${id} .earlybird-email-capture_email-input::placeholder {
+            color: ${$email?.style?.color};
+          };`
+        }}
+      />
     </form>
   )
 }

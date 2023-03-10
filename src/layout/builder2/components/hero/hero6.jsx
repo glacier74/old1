@@ -1,52 +1,45 @@
 import {
   $Block as Block,
   $Link as Link,
-  $List as List,
+  $EmailCapture as EmailCapture,
   $Html as Html,
-  $Text as Text,
   $H1 as H1,
   $Group as Group,
   $Image as Image,
-  $Icon as Icon,
   $Style as Style
 } from '@earlybirdim/blocks'
 const render = function ({ productId, block }) {
   return (
     <Block productId={productId} block={block}>
-      <div className="hero3__container">
-        <div className="hero3__wrapper">
-          <div className="hero3__left">
-            <div className="hero3__left-body">
-              <Link className="hero3__logo" {...block.setting.Link1}>
+      <div className="hero6__container">
+        <div className="hero6__wrapper">
+          <div className="hero6__left">
+            <div className="hero6__left-body">
+              <Link className="hero6__logo" {...block.setting.Link1}>
                 <Image {...block.setting.Link1.Image1} />
               </Link>
 
-              <div className="hero3__announcement-wrapper">
-                <Html className="hero3__announcement" {...block.setting.Html1} />
+              <div className="hero6__announcement-wrapper">
+                <Html className="hero6__announcement" {...block.setting.Html1} />
               </div>
 
-              <H1 className="hero3__title" {...block.setting.H11} />
+              <H1 className="hero6__title" {...block.setting.H11} />
 
-              <Html as="p" className="hero3__subtitle" {...block.setting.Html2} />
+              <Html as="p" className="hero6__subtitle" {...block.setting.Html2} />
 
-              <Group className="hero3__cta">
-                <List className="hero3__cta-buttons">
-                  {block.setting.Group1.List1?.map(List1 => (
-                    <Link {...List1.Link1} key={List1.id}>
-                      <Icon {...List1.Link1.Icon1} />
+              <Group className="hero6__cta">
+                <EmailCapture
+                  className="hero6__email-capture"
+                  {...block.setting.Group1.EmailCapture1}
+                />
 
-                      <Text {...List1.Link1.Text1} />
-                    </Link>
-                  ))}
-                </List>
-
-                <Html className="hero3__cta-bottom-text" {...block.setting.Group1.Html1} />
+                <Html className="hero6__cta-bottom-text" {...block.setting.Group1.Html1} />
               </Group>
             </div>
           </div>
 
-          <Style className="hero3__right" {...block.setting.Style1}>
-            <div className="hero3__image">
+          <Style className="hero6__right" {...block.setting.Style1}>
+            <div className="hero6__image">
               <Image {...block.setting.Image1} />
             </div>
           </Style>
@@ -137,80 +130,35 @@ const settingSchemas = [
     type: 'schema_group',
     children: [
       {
-        name: 'List1',
-        title: 'Buttons',
-        propertyName: 'List1',
-        type: 'schema_list',
-        children: [
-          {
-            name: 'Link1',
-            default: {
-              href: '#',
-              appearance: 'filled',
-              style: {
-                color: '#fff',
-                background: '#000'
-              },
-              type: 'link'
-            },
-            propertyName: 'List1.Link1',
-            type: 'schema_link',
-            children: [
-              {
-                name: 'Icon1',
-                default: {
-                  type: 'svg',
-                  name: 'brand-apple',
-                  style: {}
-                },
-                type: 'schema_icon'
-              },
-              {
-                name: 'Text1',
-                default: {
-                  html: 'App Store',
-                  style: {},
-                  type: 'text'
-                },
-                type: 'schema_text'
-              }
-            ]
+        name: 'EmailCapture1',
+        title: 'Email capture',
+        default: {
+          isNameRequired: false,
+          fullName: {
+            style: {
+              color: '#111827',
+              background: '#fff',
+              borderColor: '#d1d5db'
+            }
           },
-          {
-            name: 'Link1',
-            default: {
-              href: '#',
-              appearance: 'filled',
-              style: {
-                color: '#fff',
-                background: '#000'
-              },
-              type: 'link'
-            },
-            propertyName: 'List1.Link1',
-            type: 'schema_link',
-            children: [
-              {
-                name: 'Icon1',
-                default: {
-                  type: 'svg',
-                  name: 'brand-google-playstore',
-                  style: {}
-                },
-                type: 'schema_icon'
-              },
-              {
-                name: 'Text1',
-                default: {
-                  html: 'Google Play',
-                  style: {},
-                  type: 'text'
-                },
-                type: 'schema_text'
-              }
-            ]
-          }
-        ]
+          email: {
+            style: {
+              color: '#111827',
+              background: '#fff',
+              borderColor: '#d1d5db'
+            }
+          },
+          button: {
+            appearance: 'filled',
+            text: 'Subscribe',
+            style: {
+              color: '#fff',
+              background: '#2563eb'
+            }
+          },
+          type: 'email_capture'
+        },
+        type: 'schema_email_capture'
       },
       {
         name: 'Html1',
@@ -252,7 +200,7 @@ const settingSchemas = [
   }
 ]
 
-export const Hero3 = {
+export const Hero6 = {
   type: 'hero',
   settingSchemas,
   render

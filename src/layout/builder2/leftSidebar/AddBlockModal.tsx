@@ -41,6 +41,21 @@ const BLOCKS = [
         componentId: 'hero3',
         title: 'Hero 3 (split)',
         thumbnail: '/static/block/hero3.png'
+      },
+      {
+        componentId: 'hero4',
+        title: 'Hero 4 (with email capture)',
+        thumbnail: '/static/block/hero4.png'
+      },
+      {
+        componentId: 'hero5',
+        title: 'Hero 5 (centered with email capture)',
+        thumbnail: '/static/block/hero5.png'
+      },
+      {
+        componentId: 'hero6',
+        title: 'Hero 6 (split with email capture)',
+        thumbnail: '/static/block/hero6.png'
       }
     ]
   },

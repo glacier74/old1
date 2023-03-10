@@ -1650,7 +1650,8 @@ button.block-header-button {
     @apply absolute top-0 left-0 px-1 py-0.5 text-xs text-[#10b981] uppercase hidden;
   }
 
-  .earlybird-block-hero3 {
+  .earlybird-block-hero3,
+  .earlybird-block-hero6 {
     @apply p-[2px];
   }
 

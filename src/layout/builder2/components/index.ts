@@ -11,6 +11,9 @@ import { Header2 } from './header/header2'
 import { Hero1 } from './hero/hero1'
 import { Hero2 } from './hero/hero2'
 import { Hero3 } from './hero/hero3'
+import { Hero4 } from './hero/hero4'
+import { Hero5 } from './hero/hero5'
+import { Hero6 } from './hero/hero6'
 import { ImageGallery1 } from './imageGallery/image_gallery1'
 import { Payment1 } from './payment/payment1'
 import { Payment2 } from './payment/payment2'
@@ -22,6 +25,9 @@ const components: AnyMap<any> = {
   hero1: Hero1,
   hero2: Hero2,
   hero3: Hero3,
+  hero4: Hero4,
+  hero5: Hero5,
+  hero6: Hero6,
   feature1: Feature1,
   feature2: Feature2,
   feature3: Feature3,
