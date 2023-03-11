@@ -238,6 +238,8 @@ const settingSchemas = [
                     default: {
                       type: 'svg',
                       name: 'check-circle-line',
+                      width: 20,
+                      height: 20,
                       style: {
                         color: '#2563eb'
                       }
@@ -267,6 +269,8 @@ const settingSchemas = [
                     default: {
                       type: 'svg',
                       name: 'check-circle-line',
+                      width: 20,
+                      height: 20,
                       style: {
                         color: '#2563eb'
                       }
@@ -296,6 +300,8 @@ const settingSchemas = [
                     default: {
                       type: 'svg',
                       name: 'check-circle-line',
+                      width: 20,
+                      height: 20,
                       style: {
                         color: '#2563eb'
                       }
@@ -325,6 +331,8 @@ const settingSchemas = [
                     default: {
                       type: 'svg',
                       name: 'check-circle-line',
+                      width: 20,
+                      height: 20,
                       style: {
                         color: '#2563eb'
                       }
@@ -449,6 +457,8 @@ const settingSchemas = [
                     default: {
                       type: 'svg',
                       name: 'check-circle-line',
+                      width: 20,
+                      height: 20,
                       style: {
                         color: '#2563eb'
                       }
@@ -478,6 +488,8 @@ const settingSchemas = [
                     default: {
                       type: 'svg',
                       name: 'check-circle-line',
+                      width: 20,
+                      height: 20,
                       style: {
                         color: '#2563eb'
                       }
@@ -507,6 +519,8 @@ const settingSchemas = [
                     default: {
                       type: 'svg',
                       name: 'check-circle-line',
+                      width: 20,
+                      height: 20,
                       style: {
                         color: '#2563eb'
                       }
@@ -536,6 +550,8 @@ const settingSchemas = [
                     default: {
                       type: 'svg',
                       name: 'check-circle-line',
+                      width: 20,
+                      height: 20,
                       style: {
                         color: '#2563eb'
                       }
@@ -565,6 +581,8 @@ const settingSchemas = [
                     default: {
                       type: 'svg',
                       name: 'check-circle-line',
+                      width: 20,
+                      height: 20,
                       style: {
                         color: '#2563eb'
                       }
@@ -689,6 +707,8 @@ const settingSchemas = [
                     default: {
                       type: 'svg',
                       name: 'check-circle-line',
+                      width: 20,
+                      height: 20,
                       style: {
                         color: '#2563eb'
                       }
@@ -718,6 +738,8 @@ const settingSchemas = [
                     default: {
                       type: 'svg',
                       name: 'check-circle-line',
+                      width: 20,
+                      height: 20,
                       style: {
                         color: '#2563eb'
                       }
@@ -747,6 +769,8 @@ const settingSchemas = [
                     default: {
                       type: 'svg',
                       name: 'check-circle-line',
+                      width: 20,
+                      height: 20,
                       style: {
                         color: '#2563eb'
                       }
@@ -776,6 +800,8 @@ const settingSchemas = [
                     default: {
                       type: 'svg',
                       name: 'check-circle-line',
+                      width: 20,
+                      height: 20,
                       style: {
                         color: '#2563eb'
                       }
@@ -805,6 +831,8 @@ const settingSchemas = [
                     default: {
                       type: 'svg',
                       name: 'check-circle-line',
+                      width: 20,
+                      height: 20,
                       style: {
                         color: '#2563eb'
                       }

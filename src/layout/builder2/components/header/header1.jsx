@@ -125,6 +125,8 @@ const settingSchemas = [
         default: {
           type: 'svg',
           name: 'menu',
+          width: 24,
+          height: 24,
           style: {
             color: '#374151'
           }
@@ -137,6 +139,8 @@ const settingSchemas = [
         default: {
           type: 'svg',
           name: 'multiply',
+          width: 24,
+          height: 24,
           style: {
             color: '#374151'
           }
@@ -270,6 +274,8 @@ const settingSchemas = [
             default: {
               type: 'svg',
               name: 'brand-twitter',
+              width: 100,
+              height: 20,
               style: {}
             },
             type: 'schema_icon'

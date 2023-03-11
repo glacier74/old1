@@ -1,3 +1,4 @@
+import { isEmpty } from '@nily/utils'
 import clsx from 'clsx'
 import { FC } from 'react'
 
@@ -15,7 +16,16 @@ export const $Text: FC<$TextProps> = ({
   ...restProps
 }) => {
   return (
-    <Tag className={clsx('earlybird-text', className)} {...restProps}>
+    <Tag
+      className={clsx(
+        'earlybird-text',
+        {
+          'earlybird-text-empty': isEmpty(html)
+        },
+        className
+      )}
+      {...restProps}
+    >
       {html}
     </Tag>
   )

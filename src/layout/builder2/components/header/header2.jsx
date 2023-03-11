@@ -121,6 +121,8 @@ const settingSchemas = [
         default: {
           type: 'svg',
           name: 'menu',
+          width: 24,
+          height: 24,
           style: {
             color: '#374151'
           }
@@ -133,6 +135,8 @@ const settingSchemas = [
         default: {
           type: 'svg',
           name: 'multiply',
+          width: 24,
+          height: 24,
           style: {
             color: '#374151'
           }

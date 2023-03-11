@@ -28,6 +28,10 @@
   }
 
   .earlybird-icon {
+    .earlybird-image {
+      @apply w-auto h-6;
+    }
+
     svg {
       @apply h-6 w-6;
     }
@@ -64,11 +68,23 @@
 
   a {
     @apply flex items-center pl-3 pr-4 py-1.5 space-x-2 rounded-full font-medium;
+
+    &:has(.earlybird-text-empty) {
+      @apply p-1.5;
+    }
+
+    .earlybird-text-empty {
+      @apply hidden;
+    }
   }
 }
 
 .header1__cta {
   .earlybird-icon {
+    .earlybird-image {
+      @apply w-auto h-5;
+    }
+
     svg {
       @apply w-5 h-5;
     }
@@ -153,6 +169,10 @@
   }
 
   .earlybird-icon {
+    .earlybird-image {
+      @apply w-auto h-6;
+    }
+
     svg {
       @apply h-6 w-6;
     }
@@ -234,6 +254,10 @@
 .hero1__announcement {
   @apply relative block md:inline rounded-full py-1.5 px-3 text-sm leading-6 border;
 
+  &:empty {
+    @apply hidden;
+  }
+
   p {
     @apply inline;
   }
@@ -298,6 +322,10 @@
 
 .hero2__announcement {
   @apply relative block md:inline rounded-full py-1.5 px-3 text-sm text-center leading-6 border;
+
+  &:empty {
+    @apply hidden;
+  }
 
   p {
     @apply inline;
@@ -382,6 +410,10 @@
 .hero3__announcement {
   @apply block md:inline rounded-full py-1.5 px-3 text-sm leading-6 text-gray-600 ring-1 ring-gray-800/10 hover:ring-gray-800/20;
 
+  &:empty {
+    @apply hidden;
+  }
+
   p {
     @apply inline;
   }
@@ -408,6 +440,10 @@
 
   a {
     @apply flex items-center py-2 px-4 text-white bg-slate-900 rounded-md font-medium;
+
+    .earlybird-image {
+      @apply w-auto h-5;
+    }
 
     svg {
       @apply mr-2 w-5 h-5;
@@ -450,6 +486,10 @@
 
 .hero4__announcement {
   @apply relative block md:inline rounded-full py-1.5 px-3 text-sm leading-6 border;
+
+  &:empty {
+    @apply hidden;
+  }
 
   p {
     @apply inline;
@@ -515,6 +555,10 @@
 
 .hero5__announcement {
   @apply relative block md:inline rounded-full py-1.5 px-3 text-sm text-center leading-6 border;
+
+  &:empty {
+    @apply hidden;
+  }
 
   p {
     @apply inline;
@@ -598,6 +642,10 @@
 
 .hero6__announcement {
   @apply block md:inline rounded-full py-1.5 px-3 text-sm leading-6 text-gray-600 ring-1 ring-gray-800/10 hover:ring-gray-800/20;
+
+  &:empty {
+    @apply hidden;
+  }
 
   p {
     @apply inline;
@@ -866,6 +914,10 @@
   @apply flex justify-center space-x-3 md:order-2;
 
   a {
+    .earlybird-image {
+      @apply w-auto h-6;
+    }
+
     svg {
       @apply h-6 w-6;
     }
@@ -1018,6 +1070,10 @@
 
 .faq2__item-icon {
   @apply ml-6 flex items-center;
+
+  .earlybird-image {
+    @apply w-auto h-6;
+  }
 
   svg {
     @apply w-6 h-6;
@@ -1212,6 +1268,10 @@
 
   li {
     @apply flex items-center;
+
+    .earlybird-image {
+      @apply w-auto h-5;
+    }
 
     svg {
       @apply mr-2 w-5 h-5 text-blue-600;

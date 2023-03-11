@@ -161,6 +161,8 @@ const settingSchemas = [
                 default: {
                   type: 'svg',
                   name: 'brand-apple',
+                  width: 20,
+                  height: 20,
                   style: {}
                 },
                 type: 'schema_icon'
@@ -195,6 +197,8 @@ const settingSchemas = [
                 default: {
                   type: 'svg',
                   name: 'brand-google-playstore',
+                  width: 20,
+                  height: 20,
                   style: {}
                 },
                 type: 'schema_icon'

@@ -62,7 +62,9 @@ export const RichTextEditor: FC<RichTextEditorProps> = ({
       })
     ],
     onUpdate: ({ editor }) => {
-      onChange?.(editor.getHTML())
+      const html = editor.getHTML()
+
+      onChange?.(html === '<p></p>' ? '' : html)
     }
   })
 
