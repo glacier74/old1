@@ -2,10 +2,13 @@ import { appWithTranslation } from 'next-i18next'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { Suspense } from 'react'
+import { Inter } from 'next/font/google';
 
 import { StoreProvider } from '~/store'
 import '~/styles/components.scss'
 import '~/styles/globals.scss'
+
+const inter = Inter({ subsets: ['latin'] })
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -23,7 +26,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta content="white" name="apple-mobile-web-app-status-bar-style" />
           <meta content="telephone=no,email=no" name="format-detection" />
         </Head>
-        <Component {...pageProps} />
+        <main className={inter.className}>
+          <Component {...pageProps} />
+        </main>
       </Suspense>
     </StoreProvider>
   )

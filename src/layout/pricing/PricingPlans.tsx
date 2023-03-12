@@ -25,7 +25,7 @@ const tiers = [
     href: '/sign-up',
     priceMonthly: 8,
     priceAnnually: 6,
-    description: 'For creators with multiple ideas who want to efficiently test and refine them.',
+    description: 'For creators who want to efficiently test and refine multiple ideas.',
     includedFeatures: [
       'All Free features',
       '5 landing pages included',

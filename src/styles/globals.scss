@@ -4,15 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  @font-face {
-    font-family: 'Proxima Vara';
-    src: url('/static/font/proxima_vara.woff2') format('woff2');
-    font-weight: 100 900;
-    font-display: swap;
-  }
-}
-
 body {
   @apply antialiased scroll-smooth;
 }

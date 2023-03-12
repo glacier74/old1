@@ -42,15 +42,15 @@ export const FeaturesPitch: FC = () => {
   return (
     <section className="bg-slate-50">
       <div className="py-32 px-2 max-w-7xl mx-auto">
-        <h1 className="px-4 md:px-0 text-slate-900 font-extrabold text-5xl">
+        <h1 className="px-4 md:px-0 text-slate-900 font-bold text-4xl">
           Pitch an idea and convince the audience
         </h1>
-        <p className="px-4 md:px-0 mt-4 text-slate-700 text-2xl font-medium">
+        <p className="px-4 md:px-0 mt-4 text-slate-700 text-xl">
           Convince the audience that your idea is worth their attention and investment, and
           encourage them to take the desired action.
         </p>
 
-        <div className="mt-16 px-4 md:px-0">
+        <div className="mt-8 px-4 md:px-0">
           <ul role="list" className="md:grid md:grid-cols-2 md:gap-x-16">
             {features.map(feature => (
               <li key={feature.title} className="mb-16">
@@ -62,8 +62,8 @@ export const FeaturesPitch: FC = () => {
                   height={400}
                   quality={100}
                 />
-                <h3 className="text-slate-900 font-extrabold text-3xl">{feature.title}</h3>
-                <p className="mt-2 text-slate-900 text-xl">{feature.desc}</p>
+                <h3 className="text-slate-900 font-bold text-2xl">{feature.title}</h3>
+                <p className="mt-2 text-slate-700 text-xl">{feature.desc}</p>
               </li>
             ))}
           </ul>

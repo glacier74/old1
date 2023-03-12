@@ -39,19 +39,19 @@ export const PricingFAQ: FC = () => {
   return (
     <section>
       <div className="max-w-7xl mx-auto px-4 pb-32 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-center text-2xl font-extrabold text-slate-900 sm:text-5xl">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-center text-2xl font-bold text-slate-900 sm:text-3xl">
             Frequently asked questions
           </h2>
 
-          <dl className="mt-12 space-y-6 divide-y divide-slate-200">
+          <dl className="mt-12 space-y-3 divide-y divide-slate-200">
             {faqs.map(faq => (
-              <Disclosure as="div" key={faq.question} className="pt-6">
+              <Disclosure as="div" key={faq.question} className="pt-3">
                 {({ open }) => (
                   <>
                     <dt className="text-lg">
                       <Disclosure.Button className="text-left w-full flex justify-between items-start text-slate-700">
-                        <span className="font-bold text-xl text-slate-900">{faq.question}</span>
+                        <span className="font-medium text-lg text-slate-900">{faq.question}</span>
                         <span className="ml-6 h-7 flex items-center">
                           <IconChevronDown
                             className={clsx(open ? '-rotate-180' : 'rotate-0', 'h-6 w-6 transform')}
@@ -61,7 +61,7 @@ export const PricingFAQ: FC = () => {
                       </Disclosure.Button>
                     </dt>
                     <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                      <p className="mt-4 text-lg text-slate-900">{faq.answer}</p>
+                      <p className="mt-4 text-slate-700">{faq.answer}</p>
                     </Disclosure.Panel>
                   </>
                 )}

@@ -21,7 +21,7 @@ export const HomeFooter: FC = () => {
               Luo Baishun
             </a>
           </div>
-          <div className="flex items-center justify-center mt-4 md:mt-0 space-x-5">
+          <div className="flex items-center justify-center mt-4 md:mt-0 space-x-3">
             <Link href="https://help.earlybird.im/privacy" title={t('home.privacy')}>
               Privacy
             </Link>

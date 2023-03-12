@@ -22,14 +22,14 @@ export const FeaturesHero: FC = () => {
           <div className="flex flex-col md:flex-row items-center place-content-center space-y-5 space-x-0 md:space-y-0 md:space-x-5">
             <Link
               href="/sign-up"
-              className="w-full md:w-auto px-4 py-2 md:px-6 md:py-3 text-lg text-center font-medium bg-slate-900 rounded-md text-white"
+              className="w-full md:w-auto px-4 py-2 md:px-6 md:py-3 text-lg text-center font-medium bg-slate-900 rounded text-white"
               title={t('home.signUp')}
             >
               Get started free
             </Link>
             <a
               href="https://help.earlybird.im/roadmap/"
-              className="w-full md:w-auto px-4 py-2 md:px-6 md:py-3 text-lg text-center font-medium border border-slate-300 rounded-md"
+              className="w-full md:w-auto px-4 py-2 md:px-6 md:py-3 text-lg text-center font-medium border border-slate-700 rounded"
             >
               View the roadmap
             </a>

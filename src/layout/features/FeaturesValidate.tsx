@@ -37,15 +37,15 @@ export const FeaturesValidate: FC = () => {
   return (
     <section>
       <div className="py-32 px-2 max-w-7xl mx-auto">
-        <h1 className="px-4 md:px-0 text-slate-900 font-extrabold text-5xl">
+        <h1 className="px-4 md:px-0 text-slate-900 font-bold text-4xl">
           Maximize engagement to ensure success
         </h1>
-        <p className="px-4 md:px-0 mt-4 text-slate-700 text-2xl font-medium">
+        <p className="px-4 md:px-0 mt-4 text-slate-700 text-xl">
           Benchmark with your customers to test the idea, gather interests, insights, and initial
           funding, and ensure that you have the potential to succeed.{' '}
         </p>
 
-        <div className="mt-16 px-4 md:px-0">
+        <div className="mt-8 px-4 md:px-0">
           <ul role="list" className="md:grid md:grid-cols-2 md:gap-x-16">
             {features.map(feature => (
               <li key={feature.title} className="mb-16">
@@ -57,8 +57,8 @@ export const FeaturesValidate: FC = () => {
                   height={400}
                   quality={100}
                 />
-                <h3 className="text-slate-900 font-extrabold text-3xl">{feature.title}</h3>
-                <p className="mt-2 text-slate-900 text-xl">{feature.desc}</p>
+                <h3 className="text-slate-900 font-bold text-2xl">{feature.title}</h3>
+                <p className="mt-2 text-slate-700 text-xl">{feature.desc}</p>
               </li>
             ))}
           </ul>

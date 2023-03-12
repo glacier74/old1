@@ -23,7 +23,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
             </span>{' '}
             with no waiting.
           </div>
-          <h1 className="text-4xl leading-tight md:text-6xl font-extrabold md:leading-none">
+          <h1 className="text-3xl leading-tight md:text-5xl font-extrabold">
             Create{' '}
             <span className="relative whitespace-nowrap text-emerald-500">
               <svg
@@ -39,7 +39,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
             that <br />
             transform ideas into customers
           </h1>
-          <div className="max-w-2xl mx-auto text-slate-700 text-lg md:text-xl mt-8 font-medium">
+          <div className="max-w-2xl mx-auto text-slate-700 text-base md:text-lg mt-4 leading-tight">
           Your ideas could be worth millions if validated, and you don't need any technical knowledge to get started!
           </div>
         </div>
@@ -48,10 +48,10 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
           <div className="flex justify-center flex-col md:flex-row items-center space-y-5 space-x-0 md:space-y-0 md:space-x-5">
             <Link
               href="/sign-up"
-              className="w-auto px-4 py-3 md:px-6 md:py-3 text-lg text-center font-bold bg-slate-900 rounded-md text-white"
+              className="w-auto px-4 py-3 md:px-6 md:py-3 bg-slate-900 rounded text-white"
               title={t('home.signUp')}
             >
-              Sign up today, it's FREE!
+              Sign up today, <span className='font-bold'>it's FREE!</span>
             </Link>
           </div>
         </div>

@@ -13,7 +13,7 @@ export const HomeUserImage: FC = () => {
       <div className="max-w-7xl mx-auto px-5 grid md:grid-cols-4 gap-4 place-items-center">
         <div className="col-span-2">
           <div className="py-16 md:py-32 px-4 text-slate-900">
-            <h2 className="w-full text-3xl md:text-5xl text-left font-bold">
+            <h2 className="w-full text-3xl md:text-5xl font-extrabold">
               Avoid burning time and money at early stage
             </h2>
             <div className="w-full mt-4 text-lg md:text-xl text-slate-900">
@@ -23,7 +23,7 @@ export const HomeUserImage: FC = () => {
             <div className="mt-8">
               <div>
                 <h3 className="text-2xl font-medium mb-2">EarlyBird is for</h3>
-                <ul className="list-disc text-lg pl-4 leading-loose">
+                <ul className="list-disc text-lg pl-4 leading-relaxed">
                   <li>Users without development and design skills</li>
                   <li>Running a simple online business</li>
                   <li>Finding the best product-market fit</li>
@@ -33,7 +33,7 @@ export const HomeUserImage: FC = () => {
                 <h3 className="text-2xl font-medium mb-2">
                   EarlyBird is <span className="font-extrabold">NOT</span> for
                 </h3>
-                <ul className="list-disc text-lg pl-4 leading-loose">
+                <ul className="list-disc text-lg pl-4 leading-relaxed">
                   <li>Building a complex web app</li>
                   <li>Launching a website with bespoke design</li>
                   <li>Running an offensive or illegal business</li>

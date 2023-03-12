@@ -9,7 +9,7 @@ export const HomeBottom: FC = () => {
     <section className="relative pb-0 bg-emerald-100">
       <div className="max-w-5xl mx-auto px-5">
         <div className="py-32 text-slate-900">
-          <h2 className="w-full max-w-2xl mx-auto text-4xl md:text-5xl text-center font-extrabold">
+          <h2 className="w-full max-w-2xl mx-auto text-3xl md:text-5xl text-center font-extrabold">
             The place for early stage entrepreneurs to bootstrap
           </h2>
           <div className="max-w-3xl mx-auto mt-8 text-lg md:text-2xl text-center leading-snug text-slate-700">
@@ -19,7 +19,7 @@ export const HomeBottom: FC = () => {
           <div className="flex justify-center mt-10">
             <Link
               href="/sign-up"
-              className="text-lg font-bold px-6 py-2 md:px-8 md:py-3 rounded-md bg-slate-900 text-white"
+              className="px-6 py-2 md:px-8 md:py-3 rounded-md bg-slate-900 text-white"
             >
               Sign up as an early bird
             </Link>

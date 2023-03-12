@@ -97,7 +97,7 @@ export const PricingComparisonSections: FC = () => {
         <Fragment key={section.name}>
           <tr>
             <th
-              className="bg-slate-200 py-8 pl-6 text-xl font-bold text-slate-900 text-left"
+              className="bg-slate-100 py-4 pl-6 text-base font-medium text-slate-900 text-left"
               colSpan={4}
               scope="colgroup"
             >
@@ -106,13 +106,13 @@ export const PricingComparisonSections: FC = () => {
           </tr>
           {section.features.map((feature: any) => (
             <tr key={feature.name}>
-              <th className="py-8 px-6 text-base font-normal text-slate-700 text-left" scope="row">
+              <th className="py-4 px-6 text-sm font-normal text-slate-700 text-left" scope="row">
                 {feature.name}
               </th>
               {PLAN_TIERS.map(tier => (
-                <td key={tier.name} className="py-8 px-6">
+                <td key={tier.name} className="py-4 px-6">
                   {typeof feature.tiers[tier.name] === 'string' ? (
-                    <span className="block text-base text-slate-500">
+                    <span className="block text-sm text-slate-500">
                       {feature.tiers[tier.name]}
                     </span>
                   ) : (
@@ -156,10 +156,10 @@ export const PricingComparison: FC<{
   return (
     <section className="hidden lg:block">
       <div className="max-w-7xl mx-auto py-16 sm:py-48 sm:px-6 lg:px-8">
-        <h2 className="max-w-3xl mx-auto text-slate-900 font-extrabold text-5xl text-center">
+        <h2 className="max-w-3xl mx-auto text-slate-900 font-bold text-5xl text-center">
           Compare Plans
         </h2>
-        <p className="mt-4 max-w-3xl mx-auto text-center text-slate-700 font-medium text-xl">
+        <p className="mt-4 max-w-3xl mx-auto text-center text-slate-700 text-xl">
           Whether you're building a tiny project or managing multiple products, we have an
           affordable plan that meets your needs.
         </p>
@@ -188,7 +188,7 @@ export const PricingComparison: FC<{
             <tbody className="border-t border-slate-200 divide-y divide-slate-200">
               <tr>
                 <th
-                  className="py-8 px-6 text-sm font-medium text-slate-700 text-left align-top"
+                  className="py-4 px-6 text-sm font-medium text-slate-700 text-left align-top"
                   scope="row"
                 >
                   <div>Pricing</div>
@@ -220,7 +220,7 @@ export const PricingComparison: FC<{
                   </div>
                 </th>
                 {PLAN_TIERS.map(tier => (
-                  <td key={tier.name} className="h-full py-8 px-6 align-top">
+                  <td key={tier.name} className="h-full py-4 px-6 align-top">
                     <div className="relative h-full table">
                       <p>
                         <span className="text-4xl font-extrabold text-slate-900">
@@ -228,7 +228,7 @@ export const PricingComparison: FC<{
                         </span>{' '}
                         <span className="text-base font-medium text-slate-500">/mo</span>
                       </p>
-                      <p className="mt-4 mb-16 text-base text-slate-500 font-medium leading-tight">
+                      <p className="mt-4 mb-16 text-base text-slate-500 leading-tight">
                         {tier.description}
                       </p>
                       <a
