@@ -9,15 +9,15 @@ export const PricingCTA: FC = () => {
     <section className="bg-emerald-100">
       <div className="max-w-7xl mx-auto py-32 px-4 text-center">
         <h2 className="font-bold text-4xl text-slate-900">Try EarlyBird today for free</h2>
-        <p className="max-w-3xl mx-auto mt-6 text-xl font-medium text-slate-700">
+        <p className="max-w-3xl mx-auto mt-4 text-xl text-slate-700">
           Build a rockin' no-code landing page in just 10 minutes.
         </p>
 
-        <div className="mt-10">
+        <div className="mt-6">
           <div className="flex flex-col md:flex-row items-center place-content-center space-y-5 space-x-0 md:space-y-0 md:space-x-5">
             <Link
               href="/sign-up"
-              className="w-full md:w-auto px-4 py-2 md:px-6 md:py-3 text-base text-center bg-slate-900 rounded text-white"
+              className="w-full md:w-auto px-4 py-2 md:px-6 md:py-3 text-base text-center bg-slate-900 rounded-full text-white"
               title="Create your account"
             >
               Create your account

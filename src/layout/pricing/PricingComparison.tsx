@@ -192,11 +192,11 @@ export const PricingComparison: FC<{
                   scope="row"
                 >
                   <div>Pricing</div>
-                  <div className="mt-4 relative self-center bg-slate-200 rounded-lg p-0.5 flex">
+                  <div className="mt-4 relative self-center bg-slate-200 rounded-full p-0.5 flex">
                     <button
                       type="button"
                       className={clsx(
-                        'relative w-1/2 rounded-md py-2 text-sm font-medium whitespace-nowrap focus:outline-none sm:w-auto sm:px-4',
+                        'relative w-1/2 rounded-full py-2 text-sm font-medium whitespace-nowrap focus:outline-none sm:w-auto sm:px-4',
                         billingCycle === 'monthly'
                           ? 'bg-slate-50 border-slate-50 text-slate-900 shadow-sm'
                           : 'border-transparent text-slate-900'
@@ -208,7 +208,7 @@ export const PricingComparison: FC<{
                     <button
                       type="button"
                       className={clsx(
-                        'ml-0.5 relative w-1/2 border rounded-md py-2 text-sm font-medium whitespace-nowrap focus:outline-none sm:w-auto sm:px-4',
+                        'ml-0.5 relative w-1/2 border rounded-full py-2 text-sm font-medium whitespace-nowrap focus:outline-none sm:w-auto sm:px-4',
                         billingCycle === 'yearly'
                           ? 'bg-slate-50 border-slate-50 text-slate-900 shadow-sm'
                           : 'border-transparent text-slate-900'
@@ -233,7 +233,7 @@ export const PricingComparison: FC<{
                       </p>
                       <a
                         href={tier.href}
-                        className="absolute bottom-0 flex-grow block w-full bg-slate-900 rounded-md 5 py-2 text-sm font-semibold text-white text-center"
+                        className="absolute bottom-0 flex-grow block w-full bg-slate-900 rounded-full 5 py-2 text-sm font-semibold text-white text-center"
                       >
                         Join as a {tier.name}
                       </a>
@@ -252,7 +252,7 @@ export const PricingComparison: FC<{
                   <td key={tier.name} className="pt-5 px-6">
                     <a
                       href={tier.href}
-                      className="block w-full bg-slate-900 rounded-md py-2 text-sm font-semibold text-white text-center"
+                      className="block w-full bg-slate-900 rounded-full py-2 text-sm font-semibold text-white text-center"
                     >
                       Join as a {tier.name}
                     </a>

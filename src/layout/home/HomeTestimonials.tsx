@@ -212,10 +212,10 @@ export const HomeTestimonials: FC = () => {
   return (
     <section className="relative py-32 mt-32 bg-emerald-100">
       <div className="max-w-6xl mx-auto px-5">
-        <h2 className="text-3xl text-center font-extrabold md:text-5xl text-slate-900">
+        <h2 className="text-2xl text-center font-bold md:text-4xl text-slate-900">
           People really love EarlyBird
         </h2>
-        <div className="mt-4 flex justify-center">
+        <div className="mt-6 flex justify-center">
           <div className="flex self-center place-content-center md:flex-row space-x-0 md:space-y-0 md:space-x-5">
             <div>
               <svg className="h-12" viewBox="0 0 122 37" xmlns="http://www.w3.org/2000/svg">
@@ -235,7 +235,7 @@ export const HomeTestimonials: FC = () => {
             </div>
           </div>
         </div>
-        <div className="max-w-3xl mx-auto text-center text-base md:text-xl text-slate-700 mt-4">
+        <div className="max-w-3xl mx-auto text-center text-sm text-slate-700 mt-4">
           They even put in extra effort to express how much they adore crafting their landing pages
           on EarlyBird.
         </div>

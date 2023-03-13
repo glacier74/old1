@@ -72,11 +72,11 @@ export const PricingPlans: FC<{
     <section>
       <div className="max-w-7xl mx-auto px-4 mt-8">
         <div className="sm:flex sm:flex-col sm:align-center">
-          <div className="relative self-center bg-slate-200 rounded-lg p-0.5 flex">
+          <div className="relative self-center bg-slate-200 rounded-full p-0.5 flex">
             <button
               type="button"
               className={clsx(
-                'relative w-1/2 rounded-md py-2 text-sm font-medium whitespace-nowrap focus:outline-none sm:w-auto sm:px-8',
+                'relative w-1/2 rounded-full py-2 text-sm font-medium whitespace-nowrap focus:outline-none sm:w-auto sm:px-8',
                 billingCycle === 'monthly'
                   ? 'bg-slate-50 border-slate-50 text-slate-900 shadow-sm'
                   : 'border-transparent text-slate-900'
@@ -88,7 +88,7 @@ export const PricingPlans: FC<{
             <button
               type="button"
               className={clsx(
-                'ml-0.5 relative w-1/2 border rounded-md py-2 text-sm font-medium whitespace-nowrap focus:outline-none sm:w-auto sm:px-8',
+                'ml-0.5 relative w-1/2 border rounded-full py-2 text-sm font-medium whitespace-nowrap focus:outline-none sm:w-auto sm:px-8',
                 billingCycle === 'yearly'
                   ? 'bg-slate-50 border-slate-50 text-slate-900 shadow-sm'
                   : 'border-transparent text-slate-900'
@@ -116,7 +116,7 @@ export const PricingPlans: FC<{
                   </p>
                   <a
                     href={tier.href}
-                    className="mt-8 block w-full bg-slate-900 rounded-md py-2 text-sm font-semibold text-white text-center"
+                    className="mt-8 block w-full bg-slate-900 rounded-full py-2 text-sm font-semibold text-white text-center"
                   >
                     Join as a {tier.name}
                   </a>
