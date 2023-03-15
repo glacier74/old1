@@ -60,9 +60,12 @@ const variables = [
   }
 ]
 
-export const PaymentSettingField: FC<SettingFieldProps> = ({ schema }) => {
-  const { setting, updateSetting } = useBlockSetting<any>(schema.name)
+interface ConnectStripeProps {
+  setting: any
+  updateSetting: (value: any, key?: string) => void
+}
 
+export const ConnectStripe: FC<ConnectStripeProps> = ({ setting, updateSetting }) => {
   const [loading, setLoading] = useState(false)
 
   const authorize = useRequest(async () => {
@@ -106,21 +109,13 @@ export const PaymentSettingField: FC<SettingFieldProps> = ({ schema }) => {
     }
   )
 
-  function handleChange(value: any) {
-    updateSetting(value, 'html')
-  }
-
   function handlePriceIdChange(value: any) {
     updateSetting(value, 'priceId')
   }
 
-  function handleStyleChange(property: string, value: string) {
-    updateSetting(value, `style.${property}`)
-  }
-
   return (
-    <div className="builder-setting-text space-y-2">
-      <div>
+    <>
+    <div>
         <div className="mb-1 text-sm text-slate-700">Stripe</div>
         <div>
           {setting?.stripeAccount ? (
@@ -145,6 +140,28 @@ export const PaymentSettingField: FC<SettingFieldProps> = ({ schema }) => {
           <Input value={setting?.priceId} onChange={handlePriceIdChange} />
         </div>
       )}
+    </>
+  )
+}
+
+export const PaymentSettingField: FC<SettingFieldProps> = ({ schema }) => {
+  const { setting, updateSetting } = useBlockSetting<any>(schema.name)
+
+  function handleChange(value: any) {
+    updateSetting(value, 'html')
+  }
+
+  function handleMessageChange(value: any) {
+    updateSetting(value, 'message')
+  }
+
+  function handleStyleChange(property: string, value: string) {
+    updateSetting(value, `style.${property}`)
+  }
+
+  return (
+    <div className="builder-setting-text space-y-2">
+      <ConnectStripe setting={setting} updateSetting={updateSetting} />
 
       <div className="flex items-center justify-between">
         <div className="text-sm">Button text</div>
@@ -160,6 +177,11 @@ export const PaymentSettingField: FC<SettingFieldProps> = ({ schema }) => {
         />
       </div>
 
+      <div className="pt-4">
+        <div className="mb-1 text-sm text-slate-700">Success message</div>
+        <Input.Textarea value={setting?.message} onChange={handleMessageChange} />
+      </div>
+      
       <div>
         <AutomatedEmail
           setting={setting}

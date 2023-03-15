@@ -12,6 +12,7 @@ interface CreateContactInput extends BaseInput {
 
 interface CheckoutInput extends BaseInput {
   productUrl: string
+  emailCapture?: Pick<CreateContactInput, 'name' | 'email'>
 }
 
 export class PublicApiService {

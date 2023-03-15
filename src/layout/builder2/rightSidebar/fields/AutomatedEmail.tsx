@@ -73,7 +73,7 @@ export const AutomatedEmail: FC<AutomatedEmailProps> = ({
   return (
     <>
       <div className="flex items-center justify-between">
-        <span className="text-sm text-slate-900">{heading}</span>
+        <span className="text-sm text-slate-900 font-medium">{heading}</span>
         <div className="flex items-center space-x-1">
           {setting.enableEmailNotification && (
             <Tooltip ariaLabel="Edit email template">
@@ -116,7 +116,7 @@ export const AutomatedEmail: FC<AutomatedEmailProps> = ({
 
           <div>
             <div className="mb-2 text-sm text-slate-700">
-              You can use the following variables enclosed in curly braces {}, which will be
+              You can use the following variables enclosed in curly braces { }, which will be
               replaced with their corresponding values.
             </div>
 

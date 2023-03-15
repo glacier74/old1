@@ -159,11 +159,13 @@ body {
 }
 
 .non-scaling-stroke {
+
   ellipse,
   path,
   polyline,
   circle,
-  line, rect {
+  line,
+  rect {
     vector-effect: non-scaling-stroke;
   }
 }
@@ -214,7 +216,8 @@ button.switch-checked {
   @apply bg-green-500;
 }
 
-[type='checkbox'], [type='radio'] {
+[type='checkbox'],
+[type='radio'] {
   @apply text-green-500;
 }
 
@@ -294,6 +297,7 @@ button.switch-checked {
 }
 
 .table-compact {
+
   .table-head th,
   .table-body td {
     @apply px-3 py-1.5;
@@ -330,6 +334,7 @@ button.switch-checked {
 }
 
 .expandable {
+
   .input,
   .textarea,
   .select {
@@ -714,6 +719,7 @@ h3.rich-text {
 
   .form-container {
     .button {
+
       &,
       &:hover {
         background-color: var(--earlybird-button-background);
@@ -952,6 +958,7 @@ button.block-header-button {
     }
 
     &.bubble-menu-active {
+
       &,
       &:hover {
         @apply bg-green-100;
@@ -1081,6 +1088,7 @@ button.block-header-button {
 
     .block-image {
       .block-image-wrapper {
+
         &,
         img {
           @apply w-full #{!important};
@@ -1171,7 +1179,7 @@ button.block-header-button {
   }
 
   .rich-text {
-    @apply py-2 outline-none  leading-6;
+    @apply py-2 outline-none leading-6;
 
     &,
     &:empty:after {
@@ -1221,7 +1229,7 @@ button.block-header-button {
 
 .block-payment-description {
   @apply mt-2 text-sm;
-@layer line-clamp-2;
+  @layer line-clamp-2;
   color: var(--earlybird-text-light);
 }
 
@@ -1714,8 +1722,8 @@ button.block-header-button {
 .builder-setting-field {
   @apply px-4 py-3 bg-slate-50;
 
-  & > .builder-setting-text {
-    & > .builder-text-title {
+  &>.builder-setting-text {
+    &>.builder-text-title {
       @apply hidden;
     }
   }
@@ -1743,7 +1751,7 @@ button.block-header-button {
 .editor__bubble-menu {
   @apply flex items-center space-x-2.5;
 
-  & > button {
+  &>button {
     @apply p-0.5 rounded-md text-slate-700 select-none hover:bg-slate-100;
 
     svg,

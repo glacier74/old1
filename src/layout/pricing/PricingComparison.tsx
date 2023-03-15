@@ -112,9 +112,7 @@ export const PricingComparisonSections: FC = () => {
               {PLAN_TIERS.map(tier => (
                 <td key={tier.name} className="py-4 px-6">
                   {typeof feature.tiers[tier.name] === 'string' ? (
-                    <span className="block text-sm text-slate-500">
-                      {feature.tiers[tier.name]}
-                    </span>
+                    <span className="block text-sm text-slate-500">{feature.tiers[tier.name]}</span>
                   ) : (
                     <>
                       {feature.tiers[tier.name] === true ? (

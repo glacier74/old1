@@ -40,7 +40,8 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
             transform ideas into customers
           </h1>
           <div className="max-w-2xl mx-auto text-slate-700 text-base md:text-lg mt-4 leading-tight">
-          Your ideas could be worth millions if validated, and you don't need any technical knowledge to get started!
+            Your ideas could be worth millions if validated, and you don't need any technical
+            knowledge to get started!
           </div>
         </div>
 
@@ -51,7 +52,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
               className="w-auto px-4 py-3 md:px-8 md:py-3 bg-slate-900 rounded-full text-white"
               title={t('home.signUp')}
             >
-              Sign up today, <span className='font-bold'>it's FREE!</span>
+              Sign up today, <span className="font-bold">it's FREE!</span>
             </Link>
           </div>
         </div>

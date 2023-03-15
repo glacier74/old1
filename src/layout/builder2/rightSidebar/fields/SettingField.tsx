@@ -1,7 +1,6 @@
 import { FC } from 'react'
 
-import { StyleSettingField } from '~/layout/builder2/rightSidebar/fields/StyleSettingField'
-
+import { StyleSettingField } from './StyleSettingField'
 import { ButtonSettingField } from './ButtonSettingField'
 import { EmailCaptureSettingField } from './EmailCaptureSettingField'
 import { GroupSettingField } from './GroupSettingField'

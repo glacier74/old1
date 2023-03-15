@@ -29,6 +29,7 @@ interface $EmailCaptureProps extends ComponentProps {
     text?: string
     style?: $EmailCaptureStyle
   }
+  isPaymentRequired?: boolean
   message?: string
 }
 
@@ -39,6 +40,7 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
   fullName,
   email: $email,
   button,
+  isPaymentRequired,
   message = 'You have successfully submitted',
   children: _children,
   style: _style
@@ -61,16 +63,30 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
       setLoading(true)
 
       try {
-        await PublicApiService.createContact(productId, {
-          blockId,
-          settingId: id!,
-          name: name!,
-          email: email!
-        })
-
-        notification.success({
-          title: message
-        })
+        if (isPaymentRequired) {
+          const result = await PublicApiService.checkout(productId, {
+            blockId,
+            settingId: id!,
+            productUrl: window.location.href,
+            emailCapture: {
+              name: name!,
+              email: email!
+            }
+          })
+    
+          window.location.href = result.sessionUrl
+        } else {
+          await PublicApiService.createContact(productId, {
+            blockId,
+            settingId: id!,
+            name: name!,
+            email: email!
+          })
+  
+          notification.success({
+            title: message
+          })
+        }
       } catch (err: any) {
         notification.error({
           title: err.message
