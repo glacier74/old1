@@ -140,7 +140,7 @@ interface AvatarPickerFieldProps extends Omit<ImagePickerFieldProps, 'width' | '
 export const AvatarPickerField: FC<AvatarPickerFieldProps> = ({
   className,
   size = 64,
-  imageSize = 120,
+  imageSize = 64,
   text = 'common.logo',
   retainLength = 4,
   enableUnsplash,

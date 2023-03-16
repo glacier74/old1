@@ -22,16 +22,35 @@ module.exports = {
   swcMinify: false,
   poweredByHeader: false,
   images: {
-    domains: [
-      'storage.earlybird.im',
-      'devlopment-flybird.s3.us-west-004.backblazeb2.com',
-      'images.unsplash.com'
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.earlybird.im'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.backblazeb2.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.googleusercontent.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.githubusercontent.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.twimg.com'
+      }
     ]
   },
   experimental: {
-    fontLoaders: [
-      { loader: 'next/font/google', options: { subsets: ['latin'] } },
-    ],
+    fontLoaders: [{ loader: 'next/font/google', options: { subsets: ['latin'] } }]
   },
   // https://nextjs.org/docs/advanced-features/security-headers
   async headers() {

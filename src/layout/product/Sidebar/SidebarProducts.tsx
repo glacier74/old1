@@ -31,7 +31,7 @@ const ProductItem: FC<ProductItemProps> = ({ product, onClick }) => {
     >
       <RoundImage
         src={product?.logo}
-        imageSize={120}
+        imageSize={32}
         text={product?.name}
         size={32}
         retainLength={2}
@@ -62,7 +62,7 @@ const Current: FC = () => {
           src={product?.logo}
           text={product?.name}
           retainLength={2}
-          imageSize={120}
+          imageSize={24}
           size={24}
         />
         <span className="max-w-[12.5rem] text-sm font-medium truncate">{product?.name}</span>
@@ -98,7 +98,7 @@ export const SidebarProducts: FC = () => {
   }
 
   const Overlay = (
-    <div className="menus w-64">
+    <div className="menus product-dropdown-menus w-64">
       {products.map(product => (
         <ProductItem key={product.id} product={product} onClick={handleClick} />
       ))}

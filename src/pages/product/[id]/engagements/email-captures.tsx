@@ -34,7 +34,7 @@ const ProductEmailCaptures = (): JSX.Element => {
             src={row.avatar}
             text={row.name || row.email}
             retainLength={2}
-            imageSize={0}
+            imageSize={36}
             size={36}
           />
         )

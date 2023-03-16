@@ -435,7 +435,21 @@ button.switch-checked {
   @apply hidden #{!important};
 }
 
+.avatar {
+  @apply w-auto h-auto;
+
+  .avatar-text {
+    @apply font-medium uppercase;
+  }
+}
+
 .product-dropdown {
+  .avatar .avatar-text {
+    @apply text-xs;
+  }
+}
+
+.product-dropdown-menus {
   .avatar .avatar-text {
     @apply text-sm;
   }

@@ -69,7 +69,7 @@ export const SidebarAccount: FC = () => {
               <RoundImage
                 className="inline-block h-8 w-8"
                 src={user?.avatar}
-                imageSize={120}
+                imageSize={32}
                 size={32}
               />
             </div>
