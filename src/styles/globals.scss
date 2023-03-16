@@ -436,7 +436,9 @@ button.switch-checked {
 }
 
 .avatar {
-  @apply w-auto h-auto;
+  @apply object-cover;
+  width: inherit;
+  height: inherit;
 
   .avatar-text {
     @apply font-medium uppercase;
@@ -1490,8 +1492,8 @@ button.block-header-button {
 
 .earlybird-branding {
   @apply fixed rounded-md shadow text-sm bg-white z-10 px-2 py-0.5 right-5 bottom-5 md:right-12 md:bottom-6;
-  background: var(--earlybird-background);
-  color: var(--earlybird-text);
+  //background: var(--earlybird-background);
+  //color: var(--earlybird-text);
 }
 
 .builder-design-sidebar {
