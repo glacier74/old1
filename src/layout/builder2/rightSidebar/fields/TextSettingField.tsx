@@ -21,7 +21,11 @@ export const TextSettingField: FC<SettingFieldProps> = ({ schema }) => {
     <div className="builder-setting-text space-y-2">
       <div className="flex items-center justify-between">
         <div className="builder-text-title">Content</div>
-        <Input className="!px-2 !py-[0.34rem]" value={setting?.html} onChange={handleChange} />
+        <Input
+          className="ml-2 max-w-[11.25rem] !px-2 !py-[0.34rem]"
+          value={setting?.html}
+          onChange={handleChange}
+        />
       </div>
 
       {setting?.style?.color && (

@@ -6,6 +6,7 @@ import { StylePicker } from '~/components'
 import { useBlockSetting } from '~/layout/builder2/context'
 
 import { AutomatedEmail } from './AutomatedEmail'
+import { ConnectStripe } from './PaymentSettingField'
 import { SettingFieldProps } from './SettingField'
 
 const defaultSubject = 'You got {product.name}'
@@ -98,11 +99,15 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
     updateSetting(value, 'message')
   }
 
+  function handleEnablePayment(value: boolean) {
+    updateSetting(value, 'isPaymentRequired')
+  }
+
   return (
     <div className="builder-setting-text divide-y divide-slate-200 space-y-4">
       <div>
         <div className="flex items-center justify-between mb-1">
-          <div className="mb-1 text-sm text-slate-700">Capture name</div>
+          <div className="mb-1 text-sm text-slate-900 font-medium">Capture name</div>
           <Switch value={setting?.isNameRequired} onChange={handleEnableFullName} />
         </div>
 
@@ -111,7 +116,7 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
             <div className="flex items-center justify-between">
               <div className="builder-text-title">Placeholder</div>
               <Input
-                className="!px-2 !py-[0.34rem]"
+                className="ml-2 max-w-[11.25rem] !px-2 !py-[0.34rem]"
                 value={setting?.fullName?.placeholder || 'Your name'}
                 onChange={handleFullNameChange}
               />
@@ -119,7 +124,7 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
 
             {isValid(setting?.fullName?.style) && (
               <div className="flex items-center justify-between">
-                <div className="text-sm">Style</div>
+                <div className="text-sm text-slate-700">Style</div>
                 <StylePicker
                   properties={Object.keys(setting!.fullName!.style)}
                   value={setting!.fullName!.style}
@@ -132,13 +137,13 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
       </div>
 
       <div className="pt-4">
-        <div className="mb-1 text-sm text-slate-700">Email address</div>
+        <div className="mb-1 text-sm text-slate-900 font-medium">Email address</div>
 
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <div className="builder-text-title">Placeholder</div>
             <Input
-              className="!px-2 !py-[0.34rem]"
+              className="ml-2 max-w-[11.25rem] !px-2 !py-[0.34rem]"
               value={setting?.email.placeholder || 'Enter email address'}
               onChange={handleEmailAddressChange}
             />
@@ -146,7 +151,7 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
 
           {isValid(setting?.email?.style) && (
             <div className="flex items-center justify-between">
-              <div className="text-sm">Style</div>
+              <div className="text-sm text-slate-700">Style</div>
               <StylePicker
                 properties={Object.keys(setting!.email!.style)}
                 value={setting!.email!.style}
@@ -158,13 +163,13 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
       </div>
 
       <div className="pt-4">
-        <div className="mb-1 text-sm text-slate-700">Submit button</div>
+        <div className="mb-1 text-sm text-slate-900 font-medium">Submit button</div>
 
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <div className="builder-text-title">Text</div>
             <Input
-              className="!px-2 !py-[0.34rem]"
+              className="ml-2 max-w-[11.25rem] !px-2 !py-[0.34rem]"
               value={setting?.button.text}
               onChange={handleChange}
             />
@@ -172,7 +177,7 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
 
           {isValid(setting?.button?.style) && (
             <div className="flex items-center justify-between">
-              <div className="text-sm">Style</div>
+              <div className="text-sm text-slate-700">Style</div>
               <StylePicker
                 properties={Object.keys(setting!.button!.style)}
                 value={setting!.button!.style}
@@ -184,8 +189,8 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
       </div>
 
       <div className="pt-4">
-        <div className="mb-1 text-sm text-slate-700">Success message</div>
-        <Input value={setting?.message} onChange={handleMessageChange} />
+        <div className="mb-1 text-sm text-slate-900 font-medium">Success message</div>
+        <Input.Textarea value={setting?.message} onChange={handleMessageChange} />
       </div>
 
       <div className="pt-4">
@@ -198,6 +203,17 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
           defaultMessage={defaultMessage}
           variables={variables}
         />
+      </div>
+
+      <div className="pt-4">
+        <div className="flex items-center justify-between mb-1">
+          <div className="mb-1 text-sm text-slate-900 font-medium">Payment required</div>
+          <Switch value={setting?.isPaymentRequired} onChange={handleEnablePayment} />
+        </div>
+
+        {setting?.isPaymentRequired && (
+          <ConnectStripe setting={setting} updateSetting={updateSetting} />
+        )}
       </div>
     </div>
   )

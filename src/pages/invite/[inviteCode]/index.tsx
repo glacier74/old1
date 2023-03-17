@@ -70,7 +70,7 @@ const Invite = () => {
         {invitation ? (
           <div className="space-y-6 text-center">
             <div className="flex justify-center">
-              <RoundImage src={invitation.productLogo} imageSize={120} size={64} />
+              <RoundImage src={invitation.productLogo} imageSize={64} size={64} />
             </div>
             <div className="mt-2 px-4 text-base font-medium text-slate-800">
               <p>{t('invite.heading', { inviter: invitation.inviter })}</p>

@@ -52,11 +52,18 @@ export const $Payment: FC<$PaymentProps> = ({
   return (
     <button
       type="button"
-      className={clsx('earlybird-payment', className)}
+      className={clsx(
+        'earlybird-payment earlybird-submit-button',
+        {
+          'earlybird-submit-button-loading': loading
+        },
+        className
+      )}
       onClick={handleClick}
       style={linkStyle(appearance, style)}
     >
-      {loading ? <Spin /> : html}
+      {loading && <Spin />}
+      <span>{html}</span>
     </button>
   )
 }

@@ -1,8 +1,8 @@
 import { appWithTranslation } from 'next-i18next'
 import type { AppProps } from 'next/app'
+import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import { Suspense } from 'react'
-import { Inter } from 'next/font/google';
 
 import { StoreProvider } from '~/store'
 import '~/styles/components.scss'
@@ -26,9 +26,12 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta content="white" name="apple-mobile-web-app-status-bar-style" />
           <meta content="telephone=no,email=no" name="format-detection" />
         </Head>
-        <main className={inter.className}>
-          <Component {...pageProps} />
-        </main>
+        <style jsx global>{`
+          html {
+            font-family: ${inter.style.fontFamily};
+          }
+        `}</style>
+        <Component {...pageProps} />
       </Suspense>
     </StoreProvider>
   )

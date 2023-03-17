@@ -1,7 +1,5 @@
 import { FC } from 'react'
 
-import { StyleSettingField } from '~/layout/builder2/rightSidebar/fields/StyleSettingField'
-
 import { ButtonSettingField } from './ButtonSettingField'
 import { EmailCaptureSettingField } from './EmailCaptureSettingField'
 import { GroupSettingField } from './GroupSettingField'
@@ -13,6 +11,7 @@ import { ListSettingField } from './ListSettingField'
 import { MediaSettingField } from './MediaSettingField'
 import { OptionalSettingField } from './OptionalSettingField'
 import { PaymentSettingField } from './PaymentSettingField'
+import { StyleSettingField } from './StyleSettingField'
 import { SwitchGroupSettingField } from './SwitchGroupSettingField'
 import { TestimonialSettingField } from './TestimonialSettingField'
 import { TextSettingField } from './TextSettingField'

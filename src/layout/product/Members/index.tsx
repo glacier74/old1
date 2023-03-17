@@ -58,7 +58,7 @@ export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
         return (
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <RoundImage src={row.avatar} imageSize={120} size={36} />
+              <RoundImage src={row.avatar} imageSize={36} size={36} />
             </div>
             <div className="flex-1 px-4">
               <p className="text-sm font-medium text-slate-700 truncate">

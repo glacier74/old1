@@ -78,7 +78,7 @@ const Product = (): JSX.Element => {
                   src={product.logo}
                   text={product.name}
                   retainLength={2}
-                  imageSize={120}
+                  imageSize={54}
                   size={54}
                 />
               </div>

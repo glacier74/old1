@@ -4,6 +4,7 @@ import AES from 'crypto-js/aes'
 import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import { NextSeoProps } from 'next-seo'
+import imageLoader from 'next/dist/shared/lib/image-loader'
 import Script from 'next/script'
 import { FC, useMemo } from 'react'
 
@@ -25,7 +26,7 @@ import { TestimonialPreview } from '~/layout/builder/blocks/Testimonial'
 import { TextPreview } from '~/layout/builder/blocks/Text'
 import { PublicSiteDangerouslyHTML } from '~/layout/public-site/PublicSiteDangerouslyHTML'
 import { ProductService } from '~/service'
-import { cropImage, getPrivateToken, setPrivateToken, withTranslations } from '~/utils'
+import { getPrivateToken, setPrivateToken, withTranslations } from '~/utils'
 
 interface PublicSiteProps {
   isSiteAccessible?: boolean
@@ -138,6 +139,16 @@ function getSeoProps(product: Product, isSiteAccessible?: boolean): NextSeoProps
 const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentStatus }) => {
   const { t } = useTranslation()
   const seo = getSeoProps(product, isSiteAccessible)
+  const faviconURL = useMemo(() => {
+    if (isValid(product.logo)) {
+      return imageLoader({
+        config: process.env.__NEXT_IMAGE_OPTS as any,
+        src: product.logo,
+        quality: 95,
+        width: 16
+      })
+    }
+  }, [product.logo])
 
   async function handleFinish(values: AnyMap<string>) {
     const { token } = await ProductService.verifyPassword(product.id, values.password)
@@ -150,11 +161,7 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
 
   if (product.isRestricted) {
     return (
-      <PublicSiteLayout
-        shortName={product.name}
-        favicon={cropImage(product.logo, 120, 120)}
-        seo={seo}
-      >
+      <PublicSiteLayout shortName={product.name} favicon={faviconURL} seo={seo}>
         <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <div>
@@ -174,11 +181,7 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
 
   if (!isSiteAccessible) {
     return (
-      <PublicSiteLayout
-        shortName={product.name}
-        favicon={cropImage(product.logo, 120, 120)}
-        seo={seo}
-      >
+      <PublicSiteLayout shortName={product.name} favicon={faviconURL} seo={seo}>
         <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <div>
@@ -218,7 +221,7 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
   return (
     <PublicSiteLayout
       shortName={product.name}
-      favicon={cropImage(product.logo, 120, 120)}
+      favicon={faviconURL}
       seo={seo}
       schema={product.siteSetting.schema}
       theme={product.siteSetting.theme}

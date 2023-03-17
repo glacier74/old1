@@ -73,7 +73,7 @@ export const AutomatedEmail: FC<AutomatedEmailProps> = ({
   return (
     <>
       <div className="flex items-center justify-between">
-        <span className="text-sm text-slate-900">{heading}</span>
+        <span className="text-sm text-slate-900 font-medium">{heading}</span>
         <div className="flex items-center space-x-1">
           {setting.enableEmailNotification && (
             <Tooltip ariaLabel="Edit email template">

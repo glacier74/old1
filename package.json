@@ -1,6 +1,6 @@
 {
   "name": "earlybird",
-  "version": "1.5.5",
+  "version": "1.5.7",
   "homepage": "https://earlybird.im",
   "author": "Heyooo, Inc.",
   "private": true,
@@ -8,7 +8,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "pm2 reload ecosystem.config.js",
-    "lint": "eslint \"{src,test}/**/*.{ts,tsx}\" --quiet",
+    "lint": "eslint \"{src,earlybirdim,test}/**/*.{ts,tsx}\" --quiet",
     "lint:fix": "eslint \"{src,test}/**/*.{ts,tsx}\" --fix --quiet",
     "lint:staged": "lint-staged",
     "type-check": "tsc --pretty --noEmit",

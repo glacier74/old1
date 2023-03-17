@@ -19,7 +19,7 @@ export const StyleSettingField: FC<SettingFieldProps> = ({ schema }) => {
 
   return (
     <div className="flex items-center justify-between">
-      <div className="text-sm">Style</div>
+      <div className="text-sm text-slate-700">Style</div>
       <StylePicker
         properties={Object.keys(setting!.style)}
         value={setting!.style}

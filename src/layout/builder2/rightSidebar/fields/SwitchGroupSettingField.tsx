@@ -17,7 +17,7 @@ export const SwitchGroupSettingField: FC<SettingFieldProps> = ({ schema }) => {
     <div className="builder-setting-text space-y-2">
       {isValid(setting?.style) && (
         <div className="flex items-center justify-between">
-          <div className="text-sm">Style</div>
+          <div className="text-sm text-slate-700">Style</div>
           <StylePicker
             properties={Object.keys(setting!.style)}
             value={setting!.style}

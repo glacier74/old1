@@ -14,7 +14,9 @@ export const GoogleSheets = () => {
               By Zapier
             </div>
           </div>
-          <p className="text-sm text-slate-500 truncate">Send new lead captures to a spreadsheet.</p>
+          <p className="text-sm text-slate-500 truncate">
+            Send new lead captures to a spreadsheet.
+          </p>
         </div>
         <div>
           <a
