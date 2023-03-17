@@ -7,7 +7,7 @@ export const HomeUsecase: FC = () => {
 
   return (
     <section className="relative grid md:grid-cols-2">
-      <div className='py-24'>
+      <div className='bg-lime-50 py-24'>
         <div className='px-8 md:pr-32'>
           <div className='flex justify-end'>
             <div>

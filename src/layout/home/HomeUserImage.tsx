@@ -9,7 +9,7 @@ export const HomeUserImage: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section className="relative pb-0 bg-emerald-50">
+    <section className="relative pb-0">
       <div className="max-w-7xl mx-auto px-5 grid md:grid-cols-4 gap-4 place-items-center">
         <div className="col-span-2">
           <div className="py-16 md:py-32 px-4 text-slate-900">

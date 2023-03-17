@@ -34,8 +34,8 @@ const Home = ({ isLoggedIn, usersCount }: HomeProps): JSX.Element => {
     <HomeLayout>
       <HomeHeader />
       <HomeHeroSection usersCount={usersCount} />
-      <HomeUserImage />
       <HomeUsecase />
+      <HomeUserImage />
       <HomeFeature />
       <HomeTestimonials />
       <HomeLetter />
