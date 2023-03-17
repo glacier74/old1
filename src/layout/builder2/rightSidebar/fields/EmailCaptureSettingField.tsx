@@ -116,7 +116,7 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
             <div className="flex items-center justify-between">
               <div className="builder-text-title">Placeholder</div>
               <Input
-                className="ml-2 !px-2 !py-[0.34rem]"
+                className="ml-2 max-w-[11.25rem] !px-2 !py-[0.34rem]"
                 value={setting?.fullName?.placeholder || 'Your name'}
                 onChange={handleFullNameChange}
               />
@@ -143,7 +143,7 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
           <div className="flex items-center justify-between">
             <div className="builder-text-title">Placeholder</div>
             <Input
-              className="ml-2 !px-2 !py-[0.34rem]"
+              className="ml-2 max-w-[11.25rem] !px-2 !py-[0.34rem]"
               value={setting?.email.placeholder || 'Enter email address'}
               onChange={handleEmailAddressChange}
             />
@@ -169,7 +169,7 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
           <div className="flex items-center justify-between">
             <div className="builder-text-title">Text</div>
             <Input
-              className="ml-2 !px-2 !py-[0.34rem]"
+              className="ml-2 max-w-[11.25rem] !px-2 !py-[0.34rem]"
               value={setting?.button.text}
               onChange={handleChange}
             />

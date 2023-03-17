@@ -115,8 +115,8 @@ export const ConnectStripe: FC<ConnectStripeProps> = ({ setting, updateSetting }
 
   return (
     <>
-    <div>
-        <div className="mb-1 text-sm text-slate-700">Stripe</div>
+      <div>
+        <div className="mb-1 text-sm text-slate-900">Stripe</div>
         <div>
           {setting?.stripeAccount ? (
             <div className="text-sm text-slate-700">Connected with: {setting?.stripeEmail}</div>
@@ -136,7 +136,7 @@ export const ConnectStripe: FC<ConnectStripeProps> = ({ setting, updateSetting }
 
       {setting?.stripeAccount && (
         <div>
-          <div className="mb-1 text-sm text-slate-700">Price</div>
+          <div className="mb-1 text-sm text-slate-900">Price</div>
           <Input value={setting?.priceId} onChange={handlePriceIdChange} />
         </div>
       )}
@@ -181,7 +181,7 @@ export const PaymentSettingField: FC<SettingFieldProps> = ({ schema }) => {
         <div className="mb-1 text-sm text-slate-700">Success message</div>
         <Input.Textarea value={setting?.message} onChange={handleMessageChange} />
       </div>
-      
+
       <div>
         <AutomatedEmail
           setting={setting}

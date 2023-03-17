@@ -52,9 +52,9 @@ export const ImageSettingField: FC<SettingFieldProps> = ({ schema }) => {
       </div>
 
       <div className="flex items-center justify-between">
-        <div className="mb-1 text-sm text-slate-700">Alt text</div>
+        <div className="text-sm text-slate-700">Alt text</div>
         <Input
-          className="!px-2 !py-[0.34rem]"
+          className="max-w-[11.25rem] !px-2 !py-[0.34rem]"
           value={setting?.alt}
           placeholder="Enter image alt here"
           onChange={handleAltChange}

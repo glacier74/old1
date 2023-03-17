@@ -73,7 +73,7 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
               email: email!
             }
           })
-    
+
           window.location.href = result.sessionUrl
         } else {
           await PublicApiService.createContact(productId, {
@@ -82,7 +82,7 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
             name: name!,
             email: email!
           })
-  
+
           notification.success({
             title: message
           })
@@ -138,10 +138,14 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
       />
       <button
         type="submit"
-        className="earlybird-email-capture__submit-button"
+        className={clsx('earlybird-email-capture__submit-button earlybird-submit-button', {
+          'earlybird-submit-button-loading': loading
+        })}
+        disabled={loading}
         style={linkStyle(button?.appearance || 'filled', button?.style)}
       >
-        {loading ? <Spin /> : button?.text}
+        {loading && <Spin />}
+        <span>{button?.text}</span>
       </button>
       <style
         dangerouslySetInnerHTML={{

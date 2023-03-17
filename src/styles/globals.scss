@@ -1939,7 +1939,7 @@ button.block-header-button {
 //}
 
 .builder-setting-link-select {
-  @apply w-[13rem];
+  @apply w-[11.25rem];
 
   .select-button {
     @apply px-2 py-0.5 h-[2rem] rounded-md cursor-pointer;
@@ -1961,5 +1961,23 @@ button.block-header-button {
     img {
       @apply w-full h-full object-cover;
     }
+  }
+}
+
+.earlybird-submit-button {
+  @apply relative;
+
+  &[disabled] {
+    @apply opacity-70 pointer-events-none;
+  }
+
+  .spin {
+    @apply absolute top-1/2 left-1/2 -ml-2.5 -mt-2.5;
+  }
+}
+
+.earlybird-submit-button-loading {
+  span {
+    @apply opacity-0;
   }
 }

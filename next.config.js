@@ -46,6 +46,10 @@ module.exports = {
       {
         protocol: 'https',
         hostname: '**.twimg.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.gravatar.com'
       }
     ]
   },

@@ -116,7 +116,7 @@ export const AutomatedEmail: FC<AutomatedEmailProps> = ({
 
           <div>
             <div className="mb-2 text-sm text-slate-700">
-              You can use the following variables enclosed in curly braces { }, which will be
+              You can use the following variables enclosed in curly braces {}, which will be
               replaced with their corresponding values.
             </div>
 
