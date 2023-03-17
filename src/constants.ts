@@ -387,10 +387,13 @@ export const PLAN_LEVELS: AnyMap<number> = {
   plan_shipper: 2
 }
 
-export const PLAN_NAMES: AnyMap<string, number> = {
+export const PLAN_NAMES: AnyMap<string, number | string> = {
   [PLAN_LEVELS.plan_free]: 'Free',
   [PLAN_LEVELS.plan_superior]: 'Superior',
-  [PLAN_LEVELS.plan_shipper]: 'Shipper'
+  [PLAN_LEVELS.plan_shipper]: 'Shipper',
+  plan_free: 'Free',
+  plan_superior: 'Superior',
+  plan_shipper: 'Shipper'
 }
 
 export const PLAN_INTERVALS: AnyMap<string> = {

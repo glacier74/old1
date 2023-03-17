@@ -436,9 +436,7 @@ button.switch-checked {
 }
 
 .avatar {
-  @apply object-cover;
-  width: inherit;
-  height: inherit;
+  @apply w-full h-full object-cover;
 
   .avatar-text {
     @apply font-medium uppercase;
@@ -1939,7 +1937,7 @@ button.block-header-button {
 //}
 
 .builder-setting-link-select {
-  @apply w-[11.25rem];
+  @apply w-[13rem];
 
   .select-button {
     @apply px-2 py-0.5 h-[2rem] rounded-md cursor-pointer;
