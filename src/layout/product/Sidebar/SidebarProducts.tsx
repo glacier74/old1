@@ -7,6 +7,7 @@ import type { FC } from 'react'
 import { useEffect, useState } from 'react'
 
 import { RoundImage } from '~/components'
+import { PLAN_NAMES } from '~/constants'
 import { useStore } from '~/store'
 
 import { useProduct, useProductId } from '../../hook'
@@ -37,9 +38,10 @@ const ProductItem: FC<ProductItemProps> = ({ product, onClick }) => {
         retainLength={2}
       />
 
-      <div className="ml-4 flex-auto min-w-0 max-w-[8.75rem]">
+      <div className="ml-4 flex-auto min-w-0 max-w-[9.75rem]">
         <p className="text-sm font-medium text-slate-700 truncate">{product?.name}</p>
         <p className="text-xs text-slate-500 truncate">
+          {product.subscription ? PLAN_NAMES[product.subscription.planId] : 'Free'} Plan -{' '}
           {t('product.member', { count: product?.users.length })}
         </p>
       </div>
@@ -98,7 +100,7 @@ export const SidebarProducts: FC = () => {
   }
 
   const Overlay = (
-    <div className="menus product-dropdown-menus w-64">
+    <div className="menus product-dropdown-menus !w-[16rem]">
       {products.map(product => (
         <ProductItem key={product.id} product={product} onClick={handleClick} />
       ))}

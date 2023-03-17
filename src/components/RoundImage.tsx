@@ -21,21 +21,23 @@ export const RoundImage: FC<RoundImageProps> = ({
 }) => {
   if (src) {
     return (
-      <Image
-        className={clsx(
-          'avatar',
-          {
-            'avatar-circular': circular,
-            'avatar-rounded': rounded
-          },
-          className
-        )}
-        src={src}
-        quality={95}
-        alt=""
-        width={imageSize}
-        height={imageSize}
-      />
+      <div style={{ width: imageSize, height: imageSize }}>
+        <Image
+          className={clsx(
+            'avatar',
+            {
+              'avatar-circular': circular,
+              'avatar-rounded': rounded
+            },
+            className
+          )}
+          src={src}
+          quality={95}
+          alt=""
+          width={imageSize}
+          height={imageSize}
+        />
+      </div>
     )
   }
 
