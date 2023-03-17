@@ -7,9 +7,9 @@ import FeatureValidateImage from '~public/static/feature-validate.png'
 
 export const HomeFeature: FC = () => (
   <>
-    <section>
+    <section className='bg-emerald-50'>
       <div className="max-w-5xl mx-auto px-5">
-        <div className="pt-32 md:pt-48 pb-10">
+        <div className="py-24">
           <div className="text-3xl md:text-5xl font-extrabold text-slate-900">
             Build a landing page in 10 minutes
           </div>
@@ -30,7 +30,7 @@ export const HomeFeature: FC = () => (
 
     <section>
       <div className="max-w-5xl mx-auto px-5">
-        <div className="pt-16 md:pt-28 pb-10 text-slate-900">
+        <div className="py-24 text-slate-900">
           <div className="text-3xl md:text-5xl font-extrabold">Pitch to your customers</div>
           <div className="mt-5 mb-7 w-full text-xl md:text-2xl leading-tight text-slate-700">
             Transform your idea into a compelling pitch deck that interests your audience. Spend
@@ -47,9 +47,9 @@ export const HomeFeature: FC = () => (
       </div>
     </section>
 
-    <section>
+    <section className='bg-emerald-50'>
       <div className="max-w-5xl mx-auto px-5">
-        <div className="pt-16 md:pt-28 pb-10 text-slate-900">
+        <div className="py-24 text-slate-900">
           <div className="text-3xl md:text-5xl font-extrabold ">Validate as quick as possible</div>
           <div className="mt-5 mb-7 w-full text-xl md:text-2xl leading-tight text-slate-700">
             Start engaging with potential customers. Validate the demand for your product and accept

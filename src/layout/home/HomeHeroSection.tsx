@@ -16,14 +16,14 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
     <section>
       <div className="relative text-slate-900 max-w-7xl mx-auto px-8 md:px-12 z-10">
         <div className="pt-32 md:pt-48 text-center">
-          <div className="inline-block rounded-full bg-emerald-100 px-4 py-2 mb-8 text-base text-emerald-700">
+          <div className="inline-block rounded-full bg-emerald-50 px-6 py-2 mb-8 text-sm md:text-base text-emerald-700">
             Acquire your first customer by{' '}
             <span className="font-bold text-emerald-900">
               {dayjs().add(10, 'm').format('h:mm A')}
             </span>{' '}
-            with no waiting.
+            with no waiting
           </div>
-          <h1 className="text-3xl leading-tight md:text-5xl font-extrabold">
+          <h1 className="text-4xl md:text-5xl leading-tight font-extrabold md:font-bold">
             Create{' '}
             <span className="relative whitespace-nowrap text-emerald-500">
               <svg
@@ -39,7 +39,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
             that <br />
             transform ideas into customers
           </h1>
-          <div className="max-w-2xl mx-auto text-slate-700 text-base md:text-lg mt-4 leading-tight">
+          <div className="max-w-2xl mx-auto text-slate-500 text-base md:text-lg mt-4 leading-tight">
           Your ideas could be worth millions if validated, and you don't need any technical knowledge to get started!
           </div>
         </div>
@@ -48,7 +48,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
           <div className="flex justify-center flex-col md:flex-row items-center space-y-5 space-x-0 md:space-y-0 md:space-x-5">
             <Link
               href="/sign-up"
-              className="w-auto px-4 py-3 md:px-8 md:py-3 bg-slate-900 rounded-full text-white"
+              className="w-auto px-4 py-3 md:px-8 md:py-3 bg-slate-900 rounded-full text-white text-sm md:text-base"
               title={t('home.signUp')}
             >
               Sign up today, <span className='font-bold'>it's FREE!</span>
@@ -56,11 +56,11 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto text-center mb-24">
+        <div className="max-w-7xl mx-auto text-center mb-16">
           <div className="md:flex justify-center items-center">
             <div>
               <div className="flex place-content-center">
-                <div className="text-base sm:text-base text-slate-700 mb-4">
+                <div className="text-sm sm:text-base text-slate-700 mb-4">
                   Helping{' '}
                   <span className="font-medium">{new Intl.NumberFormat().format(usersCount)}</span>{' '}
                   makers and startups build their beautiful landing pages
@@ -92,7 +92,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
           <Image
             src={HomeBanner}
             alt="EarlyBird Screenshot"
-            className="w-full shadow-xl rounded-lg"
+            className="w-full shadow-sm rounded-lg"
             quality={100}
             width={1184}
           />

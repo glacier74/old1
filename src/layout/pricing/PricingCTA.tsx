@@ -6,7 +6,7 @@ export const PricingCTA: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section className="bg-emerald-100">
+    <section className="bg-emerald-50">
       <div className="max-w-7xl mx-auto py-32 px-4 text-center">
         <h2 className="font-bold text-4xl text-slate-900">Try EarlyBird today for free</h2>
         <p className="max-w-3xl mx-auto mt-4 text-xl text-slate-700">

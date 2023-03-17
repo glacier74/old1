@@ -9,37 +9,22 @@ export const HomeUserImage: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section className="relative pb-0 bg-emerald-100">
+    <section className="relative pb-0 bg-emerald-50">
       <div className="max-w-7xl mx-auto px-5 grid md:grid-cols-4 gap-4 place-items-center">
         <div className="col-span-2">
           <div className="py-16 md:py-32 px-4 text-slate-900">
-            <h2 className="w-full text-3xl md:text-5xl font-extrabold">
-              Avoid burning time and money at early stage
+            <h2 className="w-full text-2xl md:text-4xl font-bold">
+              Stop burning time and money <br /> at early stage
             </h2>
-            <div className="w-full mt-4 text-lg md:text-xl text-slate-900">
-              Ensure that your product or business idea has potential and that the most critical
-              assumptions regarding the idea are valid.
+            <div className='w-full mt-8'>
+              <h3 className='text-xl font-medium'>How long could it take you to launch a new business?</h3>
+              <p>- It could range from a week to a year, depending on the individual.</p>
+              <h3 className='text-xl font-medium mt-4'>And how much would it cost?</h3>
+              <p>- It could cost anywhere from hundreds to thousands of dollars, or even more.</p>
+              <p className='mt-4'>It's important to be mindful of your time and money when starting a business. <span className='font-bold'>You don't want to regret wasting either of them.</span></p>
+              <p className='mt-4'>So what if you could build a landing page in 10 minutes to test if people are truly interested in what you are creating?</p>
             </div>
-            <div className="mt-8">
-              <div>
-                <h3 className="text-2xl font-medium mb-2">EarlyBird is for</h3>
-                <ul className="list-disc text-lg pl-4 leading-relaxed">
-                  <li>Users without development and design skills</li>
-                  <li>Running a simple online business</li>
-                  <li>Finding the best product-market fit</li>
-                </ul>
-              </div>
-              <div className="mt-4">
-                <h3 className="text-2xl font-medium mb-2">
-                  EarlyBird is <span className="font-extrabold">NOT</span> for
-                </h3>
-                <ul className="list-disc text-lg pl-4 leading-relaxed">
-                  <li>Building a complex web app</li>
-                  <li>Launching a website with bespoke design</li>
-                  <li>Running an offensive or illegal business</li>
-                </ul>
-              </div>
-            </div>
+            
           </div>
         </div>
         <div className="col-span-2 p-8">

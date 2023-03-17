@@ -23,7 +23,7 @@ interface Testimonial {
 
 const TestimonialTwitter: FC<{ testimonial: Testimonial }> = ({ testimonial }) => {
   return (
-    <div className="w-full bg-white shadow-md shadow-emerald-200/50 border border-slate-200 p-5 mb-4 rounded-md">
+    <div className="w-full bg-white shadow-md border border-slate-200 p-5 mb-4 rounded-md">
       <div className="w-full flex items-center">
         <a href={testimonial.accountUrl} target="_blank" rel="noreferrer">
           <img
@@ -89,7 +89,7 @@ const TestimonialTwitter: FC<{ testimonial: Testimonial }> = ({ testimonial }) =
 
 const TestimonialProducthunt: FC<{ testimonial: Testimonial }> = ({ testimonial }) => {
   return (
-    <div className="w-full bg-white shadow-md shadow-emerald-200/50 border border-slate-200 p-5 mb-4 rounded-md">
+    <div className="w-full bg-white shadow-md border border-slate-200 p-5 mb-4 rounded-md">
       <div className="w-full flex items-center">
         <a href={testimonial.postUrl} target="_blank" rel="noreferrer">
           <img
@@ -150,7 +150,7 @@ const TestimonialProducthunt: FC<{ testimonial: Testimonial }> = ({ testimonial 
 
 const TestimonialEmail: FC<{ testimonial: Testimonial }> = ({ testimonial }) => {
   return (
-    <div className="w-full bg-white shadow-md shadow-emerald-200/50 border border-slate-200 p-5 mb-4 rounded-md">
+    <div className="w-full bg-white shadow-md border border-slate-200 p-5 mb-4 rounded-md">
       <div className="w-full flex items-center">
         <div>
           <img
@@ -210,7 +210,7 @@ export const HomeTestimonials: FC = () => {
   )
 
   return (
-    <section className="relative py-32 mt-32 bg-emerald-100">
+    <section className="relative py-32">
       <div className="max-w-6xl mx-auto px-5">
         <h2 className="text-2xl text-center font-bold md:text-4xl text-slate-900">
           People really love EarlyBird

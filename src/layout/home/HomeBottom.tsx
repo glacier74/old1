@@ -6,7 +6,7 @@ export const HomeBottom: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section className="relative pb-0 bg-emerald-100">
+    <section className="relative pb-0">
       <div className="max-w-5xl mx-auto px-5">
         <div className="py-32 text-slate-900">
           <h2 className="w-full max-w-2xl mx-auto text-2xl md:text-4xl text-center font-bold">
