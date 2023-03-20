@@ -114,12 +114,14 @@ export const ConnectStripe: FC<ConnectStripeProps> = ({ setting, updateSetting }
   }
 
   return (
-    <>
-      <div>
-        <div className="mb-1 text-sm text-slate-900">Stripe</div>
+    <div className="space-y-2">
+      <div className="space-y-1">
+        <div className="text-sm font-medium text-slate-800">Stripe</div>
         <div>
           {setting?.stripeAccount ? (
-            <div className="text-sm text-slate-700">Connected with: {setting?.stripeEmail}</div>
+            <div className="text-xs text-slate-700">
+              Connected with: <span className="font-medium">{setting?.stripeEmail}</span>
+            </div>
           ) : (
             <Button
               className="w-full"
@@ -135,12 +137,24 @@ export const ConnectStripe: FC<ConnectStripeProps> = ({ setting, updateSetting }
       </div>
 
       {setting?.stripeAccount && (
-        <div>
-          <div className="mb-1 text-sm text-slate-900">Price</div>
+        <div className="space-y-1">
+          <div className="text-sm font-medium text-slate-800">Price ID</div>
+          <div className="text-xs text-slate-700">
+            Go to{' '}
+            <a
+              className="text-green-500"
+              href="https://dashboard.stripe.com/products/create"
+              target="_blank"
+            >
+              Stripe dashboard
+            </a>{' '}
+            and create a product. Once you have created the product, copy and paste the price ID
+            (e.g. price_0MlwwsKRmsNyao) here.
+          </div>
           <Input value={setting?.priceId} onChange={handlePriceIdChange} />
         </div>
       )}
-    </>
+    </div>
   )
 }
 
@@ -177,8 +191,8 @@ export const PaymentSettingField: FC<SettingFieldProps> = ({ schema }) => {
         />
       </div>
 
-      <div className="pt-4">
-        <div className="mb-1 text-sm text-slate-700">Success message</div>
+      <div className="pt-4 space-y-1">
+        <div className="text-sm text-slate-700">Success message</div>
         <Input.Textarea value={setting?.message} onChange={handleMessageChange} />
       </div>
 
