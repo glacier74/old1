@@ -4,13 +4,11 @@ import timezone from 'dayjs/plugin/timezone'
 import utc from 'dayjs/plugin/utc'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
 
 import { AvatarPickerField } from '~/components'
 import { CreateProductLayout } from '~/layout'
-import { Template } from '~/layout/product/Template'
 import { ProductService } from '~/service'
-import { useAsyncEffect, withTranslations } from '~/utils'
+import { withTranslations } from '~/utils'
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -18,22 +16,23 @@ dayjs.extend(timezone)
 const CreateProduct = (): JSX.Element => {
   const router = useRouter()
   const { t } = useTranslation()
-  const [templates, setTemplates] = useState<Template[]>([])
+  // const [templates, setTemplates] = useState<Template[]>([])
 
   async function handleFinish(values: AnyMap<any>) {
     const productId = await ProductService.create({
       ...values,
       // eslint-disable-next-line import/namespace
       timezone: dayjs.tz.guess(),
-      blocks: templates.find(t => t.id === values.templateId)?.blocks || []
+      blocks: []
+      // blocks: templates.find(t => t.id === values.templateId)?.blocks || []
     })
 
     await router.replace(`/product/${productId}/edit`)
   }
 
-  useAsyncEffect(async () => {
-    setTemplates(await ProductService.templates())
-  }, [])
+  // useAsyncEffect(async () => {
+  //   setTemplates(await ProductService.templates())
+  // }, [])
 
   return (
     <CreateProductLayout seo={{ title: t('createProduct.title') }}>
@@ -88,13 +87,13 @@ const CreateProduct = (): JSX.Element => {
           <AvatarPickerField namespace="avatar" enableUnsplash={false} />
         </Form.Item>
 
-        <Form.Item
-          name="templateId"
-          label={t('createProduct.templates')}
-          rules={[{ required: true, message: t('createProduct.invalidTemplate') }]}
-        >
-          <Template templates={templates} />
-        </Form.Item>
+        {/*<Form.Item*/}
+        {/*  name="templateId"*/}
+        {/*  label={t('createProduct.templates')}*/}
+        {/*  rules={[{ required: true, message: t('createProduct.invalidTemplate') }]}*/}
+        {/*>*/}
+        {/*  <Template templates={templates} />*/}
+        {/*</Form.Item>*/}
       </Form.Custom>
     </CreateProductLayout>
   )
