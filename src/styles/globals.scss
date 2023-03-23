@@ -1962,6 +1962,21 @@ button.block-header-button {
   }
 }
 
+.builder-setting-payment-methods {
+  .tabs-segment,
+  .tabs-nav-list {
+    @apply w-full;
+  }
+
+  .tabs-segment {
+    @apply mb-2;
+  }
+
+  .tabs-nav {
+    @apply flex-1 py-1;
+  }
+}
+
 .earlybird-submit-button {
   @apply relative;
 

@@ -1,6 +1,6 @@
-import { Spin, notification } from '@heyforms/ui'
+import { Spin, notification, stopEvent } from '@heyforms/ui'
 import clsx from 'clsx'
-import { FC, useCallback, useState } from 'react'
+import { FC, MouseEvent, useCallback, useState } from 'react'
 
 import { useBuilderContext } from '~/layout/builder2/context'
 import { PublicApiService } from '~/service'
@@ -10,10 +10,12 @@ import { linkStyle } from './helper'
 
 interface $PaymentProps extends ComponentProps {
   appearance?: 'filled' | 'outline'
+  paymentMethod: 'stripe' | 'link'
+  paymentLinks?: string[]
   html: string
 }
 
-export const $Payment: FC<$PaymentProps> = ({
+const $Stripe: FC<Omit<$PaymentProps, 'paymentMethod' | 'paymentLinks'>> = ({
   id,
   className,
   appearance = 'filled',
@@ -27,7 +29,7 @@ export const $Payment: FC<$PaymentProps> = ({
 
   const handleClick = useCallback(async () => {
     if (state?.isBuilderMode) {
-      alert('Payment is disabled in preview mode.')
+      return alert('Payment is disabled in preview mode.')
     }
 
     setLoading(true)
@@ -66,4 +68,35 @@ export const $Payment: FC<$PaymentProps> = ({
       <span>{html}</span>
     </button>
   )
+}
+
+const $Link: FC<Omit<$PaymentProps, 'paymentMethod'>> = ({
+  className,
+  appearance = 'filled',
+  html,
+  paymentLinks = [],
+  style
+}) => {
+  const { state } = useBuilderContext()
+
+  function handleClick(event: MouseEvent) {
+    if (state?.isBuilderMode) {
+      stopEvent(event)
+    }
+  }
+
+  return (
+    <a
+      className={clsx('earlybird-payment earlybird-submit-button', className)}
+      href={paymentLinks[0]}
+      style={linkStyle(appearance, style)}
+      onClick={handleClick}
+    >
+      {html}
+    </a>
+  )
+}
+
+export const $Payment: FC<$PaymentProps> = ({ paymentMethod = 'stripe', ...restProps }) => {
+  return paymentMethod === 'stripe' ? <$Stripe {...restProps} /> : <$Link {...restProps} />
 }

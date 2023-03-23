@@ -1,4 +1,4 @@
-import { Button, Input, notification } from '@heyforms/ui'
+import { Button, Input, Tabs, notification } from '@heyforms/ui'
 import { IconArrowUpRight } from '@tabler/icons'
 import { FC, useState } from 'react'
 
@@ -115,25 +115,22 @@ export const ConnectStripe: FC<ConnectStripeProps> = ({ setting, updateSetting }
 
   return (
     <div className="space-y-2">
-      <div className="space-y-1">
-        <div className="text-sm font-medium text-slate-800">Stripe</div>
-        <div>
-          {setting?.stripeAccount ? (
-            <div className="text-xs text-slate-700">
-              Connected with: <span className="font-medium">{setting?.stripeEmail}</span>
-            </div>
-          ) : (
-            <Button
-              className="w-full"
-              type="success"
-              trailing={<IconArrowUpRight />}
-              loading={loading}
-              onClick={authorize.request}
-            >
-              Connect with Stripe
-            </Button>
-          )}
-        </div>
+      <div>
+        {setting?.stripeAccount ? (
+          <div className="text-xs text-slate-700">
+            Connected with Stripe: <span className="font-medium">{setting?.stripeEmail}</span>
+          </div>
+        ) : (
+          <Button
+            className="w-full"
+            type="success"
+            trailing={<IconArrowUpRight />}
+            loading={loading}
+            onClick={authorize.request}
+          >
+            Connect with Stripe
+          </Button>
+        )}
       </div>
 
       {setting?.stripeAccount && (
@@ -165,6 +162,14 @@ export const PaymentSettingField: FC<SettingFieldProps> = ({ schema }) => {
     updateSetting(value, 'html')
   }
 
+  function handlePaymentMethodChange(value: any) {
+    updateSetting(value, 'paymentMethod')
+  }
+
+  function handlePaymentLinkChange(value: any) {
+    updateSetting(value, 'paymentLinks.0')
+  }
+
   function handleMessageChange(value: any) {
     updateSetting(value, 'message')
   }
@@ -175,11 +180,32 @@ export const PaymentSettingField: FC<SettingFieldProps> = ({ schema }) => {
 
   return (
     <div className="builder-setting-text space-y-2">
-      <ConnectStripe setting={setting} updateSetting={updateSetting} />
+      <Tabs
+        className="builder-setting-payment-methods"
+        type="segment"
+        defaultActiveName={setting?.paymentMethod || 'stripe'}
+        onChange={handlePaymentMethodChange}
+      >
+        <Tabs.Pane name="stripe" title="Stripe">
+          <ConnectStripe setting={setting} updateSetting={updateSetting} />
+        </Tabs.Pane>
+        <Tabs.Pane name="link" title="Link">
+          <Input
+            type="url"
+            value={setting.paymentLinks?.[0]}
+            placeholder="Paste your payment link here"
+            onChange={handlePaymentLinkChange}
+          />
+        </Tabs.Pane>
+      </Tabs>
 
       <div className="flex items-center justify-between">
         <div className="text-sm">Button text</div>
-        <Input value={setting?.html} onChange={handleChange} />
+        <Input
+          className="ml-2 max-w-[11.25rem] !px-2 !py-[0.34rem]"
+          value={setting?.html}
+          onChange={handleChange}
+        />
       </div>
 
       <div className="flex items-center justify-between">
