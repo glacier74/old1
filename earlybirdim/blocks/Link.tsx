@@ -12,6 +12,7 @@ interface $LinkProps extends ComponentProps {
   href: string
   appearance?: 'plain' | 'filled' | 'outline'
   isInNewTab?: boolean
+  onClick?: (event: MouseEvent) => void
 }
 
 export const $Link: FC<$LinkProps> = ({
@@ -21,15 +22,18 @@ export const $Link: FC<$LinkProps> = ({
   appearance = 'plain',
   isInNewTab,
   className,
+  style,
   children,
-  style
+  onClick
 }) => {
   const { state } = useBuilderContext()
 
   function handleClick(event: MouseEvent) {
     if (state?.isBuilderMode) {
-      stopEvent(event)
+      return stopEvent(event)
     }
+
+    onClick?.(event)
   }
 
   return (

@@ -13,12 +13,15 @@ const render = function ({ productId, block }) {
   function handleClick() {
     setMobileMenuOpen(isMobileMenuOpen => !isMobileMenuOpen)
   }
+  function handleLinkClick() {
+    setMobileMenuOpen(false)
+  }
   return (
     <Block productId={productId} block={block}>
       <div className={`header2__container ${isMobileMenuOpen ? 'header2__container-open' : ''}`}>
         <div className="header2__wrapper">
           <div className="header2__left">
-            <Link className="header2__logo" {...block.setting.Link1}>
+            <Link className="header2__logo" {...block.setting.Link1} onClick={handleLinkClick}>
               <Image {...block.setting.Link1.Image1} />
 
               <Text {...block.setting.Link1.Text1} />
@@ -41,7 +44,7 @@ const render = function ({ productId, block }) {
           <div className="header2__right">
             <List as="nav" className="header2__navigation">
               {block.setting.List1?.map(List1 => (
-                <Link {...List1.Link1} key={List1.id}>
+                <Link {...List1.Link1} key={List1.id} onClick={handleLinkClick}>
                   <Text {...List1.Link1.Text1} />
                 </Link>
               ))}
@@ -49,7 +52,7 @@ const render = function ({ productId, block }) {
 
             <List className="header2__cta">
               {block.setting.List2?.map(List2 => (
-                <Link {...List2.Link1} key={List2.id}>
+                <Link {...List2.Link1} key={List2.id} onClick={handleLinkClick}>
                   <Text {...List2.Link1.Text1} />
                 </Link>
               ))}

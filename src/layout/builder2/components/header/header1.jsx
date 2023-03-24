@@ -1,17 +1,21 @@
 import {
   $Block as Block,
-  $Link as Link,
-  $Image as Image,
-  $List as List,
-  $Text as Text,
+  $Group as Group,
   $Icon as Icon,
-  $Group as Group
+  $Image as Image,
+  $Link as Link,
+  $List as List,
+  $Text as Text
 } from '@earlybirdim/blocks'
 import { useState } from 'react'
+
 const render = function ({ productId, block }) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
   function handleClick() {
     setMobileMenuOpen(isMobileMenuOpen => !isMobileMenuOpen)
+  }
+  function handleLinkClick() {
+    setMobileMenuOpen(false)
   }
   return (
     <Block productId={productId} block={block}>
@@ -19,7 +23,7 @@ const render = function ({ productId, block }) {
         <div className="header1__wrapper">
           <div className="header1__nav">
             <div className="header1__nav-left">
-              <Link className="header1__logo" {...block.setting.Link1}>
+              <Link className="header1__logo" {...block.setting.Link1} onClick={handleLinkClick}>
                 <Image {...block.setting.Link1.Image1} />
 
                 <Text {...block.setting.Link1.Text1} />
@@ -40,7 +44,7 @@ const render = function ({ productId, block }) {
             </div>
 
             <div className="header1__nav-right">
-              <List as="nav" className="header1__navigation">
+              <List as="nav" className="header1__navigation" onClick={handleLinkClick}>
                 {block.setting.List1?.map(List1 => (
                   <Link {...List1.Link1} key={List1.id}>
                     <Text {...List1.Link1.Text1} />
@@ -50,7 +54,7 @@ const render = function ({ productId, block }) {
 
               <List className="header1__cta">
                 {block.setting.List2?.map(List2 => (
-                  <Link {...List2.Link1} key={List2.id}>
+                  <Link {...List2.Link1} key={List2.id} onClick={handleLinkClick}>
                     <Icon {...List2.Link1.Icon1} />
 
                     <Text {...List2.Link1.Text1} />
