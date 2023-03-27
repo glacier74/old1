@@ -110,6 +110,12 @@ export const ConnectStripe: FC<ConnectStripeProps> = ({ setting, updateSetting }
   )
 
   function handlePriceIdChange(value: any) {
+    if (!value.startsWith('price_')) {
+      return notification.error({
+        title: "Error: the Stripe price ID must start with 'price_'"
+      })
+    }
+
     updateSetting(value, 'priceId')
   }
 
@@ -148,7 +154,11 @@ export const ConnectStripe: FC<ConnectStripeProps> = ({ setting, updateSetting }
             and create a product. Once you have created the product, copy and paste the price ID
             (e.g. price_0MlwwsKRmsNyao) here.
           </div>
-          <Input value={setting?.priceId} onChange={handlePriceIdChange} />
+          <Input
+            value={setting?.priceId}
+            placeholder="e.g. price_0MlwwsKRmsNyao"
+            onChange={handlePriceIdChange}
+          />
         </div>
       )}
     </div>
