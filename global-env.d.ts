@@ -581,4 +581,46 @@ declare global {
     createdAt: string
     updatedAt: string
   }
+
+  interface CollectionRecord {
+    id: string
+    'UX/UI principles': string
+    'Visual content': string
+    'Color schemes': string
+    'Mobile responsiveness': string
+    Slug: string
+    Category: string
+    'Design style': string
+    'Target audience': string
+    'Meta title': string
+    'Copy-writing style': string
+    'Meta description': string
+    URL: string
+    Layout: string
+    'Purpose or objective': string
+    Thumbnail: AirtableAttachment[]
+  }
+
+  interface AirtableAttachment {
+    id: string
+    width: number
+    height: number
+    url: string
+    filename: string
+    size: number
+    type: string
+    thumbnails: AirtableImages
+  }
+
+  interface AirtableImages {
+    small: AirtableImage
+    large: AirtableImage
+    full: AirtableImage
+  }
+
+  interface AirtableImage {
+    url: string
+    width: number
+    height: number
+  }
 }

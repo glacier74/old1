@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-export const IconPlan: FC = props => {
+export const IconPlan: FC<any> = props => {
   return (
     <svg
       width="25"

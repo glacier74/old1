@@ -50,6 +50,10 @@ module.exports = {
       {
         protocol: 'https',
         hostname: '**.gravatar.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.airtableusercontent.com'
       }
     ]
   },

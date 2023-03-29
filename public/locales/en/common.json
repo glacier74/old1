@@ -41,7 +41,7 @@
     "title": "Free Gumroad Alternative - EarlyBird"
    },
   "login": {
-    "title": "Login · EarlyBird",
+    "title": "Login - EarlyBird",
     "heading": "👋 Welcome back!",
     "description": "Log in to your account or <1>create an account</1>",
     "signInWith": "Sign in with",
@@ -59,7 +59,7 @@
     "loginWithGithub": "Github"
   },
   "signUp": {
-    "title": "$t(signUp.heading) · EarlyBird",
+    "title": "$t(signUp.heading) - EarlyBird",
     "heading": "Create an account",
     "description": "Get started for free, no credit card required.",
     "name": "Name",
@@ -69,14 +69,14 @@
     "submit": "Get started"
   },
   "forgotPassword": {
-    "title": "Forgot password · EarlyBird",
+    "title": "Forgot password - EarlyBird",
     "heading": "Forgot password?",
     "description": "We'll send you an email with verification code.",
     "continue": "Continue",
     "back": "Back to sign in"
   },
   "resetPassword": {
-    "title": "$t(resetPassword.heading) · EarlyBird",
+    "title": "$t(resetPassword.heading) - EarlyBird",
     "heading": "Reset password",
     "description": "We've sent you an email with a 6-digit verification code, please check your inbox at",
     "code": "Verification code",
@@ -86,7 +86,7 @@
     "passwordMismatch": "Your new password and repeat password do not match."
   },
   "confirmEmail": {
-    "title": "Confirm email · EarlyBird",
+    "title": "Confirm email - EarlyBird",
     "heading": "Check your email",
     "code": "Verification code",
     "invalidCode": "Invalid verification code"
@@ -140,7 +140,7 @@
     "invalidTemplate": "The template is not allowed to be empty"
   },
   "account": {
-    "title": "Account · EarlyBird",
+    "title": "Account - EarlyBird",
     "heading": "Account",
     "description": "Changes to account will apply to all of your products.",
     "avatar": {
@@ -183,14 +183,14 @@
     }
   },
   "plan": {
-    "title": "Plans · EarlyBird",
+    "title": "Plans - EarlyBird",
     "heading": "Plans",
     "description": "You are currently on the {{planName}} plan.",
     "upgrade": "You have successfully upgraded to the {{planName}} plan.",
     "downgrade": "You have successfully downgraded to the {{planName}} plan."
   },
   "billing": {
-    "title": "Billing · EarlyBird",
+    "title": "Billing - EarlyBird",
     "heading": "Billing",
     "description": "Manage your billing information and invoices."
   },
@@ -224,7 +224,7 @@
     "you": "You"
   },
   "engagements": {
-    "title": "Lead capture · {{name}}",
+    "title": "Lead capture - {{name}}",
     "heading": "Lead capture",
     "description": "Start engaging with potential buyers and communities.",
     "payment": "Payment",
@@ -267,7 +267,7 @@
     "operatingSystem": "Operating system"
   },
   "productSettings": {
-    "title": "Settings · {{name}}",
+    "title": "Settings - {{name}}",
     "heading": "Settings",
     "updated": "Landing page settings have been updated successfully",
     "general": {
@@ -320,7 +320,7 @@
     }
   },
   "builder": {
-    "title": "Edit · {{name}}",
+    "title": "Edit - {{name}}",
     "meta": {
       "name": "Meta",
       "title": "Meta title",
@@ -434,7 +434,7 @@
     }
   },
   "invite": {
-    "title": "Invitation · EarlyBird",
+    "title": "Invitation - EarlyBird",
     "heading": "You've been invited to {{inviter}}'s landing page",
     "description": "Join the landing page and start working together!",
     "errorTip": "If you have trouble join the landing page, please contact the page owner or EarlyBird support.",
@@ -443,11 +443,11 @@
     "backHome": "Back to EarlyBird"
   },
   "stripe": {
-    "title": "$t(stripe.connecting) · EarlyBird",
+    "title": "$t(stripe.connecting) - EarlyBird",
     "connecting": "Connecting with stripe"
   },
   "integrations": {
-    "title": "Integrate with apps · {{name}}",
+    "title": "Integrate with apps - {{name}}",
     "heading": "Integrate with apps",
     "description": "Connect your lead capture data with your favorite apps.",
     "connecting": "Connecting with your favorite apps"
@@ -463,7 +463,7 @@
   },
   "openApp": {
     "authorize": {
-      "title": "Authorize · EarlyBird",
+      "title": "Authorize - EarlyBird",
       "heading": "To continue, please authorize {{openAppName}} to access the following information from your EarlyBird account:",
       "account": {
         "heading": "Account details",
@@ -482,5 +482,8 @@
         "description": "Allows {{openAppName}} to get a list of your lead capture payments"
       }
     }
+  },
+  "collection": {
+    "title": "Collections - EarlyBird"
   }
 }
