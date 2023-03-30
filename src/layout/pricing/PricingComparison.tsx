@@ -1,4 +1,5 @@
-import { IconCheck, IconMinus } from '@tabler/icons'
+import { Tooltip } from '@heyforms/ui'
+import { IconCheck, IconHelp, IconMinus } from '@tabler/icons'
 import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
 import { FC, Fragment } from 'react'
@@ -34,7 +35,25 @@ const sections = [
   {
     name: 'Build',
     features: [
-      { name: 'Landing page(s)', tiers: { Starter: '1', Superior: '5', Shipper: '20' } },
+      {
+        name: 'Landing page(s)',
+        help: (
+          <Tooltip
+            ariaLabel={
+              <div>
+                <div>Landing page(s)</div>
+                <p>For productive shippers who want to work more efficiently.</p>
+              </div>
+            }
+            placement="right"
+          >
+            <span className="cursor-pointer">
+              <IconHelp className="w-5 h-5 text-slate-400 transition hover:text-slate-500" />
+            </span>
+          </Tooltip>
+        ),
+        tiers: { Starter: '1', Superior: '5', Shipper: '20' }
+      },
       {
         name: 'Monthly visits',
         tiers: { Starter: '1,000', Superior: '50,000', Shipper: '200,000' }
@@ -107,7 +126,10 @@ export const PricingComparisonSections: FC = () => {
           {section.features.map((feature: any) => (
             <tr key={feature.name}>
               <th className="py-4 px-6 text-sm font-normal text-slate-700 text-left" scope="row">
-                {feature.name}
+                <div className="flex items-center justify-between">
+                  <span>{feature.name}</span>
+                  {feature.help}
+                </div>
               </th>
               {PLAN_TIERS.map(tier => (
                 <td key={tier.name} className="py-4 px-6">
@@ -194,7 +216,7 @@ export const PricingComparison: FC<{
                     <button
                       type="button"
                       className={clsx(
-                        'relative w-1/2 rounded-full py-2 text-sm font-medium whitespace-nowrap focus:outline-none sm:w-auto sm:px-4',
+                        'relative w-1/2 rounded-full py-2 text-sm font-medium whitespace-nowrap focus:outline-none sm:px-4',
                         billingCycle === 'monthly'
                           ? 'bg-slate-50 border-slate-50 text-slate-900 shadow-sm'
                           : 'border-transparent text-slate-900'
@@ -206,7 +228,7 @@ export const PricingComparison: FC<{
                     <button
                       type="button"
                       className={clsx(
-                        'ml-0.5 relative w-1/2 border rounded-full py-2 text-sm font-medium whitespace-nowrap focus:outline-none sm:w-auto sm:px-4',
+                        'ml-0.5 relative w-1/2 border rounded-full py-2 text-sm font-medium whitespace-nowrap focus:outline-none sm:px-4',
                         billingCycle === 'yearly'
                           ? 'bg-slate-50 border-slate-50 text-slate-900 shadow-sm'
                           : 'border-transparent text-slate-900'
