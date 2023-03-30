@@ -73,7 +73,7 @@ export const CollectionRecords: FC<{
                       <Link className="group" href={`/collections/${record.Slug}`}>
                         <div className="aspect-w-10 aspect-h-7 block w-full overflow-hidden rounded-t-lg bg-slate-100/50">
                           <AirtableImage
-                            className="pointer-events-none object-cover transition-transform transform-gpu ease-in-out group-hover:scale-105"
+                            className="pointer-events-none object-cover transition-transform transform-gpu ease-in-out"
                             attachments={record.Thumbnail}
                             alt={record.Title}
                             width={400}

@@ -62,15 +62,15 @@ export const HomeHeader: FC = () => {
                 Pricing
               </Link>
               <Link
-                href="https://earlybird.im/blog/tag/changelog/"
-                title={t('common.changelog')}
+                href="/collections"
+                title={t('collections.title')}
                 className="hidden md:block hover:opacity-80"
               >
-                Changelog
+                Collections
               </Link>
               <Link
                 href="/blog"
-                title={t('common.blog')}
+                title={t('blog.title')}
                 className="hidden md:block hover:opacity-80"
               >
                 Blog
@@ -110,20 +110,20 @@ export const HomeHeader: FC = () => {
         <div className="fixed top-20 left-0 right-0 bg-white rounded-lg shadow-xl z-10 md:hidden">
           <div className="flex flex-col py-5 px-5">
             <div className="flex flex-col space-y-2 text-center">
-              <Link href="/features" title={t('common.features')} className="hover:opacity-80">
+              <Link href="/features" title={t('features.title')} className="hover:opacity-80">
                 Features
               </Link>
-              <Link href="/pricing" title={t('common.pricing')} className="hover:opacity-80">
+              <Link href="/pricing" title={t('pricing.title')} className="hover:opacity-80">
                 Pricing
               </Link>
               <Link
-                href="https://earlybird.im/blog/tag/changelog/"
-                title={t('common.changelog')}
+                href="/collections"
+                title={t('collections.title')}
                 className="hover:opacity-80"
               >
-                Changelog
+                Collections
               </Link>
-              <Link href="/blog" title={t('common.blog')} className="hover:opacity-80">
+              <Link href="/blog" title={t('blog.title')} className="hover:opacity-80">
                 Blog
               </Link>
             </div>

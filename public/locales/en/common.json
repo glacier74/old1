@@ -1,7 +1,7 @@
 {
   "common": {
     "shortName": "EarlyBird",
-    "name": "EarlyBird: Landing Page Builder for Startups",
+    "name": "EarlyBird: Landing Page Builder for Startups to Validate Ideas",
     "description": "EarlyBird is the brand-new landing page builder for startups. Start pitching and validating business ideas in minutes.",
     "logo": "Logo",
     "change": "Change",
@@ -34,6 +34,12 @@
   "pricing": {
    "title": "Pricing - EarlyBird"
   },
+  "collections": {
+    "title": "Collections - EarlyBird"
+   },
+  "blog": {
+    "title": "Blog - EarlyBird"
+   },
   "showcase": {
     "title":"Showcase - EarlyBird"
   },

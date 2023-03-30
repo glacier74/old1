@@ -1,5 +1,5 @@
 import { Tooltip } from '@heyforms/ui'
-import { IconCheck, IconHelp, IconMinus } from '@tabler/icons'
+import { IconCheck, IconQuestionMark, IconMinus } from '@tabler/icons'
 import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
 import { FC, Fragment } from 'react'
@@ -37,21 +37,6 @@ const sections = [
     features: [
       {
         name: 'Landing page(s)',
-        help: (
-          <Tooltip
-            ariaLabel={
-              <div>
-                <div>Landing page(s)</div>
-                <p>For productive shippers who want to work more efficiently.</p>
-              </div>
-            }
-            placement="right"
-          >
-            <span className="cursor-pointer">
-              <IconHelp className="w-5 h-5 text-slate-400 transition hover:text-slate-500" />
-            </span>
-          </Tooltip>
-        ),
         tiers: { Starter: '1', Superior: '5', Shipper: '20' }
       },
       {
@@ -63,7 +48,22 @@ const sections = [
       { name: 'Text formatting', tiers: { Starter: true, Superior: true, Shipper: true } },
       { name: 'Responsive layout', tiers: { Starter: true, Superior: true, Shipper: true } },
       { name: 'Full SEO control', tiers: { Starter: false, Superior: true, Shipper: true } },
-      { name: 'Private mode', tiers: { Starter: false, Superior: true, Shipper: true } }
+      { name: 'Private mode', 
+        help: (
+          <Tooltip
+            ariaLabel={
+              <div>
+                <p>Secure your landing page with a password-protected access.</p>
+              </div>
+            }
+            placement="right"
+          >
+            <span className="cursor-pointer">
+              <IconQuestionMark className="ml-2 w-3 h-3 text-slate-700 transition hover:text-slate-900" />
+            </span>
+          </Tooltip>
+        ),
+        tiers: { Starter: false, Superior: true, Shipper: true } }
     ]
   },
   {
@@ -72,18 +72,34 @@ const sections = [
       { name: 'Custom branding', tiers: { Starter: true, Superior: true, Shipper: true } },
       { name: 'Custom Open Graph', tiers: { Starter: true, Superior: true, Shipper: true } },
       { name: 'Collect social proof', tiers: { Starter: true, Superior: true, Shipper: true } },
+      { name: 'Custom domain', tiers: { Starter: true, Superior: true, Shipper: true } },
       {
         name: 'Remove EarlyBird branding',
         tiers: { Starter: false, Superior: true, Shipper: true }
       },
-      { name: 'Custom domain', tiers: { Starter: false, Superior: true, Shipper: true } },
-      { name: 'Embed Custom CSS', tiers: { Starter: false, Superior: false, Shipper: true } }
+      { name: 'Embed custom code', tiers: { Starter: false, Superior: false, Shipper: true } }
     ]
   },
   {
     name: 'Validate',
     features: [
-      { name: 'Conversion action', tiers: { Starter: '100', Superior: '1,000', Shipper: '5,000' } },
+      { 
+        name: 'Conversions',
+        help: (
+          <Tooltip
+            ariaLabel={
+              <div className="w-64 whitespace-normal text-left p-2">
+                <p>When a visitor performs an engagement action on your landing page, it is considered a conversion. The most common conversion goals are clicking on your call-to-action button, which can trigger lead capture or payment processing.</p>
+              </div>
+            }
+            placement="right"
+          >
+            <span className="cursor-pointer">
+              <IconQuestionMark className="ml-2 w-3 h-3 text-slate-700 transition hover:text-slate-900" />
+            </span>
+          </Tooltip>
+        ), 
+        tiers: { Starter: '100', Superior: '1,000', Shipper: '5,000' } },
       {
         name: 'Accept payments',
         tiers: {
@@ -126,7 +142,7 @@ export const PricingComparisonSections: FC = () => {
           {section.features.map((feature: any) => (
             <tr key={feature.name}>
               <th className="py-4 px-6 text-sm font-normal text-slate-700 text-left" scope="row">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-start">
                   <span>{feature.name}</span>
                   {feature.help}
                 </div>
