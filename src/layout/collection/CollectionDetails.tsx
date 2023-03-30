@@ -18,7 +18,7 @@ export const CollectionDetails: FC<{
             <div className="flex-1">
               <AirtableImage
                 className="w-full h-auto bg-slate-50 border-slate-100 rounded-xl shadow-md"
-                attachments={record.Screenshot}
+                src={record.Screenshot}
                 alt={record.Title}
                 width={800}
                 height={0}

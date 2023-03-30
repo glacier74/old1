@@ -383,15 +383,18 @@ export const THEMES: Theme[] = [
 
 export const PLAN_LEVELS: AnyMap<number> = {
   plan_free: 0,
-  plan_superior: 1,
-  plan_shipper: 2
+  plan_starter: 1,
+  plan_superior: 2,
+  plan_shipper: 3
 }
 
 export const PLAN_NAMES: AnyMap<string, number | string> = {
   [PLAN_LEVELS.plan_free]: 'Free',
+  [PLAN_LEVELS.plan_starter]: 'Starter',
   [PLAN_LEVELS.plan_superior]: 'Superior',
   [PLAN_LEVELS.plan_shipper]: 'Shipper',
   plan_free: 'Free',
+  plan_starter: 'Starter',
   plan_superior: 'Superior',
   plan_shipper: 'Shipper'
 }

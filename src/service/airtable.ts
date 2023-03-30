@@ -1,5 +1,6 @@
 import { isValid, isValidArray } from '@nily/utils'
 import Airtable from 'airtable'
+import * as process from 'process'
 
 import { RedisService } from '~/service/redis'
 
@@ -56,9 +57,17 @@ export class AirtableService {
     return result.map(
       r =>
         ({
-          id: r.getId(),
-          ...r.fields
+          ...r.fields,
+          Thumbnail: this._imageSrc(r.fields.Slug as string, true),
+          Screenshot: this._imageSrc(r.fields.Slug as string),
+          id: r.getId()
         } as T)
     )
+  }
+
+  private _imageSrc(slug: string, isThumbnail = false) {
+    const suffix = isThumbnail ? '_thumbnail.jpg' : '.jpg'
+
+    return `${process.env.NEXT_PUBLIC_STORAGE_URI}/screenshots/${slug}${suffix}`
   }
 }

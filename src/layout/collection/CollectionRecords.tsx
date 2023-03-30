@@ -28,7 +28,8 @@ export const CollectionRecords: FC<{
             Discover inspiration for your landing page
           </h1>
           <div className="text-slate-700 text-base md:text-lg w-full md:max-w-3xl md:mx-auto mt-5">
-            Quickly find your landing page inspiration from our vast collection of hundreds of examples, and adapt it to make it uniquely yours.
+            Quickly find your landing page inspiration from our vast collection of hundreds of
+            examples, and adapt it to make it uniquely yours.
           </div>
         </div>
         <div className="mt-16 sm:mt-20 flex gap-12">
@@ -74,7 +75,7 @@ export const CollectionRecords: FC<{
                         <div className="aspect-w-10 aspect-h-7 block w-full overflow-hidden rounded-t-lg bg-slate-100/50">
                           <AirtableImage
                             className="pointer-events-none object-cover transition-transform transform-gpu ease-in-out"
-                            attachments={record.Thumbnail}
+                            src={record.Thumbnail}
                             alt={record.Title}
                             width={400}
                             height={280}

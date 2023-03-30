@@ -598,30 +598,7 @@ declare global {
     URL: string
     Layout: string
     'Purpose or objective': string
-    Thumbnail: AirtableAttachment[]
-    Screenshot: AirtableAttachment[]
-  }
-
-  interface AirtableAttachment {
-    id: string
-    width: number
-    height: number
-    url: string
-    filename: string
-    size: number
-    type: string
-    thumbnails: AirtableImages
-  }
-
-  interface AirtableImages {
-    small: AirtableImage
-    large: AirtableImage
-    full: AirtableImage
-  }
-
-  interface AirtableImage {
-    url: string
-    width: number
-    height: number
+    Thumbnail: string
+    Screenshot: string
   }
 }

@@ -1,12 +1,12 @@
 import { Tooltip } from '@heyforms/ui'
-import { IconCheck, IconQuestionMark, IconMinus } from '@tabler/icons'
+import { IconCheck, IconMinus, IconQuestionMark } from '@tabler/icons'
 import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
 import { FC, Fragment } from 'react'
 
 export const PLAN_TIERS = [
   {
-    id: 'plan_free',
+    id: 'plan_starter',
     name: 'Starter',
     href: '/sign-up',
     priceMonthly: 5,
@@ -48,7 +48,8 @@ const sections = [
       { name: 'Text formatting', tiers: { Starter: true, Superior: true, Shipper: true } },
       { name: 'Responsive layout', tiers: { Starter: true, Superior: true, Shipper: true } },
       { name: 'Full SEO control', tiers: { Starter: false, Superior: true, Shipper: true } },
-      { name: 'Private mode', 
+      {
+        name: 'Private mode',
         help: (
           <Tooltip
             ariaLabel={
@@ -63,7 +64,8 @@ const sections = [
             </span>
           </Tooltip>
         ),
-        tiers: { Starter: false, Superior: true, Shipper: true } }
+        tiers: { Starter: false, Superior: true, Shipper: true }
+      }
     ]
   },
   {
@@ -83,13 +85,17 @@ const sections = [
   {
     name: 'Validate',
     features: [
-      { 
+      {
         name: 'Conversions',
         help: (
           <Tooltip
             ariaLabel={
               <div className="w-64 whitespace-normal text-left p-2">
-                <p>When a visitor performs an engagement action on your landing page, it is considered a conversion. The most common conversion goals are clicking on your call-to-action button, which can trigger lead capture or payment processing.</p>
+                <p>
+                  When a visitor performs an engagement action on your landing page, it is
+                  considered a conversion. The most common conversion goals are clicking on your
+                  call-to-action button, which can trigger lead capture or payment processing.
+                </p>
               </div>
             }
             placement="right"
@@ -98,8 +104,9 @@ const sections = [
               <IconQuestionMark className="ml-2 w-3 h-3 text-slate-700 transition hover:text-slate-900" />
             </span>
           </Tooltip>
-        ), 
-        tiers: { Starter: '100', Superior: '1,000', Shipper: '5,000' } },
+        ),
+        tiers: { Starter: '100', Superior: '1,000', Shipper: '5,000' }
+      },
       {
         name: 'Accept payments',
         tiers: {
