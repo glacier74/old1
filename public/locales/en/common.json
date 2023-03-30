@@ -484,6 +484,7 @@
     }
   },
   "collection": {
-    "title": "Collections - EarlyBird"
+    "title": "Collections - EarlyBird",
+    "detailTitle": "{{title}} - Collections - EarlyBird"
   }
 }
