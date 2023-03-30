@@ -1,17 +1,14 @@
 import { date } from '@nily/utils'
-import $Redis from 'ioredis'
+import Ioredis from 'ioredis'
 
-class Redis {
-  private readonly redis: $Redis
+export class RedisService {
+  private readonly redis: Ioredis
 
   constructor() {
-    this.redis = new $Redis({
-      host: '127.0.0.1',
-      port: 6379
-    })
+    this.redis = new Ioredis()
   }
 
-  public async get<T extends object>(key: string) {
+  public async get<T extends object>(key: string): Promise<T | undefined> {
     const result = await this.redis.get(key)
 
     try {
@@ -27,5 +24,3 @@ class Redis {
     return this.redis.set(key, JSON.stringify(value), 'EX', date.seconds(duration))
   }
 }
-
-export const redis = new Redis()

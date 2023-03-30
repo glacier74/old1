@@ -592,13 +592,14 @@ declare global {
     Category: string
     'Design style': string
     'Target audience': string
-    'Meta title': string
+    Title: string
     'Copy-writing style': string
-    'Meta description': string
+    Description: string
     URL: string
     Layout: string
     'Purpose or objective': string
     Thumbnail: AirtableAttachment[]
+    Screenshot: AirtableAttachment[]
   }
 
   interface AirtableAttachment {
