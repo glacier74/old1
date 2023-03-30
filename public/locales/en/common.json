@@ -118,8 +118,8 @@
     "title": "{{name}}",
     "member_one": "{{count}} member",
     "member_other": "{{count}} members",
-    "editSite": "Edit site",
-    "viewSite": "View site"
+    "editSite": "Edit page",
+    "viewSite": "View page"
   },
   "createProduct": {
     "title": "Create a landing page",

@@ -8,24 +8,24 @@ export const PLAN_TIERS = [
     id: 'plan_free',
     name: 'Starter',
     href: '/sign-up',
-    priceMonthly: 0,
-    priceAnnually: 0,
+    priceMonthly: 5,
+    priceAnnually: 4,
     description: 'For new makers who want to fine-tune and test an idea.'
   },
   {
     id: 'plan_superior',
     name: 'Superior',
     href: '/sign-up',
-    priceMonthly: 8,
-    priceAnnually: 6,
+    priceMonthly: 15,
+    priceAnnually: 12,
     description: 'For creators with multiple ideas who want to efficiently test and refine them.'
   },
   {
     id: 'plan_shipper',
     name: 'Shipper',
     href: '/sign-up',
-    priceMonthly: 15,
-    priceAnnually: 10,
+    priceMonthly: 39,
+    priceAnnually: 32,
     description: 'For productive shippers who want to work more efficiently.'
   }
 ]
@@ -48,11 +48,11 @@ const sections = [
     ]
   },
   {
-    name: 'Pitch',
+    name: 'Market',
     features: [
-      { name: 'Features walkthrough', tiers: { Starter: true, Superior: true, Shipper: true } },
-      { name: 'Image Carousel', tiers: { Starter: true, Superior: true, Shipper: true } },
-      { name: 'Social proof', tiers: { Starter: true, Superior: true, Shipper: true } },
+      { name: 'Custom branding', tiers: { Starter: true, Superior: true, Shipper: true } },
+      { name: 'Custom Open Graph', tiers: { Starter: true, Superior: true, Shipper: true } },
+      { name: 'Collect social proof', tiers: { Starter: true, Superior: true, Shipper: true } },
       {
         name: 'Remove EarlyBird branding',
         tiers: { Starter: false, Superior: true, Shipper: true }
@@ -64,7 +64,7 @@ const sections = [
   {
     name: 'Validate',
     features: [
-      { name: 'Conversion action', tiers: { Starter: '50', Superior: '1,000', Shipper: '5,000' } },
+      { name: 'Conversion action', tiers: { Starter: '100', Superior: '1,000', Shipper: '5,000' } },
       {
         name: 'Accept payments',
         tiers: {
@@ -201,7 +201,7 @@ export const PricingComparison: FC<{
                       )}
                       onClick={switchToMonthly}
                     >
-                      Monthly billing
+                      Monthly
                     </button>
                     <button
                       type="button"
@@ -213,7 +213,7 @@ export const PricingComparison: FC<{
                       )}
                       onClick={switchToYearly}
                     >
-                      Yearly billing
+                      Annually
                     </button>
                   </div>
                 </th>

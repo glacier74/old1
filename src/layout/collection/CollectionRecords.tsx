@@ -22,25 +22,25 @@ export const CollectionRecords: FC<{
 
   return (
     <section>
-      <div className="relative max-w-7xl mx-auto px-5 z-10 pt-32 pb-32 md:pt-48 md:pb-48">
+      <div className="relative max-w-7xl mx-auto px-5 z-10 py-32 md:py-48">
         <div className="text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-slate-900 ">
-            Affordable pricing for startups
+          <h1 className="max-w-3xl mx-auto text-3xl md:text-5xl font-bold text-slate-900 ">
+            Discover inspiration for your landing page
           </h1>
           <div className="text-slate-700 text-base md:text-lg w-full md:max-w-3xl md:mx-auto mt-5">
-            We understand that startups often have limited budgets and to be mindful of their
-            spending. Get started for free and consider upgrading when you want to.
+            Quickly find your landing page inspiration from our vast collection of hundreds of examples, and adapt it to make it uniquely yours.
           </div>
         </div>
         <div className="mt-16 sm:mt-20 flex gap-12">
           <div>
             <Input.Search placeholder="Search" onSearch={handleSearch} />
             <div className="mt-4">
+              <h3 className="text-xl font-medium mb-2">Categories</h3>
               <ul className="space-y-2">
                 {CATEGORIES.map(c => (
                   <li key={c}>
                     <Link
-                      className={clsx('text-slate-900 hover:text-green-500', {
+                      className={clsx('text-slate-700 hover:text-green-500', {
                         '!text-green-500': category === c
                       })}
                       href={`/collections?category=${encodeURIComponent(c)}`}
@@ -69,10 +69,11 @@ export const CollectionRecords: FC<{
                   className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6"
                 >
                   {records.map(record => (
-                    <li key={record.Slug} className="border border-slate-200 rounded-lg shadow-sm">
+                    <li key={record.Slug} className="border border-slate-100 rounded-lg shadow-sm">
                       <Link className="group" href={`/collections/${record.Slug}`}>
-                        <div className="aspect-w-10 aspect-h-7 block w-full overflow-hidden rounded-t-lg bg-gray-100">
+                        <div className="aspect-w-10 aspect-h-7 block w-full overflow-hidden rounded-t-lg bg-slate-100/50">
                           <AirtableImage
+                            className="pointer-events-none object-cover transition-transform transform-gpu ease-in-out group-hover:scale-105"
                             attachments={record.Thumbnail}
                             alt={record.Title}
                             width={400}

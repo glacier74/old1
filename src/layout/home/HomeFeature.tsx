@@ -14,10 +14,10 @@ export const HomeFeature: FC = () => (
       <div className="px-8">
         <div className="py-8 md:py-32">
           <div className="text-3xl md:text-5xl font-bold text-slate-900">
-            1. Build
+            1. Build a landing page
           </div>
           <div className="mt-5 mb-7 max-w-xl text-lg md:text-xl leading-tight text-slate-700">
-            Easily build your minimum-viable-product landing page in minutes. Seek no help from a
+            Easily build a simple landing page for your idea in minutes from a template or start fresh. Seek no help from a
             designer or developer.
           </div>
           <Image
@@ -45,7 +45,7 @@ export const HomeFeature: FC = () => (
         </div>
       <div className="flex items-center py-8 md:py-32 px-8 md:pr-32">
         <div className='max-w-xl mx-auto'>
-          <div className="text-3xl md:text-5xl font-bold">2. Pitch</div>
+          <div className="text-3xl md:text-5xl font-bold">2. Market your idea</div>
             <div className="mt-5 mb-7 w-full text-lg md:text-xl leading-tight text-slate-700">
               Transform your idea into a compelling pitch deck that interests your audience. Spend
               less time creating copies.
@@ -57,7 +57,7 @@ export const HomeFeature: FC = () => (
     <section className='bg-violet-50 grid md:grid-cols-2'>
       <div className="flex items-center justify-end px-8 pt-8">
         <div className="py-8 md:py-32 max-w-xl mx-auto">
-          <div className="text-3xl md:text-5xl font-bold ">3. Validate</div>
+          <div className="text-3xl md:text-5xl font-bold ">3. Validate the idea</div>
           <div className="mt-5 w-full text-lg md:text-xl leading-tight text-slate-700">
             Start engaging with potential customers. Validate the demand for your product and accept
             payments before launch.

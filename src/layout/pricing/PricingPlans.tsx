@@ -8,39 +8,39 @@ const tiers = [
   {
     name: 'Starter',
     href: '/sign-up',
-    priceMonthly: 0,
-    priceAnnually: 0,
+    priceMonthly: 5,
+    priceAnnually: 4,
     description: 'For new makers who want to fine-tune and test an idea.',
     includedFeatures: [
       '1 landing page included',
       '1,000 visits/mo',
-      'Access to all UI blocks',
-      '50 conversion actions included',
+      'Up to 100 conversions',
       '5% payment commission',
+      'Custom domain',
       'Real-time analytics'
     ]
   },
   {
     name: 'Superior',
     href: '/sign-up',
-    priceMonthly: 8,
-    priceAnnually: 6,
+    priceMonthly: 15,
+    priceAnnually: 12,
     description: 'For creators who want to efficiently test and refine multiple ideas.',
     includedFeatures: [
       'All Free features',
       '5 landing pages included',
       '50,000 visits/mo',
-      '1,000 conversion actions included',
+      'Up to 1,000 conversions',
       '1% payment commission',
-      'Custom domain',
+      'Access to all templates',
       'Remove EarlyBird branding'
     ]
   },
   {
     name: 'Shipper',
     href: '/sign-up',
-    priceMonthly: 15,
-    priceAnnually: 10,
+    priceMonthly: 39,
+    priceAnnually: 32,
     description: 'For productive shippers who want to work more efficiently.',
     includedFeatures: [
       'All Standard features',
@@ -48,7 +48,7 @@ const tiers = [
       '200,000 visits/mo',
       '5,000 conversion actions included',
       'No payment commission',
-      'Embed custom CSS',
+      'Embed custom code',
       'Team collaboration'
     ]
   }
@@ -83,7 +83,7 @@ export const PricingPlans: FC<{
               )}
               onClick={switchToMonthly}
             >
-              Monthly billing
+              Monthly
             </button>
             <button
               type="button"
@@ -95,7 +95,7 @@ export const PricingPlans: FC<{
               )}
               onClick={switchToYearly}
             >
-              Yearly billing
+              Annually
             </button>
           </div>
 

@@ -13,17 +13,17 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
   const { t } = useTranslation()
 
   return (
-    <section>
+    <section className="bg-amber-50/30">
       <div className="relative text-slate-900 max-w-7xl mx-auto px-8 md:px-12 z-10">
         <div className="pt-32 md:pt-48 text-center">
-          <div className="inline-block rounded-full bg-emerald-50 px-6 py-2 mb-8 text-sm md:text-base text-emerald-700">
+          <div className="inline-block rounded-full bg-emerald-100/70 px-6 py-2 mb-8 text-sm md:text-base text-emerald-700">
             Acquire your first customer by{' '}
             <span className="font-bold text-emerald-900">
               {dayjs().add(10, 'm').format('h:mm A')}
             </span>{' '}
             with no waiting
           </div>
-          <h1 className="text-4xl md:text-5xl leading-tight font-extrabold md:font-bold">
+          <h1 className="max-w-3xl mx-auto text-4xl md:text-5xl leading-tight font-bold md:font-bold">
             Create{' '}
             <span className="relative whitespace-nowrap text-emerald-500">
               <svg
@@ -36,10 +36,9 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
               </svg>
               <span className="relative">landing pages</span>
             </span>{' '}
-            that <br />
-            transform ideas into customers
+            that transform ideas into customers
           </h1>
-          <div className="max-w-2xl mx-auto text-slate-500 text-base md:text-lg mt-4 leading-tight">
+          <div className="max-w-2xl mx-auto text-slate-500 text-base md:text-xl mt-8 leading-tight">
             Your ideas could be worth millions if validated, and you don't need any technical
             knowledge to get started!
           </div>
@@ -52,7 +51,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
               className="w-auto px-4 py-3 md:px-8 md:py-3 bg-slate-900 rounded-full text-white text-sm md:text-base"
               title={t('home.signUp')}
             >
-              Sign up today, <span className="font-bold">it's FREE!</span>
+              Build your landing page today
             </Link>
           </div>
         </div>
@@ -61,10 +60,9 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
           <div className="md:flex justify-center items-center">
             <div>
               <div className="flex place-content-center">
-                <div className="text-sm sm:text-base text-slate-700 mb-4">
-                  Helping{' '}
+                <div className="text-sm sm:text-base text-slate-800 mb-4">
                   <span className="font-medium">{new Intl.NumberFormat().format(usersCount)}</span>{' '}
-                  makers and startups build their beautiful landing pages
+                  makers and startups are building their landing pages with EarlyBird
                 </div>
                 <Tooltip ariaLabel="Real-time data updated hourly">
                   <div className="group ml-3 flex h-3 w-3">
@@ -89,7 +87,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto mb-24">
+        <div className="max-w-7xl mx-auto">
           <Image
             src={HomeBanner}
             alt="EarlyBird Screenshot"
