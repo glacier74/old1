@@ -37,8 +37,8 @@ export const HomeHeader: FC = () => {
   return (
     <header className="relative sticky top-0 z-20">
       <div className="header-container absolute top-0 left-0 w-full z-20">
-        <div className="max-w-7xl mx-auto md:px-5">
-          <div className="py-3 flex items-center justify-between">
+        <div className="md:px-5">
+          <div className="py-6 flex items-center justify-between">
             <div className="flex items-center text-slate-900 text-base font-medium md:space-x-8">
               <Link
                 href="/"

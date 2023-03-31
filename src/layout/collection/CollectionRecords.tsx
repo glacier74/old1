@@ -23,11 +23,11 @@ export const CollectionRecords: FC<{
   return (
     <section>
       <div className="relative max-w-7xl mx-auto px-5 z-10 py-32 md:py-48">
-        <div className="text-center">
-          <h1 className="max-w-3xl mx-auto text-3xl md:text-5xl font-bold text-slate-900 ">
+        <div className="text-center mb-32">
+          <h1 className="max-w-3xl mx-auto text-3xl md:text-7xl font-bold text-slate-900 ">
             Discover inspiration for your landing page
           </h1>
-          <div className="text-slate-700 text-base md:text-lg w-full md:max-w-3xl md:mx-auto mt-5">
+          <div className="text-slate-700 text-base md:text-2xl w-full md:max-w-3xl md:mx-auto mt-5">
             Quickly find your landing page inspiration from our vast collection of hundreds of
             examples, and adapt it to make it uniquely yours.
           </div>
