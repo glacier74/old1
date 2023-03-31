@@ -29,7 +29,7 @@ export function getSubdomain(domain: string) {
   const arr = domain.split('.')
 
   if (arr.length === 2) {
-    return '@'
+    return 'www'
   }
 
   return arr[0]
