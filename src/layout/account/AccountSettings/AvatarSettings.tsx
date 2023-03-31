@@ -35,8 +35,8 @@ export const AvatarSettings: FC = () => {
         <AvatarPickerField
           namespace="avatar"
           value={user?.avatar}
-          text="account.avatar.heading"
-          retainLength={6}
+          text=""
+          retainLength={2}
           enableUnsplash={false}
           onChange={request}
         />

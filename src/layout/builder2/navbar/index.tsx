@@ -7,6 +7,7 @@ import { FC, useCallback, useMemo } from 'react'
 import { useProduct } from '~/layout'
 import { useBuilderContext } from '~/layout/builder2/context'
 import { AlertModal } from '~/layout/builder2/editor/AlertModal'
+import { UpgradeModal } from '~/layout/builder2/navbar/UpgradeModal'
 import { ShareModal } from '~/layout/builder/views/Navbar/ShareModal'
 import { SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
@@ -39,9 +40,14 @@ export const Navbar: FC = () => {
 
   const [shareModalVisible, openShareModal, closeShareModal] = useVisible()
   const [alertModalVisible, openAlertModal] = useVisible()
+  const [upgradeModalVisible, openUpgradeModal, closeUpgradeModal] = useVisible()
 
   const { loading, request } = useRequest(async () => {
     try {
+      if (!product.subscription?.isActive) {
+        openUpgradeModal()
+      }
+
       await SiteSettingsService.publish(product.id, {
         draft: state.blocks as any,
         version: siteSettings.version
@@ -144,7 +150,7 @@ export const Navbar: FC = () => {
 
           <Button
             type="success"
-            className="!py-1.5 !rounded"
+            className="!py-1.5 !rounded !bg-[#10b981]"
             loading={loading}
             disabled={!siteSettings.canPublish || state.isSyncing}
             onClick={request}
@@ -156,6 +162,7 @@ export const Navbar: FC = () => {
 
       <ShareModal visible={shareModalVisible} onClose={closeShareModal} />
       <AlertModal visible={alertModalVisible} />
+      <UpgradeModal visible={upgradeModalVisible} onClose={closeUpgradeModal} />
     </>
   )
 }

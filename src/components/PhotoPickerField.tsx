@@ -1,4 +1,5 @@
 import { IComponentProps } from '@heyforms/ui/types/typing'
+import { isValid } from '@nily/utils'
 import { IconUpload } from '@tabler/icons'
 import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
@@ -179,7 +180,7 @@ export const AvatarPickerField: FC<AvatarPickerFieldProps> = ({
           src={value}
           imageSize={imageSize}
           size={size}
-          text={t(text)}
+          text={isValid(text) ? t(text) : undefined}
           retainLength={retainLength}
         />
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 rounded-full opacity-0 transition-opacity cursor-pointer group-hover:opacity-100">

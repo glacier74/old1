@@ -1,5 +1,6 @@
 import { Avatar } from '@heyforms/ui'
 import { AvatarProps } from '@heyforms/ui/types/avatar/Avatar'
+import { isValid } from '@nily/utils'
 import clsx from 'clsx'
 import Image from 'next/image'
 import { FC } from 'react'
@@ -19,7 +20,7 @@ export const RoundImage: FC<RoundImageProps> = ({
   className,
   ...restProps
 }) => {
-  if (src) {
+  if (isValid(src)) {
     return (
       <div style={{ width: imageSize, height: imageSize }}>
         <Image
@@ -31,7 +32,7 @@ export const RoundImage: FC<RoundImageProps> = ({
             },
             className
           )}
-          src={src}
+          src={src!}
           quality={95}
           alt=""
           width={imageSize}

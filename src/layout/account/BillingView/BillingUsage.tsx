@@ -70,10 +70,11 @@ export const BillingUsage = () => {
       </div>
 
       <div className="space-y-1">
-        <div className="text-base font-semibold">Conversion action</div>
+        <div className="text-base font-semibold">Monthly conversions</div>
         <Progress type="green" percent={usage?.conversion.percent || 0} />
         <div className="text-sm text-slate-500">
-          {usage?.conversion.used} of {usage?.conversion.quota} conversion actions.
+          {usage?.conversion.used} of {usage?.conversion.quota} conversion actions. Resets on{' '}
+          {dayjs().startOf('month').add(1, 'month').format('MMM DD, YYYY')}
         </div>
       </div>
     </AsyncRequest>

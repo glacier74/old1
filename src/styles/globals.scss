@@ -1994,3 +1994,21 @@ button.block-header-button {
     @apply opacity-0;
   }
 }
+
+.upgrade-modal {
+  .modal-mask {
+    @apply hidden pointer-events-none;
+  }
+
+  .modal-container {
+    @apply w-full h-full p-0;
+  }
+
+  .modal-content {
+    @apply w-full max-w-full;
+  }
+
+  .modal-close-button {
+    @apply top-10 right-10;
+  }
+}
