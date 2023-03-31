@@ -61,7 +61,11 @@ const FEATURES = [
   }
 ]
 
-export const UpgradeModal: FC<IModalProps> = ({ visible, onClose }) => {
+export const UpgradeModal: FC<IModalProps & { onPublish: () => void }> = ({
+  visible,
+  onPublish,
+  onClose
+}) => {
   return (
     <Modal
       className="upgrade-modal"
@@ -89,9 +93,12 @@ export const UpgradeModal: FC<IModalProps> = ({ visible, onClose }) => {
         </div>
         <div className="p-4">
           <div className="flex items-center justify-center">
-            <Link className="py-2.5 px-6 bg-blue-700 rounded-md text-white" href="/account/plan">
+            <Link className="py-2.5 px-6 bg-[#10b981] rounded-md text-white" href="/account/plan">
               Upgrade plan
             </Link>
+            <button className="ml-4 text-sm text-gray-700 hover:text-[#10b981]" onClick={onPublish}>
+              Publish anyway
+            </button>
           </div>
           <div className="mt-12">
             <ul className="grid grid-cols-3 gap-4 text-lg mb-12">

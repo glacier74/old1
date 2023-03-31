@@ -44,10 +44,6 @@ export const Navbar: FC = () => {
 
   const { loading, request } = useRequest(async () => {
     try {
-      if (!product.subscription?.isActive) {
-        openUpgradeModal()
-      }
-
       await SiteSettingsService.publish(product.id, {
         draft: state.blocks as any,
         version: siteSettings.version
@@ -105,6 +101,19 @@ export const Navbar: FC = () => {
     }
   }, [product.domain, product.name, product.tagline])
 
+  const handleButtonClick = useCallback(() => {
+    if (!product.subscription?.isActive) {
+      return openUpgradeModal()
+    }
+
+    request()
+  }, [product.subscription?.isActive, request])
+
+  const handlePublishCallback = useCallback(() => {
+    closeUpgradeModal()
+    request()
+  }, [request])
+
   return (
     <>
       <div className="flex items-center justify-between h-[3.5rem] px-4 border-b border-slate-200">
@@ -153,7 +162,7 @@ export const Navbar: FC = () => {
             className="!py-1.5 !rounded !bg-[#10b981]"
             loading={loading}
             disabled={!siteSettings.canPublish || state.isSyncing}
-            onClick={request}
+            onClick={handleButtonClick}
           >
             Publish
           </Button>
@@ -162,7 +171,11 @@ export const Navbar: FC = () => {
 
       <ShareModal visible={shareModalVisible} onClose={closeShareModal} />
       <AlertModal visible={alertModalVisible} />
-      <UpgradeModal visible={upgradeModalVisible} onClose={closeUpgradeModal} />
+      <UpgradeModal
+        visible={upgradeModalVisible}
+        onPublish={handlePublishCallback}
+        onClose={closeUpgradeModal}
+      />
     </>
   )
 }
