@@ -51,7 +51,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
               className="w-auto px-4 py-3 md:px-8 md:py-3 bg-slate-900 rounded-full text-white text-base md:text-lg"
               title={t('home.signUp')}
             >
-              Build your landing page today ->
+              Build your landing page today -&#62;
             </Link>
           </div>
         </div>
