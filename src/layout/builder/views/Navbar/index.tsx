@@ -215,7 +215,7 @@ export const Navbar: FC = () => {
             className="flex flex-col items-center mx-1.5 px-2 py-1.5 min-w-[2.5rem] rounded cursor-pointer text-slate-700 hover:bg-slate-100"
           >
             <IconDatabase className="w-5 h-5" />
-            <span className="text-[0.6875rem]">Lead capture</span>
+            <span className="text-[0.6875rem]">Conversions</span>
           </Link>
           <Link
             href={`/product/${productId}/integrations`}

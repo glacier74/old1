@@ -13,7 +13,7 @@ const faqs = [
   {
     question: 'Do you offer discounts?',
     answer:
-      'Discounts are only available for members on special occasions. To stay informed about discounts, follow us on Twitter and create an account. Additionally, if you have a blog or newsletter, you can write a post about EarlyBird and receive 3 months of free membership.'
+      'Discounts are only available for members on special occasions. To stay informed about discounts, follow us on Twitter or subscribe to our newsletter. Additionally, if you have a blog or newsletter, you can write a post about EarlyBird and receive 3 months of free membership.'
   },
   {
     question: 'Can I start for free and upgrade later?',

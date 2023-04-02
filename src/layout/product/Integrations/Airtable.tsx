@@ -14,7 +14,7 @@ export const Airtable = () => {
               By Zapier
             </div>
           </div>
-          <p className="text-sm text-slate-500 truncate">Send lead captures to Airtable.</p>
+          <p className="text-sm text-slate-500 truncate">Send conversions to Airtable.</p>
         </div>
         <div>
           <a

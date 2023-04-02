@@ -9,7 +9,7 @@ export const FeaturesHero: FC = () => {
     <section className="bg-emerald-50">
       <div className="relative max-w-7xl mx-auto px-5 z-10 pt-48 md:pt-64 pb-32 md:pb-48">
         <div className="text-center">
-          <h1 className="max-w-5xl mx-auto text-4xl md:text-7xl font-bold text-slate-900">
+          <h1 className="max-w-3xl mx-auto text-4xl md:text-6xl font-bold text-slate-900">
           Transform your idea into a thriving customer base
           </h1>
           <div className="text-slate-700 text-lg md:text-2xl w-full md:max-w-3xl md:mx-auto mt-6">

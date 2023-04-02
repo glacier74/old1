@@ -15,7 +15,7 @@ export const GoogleSheets = () => {
             </div>
           </div>
           <p className="text-sm text-slate-500 truncate">
-            Send new lead captures to a spreadsheet.
+            Send new conversions to a spreadsheet.
           </p>
         </div>
         <div>

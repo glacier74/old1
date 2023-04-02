@@ -58,7 +58,7 @@ export const LeftSidebar: FC = () => {
           </div>
         </Tooltip>
 
-        <Tooltip ariaLabel="Lead capture" placement="right">
+        <Tooltip ariaLabel="Conversions" placement="right">
           <div className="flex items-center justify-center w-10 h-10 text-slate-600 hover:bg-slate-100 cursor-pointer">
             <Link
               href={`/product/${productId}/engagements`}

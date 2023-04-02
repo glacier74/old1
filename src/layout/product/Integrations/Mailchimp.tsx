@@ -92,7 +92,7 @@ export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => 
               {integration.isEnabled && <span className="ml-2 w-2 h-2 bg-green-500 rounded-full" />}
             </div>
             <p className="text-sm text-slate-500 truncate">
-              Auto-update contacts and manage targeted campaigns based on lead captures.
+              Auto-update contacts and manage targeted campaigns based on conversions.
             </p>
           </div>
           <div>
@@ -114,7 +114,7 @@ export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => 
           <div>
             <h1 className="text-lg leading-6 font-medium text-slate-900">Mailchimp</h1>
             <p className="mt-1 text-sm text-slate-500">
-              Auto-update contacts and manage targeted campaigns based on lead captures.
+              Auto-update contacts and manage targeted campaigns based on conversions.
             </p>
           </div>
 

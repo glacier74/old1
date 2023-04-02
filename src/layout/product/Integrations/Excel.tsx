@@ -15,7 +15,7 @@ export const Excel = () => {
             </div>
           </div>
           <p className="text-sm text-slate-500 truncate">
-            Send new lead captures to an Excel spreadsheet.
+            Send new conversions to an Excel spreadsheet.
           </p>
         </div>
         <div>

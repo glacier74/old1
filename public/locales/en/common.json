@@ -104,7 +104,7 @@
     "version": "Version",
     "viewProfile": "View profile",
     "dashboard": "Dashboard",
-    "engagements": "Lead capture",
+    "engagements": "Conversions",
     "integrate": "Integrate with apps",
     "members": "Team members",
     "productSettings": "Landing page settings",
@@ -173,7 +173,7 @@
     },
     "dangerZone": {
       "heading": "Danger zone",
-      "description": "This will permanently delete your entire account, including all your landing pages, lead captures, and members.",
+      "description": "This will permanently delete your entire account, including all your landing pages, conversions, and members.",
       "button": "Delete account",
       "confirm": "Delete my account",
       "tip1": "This action cannot be undone. This will permanently delete your entire account. All workspaces you created will be deleted, and you will be removed from all shared workspaces.",
@@ -230,8 +230,8 @@
     "you": "You"
   },
   "engagements": {
-    "title": "Lead capture - {{name}}",
-    "heading": "Lead capture",
+    "title": "Conversions - {{name}}",
+    "heading": "Conversions",
     "description": "Start engaging with potential buyers and communities.",
     "payment": "Payment",
     "emailCapture": "Email capture",
@@ -247,7 +247,7 @@
     "oneTime": "One time",
     "recurring": "Recurring",
     "notFound": {
-      "title": "You don't have any lead captures yet",
+      "title": "You don't have any conversions yet",
       "description": "Share your landing page with others, and get them involved."
     }
   },
@@ -315,7 +315,7 @@
     },
     "deleteProduct": {
       "heading": "Delete the landing page",
-      "description": "Beware! Deleting the landing page will result in the permanent loss of all lead captures, members, and data - they cannot be recovered!",
+      "description": "Beware! Deleting the landing page will result in the permanent loss of all conversions, members, and data - they cannot be recovered!",
       "button": "Delete",
       "success": "The landing page has been deleted successfully"
     },
@@ -455,7 +455,7 @@
   "integrations": {
     "title": "Integrate with apps - {{name}}",
     "heading": "Integrate with apps",
-    "description": "Connect your lead capture data with your favorite apps.",
+    "description": "Connect your conversions data with your favorite apps.",
     "connecting": "Connecting with your favorite apps"
   },
   "publicSite": {
@@ -481,11 +481,11 @@
       },
       "contact": {
         "heading": "Contacts",
-        "description": "Allows {{openAppName}} to get a list of your lead capture contacts"
+        "description": "Allows {{openAppName}} to get a list of your conversions contacts"
       },
       "payment": {
         "heading": "Payments",
-        "description": "Allows {{openAppName}} to get a list of your lead capture payments"
+        "description": "Allows {{openAppName}} to get a list of your conversions payments"
       }
     }
   },

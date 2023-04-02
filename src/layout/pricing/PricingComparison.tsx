@@ -94,7 +94,7 @@ const sections = [
                 <p>
                   When a visitor performs an engagement action on your landing page, it is
                   considered a conversion. The most common conversion goals are clicking on your
-                  call-to-action button, which can trigger lead capture or payment processing.
+                  call-to-action button, which can trigger conversions or payment processing.
                 </p>
               </div>
             }

@@ -15,7 +15,7 @@ export const Hubspot = () => {
             </div>
           </div>
           <p className="text-sm text-slate-500 truncate">
-            Create a contact in Hubspot for every new lead captures.
+            Create a contact in Hubspot for every new conversions.
           </p>
         </div>
         <div>

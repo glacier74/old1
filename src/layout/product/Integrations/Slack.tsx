@@ -15,7 +15,7 @@ export const Slack = () => {
             </div>
           </div>
           <p className="text-sm text-slate-500 truncate">
-            Send Slack messages for new lead captures.
+            Send Slack messages for new conversions.
           </p>
         </div>
         <div>

@@ -15,7 +15,7 @@ export const Salesforce = () => {
             </div>
           </div>
           <p className="text-sm text-slate-500 truncate">
-            Create a new Salesforce lead for new lead captures.
+            Create a new Salesforce lead for new conversions.
           </p>
         </div>
         <div>

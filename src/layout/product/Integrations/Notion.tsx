@@ -14,7 +14,7 @@ export const Notion = () => {
               By Zapier
             </div>
           </div>
-          <p className="text-sm text-slate-500 truncate">Send lead captures to Notion.</p>
+          <p className="text-sm text-slate-500 truncate">Send conversions to Notion.</p>
         </div>
         <div>
           <a

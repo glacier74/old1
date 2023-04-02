@@ -15,7 +15,7 @@ export const ActiveCampaign = () => {
             </div>
           </div>
           <p className="text-sm text-slate-500 truncate">
-            Create ActiveCampaign contacts from new lead captures.
+            Create ActiveCampaign contacts from new conversions.
           </p>
         </div>
         <div>

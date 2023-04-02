@@ -12,7 +12,7 @@ export const Zapier = () => {
             <div className="text-sm font-medium text-slate-900 truncate">Zapier</div>
           </div>
           <p className="text-sm text-slate-500 truncate">
-            Send lead captures to your favorite tools.
+            Send conversions to your favorite tools.
           </p>
         </div>
         <div>

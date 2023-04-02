@@ -197,7 +197,7 @@ export const Webhook: FC<{ integration: Integration }> = ({ integration }) => {
               {integration.isEnabled && <span className="ml-2 w-2 h-2 bg-green-500 rounded-full" />}
             </div>
             <p className="text-sm text-slate-500 truncate">
-              Send events for new lead capture to HTTP endpoints
+              Send events for new conversions to HTTP endpoints
             </p>
           </div>
           <div>
@@ -243,7 +243,7 @@ export const Webhook: FC<{ integration: Integration }> = ({ integration }) => {
           <div>
             <h1 className="text-lg leading-6 font-medium text-slate-900">Webhook</h1>
             <p className="mt-1 text-sm text-slate-500">
-              Webhooks allow you to receive HTTP POST requests to a URL for new lead captures.
+              Webhooks allow you to receive HTTP POST requests to a URL for new conversions.
             </p>
           </div>
 

@@ -23,7 +23,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
             </span>{' '}
             with no waiting
           </div>
-          <h1 className="max-w-3xl mx-auto text-4xl md:text-7xl leading-tight font-bold md:font-bold">
+          <h1 className="max-w-3xl mx-auto text-4xl md:text-6xl leading-tight font-bold md:font-bold">
             Create{' '}
             <span className="relative whitespace-nowrap text-emerald-500">
               <svg
@@ -36,9 +36,9 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
               </svg>
               <span className="relative">landing pages</span>
             </span>{' '}
-            that transform ideas into customers
+            that turn ideas into customers
           </h1>
-          <div className="max-w-2xl mx-auto text-slate-700 text-base md:text-2xl mt-8 leading-tight">
+          <div className="max-w-2xl mx-auto text-slate-700 text-base md:text-xl mt-8 leading-tight">
             Your ideas could be worth millions if validated, and you don't need any technical
             knowledge to get started!
           </div>
