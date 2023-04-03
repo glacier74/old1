@@ -158,7 +158,7 @@ export const IconPicker: FC<IconPickerProps> = ({ onChange, onClose }) => {
               <FileUploader
                 className="w-full h-full"
                 namespace=""
-                accept={['image/jpeg', 'image/png', 'image/bmp']}
+                accept={['image/jpeg', 'image/png', 'image/bmp', 'image/gif']}
                 onChange={handleChange}
               />
             </div>
