@@ -18,7 +18,7 @@ interface ProductSettingsProps {
   onFinish: (values: any) => void
 }
 
-const EXCLUDE_PROPERTIES = ['customDomains', 'domain']
+const EXCLUDE_PROPERTIES = ['customDomains']
 
 export const ProductSettings: FC<ProductSettingsProps> = ({ form, onValueChanged, onFinish }) => {
   const { t } = useTranslation()

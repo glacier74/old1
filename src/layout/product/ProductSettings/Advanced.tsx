@@ -15,29 +15,38 @@ export const Advanced: FC<{ values: any }> = ({ values }) => {
 
       <div className="bg-slate-50 rounded-lg divide-y divide-slate-100">
         <div className="expandable expandable-advanced px-6 pt-5 py-5">
-          <Form.Item name="isSitePrivate">
-            <SwitchField
-              label={t('productSettings.sitePrivate.heading')}
-              description={t('productSettings.sitePrivate.description')}
-            />
-          </Form.Item>
+          <PlanCheck className="cursor-pointer" minimalLevel={PLAN_LEVELS.plan_superior}>
+            <div>
+              <Form.Item name="isSitePrivate">
+                <SwitchField
+                  label={
+                    <>
+                      {t('productSettings.sitePrivate.heading')}
+                      <PlanBadge className="ml-2" minimalLevel={PLAN_LEVELS.plan_superior} />
+                    </>
+                  }
+                  description={t('productSettings.sitePrivate.description')}
+                />
+              </Form.Item>
 
-          {values.isSitePrivate && (
-            <Form.Item
-              name="sitePassword"
-              className="md:max-w-[20rem]"
-              extra={<span className="text-slate-500">Set the password for this site</span>}
-              rules={[
-                {
-                  required: true,
-                  pattern: /^[a-z0-9]{4,16}$/i,
-                  message: t('productSettings.sitePrivate.invalidPassword')
-                }
-              ]}
-            >
-              <Input placeholder={t('productSettings.sitePrivate.placeholder')} />
-            </Form.Item>
-          )}
+              {values.isSitePrivate && (
+                <Form.Item
+                  name="sitePassword"
+                  className="md:max-w-[20rem]"
+                  extra={<span className="text-slate-500">Set the password for this site</span>}
+                  rules={[
+                    {
+                      required: true,
+                      pattern: /^[a-z0-9]{4,16}$/i,
+                      message: t('productSettings.sitePrivate.invalidPassword')
+                    }
+                  ]}
+                >
+                  <Input placeholder={t('productSettings.sitePrivate.placeholder')} />
+                </Form.Item>
+              )}
+            </div>
+          </PlanCheck>
         </div>
 
         <div className="expandable expandable-advanced px-6 pt-5 py-5">
