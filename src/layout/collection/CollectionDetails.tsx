@@ -32,7 +32,7 @@ export const CollectionDetails: FC<{
                 </h1>
                 <p className="mt-2 text-base text-gray-500">{record.Description}</p>
                 <a
-                  href={record.URL}
+                  href={`${record.URL}?ref=earlybird`}
                   className="mt-4 block py-2 bg-slate-900 text-white text-center rounded-lg font-medium transition"
                   target="_blank"
                 >
