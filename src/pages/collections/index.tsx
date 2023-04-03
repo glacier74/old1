@@ -26,6 +26,7 @@ const Collection = (props: any): JSX.Element => {
 export const getServerSideProps = withTranslations(async ({ query }) => {
   const { search, category } = query
   let records = await AirtableService.init().collections()
+  const categories = Array.from(new Set(records.map(r => r.Category)))
 
   if (isValid(category)) {
     records = records.filter(r => r.Category === category)
@@ -44,6 +45,7 @@ export const getServerSideProps = withTranslations(async ({ query }) => {
     props: {
       category: category || null,
       search: search || null,
+      categories,
       records
     }
   }

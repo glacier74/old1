@@ -7,13 +7,19 @@ import { FC } from 'react'
 
 import { AirtableImage, IconPlan } from '~/components'
 
-const CATEGORIES = ['Technology', 'Healthcare', 'E-commerce', 'Education', 'Finance']
-
-export const CollectionRecords: FC<{
+interface CollectionRecordsProps {
   search?: string
   category?: string
+  categories: string[]
   records: CollectionRecord[]
-}> = ({ search, category, records }) => {
+}
+
+export const CollectionRecords: FC<CollectionRecordsProps> = ({
+  search,
+  category,
+  categories,
+  records
+}) => {
   const router = useRouter()
 
   function handleSearch(search: string) {
@@ -38,7 +44,7 @@ export const CollectionRecords: FC<{
             <div className="mt-4">
               <h3 className="text-xl font-medium mb-2">Categories</h3>
               <ul className="space-y-2">
-                {CATEGORIES.map(c => (
+                {categories.map(c => (
                   <li key={c}>
                     <Link
                       className={clsx('text-slate-700 hover:text-green-500', {

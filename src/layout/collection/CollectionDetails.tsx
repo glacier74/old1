@@ -35,6 +35,7 @@ export const CollectionDetails: FC<{
                   href={`${record.URL}?ref=earlybird`}
                   className="mt-4 block py-2 bg-slate-900 text-white text-center rounded-lg font-medium transition"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   Visit {record.Title}
                 </a>
