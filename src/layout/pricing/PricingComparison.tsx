@@ -6,6 +6,14 @@ import { FC, Fragment } from 'react'
 
 export const PLAN_TIERS = [
   {
+    id: 'plan_free',
+    name: 'Free',
+    href: '/sign-up',
+    priceMonthly: 0,
+    priceAnnually: 0,
+    description: 'A free forever account to try out EarlyBird.'
+  },
+  {
     id: 'plan_starter',
     name: 'Starter',
     href: '/sign-up',
@@ -37,17 +45,17 @@ const sections = [
     features: [
       {
         name: 'Landing page(s)',
-        tiers: { Starter: '1', Superior: '5', Shipper: '20' }
+        tiers: { Free: '1', Starter: '1', Superior: '5', Shipper: '20' }
       },
       {
         name: 'Monthly visits',
-        tiers: { Starter: '1,000', Superior: '50,000', Shipper: '200,000' }
+        tiers: { Free: '100', Starter: '1,000', Superior: '50,000', Shipper: '200,000' }
       },
-      { name: 'Access to all UI blocks', tiers: { Starter: true, Superior: true, Shipper: true } },
-      { name: 'Unlimited blocks', tiers: { Starter: true, Superior: true, Shipper: true } },
-      { name: 'Text formatting', tiers: { Starter: true, Superior: true, Shipper: true } },
-      { name: 'Responsive layout', tiers: { Starter: true, Superior: true, Shipper: true } },
-      { name: 'Full SEO control', tiers: { Starter: false, Superior: true, Shipper: true } },
+      { name: 'Access to all UI blocks', tiers: { Free: true,Starter: true, Superior: true, Shipper: true } },
+      { name: 'Unlimited blocks', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } },
+      { name: 'Text formatting', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } },
+      { name: 'Responsive layout', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } },
+      { name: 'Full SEO control', tiers: { Free: false, Starter: false, Superior: true, Shipper: true } },
       {
         name: 'Private mode',
         help: (
@@ -64,22 +72,22 @@ const sections = [
             </span>
           </Tooltip>
         ),
-        tiers: { Starter: false, Superior: true, Shipper: true }
+        tiers: { Free: false, Starter: false, Superior: true, Shipper: true }
       }
     ]
   },
   {
     name: 'Market',
     features: [
-      { name: 'Custom branding', tiers: { Starter: true, Superior: true, Shipper: true } },
-      { name: 'Custom Open Graph', tiers: { Starter: true, Superior: true, Shipper: true } },
-      { name: 'Collect social proof', tiers: { Starter: true, Superior: true, Shipper: true } },
-      { name: 'Custom domain', tiers: { Starter: true, Superior: true, Shipper: true } },
+      { name: 'Custom branding', tiers: { Free: false, Starter: true, Superior: true, Shipper: true } },
+      { name: 'Custom Open Graph', tiers: { Free: false, Starter: true, Superior: true, Shipper: true } },
+      { name: 'Collect social proof', tiers: { Free: false, Starter: true, Superior: true, Shipper: true } },
+      { name: 'Custom domain', tiers: { Free: false, Starter: true, Superior: true, Shipper: true } },
       {
         name: 'Remove EarlyBird branding',
-        tiers: { Starter: false, Superior: true, Shipper: true }
+        tiers: { Free: false, Starter: false, Superior: true, Shipper: true }
       },
-      { name: 'Embed custom code', tiers: { Starter: false, Superior: false, Shipper: true } }
+      { name: 'Embed custom code', tiers: { Free: false, Starter: false, Superior: false, Shipper: true } }
     ]
   },
   {
@@ -105,29 +113,30 @@ const sections = [
             </span>
           </Tooltip>
         ),
-        tiers: { Starter: '100', Superior: '1,000', Shipper: '5,000' }
+        tiers: { Free: '10', Starter: '100', Superior: '1,000', Shipper: '5,000' }
       },
       {
         name: 'Accept payments',
         tiers: {
+          Free: '10% commission + Stripe fee',
           Starter: '5% commission + Stripe fee',
           Superior: '1% commission + Stripe fee',
           Shipper: 'Stripe fee only'
         }
       },
-      { name: 'Real-time analytics', tiers: { Starter: true, Superior: true, Shipper: true } },
-      { name: 'Understand interests', tiers: { Starter: true, Superior: true, Shipper: true } },
-      { name: 'Collect feedback', tiers: { Starter: true, Superior: true, Shipper: true } },
-      { name: 'Quick polls', tiers: { Starter: true, Superior: true, Shipper: true } }
+      { name: 'Real-time analytics', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } },
+      { name: 'Understand interests', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } },
+      { name: 'Collect feedback', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } },
+      { name: 'Quick polls', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } }
     ]
   },
   {
     name: 'Other',
     features: [
-      { name: 'Web hosting', tiers: { Starter: true, Superior: true, Shipper: true } },
-      { name: 'Automatic SSL', tiers: { Starter: true, Superior: true, Shipper: true } },
-      { name: 'Priority support', tiers: { Starter: false, Superior: true, Shipper: true } },
-      { name: 'Team collaboration', tiers: { Starter: false, Superior: false, Shipper: true } }
+      { name: 'Web hosting', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } },
+      { name: 'Automatic SSL', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } },
+      { name: 'Priority support', tiers: { Free: false, Starter: false, Superior: true, Shipper: true } },
+      { name: 'Team collaboration', tiers: { Free: false, Starter: false, Superior: false, Shipper: true } }
     ]
   }
 ]
@@ -140,7 +149,7 @@ export const PricingComparisonSections: FC = () => {
           <tr>
             <th
               className="bg-slate-100 py-4 pl-6 text-base font-medium text-slate-900 text-left"
-              colSpan={4}
+              colSpan={5}
               scope="colgroup"
             >
               {section.name}
@@ -220,7 +229,7 @@ export const PricingComparison: FC<{
                 {PLAN_TIERS.map(tier => (
                   <th
                     key={tier.name}
-                    className="w-1/4 pb-4 px-6 text-lg leading-6 font-bold text-slate-700 text-left"
+                    className="w-1/5 pb-4 px-6 text-lg leading-6 font-bold text-slate-700 text-left"
                     scope="col"
                   >
                     {tier.name}
@@ -278,7 +287,7 @@ export const PricingComparison: FC<{
                         href={tier.href}
                         className="absolute bottom-0 flex-grow block w-full bg-slate-900 rounded-full 5 py-2 text-sm font-semibold text-white text-center"
                       >
-                        Join as a {tier.name}
+                        Join as {tier.name}
                       </a>
                     </div>
                   </td>
@@ -297,7 +306,7 @@ export const PricingComparison: FC<{
                       href={tier.href}
                       className="block w-full bg-slate-900 rounded-full py-2 text-sm font-semibold text-white text-center"
                     >
-                      Join as a {tier.name}
+                      Join as {tier.name}
                     </a>
                   </td>
                 ))}

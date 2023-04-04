@@ -12,9 +12,9 @@ const tiers = [
     priceAnnually: 4,
     description: 'For new makers who want to fine-tune and test an idea.',
     includedFeatures: [
-      '1 landing page included',
+      '1 landing page',
       '1,000 visits/mo',
-      'Up to 100 conversions',
+      'Up to 100 conversions/mo',
       '5% payment commission',
       'Custom domain',
       'Real-time analytics'
@@ -27,12 +27,12 @@ const tiers = [
     priceAnnually: 12,
     description: 'For creators who want to efficiently test and refine multiple ideas.',
     includedFeatures: [
-      'All Free features',
-      '5 landing pages included',
+      'Up to 5 landing pages',
       '50,000 visits/mo',
-      'Up to 1,000 conversions',
+      'Up to 1,000 conversions/mo',
       '1% payment commission',
       'Access to all templates',
+      'Private mode',
       'Remove EarlyBird branding'
     ]
   },
@@ -43,10 +43,9 @@ const tiers = [
     priceAnnually: 32,
     description: 'For productive shippers who want to work more efficiently.',
     includedFeatures: [
-      'All Standard features',
-      '20 landing pages included',
+      'Up to 20 landing pages',
       '200,000 visits/mo',
-      '5,000 conversion actions included',
+      'Up to 5,000 conversions/mo',
       'No payment commission',
       'Embed custom code',
       'Team collaboration'
@@ -99,15 +98,15 @@ export const PricingPlans: FC<{
             </button>
           </div>
 
-          <div className="mt-12 space-y-3 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-6 md:max-w-5xl md:mx-auto xl:grid-cols-3">
+          <div className="mt-12 space-y-3 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-6 w-full xl:grid-cols-3">
             {tiers.map(tier => (
               <div
                 key={tier.name}
                 className="border border-slate-200 rounded-lg shadow-sm divide-y divide-slate-200"
               >
-                <div className="p-6">
-                  <h2 className="text-xl leading-6 font-bold text-slate-900">{tier.name}</h2>
-                  <p className="mt-2 text-base text-slate-700 leading-tight">{tier.description}</p>
+                <div className="px-8 py-16">
+                  <h2 className="text-2xl leading-6 font-bold text-slate-900">{tier.name}</h2>
+                  <p className="mt-4 text-base text-slate-700 leading-tight">{tier.description}</p>
                   <p className="mt-8">
                     <span className="text-4xl font-bold text-slate-900 tracking-tighter">
                       ${billingCycle === 'monthly' ? tier.priceMonthly : tier.priceAnnually}
@@ -140,6 +139,17 @@ export const PricingPlans: FC<{
               </div>
             ))}
           </div>
+          
+          <div className="mt-8 sm:flex sm:justify-between bg-lime-50 rounded-lg shadow-sm px-4 sm:px-16 py-16">
+            <div className="px-4">
+              <h3 className="text-4xl font-bold mb-4">Looking for custom plans?</h3>
+              <div className="max-w-xl text-lg text-slate-700">If you require higher limits on landing pages, traffic and conversions or need a customized landing page design, feel free to get in touch with us for custom pricing.</div>
+            </div>
+            <div className="px-4 self-center mt-8 sm:mt-0">
+              <a href="mailto:support@earlybird.im" className="px-6 py-4 bg-slate-900 text-slate-50 font-bold rounded-full">Contact us</a>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

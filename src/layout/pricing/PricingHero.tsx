@@ -12,7 +12,7 @@ export const PricingHero: FC = () => {
           Simple & flexible pricing
           </h1>
           <div className="text-slate-700 text-base md:text-lg w-full md:max-w-3xl md:mx-auto mt-5">
-          No overcharges or hidden fees. We prefer simple and transparent.
+          Supercharge your EarlyBird landing page with a paid plan starting from just $4/mo
           </div>
         </div>
       </div>

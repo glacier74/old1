@@ -39,7 +39,7 @@ export const PricingFAQ: FC = () => {
   return (
     <section>
       <div className="max-w-7xl mx-auto px-4 pb-32 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <h2 className="text-center text-2xl font-bold text-slate-900 sm:text-3xl">
             Frequently asked questions
           </h2>
