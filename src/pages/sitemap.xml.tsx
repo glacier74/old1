@@ -44,6 +44,11 @@ export async function getServerSideProps({ res }: NextPageContext): Promise<unkn
       <priority>0.8</priority>
     </url>
     <url>
+      <loc>${homepage}/collections</loc>
+      <lastmod>2023-04-05T10:43:50.748Z</lastmod>
+      <priority>0.8</priority>
+    </url>
+    <url>
       <loc>${homepage}/blog</loc>
       <lastmod>2022-12-23T10:43:50.748Z</lastmod>
       <priority>0.8</priority>
