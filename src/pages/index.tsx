@@ -1,5 +1,3 @@
-import * as process from 'process'
-
 import {
   HomeAuthorizedLayout,
   HomeBottom,
@@ -10,8 +8,8 @@ import {
   HomeLayout,
   HomeLetter,
   HomeTestimonials,
-  HomeUserImage,
-  HomeUsecase
+  HomeUsecase,
+  HomeUserImage
 } from '~/layout'
 import { isLoggedIn, withTranslations } from '~/utils'
 

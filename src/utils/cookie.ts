@@ -2,7 +2,6 @@ import { date, isFunction, isValid } from '@nily/utils'
 import dayjs from 'dayjs'
 import { CookiesStatic as JSCookie } from 'js-cookie'
 import { RequestCookies, ResponseCookies } from 'next/dist/server/web/spec-extension/cookies'
-import * as process from 'process'
 import { v4 as uuidV4 } from 'uuid'
 
 // Cookie options

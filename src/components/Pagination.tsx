@@ -1,22 +1,32 @@
+import clsx from 'clsx'
 import Link from 'next/link'
 import type { FC } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { urlBuilder } from '~/utils'
 
-interface PaginationProps {
+interface PaginationProps extends ComponentProps {
   uri: string
   total: number
   page: number
   limit: number
 }
 
-export const Pagination: FC<PaginationProps> = ({ uri, total, page = 1, limit = 20 }) => {
+export const Pagination: FC<PaginationProps> = ({
+  className,
+  uri,
+  total,
+  page = 1,
+  limit = 20
+}) => {
   const maxPage = useMemo(() => Math.ceil(total / limit), [total, limit])
   const [start, setStart] = useState(0)
   const [end, setEnd] = useState(0)
 
-  const previousURL = useMemo(() => (page > 1 ? urlBuilder(uri, { page: page - 1 }) : null), [page])
+  const previousURL = useMemo(
+    () => (page > 1 ? (page == 2 ? uri : urlBuilder(uri, { page: page - 1 })) : null),
+    [page]
+  )
   const nextURL = useMemo(
     () => (page < maxPage ? urlBuilder(uri, { page: page + 1 }) : null),
     [page]
@@ -33,7 +43,10 @@ export const Pagination: FC<PaginationProps> = ({ uri, total, page = 1, limit = 
 
   return (
     <nav
-      className="py-4 flex items-center justify-between border-t border-slate-100"
+      className={clsx(
+        'py-4 flex items-center justify-between border-t border-slate-100',
+        className
+      )}
       aria-label="Pagination"
     >
       <div className="hidden sm:block">

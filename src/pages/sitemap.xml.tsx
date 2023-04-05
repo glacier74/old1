@@ -1,5 +1,4 @@
 import { NextPageContext } from 'next'
-import * as process from 'process'
 
 const Sitemap = () => {
   //

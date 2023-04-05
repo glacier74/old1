@@ -1,6 +1,7 @@
+import { conv } from '@nily/utils'
 import { useTranslation } from 'next-i18next'
 
-import { GroupCollections, HomeFooter, HomeHeader, HomeLayout } from '~/layout'
+import { CategoryCollections, HomeFooter, HomeHeader, HomeLayout } from '~/layout'
 import { PricingCTA } from '~/layout/pricing'
 import { AirtableService } from '~/service/airtable'
 import { withTranslations } from '~/utils'
@@ -18,7 +19,7 @@ const Collection = (props: any): JSX.Element => {
       }}
     >
       <HomeHeader />
-      <GroupCollections {...props} />
+      <CategoryCollections {...props} />
       <PricingCTA />
       <HomeFooter />
     </HomeLayout>
@@ -26,22 +27,25 @@ const Collection = (props: any): JSX.Element => {
 }
 
 export const getServerSideProps = withTranslations(async ({ query }) => {
-  const records = await AirtableService.records<CollectionRecord>(
+  const category = query.category.toLowerCase()
+  const result = await AirtableService.records<CollectionRecord>(
     NEXT_AIRTABLE_BASE_ID,
     NEXT_AIRTABLE_COLLECTION_ID
   )
-  const categories = Array.from(new Set(records.map(r => r.Category)))
-  const groups = categories.map(category => ({
-    category,
-    records: records
-      .filter(record => record.Category.toLowerCase() === category.toLowerCase())
-      .slice(0, 9)
-  }))
+  const categories = Array.from(new Set(result.map(r => r.Category)))
+  const records = result.filter(r => r.Category.toLowerCase() === category)
+
+  const limit = 18
+  const page = conv.int(query.page, 1)!
 
   return {
     props: {
       categories,
-      groups
+      category,
+      records: records.slice((page - 1) * limit, page * limit),
+      total: records.length,
+      page,
+      limit
     }
   }
 })
