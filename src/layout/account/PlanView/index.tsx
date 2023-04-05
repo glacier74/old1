@@ -14,7 +14,7 @@ export const PlanView = () => {
           {PLAN_TIERS.map(tier => (
             <th
               key={tier.name}
-              className="w-1/4 pb-4 px-6 text-lg leading-6 font-bold text-slate-700 text-left"
+              className="w-1/5 pb-4 px-6 text-lg leading-6 font-bold text-slate-700 text-left"
               scope="col"
             >
               {tier.name}

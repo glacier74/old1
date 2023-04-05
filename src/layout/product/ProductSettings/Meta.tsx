@@ -92,14 +92,14 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
         >
           <div className="flex flex-col lg:flex-row justify-start space-y-2 lg:space-x-8 lg:space-y-0">
             <div className="w-full lg:w-1/2 lg:flex-1">
-              <PlanCheck className="cursor-pointer" minimalLevel={PLAN_LEVELS.plan_superior}>
+              <PlanCheck className="cursor-pointer" minimalLevel={PLAN_LEVELS.plan_starter}>
                 <Form.Item
                   name="openGraphImage"
                   className="mb-4"
                   label={
                     <>
                       {t('productSettings.metaData.openGraphImage')}
-                      <PlanBadge className="ml-2" minimalLevel={PLAN_LEVELS.plan_superior} />
+                      <PlanBadge className="ml-2" minimalLevel={PLAN_LEVELS.plan_starter} />
                     </>
                   }
                 >

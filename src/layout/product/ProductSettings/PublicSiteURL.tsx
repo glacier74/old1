@@ -376,11 +376,11 @@ const CustomURL: FC = () => {
 
   return (
     <>
-      <PlanCheck className="cursor-pointer" minimalLevel={PLAN_LEVELS.plan_superior}>
+      <PlanCheck className="cursor-pointer" minimalLevel={PLAN_LEVELS.plan_starter}>
         <div>
           <div className="form-item-label">
             <span>Custom URL</span>
-            <PlanBadge className="ml-1" minimalLevel={PLAN_LEVELS.plan_superior} />
+            <PlanBadge className="ml-1" minimalLevel={PLAN_LEVELS.plan_starter} />
           </div>
           <div className="form-item-content">
             <div className="mb-2 space-y-2">
