@@ -102,7 +102,7 @@ export const PricingPlans: FC<{
             {tiers.map(tier => (
               <div
                 key={tier.name}
-                className="border border-slate-200 rounded-lg shadow-sm divide-y divide-slate-200"
+                className={clsx('border border-slate-200 rounded-lg shadow-sm divide-y divide-slate-200', {'bg-cyan-50 border-cyan-400': tier.name === 'Superior'})}                
               >
                 <div className="px-8 py-16">
                   <h2 className="text-2xl leading-6 font-bold text-slate-900">{tier.name}</h2>
@@ -112,6 +112,19 @@ export const PricingPlans: FC<{
                       ${billingCycle === 'monthly' ? tier.priceMonthly : tier.priceAnnually}
                     </span>{' '}
                     <span className="text-base font-medium text-slate-500">/mo</span>
+
+                    {tier.name === 'Superior' && billingCycle === 'monthly' && (
+                      <span className="ml-2 text-sky-700 text-sm font-medium">(roughly $3/mo/page)</span>
+                    )}
+                    {tier.name === 'Shipper' && billingCycle === 'monthly' &&(
+                      <span className="ml-2 text-sky-700 text-sm font-medium">(roughly $1.95/mo/page)</span>
+                    )}
+                    {tier.name === 'Superior' && billingCycle === 'yearly' &&(
+                      <span className="ml-2 text-sky-700 text-sm font-medium">(roughly $2.4/mo/page)</span>
+                    )}
+                    {tier.name === 'Shipper' && billingCycle === 'yearly' && (
+                      <span className="ml-2 text-sky-700 text-sm font-medium">(roughly $1.6/mo/page)</span>
+                    )}
                   </p>
                   <a
                     href={tier.href}
@@ -140,7 +153,9 @@ export const PricingPlans: FC<{
             ))}
           </div>
           
-          <div className="mt-8 sm:flex sm:justify-between bg-lime-50 rounded-lg shadow-sm px-4 sm:px-16 py-16">
+          <div className="text-center mt-16 text-xl font-medium">Just getting started? <a href="/sign-up" className="underline">Try EarlyBird out for free</a>, forever (yes really)!</div>
+
+          <div className="mt-16 sm:flex sm:justify-between bg-lime-50 rounded-lg shadow-sm px-4 sm:px-16 py-16">
             <div className="px-4">
               <h3 className="text-4xl font-bold mb-4">Looking for custom plans?</h3>
               <div className="max-w-xl text-lg text-slate-700">If you require higher limits on landing pages, traffic and conversions or need a customized landing page design, feel free to get in touch with us for custom pricing.</div>

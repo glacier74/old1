@@ -280,7 +280,7 @@ export const PricingComparison: FC<{
                         </span>{' '}
                         <span className="text-base font-medium text-slate-500">/mo</span>
                       </p>
-                      <p className="mt-4 mb-16 text-base text-slate-500 leading-tight">
+                      <p className="mt-4 mb-16 text-sm text-slate-500 leading-tight">
                         {tier.description}
                       </p>
                       <a
