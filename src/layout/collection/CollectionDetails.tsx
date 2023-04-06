@@ -14,7 +14,7 @@ export const CollectionDetails: FC<{
           </h1>
         </div>
         <div className="mt-16 sm:mt-20">
-          <div className="flex gap-10">
+          <div className="flex gap-0 md:gap-10">
             <div className="flex-1">
               <AirtableImage
                 className="w-full h-auto bg-slate-50 border-slate-100 rounded-xl shadow-md"

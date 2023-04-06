@@ -108,8 +108,8 @@ export const HomeHeader: FC = () => {
 
       {isOpen && (
         <div className="fixed top-20 left-0 right-0 bg-white rounded-lg shadow-xl z-10 md:hidden">
-          <div className="flex flex-col py-5 px-5">
-            <div className="flex flex-col space-y-2 text-center">
+          <div className="flex flex-col py-8 px-5">
+            <div className="flex flex-col space-y-4 text-center">
               <Link href="/features" title={t('features.title')} className="hover:opacity-80">
                 Features
               </Link>
@@ -128,13 +128,20 @@ export const HomeHeader: FC = () => {
               </Link>
             </div>
 
-            <div className="flex flex-col text-slate-900 space-y-2 border-t border-slate-200 mt-5 pt-5">
+            <div className="flex flex-col text-slate-900 space-y-4 border-t border-slate-200 mt-5 pt-5">
               <Link
                 href="/login"
-                className="py-1 px-3 border border-emerald-500 text-emerald-500 rounded hover:opacity-80 text-center"
+                className="py-2 px-3 border border-emerald-500 text-emerald-500 rounded-full font-medium text-center"
                 title={t('common.name')}
               >
                 Login
+              </Link>
+              <Link
+                href="/sign-up"
+                className="py-2 px-6 rounded-full text-white bg-slate-900 font-medium text-center"
+                title={t('common.signup')}
+              >
+                Sign up
               </Link>
             </div>
           </div>
