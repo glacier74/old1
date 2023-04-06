@@ -30,7 +30,7 @@ export const getServerSideProps = withTranslations(async ({ query }) => {
     NEXT_AIRTABLE_BASE_ID,
     NEXT_AIRTABLE_COLLECTION_ID
   )
-  const record = records.find(r => r.Slug.toLowerCase() === query.slug.toLowerCase())
+  const record = records.find(r => r.Slug?.toLowerCase() === query.slug.toLowerCase())
 
   if (!record) {
     return {

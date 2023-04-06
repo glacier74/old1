@@ -34,7 +34,7 @@ export const getServerSideProps = withTranslations(async ({ query }) => {
   const groups = categories.map(category => ({
     category,
     records: records
-      .filter(record => record.Category.toLowerCase() === category.toLowerCase())
+      .filter(record => record.Category?.toLowerCase() === category.toLowerCase())
       .slice(0, 9)
   }))
 

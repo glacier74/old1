@@ -42,8 +42,8 @@ export const getServerSideProps = withTranslations(async ({ query }) => {
 
     records = result.filter(r => {
       return (
-        r.Title.toLowerCase().includes(searchLower) ||
-        r.Category.toLowerCase().includes(searchLower)
+        r.Title?.toLowerCase().includes(searchLower) ||
+        r.Category?.toLowerCase().includes(searchLower)
       )
     })
   }

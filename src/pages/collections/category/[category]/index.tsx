@@ -33,7 +33,7 @@ export const getServerSideProps = withTranslations(async ({ query }) => {
     NEXT_AIRTABLE_COLLECTION_ID
   )
   const categories = Array.from(new Set(result.map(r => r.Category)))
-  const records = result.filter(r => r.Category.toLowerCase() === category)
+  const records = result.filter(r => r.Category?.toLowerCase() === category)
 
   const limit = 18
   const page = conv.int(query.page, 1)!
