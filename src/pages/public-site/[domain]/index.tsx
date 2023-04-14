@@ -232,7 +232,7 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
           className="payment-successful"
           title="Your payment is successful!"
           description="Thank you for your payment! An automated payment receipt will be sent to the email address provided very shortly."
-          icon="🎉"
+          icon={<img src="/static/party-popper.gif" width={160} height={160} />}
           action={
             <a href="/" className="link-button link-button-success">
               Back to {product.name}

@@ -1,7 +1,8 @@
-import { Spin, notification, preventDefault } from '@heyforms/ui'
+import { EmptyStates, Spin, preventDefault } from '@heyforms/ui'
 import clsx from 'clsx'
 import { ChangeEvent, FC, FormEvent, useCallback, useState } from 'react'
 
+import { IconAlertCircleFilled } from '~/components'
 import { useBuilderContext } from '~/layout/builder2/context'
 import { PublicApiService } from '~/service'
 
@@ -31,6 +32,7 @@ interface $EmailCaptureProps extends ComponentProps {
   }
   isPaymentRequired?: boolean
   message?: string
+  submessage?: string
 }
 
 export const $EmailCapture: FC<$EmailCaptureProps> = ({
@@ -42,6 +44,7 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
   button,
   isPaymentRequired,
   message = 'You have successfully submitted',
+  submessage,
   children: _children,
   style: _style
 }) => {
@@ -51,6 +54,8 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
   const [name, setName] = useState<string>()
   const [email, setEmail] = useState<string>()
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [isSubmitted, setSubmitted] = useState(false)
 
   const handleSubmit = useCallback(
     async (event: FormEvent) => {
@@ -61,6 +66,7 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
       }
 
       setLoading(true)
+      setError(null)
 
       try {
         if (isPaymentRequired) {
@@ -74,6 +80,7 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
             }
           })
 
+          setLoading(false)
           window.location.href = result.sessionUrl
         } else {
           await PublicApiService.createContact(productId, {
@@ -83,14 +90,10 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
             email: email!
           })
 
-          notification.success({
-            title: message
-          })
+          setSubmitted(true)
         }
       } catch (err: any) {
-        notification.error({
-          title: err.message
-        })
+        setError(err.message)
       }
 
       setLoading(false)
@@ -107,46 +110,11 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
   }
 
   return (
-    <form
-      id={`earlybird-email-capture-${id}`}
-      className={clsx('earlybird-email-capture', className)}
-      onSubmit={handleSubmit}
+    <div
+      className={clsx('earlybird-email-capture-container', {
+        'earlybird-email-capture-submitted': isSubmitted
+      })}
     >
-      {isNameRequired && (
-        <input
-          name="name"
-          type="text"
-          autoComplete="text"
-          className="earlybird-email-capture__name-input"
-          placeholder={fullName?.placeholder || 'Your name'}
-          required={true}
-          style={inputStyle(fullName?.style)}
-          data-color={fullName?.style?.color}
-          onChange={handleNameChange}
-        />
-      )}
-      <input
-        name="email"
-        type="email"
-        autoComplete="email"
-        className="earlybird-email-capture_email-input"
-        placeholder={$email?.placeholder || 'Enter email address'}
-        required={true}
-        style={inputStyle($email?.style)}
-        data-color={$email?.style?.color}
-        onChange={handleEmailChange}
-      />
-      <button
-        type="submit"
-        className={clsx('earlybird-email-capture__submit-button earlybird-submit-button', {
-          'earlybird-submit-button-loading': loading
-        })}
-        disabled={loading}
-        style={linkStyle(button?.appearance || 'filled', button?.style)}
-      >
-        {loading && <Spin />}
-        <span>{button?.text}</span>
-      </button>
       <style
         dangerouslySetInnerHTML={{
           __html: `#earlybird-email-capture-${id} .earlybird-email-capture__name-input::placeholder {
@@ -157,6 +125,64 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
           };`
         }}
       />
-    </form>
+
+      {isSubmitted ? (
+        <EmptyStates
+          className="email-capture-successful"
+          title={message}
+          description={submessage}
+          icon={<img src="/static/party-popper.gif" width={160} height={160} />}
+        />
+      ) : (
+        <form
+          id={`earlybird-email-capture-${id}`}
+          className={clsx('earlybird-email-capture', className)}
+          onSubmit={handleSubmit}
+        >
+          {isNameRequired && (
+            <input
+              name="name"
+              type="text"
+              autoComplete="text"
+              className="earlybird-email-capture__name-input"
+              placeholder={fullName?.placeholder || 'Your name'}
+              required={true}
+              style={inputStyle(fullName?.style)}
+              data-color={fullName?.style?.color}
+              onChange={handleNameChange}
+            />
+          )}
+          <input
+            name="email"
+            type="email"
+            autoComplete="email"
+            className="earlybird-email-capture_email-input"
+            placeholder={$email?.placeholder || 'Enter email address'}
+            required={true}
+            style={inputStyle($email?.style)}
+            data-color={$email?.style?.color}
+            onChange={handleEmailChange}
+          />
+          <button
+            type="submit"
+            className={clsx('earlybird-email-capture__submit-button earlybird-submit-button', {
+              'earlybird-submit-button-loading': loading
+            })}
+            disabled={loading}
+            style={linkStyle(button?.appearance || 'filled', button?.style)}
+          >
+            {loading && <Spin />}
+            <span>{button?.text}</span>
+          </button>
+        </form>
+      )}
+
+      {error && (
+        <div className="mt-4 flex items-center text-sm text-red-500">
+          <IconAlertCircleFilled className="w-5 h-5" />
+          <span className="ml-2">{error}</span>
+        </div>
+      )}
+    </div>
   )
 }

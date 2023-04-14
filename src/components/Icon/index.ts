@@ -1,3 +1,4 @@
+export * from './IconAlertCircleFilled'
 export * from './IconArrowLeft'
 export * from './IconArrowRight'
 export * from './IconEmailCapture'

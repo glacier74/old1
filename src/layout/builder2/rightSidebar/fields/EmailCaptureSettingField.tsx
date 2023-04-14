@@ -99,6 +99,10 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
     updateSetting(value, 'message')
   }
 
+  function handleSubmessageChange(value: any) {
+    updateSetting(value, 'submessage')
+  }
+
   function handleEnablePayment(value: boolean) {
     updateSetting(value, 'isPaymentRequired')
   }
@@ -188,9 +192,18 @@ export const EmailCaptureSettingField: FC<SettingFieldProps> = ({ schema }) => {
         </div>
       </div>
 
-      <div className="pt-4">
+      <div className="pt-4 space-y-2">
         <div className="mb-1 text-sm text-slate-900 font-medium">Success message</div>
-        <Input.Textarea value={setting?.message} onChange={handleMessageChange} />
+
+        <div>
+          <div className="text-xs text-slate-700">Title</div>
+          <Input.Textarea value={setting?.message} onChange={handleMessageChange} />
+        </div>
+
+        <div>
+          <div className="text-xs text-slate-700">Subtitle</div>
+          <Input.Textarea value={setting?.submessage} onChange={handleSubmessageChange} />
+        </div>
       </div>
 
       <div className="pt-4">
