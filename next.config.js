@@ -91,16 +91,6 @@ module.exports = {
         permanent: false
       },
       {
-        source: '/login/twitter',
-        destination: `${process.env.NEXT_PUBLIC_API_URI}/login/twitter`,
-        permanent: false
-      },
-      {
-        source: '/login/twitter/callback',
-        destination: `${process.env.NEXT_PUBLIC_API_URI}/login/twitter/callback`,
-        permanent: false
-      },
-      {
         source: '/login/github',
         destination: `${process.env.NEXT_PUBLIC_API_URI}/login/github`,
         permanent: false
