@@ -16,7 +16,8 @@ const Features = (): JSX.Element => {
   return (
     <HomeLayout
       seo={{
-        title: t('features.title')
+        title: t('features.title'),
+        url: '/features'
       }}
     >
       <HomeHeader />

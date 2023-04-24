@@ -14,7 +14,8 @@ const Collection = (props: any): JSX.Element => {
   return (
     <HomeLayout
       seo={{
-        title: t('collection.title')
+        title: t('collection.title'),
+        url: '/collections'
       }}
     >
       <HomeHeader />

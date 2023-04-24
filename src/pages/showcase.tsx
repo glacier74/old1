@@ -10,7 +10,8 @@ const Features = (): JSX.Element => {
   return (
     <HomeLayout
       seo={{
-        title: t('showcase.title')
+        title: t('showcase.title'),
+        url: '/showcase'
       }}
     >
       <HomeHeader />

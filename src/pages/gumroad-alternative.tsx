@@ -15,7 +15,8 @@ const Pricing = (): JSX.Element => {
   return (
     <HomeLayout
       seo={{
-        title: t('gumroad.title')
+        title: t('gumroad.title'),
+        url: '/gumroad-alternative'
       }}
     >
       <HomeHeader />

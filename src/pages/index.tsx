@@ -29,7 +29,7 @@ const Home = ({ isLoggedIn, usersCount }: HomeProps): JSX.Element => {
   }
 
   return (
-    <HomeLayout>
+    <HomeLayout seo={{ url: '/' }}>
       <HomeHeader />
       <HomeHeroSection usersCount={usersCount} />
       <HomeUsecase />

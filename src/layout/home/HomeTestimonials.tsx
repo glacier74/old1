@@ -5,9 +5,6 @@ import { FC, useMemo } from 'react'
 import testimonials from '~/assets/testimonials.json'
 import { IconProducthunt, IconTwitter } from '~/components'
 import { waterfall } from '~/utils'
-import CrownLeavesLeft from '~public/static/leaves-left.png'
-import CrownLeavesRight from '~public/static/leaves-right.png'
-import RatingStars from '~public/static/stars.svg'
 
 interface Testimonial {
   type: string
@@ -26,7 +23,7 @@ const TestimonialTwitter: FC<{ testimonial: Testimonial }> = ({ testimonial }) =
     <div className="w-full bg-white shadow-sm border border-slate-200 p-5 mb-4 rounded-md">
       <div className="w-full flex items-center">
         <a href={testimonial.accountUrl} target="_blank" rel="noreferrer">
-          <img
+          <Image
             className="w-12 h-12 rounded-full"
             src={testimonial.avatar}
             width="48"
@@ -92,10 +89,11 @@ const TestimonialProducthunt: FC<{ testimonial: Testimonial }> = ({ testimonial 
     <div className="w-full bg-white shadow-sm border border-slate-200 p-5 mb-4 rounded-md">
       <div className="w-full flex items-center">
         <a href={testimonial.postUrl} target="_blank" rel="noreferrer">
-          <img
+          <Image
             className="w-12 h-12 rounded-full"
             src={testimonial.avatar}
             width="48"
+            height="48"
             alt={testimonial.nickname}
           />
         </a>
@@ -153,10 +151,11 @@ const TestimonialEmail: FC<{ testimonial: Testimonial }> = ({ testimonial }) => 
     <div className="w-full bg-white shadow-sm border border-slate-200 p-5 mb-4 rounded-md">
       <div className="w-full flex items-center">
         <div>
-          <img
+          <Image
             className="w-12 h-12 rounded-full"
             src={testimonial.avatar}
             width="48"
+            height="48"
             alt={testimonial.nickname}
           />
         </div>

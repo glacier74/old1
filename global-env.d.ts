@@ -18,7 +18,7 @@ declare global {
   }
 
   interface LayoutProps extends ComponentProps {
-    seo?: NextSeoProps
+    seo?: NextSeoProps & { url?: string }
     children: ReactNode
   }
 

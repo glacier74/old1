@@ -18,7 +18,8 @@ const Pricing = (): JSX.Element => {
   return (
     <HomeLayout
       seo={{
-        title: t('pricing.title')
+        title: t('pricing.title'),
+        url: '/pricing'
       }}
     >
       <HomeHeader />
