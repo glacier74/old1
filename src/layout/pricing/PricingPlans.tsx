@@ -102,7 +102,7 @@ export const PricingPlans: FC<{
             {tiers.map(tier => (
               <div
                 key={tier.name}
-                className={clsx('border border-slate-200 rounded-lg shadow-sm divide-y divide-slate-200', {'bg-cyan-50 border-cyan-400': tier.name === 'Superior'})}                
+                className={clsx('border border-slate-200 rounded-lg shadow-sm divide-y divide-slate-200', {'bgSuperior border-cyan-400': tier.name === 'Superior'})}                
               >
                 <div className="px-8 py-16">
                   <h2 className="text-2xl leading-6 font-bold text-slate-900">{tier.name}</h2>
