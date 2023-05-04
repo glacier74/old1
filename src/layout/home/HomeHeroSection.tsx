@@ -13,9 +13,9 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
   const { t } = useTranslation()
 
   return (
-    <section className="bg-amber-50/30">
+    <section className="homeHero">
       <div className="relative text-slate-900 max-w-7xl mx-auto px-8 md:px-12 z-10">
-        <div className="pt-32 md:pt-40 text-center">
+        <div className="pt-32 md:pt-48 text-center">
           <div className="inline-block rounded-full bg-emerald-100/70 px-6 py-2 mb-8 text-sm md:text-base text-emerald-700">
             Acquire your first customer by{' '}
             <span className="font-bold text-emerald-900">

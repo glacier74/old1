@@ -6,7 +6,7 @@ export const FeaturesHero: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section className="bg-emerald-50">
+    <section className="heroFeatures">
       <div className="relative max-w-7xl mx-auto px-5 z-10 pt-48 md:pt-64 pb-32 md:pb-48">
         <div className="text-center">
           <h1 className="max-w-3xl mx-auto text-4xl md:text-6xl font-bold text-slate-900">
