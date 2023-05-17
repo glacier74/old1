@@ -32,7 +32,7 @@ export const DragUploader: FC<DragUploaderProps> = ({
   loading = false,
   error,
   accept = [],
-  maxSize = '2MB',
+  maxSize = '5MB',
   selectText = 'common.selectText',
   reselectText = 'common.reselectText',
   uploadingText = 'common.uploading',
