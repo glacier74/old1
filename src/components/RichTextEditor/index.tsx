@@ -51,7 +51,8 @@ export const RichTextEditor: FC<RichTextEditorProps> = ({
       Italic,
       Underline,
       Link.configure({
-        openOnClick: false
+        openOnClick: false,
+        autolink: false
       }),
       TextStyle,
       Color,
