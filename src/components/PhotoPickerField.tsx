@@ -3,10 +3,11 @@ import { isValid } from '@nily/utils'
 import { IconUpload } from '@tabler/icons'
 import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
+import Image from 'next/image'
 import type { FC } from 'react'
 
 import { RoundImage } from '~/components'
-import { cropImage, useVisible } from '~/utils'
+import { useVisible } from '~/utils'
 
 import { PhotoPicker } from './PhotoPicker'
 
@@ -95,13 +96,13 @@ export const ImagePickerField: FC<ImagePickerFieldProps> = ({
       >
         {value ? (
           <div onClick={handleClick}>
-            <img
-              key={value}
+            <Image
               className="max-h-full object-cover"
-              src={cropImage(value, width, height)}
+              src={value}
               width={width}
               height={height}
               loading="eager"
+              alt=""
             />
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 transition-opacity cursor-pointer group-hover:opacity-100">
               <span className="text-xs text-white">{t('common.upload')}</span>

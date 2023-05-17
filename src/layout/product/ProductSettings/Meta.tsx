@@ -5,15 +5,12 @@ import { FC, useMemo } from 'react'
 
 import { Expandable, IconGoogle2, ImagePickerField } from '~/components'
 import { PLAN_LEVELS } from '~/constants'
-import { useProduct } from '~/layout'
 import { PlanBadge, PlanCheck } from '~/layout/product/PlanCheck'
 
 import { OpenGraphImage } from './OpenGraphImage'
 
 export const Meta: FC<{ values: any }> = ({ values }) => {
   const { t } = useTranslation()
-  const product = useProduct()
-  console.log(values)
 
   const url = useMemo(
     () => `${values.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`,
