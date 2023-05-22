@@ -1,4 +1,5 @@
 import { NextPageContext } from 'next'
+
 import { AirtableService } from '~/service/airtable'
 
 const NEXT_AIRTABLE_BASE_ID = process.env.NEXT_AIRTABLE_BASE_ID as string
@@ -11,13 +12,12 @@ const Sitemap = () => {
 export async function getServerSideProps({ res }: NextPageContext): Promise<unknown> {
   const homepage = process.env.NEXT_PUBLIC_HOMEPAGE
   const [subdomains, records] = await Promise.all([
-    (await fetch(
-      `${process.env.NEXT_PUBLIC_API_URI}/sitemap-subdomains?key=${process.env.NEXT_API_VERIFICATION_KEY}`
-    )).json(),
-    AirtableService.records<CollectionRecord>(
-      NEXT_AIRTABLE_BASE_ID,
-      NEXT_AIRTABLE_COLLECTION_ID
-    )
+    (
+      await fetch(
+        `${process.env.NEXT_PUBLIC_API_URI}/sitemap-subdomains?key=${process.env.NEXT_API_VERIFICATION_KEY}`
+      )
+    ).json(),
+    AirtableService.records<CollectionRecord>(NEXT_AIRTABLE_BASE_ID, NEXT_AIRTABLE_COLLECTION_ID)
   ])
   const categories = Array.from(new Set(records.map(r => r.Category)))
 

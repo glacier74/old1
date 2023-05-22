@@ -53,7 +53,7 @@ export const BillingInvoice = () => {
       align: 'right',
       render(row) {
         return (
-          <a href={row.receiptUrl} target="_blank">
+          <a href={row.receiptUrl} target="_blank" rel="noreferrer">
             View receipt
           </a>
         )

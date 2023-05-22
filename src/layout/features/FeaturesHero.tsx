@@ -10,7 +10,7 @@ export const FeaturesHero: FC = () => {
       <div className="relative max-w-7xl mx-auto px-5 z-10 pt-48 md:pt-64 pb-32 md:pb-48">
         <div className="text-center">
           <h1 className="max-w-3xl mx-auto text-4xl md:text-6xl font-bold text-slate-900">
-          Transform your idea into a thriving customer base
+            Transform your idea into a thriving customer base
           </h1>
           <div className="text-slate-700 text-lg md:text-2xl w-full md:max-w-3xl md:mx-auto mt-6">
             Save time and resources by using EarlyBird to validate your idea before diving into

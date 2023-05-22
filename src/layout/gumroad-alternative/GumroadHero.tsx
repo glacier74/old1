@@ -50,6 +50,7 @@ export const GumroadHero: FC = () => {
             <a
               href="https://www.producthunt.com/posts/earlybird-2?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-earlybird&#0045;2"
               target="_blank"
+              rel="noreferrer"
             >
               <img
                 src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=371908&theme=light&period=daily"

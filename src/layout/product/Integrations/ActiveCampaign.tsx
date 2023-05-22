@@ -23,6 +23,7 @@ export const ActiveCampaign = () => {
             href="https://zapier.com/apps/earlybird/integrations/activecampaign"
             className="link-button !px-2.5 !py-1.5"
             target="_blank"
+            rel="noreferrer"
           >
             Connect
           </a>

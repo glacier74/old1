@@ -97,6 +97,7 @@ export const PaymentSettings: FC<{ block: PaymentBlock }> = ({ block }) => {
                 className="text-green-500"
                 href="https://dashboard.stripe.com/settings/billing/portal"
                 target="_blank"
+                rel="noreferrer"
               >
                 Stripe customer portal
               </a>{' '}

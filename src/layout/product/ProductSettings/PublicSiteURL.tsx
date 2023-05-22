@@ -310,6 +310,7 @@ const ValidateComponent: FC<{ domain: string; onFinish: () => void }> = ({ domai
           className="underline"
           href="https://dnschecker.org/all-dns-records-of-domain.php"
           target="_blank"
+          rel="noreferrer"
         >
           DNS Lookup
         </a>

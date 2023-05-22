@@ -116,11 +116,7 @@ export const HomeHeader: FC = () => {
               <Link href="/pricing" title={t('pricing.title')} className="hover:opacity-80">
                 Pricing
               </Link>
-              <Link
-                href="/collections"
-                title={t('collections.title')}
-                className="hover:opacity-80"
-              >
+              <Link href="/collections" title={t('collections.title')} className="hover:opacity-80">
                 Collections
               </Link>
               <Link href="/blog" title={t('blog.title')} className="hover:opacity-80">

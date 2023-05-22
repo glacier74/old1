@@ -164,6 +164,7 @@ const PaymentComponent: FC<PaymentProps> = ({ block, ...restProps }) => {
                     className="block-text-primary"
                     href="https://stripe.com/connect"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     Head over to Stripe
                   </a>{' '}

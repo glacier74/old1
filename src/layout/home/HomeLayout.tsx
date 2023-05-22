@@ -18,7 +18,12 @@ export function HomeLayout({ seo, children }: LayoutProps): JSX.Element {
       <div className="home-container">{children}</div>
 
       <div className="fixed bottom-4 right-4 z-10">
-        <a href="https://vue.mx/discord" target="_blank" aria-label="Join Discord server">
+        <a
+          href="https://vue.mx/discord"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Join Discord server"
+        >
           <IconDiscord />
         </a>
       </div>

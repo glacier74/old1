@@ -120,6 +120,7 @@ export const Crisp: FC<{ integration: Integration }> = ({ integration }) => {
                     className="text-green-500"
                     href="https://help.crisp.chat/en/article/how-to-find-the-website-id-1ylqx1s/#1-how-to-find-the-websiteid"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     account settings
                   </a>

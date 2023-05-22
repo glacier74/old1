@@ -25,20 +25,36 @@ export const HomeFooter: FC = () => {
         </div>
 
         <div className="flex items-center justify-center md:justify-end mt-4 md:mt-0 text-slate-400 space-x-3">
-          <a href="https://twitter.com/earlybirdim" target="_blank" aria-label="Twitter">
+          <a
+            href="https://twitter.com/earlybirdim"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Twitter"
+          >
             <IconTwitterGray />
           </a>
-          <a href="https://facebook.com/earlybirdim" target="_blank" aria-label="Facebook">
+          <a
+            href="https://facebook.com/earlybirdim"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Facebook"
+          >
             <IconFacebook />
           </a>
           <a
             href="https://www.linkedin.com/company/earlybirdim/"
             target="_blank"
+            rel="noreferrer"
             aria-label="Linkedin"
           >
             <IconLinkedin />
           </a>
-          <a href="https://www.youtube.com/@earlybirdim" target="_blank" aria-label="Youtube">
+          <a
+            href="https://www.youtube.com/@earlybirdim"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Youtube"
+          >
             <IconYoutube />
           </a>
         </div>

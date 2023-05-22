@@ -21,6 +21,7 @@ export const Airtable = () => {
             href="https://zapier.com/apps/earlybird/integrations/airtable"
             className="link-button !px-2.5 !py-1.5"
             target="_blank"
+            rel="noreferrer"
           >
             Connect
           </a>

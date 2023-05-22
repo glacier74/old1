@@ -64,6 +64,7 @@ export const Product: FC = () => {
               className="text-green-500"
               href="https://dashboard.stripe.com/products/create"
               target="_blank"
+              rel="noreferrer"
             >
               create a product
             </a>

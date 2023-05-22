@@ -51,11 +51,26 @@ const sections = [
         name: 'Monthly visits',
         tiers: { Free: '100', Starter: '1,000', Superior: '50,000', Shipper: '200,000' }
       },
-      { name: 'Access to all UI blocks', tiers: { Free: true,Starter: true, Superior: true, Shipper: true } },
-      { name: 'Unlimited blocks', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } },
-      { name: 'Text formatting', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } },
-      { name: 'Responsive layout', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } },
-      { name: 'Full SEO control', tiers: { Free: false, Starter: false, Superior: true, Shipper: true } },
+      {
+        name: 'Access to all UI blocks',
+        tiers: { Free: true, Starter: true, Superior: true, Shipper: true }
+      },
+      {
+        name: 'Unlimited blocks',
+        tiers: { Free: true, Starter: true, Superior: true, Shipper: true }
+      },
+      {
+        name: 'Text formatting',
+        tiers: { Free: true, Starter: true, Superior: true, Shipper: true }
+      },
+      {
+        name: 'Responsive layout',
+        tiers: { Free: true, Starter: true, Superior: true, Shipper: true }
+      },
+      {
+        name: 'Full SEO control',
+        tiers: { Free: false, Starter: false, Superior: true, Shipper: true }
+      },
       {
         name: 'Private mode',
         help: (
@@ -79,15 +94,30 @@ const sections = [
   {
     name: 'Market',
     features: [
-      { name: 'Custom branding', tiers: { Free: false, Starter: true, Superior: true, Shipper: true } },
-      { name: 'Custom Open Graph', tiers: { Free: false, Starter: true, Superior: true, Shipper: true } },
-      { name: 'Collect social proof', tiers: { Free: false, Starter: true, Superior: true, Shipper: true } },
-      { name: 'Custom domain', tiers: { Free: false, Starter: true, Superior: true, Shipper: true } },
+      {
+        name: 'Custom branding',
+        tiers: { Free: false, Starter: true, Superior: true, Shipper: true }
+      },
+      {
+        name: 'Custom Open Graph',
+        tiers: { Free: false, Starter: true, Superior: true, Shipper: true }
+      },
+      {
+        name: 'Collect social proof',
+        tiers: { Free: false, Starter: true, Superior: true, Shipper: true }
+      },
+      {
+        name: 'Custom domain',
+        tiers: { Free: false, Starter: true, Superior: true, Shipper: true }
+      },
       {
         name: 'Remove EarlyBird branding',
         tiers: { Free: false, Starter: false, Superior: true, Shipper: true }
       },
-      { name: 'Embed custom code', tiers: { Free: false, Starter: false, Superior: false, Shipper: true } }
+      {
+        name: 'Embed custom code',
+        tiers: { Free: false, Starter: false, Superior: false, Shipper: true }
+      }
     ]
   },
   {
@@ -124,9 +154,18 @@ const sections = [
           Shipper: 'Stripe fee only'
         }
       },
-      { name: 'Real-time analytics', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } },
-      { name: 'Understand interests', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } },
-      { name: 'Collect feedback', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } },
+      {
+        name: 'Real-time analytics',
+        tiers: { Free: true, Starter: true, Superior: true, Shipper: true }
+      },
+      {
+        name: 'Understand interests',
+        tiers: { Free: true, Starter: true, Superior: true, Shipper: true }
+      },
+      {
+        name: 'Collect feedback',
+        tiers: { Free: true, Starter: true, Superior: true, Shipper: true }
+      },
       { name: 'Quick polls', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } }
     ]
   },
@@ -134,9 +173,18 @@ const sections = [
     name: 'Other',
     features: [
       { name: 'Web hosting', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } },
-      { name: 'Automatic SSL', tiers: { Free: true, Starter: true, Superior: true, Shipper: true } },
-      { name: 'Priority support', tiers: { Free: false, Starter: false, Superior: true, Shipper: true } },
-      { name: 'Team collaboration', tiers: { Free: false, Starter: false, Superior: false, Shipper: true } }
+      {
+        name: 'Automatic SSL',
+        tiers: { Free: true, Starter: true, Superior: true, Shipper: true }
+      },
+      {
+        name: 'Priority support',
+        tiers: { Free: false, Starter: false, Superior: true, Shipper: true }
+      },
+      {
+        name: 'Team collaboration',
+        tiers: { Free: false, Starter: false, Superior: false, Shipper: true }
+      }
     ]
   }
 ]

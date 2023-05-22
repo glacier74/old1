@@ -28,7 +28,7 @@ export const ProducthuntBadge: FC<ProducthuntBadgeProps> = ({ badge, ...restProp
   }, [badge.name, badge.tagline])
 
   return (
-    <a href={href} target="_blank" {...restProps}>
+    <a href={href} target="_blank" rel="noreferrer" {...restProps}>
       <img key={src} className="min-w-[13.875rem] h-12 w-auto" src={src} alt={alt} />
     </a>
   )

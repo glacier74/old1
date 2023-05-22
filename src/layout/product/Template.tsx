@@ -69,6 +69,7 @@ const TemplateItem: FC<TemplateItemProps> = ({ template, isSelected, onClick }) 
           className="hidden group-hover:block absolute top-1 right-1 px-1 bg-green-500 text-white rounded text-sm hover:opacity-80"
           href={previewURL}
           target="_blank"
+          rel="noreferrer"
         >
           Preview
         </a>

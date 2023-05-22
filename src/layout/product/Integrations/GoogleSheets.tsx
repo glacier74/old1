@@ -14,15 +14,14 @@ export const GoogleSheets = () => {
               By Zapier
             </div>
           </div>
-          <p className="text-sm text-slate-500 truncate">
-            Send new conversions to a spreadsheet.
-          </p>
+          <p className="text-sm text-slate-500 truncate">Send new conversions to a spreadsheet.</p>
         </div>
         <div>
           <a
             href="https://zapier.com/apps/earlybird/integrations/google-sheets"
             className="link-button !px-2.5 !py-1.5"
             target="_blank"
+            rel="noreferrer"
           >
             Connect
           </a>

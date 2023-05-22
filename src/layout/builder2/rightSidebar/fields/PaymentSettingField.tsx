@@ -148,6 +148,7 @@ export const ConnectStripe: FC<ConnectStripeProps> = ({ setting, updateSetting }
               className="text-green-500"
               href="https://dashboard.stripe.com/products/create"
               target="_blank"
+              rel="noreferrer"
             >
               Stripe dashboard
             </a>{' '}
@@ -249,6 +250,7 @@ export const PaymentSettingField: FC<SettingFieldProps> = ({ schema }) => {
                   className="text-green-500"
                   href="https://dashboard.stripe.com/settings/billing/portal"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   Stripe customer portal
                 </a>{' '}

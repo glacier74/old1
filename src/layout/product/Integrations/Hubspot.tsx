@@ -23,6 +23,7 @@ export const Hubspot = () => {
             href="https://zapier.com/apps/earlybird/integrations/hubspot"
             className="link-button !px-2.5 !py-1.5"
             target="_blank"
+            rel="noreferrer"
           >
             Connect
           </a>
