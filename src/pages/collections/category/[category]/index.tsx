@@ -11,11 +11,12 @@ const NEXT_AIRTABLE_COLLECTION_ID = process.env.NEXT_AIRTABLE_COLLECTION_ID as s
 
 const Collection = (props: any): JSX.Element => {
   const { t } = useTranslation()
+  const title = props.category.replace(/^\S/, (s: string) => s.toUpperCase())
 
   return (
     <HomeLayout
       seo={{
-        title: t('collection.title'),
+        title: t('collection.detailTitle', { title }),
         url: `/collections/category/${props.category}`
       }}
     >
