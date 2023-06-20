@@ -44,14 +44,22 @@ const Home = ({ isLoggedIn, usersCount }: HomeProps): JSX.Element => {
 }
 
 export const getServerSideProps = withTranslations(async context => {
-  const request = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URI}/users-count?key=${process.env.NEXT_API_VERIFICATION_KEY}`
-  )
-  const result = await request.json()
+  let usersCount = 0
+
+  try {
+    const request = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URI}/users-count?key=${process.env.NEXT_API_VERIFICATION_KEY}`
+    )
+    const result = await request.json()
+
+    usersCount = result.count
+  } catch (err) {
+    console.error(err)
+  }
 
   return {
     props: {
-      usersCount: result.count,
+      usersCount,
       isLoggedIn: isLoggedIn(context.req.cookies)
     }
   }
