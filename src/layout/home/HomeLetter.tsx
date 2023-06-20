@@ -11,7 +11,7 @@ export const HomeLetter: FC = () => {
     <section className="relative pb-0 bg-emerald-50">
       <div className="py-32 px-4 md:px-8 max-w-4xl mx-auto">
         <h2 className="text-4xl font-bold text-center">Founder letter</h2>
-        <div className="mt-8 shadow-xl p-8 md:p-16 text-base md:text-lg bg-white text-slate-700 whitespace-pre-line space-y-3 rounded-lg">
+        <div className="mt-8 shadow-xl p-8 md:p-16 text-base md:text-lg bg-white text-slate-800 whitespace-pre-line space-y-3 rounded-lg">
           <p>Hi everyone,</p>
           <p>I’m Luo, the founder of EarlyBird.</p>
           <p>
@@ -44,7 +44,7 @@ export const HomeLetter: FC = () => {
           </p>
           <p>I hope EarlyBird helps you succeed in the next stage of your journey. </p>
           <p>Wishing you all the best!</p>
-          <p className="mt-4">
+          <p className="mt-8">
             <Image
               src={FounderSign}
               alt="Signature by EarlyBird founder"

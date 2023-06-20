@@ -23,7 +23,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
             </span>{' '}
             with no waiting
           </div>
-          <h1 className="max-w-3xl mx-auto text-4xl md:text-6xl leading-tight font-bold md:font-bold">
+          <h1 className="max-w-3xl mx-auto text-3xl md:text-5xl leading-tight font-bold md:font-bold">
             Create{' '}
             <span className="relative whitespace-nowrap text-emerald-500">
               <svg
@@ -38,7 +38,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
             </span>{' '}
             that turn ideas into customers
           </h1>
-          <div className="max-w-2xl mx-auto text-slate-700 text-base md:text-xl mt-8 leading-tight">
+          <div className="max-w-2xl mx-auto text-slate-700 text-base md:text-lg mt-4 leading-tight">
             Your ideas could be worth millions if validated, and you don't need any technical
             knowledge to get started!
           </div>
@@ -48,10 +48,10 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
           <div className="flex justify-center flex-col md:flex-row items-center space-y-5 space-x-0 md:space-y-0 md:space-x-5">
             <Link
               href="/sign-up"
-              className="w-auto px-4 py-3 md:px-8 md:py-3 bg-slate-900 rounded-full text-white text-base md:text-lg"
+              className="w-auto px-4 py-3 md:px-8 md:py-3 bg-slate-900 rounded-full text-white"
               title={t('home.signUp')}
             >
-              Build your landing page today -&#62;
+              Get started for free -&#62;
             </Link>
           </div>
         </div>

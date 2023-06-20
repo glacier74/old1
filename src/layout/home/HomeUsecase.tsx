@@ -10,7 +10,7 @@ export const HomeUsecase: FC = () => {
         <div className="px-8 md:pr-32">
           <div className="flex justify-end">
             <div>
-              <h3 className="text-3xl font-medium mb-4">EarlyBird is for</h3>
+              <h3 className="text-2xl font-medium mb-4">EarlyBird is for</h3>
               <ul className="list-disc text-xl leading-relaxed pl-4 text-slate-700">
                 <li>Users without development and design skills</li>
                 <li>Running a simple online business</li>
@@ -22,7 +22,7 @@ export const HomeUsecase: FC = () => {
       </div>
       <div className="bg-pink-50 py-24">
         <div className="px-8 md:pl-32">
-          <h3 className="text-3xl font-medium mb-4">
+          <h3 className="text-2xl font-medium mb-4">
             EarlyBird is <span className="font-extrabold">NOT</span> for
           </h3>
           <ul className="list-disc text-xl leading-relaxed pl-4 text-slate-700">

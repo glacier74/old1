@@ -9,11 +9,11 @@ export const HomeFeature: FC = () => (
   <>
     <section className="bg-cyan-50 grid md:grid-cols-2">
       <div className="flex md:justify-end py-8 md:py-32 px-8 md:pr-32">
-        <h2 className="text-3xl md:text-5xl">Here's how it works</h2>
+        <h2 className="text-2xl md:text-4xl">Here's how it works</h2>
       </div>
       <div className="px-8">
         <div className="py-8 md:py-32">
-          <div className="text-3xl md:text-5xl font-bold text-slate-900">
+          <div className="text-2xl md:text-4xl font-bold text-slate-900">
             1. Build a landing page
           </div>
           <div className="mt-5 mb-7 max-w-xl text-lg md:text-xl leading-tight text-slate-700">
@@ -45,7 +45,7 @@ export const HomeFeature: FC = () => (
       </div>
       <div className="flex items-center py-8 md:py-32 px-8 md:pr-32">
         <div className="max-w-xl mx-auto">
-          <div className="text-3xl md:text-5xl font-bold">2. Market your idea</div>
+          <div className="text-2xl md:text-4xl font-bold">2. Market your idea</div>
           <div className="mt-5 mb-7 w-full text-lg md:text-xl leading-tight text-slate-700">
             Transform your idea into a compelling pitch deck that interests your audience. Spend
             less time creating copies.
@@ -57,7 +57,7 @@ export const HomeFeature: FC = () => (
     <section className="bg-violet-50 grid md:grid-cols-2">
       <div className="flex items-center justify-end px-8 pt-8">
         <div className="py-8 md:py-32 max-w-xl mx-auto">
-          <div className="text-3xl md:text-5xl font-bold ">3. Validate the idea</div>
+          <div className="text-2xl md:text-4xl font-bold ">3. Validate the idea</div>
           <div className="mt-5 w-full text-lg md:text-xl leading-tight text-slate-700">
             Start engaging with potential customers. Validate the demand for your product and accept
             payments before launch.
