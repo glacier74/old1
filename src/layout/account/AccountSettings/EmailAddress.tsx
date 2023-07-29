@@ -127,7 +127,7 @@ export const EmailAddress: FC = () => {
         <span>{user.email}</span>
 
         {!user.isSocialAccount && (
-          <Button.Link className="ml-2 text-green-500" onClick={openSendCode}>
+          <Button.Link className="ml-2 text-emerald-500" onClick={openSendCode}>
             {t('account.email.button')}
           </Button.Link>
         )}

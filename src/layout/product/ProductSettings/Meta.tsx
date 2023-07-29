@@ -35,7 +35,7 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
                 extra={value => (
                   <div className="text-xs text-slate-500">
                     Recommended: <strong>70</strong> characters. You've used{' '}
-                    <span className="text-green-500 font-semibold">{value?.length || 0}</span>
+                    <span className="text-emerald-500 font-semibold">{value?.length || 0}</span>
                   </div>
                 )}
               >
@@ -49,7 +49,7 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
                 extra={value => (
                   <div className="text-xs text-slate-500">
                     Recommended: <strong>156</strong> characters. You've used{' '}
-                    <span className="text-green-500 font-semibold">{value?.length || 0}</span>
+                    <span className="text-emerald-500 font-semibold">{value?.length || 0}</span>
                   </div>
                 )}
               >

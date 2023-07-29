@@ -241,7 +241,7 @@ export const Navbar: FC = () => {
         </div>
 
         <div className="flex-1 flex items-center justify-end">
-          {/*<Switch.Group*/}
+          {/*<Tab.Group*/}
           {/*  className="builder-mode"*/}
           {/*  value={state.previewMode}*/}
           {/*  options={options}*/}

@@ -1,6 +1,22 @@
+import { EventStreamContentType, fetchEventSource } from '@fortaine/fetch-event-source'
 import { AxiosRequestConfig } from 'axios'
+import * as dayjs from 'dayjs'
+import timezone from 'dayjs/plugin/timezone'
+import utc from 'dayjs/plugin/utc'
+import * as process from 'process'
+import YAML from 'yaml'
 
+import { AuthService } from '~/service/auth'
 import { axios } from '~/utils/axios'
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
+
+interface CompletionsOptions {
+  timeout?: number
+  onMessage: (data: AnyMap<any>) => void
+  onFinish: (error?: string) => void
+}
 
 export class ProductService {
   static async products(config?: AxiosRequestConfig): Promise<Product[]> {
@@ -24,10 +40,12 @@ export class ProductService {
     return axios.get('/products/templates')
   }
 
-  static async create(
-    product: Partial<Product> & { timezone: string; blocks: BlockData<any>[] }
-  ): Promise<number> {
-    const result = await axios.post('/products', product)
+  static async create(product: Partial<Product> & { blocks: any }): Promise<number> {
+    const result = await axios.post('/products', {
+      ...product,
+      // eslint-disable-next-line import/namespace
+      timezone: dayjs.tz.guess()
+    })
     return (result as unknown as Product).id
   }
 
@@ -118,6 +136,70 @@ export class ProductService {
   static async verifyPassword(productId: number, password: string): Promise<{ token: string }> {
     return axios.post(`/product/${productId}/password`, {
       password
+    })
+  }
+
+  static async completions(
+    productId: number,
+    completion: any,
+    { timeout = 10_000, onMessage, onFinish }: CompletionsOptions
+  ) {
+    const controller = new AbortController()
+    const requestTimeoutId = setTimeout(() => controller.abort(), timeout)
+    let responseText = ''
+
+    await fetchEventSource(`${process.env.NEXT_PUBLIC_API_URI}/products/${productId}/completions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        completion
+      }),
+      signal: controller.signal,
+      credentials: 'include',
+
+      async onopen(res) {
+        clearTimeout(requestTimeoutId)
+
+        if (res.status === 401) {
+          await AuthService.logout()
+          window.location.href = '/login'
+          return
+        }
+
+        const contentType = res.headers.get('content-type')
+
+        if (!res.ok || res.status !== 200 || !contentType?.startsWith(EventStreamContentType)) {
+          const json = await res.clone().json()
+
+          controller.abort()
+          onFinish(json.message)
+        }
+      },
+
+      onmessage(msg) {
+        if (msg.event === 'error') {
+          return onFinish(msg.data)
+        }
+
+        responseText += msg.data
+
+        try {
+          onMessage(YAML.parse(responseText))
+        } catch {}
+      },
+
+      onclose() {
+        controller.abort()
+        onFinish()
+      },
+
+      onerror(err) {
+        onFinish(err.message)
+      },
+
+      openWhenHidden: true
     })
   }
 }

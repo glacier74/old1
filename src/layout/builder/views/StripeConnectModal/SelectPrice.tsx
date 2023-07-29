@@ -29,7 +29,7 @@ const SelectPriceItem: FC<SelectPriceItemProps> = ({ value, price, onClick }) =>
       className={clsx(
         'bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer flex justify-between items-center focus:outline-none border-slate-300 undefined',
         {
-          'ring-2 ring-green-500 border-transparent': isActive
+          'ring-2 ring-emerald-500 border-transparent': isActive
         }
       )}
       onClick={handleClick}
@@ -40,7 +40,7 @@ const SelectPriceItem: FC<SelectPriceItemProps> = ({ value, price, onClick }) =>
         </div>
         <div className="text-slate-500">{t(PAYMENT_TYPES[price.type])}</div>
       </div>
-      {isActive && <IconCircleCheck className="ml-4 w-5 h-5 text-green-500" />}
+      {isActive && <IconCircleCheck className="ml-4 w-5 h-5 text-emerald-500" />}
     </div>
   )
 }

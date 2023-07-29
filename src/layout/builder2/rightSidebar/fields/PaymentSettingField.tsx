@@ -145,7 +145,7 @@ export const ConnectStripe: FC<ConnectStripeProps> = ({ setting, updateSetting }
           <div className="text-xs text-slate-700">
             Go to{' '}
             <a
-              className="text-green-500"
+              className="text-emerald-500"
               href="https://dashboard.stripe.com/products/create"
               target="_blank"
               rel="noreferrer"
@@ -247,7 +247,7 @@ export const PaymentSettingField: FC<SettingFieldProps> = ({ schema }) => {
               <p>
                 <strong>For subscription products</strong>, you need to activate{' '}
                 <a
-                  className="text-green-500"
+                  className="text-emerald-500"
                   href="https://dashboard.stripe.com/settings/billing/portal"
                   target="_blank"
                   rel="noreferrer"

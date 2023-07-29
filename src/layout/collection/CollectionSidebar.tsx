@@ -25,8 +25,8 @@ export const CollectionSidebar: FC<CollectionSidebarProps> = ({ categories, cate
           {categories.map(c => (
             <li key={c}>
               <Link
-                className={clsx('text-slate-700 hover:text-green-500', {
-                  '!text-green-500': category === c.toLowerCase()
+                className={clsx('text-slate-700 hover:text-emerald-500', {
+                  '!text-emerald-500': category === c.toLowerCase()
                 })}
                 href={`/collections/category/${encodeURIComponent(c.toLowerCase())}`}
               >

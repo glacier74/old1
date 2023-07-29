@@ -60,8 +60,8 @@ const Invite = () => {
     <CreateProductLayout
       seo={{ title: t('invite.title') }}
       logoElement={
-        <Link className="group flex items-center text-sm hover:text-green-500" href="/">
-          <IconChevronLeft className="w-4 h-4 text-slate-500 -ml-2 group-hover:text-green-500" />
+        <Link className="group flex items-center text-sm hover:text-emerald-500" href="/">
+          <IconChevronLeft className="w-4 h-4 text-slate-500 -ml-2 group-hover:text-emerald-500" />
           <span className="ml-1">{t('invite.backHome')}</span>
         </Link>
       }

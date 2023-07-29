@@ -1,4 +1,4 @@
-import { CSSProperties, FC, ReactNode } from 'react'
+import { AriaAttributes, CSSProperties, FC, ReactNode } from 'react'
 
 export {}
 
@@ -10,11 +10,16 @@ declare global {
   type AnyMap<V, K = string> = Record<K, T>
   type StringMap = AnyMap<string>
 
-  interface ComponentProps {
+  interface ComponentProps extends AriaAttributes {
     id?: string
     className?: string
     style?: CSSProperties
     children?: ReactNode
+  }
+
+  interface SharedProps {
+    _key: string
+    index: number
   }
 
   interface LayoutProps extends ComponentProps {
@@ -131,8 +136,10 @@ declare global {
 
   interface SiteSettings {
     productId: number
-    blocks: Block[]
-    draft: Block[]
+    template: string
+    blocks: any
+    draft: any
+    completions: string[]
     version: number
     theme: Theme
     customCode: string
@@ -155,6 +162,9 @@ declare global {
     name: string
     logo: string
     tagline: string
+    category: string
+    customer: string
+    template: string
     domainType: 'sub_domain' | 'custom_domain'
     domain: string
     customDomains?: CustomDomain[]

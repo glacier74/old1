@@ -94,7 +94,7 @@ export const PaymentSettings: FC<{ block: PaymentBlock }> = ({ block }) => {
             <p>
               <strong>For subscription products</strong>, you need to activate{' '}
               <a
-                className="text-green-500"
+                className="text-emerald-500"
                 href="https://dashboard.stripe.com/settings/billing/portal"
                 target="_blank"
                 rel="noreferrer"

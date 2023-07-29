@@ -19,7 +19,7 @@ export const TestimonialSettingField: FC<SettingFieldProps> = ({ schema }) => {
         <p>
           We have tested{' '}
           <a
-            className="text-green-500"
+            className="text-emerald-500"
             href="https://help.testimonial.to/en/articles/6223121-embed-a-wall-of-love"
             target="_blank"
             rel="noreferrer"
@@ -28,7 +28,7 @@ export const TestimonialSettingField: FC<SettingFieldProps> = ({ schema }) => {
           </a>
           ,{' '}
           <a
-            className="text-green-500"
+            className="text-emerald-500"
             href="https://support.senja.io/share-testimonials/eRYpqiPkoXVQnhcvDa9FYt/add-testimonials-to-your-website-[all-other-builders]/pktjvywbQF734P8jaZyNh2"
             target="_blank"
             rel="noreferrer"
@@ -37,7 +37,7 @@ export const TestimonialSettingField: FC<SettingFieldProps> = ({ schema }) => {
           </a>
           , and{' '}
           <a
-            className="text-green-500"
+            className="text-emerald-500"
             href="https://praisehive.com/guides/how-to-add-testimonials-to-wordpress-website"
             target="_blank"
             rel="noreferrer"

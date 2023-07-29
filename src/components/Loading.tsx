@@ -4,7 +4,7 @@ export function Loading({ className }: ComponentProps) {
   return (
     <div className={clsx('flex flex-col justify-center items-center', className)}>
       <svg
-        className="w-5 h-5 text-green-500 animate-spin"
+        className="w-5 h-5 text-emerald-500 animate-spin"
         fill="none"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"

@@ -26,11 +26,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta content="white" name="apple-mobile-web-app-status-bar-style" />
           <meta content="telephone=no,email=no" name="format-detection" />
         </Head>
-        <style jsx global>{`
-          html {
-            font-family: ${inter.style.fontFamily};
-          }
-        `}</style>
+        <style
+          dangerouslySetInnerHTML={{ __html: `html {font-family: ${inter.style.fontFamily}}` }}
+        />
         <Component {...pageProps} />
       </Suspense>
     </StoreProvider>

@@ -151,7 +151,7 @@ export const PricingPlans: FC<{
                     {tier.includedFeatures.map(feature => (
                       <li key={feature} className="flex space-x-3">
                         <IconCheck
-                          className="flex-shrink-0 h-5 w-5 text-green-400"
+                          className="flex-shrink-0 h-5 w-5 text-emerald-400"
                           aria-hidden="true"
                         />
                         <span className="text-base text-slate-700">{feature}</span>

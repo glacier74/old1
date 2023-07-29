@@ -69,7 +69,6 @@ const BACKGROUND_COLORS = [
   '#f0fdf4',
   '#eff6ff',
   '#faf5ff',
-
   '#d1d5db',
   '#9ca3af',
   '#ef4444',
@@ -96,8 +95,13 @@ export const ColorPane: FC<ColorPaneProps> = ({
       <div className="space-y-1">
         <div className="text-sm">Text color</div>
         <div className="flex items-center space-x-1">
-          {TEXT_COLORS.map(value => (
-            <TextColorItem value={value} isActive={value === color} onClick={onColorChange} />
+          {TEXT_COLORS.map((value, index) => (
+            <TextColorItem
+              key={index}
+              value={value}
+              isActive={value === color}
+              onClick={onColorChange}
+            />
           ))}
         </div>
       </div>
@@ -105,8 +109,9 @@ export const ColorPane: FC<ColorPaneProps> = ({
       <div className="space-y-1">
         <div className="text-sm">Background color</div>
         <div className="flex items-center space-x-1">
-          {BACKGROUND_COLORS.slice(0, 7).map(value => (
+          {BACKGROUND_COLORS.slice(0, 7).map((value, index) => (
             <BackgroundColorItem
+              key={index}
               value={value}
               isActive={value === backgroundColor}
               onClick={onBackgroundColorChange}
@@ -114,8 +119,9 @@ export const ColorPane: FC<ColorPaneProps> = ({
           ))}
         </div>
         <div className="flex items-center space-x-1">
-          {BACKGROUND_COLORS.slice(7).map(value => (
+          {BACKGROUND_COLORS.slice(7).map((value, index) => (
             <BackgroundColorItem
+              key={index}
               value={value}
               isActive={value === backgroundColor}
               onClick={onBackgroundColorChange}

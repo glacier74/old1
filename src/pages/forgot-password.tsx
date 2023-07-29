@@ -60,7 +60,7 @@ const ForgotPassword = (): JSX.Element => {
             </Form.Item>
           </Form.Custom>
 
-          <div className="mt-6 text-center text-green-500 hover:text-green-600 sm:text-sm">
+          <div className="mt-6 text-center text-emerald-500 hover:text-emerald-600 sm:text-sm">
             <a href="/login" className="inline-flex items-center">
               {t('forgotPassword.back')}
             </a>

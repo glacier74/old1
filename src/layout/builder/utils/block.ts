@@ -291,7 +291,7 @@ function featureBlockPaths(
     path: [...path, 'heading']
   })
 
-  // Content
+  // Context
   flattedBlocks.push({
     id: block.content.id,
     rootId: block.id,

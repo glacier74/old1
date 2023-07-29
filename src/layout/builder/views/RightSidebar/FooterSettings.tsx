@@ -69,7 +69,7 @@ const SocialMedia: FC<SocialMediaProps> = ({ socialMedia, onChange, onDelete }) 
               leading={<IconGripVertical />}
             />
           </Tooltip>
-          <Tooltip ariaLabel="Collapse or expand the social media form">
+          <Tooltip ariaLabel="Accordion or expand the social media form">
             <Button.Link
               className="w-6 h-6 cursor-drag"
               leading={isOpen ? <IconChevronUp /> : <IconChevronDown />}

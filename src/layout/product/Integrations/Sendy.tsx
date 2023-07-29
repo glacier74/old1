@@ -116,7 +116,9 @@ export const Sendy: FC<{ integration: Integration }> = ({ integration }) => {
           <div className="flex-1 min-w-0">
             <div className="flex items-center">
               <div className="text-sm font-medium text-slate-900 truncate">Sendy</div>
-              {integration.isEnabled && <span className="ml-2 w-2 h-2 bg-green-500 rounded-full" />}
+              {integration.isEnabled && (
+                <span className="ml-2 w-2 h-2 bg-emerald-500 rounded-full" />
+              )}
             </div>
             <p className="text-sm text-slate-500 truncate">
               Self hosted email newsletter application.
@@ -174,8 +176,8 @@ export const Sendy: FC<{ integration: Integration }> = ({ integration }) => {
               description={
                 <div className="text-sm mb-1">
                   Your Sendy installation URL. For example, if you installed Sendy on{' '}
-                  <span className="text-green-500">http://mydomain.com/sendy</span>, your Sendy URL
-                  is <span className="text-green-500">http://mydomain.com/sendy</span>.
+                  <span className="text-emerald-500">http://mydomain.com/sendy</span>, your Sendy
+                  URL is <span className="text-emerald-500">http://mydomain.com/sendy</span>.
                 </div>
               }
               rules={[{ type: 'url', required: true }]}

@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,7 +13,12 @@ interface CreateProductLayoutProps extends LayoutProps {
   logoElement?: ReactNode
 }
 
-export function CreateProductLayout({ seo, logoElement, children }: CreateProductLayoutProps) {
+export function CreateProductLayout({
+  className,
+  seo,
+  logoElement,
+  children
+}: CreateProductLayoutProps) {
   const { t } = useTranslation()
 
   return (
@@ -32,7 +38,12 @@ export function CreateProductLayout({ seo, logoElement, children }: CreateProduc
           )}
           <LoggedAccount />
         </div>
-        <div className="flex-1 flex flex-col justify-center py-5 sm:mx-auto sm:w-full sm:max-w-md">
+        <div
+          className={clsx(
+            'flex-1 flex flex-col justify-center py-5 sm:mx-auto sm:w-full sm:max-w-md',
+            className
+          )}
+        >
           {children}
         </div>
       </div>

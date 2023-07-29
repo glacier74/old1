@@ -164,7 +164,7 @@ const CustomURLItem: FC<CustomURLItemProps> = ({ customDomain, onSetPrimary, onD
       <div className="flex items-center flex-1">
         <span>{customDomain.domain}</span>
         {customDomain.isPrimary && (
-          <span className="inline-block ml-2 px-1 py-0.5 text-[11px] leading-[1] uppercase rounded bg-green-500 text-white">
+          <span className="inline-block ml-2 px-1 py-0.5 text-[11px] leading-[1] uppercase rounded bg-emerald-500 text-white">
             Primary
           </span>
         )}

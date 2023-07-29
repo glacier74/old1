@@ -23,7 +23,7 @@ export const GroupCollections: FC<GroupCollectionsProps> = ({ categories, groups
             <div className="flex items-center justify-between mb-5">
               <h2 className="text-2xl font-bold text-gray-900">{g.category}</h2>
               <a
-                className="flex items-center text-sm text-gray-700 hover:text-green-500"
+                className="flex items-center text-sm text-gray-700 hover:text-emerald-500"
                 href={`/collections/category/${encodeURIComponent(g.category.toLowerCase())}`}
               >
                 More <IconChevronRight className="w-4 h-4 ml-1" />

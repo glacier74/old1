@@ -1,16 +1,20 @@
-import { EmptyStates, Form, Input } from '@heyforms/ui'
+import { GlobalContext } from '@earlybirdim/components'
+import { Form, Input } from '@heyforms/ui'
 import { isValid } from '@nily/utils'
+import { IconArrowLeft } from '@tabler/icons'
 import AES from 'crypto-js/aes'
 import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import { NextSeoProps } from 'next-seo'
 import imageLoader from 'next/dist/shared/lib/image-loader'
 import Script from 'next/script'
-import { FC, useMemo } from 'react'
+import party from 'party-js'
+import { FC, useEffect, useMemo } from 'react'
 
 import { IconLogo } from '~/components'
 import { PublicSiteLayout } from '~/layout'
 import components from '~/layout/builder2/components'
+import templates from '~/layout/builder3/templates'
 import { EmailCapturePreview } from '~/layout/builder/blocks/EmailCapture'
 import { FaqPreview } from '~/layout/builder/blocks/Faq'
 import { FeaturePreview } from '~/layout/builder/blocks/Feature'
@@ -32,6 +36,7 @@ interface PublicSiteProps {
   isSiteAccessible?: boolean
   product: Product
   paymentStatus?: 'success'
+  successMessage?: string
 }
 
 const Block: FC<{ product: Product; schema: number; block: any }> = ({
@@ -136,7 +141,38 @@ function getSeoProps(product: Product, isSiteAccessible?: boolean): NextSeoProps
   return seo
 }
 
-const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentStatus }) => {
+const PaymentSuccess: FC<Partial<PublicSiteProps>> = ({ successMessage }) => {
+  useEffect(() => {
+    party.confetti(document.querySelector('.empty-states-icon')! as HTMLElement, {
+      count: party.variation.range(20, 40)
+    })
+  }, [])
+
+  return (
+    <div className="empty-states payment-successful">
+      <div className="empty-states-icon">
+        <span className="font-[160px]">🎉</span>
+      </div>
+      <div className="mt-8 mb-6 text-2xl text-slate-800 mx-auto max-w-[40%]">
+        {successMessage ||
+          'Thank you for your payment! An automated payment receipt will be sent to the email address provided very shortly.'}
+      </div>
+      <div className="empty-states-action">
+        <a href="/" className="link-button link-button-success flex items-center gap-2 !py-[10px]">
+          <IconArrowLeft className="w-5 h-5 -ml-1.5" />
+          <span>Back</span>
+        </a>
+      </div>
+    </div>
+  )
+}
+
+const PublicSite: FC<PublicSiteProps> = ({
+  isSiteAccessible,
+  product,
+  paymentStatus,
+  successMessage
+}) => {
   const { t } = useTranslation()
   const seo = getSeoProps(product, isSiteAccessible)
   const faviconURL = useMemo(() => {
@@ -228,20 +264,20 @@ const PublicSite: FC<PublicSiteProps> = ({ isSiteAccessible, product, paymentSta
       integrations={product.integrations}
     >
       {paymentStatus === 'success' ? (
-        <EmptyStates
-          className="payment-successful"
-          title="Your payment is successful!"
-          description="Thank you for your payment! An automated payment receipt will be sent to the email address provided very shortly."
-          icon={<img src="/static/party-popper.gif" width={160} height={160} />}
-          action={
-            <a href="/" className="link-button link-button-success">
-              Back to {product.name}
-            </a>
-          }
-        />
+        <PaymentSuccess successMessage={successMessage} />
+      ) : product.siteSetting.schema === 3 ? (
+        <GlobalContext.Provider
+          value={{
+            productId: product.id
+          }}
+        >
+          {templates[product.siteSetting.template]?.render({
+            options: product.siteSetting.blocks
+          })}
+        </GlobalContext.Provider>
       ) : (
         <div className="earlybird-blocks">
-          {product.siteSetting.blocks.map(block => (
+          {product.siteSetting.blocks.map((block: any) => (
             <Block
               key={block.id}
               product={product}
@@ -329,7 +365,8 @@ export const getServerSideProps = withTranslations(async context => {
       isSiteAccessible: true,
       language: product.language,
       // `undefined` cannot be serialized as JSON
-      paymentStatus: context.query.paymentStatus || null
+      paymentStatus: context.query.paymentStatus || null,
+      successMessage: context.query.successMessage || null
     }
   }
 })

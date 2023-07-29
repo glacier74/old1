@@ -53,7 +53,7 @@ export const Product: FC = () => {
           <p>
             You are connected to Stripe account {state.stripeConnectBlock?.stripeEmail}. If you want
             to reconnect to another account, please{' '}
-            <a className="text-green-500" href="#" onClick={handleBack}>
+            <a className="text-emerald-500" href="#" onClick={handleBack}>
               click here
             </a>
             .
@@ -61,7 +61,7 @@ export const Product: FC = () => {
           <p>
             Go to Stripe dashboard to{' '}
             <a
-              className="text-green-500"
+              className="text-emerald-500"
               href="https://dashboard.stripe.com/products/create"
               target="_blank"
               rel="noreferrer"

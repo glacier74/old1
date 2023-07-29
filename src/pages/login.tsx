@@ -44,7 +44,7 @@ const Login = (): JSX.Element => {
         </h1>
         <p className="mt-2 text-center text-sm text-slate-600">
           <Trans i18nKey="login.description">
-            Log in to your account or <a href="/sign-up" className="font-medium text-green-500 hover:text-green-600">create an account</a>
+            Log in to your account or <a href="/sign-up" className="font-medium text-emerald-500 hover:text-emerald-600">create an account</a>
           </Trans>
         </p>
       </div>
@@ -99,7 +99,7 @@ const Login = (): JSX.Element => {
                 <div className="text-sm">
                   <a
                     href="/forgot-password"
-                    className="font-medium text-green-500 hover:text-green-600"
+                    className="font-medium text-emerald-500 hover:text-emerald-600"
                   >
                     {t('login.forgot')}
                   </a>

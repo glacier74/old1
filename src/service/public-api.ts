@@ -2,7 +2,7 @@ import { axios } from '~/utils'
 
 interface BaseInput {
   blockId: string
-  settingId: string
+  settingId?: string
 }
 
 interface CreateContactInput extends BaseInput {

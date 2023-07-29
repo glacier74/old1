@@ -28,6 +28,8 @@ function getStyles() {
     head += style.outerHTML
   })
 
+  head += `<style>:root { --font-inter: Inter }</style>`
+
   return head
 }
 

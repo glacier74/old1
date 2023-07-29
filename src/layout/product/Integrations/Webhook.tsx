@@ -45,7 +45,7 @@ const WebhookLogModal: FC<IModalProps & { productId: number; webhookId: number }
       render(row, _, isExpanded) {
         const className =
           row.deliveryStatus === 'succeeded'
-            ? 'bg-green-50 text-green-500'
+            ? 'bg-emerald-50 text-emerald-500'
             : 'bg-red-50 text-red-500'
 
         return (
@@ -194,7 +194,9 @@ export const Webhook: FC<{ integration: Integration }> = ({ integration }) => {
           <div className="flex-1 min-w-0">
             <div className="flex items-center">
               <div className="text-sm font-medium text-slate-900 truncate">Webhook</div>
-              {integration.isEnabled && <span className="ml-2 w-2 h-2 bg-green-500 rounded-full" />}
+              {integration.isEnabled && (
+                <span className="ml-2 w-2 h-2 bg-emerald-500 rounded-full" />
+              )}
             </div>
             <p className="text-sm text-slate-500 truncate">
               Send events for new conversions to HTTP endpoints

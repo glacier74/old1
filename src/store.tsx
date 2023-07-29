@@ -12,6 +12,10 @@ interface Store {
   user: User
   products: Product[]
   siteSettings: SiteSettings
+  step: number
+  setStep: (step: number) => void
+  product?: Partial<Product>
+  setProduct: (product?: Partial<Product>) => void
   setIsReady: (value: boolean) => void
   setEmail: (value?: string) => void
   setUser: (value?: any) => void
@@ -44,10 +48,13 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
   const [user, setUser] = useState<User>({} as User)
   const [products, setProducts] = useState<Product[]>([])
   const [siteSettings, setSiteSettings] = useState<SiteSettings>({} as SiteSettings)
+  const [aiOptions, setAIOptions] = useState<any[]>([])
   const [isMemberListShow, openMemberList, closeMemberList] = useVisible()
   const [isAccountSettingsShow, openAccountSettings, closeAccountSettings] = useVisible()
   const [isDeletionAlertShow, openDeletionAlert, closeDeletionAlert] = useVisible()
   const [isSidebarOpen, openSidebar, closeSidebar] = useVisible()
+  const [step, setStep] = useState(1)
+  const [product, setProduct] = useState<Partial<Product>>()
 
   const updateUser = useCallback(
     (updates: Partial<User>) => {
@@ -106,6 +113,10 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
     user,
     products,
     siteSettings,
+    step,
+    product,
+    setStep,
+    setProduct,
     setIsReady,
     setEmail,
     setUser,

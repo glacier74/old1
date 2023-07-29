@@ -58,7 +58,9 @@ export const Crisp: FC<{ integration: Integration }> = ({ integration }) => {
           <div className="flex-1 min-w-0">
             <div className="flex items-center">
               <div className="text-sm font-medium text-slate-900 truncate">Crisp</div>
-              {integration.isEnabled && <span className="ml-2 w-2 h-2 bg-green-500 rounded-full" />}
+              {integration.isEnabled && (
+                <span className="ml-2 w-2 h-2 bg-emerald-500 rounded-full" />
+              )}
             </div>
             <p className="text-sm text-slate-500 truncate">
               Free and beautiful chat for customer support on your landing page.
@@ -117,7 +119,7 @@ export const Crisp: FC<{ integration: Integration }> = ({ integration }) => {
                 <div className="text-sm mb-1">
                   Your crisp WebsiteID, which is available inside your{' '}
                   <a
-                    className="text-green-500"
+                    className="text-emerald-500"
                     href="https://help.crisp.chat/en/article/how-to-find-the-website-id-1ylqx1s/#1-how-to-find-the-websiteid"
                     target="_blank"
                     rel="noreferrer"

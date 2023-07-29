@@ -72,7 +72,7 @@ export const CustomizePane: FC = () => {
           {option.label}
         </span>
         {state.theme.fontFamily === option.value && (
-          <IconCheck className="w-5 h-5 text-green-500" />
+          <IconCheck className="w-5 h-5 text-emerald-500" />
         )}
       </div>
     )

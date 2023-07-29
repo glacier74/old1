@@ -64,7 +64,7 @@ const Dots: FC<Pick<TourClickProps, 'currentStep' | 'stepsLength'>> = ({
         <div
           key={index}
           className={clsx('w-1.5 h-1.5 rounded-full bg-slate-200', {
-            'bg-green-500': index === currentStep
+            'bg-emerald-500': index === currentStep
           })}
         />
       ))}

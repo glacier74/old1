@@ -1,5 +1,4 @@
 import { Dropdown, Input } from '@heyforms/ui'
-import type { InputValue } from '@heyforms/ui/types/input/Input'
 import { IComponentProps } from '@heyforms/ui/types/typing'
 import { isValid } from '@nily/utils'
 import { IconPlus } from '@tabler/icons'
@@ -59,7 +58,7 @@ const Menu: FC<MenuProps> = ({ onClick }) => {
   const { t } = useTranslation()
   const [groups, setGroups] = useState<BlockGroupOptions[]>(filterGroups())
 
-  function handleKeywordChange(value?: InputValue) {
+  function handleKeywordChange(value?: any) {
     startTransition(() => {
       const result = filterGroups(value as string)
       setGroups(result)

@@ -73,7 +73,7 @@ export const Connect: FC = () => {
             <p>
               If you do not have a stripe account, you can create a free account.{' '}
               <a
-                className="text-green-500"
+                className="text-emerald-500"
                 href="https://stripe.com/connect"
                 target="_blank"
                 rel="noreferrer"
@@ -85,7 +85,7 @@ export const Connect: FC = () => {
             <p>
               EarlyBird charges 5% commission per payment plus the{' '}
               <a
-                className="text-green-500"
+                className="text-emerald-500"
                 href="https://stripe.com/pricing"
                 target="_blank"
                 rel="noreferrer"

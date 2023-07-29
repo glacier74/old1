@@ -60,7 +60,7 @@ const LinkItem: FC<LinkItemProps> = ({ link, onChange, onDelete }) => {
               leading={<IconGripVertical />}
             />
           </Tooltip>
-          <Tooltip ariaLabel="Collapse or expand the link form">
+          <Tooltip ariaLabel="Accordion or expand the link form">
             <Button.Link
               className="w-6 h-6 cursor-drag"
               leading={isOpen ? <IconChevronUp /> : <IconChevronDown />}

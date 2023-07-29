@@ -133,7 +133,7 @@ export const DragUploader: FC<DragUploaderProps> = ({
           className={clsx(
             'flex justify-center w-full h-full px-6 pt-5 pb-6 border-2 border-slate-300 border-dashed rounded-md',
             {
-              'border-green-500': dragging
+              'border-emerald-500': dragging
             }
           )}
           ref={setDragRef}

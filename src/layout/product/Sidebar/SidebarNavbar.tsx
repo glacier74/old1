@@ -35,7 +35,7 @@ interface ExternalLinkProps {
   title: string
 }
 
-const ExternalLink = ({ icon: Icon, href, title }: ExternalLinkProps) => {
+export const ExternalLink = ({ icon: Icon, href, title }: ExternalLinkProps) => {
   return (
     <a
       href={href}

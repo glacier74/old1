@@ -218,7 +218,7 @@ export const PricingComparisonSections: FC = () => {
                   ) : (
                     <>
                       {feature.tiers[tier.name] === true ? (
-                        <IconCheck className="h-5 w-5 text-green-500" aria-hidden="true" />
+                        <IconCheck className="h-5 w-5 text-emerald-500" aria-hidden="true" />
                       ) : (
                         <IconMinus className="h-5 w-5 text-slate-400" aria-hidden="true" />
                       )}
