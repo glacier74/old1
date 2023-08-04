@@ -308,8 +308,7 @@ export const schemas = [
         name: 'price',
         title: 'Product price',
         type: 'text',
-        default: '$199',
-        ai: true
+        default: '$199'
       },
       {
         name: 'form',

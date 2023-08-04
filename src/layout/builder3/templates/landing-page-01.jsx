@@ -286,14 +286,12 @@ export const schemas = [
           {
             name: 'monthly_price',
             title: 'Monthly price',
-            type: 'text',
-            ai: true
+            type: 'text'
           },
           {
             name: 'yearly_price',
             title: 'Yearly price',
-            type: 'text',
-            ai: true
+            type: 'text'
           },
           {
             name: 'product_name',
