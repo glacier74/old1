@@ -2,7 +2,7 @@ import { Modal } from '@heyforms/ui'
 import party from 'party-js'
 import { startTransition, useEffect, useMemo, useRef, useState } from 'react'
 
-import { IconAI } from '~/components'
+import { IconAI, Spin } from '~/components'
 import { useBuilderContext, useMergeOptions } from '~/layout/builder3/context'
 import { ProductService, SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
@@ -107,13 +107,18 @@ export const Completions = () => {
   return (
     <>
       {selected && (
-        <div className="absolute top-0 right-0 bottom-0 flex flex-col items-center justify-center w-[320px] min-[1400px]:w-[360px] 2xl:w-[480px] h-full bg-white border-l border-slate-200 z-10">
-          <IconAI className="w-12 h-12 animate-pulse text-slate-400" />
-          <div className="mt-4 text-sm">
+        <div className="fixed inset-0 bg-black/70 z-[9999]">
+          <div className="w-full h-full flex flex-col items-center justify-center gap-6">
+            <Spin className="!w-6 !h-6 !text-white" />
             {error ? (
-              <span className="text-red-600">{error}</span>
+              <div className="text-xl font-semibold text-red-500 text-center">{error}</div>
             ) : (
-              <span className="text-slate-600">Generating for {selected.title}</span>
+              <div className="text-white text-center">
+                <div className="text-xl font-semibold">Generating copies for Header</div>
+                <div className="text-sm mt-2">
+                  This may take a few seconds, please don't close this page.
+                </div>
+              </div>
             )}
           </div>
         </div>
