@@ -1,4 +1,4 @@
-import { Switch } from '@heyforms/ui'
+import { Select } from '@heyforms/ui'
 import { FC } from 'react'
 
 import { useOptions } from '../context'
@@ -12,12 +12,7 @@ export const SelectOption: FC<OptionProps> = ({ parentName, schema }) => {
       <div className="flex items-center justify-between">
         <div className="builder-option__title">{schema.title}</div>
 
-        <Switch.Group
-          className="builder-cta-switch"
-          value={value}
-          options={schema.options}
-          onChange={update}
-        />
+        <Select options={schema.options} value={value} onChange={update} />
       </div>
     </div>
   )
