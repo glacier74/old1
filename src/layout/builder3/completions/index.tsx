@@ -55,10 +55,11 @@ export const Completions = () => {
         loadingRef.current = false
 
         if (err) {
-          setError(err)
-        } else {
-          unfinished.shift()
+          return setError(err)
         }
+
+        // 删除第一个
+        unfinished.shift()
 
         const unfinishedNames = unfinished.map(u => u.name)
 

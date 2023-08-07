@@ -142,11 +142,16 @@ export class ProductService {
   static async completions(
     productId: number,
     completion: any,
-    { timeout = 10_000, onMessage, onFinish }: CompletionsOptions
+    { timeout = 30_000, onMessage, onFinish }: CompletionsOptions
   ) {
     const controller = new AbortController()
     const requestTimeoutId = setTimeout(() => controller.abort(), timeout)
     let responseText = ''
+
+    function handleFinish(err?: string) {
+      responseText = ''
+      onFinish(err)
+    }
 
     await fetchEventSource(`${process.env.NEXT_PUBLIC_API_URI}/products/${productId}/completions`, {
       method: 'POST',
@@ -174,13 +179,13 @@ export class ProductService {
           const json = await res.clone().json()
 
           controller.abort()
-          onFinish(json.message)
+          handleFinish(json.message)
         }
       },
 
       onmessage(msg) {
         if (msg.event === 'error') {
-          return onFinish(msg.data)
+          return handleFinish(msg.data)
         }
 
         responseText += msg.data
@@ -192,11 +197,12 @@ export class ProductService {
 
       onclose() {
         controller.abort()
-        onFinish()
+        handleFinish()
       },
 
       onerror(err) {
-        onFinish(err.message)
+        handleFinish(err.message)
+        return 1_000
       },
 
       openWhenHidden: true

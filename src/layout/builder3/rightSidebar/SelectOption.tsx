@@ -9,9 +9,8 @@ export const SelectOption: FC<OptionProps> = ({ parentName, schema }) => {
 
   return (
     <div className="builder-option">
-      <div className="flex items-center justify-between">
-        <div className="builder-option__title">{schema.title}</div>
-
+      <div className="builder-option__title">{schema.title}</div>
+      <div className="builder-option__content">
         <Select options={schema.options} value={value} onChange={update} />
       </div>
     </div>

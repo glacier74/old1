@@ -2095,6 +2095,10 @@ button.block-header-button {
 
 .builder-option__content {
   @apply mt-1.5 space-y-3;
+
+  .select-button {
+    @apply py-[5px] border-slate-200 shadow-none;
+  }
 }
 
 .builder-option__list-item {
