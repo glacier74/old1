@@ -31,5 +31,6 @@ export interface FormInputProps extends ComponentProps {
 }
 
 export interface FormButtonProps extends Omit<ComponentProps, 'children'> {
+  rootClassName?: string
   children: JSX.Element
 }

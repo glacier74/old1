@@ -5,11 +5,11 @@ import Spin from '../Spin/Spin'
 import { useFormContext } from './Context'
 import { FormButtonProps } from './FormProps'
 
-const FormButton: FC<FormButtonProps> = ({ children, ...restProps }) => {
+const FormButton: FC<FormButtonProps> = ({ rootClassName, children, ...restProps }) => {
   const { state } = useFormContext()
 
   return (
-    <div className="relative">
+    <div className={clsx('relative', rootClassName)}>
       <button type="submit" {...restProps}>
         <span
           className={clsx({
