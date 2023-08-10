@@ -1,6 +1,4 @@
-import { useGlobalContext } from '@earlybirdim/components/GlobalContext'
 import { IconArrowLeft } from '@tabler/icons'
-import { useRouter } from 'next/router'
 import party from 'party-js'
 import RCForm from 'rc-field-form'
 import { FC, useCallback, useEffect, useMemo, useReducer, useState } from 'react'
@@ -8,6 +6,7 @@ import { FC, useCallback, useEffect, useMemo, useReducer, useState } from 'react
 import { PublicApiService } from '~/service'
 import { urlBuilder } from '~/utils'
 
+import { useGlobalContext } from '../GlobalContext'
 import { FormContext, FormReducer, useFormContext } from './Context'
 import FormButton from './FormButton'
 import FormInput from './FormInput'
@@ -52,7 +51,6 @@ const InternalForm: FC<FormProps> = ({
   children,
   ...restProps
 }) => {
-  const router = useRouter()
   const { state, dispatch } = useFormContext()
   const { isPreview, productId } = useGlobalContext()
   const [error, setError] = useState<string>()

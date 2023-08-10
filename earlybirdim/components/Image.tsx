@@ -7,6 +7,7 @@ export interface ImageProps extends ComponentProps {
   height: number
   alt?: string
   loading?: 'lazy' | 'eager'
+  quality?: number
 }
 
 export const Image: FC<ImageProps> = ({
@@ -15,6 +16,7 @@ export const Image: FC<ImageProps> = ({
   height = 0,
   alt = '',
   loading = 'lazy',
+  quality = 100,
   ...restProps
 }) => {
   return (
@@ -25,6 +27,7 @@ export const Image: FC<ImageProps> = ({
       height={height}
       alt={alt}
       loading={loading}
+      quality={quality}
       {...restProps}
     />
   )
