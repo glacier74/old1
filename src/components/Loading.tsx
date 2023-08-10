@@ -3,7 +3,7 @@ import clsx from 'clsx'
 export function Spin({ className }: ComponentProps) {
   return (
     <svg
-      className={clsx("w-5 h-5 text-emerald-500 animate-spin", className)}
+      className={clsx('w-5 h-5 text-emerald-500 animate-spin', className)}
       fill="none"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"

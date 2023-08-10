@@ -16,7 +16,7 @@
     "prepare": "node prepare.js"
   },
   "dependencies": {
-    "@earlybirdim/icons": "^2.1.2",
+    "@earlybirdim/icons": "^2.3.1",
     "@emoji-mart/data": "^1.1.2",
     "@emoji-mart/react": "^1.1.1",
     "@fortaine/fetch-event-source": "^3.0.6",
@@ -86,7 +86,6 @@
     "yaml": "^2.3.1"
   },
   "devDependencies": {
-    "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.3",
     "@trivago/prettier-plugin-sort-imports": "^3.4.0",
     "@types/canvas-txt": "^3.0.0",

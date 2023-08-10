@@ -592,6 +592,18 @@ declare global {
     updatedAt: string
   }
 
+  interface Template_V3 {
+    id: string
+    name: string
+    thumbnail: string
+    categoryId: string
+  }
+
+  interface Category_V3 {
+    id: string
+    name: string
+  }
+
   interface CollectionRecord {
     id: string
     'UX/UI principles': string

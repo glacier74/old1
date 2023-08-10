@@ -23,6 +23,21 @@ export function schemasToOptions(schemas: AnyMap<any>[]) {
   return options
 }
 
+export function schemasToDefaultOptions(
+  schemas: AnyMap<any>[],
+  parent: AnyMap<any> = {}
+): AnyMap<any> {
+  schemas.forEach(schema => {
+    if (Array.isArray(schema.fields) && schema.type !== SchemaTypeEnum.list) {
+      parent[schema.name] = schemasToDefaultOptions(schema.fields, {})
+    } else {
+      parent[schema.name] = schema.default
+    }
+  })
+
+  return parent
+}
+
 function schemaConverter(schemas: AnyMap<any>[], parent: AnyMap<any> = {}): AnyMap<any> {
   schemas.forEach(schema => {
     if (Array.isArray(schema.fields)) {

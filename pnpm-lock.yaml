@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@earlybirdim/icons':
-    specifier: ^2.1.2
-    version: 2.1.2(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^2.3.1
+    version: 2.3.1(react-dom@18.2.0)(react@18.2.0)
   '@emoji-mart/data':
     specifier: ^1.1.2
     version: 1.1.2
@@ -533,8 +533,8 @@ packages:
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
 
-  /@earlybirdim/icons@2.1.2(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-ve1sJ6oKaey3ZnZq9Klp1KVNwFQqbWbQWK68aBIdW1y5oMRzXDdNrk+5XiRMzZt2IFU3LxO8KG3PR+ERGd+yzg==}
+  /@earlybirdim/icons@2.3.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-8/ul+IN7xz0Ct3L6rvHlgdLcH/UcfsGf3oiWUq4uNy8A0pEhBhaKn8WlcjBrXRSeCJ1BnCQoc8MMNAr0msO/kQ==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0

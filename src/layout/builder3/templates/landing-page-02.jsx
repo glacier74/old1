@@ -468,326 +468,344 @@ export const schemas = [
 
 export function render({ options: { header, hero, features, payment, faq, newsletter, footer } }) {
   return (
-    <div className="antialiased font-[Inter] bg-white">
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
-      />
-      <div id="header">
-        <div className="max-w-7xl mx-auto">
-          <Toggle>
-            {(isActive, toggle) => (
-              <div className={clsx('px-6 lg:px-8 py-6', isActive ? 'pb-6' : '')}>
+    <div>
+      <div className="earlybird-iP4jAH antialiased font-[Inter] bg-white">
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+        />
+        <div id="header">
+          <div className="earlybird-8ZMFaP max-w-7xl mx-auto">
+            <Toggle>
+              {(isActive, toggle) => (
                 <div
-                  className={clsx(
-                    'flex flex-col lg:flex-row lg:items-center lg:justify-between w-full text-base font-medium',
-                    isActive ? 'fixed inset-0 px-6 py-6 bg-white' : ''
-                  )}
+                  className={clsx('earlybird-TYjUiB', 'px-6 lg:px-8 py-6', isActive ? 'pb-6' : '')}
                 >
-                  <div className="w-full lg:w-1/3 flex items-center justify-between lg:justify-start">
-                    <a className="flex items-center gap-3" href="#">
-                      <Image
-                        className="h-[32px] w-auto"
-                        src={header.brand_logo}
-                        width={32}
-                        height={32}
-                        alt={header.brand_name}
-                      />
-                      <span className="font-semibold">{header.brand_name}</span>
-                    </a>
-                    <button className="lg:hidden p-2.5 -mr-4" onClick={toggle}>
-                      <Icon
-                        className="text-gray-600"
-                        name={isActive ? 'multiply-line' : 'menu-line'}
-                      />
-                    </button>
-                  </div>
                   <div
                     className={clsx(
-                      'w-full lg:w-2/3 mt-4 lg:mt-0 lg:flex-row lg:items-center lg:justify-between gap-8',
-                      isActive ? 'flex flex-col' : 'hidden lg:flex'
+                      'earlybird-TqCxvO',
+                      'flex flex-col lg:flex-row lg:items-center lg:justify-between w-full text-base font-medium',
+                      isActive ? 'fixed inset-0 px-6 py-6 bg-white' : ''
                     )}
                   >
-                    <nav className="flex flex-col lg:flex-row lg:items-center gap-1 lg:gap-8">
-                      {header.navigation.map((row, index) => (
-                        <a key={index} className="py-2 lg:py-0 hover:opacity-80" href={row.url}>
-                          <span>{row.title}</span>
-                        </a>
-                      ))}
-                    </nav>
-                    <ul className="flex flex-col lg:flex-row items-center gap-8">
-                      {header.cta.map((row, index) => (
-                        <a
-                          key={index}
-                          className="flex items-center w-full lg:w-auto gap-2 px-4 py-1 rounded-full font-medium border border-gray-900 text-gray-900 transition-colors hover:border-gray-700 hover:text-gray-700"
-                          href={row.url}
-                        >
-                          <Icon className="w-5 h-5" name={row.icon} />
-                          <span>{row.title}</span>
-                        </a>
-                      ))}
-                    </ul>
+                    <div className="earlybird-N0WUm5 w-full lg:w-1/3 flex items-center justify-between lg:justify-start">
+                      <a className="earlybird-AFQaT5 flex items-center gap-3" href="#">
+                        <Image
+                          className="earlybird-Qt37DQ h-[32px] w-auto"
+                          src={header.brand_logo}
+                          width={32}
+                          height={32}
+                          alt={header.brand_name}
+                        />
+                        <span className="earlybird-JIZTZN font-semibold">{header.brand_name}</span>
+                      </a>
+                      <button className="earlybird-5JIyVL lg:hidden p-2.5 -mr-4" onClick={toggle}>
+                        <Icon
+                          className="earlybird-R8e7Js text-gray-600"
+                          name={isActive ? 'multiply-line' : 'menu-line'}
+                        />
+                      </button>
+                    </div>
+                    <div
+                      className={clsx(
+                        'earlybird-krOtn5',
+                        'w-full lg:w-2/3 mt-4 lg:mt-0 lg:flex-row lg:items-center lg:justify-between gap-8',
+                        isActive ? 'flex flex-col' : 'hidden lg:flex'
+                      )}
+                    >
+                      <nav className="earlybird-66BYJW flex flex-col lg:flex-row lg:items-center gap-1 lg:gap-8">
+                        {header.navigation.map((row, index) => (
+                          <a
+                            key={index}
+                            className="earlybird-NQOCwU py-2 lg:py-0 hover:opacity-80"
+                            href={row.url}
+                          >
+                            <span>{row.title}</span>
+                          </a>
+                        ))}
+                      </nav>
+                      <ul className="earlybird-vGUW0i flex flex-col lg:flex-row items-center gap-8">
+                        {header.cta.map((row, index) => (
+                          <a
+                            key={index}
+                            className="earlybird-k6DLKW flex items-center w-full lg:w-auto gap-2 px-4 py-1 rounded-full font-medium border border-gray-900 text-gray-900 transition-colors hover:border-gray-700 hover:text-gray-700"
+                            href={row.url}
+                          >
+                            <Icon className="earlybird-ULtPo9 w-5 h-5" name={row.icon} />
+                            <span>{row.title}</span>
+                          </a>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
+              )}
+            </Toggle>
+          </div>
+        </div>
+
+        <div id="hero">
+          <div className="earlybird-XnCnUu mx-auto max-w-7xl px-6 py-20 md:py-28 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-32">
+            <div className="earlybird-Y4FPRt mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
+              <div className="earlybird-dNtrTU mb-10">
+                <div
+                  className="earlybird-HHgnpi inline-block md:inline rounded-full py-1.5 px-3 text-sm text-center leading-6 border"
+                  dangerouslySetInnerHTML={{
+                    __html: hero.announcement
+                  }}
+                />
               </div>
-            )}
-          </Toggle>
-        </div>
-      </div>
-
-      <div id="hero">
-        <div className="mx-auto max-w-7xl px-6 py-20 md:py-28 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-32">
-          <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
-            <div className="mb-10">
-              <p
-                className="inline-block md:inline rounded-full py-1.5 px-3 text-sm text-center leading-6 border"
+              <h1
+                className="earlybird-g2MX2Z max-w-2xl mx-auto text-4xl font-bold tracking-tight sm:text-6xl"
                 dangerouslySetInnerHTML={{
-                  __html: hero.announcement
+                  __html: hero.headline
                 }}
               />
+              <div
+                className="earlybird-GdzRmI max-w-3xl mx-auto mt-6 text-lg leading-8"
+                dangerouslySetInnerHTML={{
+                  __html: hero.description
+                }}
+              />
+              <div className="earlybird-62d2xT mt-10">
+                <ul className="earlybird-h8Exi2 flex flex-col md:flex-row items-center gap-4 md:gap-6">
+                  <a
+                    className="earlybird-XygMEz py-2 px-4 rounded-md font-medium bg-blue-600 text-white hover:bg-blue-500"
+                    href={hero.cta1.url}
+                  >
+                    {hero.cta1.title}
+                  </a>
+                  <a
+                    className="earlybird-E67MBu flex items-center gap-1 py-2 rounded-md font-medium text-gray-800 hover:text-gray-600"
+                    href={hero.cta2.url}
+                  >
+                    <span>{hero.cta2.title}</span>
+                    <Icon className="earlybird-4KGNcK w-5 h-5" name={hero.cta2.icon} />
+                  </a>
+                </ul>
+              </div>
             </div>
-            <h1
-              className="max-w-2xl mx-auto text-4xl font-bold tracking-tight sm:text-6xl"
-              dangerouslySetInnerHTML={{
-                __html: hero.headline
-              }}
-            />
-            <p
-              className="max-w-3xl mx-auto mt-6 text-lg leading-8"
-              dangerouslySetInnerHTML={{
-                __html: hero.description
-              }}
-            />
-            <div className="mt-10">
-              <ul className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
-                <a
-                  className="py-2 px-4 rounded-md font-medium bg-blue-600 text-white hover:bg-blue-500"
-                  href={hero.cta1.url}
-                >
-                  {hero.cta1.title}
-                </a>
-                <a
-                  className="flex items-center gap-1 py-2 rounded-md font-medium text-gray-800 hover:text-gray-600"
-                  href={hero.cta2.url}
-                >
-                  <span>{hero.cta2.title}</span>
-                  <Icon className="w-5 h-5" name={hero.cta2.icon} />
-                </a>
-              </ul>
-            </div>
-          </div>
-          <div className="relative mt-16 sm:mt-28 lg:mt-0 lg:flex-shrink-0 lg:flex-grow z-10">
-            <div className="absolute pointer-events-none w-[420px] h-[420px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[linear-gradient(-45deg,#f3d594_40%,#89e7d6_80%)] blur-[80px] rounded-[50%] z-10"></div>
-            <Image
-              className="relative mx-auto max-w-full z-30"
-              src={hero.image}
-              loading="lazy"
-              width={420}
-              decoding="async"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div id="features">
-        <div className="py-24 sm:py-32">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-            <div className="mx-auto max-w-2xl lg:text-center">
-              <p
-                className="text-lg font-semibold leading-8 tracking-tight"
-                dangerouslySetInnerHTML={{
-                  __html: features.caption
-                }}
+            <div className="earlybird-dja7PZ relative mt-16 sm:mt-28 lg:mt-0 lg:flex-shrink-0 lg:flex-grow z-10">
+              <div className="earlybird-MLIyWk absolute pointer-events-none w-[420px] h-[420px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[linear-gradient(-45deg,#f3d594_40%,#89e7d6_80%)] blur-[80px] rounded-[50%] z-10"></div>
+              <Image
+                className="earlybird-MdSLdb relative mx-auto max-w-full z-30"
+                src={hero.image}
+                loading="lazy"
+                width={420}
+                decoding="async"
               />
-              <h2
-                className="text-3xl font-bold tracking-tight sm:text-4xl"
-                dangerouslySetInnerHTML={{
-                  __html: features.headline
-                }}
-              />
-              <p
-                className="mt-3 text-lg leading-8"
-                dangerouslySetInnerHTML={{
-                  __html: features.description
-                }}
-              />
-            </div>
-            <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-              <ul className="grid md:max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-                {features.feature_list.map((row, index) => (
-                  <li key={index}>
-                    <span className="mx-auto mb-6 flex h-14 w-14 text-[2rem] items-center justify-center rounded-lg bg-slate-100">
-                      <span>{row.emoji}</span>
-                    </span>
-                    <h3 className="text-xl font-semibold leading-7">{row.headline}</h3>
-                    <div className="mt-1 flex flex-auto flex-col text-base leading-7 md:px-8">
-                      {row.description}
-                    </div>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>
-      </div>
 
-      <div id="payment">
-        <div className="py-24 sm:py-32">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-            <div className="mx-auto max-w-2xl lg:text-center">
-              <h2
-                className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
-                dangerouslySetInnerHTML={{
-                  __html: payment.title
-                }}
-              />
-              <p
-                className="mt-3 mx-auto max-w-4xl text-lg leading-8 text-slate-600"
-                dangerouslySetInnerHTML={{
-                  __html: payment.subtitle
-                }}
-              />
-            </div>
-            <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-slate-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
-              <div className="p-8 sm:p-10 lg:flex-auto text-left">
-                <h2 className="text-2xl font-bold tracking-tight text-slate-900">
-                  {payment.product_name}
-                </h2>
-                <p className="mt-2 text-base leading-7 text-slate-600">
-                  {payment.product_description}
-                </p>
-                <ul className="mt-8 grid grid-cols-1 gap-2 text-sm text-slate-600 sm:grid-cols-2 sm:gap-4 whitespace-pre-line">
-                  {payment.product_features.map((feature, index) => (
-                    <li key={index} className="flex items-center gap-2">
-                      <Icon className="w-5 h-5 text-blue-600" name="check-line" />
-                      <span>{feature}</span>
+        <div id="features">
+          <div className="earlybird-z7lwK2 py-24 sm:py-32">
+            <div className="earlybird-P89Gjw mx-auto max-w-7xl px-6 lg:px-8 text-center">
+              <div className="earlybird-eGJcCF mx-auto max-w-2xl lg:text-center">
+                <div
+                  className="earlybird-OikXwZ text-lg font-semibold leading-8 tracking-tight"
+                  dangerouslySetInnerHTML={{
+                    __html: features.caption
+                  }}
+                />
+                <h2
+                  className="earlybird-vWeaOT text-3xl font-bold tracking-tight sm:text-4xl"
+                  dangerouslySetInnerHTML={{
+                    __html: features.headline
+                  }}
+                />
+                <div
+                  className="earlybird-bFUw0s mt-3 text-lg leading-8"
+                  dangerouslySetInnerHTML={{
+                    __html: features.description
+                  }}
+                />
+              </div>
+              <div className="earlybird-zpkqhH mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+                <ul className="earlybird-1dUK0R grid md:max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+                  {features.feature_list.map((row, index) => (
+                    <li key={index}>
+                      <span className="earlybird-W8mIlH mx-auto mb-6 flex h-14 w-14 text-[2rem] items-center justify-center rounded-lg bg-slate-100">
+                        <span>{row.emoji}</span>
+                      </span>
+                      <h3 className="earlybird-dOptcu text-xl font-semibold leading-7">
+                        {row.headline}
+                      </h3>
+                      <div className="earlybird-DBk759 mt-1 flex flex-auto flex-col text-base leading-7 md:px-8">
+                        {row.description}
+                      </div>
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
-                <div className="h-auto md:h-full rounded-2xl py-8 text-center bg-[#f9fafb] ring-1 ring-inset ring-slate-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
-                  <div className="mx-auto w-full md:w-[20rem] px-8">
-                    <div className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
-                      <span>{payment.price}</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="payment">
+          <div className="earlybird-aEG4om py-24 sm:py-32">
+            <div className="earlybird-gdwHHR mx-auto max-w-7xl px-6 lg:px-8 text-center">
+              <div className="earlybird-DNGK7o mx-auto max-w-2xl lg:text-center">
+                <h2
+                  className="earlybird-U9o2Iu text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
+                  dangerouslySetInnerHTML={{
+                    __html: payment.title
+                  }}
+                />
+                <div
+                  className="earlybird-WcxVaK mt-3 mx-auto max-w-4xl text-lg leading-8 text-slate-600"
+                  dangerouslySetInnerHTML={{
+                    __html: payment.subtitle
+                  }}
+                />
+              </div>
+              <div className="earlybird-SkOXWM mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-slate-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
+                <div className="earlybird-JdbQIc p-8 sm:p-10 lg:flex-auto text-left">
+                  <h2 className="earlybird-Ub1rt4 text-2xl font-bold tracking-tight text-slate-900">
+                    {payment.product_name}
+                  </h2>
+                  <p className="earlybird-b4kRS2 mt-2 text-base leading-7 text-slate-600">
+                    {payment.product_description}
+                  </p>
+                  <ul className="earlybird-ePDAIg mt-8 grid grid-cols-1 gap-2 text-sm text-slate-600 sm:grid-cols-2 sm:gap-4 whitespace-pre-line">
+                    {payment.product_features.map((feature, index) => (
+                      <li key={index} className="earlybird-ddkmlQ flex items-center gap-2">
+                        <Icon
+                          className="earlybird-CvLt4X w-5 h-5 text-blue-600"
+                          name="check-line"
+                        />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="earlybird-Oa0xVs -mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
+                  <div className="earlybird-DmrMnF h-auto md:h-full rounded-2xl py-8 text-center bg-[#f9fafb] ring-1 ring-inset ring-slate-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
+                    <div className="earlybird-t7uuAP mx-auto w-full md:w-[20rem] px-8">
+                      <div className="earlybird-4VZSMR text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
+                        <span>{payment.price}</span>
+                      </div>
+                      <Form {...payment.form}>
+                        <Form.Button className="earlybird-BO6rJa mt-10 block w-full rounded-md bg-slate-900 text-white px-3 py-2 text-center text-sm font-semibold shadow-sm hover:bg-slate-700">
+                          {payment.form.button_text}
+                        </Form.Button>
+                      </Form>
                     </div>
-                    <Form {...payment.form}>
-                      <Form.Button className="mt-10 block w-full rounded-md bg-slate-900 text-white px-3 py-2 text-center text-sm font-semibold shadow-sm hover:bg-slate-700">
-                        {payment.form.button_text}
-                      </Form.Button>
-                    </Form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div id="faq">
-        <div className="mx-auto max-w-7xl py-16 px-6 sm:py-24 lg:px-8">
-          <div className="mx-auto max-w-4xl">
-            <h2
-              className="text-2xl font-bold leading-10 tracking-tight text-gray-900"
-              dangerouslySetInnerHTML={{
-                __html: faq.title
-              }}
-            />
-
-            <Collapse className="mt-4 divide-y">
-              {faq.list.map((row, index) => (
-                <Collapse.Item key={index}>
-                  {(isExpand, toggle) => (
-                    <li>
-                      <div
-                        className="group py-6 flex w-full items-center justify-between gap-2 text-gray-900 cursor-pointer"
-                        tabIndex={0}
-                        role="button"
-                        aria-expanded={isExpand}
-                        aria-controls={`faq${index}-content`}
-                        id={`faq${index}-header`}
-                        onClick={toggle}
-                      >
-                        <h3 className="text-base text-left font-semibold leading-7">
-                          {row.question}
-                        </h3>
-                        {isExpand ? (
-                          <Icon name="minus-line" className="w-5 h-5" />
-                        ) : (
-                          <Icon
-                            name="plus-line"
-                            className="w-5 h-5 opacity-60 group-hover:opacity-100"
-                          />
-                        )}
-                      </div>
-                      {isExpand && (
-                        <div
-                          className="pb-6 text-base text-gray-700 leading-6"
-                          aria-labelledby={`faq${index}-header`}
-                          id={`faq${index}-content`}
-                          role="region"
-                        >
-                          {row.answer}
-                        </div>
-                      )}
-                    </li>
-                  )}
-                </Collapse.Item>
-              ))}
-            </Collapse>
-          </div>
-        </div>
-      </div>
-
-      <div id="newsletter">
-        <div className="mx-auto max-w-7xl py-12 px-6 lg:py-16 lg:px-8">
-          <div className="rounded-lg bg-blue-700 px-6 py-6 md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">
-            <div className="xl:w-0 xl:flex-1">
+        <div id="faq">
+          <div className="earlybird-wbLWVM mx-auto max-w-7xl py-16 px-6 sm:py-24 lg:px-8">
+            <div className="earlybird-jgm9ym mx-auto max-w-4xl">
               <h2
-                className="text-2xl font-bold tracking-tight text-white sm:text-3xl"
+                className="earlybird-NoXGxF text-2xl font-bold leading-10 tracking-tight text-gray-900"
                 dangerouslySetInnerHTML={{
-                  __html: newsletter.headline
+                  __html: faq.title
                 }}
               />
-              <p
-                className="mt-3 max-w-3xl text-lg leading-6 text-blue-200"
-                dangerouslySetInnerHTML={{
-                  __html: newsletter.description
-                }}
-              />
-            </div>
-            <div className="mt-8 xl:mt-0 xl:ml-8">
-              <Form
-                className="space-x-0 space-y-3 sm:space-x-3 sm:space-y-0 sm:flex border-slate-300"
-                {...newsletter.form}
-              >
-                <Form.Item name="email" required={true}>
-                  <Form.Input
-                    type="email"
-                    className="w-full sm:w-[16rem] rounded-md bg-white/20 px-4 py-[7px] border border-white/30 text-white placeholder:text-white/50 focus:ring-1 focus:border-white/80 focus:ring-white/80 focus-visible:ring-1 focus-visible:border-white/80 focus-visible:ring-white/80"
-                    placeholder="Enter email address"
-                  />
-                </Form.Item>
-                <Form.Button className="relative w-full sm:w-auto h-[40px] rounded-md px-5 py-1 text-base text-center font-medium bg-white text-blue-600 hover:bg-blue-50">
-                  {newsletter.form.button_text}
-                </Form.Button>
-              </Form>
+
+              <Collapse className="earlybird-Ked2BV mt-4 divide-y">
+                {faq.list.map((row, index) => (
+                  <Collapse.Item key={index}>
+                    {(isExpand, toggle) => (
+                      <li>
+                        <div
+                          className="earlybird-mVKbPy group py-6 flex w-full items-center justify-between gap-2 text-gray-900 cursor-pointer"
+                          tabIndex={0}
+                          role="button"
+                          aria-expanded={isExpand}
+                          aria-controls={`faq${index}-content`}
+                          id={`faq${index}-header`}
+                          onClick={toggle}
+                        >
+                          <h3 className="earlybird-KYA6a3 text-base text-left font-semibold leading-7">
+                            {row.question}
+                          </h3>
+                          {isExpand ? (
+                            <Icon name="minus-line" className="earlybird-uFKHY1 w-5 h-5" />
+                          ) : (
+                            <Icon
+                              name="plus-line"
+                              className="earlybird-o6tbG3 w-5 h-5 opacity-60 group-hover:opacity-100"
+                            />
+                          )}
+                        </div>
+                        {isExpand && (
+                          <div
+                            className="earlybird-Cizfe3 pb-6 text-base text-gray-700 leading-6"
+                            aria-labelledby={`faq${index}-header`}
+                            id={`faq${index}-content`}
+                            role="region"
+                          >
+                            {row.answer}
+                          </div>
+                        )}
+                      </li>
+                    )}
+                  </Collapse.Item>
+                ))}
+              </Collapse>
             </div>
           </div>
         </div>
-      </div>
 
-      <div id="footer">
-        <div className="mx-auto max-w-7xl py-12 px-6 md:flex md:items-center md:justify-between lg:px-8">
-          <ul className="flex justify-center space-x-3 md:order-2">
-            {footer.socials.map((row, index) => (
-              <a key={index} href={row.url}>
-                <Icon name={row.icon} className="h-6 w-6" />
-              </a>
-            ))}
-          </ul>
-          <div className="block sm:flex sm:items-center sm:justify-center md:justify-start mt-8 md:order-1 md:mt-0 text-sm leading-5 text-center sm:text-left">
-            <p className="text-sm" dangerouslySetInnerHTML={{ __html: footer.copyright }} />
+        <div id="newsletter">
+          <div className="earlybird-eLdscm mx-auto max-w-7xl py-12 px-6 lg:py-16 lg:px-8">
+            <div className="earlybird-l9LYBA rounded-lg bg-blue-700 px-6 py-6 md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">
+              <div className="earlybird-agpqSv xl:w-0 xl:flex-1">
+                <h2
+                  className="earlybird-w2Wphp text-2xl font-bold tracking-tight text-white sm:text-3xl"
+                  dangerouslySetInnerHTML={{
+                    __html: newsletter.headline
+                  }}
+                />
+                <div
+                  className="earlybird-BKVOmH mt-3 max-w-3xl text-lg leading-6 text-blue-200"
+                  dangerouslySetInnerHTML={{
+                    __html: newsletter.description
+                  }}
+                />
+              </div>
+              <div className="earlybird-cPEB0k mt-8 xl:mt-0 xl:ml-8">
+                <Form
+                  className="earlybird-JCAsQv space-x-0 space-y-3 sm:space-x-3 sm:space-y-0 sm:flex border-slate-300"
+                  {...newsletter.form}
+                >
+                  <Form.Item name="email" required={true}>
+                    <Form.Input
+                      type="email"
+                      className="earlybird-XbGdxa w-full sm:w-[16rem] rounded-md bg-white/20 px-4 py-[7px] border border-white/30 text-white placeholder:text-white/50 focus:ring-1 focus:border-white/80 focus:ring-white/80 focus-visible:ring-1 focus-visible:border-white/80 focus-visible:ring-white/80"
+                      placeholder="Enter email address"
+                    />
+                  </Form.Item>
+                  <Form.Button className="earlybird-fao01i relative w-full sm:w-auto h-[40px] rounded-md px-5 py-1 text-base text-center font-medium bg-white text-blue-600 hover:bg-blue-50">
+                    {newsletter.form.button_text}
+                  </Form.Button>
+                </Form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="footer">
+          <div className="earlybird-ijCmZi mx-auto max-w-7xl py-12 px-6 md:flex md:items-center md:justify-between lg:px-8">
+            <ul className="earlybird-D4vZks flex justify-center space-x-3 md:order-2">
+              {footer.socials.map((row, index) => (
+                <a key={index} href={row.url}>
+                  <Icon name={row.icon} className="earlybird-iNRSdB h-6 w-6" />
+                </a>
+              ))}
+            </ul>
+            <div className="earlybird-KLhLa1 block sm:flex sm:items-center sm:justify-center md:justify-start mt-8 md:order-1 md:mt-0 text-sm leading-5 text-center sm:text-left">
+              <div
+                className="earlybird-HJ8FmL text-sm"
+                dangerouslySetInnerHTML={{ __html: footer.copyright }}
+              />
+            </div>
           </div>
         </div>
       </div>

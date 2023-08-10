@@ -13,5 +13,5 @@ module.exports = {
       sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans]
     }
   },
-  plugins: [require('@tailwindcss/aspect-ratio'), require('@tailwindcss/forms')]
+  plugins: [require('@tailwindcss/forms')]
 }

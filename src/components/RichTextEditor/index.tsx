@@ -44,7 +44,11 @@ export const RichTextEditor: FC<RichTextEditorProps> = ({
     content: value,
     extensions: [
       Document,
-      Paragraph,
+      Paragraph.configure({
+        HTMLAttributes: {
+          class: 'min-h-[1rem]'
+        }
+      }),
       Text,
       Bold,
       Strike,

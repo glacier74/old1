@@ -271,9 +271,11 @@ const PublicSite: FC<PublicSiteProps> = ({
             productId: product.id
           }}
         >
-          {templates[product.siteSetting.template]?.render({
-            options: product.siteSetting.blocks
-          })}
+          {isValid(product.siteSetting.blocks)
+            ? templates[product.siteSetting.template]?.render({
+                options: product.siteSetting.blocks
+              })
+            : null}
         </GlobalContext.Provider>
       ) : (
         <div className="earlybird-blocks">
