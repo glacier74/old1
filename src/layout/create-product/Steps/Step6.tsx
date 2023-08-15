@@ -31,7 +31,7 @@ const CATEGORIES: Category_V3[] = [
     name: 'All'
   },
   {
-    id: 'landing_page',
+    id: 'landing-page',
     name: 'Landing page'
   },
   {
@@ -50,25 +50,25 @@ const CATEGORIES: Category_V3[] = [
 
 const TEMPLATES: Template_V3[] = [
   {
-    id: 'landing_page_01',
+    id: 'landing-page-01',
     name: 'Landing page 1',
-    categoryId: 'landing_page',
+    categoryId: 'landing-page',
     thumbnail: 'https://storage.earlybird.im/template/landing-page-01.jpg'
   },
   {
-    id: 'landing_page_02',
+    id: 'landing-page-02',
     name: 'Landing page 2',
-    categoryId: 'landing_page',
+    categoryId: 'landing-page',
     thumbnail: 'https://storage.earlybird.im/template/landing-page-02.jpg'
   },
   {
-    id: 'app_01',
+    id: 'app-01',
     name: 'App',
     categoryId: 'app',
     thumbnail: 'https://storage.earlybird.im/template/app-01.png'
   },
   {
-    id: 'waitlist_01',
+    id: 'waitlist-01',
     name: 'Waitlist',
     categoryId: 'waitlist',
     thumbnail: 'https://storage.earlybird.im/template/waitlist-01.png'
@@ -80,7 +80,7 @@ const TEMPLATES: Template_V3[] = [
     thumbnail: 'https://storage.earlybird.im/template/dove.png'
   },
   {
-    id: 'indie_folio',
+    id: 'indie-folio',
     name: 'Indie Folio',
     categoryId: 'portfolio',
     thumbnail: 'https://storage.earlybird.im/template/indie-folio.png'
@@ -92,19 +92,19 @@ const TEMPLATES: Template_V3[] = [
     thumbnail: 'https://storage.earlybird.im/template/obsidian.png'
   },
   {
-    id: 'simple_bio',
+    id: 'simple-bio',
     name: 'Simple Bio',
     categoryId: 'portfolio',
     thumbnail: 'https://storage.earlybird.im/template/simple-bio.png'
   },
   {
-    id: 'tiny_folio',
+    id: 'tiny-folio',
     name: 'Tiny Folio',
     categoryId: 'portfolio',
     thumbnail: 'https://storage.earlybird.im/template/tiny-folio.png'
   },
   {
-    id: 'bio_noir',
+    id: 'bio-noir',
     name: 'Bio Noir',
     categoryId: 'portfolio',
     thumbnail: 'https://storage.earlybird.im/template/bio-noir.png'
@@ -116,13 +116,13 @@ const TEMPLATES: Template_V3[] = [
     thumbnail: 'https://storage.earlybird.im/template/ebony.png'
   },
   {
-    id: 'black_matrix',
+    id: 'black-matrix',
     name: 'Black Matrix',
     categoryId: 'portfolio',
     thumbnail: 'https://storage.earlybird.im/template/black-matrix.png'
   },
   {
-    id: 'black_canvas',
+    id: 'black-canvas',
     name: 'Black Canvas',
     categoryId: 'portfolio',
     thumbnail: 'https://storage.earlybird.im/template/black-canvas.png'

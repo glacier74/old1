@@ -1,18 +1,18 @@
 import { ReactNode } from 'react'
 
-import * as app_01 from './app-01'
-import * as bio_noir from './bio-noir'
-import * as black_canvas from './black-canvas'
-import * as black_matrix from './black-matrix'
+import * as app01 from './app-01'
+import * as bioNoir from './bio-noir'
+import * as blackCanvas from './black-canvas'
+import * as blackMatrix from './black-matrix'
 import * as dove from './dove'
 import * as ebony from './ebony'
-import * as indie_folio from './indie-folio'
-import * as landing_page_01 from './landing-page-01'
-import * as landing_page_02 from './landing-page-02'
+import * as indieFolio from './indie-folio'
+import * as landingPage01 from './landing-page-01'
+import * as landingPage02 from './landing-page-02'
 import * as obsidian from './obsidian'
-import * as simple_bio from './simple-bio'
-import * as tiny_folio from './tiny-folio'
-import * as waitlist_01 from './waitlist-01'
+import * as simpleBio from './simple-bio'
+import * as tinyFolio from './tiny-folio'
+import * as waitlist01 from './waitlist-01'
 
 interface Template {
   options: any
@@ -20,19 +20,19 @@ interface Template {
 }
 
 const templates: AnyMap<Template> = {
-  landing_page_01,
-  landing_page_02,
-  app_01,
-  waitlist_01,
-  dove,
-  indie_folio,
-  obsidian,
-  simple_bio,
-  tiny_folio,
-  bio_noir,
-  ebony,
-  black_matrix,
-  black_canvas
+  'landing-page-01': landingPage01,
+  'landing-page-02': landingPage02,
+  'app-01': app01,
+  'waitlist-01': waitlist01,
+  dove: dove,
+  'indie-folio': indieFolio,
+  obsidian: obsidian,
+  'simple-bio': simpleBio,
+  'tiny-folio': tinyFolio,
+  'bio-noir': bioNoir,
+  ebony: ebony,
+  'black-matrix': blackMatrix,
+  'black-canvas': blackCanvas
 }
 
 export default templates
