@@ -28,7 +28,7 @@ export class TemplateService {
 
       cache = (res.data as TemplateRecord[]).map(c => {
         c.LowerCaseCategory = c.Category.toLowerCase()
-        c.Thumbnail = `${STORAGE_URI}/template/${c.slug}.jpg`
+        c.Thumbnail = `${STORAGE_URI}/template/${c.slug}.png`
 
         return c
       })
@@ -63,7 +63,7 @@ export class TemplateService {
 
       if (cache) {
         cache.LowerCaseCategory = cache.Category.toLocaleLowerCase()
-        cache.Thumbnail = `${STORAGE_URI}/template/${cache.slug}.jpg`
+        cache.Thumbnail = `${STORAGE_URI}/template/${cache.slug}.png`
 
         await redisService.set(key, cache, CACHE_EXPIRES)
       }

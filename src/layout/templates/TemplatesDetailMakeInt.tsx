@@ -1,10 +1,11 @@
 import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { FC } from 'react'
 
-import { dataMakeInt } from './dataMakeInt'
-
-export const TemplatesDetailMakeInt: FC = () => {
+export const TemplatesDetailMakeInt: FC<{ integrations: IntegrationRecord[] }> = ({
+  integrations
+}) => {
   const { t } = useTranslation()
 
   return (
@@ -14,18 +15,22 @@ export const TemplatesDetailMakeInt: FC = () => {
           Make life easy with integrations
         </div>
         <div className="flex flex-wrap justify-around md:mt-14 mt-7 gap-12">
-          {dataMakeInt.map((makeInt, index) => (
-            <div key={index} className="flex flex-col md:gap-5 gap-3">
+          {integrations.map(row => (
+            <Link
+              key={row._id}
+              className="flex flex-col md:gap-5 gap-3"
+              href={`/integrations/${row.slug}`}
+            >
               <Image
-                src={makeInt.logo}
-                width={100}
-                height={100}
-                alt={makeInt.title}
+                src={row.Logo!}
+                width={80}
+                height={80}
+                alt={row.Name}
                 quality={100}
-                className="rounded-full"
+                className="object-cover"
               />
-              <div className="sm:text-lg text-base font-medium text-white">{makeInt.title}</div>
-            </div>
+              <div className="sm:text-lg text-base font-medium text-white">{row.Name}</div>
+            </Link>
           ))}
         </div>
       </div>

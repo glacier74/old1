@@ -156,7 +156,7 @@ const TestimonialEmail: FC<{ testimonial: TestimonialRecord }> = ({ testimonial 
   )
 }
 
-const TestimonialItem: FC<{ testimonial: TestimonialRecord }> = ({ testimonial }) => {
+export const TestimonialItem: FC<{ testimonial: TestimonialRecord }> = ({ testimonial }) => {
   switch (testimonial.Platform) {
     case 'Twitter':
       return <TestimonialTwitter testimonial={testimonial} />

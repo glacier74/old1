@@ -626,6 +626,7 @@ declare global {
     _id: string
     Name: string
     slug: string
+    Background: string
     'Preview URL': string
     Category: string
     Price: string
