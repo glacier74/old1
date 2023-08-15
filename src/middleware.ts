@@ -46,14 +46,14 @@ export async function middleware(req: NextRequest) {
     try {
       await PublicApiService.user(req.headers)
     } catch (err: any) {
-      if (err.name === 'HTTPError') {
-        const json = await err.response.json()
+      // if (err.name === 'HTTPError') {
+      //   const json = await err.response.json()
 
-        // 删除 token cookie
-        if (json.statusCode === 401) {
-          deleteToken(res.cookies)
-        }
-      }
+      //   // 删除 token cookie
+      //   if (json.statusCode === 401) {
+      //     deleteToken(res.cookies)
+      //   }
+      // }
 
       console.error(err)
     }

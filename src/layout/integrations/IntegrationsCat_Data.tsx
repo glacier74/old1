@@ -33,20 +33,24 @@ export const IntegrationsCat_Data: FC<Props> = ({ groups }) => {
               <div className="grid lg:grid-cols-3 min-[500px]:grid-cols-2 grid-cols-1 xl:gap-10 lg:gap-8 gap-5">
                 {g.records.map(record => (
                   <Link href={`/integrations/${record.slug}`} key={record.slug}>
-                    <div className="mb-6 cursor-pointer text-sm">
-                      <Image
-                        src={record.Logo!}
-                        alt={record.Name}
-                        width={80}
-                        height={80}
-                        quality={100}
-                      />
-                      <div className="text-lg font-bold mt-5">{record.Name}</div>
-                      <div className="text-sm text-[#7d848f] mt-1">{record.Description}</div>
+                    <div className="grid grid-rows-[auto,1fr] h-full py-6 px-4 mb-6 cursor-pointer text-sm border">
+                      <div>
+                        <Image
+                          src={record.Logo!}
+                          alt={record.Name}
+                          width={48}
+                          height={48}
+                          quality={100}
+                        />
+                        <div className="text-lg font-bold mt-4 mb-2">{record.Name}</div>
+                      </div>
+                      <div className="text-sm text-[#7d848f]">{record.Description}</div>
                     </div>
                   </Link>
                 ))}
               </div>
+
+
             </div>
           ))}
         </div>

@@ -14,8 +14,8 @@ export const UseCaseReview: FC<{ testimonials: TestimonialRecord[] }> = ({ testi
   )
 
   return (
-    <section className="xl:px-32 sm:px-10 px-6 z-10">
-      <div className="sm:text-3xl text-2xl font-semibold text-center">
+    <section className="max-w-7xl mx-auto xl:px-32 sm:px-10 px-6 z-10 py-16">
+      <div className="sm:text-5xl text-3xl font-bold text-center">
         Here's what people say about us
       </div>
 

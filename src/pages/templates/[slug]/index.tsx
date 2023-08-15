@@ -52,7 +52,6 @@ const TemplateDetail: FC<TemplateDetailProps> = ({
         <div className="md:px-2 px-0 z-10">
           <UseCaseTemplates template={template} similars={similars} />
         </div>
-        <TemplatesDetailCategories categories={categories} />
         <HomeFooter />
       </HomeLayout>
     </>

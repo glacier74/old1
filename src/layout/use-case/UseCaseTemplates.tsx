@@ -10,7 +10,7 @@ export const UseCaseTemplates: FC<{ template: TemplateRecord; similars: Template
   const { t } = useTranslation()
 
   return (
-    <section className="lg:pt-20 pt-12 md:px-12 px-6 z-10">
+    <section className="lg:pt-20 pt-12 md:px-12 px-6 z-10 py-16 mb-16">
       <div className="sm:text-3xl text-2xl font-semibold text-center">
         Get started with {template.Category.toLowerCase()} landing page templates
       </div>

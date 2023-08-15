@@ -14,7 +14,7 @@ interface Props {
 
 export const IntegrationsCat: FC<Props> = ({ categories, category, groups }) => {
   return (
-    <section className="flex sm:flex-row flex-col xl:px-24 sm:px-12 px-6 md:py-14 py-12 gap-2">
+    <section className="max-w-7xl mx-auto flex sm:flex-row flex-col xl:px-24 sm:px-12 px-6 md:py-14 py-12 gap-2">
       <IntegrationsCat_Items categories={categories} category={category} />
       <IntegrationsCat_Data groups={groups} />
     </section>

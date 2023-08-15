@@ -14,11 +14,11 @@ export const TemplatesDetailMakeInt: FC<{ integrations: IntegrationRecord[] }> =
         <div className="sm:text-5xl text-3xl font-bold text-white">
           Make life easy with integrations
         </div>
-        <div className="flex flex-wrap justify-around md:mt-14 mt-7 gap-12">
+        <div className="flex flex-wrap justify-around md:mt-16 mt-7 gap-12">
           {integrations.map(row => (
             <Link
               key={row._id}
-              className="flex flex-col md:gap-5 gap-3"
+              className="flex flex-col items-center md:gap-5 gap-3"
               href={`/integrations/${row.slug}`}
             >
               <Image
@@ -29,10 +29,11 @@ export const TemplatesDetailMakeInt: FC<{ integrations: IntegrationRecord[] }> =
                 quality={100}
                 className="object-cover"
               />
-              <div className="sm:text-lg text-base font-medium text-white">{row.Name}</div>
+              <div className="text-white">{row.Name}</div>
             </Link>
           ))}
         </div>
+
       </div>
     </section>
   )
