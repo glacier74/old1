@@ -6,6 +6,7 @@ import { BudiBase } from '~/utils/budibase'
 const redisService = new RedisService()
 
 const TABLE_ID = 'ta_a37de311c55c49a7a7f29dd9cf2e6cd8'
+const CACHE_EXPIRES = process.env.NEXT_BUDIBASE_CACHE_EXPIRES as string
 const HOME_URL = process.env.NEXT_BUDIBASE_HOME_URL as string
 
 export class TestimonialService {
@@ -31,7 +32,7 @@ export class TestimonialService {
         return c
       })
 
-      await redisService.set(key, cache, '1h')
+      await redisService.set(key, cache, CACHE_EXPIRES)
     }
 
     return cache

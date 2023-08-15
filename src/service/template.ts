@@ -6,6 +6,7 @@ import { BudiBase } from '~/utils/budibase'
 const redisService = new RedisService()
 
 const TABLE_ID = 'ta_c361b01502004d35965819e0a3a514f9'
+const CACHE_EXPIRES = process.env.NEXT_BUDIBASE_CACHE_EXPIRES as string
 const STORAGE_URI = process.env.NEXT_PUBLIC_STORAGE_URI as string
 
 export class TemplateService {
@@ -32,7 +33,7 @@ export class TemplateService {
         return c
       })
 
-      await redisService.set(key, cache, '1h')
+      await redisService.set(key, cache, CACHE_EXPIRES)
     }
 
     if (category) {
@@ -64,7 +65,7 @@ export class TemplateService {
         cache.LowerCaseCategory = cache.Category.toLocaleLowerCase()
         cache.Thumbnail = `${STORAGE_URI}/template/${cache.slug}.jpg`
 
-        await redisService.set(key, cache, '1h')
+        await redisService.set(key, cache, CACHE_EXPIRES)
       }
     }
 

@@ -6,6 +6,7 @@ import { BudiBase } from '~/utils/budibase'
 const redisService = new RedisService()
 
 const TABLE_ID = 'ta_0c2d8850186d4891ab20fd78e5558706'
+const CACHE_EXPIRES = process.env.NEXT_BUDIBASE_CACHE_EXPIRES as string
 const STORAGE_URI = process.env.NEXT_PUBLIC_STORAGE_URI as string
 
 export class CollectionService {
@@ -17,7 +18,7 @@ export class CollectionService {
       const res = await BudiBase.get<AnyMap<any>>(`/tables/${TABLE_ID}`)
 
       cache = res.data.schema.Category.constraints.inclusion
-      await redisService.set(key, cache, '1h')
+      await redisService.set(key, cache, CACHE_EXPIRES)
     }
 
     return cache || []
@@ -46,7 +47,7 @@ export class CollectionService {
         return c
       })
 
-      await redisService.set(key, cache, '1h')
+      await redisService.set(key, cache, CACHE_EXPIRES)
     }
 
     if (category) {
@@ -78,7 +79,7 @@ export class CollectionService {
         cache.LowerCaseCategory = cache.Category.toLocaleLowerCase()
         cache.Screenshot = `${STORAGE_URI}/screenshots/${cache.Slug}.jpg`
 
-        await redisService.set(key, cache, '1h')
+        await redisService.set(key, cache, CACHE_EXPIRES)
       }
     }
 

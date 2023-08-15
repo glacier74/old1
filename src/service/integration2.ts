@@ -6,6 +6,7 @@ import { BudiBase } from '~/utils/budibase'
 const redisService = new RedisService()
 
 const TABLE_ID = 'ta_4d56e915f2f7408795e8716e60e63923'
+const CACHE_EXPIRES = process.env.NEXT_BUDIBASE_CACHE_EXPIRES as string
 const HOME_URL = process.env.NEXT_BUDIBASE_HOME_URL as string
 
 export class Integration2Service {
@@ -17,7 +18,7 @@ export class Integration2Service {
       const res = await BudiBase.get<AnyMap<any>>(`/tables/${TABLE_ID}`)
 
       cache = res.data.schema.Category.constraints.inclusion
-      await redisService.set(key, cache, '1h')
+      await redisService.set(key, cache, CACHE_EXPIRES)
     }
 
     return cache || []
@@ -46,7 +47,7 @@ export class Integration2Service {
         return c
       })
 
-      await redisService.set(key, cache, '1h')
+      await redisService.set(key, cache, CACHE_EXPIRES)
     }
 
     if (category) {
