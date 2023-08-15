@@ -50,13 +50,13 @@ export const CategoryCollections: FC<CategoryCollectionsProps> = ({
                         <AirtableImage
                           className="pointer-events-none object-cover transition-transform transform-gpu ease-in-out"
                           src={record.Thumbnail}
-                          alt={record.Title}
+                          alt={record.Name}
                           width={400}
                           height={280}
                         />
                       </div>
                       <p className="pointer-events-none px-4 py-3 block truncate text-sm font-medium text-gray-900">
-                        {record.Title}
+                        {record.Name}
                       </p>
                     </Link>
                   </li>

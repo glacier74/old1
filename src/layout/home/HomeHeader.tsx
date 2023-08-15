@@ -35,15 +35,17 @@ export const HomeHeader: FC = () => {
   }, [])
 
   return (
-    <header className="relative sticky top-0 z-20">
-      <div className="header-container absolute top-0 left-0 w-full z-20">
+    <header className="sticky top-0 z-20">
+      {/* relative */}
+      <div className="header-container bg-white top-0 left-0 w-full z-20">
+        {/* absolute */}
         <div className="md:px-5">
           <div className="py-6 flex items-center justify-between">
             <div className="flex items-center text-slate-900 text-base font-medium md:space-x-8">
               <Link
                 href="/"
                 title={t('common.name')}
-                className="h-[2rem] md:h-[2.25rem] hover:opacity-80 mx-5 md:mx-8"
+                className="h-[2rem] md:h-[2.25rem] hover:opacity-80 mx-5 lg:mx-8"
               >
                 <Image src={IconLogo} alt="EarlyBird Logo" width={110} height={36} quality={100} />
               </Link>
@@ -60,6 +62,13 @@ export const HomeHeader: FC = () => {
                 className="hidden md:block hover:opacity-80"
               >
                 Pricing
+              </Link>
+              <Link
+                href="/templates"
+                title={t('templates.title')}
+                className="hidden md:block hover:opacity-80"
+              >
+                Templates
               </Link>
               <Link
                 href="/collections"

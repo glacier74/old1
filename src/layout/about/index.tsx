@@ -1,0 +1,5 @@
+export * from './AboutHero'
+export * from './AboutEvolution'
+export * from './AboutTeam'
+export * from './AboutPhilosophy'
+export * from './AboutUncover'

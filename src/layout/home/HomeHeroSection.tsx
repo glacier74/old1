@@ -15,15 +15,15 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
   return (
     <section className="homeHero">
       <div className="relative text-slate-900 max-w-7xl mx-auto px-8 md:px-12 z-10">
-        <div className="pt-32 md:pt-48 text-center">
-          <div className="inline-block rounded-full bg-emerald-100/70 px-6 py-2 mb-8 text-sm md:text-base text-emerald-700">
+        <div className="sm:pt-32 pt-8 text-center">
+          <div className="inline-block rounded-full bg-emerald-100/50 px-6 py-2 mb-8 text-sm md:text-base text-emerald-700">
             Acquire your first customer by{' '}
             <span className="font-bold text-emerald-900">
               {dayjs().add(10, 'm').format('h:mm A')}
             </span>{' '}
             with no waiting
           </div>
-          <h1 className="max-w-3xl mx-auto text-3xl md:text-5xl leading-tight font-bold md:font-bold">
+          <h1 className="max-w-5xl mx-auto text-3xl md:text-7xl font-bold md:font-extrabold">
             Create{' '}
             <span className="relative whitespace-nowrap text-emerald-500">
               <svg
@@ -36,11 +36,11 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
               </svg>
               <span className="relative">landing pages</span>
             </span>{' '}
-            that turn ideas into customers
+            that captures early adopters
           </h1>
-          <div className="max-w-2xl mx-auto text-slate-700 text-base md:text-lg mt-4 leading-tight">
-            Your ideas could be worth millions if validated, and you don't need any technical
-            knowledge to get started!
+          <div className="max-w-3xl mx-auto text-slate-500 text-lg md:text-2xl mt-6 leading-snug">
+            Your ideas have the potential to be worth millions, and you can start without any
+            technical knowledge!
           </div>
         </div>
 
@@ -48,7 +48,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
           <div className="flex justify-center flex-col md:flex-row items-center space-y-5 space-x-0 md:space-y-0 md:space-x-5">
             <Link
               href="/sign-up"
-              className="w-auto px-4 py-3 md:px-8 md:py-3 bg-slate-900 rounded-full text-white"
+              className="w-auto px-4 py-3 md:px-8 md:py-3 bg-slate-900 rounded-full text-white text-lg font-medium"
               title={t('home.signUp')}
             >
               Get started for free -&#62;

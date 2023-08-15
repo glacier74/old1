@@ -10,7 +10,7 @@ export const CollectionDetails: FC<{
       <div className="relative max-w-7xl mx-auto px-5 z-10 pt-32 pb-32 md:pt-48 md:pb-48">
         <div className="text-center">
           <h1 className="text-3xl md:text-4xl font-bold text-slate-900 ">
-            Landing page example - {record.Title}
+            Landing page example - {record.Name}
           </h1>
         </div>
         <div className="mt-16 sm:mt-20">
@@ -19,7 +19,7 @@ export const CollectionDetails: FC<{
               <AirtableImage
                 className="w-full h-auto bg-slate-50 border-slate-100 rounded-xl shadow-md"
                 src={record.Screenshot}
-                alt={record.Title}
+                alt={record.Name}
                 width={800}
                 height={0}
               />
@@ -28,7 +28,7 @@ export const CollectionDetails: FC<{
             <div className="md:w-96 relative">
               <div className="sticky top-24 border border-slate-100 px-4 py-8 shadow-sm">
                 <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                  {record.Title}
+                  {record.Name}
                 </h1>
                 <p className="mt-2 text-base text-gray-500">{record.Description}</p>
                 <a
@@ -37,7 +37,7 @@ export const CollectionDetails: FC<{
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Visit {record.Title}
+                  Visit {record.Name}
                 </a>
               </div>
             </div>

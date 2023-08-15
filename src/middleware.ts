@@ -4,6 +4,8 @@ import { NextResponse } from 'next/server'
 import { deleteToken, getBrowserId, isLoggedIn, setBrowserId } from '~/utils/cookie'
 import { isMatchRoutes } from '~/utils/route'
 
+import { PublicApiService } from './service/public-api'
+
 const authRoutes = ['/login', '/sign-up', '/confirm-email', '/forgot-password', '/reset-password']
 
 export async function middleware(req: NextRequest) {
@@ -42,16 +44,17 @@ export async function middleware(req: NextRequest) {
   // 检查 token 是否有效
   if (isLogged) {
     try {
-      const r = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/user`, {
-        headers: req.headers
-      })
-      const data = await r.json()
-
-      // 删除 token cookie
-      if (data.statusCode === 401) {
-        deleteToken(res.cookies)
-      }
+      await PublicApiService.user(req.headers)
     } catch (err: any) {
+      if (err.name === 'HTTPError') {
+        const json = await err.response.json()
+
+        // 删除 token cookie
+        if (json.statusCode === 401) {
+          deleteToken(res.cookies)
+        }
+      }
+
       console.error(err)
     }
   }

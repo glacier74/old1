@@ -1,12 +1,10 @@
+import { isEmpty } from '@nily/utils'
 import { useTranslation } from 'next-i18next'
 
 import { GroupCollections, HomeFooter, HomeHeader, HomeLayout } from '~/layout'
 import { PricingCTA } from '~/layout/pricing'
-import { AirtableService } from '~/service/airtable'
+import { CollectionService } from '~/service/collection'
 import { withTranslations } from '~/utils'
-
-const NEXT_AIRTABLE_BASE_ID = process.env.NEXT_AIRTABLE_BASE_ID as string
-const NEXT_AIRTABLE_COLLECTION_ID = process.env.NEXT_AIRTABLE_COLLECTION_ID as string
 
 const Collection = (props: any): JSX.Element => {
   const { t } = useTranslation()
@@ -14,7 +12,7 @@ const Collection = (props: any): JSX.Element => {
   return (
     <HomeLayout
       seo={{
-        title: t('collection.title'),
+        title: t('collections.title'),
         url: '/collections'
       }}
     >
@@ -27,17 +25,27 @@ const Collection = (props: any): JSX.Element => {
 }
 
 export const getServerSideProps = withTranslations(async ({ query }) => {
-  const records = await AirtableService.records<CollectionRecord>(
-    NEXT_AIRTABLE_BASE_ID,
-    NEXT_AIRTABLE_COLLECTION_ID
-  )
-  const categories = Array.from(new Set(records.map(r => r.Category)))
-  const groups = categories.map(category => ({
-    category,
-    records: records
-      .filter(record => record.Category?.toLowerCase() === category.toLowerCase())
-      .slice(0, 9)
-  }))
+  const [records, categories] = await Promise.all([
+    CollectionService.records(),
+    CollectionService.categories()
+  ])
+
+  const groups = categories
+    .map(category => {
+      const filtered = records
+        .filter(record => record.LowerCaseCategory === category.toLowerCase())
+        .slice(0, 9)
+
+      if (isEmpty(filtered)) {
+        return
+      }
+
+      return {
+        category,
+        records: filtered
+      }
+    })
+    .filter(Boolean)
 
   return {
     props: {

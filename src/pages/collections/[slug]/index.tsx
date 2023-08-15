@@ -2,11 +2,8 @@ import { useTranslation } from 'next-i18next'
 
 import { CollectionDetails, HomeFooter, HomeHeader, HomeLayout } from '~/layout'
 import { PricingCTA } from '~/layout/pricing'
-import { AirtableService } from '~/service/airtable'
+import { CollectionService } from '~/service/collection'
 import { withTranslations } from '~/utils'
-
-const NEXT_AIRTABLE_BASE_ID = process.env.NEXT_AIRTABLE_BASE_ID as string
-const NEXT_AIRTABLE_COLLECTION_ID = process.env.NEXT_AIRTABLE_COLLECTION_ID as string
 
 const CollectionDetail = (props: any): JSX.Element => {
   const { t } = useTranslation()
@@ -14,7 +11,7 @@ const CollectionDetail = (props: any): JSX.Element => {
   return (
     <HomeLayout
       seo={{
-        title: t('collection.detailTitle', { title: props.record.Title }),
+        title: t('collections.detailTitle', { title: props.record.Name }),
         url: `/collections/${props.record.Slug}`
       }}
     >
@@ -27,11 +24,7 @@ const CollectionDetail = (props: any): JSX.Element => {
 }
 
 export const getServerSideProps = withTranslations(async ({ query }) => {
-  const records = await AirtableService.records<CollectionRecord>(
-    NEXT_AIRTABLE_BASE_ID,
-    NEXT_AIRTABLE_COLLECTION_ID
-  )
-  const record = records.find(r => r.Slug?.toLowerCase() === query.slug.toLowerCase())
+  const record = await CollectionService.findBySlug(query.slug.toLowerCase())
 
   if (!record) {
     return {

@@ -16,7 +16,7 @@ export class RedisService {
     return defaultValue
   }
 
-  public async set(key: string, value: object, duration: string) {
+  public async set(key: string, value: any, duration: string) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     return redis.set(key, JSON.stringify(value), 'EX', date.seconds(duration))

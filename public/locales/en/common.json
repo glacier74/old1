@@ -35,13 +35,27 @@
     "title": "Pricing - EarlyBird"
   },
   "collections": {
-    "title": "Collections - EarlyBird"
+    "title": "Collections - EarlyBird",
+    "detailTitle": "{{title}} - Collections - EarlyBird"
   },
   "blog": {
     "title": "Blog - EarlyBird"
   },
   "showcase": {
     "title": "Showcase - EarlyBird"
+  },
+  "microSaasIdeas": {
+    "title": "MicroSaasIdeas - EarlyBird"
+  },
+  "useCase": {
+    "title": "UseCase - EarlyBird"
+  },
+  "about": {
+    "title": "About - EarlyBird"
+  },
+  "templates": {
+    "title": "Templates - EarlyBird",
+    "detailTitle": "{{title}} - Templates - EarlyBird"
   },
   "gumroad": {
     "title": "Free Gumroad Alternative - EarlyBird"
@@ -453,7 +467,8 @@
     "connecting": "Connecting with stripe"
   },
   "integrations": {
-    "title": "Integrate with apps - {{name}}",
+    "title": "Integrations - EarlyBird",
+    "detailTitle": "{{title}} - Integrations - EarlyBird",
     "heading": "Integrate with apps",
     "description": "Connect your conversions data with your favorite apps.",
     "connecting": "Connecting with your favorite apps"
@@ -488,9 +503,5 @@
         "description": "Allows {{openAppName}} to get a list of your conversions payments"
       }
     }
-  },
-  "collection": {
-    "title": "Collections - EarlyBird",
-    "detailTitle": "{{title}} - Collections - EarlyBird"
   }
 }

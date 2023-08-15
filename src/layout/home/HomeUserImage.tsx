@@ -10,8 +10,9 @@ export const HomeUserImage: FC = () => {
 
   return (
     <section className="relative py-32">
-      <h2 className="max-w-2xl mx-auto text-3xl md:text-5xl font-bold text-center">
-        Stop burning time and money at early stage
+      <h2 className="max-w-3xl mx-auto text-3xl md:text-6xl font-extrabold text-center">
+        Stop <span className="text-red-700/80 underline">wasting time and money</span> at early
+        stage
       </h2>
       <div className="max-w-7xl mx-auto px-5 grid md:grid-cols-4 gap-4 place-items-center">
         <div className="col-span-2">

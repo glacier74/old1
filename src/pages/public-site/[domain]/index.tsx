@@ -30,6 +30,7 @@ import { TestimonialPreview } from '~/layout/builder/blocks/Testimonial'
 import { TextPreview } from '~/layout/builder/blocks/Text'
 import { PublicSiteDangerouslyHTML } from '~/layout/public-site/PublicSiteDangerouslyHTML'
 import { ProductService } from '~/service'
+import { PublicApiService } from '~/service/public-api'
 import { getPrivateToken, setPrivateToken, withTranslations } from '~/utils'
 
 interface PublicSiteProps {
@@ -310,10 +311,13 @@ const PublicSite: FC<PublicSiteProps> = ({
 
 export const getServerSideProps = withTranslations(async context => {
   const domain = context.params.domain
-  const result = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/product/${domain}`)
-  const product: Product = await result.json()
+  let product: Product
 
-  if ((product as AnyMap<number>).statusCode) {
+  try {
+    product = await PublicApiService.product(domain)
+  } catch (err: any) {
+    console.error(err)
+
     return {
       notFound: true
     }
@@ -325,14 +329,7 @@ export const getServerSideProps = withTranslations(async context => {
     const token = getPrivateToken(context.req.cookies)
 
     if (isValid(token)) {
-      const result = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/product/${product.id}/token`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ token })
-      })
-      const json = await result.json()
+      const json = await PublicApiService.verifyToken(product.id, token)
 
       if (json.verified) {
         isSiteAccessible = true

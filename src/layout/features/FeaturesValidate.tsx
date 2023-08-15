@@ -37,7 +37,7 @@ export const FeaturesValidate: FC = () => {
   return (
     <section>
       <div className="py-32 px-2 max-w-7xl mx-auto">
-        <h1 className="px-4 md:px-0 text-slate-900 font-bold text-4xl">
+        <h1 className="px-4 md:px-0 text-slate-900 font-extrabold text-5xl">
           Maximize engagement to ensure success
         </h1>
         <p className="px-4 md:px-0 mt-4 text-slate-700 text-xl">

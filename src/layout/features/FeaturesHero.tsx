@@ -6,13 +6,13 @@ export const FeaturesHero: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section className="heroFeatures">
-      <div className="relative max-w-7xl mx-auto px-5 z-10 pt-48 md:pt-64 pb-32 md:pb-48">
+    <section className="bg-gradient-to-br from-emerald-100 via-blue-50 to-rose-100">
+      <div className="relative max-w-7xl mx-auto px-5 z-10 pt-48 pb-32 md:pb-48">
         <div className="text-center">
-          <h1 className="max-w-3xl mx-auto text-3xl md:text-5xl font-bold text-slate-900">
+          <h1 className="max-w-5xl mx-auto text-3xl md:text-7xl font-extrabold text-slate-900">
             Transform your idea into a thriving customer base
           </h1>
-          <div className="text-slate-700 text-base md:text-lg w-full md:max-w-3xl md:mx-auto mt-6">
+          <div className="text-slate-700 text-lg md:text-2xl w-full md:max-w-3xl md:mx-auto mt-6">
             Save time and resources by using EarlyBird to validate your idea before diving into
             product development.
           </div>

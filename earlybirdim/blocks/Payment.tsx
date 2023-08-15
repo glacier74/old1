@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { FC, MouseEvent, useCallback, useState } from 'react'
 
 import { useBuilderContext } from '~/layout/builder2/context'
-import { PublicApiService } from '~/service'
+import { PublicApiService } from '~/service/public-api'
 
 import { useBlockContext } from './Block'
 import { linkStyle } from './helper'

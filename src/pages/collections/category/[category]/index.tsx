@@ -3,11 +3,8 @@ import { useTranslation } from 'next-i18next'
 
 import { CategoryCollections, HomeFooter, HomeHeader, HomeLayout } from '~/layout'
 import { PricingCTA } from '~/layout/pricing'
-import { AirtableService } from '~/service/airtable'
+import { CollectionService } from '~/service/collection'
 import { withTranslations } from '~/utils'
-
-const NEXT_AIRTABLE_BASE_ID = process.env.NEXT_AIRTABLE_BASE_ID as string
-const NEXT_AIRTABLE_COLLECTION_ID = process.env.NEXT_AIRTABLE_COLLECTION_ID as string
 
 const Collection = (props: any): JSX.Element => {
   const { t } = useTranslation()
@@ -16,7 +13,7 @@ const Collection = (props: any): JSX.Element => {
   return (
     <HomeLayout
       seo={{
-        title: t('collection.detailTitle', { title }),
+        title: t('collections.detailTitle', { title }),
         url: `/collections/category/${props.category}`
       }}
     >
@@ -30,12 +27,10 @@ const Collection = (props: any): JSX.Element => {
 
 export const getServerSideProps = withTranslations(async ({ query }) => {
   const category = query.category.toLowerCase()
-  const result = await AirtableService.records<CollectionRecord>(
-    NEXT_AIRTABLE_BASE_ID,
-    NEXT_AIRTABLE_COLLECTION_ID
-  )
-  const categories = Array.from(new Set(result.map(r => r.Category)))
-  const records = result.filter(r => r.Category?.toLowerCase() === category)
+  const [records, categories] = await Promise.all([
+    CollectionService.records(category),
+    CollectionService.categories()
+  ])
 
   const limit = 18
   const page = conv.int(query.page, 1)!

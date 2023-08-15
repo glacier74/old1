@@ -3,11 +3,8 @@ import { useTranslation } from 'next-i18next'
 
 import { CategoryCollections, HomeFooter, HomeHeader, HomeLayout } from '~/layout'
 import { PricingCTA } from '~/layout/pricing'
-import { AirtableService } from '~/service/airtable'
+import { CollectionService } from '~/service/collection'
 import { withTranslations } from '~/utils'
-
-const NEXT_AIRTABLE_BASE_ID = process.env.NEXT_AIRTABLE_BASE_ID as string
-const NEXT_AIRTABLE_COLLECTION_ID = process.env.NEXT_AIRTABLE_COLLECTION_ID as string
 
 const Search = (props: any): JSX.Element => {
   const { t } = useTranslation()
@@ -15,7 +12,7 @@ const Search = (props: any): JSX.Element => {
   return (
     <HomeLayout
       seo={{
-        title: t('collection.title')
+        title: t('collections.title')
       }}
     >
       <HomeHeader />
@@ -28,23 +25,18 @@ const Search = (props: any): JSX.Element => {
 
 export const getServerSideProps = withTranslations(async ({ query }) => {
   const search = query.query
+  const [list, categories] = await Promise.all([
+    CollectionService.records(),
+    CollectionService.categories()
+  ])
 
-  const result = await AirtableService.records<CollectionRecord>(
-    NEXT_AIRTABLE_BASE_ID,
-    NEXT_AIRTABLE_COLLECTION_ID
-  )
-  const categories = Array.from(new Set(result.map(r => r.Category)))
-
-  let records: CollectionRecord[] = []
+  let records: CollectionRecord[] = list
 
   if (isValid(search)) {
     const searchLower = search!.toLowerCase()
 
-    records = result.filter(r => {
-      return (
-        r.Title?.toLowerCase().includes(searchLower) ||
-        r.Category?.toLowerCase().includes(searchLower)
-      )
+    records = list.filter(r => {
+      return r.Name.toLowerCase().includes(searchLower) || r.LowerCaseCategory.includes(searchLower)
     })
   }
 

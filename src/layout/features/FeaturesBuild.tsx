@@ -5,7 +5,7 @@ import { FC } from 'react'
 
 const features = [
   {
-    title: 'Newbie-friendly UI blocks',
+    title: 'Start with a template',
     desc: 'Every UI block is designed to be easy to use and understand, even for those who are unfamiliar with technology.',
     imageUrl: '/static/ui-blocks.png'
   },
@@ -37,7 +37,7 @@ export const FeaturesBuild: FC = () => {
   return (
     <section>
       <div className="px-2 py-32 max-w-7xl mx-auto">
-        <h1 className="px-4 md:px-0 text-slate-900 font-bold text-4xl">
+        <h1 className="px-4 md:px-0 text-slate-900 font-extrabold text-5xl">
           Build a landing page in 10 minutes
         </h1>
         <p className="px-4 md:px-0 mt-4 text-slate-700 text-xl">

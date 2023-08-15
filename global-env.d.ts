@@ -605,22 +605,101 @@ declare global {
   }
 
   interface CollectionRecord {
-    id: string
-    'UX/UI principles': string
-    'Visual content': string
-    'Color schemes': string
-    'Mobile responsiveness': string
+    _id: string
+    URL: string
+    Name: string
     Slug: string
+    Description: string
     Category: string
     'Design style': string
     'Target audience': string
-    Title: string
-    'Copy-writing style': string
-    Description: string
-    URL: string
-    Layout: string
-    'Purpose or objective': string
+    tableId: string
+    'Auto ID': number
+    'Created At': Date
+    'Updated At': Date
+    LowerCaseCategory: string
     Thumbnail: string
     Screenshot: string
+  }
+
+  interface TemplateRecord {
+    _id: string
+    Name: string
+    slug: string
+    'Preview URL': string
+    Category: string
+    Price: string
+    Description: string
+    'CTA title': string
+    tableId: string
+    'Auto ID': number
+    'Created At': string
+    'Updated At': string
+    type: string
+    createdAt: string
+    updatedAt: string
+    'Created By': Array<{
+      _id: string
+      primaryDisplay: string
+    }>
+    'Updated By': Array<{
+      _id: string
+      primaryDisplay: string
+    }>
+    'CTA Description'?: string
+    LowerCaseCategory: string
+    Thumbnail: string
+  }
+
+  interface IntegrationRecord {
+    _id: string
+    Name: string
+    Logo?: string
+    slug: string
+    Description: string
+    'Product Homepage': string
+    'Product Support Page': string
+    tableId: string
+    'Auto ID': number
+    'Created At': string
+    'Updated At': string
+    type: string
+    Category: string
+    createdAt: string
+    updatedAt: string
+    'Created By': Array<{
+      _id: string
+      primaryDisplay: string
+    }>
+    'Updated By': Array<{
+      _id: string
+      primaryDisplay: string
+    }>
+    LowerCaseCategory: string
+  }
+
+  interface TestimonialRecord {
+    Name: string
+    Avatar?: string
+    Title: string
+    Testimonial: string
+    Platform: string
+    URL: string
+    tableId: string
+    'Auto ID': number
+    'Created At': string
+    'Updated At': string
+    type: string
+    Date: string
+    createdAt: string
+    updatedAt: string
+    'Created By': Array<{
+      _id: string
+      primaryDisplay: string
+    }>
+    'Updated By': Array<{
+      _id: string
+      primaryDisplay: string
+    }>
   }
 }

@@ -3,7 +3,7 @@ import party from 'party-js'
 import RCForm from 'rc-field-form'
 import { FC, useCallback, useEffect, useMemo, useReducer, useState } from 'react'
 
-import { PublicApiService } from '~/service'
+import { PublicApiService } from '~/service/public-api'
 import { urlBuilder } from '~/utils'
 
 import { useGlobalContext } from '../GlobalContext'

@@ -1,34 +1,21 @@
-import { useTranslation } from 'next-i18next'
+import dayjs from 'dayjs'
 import Image from 'next/image'
 import { FC, useMemo } from 'react'
 
-import testimonials from '~/assets/testimonials.json'
 import { IconProducthunt, IconTwitter } from '~/components'
 import { waterfall } from '~/utils'
 
-interface Testimonial {
-  type: string
-  postUrl: string
-  date: string
-  nickname: string
-  accountName?: string
-  accountUrl?: string
-  avatar: string
-  title?: string
-  message: string
-}
-
-const TestimonialTwitter: FC<{ testimonial: Testimonial }> = ({ testimonial }) => {
+const TestimonialTwitter: FC<{ testimonial: TestimonialRecord }> = ({ testimonial }) => {
   return (
-    <div className="w-full bg-white shadow-sm border border-slate-200 p-5 mb-4 rounded-md">
+    <div className="w-full rounded-2xl bg-white py-12 px-8 shadow-xl shadow-slate-900/10">
       <div className="w-full flex items-center">
-        <a href={testimonial.accountUrl} target="_blank" rel="noreferrer">
+        <a href={testimonial.URL} target="_blank" rel="noreferrer">
           <Image
             className="w-12 h-12 rounded-full"
-            src={testimonial.avatar}
+            src={testimonial.Avatar!}
             width="48"
             height="48"
-            alt={testimonial.nickname}
+            alt={testimonial.Name}
           />
         </a>
         <div className="flex-grow pl-3">
@@ -37,46 +24,41 @@ const TestimonialTwitter: FC<{ testimonial: Testimonial }> = ({ testimonial }) =
               <h4 className="font-bold inline text-md">
                 <a
                   className="hover:underline"
-                  href={testimonial.accountUrl}
+                  href={testimonial.URL}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {testimonial.nickname}
+                  {testimonial.Name}
                 </a>
               </h4>
-              <div className="text-sm text-sm text-slate-500 ">
+              <div className="text-sm text-slate-500 ">
                 <a
                   className="hover:underline"
-                  href={testimonial.accountUrl}
+                  href={testimonial.URL}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {testimonial.accountName}
+                  {testimonial.Name}
                 </a>
               </div>
             </div>
-            <a href={testimonial.postUrl} target="_blank" rel="noreferrer" aria-label="Twitter">
+            <a href={testimonial.URL} target="_blank" rel="noreferrer" aria-label="Twitter">
               <IconTwitter className="w-6 h-6 text-[#1ea1f2]" />
             </a>
           </div>
         </div>
       </div>
 
-      <div className="w-full flex-grow mt-2">
+      <div className="w-full flex-grow mt-4">
         <div className="text-slate-700 text-md">
-          <p dangerouslySetInnerHTML={{ __html: testimonial.message }} />
+          <div dangerouslySetInnerHTML={{ __html: testimonial.Testimonial }} />
         </div>
       </div>
 
       <div className="w-full flex justify-between mt-2">
         <div className="text-sm text-slate-500 mt-2">
-          <a
-            className="hover:underline"
-            href={testimonial.postUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {testimonial.date}
+          <a className="hover:underline" href={testimonial.URL} target="_blank" rel="noreferrer">
+            {dayjs(testimonial.Date).format('MMM DD, YYYY')}
           </a>
         </div>
       </div>
@@ -84,17 +66,17 @@ const TestimonialTwitter: FC<{ testimonial: Testimonial }> = ({ testimonial }) =
   )
 }
 
-const TestimonialProducthunt: FC<{ testimonial: Testimonial }> = ({ testimonial }) => {
+const TestimonialProducthunt: FC<{ testimonial: TestimonialRecord }> = ({ testimonial }) => {
   return (
-    <div className="w-full bg-white shadow-sm border border-slate-200 p-5 mb-4 rounded-md">
+    <div className="w-full rounded-2xl bg-white py-12 px-8 shadow-xl shadow-slate-900/10">
       <div className="w-full flex items-center">
-        <a href={testimonial.postUrl} target="_blank" rel="noreferrer">
+        <a href={testimonial.URL} target="_blank" rel="noreferrer">
           <Image
             className="w-12 h-12 rounded-full"
-            src={testimonial.avatar}
+            src={testimonial.Avatar!}
             width="48"
             height="48"
-            alt={testimonial.nickname}
+            alt={testimonial.Name}
           />
         </a>
         <div className="flex-grow pl-3">
@@ -103,42 +85,32 @@ const TestimonialProducthunt: FC<{ testimonial: Testimonial }> = ({ testimonial 
               <h4 className="font-bold inline text-md">
                 <a
                   className="hover:underline"
-                  href={testimonial.postUrl}
+                  href={testimonial.URL}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {testimonial.nickname}
+                  {testimonial.Name}
                 </a>
               </h4>
-              <div className="text-sm text-sm text-slate-500 ">{testimonial.title}</div>
+              <div className="text-sm text-slate-500 ">{testimonial.Title}</div>
             </div>
-            <a
-              href={testimonial.postUrl}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Product Hunt"
-            >
+            <a href={testimonial.URL} target="_blank" rel="noreferrer" aria-label="Product Hunt">
               <IconProducthunt className="w-6 h-6 text-[#da552f]" />
             </a>
           </div>
         </div>
       </div>
 
-      <div className="w-full flex-grow mt-2">
+      <div className="w-full flex-grow mt-4">
         <div className="text-slate-700 text-md">
-          <p dangerouslySetInnerHTML={{ __html: testimonial.message }} />
+          <div dangerouslySetInnerHTML={{ __html: testimonial.Testimonial }} />
         </div>
       </div>
 
       <div className="w-full flex justify-between mt-2">
         <div className="text-sm text-slate-500 mt-2">
-          <a
-            className="hover:underline"
-            href={testimonial.postUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {testimonial.date}
+          <a className="hover:underline" href={testimonial.URL} target="_blank" rel="noreferrer">
+            {dayjs(testimonial.Date).format('MMM DD, YYYY')}
           </a>
         </div>
       </div>
@@ -146,51 +118,53 @@ const TestimonialProducthunt: FC<{ testimonial: Testimonial }> = ({ testimonial 
   )
 }
 
-const TestimonialEmail: FC<{ testimonial: Testimonial }> = ({ testimonial }) => {
+const TestimonialEmail: FC<{ testimonial: TestimonialRecord }> = ({ testimonial }) => {
   return (
-    <div className="w-full bg-white shadow-sm border border-slate-200 p-5 mb-4 rounded-md">
+    <div className="w-full rounded-2xl bg-white py-12 px-8 shadow-xl shadow-slate-900/10">
       <div className="w-full flex items-center">
         <div>
           <Image
             className="w-12 h-12 rounded-full"
-            src={testimonial.avatar}
+            src={testimonial.Avatar!}
             width="48"
             height="48"
-            alt={testimonial.nickname}
+            alt={testimonial.Name}
           />
         </div>
         <div className="flex-grow pl-3">
           <div className="flex justify-between my-auto">
             <div>
-              <h4 className="font-bold inline text-md">{testimonial.nickname}</h4>
-              <div className="text-sm text-sm text-slate-500 ">{testimonial.title}</div>
+              <h4 className="font-bold inline text-md">{testimonial.Name}</h4>
+              <div className="text-sm text-slate-500 ">{testimonial.Title}</div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="w-full flex-grow mt-2">
+      <div className="w-full flex-grow mt-4">
         <div className="text-slate-700 text-md">
-          <p dangerouslySetInnerHTML={{ __html: testimonial.message }} />
+          <div dangerouslySetInnerHTML={{ __html: testimonial.Testimonial }} />
         </div>
       </div>
 
       <div className="w-full flex justify-between mt-2">
-        <div className="text-sm text-slate-500 mt-2">{testimonial.date}</div>
+        <div className="text-sm text-slate-500 mt-2">
+          {dayjs(testimonial.Date).format('MMM DD, YYYY')}
+        </div>
       </div>
     </div>
   )
 }
 
-const TestimonialItem: FC<{ testimonial: Testimonial }> = ({ testimonial }) => {
-  switch (testimonial.type) {
-    case 'twitter':
+const TestimonialItem: FC<{ testimonial: TestimonialRecord }> = ({ testimonial }) => {
+  switch (testimonial.Platform) {
+    case 'Twitter':
       return <TestimonialTwitter testimonial={testimonial} />
 
-    case 'producthunt':
+    case 'Product Hunt':
       return <TestimonialProducthunt testimonial={testimonial} />
 
-    case 'email':
+    case 'Email':
       return <TestimonialEmail testimonial={testimonial} />
 
     default:
@@ -198,20 +172,19 @@ const TestimonialItem: FC<{ testimonial: Testimonial }> = ({ testimonial }) => {
   }
 }
 
-export const HomeTestimonials: FC = () => {
-  const { t } = useTranslation()
+export const HomeTestimonials: FC<{ testimonials: TestimonialRecord[] }> = ({ testimonials }) => {
   const columns = useMemo(
     () =>
-      waterfall<Testimonial>(testimonials as Testimonial[], 3, testimonial => {
-        return testimonial.message.length
+      waterfall<TestimonialRecord>(testimonials, 3, testimonial => {
+        return testimonial.Testimonial.length
       }),
     [testimonials]
   )
 
   return (
     <section className="relative py-32">
-      <div className="max-w-6xl mx-auto px-5">
-        <h2 className="text-2xl text-center font-bold md:text-4xl text-slate-900">
+      <div className="max-w-7xl mx-auto px-5">
+        <h2 className="text-3xl text-center font-extrabold md:text-5xl text-slate-900">
           People really love EarlyBird
         </h2>
         <div className="mt-6 flex justify-center">
@@ -241,9 +214,9 @@ export const HomeTestimonials: FC = () => {
 
         <div className="relative mt-16 md:flex md:space-x-8">
           {columns.map((column, i) => (
-            <div key={i} className="md:flex-1">
+            <div key={i} className="md:flex-1 flex flex-col gap-y-6 sm:gap-y-8">
               {column.map((testimonial, k) => (
-                <TestimonialItem key={k} testimonial={testimonial as Testimonial} />
+                <TestimonialItem key={k} testimonial={testimonial as TestimonialRecord} />
               ))}
             </div>
           ))}

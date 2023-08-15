@@ -11,14 +11,17 @@ import {
   HomeUsecase,
   HomeUserImage
 } from '~/layout'
+import { PublicApiService } from '~/service/public-api'
+import { TestimonialService } from '~/service/testimonial'
 import { isLoggedIn, withTranslations } from '~/utils'
 
 interface HomeProps {
   isLoggedIn: boolean
   usersCount: number
+  testimonials: TestimonialRecord[]
 }
 
-const Home = ({ isLoggedIn, usersCount }: HomeProps): JSX.Element => {
+const Home = ({ isLoggedIn, usersCount, testimonials }: HomeProps): JSX.Element => {
   /**
    * 如果用户已经登录，拉取 user 和 product 信息
    * 如果 token 过期，请求 /logout 接口退出登录
@@ -35,7 +38,7 @@ const Home = ({ isLoggedIn, usersCount }: HomeProps): JSX.Element => {
       <HomeUsecase />
       <HomeUserImage />
       <HomeFeature />
-      <HomeTestimonials />
+      <HomeTestimonials testimonials={testimonials} />
       <HomeLetter />
       <HomeBottom />
       <HomeFooter />
@@ -44,22 +47,15 @@ const Home = ({ isLoggedIn, usersCount }: HomeProps): JSX.Element => {
 }
 
 export const getServerSideProps = withTranslations(async context => {
-  let usersCount = 0
-
-  try {
-    const request = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URI}/users-count?key=${process.env.NEXT_API_VERIFICATION_KEY}`
-    )
-    const result = await request.json()
-
-    usersCount = result.count
-  } catch (err) {
-    console.error(err)
-  }
+  const [usersCount, testimonials] = await Promise.all([
+    PublicApiService.userCount(),
+    TestimonialService.records()
+  ])
 
   return {
     props: {
       usersCount,
+      testimonials,
       isLoggedIn: isLoggedIn(context.req.cookies)
     }
   }

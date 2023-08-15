@@ -4,7 +4,7 @@ import { ChangeEvent, FC, FormEvent, useCallback, useState } from 'react'
 
 import { IconAlertCircleFilled } from '~/components'
 import { useBuilderContext } from '~/layout/builder2/context'
-import { PublicApiService } from '~/service'
+import { PublicApiService } from '~/service/public-api'
 
 import { useBlockContext } from './Block'
 import { inputStyle, linkStyle } from './helper'
