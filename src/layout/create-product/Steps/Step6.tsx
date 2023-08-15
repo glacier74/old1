@@ -120,6 +120,12 @@ const TEMPLATES: Template_V3[] = [
     name: 'Black Matrix',
     categoryId: 'portfolio',
     thumbnail: 'https://storage.earlybird.im/template/black-matrix.png'
+  },
+  {
+    id: 'black_canvas',
+    name: 'Black Canvas',
+    categoryId: 'portfolio',
+    thumbnail: 'https://storage.earlybird.im/template/black-canvas.png'
   }
 ]
 

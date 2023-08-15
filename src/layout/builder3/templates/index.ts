@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 
 import * as app_01 from './app-01'
 import * as bio_noir from './bio-noir'
+import * as black_canvas from './black-canvas'
 import * as black_matrix from './black-matrix'
 import * as dove from './dove'
 import * as ebony from './ebony'
@@ -30,7 +31,8 @@ const templates: AnyMap<Template> = {
   tiny_folio,
   bio_noir,
   ebony,
-  black_matrix
+  black_matrix,
+  black_canvas
 }
 
 export default templates
