@@ -4,13 +4,14 @@ import { IconArrowLeft } from '@tabler/icons'
 import clsx from 'clsx'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { FC, MouseEvent, useCallback, useMemo, useState } from 'react'
+import { FC, MouseEvent, useCallback, useEffect, useMemo, useState } from 'react'
 
 import templates from '~/layout/builder3/templates'
 import { schemasToOptions } from '~/layout/builder3/utils'
 import { PreviewModal } from '~/layout/create-product/PreviewModal'
 import { ProductService } from '~/service'
 import { useStore } from '~/store'
+import { useParam } from '~/utils'
 
 interface TemplateItemProps {
   template: Template_V3
@@ -188,6 +189,7 @@ const TemplateItem: FC<TemplateItemProps> = ({ template, isSelected, onPreview, 
 export const Step6 = () => {
   const router = useRouter()
   const { product, setStep, setProduct } = useStore()
+  const templateId = useParam('templateId') as string
 
   const [categoryId, setCategoryId] = useState(CATEGORIES[0].id)
   const [template, setTemplate] = useState<Template_V3>()
@@ -231,6 +233,15 @@ export const Step6 = () => {
 
     setLoading(false)
   }, [product])
+
+  useEffect(() => {
+    if (templateId) {
+      setProduct({
+        ...product,
+        template: templateId
+      })
+    }
+  }, [templateId])
 
   return (
     <>

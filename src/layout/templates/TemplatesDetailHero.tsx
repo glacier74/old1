@@ -1,12 +1,12 @@
-import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
 
 import { PreviewModal } from '../create-product/PreviewModal'
 
 export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template }) => {
-  const { t } = useTranslation()
+  const router = useRouter()
   const [payload, setPayload] = useState<Template_V3>()
 
   function handleClick() {
@@ -16,6 +16,10 @@ export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template
       thumbnail: template.Thumbnail,
       categoryId: ''
     })
+  }
+
+  function handleSelect() {
+    router.push(`/product/create?templateId=${template.slug}`)
   }
 
   return (
@@ -37,8 +41,14 @@ export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template
               <div className="text-slate-500 sm:text-xl text-base whitespace-pre-line">
                 {template.Description}
               </div>
-              <div className="bg-slate-900 rounded-full py-2 px-8 inline-flex">
-                <span className="text-slate-50 md:text-lg text-base">Use this template</span>
+              <div>
+                <button
+                  type="button"
+                  className="bg-slate-900 rounded-full py-2 px-8 text-slate-50 md:text-lg text-base"
+                  onClick={handleSelect}
+                >
+                  Use this template
+                </button>
               </div>
             </div>
 
@@ -74,7 +84,7 @@ export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template
 
       <PreviewModal
         template={payload}
-        onSelect={handleClick}
+        onSelect={handleSelect}
         onClose={() => setPayload(undefined)}
       />
     </>
