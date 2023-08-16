@@ -6,7 +6,6 @@ import {
   UseCaseHelp,
   UseCaseHero,
   UseCaseReason,
-  UseCaseTemplates,
   UseCaseUnlock
 } from '~/layout/use-case'
 import { withTranslations } from '~/utils'
@@ -26,7 +25,6 @@ const UseCase = (): JSX.Element => {
       <UseCaseReason />
       <UseCaseHelp />
       <UseCaseUnlock />
-      <UseCaseTemplates />
       <UseCaseBuild />
       <HomeFooter />
     </HomeLayout>

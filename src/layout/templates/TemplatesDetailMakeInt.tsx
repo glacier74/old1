@@ -33,7 +33,6 @@ export const TemplatesDetailMakeInt: FC<{ integrations: IntegrationRecord[] }> =
             </Link>
           ))}
         </div>
-
       </div>
     </section>
   )

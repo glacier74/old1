@@ -49,8 +49,6 @@ export const IntegrationsCat_Data: FC<Props> = ({ groups }) => {
                   </Link>
                 ))}
               </div>
-
-
             </div>
           ))}
         </div>

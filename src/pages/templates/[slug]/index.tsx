@@ -4,7 +4,6 @@ import { FC } from 'react'
 import { HomeFooter, HomeHeader, HomeLayout } from '~/layout'
 import {
   TemplatesDetailCTA,
-  TemplatesDetailCategories,
   TemplatesDetailHero,
   TemplatesDetailMake,
   TemplatesDetailMakeInt,

@@ -1,6 +1,7 @@
 import { GlobalContext } from '@earlybirdim/components'
 import { Button, Modal, Switch } from '@heyforms/ui'
 import { ModalProps } from '@heyforms/ui/types/modal/Modal'
+import { isValid } from '@nily/utils'
 import clsx from 'clsx'
 import { FC, useMemo, useState } from 'react'
 import Frame from 'react-frame-component'
@@ -61,6 +62,7 @@ const Sidebar: FC<SidebarProps> = ({ mode, template, onModeChange, onSelect }) =
 
 export const PreviewModal: FC<PreviewModalProps> = ({ template, onSelect, ...restProps }) => {
   const [mode, setMode] = useState<string>('desktop')
+  const visible = useMemo(() => isValid(template), [template])
 
   const children = useMemo(() => {
     if (!template) {
@@ -95,12 +97,12 @@ export const PreviewModal: FC<PreviewModalProps> = ({ template, onSelect, ...res
     )
   }, [mode, template])
 
-  useLockBodyScroll(!!template)
+  useLockBodyScroll(visible)
 
   return (
     <Modal
       className="template-preview-modal"
-      visible={!!template}
+      visible={visible}
       maskClosable={false}
       showCloseIcon={true}
       {...restProps}
