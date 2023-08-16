@@ -10,14 +10,14 @@ export const AboutTeam: FC = () => {
 
   return (
     <section>
-      <div className="lg:max-w-5xl max-w-3xl mx-auto px-6 z-10">
+      <div className="lg:max-w-5xl max-w-3xl mx-auto px-6 z-10 mt-12">
         <div className="flex flex-col justify-center lg:gap-20 sm:gap-14 gap-10 text-center">
-          <h3 className="sm:text-3xl text-2xl font-bold">The minds behind the magic</h3>
+          <h3 className="sm:text-4xl text-2xl font-bold">The minds behind the magic</h3>
           <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
             {dataTeam.map((team, index) => (
               <div
                 key={index}
-                className="flex flex-col xl:gap-6 gap-3 items-center border border-emerald-500 rounded-md shadow-sm py-16"
+                className="flex flex-col xl:gap-6 gap-3 items-center rounded-md border border-slate-50 shadow-lg py-16"
               >
                 <Image
                   src={team.avatar}

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { FC } from 'react'
 
 import { HomeFooter, HomeHeader, HomeLayout } from '~/layout'
-import { IntegrationsDetailHero, IntegrationsDetailJourney } from '~/layout/integrations'
+import { IntegrationsDetailHero, IntegrationsDetailIntro, IntegrationsDetailGuide, IntegrationsDetailJourney } from '~/layout/integrations'
 import { Integration2Service } from '~/service/integration2'
 import { withTranslations } from '~/utils'
 
@@ -23,6 +23,8 @@ const IntegrationsDetail: FC<IntegrationsDetailProps> = ({ record }): JSX.Elemen
     >
       <HomeHeader />
       <IntegrationsDetailHero />
+      <IntegrationsDetailIntro />
+      <IntegrationsDetailGuide />
       <IntegrationsDetailJourney />
       <HomeFooter />
     </HomeLayout>

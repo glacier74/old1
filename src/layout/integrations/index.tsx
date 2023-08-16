@@ -1,4 +1,6 @@
 export * from './IntegrationsHero'
 export * from './IntegrationsCat'
 export * from './IntegrationsDetailHero'
+export * from './IntegrationsDetailIntro'
+export * from './IntegrationsDetailGuide'
 export * from './IntegrationsDetailJourney'
