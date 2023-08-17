@@ -37,15 +37,22 @@ export const IntegrationsCat_Data: FC<Props> = ({ groups }) => {
                 </Link>
               ))}
             </div>
-
           </div>
         ))}
       </div>
 
       <div className="bg-emerald-200/30 rounded-md py-4 px-5 my-8 text-center">
-        <p className="sm:text-lg text-base mb-2 mt-2 text-slate-700">Looking for a particular integration that you don’t see here? Go ahead and&nbsp;<a className="font-bold underline text-emerald-500" href="mailto:support@earlybird.im?subject=EarlyBird%20integration%20request">request it</a>.</p>
+        <p className="sm:text-lg text-base mb-2 mt-2 text-slate-700">
+          Looking for a particular integration that you don’t see here? Go ahead and&nbsp;
+          <a
+            className="font-bold underline text-emerald-500"
+            href="mailto:support@earlybird.im?subject=EarlyBird%20integration%20request"
+          >
+            request it
+          </a>
+          .
+        </p>
       </div>
-
     </div>
   )
 }

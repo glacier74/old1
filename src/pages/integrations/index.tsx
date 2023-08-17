@@ -42,9 +42,7 @@ export const getServerSideProps = withTranslations(async context => {
 
   const groups = categories
     .map(category => {
-      const filtered = records
-        .filter(record => record.LowerCaseCategory === category.toLowerCase())
-        .slice(0, 6)
+      const filtered = records.filter(record => record.LowerCaseCategory === category.toLowerCase())
 
       if (isEmpty(filtered)) {
         return

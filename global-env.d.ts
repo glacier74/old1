@@ -657,7 +657,9 @@ declare global {
     Name: string
     Logo?: string
     slug: string
-    Description: string
+    Headline: string
+    Subheadline: string
+    Intro: string
     'Product Homepage': string
     'Product Support Page': string
     tableId: string

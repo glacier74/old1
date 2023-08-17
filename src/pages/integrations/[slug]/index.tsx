@@ -3,28 +3,33 @@ import { useRouter } from 'next/router'
 import { FC } from 'react'
 
 import { HomeFooter, HomeHeader, HomeLayout } from '~/layout'
-import { IntegrationsDetailHero, IntegrationsDetailIntro, IntegrationsDetailGuide, IntegrationsDetailJourney } from '~/layout/integrations'
+import {
+  IntegrationsDetailGuide,
+  IntegrationsDetailHero,
+  IntegrationsDetailIntro,
+  IntegrationsDetailJourney
+} from '~/layout/integrations'
 import { Integration2Service } from '~/service/integration2'
 import { withTranslations } from '~/utils'
 
 interface IntegrationsDetailProps {
-  record: IntegrationRecord
+  integration: IntegrationRecord
 }
 
-const IntegrationsDetail: FC<IntegrationsDetailProps> = ({ record }): JSX.Element => {
+const IntegrationsDetail: FC<IntegrationsDetailProps> = ({ integration }): JSX.Element => {
   const { t } = useTranslation()
 
   return (
     <HomeLayout
       seo={{
-        title: t('integrations.detailTitle', { title: record.Name }),
-        url: `/integrations/${record.slug}`
+        title: t('integrations.detailTitle', { title: integration.Name }),
+        url: `/integrations/${integration.slug}`
       }}
     >
       <HomeHeader />
-      <IntegrationsDetailHero />
-      <IntegrationsDetailIntro />
-      <IntegrationsDetailGuide />
+      <IntegrationsDetailHero integration={integration} />
+      <IntegrationsDetailIntro integration={integration} />
+      <IntegrationsDetailGuide integration={integration} />
       <IntegrationsDetailJourney />
       <HomeFooter />
     </HomeLayout>
@@ -32,9 +37,9 @@ const IntegrationsDetail: FC<IntegrationsDetailProps> = ({ record }): JSX.Elemen
 }
 
 export const getServerSideProps = withTranslations(async ({ query }) => {
-  const record = await Integration2Service.findBySlug(query.slug.toLowerCase())
+  const integration = await Integration2Service.findBySlug(query.slug.toLowerCase())
 
-  if (!record) {
+  if (!integration) {
     return {
       notFound: true
     }
@@ -42,7 +47,7 @@ export const getServerSideProps = withTranslations(async ({ query }) => {
 
   return {
     props: {
-      record
+      integration
     }
   }
 })

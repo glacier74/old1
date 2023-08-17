@@ -74,6 +74,7 @@
     "react-dom": "^18.2.0",
     "react-frame-component": "^5.2.6",
     "react-i18next": "^12.2.0",
+    "react-showdown": "^2.3.1",
     "react-sortablejs": "^6.1.4",
     "react-transition-group": "^4.4.5",
     "react-use": "^17.4.0",
