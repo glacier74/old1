@@ -43,17 +43,19 @@ const Sidebar: FC<SidebarProps> = ({ mode, template, onModeChange, onSelect }) =
   }
 
   return (
-    <div className="template-preview-sidebar w-[300px] min-[1400px]:w-[320px] min-[1600px]:w-[360px] px-8 flex flex-col justify-center border-l border-slate-200 bg-slate-50">
-      <div className="text-2xl font-semibold text-center">{template.name}</div>
-      <div className="mt-2 text-sm text-slate-500 text-center">Works great on every device.</div>
+    <div className="template-preview-sidebar w-full lg:w-[300px] min-[1400px]:w-[320px] min-[1600px]:w-[360px] px-8 py-3 lg:py-0 flex flex-col justify-center border-b lg:border-l border-slate-200 bg-slate-50">
+      <div className="text-base lg:text-2xl font-semibold text-center">{template.name}</div>
+      <div className="hidden lg:block mt-2 text-sm text-slate-500 text-center">
+        Works great on every device.
+      </div>
       <Switch.Group
-        className="mt-6 mx-auto !w-auto"
+        className="hidden lg:block mt-6 mx-auto !w-auto"
         value={mode}
         options={PREVIEW_OPTIONS}
         onChange={onModeChange}
       />
 
-      <Button type="success" className="mt-8 w-full" onClick={handleClick}>
+      <Button type="success" className="!hidden lg:!block mt-8 w-full" onClick={handleClick}>
         Use this template
       </Button>
     </div>
