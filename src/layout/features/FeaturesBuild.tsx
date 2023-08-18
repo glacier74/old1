@@ -6,8 +6,13 @@ import { FC } from 'react'
 const features = [
   {
     title: 'Start with a template',
-    desc: 'Every UI block is designed to be easy to use and understand, even for those who are unfamiliar with technology.',
-    imageUrl: '/static/ui-blocks.png'
+    desc: 'Choose your ideal template and effortlessly build a landing page. Our intuitive design makes it user-friendly, even for those not familiar with technology.',
+    imageUrl: '/static/start-with-template.png'
+  },
+  {
+    title: 'Copywriting from the wise',
+    desc: 'Tap into the potential of AI for generating engaging copy for your landing page. We simplifie content creation, crafting compelling narratives that resonate with your audience.',
+    imageUrl: '/static/copy-from-wise.png'
   },
   {
     title: 'Fully responsive',
@@ -28,6 +33,11 @@ const features = [
     title: 'Private mode',
     desc: 'Restrict access to your landing pages by keeping them password-protected for a select group of users.',
     imageUrl: '/static/private-mode.png'
+  },
+  {
+    title: 'Teamwork made easy',
+    desc: 'Invite team members to collaborate directly on your landing pages. Streamline workflow, share ideas, and create compelling content together.',
+    imageUrl: '/static/teamwork-made-easy.png'
   }
 ]
 

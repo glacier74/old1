@@ -21,12 +21,7 @@ export const UseCaseTemplates: FC<{ template: TemplateRecord; similars: Template
             className="rounded-md shadow-md flex flex-col gap-3"
             href={`/templates/${row.slug}`}
           >
-            <div
-              className="px-8 pt-8 overflow-hidden"
-              style={{
-                background: template.Background
-              }}
-            >
+            <div className="px-8 pt-8 overflow-hidden bg-gradient-to-br from-lime-50 via-yellow-50 to-sky-100">
               <Image
                 className="rounded-t-2xl object-cover shadow-2xl"
                 src={row.Thumbnail}
@@ -36,7 +31,7 @@ export const UseCaseTemplates: FC<{ template: TemplateRecord; similars: Template
                 quality={100}
               />
             </div>
-            <div className="py-2 px-4 sm:text-lg text-base font-medium">{row.Name}</div>
+            <div className="py-2 px-4 font-medium">{row.Name}</div>
           </Link>
         ))}
       </div>

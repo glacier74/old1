@@ -19,7 +19,7 @@ export const HomeBottom: FC = () => {
           <div className="flex justify-center mt-8">
             <Link
               href="/sign-up"
-              className="px-6 py-2 md:px-8 md:py-4 rounded-full bg-slate-900 text-white text-xl font-medium"
+              className="px-6 py-2 md:px-8 md:py-4 rounded-full bg-slate-950 text-white text-lg font-medium"
             >
               Secure your first customer today!
             </Link>

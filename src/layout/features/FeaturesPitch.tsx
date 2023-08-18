@@ -5,9 +5,9 @@ import { FC } from 'react'
 
 const features = [
   {
-    title: 'Custom branding',
-    desc: 'Add your own logo, colors, and other branding elements to reflect your own brand.',
-    imageUrl: '/static/custom-branding.png'
+    title: 'Instant outreach',
+    desc: 'Share your landing pages instantly with one click. Reach your audience faster, spread your ideas wider, and make your online presence felt. ',
+    imageUrl: '/static/instant-outreach.png'
   },
   {
     title: 'Custom domain',

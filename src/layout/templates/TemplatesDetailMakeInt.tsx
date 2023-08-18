@@ -14,7 +14,7 @@ export const TemplatesDetailMakeInt: FC<{ integrations: IntegrationRecord[] }> =
         <div className="sm:text-5xl text-3xl font-bold text-white">
           Make life easy with integrations
         </div>
-        <div className="flex flex-wrap justify-around md:mt-16 mt-7 gap-12">
+        <div className="grid grid-cols-3 mt-8 md:mt-16 md:grid-cols-6 gap-6 md:gap-12">
           {integrations.map(row => (
             <Link
               key={row._id}
@@ -27,7 +27,7 @@ export const TemplatesDetailMakeInt: FC<{ integrations: IntegrationRecord[] }> =
                 height={80}
                 alt={row.Name}
                 quality={100}
-                className="object-cover"
+                className="w-[60px] h-[60px] md:w-[80px] md:h-[80px] object-cover"
               />
               <div className="text-white">{row.Name}</div>
             </Link>

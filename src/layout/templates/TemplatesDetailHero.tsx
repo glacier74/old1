@@ -44,7 +44,7 @@ export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template
               <div>
                 <button
                   type="button"
-                  className="bg-slate-900 rounded-full py-2 px-8 text-slate-50 md:text-lg text-base"
+                  className="w-full md:w-auto bg-slate-900 rounded-full py-2 px-8 text-slate-50 md:text-lg text-base"
                   onClick={handleSelect}
                 >
                   Use this template

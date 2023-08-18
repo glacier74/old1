@@ -52,35 +52,35 @@ export const HomeHeader: FC = () => {
               <Link
                 href="/features"
                 title={t('features.title')}
-                className="hidden md:block hover:opacity-80"
+                className="hidden md:block hover:opacity-80 hover:text-emerald-600"
               >
                 Features
               </Link>
               <Link
                 href="/pricing"
                 title={t('pricing.title')}
-                className="hidden md:block hover:opacity-80"
+                className="hidden md:block hover:opacity-80 hover:text-emerald-600"
               >
                 Pricing
               </Link>
               <Link
                 href="/templates"
                 title={t('templates.title')}
-                className="hidden md:block hover:opacity-80"
+                className="hidden md:block hover:opacity-80 hover:text-emerald-600"
               >
                 Templates
               </Link>
               <Link
                 href="/collections"
                 title={t('collections.title')}
-                className="hidden md:block hover:opacity-80"
+                className="hidden md:block hover:opacity-80 hover:text-emerald-600"
               >
                 Collections
               </Link>
               <Link
                 href="/blog"
                 title={t('blog.title')}
-                className="hidden md:block hover:opacity-80"
+                className="hidden md:block hover:opacity-80 hover:text-emerald-600"
               >
                 Blog
               </Link>

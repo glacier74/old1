@@ -2243,7 +2243,7 @@ button.button-success {
   }
 
   .modal-body {
-    @apply flex w-screen h-screen p-0;
+    @apply flex flex-col-reverse lg:flex-row w-screen h-screen p-0;
   }
 
   .template-preview-frame {
