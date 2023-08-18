@@ -25,7 +25,7 @@ export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template
   return (
     <>
       <section className="max-w-7xl mx-auto md:px-12 px-6 xl:py-20 lg:py-20 py-12 md:pt-12 pt-6 z-10">
-        <div className="mb-[32px] text-sm font-medium">
+        <div className="mb-8 text-base font-medium">
           <Link href="/templates">All templates</Link>
           <span className="px-2 text-slate-500">-</span>
           <Link href={`/templates/category/${template.Category}`}>{template.Category}</Link>
@@ -33,7 +33,7 @@ export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template
           <span className="text-slate-500">{template.Name}</span>
         </div>
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-20">
+          <div className="flex flex-col md:flex-row items-center md:gap-20 gap-8">
             <div className="flex-1 xl:space-y-7 space-y-5">
               <div className="text-3xl leading-8 font-bold md:text-5xl md:leading-[48px]">
                 {template.Name}
@@ -52,8 +52,8 @@ export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template
               </div>
             </div>
 
-            <div className="group flex-1 relative">
-              <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-colors hover:bg-black/20 group-hover:opacity-100">
+            <div className="group flex-1 relative rounded-xl">
+              <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-colors hover:bg-black/20 group-hover:opacity-100 rounded-xl">
                 <button
                   type="button"
                   className="px-5 py-2 rounded-lg bg-emerald-500 text-white text-sm z-10 shadow-lg transition-colors hover:bg-emerald-600"
@@ -63,10 +63,7 @@ export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template
                 </button>
               </div>
               <div
-                className="px-8 pt-8 overflow-hidden"
-                style={{
-                  background: template.Background
-                }}
+                className="px-8 pt-8 overflow-hidden bg-gradient-to-br from-emerald-50 via-blue-50 to-sky-100"
               >
                 <Image
                   className="rounded-t-2xl object-cover shadow-2xl"
