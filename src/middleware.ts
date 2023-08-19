@@ -7,6 +7,7 @@ import { isMatchRoutes } from '~/utils/route'
 import { PublicApiService } from './service/public-api'
 
 const authRoutes = ['/login', '/sign-up', '/confirm-email', '/forgot-password', '/reset-password']
+const userRoutes = ['/product/:path*', '/account', '/account/:path*']
 
 export async function middleware(req: NextRequest) {
   const isLogged = isLoggedIn(req.cookies)
@@ -46,22 +47,35 @@ export async function middleware(req: NextRequest) {
     try {
       await PublicApiService.user(req.headers)
     } catch (err: any) {
-      // if (err.name === 'HTTPError') {
-      //   const json = await err.response.json()
-
-      //   // 删除 token cookie
-      //   if (json.statusCode === 401) {
-      //     deleteToken(res.cookies)
-      //   }
-      // }
+      if (err.name === 'HTTPError') {
+        // 删除 token cookie
+        if (err.response.status === 401) {
+          deleteToken(res.cookies)
+        }
+      }
 
       console.error(err)
     }
+  }
+
+  // 跳转到登录页面
+  else if (isMatchRoutes(req, userRoutes)) {
+    return NextResponse.redirect(new URL('/login', req.url))
   }
 
   return res
 }
 
 export const config = {
-  matcher: ['/login', '/sign-up', '/confirm-email', '/forgot-password', '/reset-password', '/']
+  matcher: [
+    '/login',
+    '/sign-up',
+    '/confirm-email',
+    '/forgot-password',
+    '/reset-password',
+    '/product/:path*',
+    '/account',
+    '/account/:path*',
+    '/'
+  ]
 }
