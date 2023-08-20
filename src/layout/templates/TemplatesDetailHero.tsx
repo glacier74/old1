@@ -62,14 +62,12 @@ export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template
                   Preview
                 </button>
               </div>
-              <div
-                className="px-8 pt-8 overflow-hidden bg-gradient-to-br from-emerald-50 via-blue-50 to-sky-100"
-              >
+              <div className="px-8 pt-8 overflow-hidden aspect-video bg-gradient-to-br from-emerald-50 via-blue-50 to-sky-100">
                 <Image
-                  className="rounded-t-2xl object-cover shadow-2xl"
+                  className="rounded-t-2xl w-full h-full object-cover shadow-2xl"
                   src={template.Thumbnail}
                   width={500}
-                  height={400}
+                  height={300}
                   loading="lazy"
                   alt={template.Name}
                 />
