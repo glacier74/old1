@@ -27,14 +27,21 @@ export const schemas = [
     ]
   },
   {
-    name: 'form',
-    title: 'Form',
+    name: 'subscribe',
+    title: 'Subscribe',
     fields: [
       {
-        name: 'button_text',
-        title: 'Submit button text',
-        type: 'text',
-        default: 'Join the waitlist'
+        name: 'form',
+        title: 'Form',
+        type: 'email_capture',
+        fields: [
+          {
+            name: 'button_text',
+            title: 'Button text',
+            type: 'text',
+            default: 'Join the waitlist'
+          }
+        ]
       }
     ]
   },
@@ -80,7 +87,7 @@ export const schemas = [
   }
 ]
 
-export function render({ options: { header, form, socials } }) {
+export function render({ options: { header, subscribe, socials } }) {
   return (
     <Fragment>
       <style
@@ -122,7 +129,7 @@ background: radial-gradient(52.56% 52.56% at 50% 117.61%,#1c1c21 0,rgba(28,28,33
               </div>
 
               <div className="earlybird-d2fgt6 mt-8 max-w-sm mx-auto">
-                <form id="form" {...form}>
+                <Form id="form" {...subscribe.form}>
                   <div className="earlybird-lsbzn3 flex flex-col mb-6 space-y-3">
                     <Form.Item name="name">
                       <Form.Input
@@ -145,10 +152,10 @@ background: radial-gradient(52.56% 52.56% at 50% 117.61%,#1c1c21 0,rgba(28,28,33
                       rootClassName="earlybird-EBF9kL w-full"
                       className="earlybird-3HJHpE w-full px-4 py-4 bg-slate-900 dark:bg-emerald-500 text-white text-sm font-medium rounded-md focus:outline-none"
                     >
-                      {form.button_text}
+                      {subscribe.form.button_text}
                     </Form.Button>
                   </div>
-                </form>
+                </Form>
 
                 <div id="socials" className="earlybird-oyGFdZ mt-12 flex justify-center">
                   <ul className="earlybird-EukmC3 flex flex-row gap-4 text-slate-700 dark:text-slate-300">
