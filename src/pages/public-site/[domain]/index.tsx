@@ -1,7 +1,7 @@
 import { GlobalContext } from '@earlybirdim/components'
 import { Form, Input } from '@heyforms/ui'
 import { isValid } from '@nily/utils'
-import { IconArrowLeft } from '@tabler/icons'
+import { IconCheck } from '@tabler/icons'
 import AES from 'crypto-js/aes'
 import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
@@ -142,27 +142,34 @@ function getSeoProps(product: Product, isSiteAccessible?: boolean): NextSeoProps
   return seo
 }
 
-const PaymentSuccess: FC<Partial<PublicSiteProps>> = ({ successMessage }) => {
+const PaymentSuccess: FC<Partial<PublicSiteProps>> = ({ product, successMessage }) => {
   useEffect(() => {
-    party.confetti(document.querySelector('.empty-states-icon')! as HTMLElement, {
+    party.confetti(document.querySelector('.payment-success-party')! as HTMLElement, {
       count: party.variation.range(20, 40)
     })
   }, [])
 
   return (
-    <div className="empty-states payment-successful">
-      <div className="empty-states-icon">
-        <span className="font-[160px]">🎉</span>
-      </div>
-      <div className="mt-8 mb-6 text-2xl text-slate-800 mx-auto max-w-[40%]">
-        {successMessage ||
-          'Thank you for your payment! An automated payment receipt will be sent to the email address provided very shortly.'}
-      </div>
-      <div className="empty-states-action">
-        <a href="/" className="link-button link-button-success flex items-center gap-2 !py-[10px]">
-          <IconArrowLeft className="w-5 h-5 -ml-1.5" />
-          <span>Back</span>
-        </a>
+    <div className="fixed inset-0 z-[98] flex h-screen w-screen items-center p-5">
+      <div className="payment-success-party absolute inset-0 z-[99] bg-white/40"></div>
+      <div className="relative z-[100] mx-auto w-full max-w-[600px] rounded-2xl bg-white px-8 py-12 shadow-2xl">
+        <div className="flex justify-center">
+          <div className="bg-emerald-600 flex items-center justify-center w-[60px] h-[60px] rounded-full">
+            <IconCheck className="text-white w-[32px] h-[32px]" />
+          </div>
+        </div>
+        <div className="mt-8 text-lg text-slate-800 font-medium text-center">
+          {successMessage ||
+            'Thank you for your payment! An automated payment receipt will be sent to the email address provided very shortly.'}
+        </div>
+        <div className="text-center mt-8">
+          <a
+            href="/"
+            className="inline-block px-5 py-1.5 text-emerald-600 border border-emerald-600 rounded-[999px]"
+          >
+            Back to {product?.name}
+          </a>
+        </div>
       </div>
     </div>
   )
@@ -264,9 +271,7 @@ const PublicSite: FC<PublicSiteProps> = ({
       theme={product.siteSetting.theme}
       integrations={product.integrations}
     >
-      {paymentStatus === 'success' ? (
-        <PaymentSuccess successMessage={successMessage} />
-      ) : product.siteSetting.schema === 3 ? (
+      {product.siteSetting.schema === 3 ? (
         <GlobalContext.Provider
           value={{
             productId: product.id
@@ -289,6 +294,10 @@ const PublicSite: FC<PublicSiteProps> = ({
             />
           ))}
         </div>
+      )}
+
+      {paymentStatus === 'success' && (
+        <PaymentSuccess product={product} successMessage={successMessage} />
       )}
 
       {!product.isBrandingRemoved && (
