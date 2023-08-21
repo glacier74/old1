@@ -22,14 +22,16 @@ export const UseCaseTemplates: FC<{ template: TemplateRecord; similars: Template
             href={`/templates/${row.slug}`}
           >
             <div className="px-8 pt-8 overflow-hidden bg-gradient-to-br from-lime-50 via-yellow-50 to-sky-100">
-              <Image
-                className="rounded-t-2xl object-cover shadow-2xl"
-                src={row.Thumbnail}
-                alt={row.Name}
-                width={500}
-                height={400}
-                quality={100}
-              />
+              <div className="w-full aspect-video">
+                <Image
+                  className="rounded-t-xl w-full h-full object-cover"
+                  src={row.Thumbnail}
+                  alt={row.Name}
+                  width={500}
+                  height={400}
+                  quality={100}
+                />
+              </div>
             </div>
             <div className="py-2 px-4 font-medium">{row.Name}</div>
           </Link>

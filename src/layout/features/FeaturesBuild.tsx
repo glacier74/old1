@@ -46,8 +46,8 @@ export const FeaturesBuild: FC = () => {
 
   return (
     <section>
-      <div className="px-2 py-32 max-w-7xl mx-auto">
-        <h1 className="px-4 md:px-0 text-slate-900 font-extrabold text-5xl">
+      <div className="px-2 py-32 max-w-5xl mx-auto">
+        <h1 className="px-4 md:px-0 text-slate-900 font-bold text-4xl">
           Build a landing page in 10 minutes
         </h1>
         <p className="px-4 md:px-0 mt-4 text-slate-700 text-xl">
@@ -68,7 +68,7 @@ export const FeaturesBuild: FC = () => {
                   quality={100}
                 />
                 <h3 className="text-slate-900 font-extrabold text-2xl">{feature.title}</h3>
-                <p className="mt-2 text-slate-700 text-xl">{feature.desc}</p>
+                <p className="mt-2 text-slate-500 text-lg">{feature.desc}</p>
               </li>
             ))}
           </ul>

@@ -161,9 +161,9 @@ const TemplateItem: FC<TemplateItemProps> = ({ template, isSelected, onPreview, 
   return (
     <div
       className={clsx(
-        'group relative cursor-pointer rounded-2xl shadow-sm transition-all hover:shadow-xl',
+        'group relative cursor-pointer rounded-2xl shadow-sm border-[2px] border-transparent transition-all hover:shadow-xl',
         {
-          'ring-2 ring-blue-600 shadow-xl': isSelected
+          'ring-2 ring-emerald-600 shadow-xl': isSelected
         }
       )}
       onClick={handleClick}

@@ -31,41 +31,41 @@ export const TemplatesView: FC<TemplatesViewProps> = ({
 }) => {
   return (
     <section className="lg:py-24 py-12 md:px-12 px-6 z-10">
-      <div className="max-w-5xl mx-auto flex justify-center">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {templates.map(template => (
             <Link
               key={template._id}
               href={`/templates/${template.slug}`}
               className="rounded-md shadow-md"
             >
-              <div className="flex flex-col justify-between h-full w-90">
-                <div className="bg-emerald-400 px-8 pt-8 overflow-hidden">
+              <div className="px-8 pt-8 overflow-hidden bg-gradient-to-br from-lime-50 via-yellow-50 to-sky-100">
+                <div className="w-full aspect-video">
                   <Image
+                    className="rounded-t-xl w-full h-full object-cover"
                     src={template.Thumbnail}
                     alt={template.Name}
-                    width={432}
-                    height={240}
+                    width={360}
+                    height={200}
                     quality={100}
-                    className="rounded-t-2xl object-cover shadow-2xl"
                   />
                 </div>
-                <div className="text-center py-4 px-4">
-                  <div className="sm:text-lg text-base font-medium">{template.Name}</div>
-                </div>
+              </div>
+              <div className="py-4 px-4 sm:text-lg text-base font-medium">
+                {template.Name}
               </div>
             </Link>
           ))}
         </div>
-      </div>
 
-      <Pagination
-        className="mt-5 !border-none"
-        uri={category ? `/templates/category/${encodeURIComponent(category)}` : '/templates'}
-        total={total}
-        page={page}
-        limit={limit}
-      />
+        <Pagination
+          className="mt-16 !border-none"
+          uri={category ? `/templates/category/${encodeURIComponent(category)}` : '/templates'}
+          total={total}
+          page={page}
+          limit={limit}
+        />
+      </div>
     </section>
   )
 }

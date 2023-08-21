@@ -184,7 +184,7 @@ font-family: 'Karla', sans-serif;
               <div className="earlybird-9pUSV4 lg:max-w-[1280px] max-w-[768px] px-8 w-full mx-auto lg:grid block grid-cols-12 gap-8 relative lg:py-6 py-10 mt-32 lg:mt-0">
                 <div className="earlybird-z0D2Oq col-span-3">
                   <div className="earlybird-Umkb0p xl:hidden lg:block hidden fixed w-[20%] bottom-6">
-                    <Image src={about_me.image} className="earlybird-7M1bho w-full" />
+                    <Image src={about_me.image} className="earlybird-7M1bho w-full" width={200} />
                   </div>
                 </div>
                 <div className="earlybird-4N8bMq xl:col-span-5 col-span-9 max-w-[620px]">

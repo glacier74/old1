@@ -23,10 +23,10 @@ export const TemplatesHero: FC<{ categories: string[]; category?: string }> = ({
             <Link
               key={c}
               className={clsx(
-                'border rounded px-8 py-1 text-base cursor-pointer',
+                'border rounded-md px-6 py-1.5',
                 category.toLowerCase() === c.toLowerCase()
                   ? 'bg-[#060716] border-[#060716] text-white'
-                  : 'border-[#BBBBBB]'
+                  : 'border-[#BBBBBB] hover:bg-slate-100'
               )}
               href={
                 c === ALL_CATEGORY
