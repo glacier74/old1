@@ -31,27 +31,32 @@ export const TemplatesView: FC<TemplatesViewProps> = ({
 }) => {
   return (
     <section className="lg:py-24 py-12 md:px-12 px-6 z-10">
-      <div className="max-w-7xl mx-auto flex flex-wrap xl:gap-12 gap-8">
-        {templates.map(template => (
-          <Link
-            key={template._id}
-            href={`/templates/${template.slug}`}
-            className="rounded-md shadow-md"
-          >
-            <div className="flex flex-col justify-between h-full gap-3 w-90">
-              <Image
-                src={template.Thumbnail}
-                alt={template.Name}
-                width={360}
-                height={200}
-                quality={100}
-              />
-              <div className="flex justify-between items-center py-2 px-4">
-                <div className="sm:text-lg text-base font-medium">{template.Name}</div>
+      <div className="max-w-5xl mx-auto flex justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {templates.map(template => (
+            <Link
+              key={template._id}
+              href={`/templates/${template.slug}`}
+              className="rounded-md shadow-md"
+            >
+              <div className="flex flex-col justify-between h-full w-90">
+                <div className="bg-emerald-400 px-8 pt-8 overflow-hidden">
+                  <Image
+                    src={template.Thumbnail}
+                    alt={template.Name}
+                    width={432}
+                    height={240}
+                    quality={100}
+                    className="rounded-t-2xl object-cover shadow-2xl"
+                  />
+                </div>
+                <div className="text-center py-4 px-4">
+                  <div className="sm:text-lg text-base font-medium">{template.Name}</div>
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
 
       <Pagination

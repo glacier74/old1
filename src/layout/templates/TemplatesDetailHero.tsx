@@ -63,7 +63,7 @@ export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template
                 </button>
               </div>
               <div
-                className="px-8 pt-8 overflow-hidden bg-gradient-to-br from-emerald-50 via-blue-50 to-sky-100"
+                className="px-8 pt-8 overflow-hidden bg-lime-50"
               >
                 <Image
                   className="rounded-t-2xl object-cover shadow-2xl"
