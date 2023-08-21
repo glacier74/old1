@@ -32,14 +32,14 @@ export const IntegrationsDetailHero: FC<{ integration: IntegrationRecord }> = ({
           </div>
           <div className="w-full md:w-1/2 flex justify-center items-center mt-16 sm:mt-0">
             <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
-              <div className="w-32 bg-white border border-emerald-50 rounded-xl shadow-lg py-8 flex flex-col items-center">
+              <div className="w-36 bg-white border border-emerald-50 rounded-xl shadow-lg py-8 flex flex-col items-center">
                 <img src="/static/favicon.svg" alt="EarlyBird" width={48} height={48} />
                 <h6 className="font-medium mt-4 text-center">EarlyBird</h6>
               </div>
 
               <IconArrowsLeftRight className="text-slate-50" />
 
-              <div className="w-32 bg-white border border-emerald-50 rounded-xl shadow-lg py-8 flex flex-col items-center">
+              <div className="w-36 bg-white border border-emerald-50 rounded-xl shadow-lg py-8 flex flex-col items-center">
                 <Image src={integration.Logo!} alt={integration.Name} width={48} height={48} />
                 <h6 className="font-medium mt-4 text-center">{integration.Name}</h6>
               </div>
