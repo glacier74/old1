@@ -46,7 +46,8 @@ export const IntegrationsCat_Data: FC<Props> = ({ groups }) => {
           Looking for a particular integration that you don’t see here? Go ahead and&nbsp;
           <a
             className="font-bold underline text-emerald-500"
-            href="mailto:support@earlybird.im?subject=EarlyBird%20integration%20request"
+            href="https://earlybird.canny.io/feature-requests"
+            target="_blank"
           >
             request it
           </a>
