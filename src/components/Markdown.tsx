@@ -11,7 +11,7 @@ export const Markdown: FC<MarkdownProps> = ({ markdown, ...restProps }) => {
       options={{
         simpleLineBreaks: true
       }}
-      markdown={markdown.replace(/\n/g, '<br />')}
+      markdown={markdown?.replace(/\n/g, '<br />') || ''}
       {...restProps}
     />
   )
