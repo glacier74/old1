@@ -2,7 +2,8 @@ import { IconArrowLeft, IconArrowsLeftRight } from '@tabler/icons'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
-import MarkdownView from 'react-showdown'
+
+import { Markdown } from '~/components/Markdown'
 
 export const IntegrationsDetailHero: FC<{ integration: IntegrationRecord }> = ({ integration }) => {
   return (
@@ -19,7 +20,7 @@ export const IntegrationsDetailHero: FC<{ integration: IntegrationRecord }> = ({
             <p className="text-slate-100 sm:text-xl text-base whitespace-pre-line">
               {integration.Headline}
             </p>
-            <MarkdownView className="mt-3 text-white/80" markdown={integration.Subheadline} />
+            <Markdown className="mt-3 text-white/80" markdown={integration.Subheadline} />
             <div className="mt-7">
               <a
                 href="/sign-up"
