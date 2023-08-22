@@ -51,9 +51,7 @@ export const TemplatesView: FC<TemplatesViewProps> = ({
                   />
                 </div>
               </div>
-              <div className="py-4 px-4 sm:text-lg text-base font-medium">
-                {template.Name}
-              </div>
+              <div className="py-4 px-4 sm:text-lg text-base font-medium">{template.Name}</div>
             </Link>
           ))}
         </div>

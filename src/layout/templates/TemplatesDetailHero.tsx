@@ -28,7 +28,7 @@ export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template
         <div className="mb-8 text-base font-medium">
           <Link href="/templates">All templates</Link>
           <span className="px-2 text-slate-500">-</span>
-          <Link href={`/templates/category/${template.Category}`}>{template.Category}</Link>
+          <Link href={`/templates/category/${template.LowerCaseCategory}`}>{template.Category}</Link>
           <span className="px-2 text-slate-500">-</span>
           <span className="text-slate-500">{template.Name}</span>
         </div>
