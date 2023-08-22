@@ -599,11 +599,6 @@ declare global {
     categoryId: string
   }
 
-  interface Category_V3 {
-    id: string
-    name: string
-  }
-
   interface CollectionRecord {
     _id: string
     URL: string

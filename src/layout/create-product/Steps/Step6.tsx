@@ -1,17 +1,18 @@
 import { Button } from '@heyforms/ui'
-import { isEmpty } from '@nily/utils'
-import { IconArrowLeft } from '@tabler/icons'
+import { arrayUnique, isEmpty } from '@nily/utils'
+import { IconArrowLeft, IconCheck } from '@tabler/icons'
 import clsx from 'clsx'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { FC, MouseEvent, useCallback, useEffect, useMemo, useState } from 'react'
 
-import templates from '~/layout/builder3/templates'
+import { Loading } from '~/components'
+import templateList from '~/layout/builder3/templates'
 import { schemasToOptions } from '~/layout/builder3/utils'
 import { PreviewModal } from '~/layout/create-product/PreviewModal'
 import { ProductService } from '~/service'
 import { useStore } from '~/store'
-import { useParam } from '~/utils'
+import { useParam, useRequest } from '~/utils'
 
 interface TemplateItemProps {
   template: Template_V3
@@ -21,114 +22,16 @@ interface TemplateItemProps {
 }
 
 interface CategoryItemProps {
-  category: Category_V3
+  category: string
   isSelected?: boolean
   onClick: (id: string) => void
 }
 
-const CATEGORIES: Category_V3[] = [
-  {
-    id: 'all',
-    name: 'All'
-  },
-  {
-    id: 'product',
-    name: 'Product'
-  },
-  {
-    id: 'portfolio',
-    name: 'Portfolio'
-  },
-  {
-    id: 'waitlist',
-    name: 'Waitlist'
-  }
-]
-
-const TEMPLATES: Template_V3[] = [
-  {
-    id: 'landing-page-01',
-    name: 'Landing page 1',
-    categoryId: 'product',
-    thumbnail: 'https://storage.earlybird.im/template/landing-page-01.jpg'
-  },
-  {
-    id: 'landing-page-02',
-    name: 'Landing page 2',
-    categoryId: 'product',
-    thumbnail: 'https://storage.earlybird.im/template/landing-page-02.jpg'
-  },
-  {
-    id: 'app-01',
-    name: 'App',
-    categoryId: 'product',
-    thumbnail: 'https://storage.earlybird.im/template/app-01.png'
-  },
-  {
-    id: 'waitlist-01',
-    name: 'Waitlist',
-    categoryId: 'waitlist',
-    thumbnail: 'https://storage.earlybird.im/template/waitlist-01.png'
-  },
-  {
-    id: 'dove',
-    name: 'Dove',
-    categoryId: 'portfolio',
-    thumbnail: 'https://storage.earlybird.im/template/dove.png'
-  },
-  {
-    id: 'indie-folio',
-    name: 'Indie Folio',
-    categoryId: 'portfolio',
-    thumbnail: 'https://storage.earlybird.im/template/indie-folio.png'
-  },
-  {
-    id: 'obsidian',
-    name: 'Obsidian',
-    categoryId: 'portfolio',
-    thumbnail: 'https://storage.earlybird.im/template/obsidian.png'
-  },
-  {
-    id: 'simple-bio',
-    name: 'Simple Bio',
-    categoryId: 'portfolio',
-    thumbnail: 'https://storage.earlybird.im/template/simple-bio.png'
-  },
-  {
-    id: 'tiny-folio',
-    name: 'Tiny Folio',
-    categoryId: 'portfolio',
-    thumbnail: 'https://storage.earlybird.im/template/tiny-folio.png'
-  },
-  {
-    id: 'bio-noir',
-    name: 'Bio Noir',
-    categoryId: 'portfolio',
-    thumbnail: 'https://storage.earlybird.im/template/bio-noir.png'
-  },
-  {
-    id: 'ebony',
-    name: 'Ebony',
-    categoryId: 'portfolio',
-    thumbnail: 'https://storage.earlybird.im/template/ebony.png'
-  },
-  {
-    id: 'black-matrix',
-    name: 'Black Matrix',
-    categoryId: 'portfolio',
-    thumbnail: 'https://storage.earlybird.im/template/black-matrix.png'
-  },
-  {
-    id: 'black-canvas',
-    name: 'Black Canvas',
-    categoryId: 'portfolio',
-    thumbnail: 'https://storage.earlybird.im/template/black-canvas.png'
-  }
-]
+const ALL_CATEGORY_NAME = 'All'
 
 const CategoryItem: FC<CategoryItemProps> = ({ category, isSelected, onClick }) => {
   function handleClick() {
-    onClick(category.id)
+    onClick(category)
   }
 
   return (
@@ -139,7 +42,7 @@ const CategoryItem: FC<CategoryItemProps> = ({ category, isSelected, onClick }) 
       )}
       onClick={handleClick}
     >
-      {category.name}
+      {category}
     </div>
   )
 }
@@ -155,29 +58,46 @@ const TemplateItem: FC<TemplateItemProps> = ({ template, isSelected, onPreview, 
   }
 
   return (
-    <div
-      className={clsx(
-        'group relative cursor-pointer rounded-2xl shadow-sm border-[2px] border-transparent transition-all hover:shadow-xl',
-        {
-          'ring-2 ring-emerald-600 shadow-xl': isSelected
-        }
-      )}
-      onClick={handleClick}
-    >
-      <Image
-        className="w-full h-full bg-slate-100 rounded-2xl object-cover"
-        src={template.thumbnail}
-        alt={template.name}
-        width={240}
-        height={135}
-      />
-      <button
-        type="button"
-        className="absolute right-4 top-4 opacity-0 px-2 py-1 rounded-lg bg-emerald-500 text-white text-sm z-10 shadow-lg transition-colors hover:bg-emerald-600 group-hover:opacity-100"
-        onClick={handlePreview}
-      >
-        Preview
-      </button>
+    <div className="group/container rounded-md shadow-md">
+      <div className="group/image relative px-8 pt-8 overflow-hidden rounded-t-md bg-gradient-to-br from-lime-50 via-yellow-50 to-sky-100">
+        <div className="w-full aspect-video">
+          <Image
+            className="w-full h-full bg-slate-100 rounded-t-md object-cover"
+            src={template.thumbnail}
+            alt={template.name}
+            width={400}
+            height={240}
+            quality={100}
+          />
+        </div>
+
+        <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-colors hover:bg-black/20 group-hover/image:opacity-100 rounded-t-md">
+          <button
+            type="button"
+            className="px-2 py-1 rounded-lg bg-emerald-500 text-white text-sm z-10 shadow-lg transition-colors hover:bg-emerald-600"
+            onClick={handlePreview}
+          >
+            Preview
+          </button>
+        </div>
+
+        {isSelected && (
+          <div className="absolute top-[18px] right-[18px] bg-emerald-600 flex items-center justify-center w-[28px] h-[28px] rounded-full">
+            <IconCheck className="text-white w-[18px] h-[18px]" />
+          </div>
+        )}
+      </div>
+      <div className="flex items-center px-4 py-3 gap-4">
+        <div className="flex-1 text-sm font-medium">{template.name}</div>
+
+        <button
+          type="button"
+          className="px-2 py-1 rounded-lg text-emerald-600 text-sm border border-emerald-600 opacity-0 hover:text-emerald-700 hover:border-emerald-700 group-hover/container:opacity-100"
+          onClick={handleClick}
+        >
+          Use this template
+        </button>
+      </div>
     </div>
   )
 }
@@ -187,18 +107,35 @@ export const Step6 = () => {
   const { product, setStep, setProduct } = useStore()
   const templateId = useParam('templateId') as string
 
-  const [categoryId, setCategoryId] = useState(CATEGORIES[0].id)
+  const [categories, setCategories] = useState<string[]>([])
+  const [templates, setTemplates] = useState<Template_V3[]>([])
+
+  const [categoryId, setCategoryId] = useState(ALL_CATEGORY_NAME)
   const [template, setTemplate] = useState<Template_V3>()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string>()
 
   const filteredTemplates = useMemo(() => {
-    if (categoryId === CATEGORIES[0].id) {
-      return TEMPLATES
+    if (categoryId === ALL_CATEGORY_NAME) {
+      return templates
     }
 
-    return TEMPLATES.filter(t => t.categoryId === categoryId)
-  }, [categoryId])
+    return templates.filter(t => t.categoryId === categoryId)
+  }, [categoryId, templates])
+
+  const { loading: requestLoading, error: requestError } = useRequest(
+    async () => {
+      const templates = await ProductService.templates()
+      const categories = arrayUnique(templates.map(t => t.categoryId))
+
+      setCategories([ALL_CATEGORY_NAME, ...categories])
+      setTemplates(templates)
+    },
+    [],
+    {
+      fetchWhenDepsChange: true
+    }
+  )
 
   function handleBack() {
     setStep(5)
@@ -219,7 +156,7 @@ export const Step6 = () => {
     try {
       const productId = await ProductService.create({
         ...product,
-        blocks: schemasToOptions(templates[product!.template as string].schemas)
+        blocks: schemasToOptions(templateList[product!.template as string].schemas)
       })
 
       await router.replace(`/product/${productId}/edit`)
@@ -251,28 +188,34 @@ export const Step6 = () => {
           These are hand-picked templates that might suit your demand
         </div>
 
-        <div className="flex items-center gap-4 mb-8">
-          {CATEGORIES.map(category => (
-            <CategoryItem
-              key={category.id}
-              category={category}
-              isSelected={category.id === categoryId}
-              onClick={setCategoryId}
-            />
-          ))}
-        </div>
+        {requestLoading ? (
+          <Loading className="h-[50vh]" />
+        ) : (
+          <>
+            <div className="flex items-center gap-4 mb-8">
+              {categories.map(category => (
+                <CategoryItem
+                  key={category}
+                  category={category}
+                  isSelected={category === categoryId}
+                  onClick={setCategoryId}
+                />
+              ))}
+            </div>
 
-        <div className="mb-8 grid grid-cols-2 gap-5">
-          {filteredTemplates.map(template => (
-            <TemplateItem
-              key={template.id}
-              template={template}
-              isSelected={product?.template === template.id}
-              onPreview={setTemplate}
-              onClick={handleClick}
-            />
-          ))}
-        </div>
+            <div className="mb-8 grid grid-cols-2 gap-5">
+              {filteredTemplates.map(template => (
+                <TemplateItem
+                  key={template.id}
+                  template={template}
+                  isSelected={product?.template === template.id}
+                  onPreview={setTemplate}
+                  onClick={handleClick}
+                />
+              ))}
+            </div>
+          </>
+        )}
 
         <Button
           type="success"
