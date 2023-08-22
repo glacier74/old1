@@ -10,20 +10,6 @@ const CACHE_EXPIRES = process.env.NEXT_BUDIBASE_CACHE_EXPIRES as string
 const STORAGE_URI = process.env.NEXT_PUBLIC_STORAGE_URI as string
 
 export class CollectionService {
-  static async categories() {
-    const key = 'col:cats'
-    let cache = await redisService.get<string[]>(key)
-
-    if (isEmpty(cache)) {
-      const res = await BudiBase.get<AnyMap<any>>(`/tables/${TABLE_ID}`)
-
-      cache = res.data.schema.Category.constraints.inclusion
-      await redisService.set(key, cache, CACHE_EXPIRES)
-    }
-
-    return cache || []
-  }
-
   static async records(category?: string) {
     const key = 'col:records'
     let cache = (await redisService.get<CollectionRecord[]>(key)) as CollectionRecord[]
