@@ -7,7 +7,7 @@ export const IntegrationsDetailGuide: FC<{ integration: IntegrationRecord }> = (
   const { t } = useTranslation()
 
   return (
-    <section className="bg-slate-50 py-16">
+    <section className="bg-green-100 py-16">
       <div className="relative max-w-5xl mx-auto px-6 sm:py-20 py-10 z-10 text-center">
         <h3 className="sm:text-4xl text-2xl font-bold mb-4">
           How to connect EarlyBird <span className="text-emerald-500">+</span> {integration.Name}
