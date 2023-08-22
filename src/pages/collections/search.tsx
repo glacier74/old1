@@ -1,4 +1,4 @@
-import { conv, isValid } from '@nily/utils'
+import { arrayUnique, conv, isValid } from '@nily/utils'
 import { useTranslation } from 'next-i18next'
 
 import { CategoryCollections, HomeFooter, HomeHeader, HomeLayout } from '~/layout'
@@ -25,10 +25,8 @@ const Search = (props: any): JSX.Element => {
 
 export const getServerSideProps = withTranslations(async ({ query }) => {
   const search = query.query
-  const [list, categories] = await Promise.all([
-    CollectionService.records(),
-    CollectionService.categories()
-  ])
+  let list = await CollectionService.records()
+  const categories: string[] = arrayUnique(list.map(t => t.Category))
 
   let records: CollectionRecord[] = list
 

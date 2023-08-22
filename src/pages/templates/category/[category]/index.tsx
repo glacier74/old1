@@ -1,4 +1,4 @@
-import { conv } from '@nily/utils'
+import { arrayUnique, conv } from '@nily/utils'
 import { useTranslation } from 'next-i18next'
 import { FC } from 'react'
 
@@ -45,7 +45,7 @@ export const getServerSideProps = withTranslations(async ({ query }) => {
   const category = query.category.toLowerCase()
 
   let templates = await TemplateService.records()
-  const categories = Array.from(new Set(templates.map(t => t.Category)))
+  const categories = arrayUnique(templates.map(t => t.Category))
 
   const limit = 9
   const page = conv.int(query.page, 1)!

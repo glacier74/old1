@@ -1,4 +1,4 @@
-import { isEmpty } from '@nily/utils'
+import { arrayUnique, isEmpty } from '@nily/utils'
 import { useTranslation } from 'next-i18next'
 
 import { GroupCollections, HomeFooter, HomeHeader, HomeLayout } from '~/layout'
@@ -25,10 +25,8 @@ const Collection = (props: any): JSX.Element => {
 }
 
 export const getServerSideProps = withTranslations(async ({ query }) => {
-  const [records, categories] = await Promise.all([
-    CollectionService.records(),
-    CollectionService.categories()
-  ])
+  const records = await CollectionService.records()
+  const categories: string[] = arrayUnique(records.map(t => t.Category))
 
   const groups = categories
     .map(category => {

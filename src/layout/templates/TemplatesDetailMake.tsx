@@ -11,13 +11,21 @@ export const TemplatesDetailMake: FC = () => {
           <div className="lg:text-3xl text-2xl font-bold">Make it uniquely yours</div>
           <div className="lg:text-xl text-base">
             <p>
-            Customize our templates to capture the essence of your startup. With EarlyBird, establish a distinctive online presence without any coding skills needed.</p>
+              Customize our templates to capture the essence of your startup. With EarlyBird,
+              establish a distinctive online presence without any coding skills needed.
+            </p>
           </div>
           <a className="bg-slate-900 py-2 px-8 rounded-full flex-inline" href="/sign-up">
             <span className="text-white lg:text-lg text-base">Get started, it's free!</span>
           </a>
         </div>
-        <Image src="/static/template-make.png" width={400} height={400} alt="Make it uniquely yours" className="rounded-full shadow-md" />
+        <Image
+          src="/static/template-make.png"
+          width={400}
+          height={400}
+          alt="Make it uniquely yours"
+          className="rounded-full shadow-md"
+        />
       </div>
     </section>
   )

@@ -42,7 +42,7 @@ export const CollectionWrap: FC<CollectionWrapProps> = ({
           </div>
         </div>
         <div className="mt-16 md:flex gap-12">
-          <div className="mb-8 border-b border-gray-200 mb:mb-0 md:border-b-none">
+          <div className="mb-8 mb:mb-0">
             <Input.Search value={search} placeholder="Search" onSearch={handleSearch} />
             <div className="mt-4">
               <div
