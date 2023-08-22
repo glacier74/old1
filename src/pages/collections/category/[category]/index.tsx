@@ -1,4 +1,4 @@
-import { conv } from '@nily/utils'
+import { arrayUnique, conv } from '@nily/utils'
 import { useTranslation } from 'next-i18next'
 
 import { CategoryCollections, HomeFooter, HomeHeader, HomeLayout } from '~/layout'
@@ -27,13 +27,15 @@ const Collection = (props: any): JSX.Element => {
 
 export const getServerSideProps = withTranslations(async ({ query }) => {
   const category = query.category.toLowerCase()
-  const [records, categories] = await Promise.all([
-    CollectionService.records(category),
-    CollectionService.categories()
-  ])
+
+  let records = await CollectionService.records()
+  const categories: string[] = arrayUnique(records.map(t => t.Category))
 
   const limit = 18
   const page = conv.int(query.page, 1)!
+
+  // Filter collections
+  records = records.filter(t => t.LowerCaseCategory === category)
 
   return {
     props: {

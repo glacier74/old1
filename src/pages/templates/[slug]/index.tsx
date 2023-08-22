@@ -1,3 +1,4 @@
+import { arrayUnique } from '@nily/utils'
 import { useTranslation } from 'next-i18next'
 import { FC } from 'react'
 
@@ -76,7 +77,7 @@ export const getServerSideProps = withTranslations(async ({ query }) => {
   const similars = templates.filter(
     t => t.Category === template.Category && t.slug.toLowerCase() !== slug
   )
-  const categories = Array.from(new Set(templates.map(t => t.Category))).filter(
+  const categories = arrayUnique(templates.map(t => t.Category)).filter(
     c => c !== template.Category
   )
 
