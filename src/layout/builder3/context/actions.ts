@@ -11,6 +11,7 @@ export interface IState {
   // AI
   completions: any[]
   selectedCompletionName?: string
+  selectedCompletionTitle?: string
 
   // Preview anchor link
   selectedOptionName?: string

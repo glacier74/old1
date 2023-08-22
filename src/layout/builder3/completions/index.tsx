@@ -42,7 +42,8 @@ export const Completions = () => {
     dispatch({
       type: 'updateState',
       payload: {
-        selectedCompletionName: selected.name
+        selectedCompletionName: selected.name,
+        selectedCompletionTitle: selected.title
       }
     })
 
@@ -87,7 +88,8 @@ export const Completions = () => {
         dispatch({
           type: 'updateState',
           payload: {
-            selectedCompletionName: undefined
+            selectedCompletionName: undefined,
+            selectedCompletionTitle: undefined
           }
         })
       }
@@ -121,7 +123,9 @@ export const Completions = () => {
               <div className="text-xl font-semibold text-red-500 text-center">{error}</div>
             ) : (
               <div className="text-white text-center">
-                <div className="text-xl font-semibold">Generating copies for Header</div>
+                <div className="text-xl font-semibold">
+                  Generating copies for {state.selectedCompletionTitle}
+                </div>
                 <div className="text-sm mt-2">
                   This may take a few seconds, please don't close this page.
                 </div>
