@@ -62,7 +62,8 @@ export const schemas = [
           {
             name: 'title',
             title: 'Title',
-            type: 'text'
+            type: 'text',
+            primary: true
           },
           {
             name: 'link',
@@ -126,7 +127,8 @@ export const schemas = [
           {
             name: 'title',
             title: 'Title',
-            type: 'text'
+            type: 'text',
+            primary: true
           },
           {
             name: 'username',

@@ -47,7 +47,8 @@ export const schemas = [
               {
                 name: 'title',
                 title: 'Title',
-                type: 'text'
+                type: 'text',
+                primary: true
               },
               {
                 name: 'description',
