@@ -277,6 +277,8 @@ box-shadow: 0px 1px 1px 0px rgba(102, 109, 128, 0.08), 0px 4px 8px 0px rgba(102,
                               src={item.image}
                               className="earlybird-LWV68P rounded-full w-8 h-8"
                               alt={item.title}
+                              width={32}
+                              height={32}
                             />
                           </div>
                           <div className="earlybird-JYwyCI flex flex-col">

@@ -28,7 +28,6 @@ export const schemas = [
         name: 'description',
         title: 'Description',
         type: 'text',
-        ai: true,
         default:
           '👋 Hello, I am a indie hacker and dadpreneur building bootstrapped micro SaaS products. I believe in learning through practice and embracing failure.'
       },
