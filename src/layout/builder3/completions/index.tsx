@@ -1,4 +1,5 @@
 import { Modal } from '@heyforms/ui'
+import { isEmpty } from '@nily/utils'
 import party from 'party-js'
 import { startTransition, useEffect, useMemo, useRef, useState } from 'react'
 
@@ -51,11 +52,16 @@ export const Completions = () => {
           mergeOptions(selected.name, data[selected.name])
         })
       },
-      onFinish: async (err?: string) => {
+      onFinish: async (err?: string, data?: AnyMap<any>) => {
         loadingRef.current = false
 
         if (err) {
           return setError(err)
+        }
+
+        // Generating again if error occurred in GPT response.
+        if (isEmpty(data)) {
+          return handleCompletions(unfinished)
         }
 
         // 删除第一个

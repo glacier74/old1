@@ -15,7 +15,7 @@ dayjs.extend(timezone)
 interface CompletionsOptions {
   timeout?: number
   onMessage: (data: AnyMap<any>) => void
-  onFinish: (error?: string) => void
+  onFinish: (error?: string, data?: AnyMap<any>) => void
 }
 
 export class ProductService {
@@ -36,8 +36,17 @@ export class ProductService {
     })
   }
 
-  static async templates(): Promise<Template[]> {
-    return axios.get('/products/templates')
+  static async templates(): Promise<Template_V3[]> {
+    const result: TemplateRecord[] = await axios.get('/api/templates', {
+      baseURL: '/'
+    })
+
+    return result.map(t => ({
+      id: t.slug,
+      name: t.Name,
+      thumbnail: t.Thumbnail,
+      categoryId: t.Category
+    }))
   }
 
   static async create(product: Partial<Product> & { blocks: any }): Promise<number> {
@@ -148,9 +157,9 @@ export class ProductService {
     const requestTimeoutId = setTimeout(() => controller.abort(), timeout)
     let responseText = ''
 
-    function handleFinish(err?: string) {
+    function handleFinish(err?: string, data?: AnyMap<any>) {
       responseText = ''
-      onFinish(err)
+      onFinish(err, data)
     }
 
     await fetchEventSource(`${process.env.NEXT_PUBLIC_API_URI}/products/${productId}/completions`, {
@@ -197,7 +206,14 @@ export class ProductService {
 
       onclose() {
         controller.abort()
-        handleFinish()
+
+        let data: AnyMap<any> | undefined = undefined
+
+        try {
+          data = YAML.parse(responseText)
+        } catch {}
+
+        handleFinish(undefined, data)
       },
 
       onerror(err) {
