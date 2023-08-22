@@ -1,7 +1,13 @@
 import { Button, Select } from '@heyforms/ui'
-import { isEmpty } from '@nily/utils'
+import { isEmpty, isValid } from '@nily/utils'
+import router from 'next/router'
+import { useCallback, useState } from 'react'
 
+import templateList from '~/layout/builder3/templates'
+import { schemasToOptions } from '~/layout/builder3/utils'
+import { ProductService } from '~/service'
 import { useStore } from '~/store'
+import { useParam } from '~/utils'
 
 const options = [
   { label: 'E-commerce', value: 'E-commerce' },
@@ -46,7 +52,36 @@ const options = [
 export const Step2 = () => {
   const { product, setStep, setProduct } = useStore()
 
+  const templateId = useParam('templateId') as string
+  const templateCategory = useParam('templateCategory') as string
+
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string>()
+
+  const handleCreate = useCallback(async () => {
+    setLoading(true)
+    setError(undefined)
+
+    try {
+      const productId = await ProductService.create({
+        ...product,
+        template: templateId,
+        blocks: schemasToOptions(templateList[templateId].schemas)
+      })
+
+      await router.replace(`/product/${productId}/edit`)
+    } catch (err: any) {
+      setError(err.message)
+    }
+
+    setLoading(false)
+  }, [product])
+
   function handleClick() {
+    if (isValid(templateId) && templateCategory.toLowerCase() === 'portfolio') {
+      return handleCreate()
+    }
+
     setStep(3)
   }
 
@@ -77,6 +112,7 @@ export const Step2 = () => {
       <Button
         type="success"
         className="!px-6 !py-2 !rounded-full !text-lg"
+        loading={loading}
         disabled={isEmpty(product?.category)}
         onClick={handleClick}
       >

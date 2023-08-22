@@ -2,12 +2,12 @@ import { useEffect } from 'react'
 
 import { useStore } from '~/store'
 
+import { Step0 } from './Step0'
 import { Step1 } from './Step1'
 import { Step2 } from './Step2'
 import { Step3 } from './Step3'
 import { Step4 } from './Step4'
 import { Step5 } from './Step5'
-import { Step6 } from './Step6'
 
 export const Steps = () => {
   const { step, setStep, setProduct } = useStore()
@@ -18,6 +18,9 @@ export const Steps = () => {
   }, [])
 
   switch (step) {
+    case 1:
+      return <Step1 />
+
     case 2:
       return <Step2 />
 
@@ -30,10 +33,7 @@ export const Steps = () => {
     case 5:
       return <Step5 />
 
-    case 6:
-      return <Step6 />
-
     default:
-      return <Step1 />
+      return <Step0 />
   }
 }

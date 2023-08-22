@@ -1,19 +1,41 @@
 import { Button, Input } from '@heyforms/ui'
 import { isEmpty } from '@nily/utils'
 import { IconArrowLeft } from '@tabler/icons'
+import router from 'next/router'
+import { useCallback, useState } from 'react'
 
+import templateList from '~/layout/builder3/templates'
+import { schemasToOptions } from '~/layout/builder3/utils'
+import { ProductService } from '~/service'
 import { useStore } from '~/store'
 
 export const Step5 = () => {
   const { product, setStep, setProduct } = useStore()
 
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string>()
+
   function handleBack() {
     setStep(4)
   }
 
-  function handleClick() {
-    setStep(6)
-  }
+  const handleCreate = useCallback(async () => {
+    setLoading(true)
+    setError(undefined)
+
+    try {
+      const productId = await ProductService.create({
+        ...product,
+        blocks: schemasToOptions(templateList[product!.template as string].schemas)
+      })
+
+      await router.replace(`/product/${productId}/edit`)
+    } catch (err: any) {
+      setError(err.message)
+    }
+
+    setLoading(false)
+  }, [product])
 
   function handleChange(tagline: any) {
     setProduct({
@@ -48,11 +70,14 @@ export const Step5 = () => {
       <Button
         type="success"
         className="!px-6 !py-2 !rounded-full !text-lg"
+        loading={loading}
         disabled={isEmpty(product?.tagline)}
-        onClick={handleClick}
+        onClick={handleCreate}
       >
         Next
       </Button>
+
+      {error && <div className="mt-2 text-sm text-red-500">{error}</div>}
     </div>
   )
 }

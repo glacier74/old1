@@ -1,14 +1,16 @@
 import { Button, Input } from '@heyforms/ui'
-import { isEmpty } from '@nily/utils'
+import { isEmpty, isValid } from '@nily/utils'
 import { IconArrowLeft } from '@tabler/icons'
 
 import { useStore } from '~/store'
+import { useParam } from '~/utils'
 
 export const Step4 = () => {
   const { product, setStep, setProduct } = useStore()
+  const templateId = useParam('templateId') as string
 
   function handleBack() {
-    setStep(3)
+    isValid(templateId) ? setStep(2) : setStep(3)
   }
 
   function handleClick() {
