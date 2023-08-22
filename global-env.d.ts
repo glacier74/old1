@@ -678,6 +678,7 @@ declare global {
       _id: string
       primaryDisplay: string
     }>
+    GuideURL: string
     LowerCaseCategory: string
   }
 
