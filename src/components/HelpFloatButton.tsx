@@ -1,30 +1,58 @@
-import { Dropdown, Menus } from '@heyforms/ui'
-import { IconBrandTwitter, IconHelp, IconMail, IconMessageDots } from '@tabler/icons'
+import { Dropdown, Menus, stopPropagation } from '@heyforms/ui'
+import {
+  IconBrandTwitter,
+  IconHelp,
+  IconMail,
+  IconMessageDots,
+  TablerIconProps
+} from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
+import { FC } from 'react'
 
-import { ExternalLink } from '~/layout/product/Sidebar/SidebarNavbar'
+interface LinkButtonProps {
+  icon: FC<TablerIconProps>
+  href: string
+  title: string
+}
+
+const LinkButton = ({ icon: Icon, href, title }: LinkButtonProps) => {
+  function handleClick() {
+    window.open(href)
+  }
+
+  return (
+    <button
+      type="button"
+      className="w-full text-slate-700 hover:bg-slate-200 hover:text-slate-900 group flex items-center px-2 py-1 text-sm rounded-md"
+      onClick={handleClick}
+    >
+      <Icon className="text-slate-700 mr-3 flex-shrink-0 h-5 w-5" />
+      <span className="truncate">{title}</span>
+    </button>
+  )
+}
 
 export const HelpFloatButton = () => {
   const { t } = useTranslation()
 
   const Overlay = (
     <Menus className="w-[13rem] space-y-1 px-2 py-4">
-      <ExternalLink
+      <LinkButton
         href="https://help.earlybird.im"
         icon={IconHelp}
         title={t('sidebar.helpCenter')}
       />
-      <ExternalLink
+      <LinkButton
         href="https://vue.mx/discord"
         icon={IconMessageDots}
         title={t('sidebar.joinCommunity')}
       />
-      <ExternalLink
+      <LinkButton
         href="mailto:support@earlybird.im"
         icon={IconMail}
         title={t('sidebar.sendEmail')}
       />
-      <ExternalLink
+      <LinkButton
         href="https://twitter.com/earlybirdim"
         icon={IconBrandTwitter}
         title={t('sidebar.twitter')}
