@@ -23,7 +23,7 @@ export function CreateProductLayout({
 
   return (
     <AuthorizedLayout seo={seo}>
-      <div className="min-h-screen bg-slate-50 flex flex-col py-5 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-white flex flex-col py-5 sm:px-6 lg:px-8">
         <div className="w-full flex items-center justify-between">
           {logoElement ? (
             logoElement

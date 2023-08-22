@@ -59,7 +59,7 @@ export const Step2 = () => {
 
   return (
     <div>
-      <div className="flex items-center mb-2 text-2xl font-bold text-slate-900">
+      <div className="flex items-center mb-2 text-3xl font-semibold text-slate-900">
         I am creating a landing page for{' '}
         <Select
           className="create-product-select"
@@ -69,14 +69,14 @@ export const Step2 = () => {
           onChange={handleChange}
         />
       </div>
-      <p className="mb-8 text-slate-500">
+      <p className="mb-8 text-slate-500 text-xl">
         Understanding your industry would enable us to better comprehend your specific needs and
         requirements.
       </p>
 
       <Button
         type="success"
-        className="!px-6 !py-2.5"
+        className="!px-6 !py-2 !rounded-full !text-lg"
         disabled={isEmpty(product?.category)}
         onClick={handleClick}
       >

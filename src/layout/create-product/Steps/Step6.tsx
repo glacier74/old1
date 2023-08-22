@@ -32,8 +32,8 @@ const CATEGORIES: Category_V3[] = [
     name: 'All'
   },
   {
-    id: 'landing-page',
-    name: 'Landing page'
+    id: 'product',
+    name: 'Product'
   },
   {
     id: 'portfolio',
@@ -42,10 +42,6 @@ const CATEGORIES: Category_V3[] = [
   {
     id: 'waitlist',
     name: 'Waitlist'
-  },
-  {
-    id: 'app',
-    name: 'App'
   }
 ]
 
@@ -53,19 +49,19 @@ const TEMPLATES: Template_V3[] = [
   {
     id: 'landing-page-01',
     name: 'Landing page 1',
-    categoryId: 'landing-page',
+    categoryId: 'product',
     thumbnail: 'https://storage.earlybird.im/template/landing-page-01.jpg'
   },
   {
     id: 'landing-page-02',
     name: 'Landing page 2',
-    categoryId: 'landing-page',
+    categoryId: 'product',
     thumbnail: 'https://storage.earlybird.im/template/landing-page-02.jpg'
   },
   {
     id: 'app-01',
     name: 'App',
-    categoryId: 'app',
+    categoryId: 'product',
     thumbnail: 'https://storage.earlybird.im/template/app-01.png'
   },
   {
@@ -266,7 +262,7 @@ export const Step6 = () => {
           ))}
         </div>
 
-        <div className="mb-8 grid grid-cols-3 gap-5">
+        <div className="mb-8 grid grid-cols-2 gap-5">
           {filteredTemplates.map(template => (
             <TemplateItem
               key={template.id}
@@ -282,7 +278,7 @@ export const Step6 = () => {
           type="success"
           disabled={isEmpty(product?.template) || loading}
           loading={loading}
-          className="!px-5 !py-2"
+          className="!px-6 !py-2 !rounded-full !text-lg"
           onClick={handleCreate}
         >
           Next

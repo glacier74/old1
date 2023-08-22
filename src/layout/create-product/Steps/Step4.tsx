@@ -28,7 +28,7 @@ export const Step4 = () => {
         <IconArrowLeft />
       </button>
 
-      <div className="mb-2 text-2xl font-bold text-slate-900">
+      <div className="mb-2 text-3xl font-semibold text-slate-950">
         Who would be your ideal customers?
       </div>
       <Input
@@ -47,7 +47,7 @@ export const Step4 = () => {
 
       <Button
         type="success"
-        className="!px-6 !py-2.5"
+        className="!px-6 !py-2 !rounded-full !text-lg"
         disabled={isEmpty(product?.customer)}
         onClick={handleClick}
       >

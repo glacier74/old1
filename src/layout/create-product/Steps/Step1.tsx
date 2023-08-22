@@ -10,16 +10,16 @@ export const Step1 = () => {
   }
 
   return (
-    <div className="max-w-xl">
-      <div className="mb-2 text-2xl font-bold text-slate-900">
-        Hooray! Let's take your idea online.
+    <div className="max-w-2xl">
+      <div className="mb-2 text-3xl font-semibold text-slate-950">
+        Hooray! Let's take your brilliant idea online.
       </div>
-      <p className="mb-8 text-slate-500">
-        Answer a few questions and you'll be ready to go in just five minutes.
+      <p className="mb-8 text-slate-500 text-xl">
+        Answer a few questions and have your landing page up in minutes.
       </p>
 
-      <Button type="success" className="!px-5 !py-2" onClick={handleClick}>
-        Get started
+      <Button type="success" className="!px-6 !py-2 !rounded-full !text-lg" onClick={handleClick}>
+        Let's go!
       </Button>
     </div>
   )

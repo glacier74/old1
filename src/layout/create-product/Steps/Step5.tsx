@@ -28,7 +28,7 @@ export const Step5 = () => {
         <IconArrowLeft />
       </button>
 
-      <div className="mb-2 text-2xl font-bold text-slate-900">My customers need it to</div>
+      <div className="mb-2 text-3xl font-semibold text-slate-900">My customers need it to</div>
       <Input
         className="create-product-input !ml-0"
         value={product?.tagline}
@@ -38,7 +38,7 @@ export const Step5 = () => {
         <p className="font-medium text-slate-600">
           Short and specific, use this pattern: "My customers need it to [benefit]"{' '}
         </p>
-        <ul className="mt-1 text-[13px] list-disc pl-4 text-slate-500">
+        <ul className="mt-1 text-sm list-disc pl-4 text-slate-500">
           <li>streamline project management</li>
           <li>automate business tasks</li>
           <li>delve into customer analytics</li>
@@ -47,7 +47,7 @@ export const Step5 = () => {
 
       <Button
         type="success"
-        className="!px-6 !py-2.5"
+        className="!px-6 !py-2 !rounded-full !text-lg"
         disabled={isEmpty(product?.tagline)}
         onClick={handleClick}
       >
