@@ -63,4 +63,14 @@ export class PublicApiService {
       })
       .json()
   }
+
+  static async sitemapSubdomains(): Promise<AnyMap<string>[]> {
+    return ky
+      .get(`${NEXT_PUBLIC_API_URI}/sitemap-subdomains`, {
+        searchParams: {
+          key: NEXT_API_VERIFICATION_KEY
+        }
+      })
+      .json()
+  }
 }

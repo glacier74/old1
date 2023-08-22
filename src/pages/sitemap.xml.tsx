@@ -1,47 +1,144 @@
 import { NextPageContext } from 'next'
 
-import { AirtableService } from '~/service/airtable'
+import { CollectionService } from '~/service/collection'
+import { Integration2Service } from '~/service/integration2'
+import { PublicApiService } from '~/service/public-api'
+import { TemplateService } from '~/service/template'
 
-const NEXT_AIRTABLE_BASE_ID = process.env.NEXT_AIRTABLE_BASE_ID as string
-const NEXT_AIRTABLE_COLLECTION_ID = process.env.NEXT_AIRTABLE_COLLECTION_ID as string
+const PUBLIC_HOMEPAGE = process.env.NEXT_PUBLIC_HOMEPAGE
 
 const Sitemap = () => {
   //
 }
 
+function getUrls(list: AnyMap<string>[], priority: number) {
+  return list
+    .map(
+      row =>
+        `<url>
+      <loc>${row.url}</loc>
+      <lastmod>${row.updatedAt}</lastmod>
+      <priority>${priority}</priority>
+    </url>`
+    )
+    .join('\n')
+}
+
+async function getSubdomains() {
+  const result = await PublicApiService.sitemapSubdomains()
+
+  return getUrls(result, 0.5)
+}
+
+async function getCollections() {
+  const collections = await CollectionService.records()
+  const tmpCategories = new Set<string>()
+
+  const categoryUrls: AnyMap<string>[] = []
+  const collectionUrls: AnyMap<string>[] = []
+
+  collections.reverse().forEach(row => {
+    const category = row.LowerCaseCategory
+
+    if (!tmpCategories.has(category)) {
+      tmpCategories.add(category)
+
+      categoryUrls.push({
+        url: `${PUBLIC_HOMEPAGE}/collections/category/${encodeURIComponent(category)}`,
+        updatedAt: row['Created At']
+      })
+    }
+
+    collectionUrls.push({
+      url: `${PUBLIC_HOMEPAGE}/collections/${row.Slug}`,
+      updatedAt: row['Updated At']
+    })
+  })
+
+  return [
+    getUrls(
+      [
+        {
+          url: `${PUBLIC_HOMEPAGE}/collections`,
+          updatedAt: collections[0]['Updated At']
+        }
+      ],
+      0.8
+    ),
+    getUrls(categoryUrls, 0.7),
+    getUrls(collectionUrls.reverse(), 0.6)
+  ].join('\n')
+}
+
+async function getTemplates() {
+  const templates = await TemplateService.records()
+  const tmpCategories = new Set<string>()
+
+  const categoryUrls: AnyMap<string>[] = []
+  const templateUrls: AnyMap<string>[] = []
+
+  templates.reverse().forEach(row => {
+    const category = row.LowerCaseCategory
+
+    if (!tmpCategories.has(category)) {
+      tmpCategories.add(category)
+
+      categoryUrls.push({
+        url: `${PUBLIC_HOMEPAGE}/templates/category/${encodeURIComponent(category)}`,
+        updatedAt: row['Created At']
+      })
+    }
+
+    templateUrls.push({
+      url: `${PUBLIC_HOMEPAGE}/templates/${row.slug}`,
+      updatedAt: row['Updated At']
+    })
+  })
+
+  return [
+    getUrls(
+      [
+        {
+          url: `${PUBLIC_HOMEPAGE}/templates`,
+          updatedAt: templates[0]['Updated At']
+        }
+      ],
+      0.8
+    ),
+    getUrls(categoryUrls, 0.7),
+    getUrls(templateUrls.reverse(), 0.6)
+  ].join('\n')
+}
+
+async function getIntegrations() {
+  const integrations = await Integration2Service.records()
+
+  const integrationUrls = integrations.map(row => ({
+    url: `${PUBLIC_HOMEPAGE}/integrations/${row.slug}`,
+    updatedAt: row['Updated At']
+  }))
+
+  return [
+    getUrls(
+      [
+        {
+          url: `${PUBLIC_HOMEPAGE}/integrations`,
+          updatedAt: integrations[0]['Updated At']
+        }
+      ],
+      0.8
+    ),
+    getUrls(integrationUrls.reverse(), 0.6)
+  ].join('\n')
+}
+
 export async function getServerSideProps({ res }: NextPageContext): Promise<unknown> {
-  const homepage = process.env.NEXT_PUBLIC_HOMEPAGE
-  const [subdomains, records] = await Promise.all([
-    (
-      await fetch(
-        `${process.env.NEXT_PUBLIC_API_URI}/sitemap-subdomains?key=${process.env.NEXT_API_VERIFICATION_KEY}`
-      )
-    ).json(),
-    AirtableService.records<CollectionRecord>(NEXT_AIRTABLE_BASE_ID, NEXT_AIRTABLE_COLLECTION_ID)
+  const [subdomains, collections, templates, integrations] = await Promise.all([
+    getSubdomains(),
+    getCollections(),
+    getTemplates(),
+    getIntegrations()
   ])
-  const categories = Array.from(new Set(records.map(r => r.Category)))
-
-  const subdomainsHTML = subdomains
-    .map(
-      (row: any) =>
-        `<url>
-        <loc>${row.url}</loc>
-        <lastmod>${row.updatedAt}</lastmod>
-        <priority>0.6</priority>
-      </url>`
-    )
-    .join('\n')
-
-  const categoriesHTML = categories
-    .map(
-      (row: any) =>
-        `<url>
-        <loc>${homepage}/collections/category/${row.toLowerCase()}</loc>
-        <lastmod>2023-04-05T10:43:50.748Z</lastmod>
-        <priority>0.7</priority>
-      </url>`
-    )
-    .join('\n')
 
   const html = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset
@@ -50,32 +147,29 @@ export async function getServerSideProps({ res }: NextPageContext): Promise<unkn
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
   >
     <url>
-      <loc>${homepage}</loc>
-      <lastmod>2022-12-23T10:43:50.748Z</lastmod>
+      <loc>${PUBLIC_HOMEPAGE}</loc>
+      <lastmod>2023-08-22T10:43:50.748Z</lastmod>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>${homepage}/features</loc>
-      <lastmod>2022-12-23T10:43:50.748Z</lastmod>
+      <loc>${PUBLIC_HOMEPAGE}/features</loc>
+      <lastmod>2023-08-22T10:43:50.748Z</lastmod>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>${homepage}/pricing</loc>
-      <lastmod>2022-12-23T10:43:50.748Z</lastmod>
+      <loc>${PUBLIC_HOMEPAGE}/pricing</loc>
+      <lastmod>2023-08-22T10:43:50.748Z</lastmod>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>${homepage}/collections</loc>
-      <lastmod>2023-04-05T10:43:50.748Z</lastmod>
+      <loc>${PUBLIC_HOMEPAGE}/blog</loc>
+      <lastmod>2023-08-22T10:43:50.748Z</lastmod>
       <priority>0.8</priority>
     </url>
-    ${categoriesHTML}
-    <url>
-      <loc>${homepage}/blog</loc>
-      <lastmod>2022-12-23T10:43:50.748Z</lastmod>
-      <priority>0.8</priority>
-    </url>
-    ${subdomainsHTML}
+    ${templates}
+    ${integrations}
+    ${collections}
+    ${subdomains}
   </urlset>`
 
   res!.setHeader('Content-Type', 'text/xml')
