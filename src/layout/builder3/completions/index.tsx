@@ -62,7 +62,9 @@ export const Completions = () => {
 
         // Generating again if error occurred in GPT response.
         if (isEmpty(data)) {
-          return handleCompletions(unfinished)
+          return setTimeout(() => {
+            handleCompletions(unfinished)
+          }, 1_000)
         }
 
         // 删除第一个
@@ -77,7 +79,9 @@ export const Completions = () => {
         })
 
         if (unfinished.length > 0) {
-          return handleCompletions(unfinished)
+          return setTimeout(() => {
+            handleCompletions(unfinished)
+          }, 1_000)
         }
 
         party.confetti(document.querySelector('.builder-editor') as HTMLElement, {
