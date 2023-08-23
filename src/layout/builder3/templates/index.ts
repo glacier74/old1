@@ -9,6 +9,7 @@ import * as ebony from './ebony'
 import * as indieFolio from './indie-folio'
 import * as landingPage01 from './landing-page-01'
 import * as landingPage02 from './landing-page-02'
+import * as minimalLanding from './minimal-landing'
 import * as obsidian from './obsidian'
 import * as simpleBio from './simple-bio'
 import * as tinyFolio from './tiny-folio'
@@ -32,7 +33,8 @@ const templates: AnyMap<Template> = {
   'bio-noir': bioNoir,
   ebony: ebony,
   'black-matrix': blackMatrix,
-  'black-canvas': blackCanvas
+  'black-canvas': blackCanvas,
+  'minimal-landing-01': minimalLanding
 }
 
 export default templates
