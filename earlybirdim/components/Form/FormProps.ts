@@ -4,7 +4,7 @@ export interface FormState {
 }
 
 export interface FormProps extends ComponentProps {
-  type: 'email_capture' | 'payment'
+  type: 'email_capture' | 'contact' | 'payment'
   successMessage: string
   blockId: string
   // Automated email
@@ -26,6 +26,12 @@ export interface FormItemProps extends ComponentProps {
 
 export interface FormInputProps extends ComponentProps {
   type: 'text' | 'email'
+  value?: string
+  onChange?: (value?: string) => void
+}
+
+export interface FormTextareaProps extends ComponentProps {
+  rows?: number
   value?: string
   onChange?: (value?: string) => void
 }

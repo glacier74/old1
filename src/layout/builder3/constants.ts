@@ -53,6 +53,7 @@ export enum SchemaTypeEnum {
   html = 'html',
   object = 'object',
   emailCapture = 'email_capture',
+  contact = 'contact',
   payment = 'payment',
   textList = 'text_list',
   list = 'list'

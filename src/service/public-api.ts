@@ -7,9 +7,14 @@ interface BaseInput {
   settingId?: string
 }
 
-interface CreateContactInput extends BaseInput {
+interface CreateEmailCaptureInput extends BaseInput {
   name: string
   email: string
+}
+
+interface CreateContactInput extends CreateEmailCaptureInput {
+  subject: string
+  message: string
 }
 
 interface CheckoutInput extends BaseInput {
@@ -21,6 +26,10 @@ const NEXT_PUBLIC_API_URI = process.env.NEXT_PUBLIC_API_URI as string
 const NEXT_API_VERIFICATION_KEY = process.env.NEXT_API_VERIFICATION_KEY as string
 
 export class PublicApiService {
+  static async createEmailCapture(productId: number, input: CreateEmailCaptureInput) {
+    return axios.put(`/product/${productId}/email-captures`, input)
+  }
+
   static async createContact(productId: number, input: CreateContactInput) {
     return axios.put(`/product/${productId}/contacts`, input)
   }

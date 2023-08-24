@@ -83,7 +83,7 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
           setLoading(false)
           window.location.href = result.sessionUrl
         } else {
-          await PublicApiService.createContact(productId, {
+          await PublicApiService.createEmailCapture(productId, {
             blockId,
             settingId: id!,
             name: name!,

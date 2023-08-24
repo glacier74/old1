@@ -1,4 +1,4 @@
-import { IconArrowLeft, IconCheck } from '@tabler/icons'
+import { IconCheck } from '@tabler/icons'
 import party from 'party-js'
 import RCForm from 'rc-field-form'
 import { FC, useCallback, useEffect, useMemo, useReducer, useState } from 'react'
@@ -12,6 +12,7 @@ import FormButton from './FormButton'
 import FormInput from './FormInput'
 import FormItem from './FormItem'
 import { FormProps } from './FormProps'
+import FormTextarea from './FormTextarea'
 
 const FormSuccess: FC<{ successMessage: string }> = ({ successMessage }) => {
   useEffect(() => {
@@ -22,7 +23,7 @@ const FormSuccess: FC<{ successMessage: string }> = ({ successMessage }) => {
 
   return (
     <div className="fixed inset-0 z-[98] flex h-screen w-screen items-center p-5">
-      <div className="payment-success-party absolute inset-0 z-[99] bg-white/40"></div>
+      <div className="payment-success-party absolute inset-0 z-[99] bg-black/20"></div>
       <div className="relative z-[100] mx-auto w-full max-w-[600px] rounded-2xl bg-white px-8 py-12 shadow-2xl">
         <div className="flex justify-center">
           <div className="bg-emerald-600 flex items-center justify-center w-[60px] h-[60px] rounded-full">
@@ -90,8 +91,15 @@ const InternalForm: FC<FormProps> = ({
           })
 
           window.location.href = result.sessionUrl
-        } else {
+        } else if (type === 'contact') {
           await PublicApiService.createContact(productId, {
+            blockId,
+            ...values
+          })
+
+          setSubmitted(true)
+        } else {
+          await PublicApiService.createEmailCapture(productId, {
             blockId,
             ...values
           })
@@ -143,5 +151,6 @@ const Form: FC<FormProps> = ({ children, ...restProps }) => {
 export default Object.assign(Form, {
   Item: FormItem,
   Input: FormInput,
+  Textarea: FormTextarea,
   Button: FormButton
 })

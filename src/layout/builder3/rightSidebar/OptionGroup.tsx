@@ -2,10 +2,10 @@ import { IconChevronLeft, IconChevronRight } from '@tabler/icons'
 import clsx from 'clsx'
 import { FC } from 'react'
 
-import { EmailCaptureOption } from '~/layout/builder3/rightSidebar/EmailCaptureOption'
-
 import { SchemaTypeEnum } from '../constants'
 import { useBuilderContext } from '../context'
+import { ContactOption } from './ContactOption'
+import { EmailCaptureOption } from './EmailCaptureOption'
 import { HTMLOption } from './HTMLOption'
 import { IconOption } from './IconOption'
 import { ImageOption } from './ImageOption'
@@ -51,6 +51,9 @@ export const Option: FC<OptionProps> = ({ schema, parentName }) => {
 
     case SchemaTypeEnum.emailCapture:
       return <EmailCaptureOption parentName={parentName} schema={schema} />
+
+    case SchemaTypeEnum.contact:
+      return <ContactOption parentName={parentName} schema={schema} />
 
     case SchemaTypeEnum.textList:
       return <TextListOption parentName={parentName} schema={schema} />

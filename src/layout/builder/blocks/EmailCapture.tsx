@@ -4,7 +4,7 @@ import { FC } from 'react'
 
 import { Heading } from '~/layout/builder/blocks/Heading'
 import { Text } from '~/layout/builder/blocks/Text'
-import { StripeService } from '~/service'
+import { PublicApiService } from '~/service/public-api'
 
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
 
@@ -19,7 +19,11 @@ export const EmailCapturePreview: FC<EmailCaptureProps & { product: Product }> =
   const { t } = useTranslation()
 
   async function handleFinish(values: AnyMap<string>) {
-    await StripeService.createContact(product.id!, block.id, values.name, values.email)
+    await PublicApiService.createEmailCapture(product.id!, {
+      blockId: block.id, 
+      name: values.name, 
+      email: values.email
+    })
 
     notification.success({
       title: t('publicSite.successfullySubmitted')

@@ -41,6 +41,10 @@ const LINKS = [
   {
     href: '/product/{productId}/engagements/email-captures',
     routeName: 'emailCapture'
+  },
+  {
+    href: '/product/{productId}/engagements/contacts',
+    routeName: 'contacts'
   }
 ]
 
