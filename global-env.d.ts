@@ -231,6 +231,11 @@ declare global {
     updatedAt: string
   }
 
+  interface EmailCapture extends Contact {
+    subject: string
+    message: string
+  }
+
   interface UnsplashImage {
     id: string
     url: string

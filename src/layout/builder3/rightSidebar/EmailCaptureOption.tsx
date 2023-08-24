@@ -6,7 +6,7 @@ import { TextOption } from './TextOption'
 
 const defaultSubject = 'You got {product.name}'
 const defaultMessage = `
-    <p>Dear {contact.name},</p>
+    <p>Dear {emailCapture.name},</p>
     <p></p>
     <p>Thank you for joining {product.name}. I appreciate your support.</p>
     <p></p>
@@ -15,7 +15,7 @@ const defaultMessage = `
   `
 const variables = [
   {
-    variable: 'contact.name',
+    variable: 'emailCapture.name',
     description: (
       <span>
         Email capture respondent's name{' '}
@@ -24,7 +24,7 @@ const variables = [
     )
   },
   {
-    variable: 'contact.email',
+    variable: 'emailCapture.email',
     description: "Email capture respondent's email address"
   },
   {

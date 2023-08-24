@@ -20,10 +20,10 @@ const ProductEmailCaptures = (): JSX.Element => {
 
   const [page, setPage] = useState(1)
   const [count, setCount] = useState(0)
-  const [contacts, setContacts] = useState<Contact[]>()
+  const [emailCaptures, setEmailCaptures] = useState<EmailCapture[]>()
 
   // Table columns
-  const columns: TableColumn<Contact>[] = [
+  const columns: TableColumn<EmailCapture>[] = [
     {
       key: 'id',
       name: '',
@@ -63,12 +63,12 @@ const ProductEmailCaptures = (): JSX.Element => {
   ]
 
   async function fetchData() {
-    const result = await ProductService.contacts(productId!, page)
+    const result = await ProductService.emailCaptures(productId!, page)
 
     setCount(result.count)
-    setContacts(result.contacts)
+    setEmailCaptures(result.emailCaptures)
 
-    return result.contacts.length > 0
+    return result.emailCaptures.length > 0
   }
 
   useEffect(() => {
@@ -90,7 +90,7 @@ const ProductEmailCaptures = (): JSX.Element => {
         />
       }
     >
-      <Table<Contact> className="mt-8" columns={columns} data={contacts} hideHead />
+      <Table<EmailCapture> className="mt-8" columns={columns} data={emailCaptures} hideHead />
       <Pagination
         uri={`/product/${productId}/engagements/email-captures`}
         total={count}

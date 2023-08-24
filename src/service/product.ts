@@ -129,6 +129,19 @@ export class ProductService {
     })
   }
 
+  static async emailCaptures(
+    productId: number,
+    page = 1,
+    limit = 20
+  ): Promise<{ count: number; emailCaptures: EmailCapture[] }> {
+    return axios.get(`/products/${productId}/email-captures`, {
+      params: {
+        page,
+        limit
+      }
+    })
+  }
+
   static async contacts(
     productId: number,
     page = 1,
