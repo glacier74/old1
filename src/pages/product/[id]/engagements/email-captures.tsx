@@ -90,7 +90,12 @@ const ProductEmailCaptures = (): JSX.Element => {
         />
       }
     >
-      <Table<EmailCapture> className="mt-8" columns={columns} data={emailCaptures} hideHead />
+      <Table<EmailCapture>
+        className="table-engagement mt-8"
+        columns={columns}
+        data={emailCaptures}
+        hideHead
+      />
       <Pagination
         uri={`/product/${productId}/engagements/email-captures`}
         total={count}

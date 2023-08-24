@@ -20,8 +20,8 @@ export const EmailCapturePreview: FC<EmailCaptureProps & { product: Product }> =
 
   async function handleFinish(values: AnyMap<string>) {
     await PublicApiService.createEmailCapture(product.id!, {
-      blockId: block.id, 
-      name: values.name, 
+      blockId: block.id,
+      name: values.name,
       email: values.email
     })
 

@@ -25,7 +25,7 @@ const Search = (props: any): JSX.Element => {
 
 export const getServerSideProps = withTranslations(async ({ query }) => {
   const search = query.query
-  let list = await CollectionService.records()
+  const list = await CollectionService.records()
   const categories: string[] = arrayUnique(list.map(t => t.Category))
 
   let records: CollectionRecord[] = list

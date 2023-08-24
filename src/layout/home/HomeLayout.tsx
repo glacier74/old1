@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import { IconDiscord } from '~/components'
+import { HelpFloatButton } from '~/components'
 import { BaseLayout } from '~/layout'
 
 export function HomeLayout({ seo, children }: LayoutProps): JSX.Element {
@@ -17,16 +17,7 @@ export function HomeLayout({ seo, children }: LayoutProps): JSX.Element {
       </Head>
       <div className="home-container">{children}</div>
 
-      <div className="fixed bottom-4 right-4 z-10">
-        <a
-          href="https://vue.mx/discord"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Join Discord server"
-        >
-          <IconDiscord />
-        </a>
-      </div>
+      <HelpFloatButton />
     </BaseLayout>
   )
 }

@@ -1468,7 +1468,7 @@ button.block-header-button {
 }
 
 .empty-states-title {
-  @apply my-4 text-3xl font-bold;
+  @apply mt-4 text-xl font-bold;
   color: var(--earlybird-primary);
 }
 
@@ -2281,4 +2281,16 @@ button.button-success {
 
 .notification-root {
   @apply pt-[64px];
+}
+
+.table-engagement {
+  .table-body td {
+    &:nth-of-type(1) {
+      @apply pr-2;
+    }
+
+    &:nth-of-type(2) {
+      @apply pl-0;
+    }
+  }
 }

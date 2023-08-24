@@ -222,7 +222,7 @@ declare global {
     productLogo: string
   }
 
-  interface Contact {
+  interface EmailCapture {
     id: number
     name: string
     email: string
@@ -231,7 +231,7 @@ declare global {
     updatedAt: string
   }
 
-  interface EmailCapture extends Contact {
+  interface Contact extends EmailCapture {
     subject: string
     message: string
   }
