@@ -210,7 +210,7 @@ const PublicSite: FC<PublicSiteProps> = ({
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <div>
               <h1 className="text-center text-2xl font-bold text-slate-900">
-                Access to the landing page is restricted
+                Access restricted
               </h1>
               <p className="text-center text-sm text-slate-700">
                 Access to this landing page is currently restricted. If you believe this is a mistake, please contact us.
