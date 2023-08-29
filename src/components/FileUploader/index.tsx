@@ -145,7 +145,7 @@ export const DragUploader: FC<DragUploaderProps> = ({
           <div className="flex flex-col justify-center space-y-1 text-center">
             <IconUpload className="mx-auto h-12 w-12 text-slate-400 non-scaling-stroke" />
             <div className="flex items-center justify-center text-sm text-slate-500">
-              <Button.Link type="success" onClick={handleOpen}>
+              <Button.Link className="drag-uploader-button" type="success" onClick={handleOpen}>
                 {t(selectText)}
               </Button.Link>
               <p className="pl-1">{t('common.drag')}</p>

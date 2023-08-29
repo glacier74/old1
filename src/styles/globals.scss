@@ -518,6 +518,10 @@ button.switch-checked {
 
   .drag-uploader {
     @apply h-full;
+
+    .drag-uploader-button {
+      @apply bg-transparent text-emerald-500 hover:text-emerald-600;
+    }
   }
 }
 

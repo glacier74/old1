@@ -213,7 +213,8 @@ const PublicSite: FC<PublicSiteProps> = ({
                 Access restricted
               </h1>
               <p className="text-center text-sm text-slate-700">
-                Access to this landing page is currently restricted. If you believe this is a mistake, please contact us.
+                Access to this landing page is currently restricted. If you believe this is a
+                mistake, please contact us.
               </p>
             </div>
           </div>

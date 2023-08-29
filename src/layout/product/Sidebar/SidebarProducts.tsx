@@ -7,8 +7,10 @@ import type { FC } from 'react'
 import { useEffect, useState } from 'react'
 
 import { RoundImage } from '~/components'
-import { PLAN_NAMES } from '~/constants'
+import { PLAN_LEVELS, PLAN_NAMES } from '~/constants'
+import { UpgradeModal } from '~/layout/builder3/navbar/UpgradeModal'
 import { useStore } from '~/store'
+import { useSubscriptionPlanLevel, useVisible } from '~/utils'
 
 import { useProduct, useProductId } from '../../hook'
 
@@ -86,11 +88,17 @@ const Skeleton = () => {
 export const SidebarProducts: FC = () => {
   const { t } = useTranslation()
   const router = useRouter()
-  const { isReady, products } = useStore()
+  const { isReady, user, products } = useStore()
+  const currPlanLevel = useSubscriptionPlanLevel(user.subscription)
 
   const [visible, setVisible] = useState(false)
+  const [upgradeModalVisible, openUpgradeModal, closeUpgradeModal] = useVisible()
 
   function handleCreate() {
+    if (products.length > 0 && currPlanLevel === PLAN_LEVELS.plan_free) {
+      return openUpgradeModal()
+    }
+
     router.push('/product/create')
   }
 
@@ -119,19 +127,27 @@ export const SidebarProducts: FC = () => {
   }, [])
 
   return (
-    <div className="px-4">
-      {isReady ? (
-        <Dropdown
-          className="product-dropdown block w-full"
-          placement="bottom-start"
-          overlay={Overlay}
-          visible={visible}
-        >
-          <Current />
-        </Dropdown>
-      ) : (
-        <Skeleton />
-      )}
-    </div>
+    <>
+      <div className="px-4">
+        {isReady ? (
+          <Dropdown
+            className="product-dropdown block w-full"
+            placement="bottom-start"
+            overlay={Overlay}
+            visible={visible}
+          >
+            <Current />
+          </Dropdown>
+        ) : (
+          <Skeleton />
+        )}
+      </div>
+
+      <UpgradeModal
+        visible={upgradeModalVisible}
+        onPublish={closeUpgradeModal}
+        onClose={closeUpgradeModal}
+      />
+    </>
   )
 }

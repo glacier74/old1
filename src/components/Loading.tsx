@@ -17,10 +17,14 @@ export function Spin({ className }: ComponentProps) {
   )
 }
 
-export function Loading({ className }: ComponentProps) {
+interface LoadingProps extends ComponentProps {
+  spinClassName?: string
+}
+
+export function Loading({ className, spinClassName }: LoadingProps) {
   return (
     <div className={clsx('flex flex-col justify-center items-center', className)}>
-      <Spin />
+      <Spin className={spinClassName} />
     </div>
   )
 }

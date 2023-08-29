@@ -18,6 +18,7 @@ import { PreviewModal } from '../PreviewModal'
 interface TemplateItemProps {
   template: Template_V3
   isSelected?: boolean
+  loading?: boolean
   onPreview: (template: Template_V3) => void
   onClick: (id: string) => void
 }
@@ -48,7 +49,13 @@ const CategoryItem: FC<CategoryItemProps> = ({ category, isSelected, onClick }) 
   )
 }
 
-const TemplateItem: FC<TemplateItemProps> = ({ template, isSelected, onPreview, onClick }) => {
+const TemplateItem: FC<TemplateItemProps> = ({
+  template,
+  isSelected,
+  loading,
+  onPreview,
+  onClick
+}) => {
   function handleClick() {
     onClick(template.id)
   }
@@ -72,14 +79,25 @@ const TemplateItem: FC<TemplateItemProps> = ({ template, isSelected, onPreview, 
           />
         </div>
 
-        <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-colors hover:bg-black/20 group-hover/image:opacity-100 rounded-t-md">
-          <button
-            type="button"
-            className="px-2 py-1 rounded-lg bg-emerald-500 text-white text-sm z-10 shadow-lg transition-colors hover:bg-emerald-600"
-            onClick={handlePreview}
-          >
-            Preview
-          </button>
+        <div
+          className={clsx(
+            'absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-colors hover:bg-black/20 group-hover/image:opacity-100 rounded-t-md',
+            {
+              '!bg-black/20 !opacity-100': loading && isSelected
+            }
+          )}
+        >
+          {loading && isSelected ? (
+            <Loading className="w-full h-full" spinClassName="text-white" />
+          ) : (
+            <button
+              type="button"
+              className="px-2 py-1 rounded-lg bg-emerald-500 text-white text-sm z-10 shadow-lg transition-colors hover:bg-emerald-600"
+              onClick={handlePreview}
+            >
+              Preview
+            </button>
+          )}
         </div>
 
         {isSelected && (
@@ -91,13 +109,15 @@ const TemplateItem: FC<TemplateItemProps> = ({ template, isSelected, onPreview, 
       <div className="flex items-center px-4 py-3 gap-4">
         <div className="flex-1 text-sm font-medium">{template.name}</div>
 
-        <button
-          type="button"
-          className="px-2 py-1 rounded-lg text-emerald-600 text-sm border border-emerald-600 opacity-0 hover:text-emerald-700 hover:border-emerald-700 group-hover/container:opacity-100"
-          onClick={handleClick}
-        >
-          Use this template
-        </button>
+        {!loading && (
+          <button
+            type="button"
+            className="px-2 py-1 rounded-lg text-emerald-600 text-sm border border-emerald-600 opacity-0 hover:text-emerald-700 hover:border-emerald-700 group-hover/container:opacity-100"
+            onClick={handleClick}
+          >
+            Use this template
+          </button>
+        )}
       </div>
     </div>
   )
@@ -132,45 +152,50 @@ export const Step3 = () => {
     setTemplates(templates)
   }, [])
 
-  const handleCreate = useCallback(async () => {
-    setLoading(true)
-    setError(undefined)
+  const handleCreate = useCallback(
+    async (template: string) => {
+      setLoading(true)
+      setError(undefined)
 
-    try {
-      const productId = await ProductService.create({
-        ...product,
-        blocks: schemasToOptions(templateList[product!.template as string].schemas)
-      })
+      try {
+        const productId = await ProductService.create({
+          ...product,
+          template,
+          blocks: schemasToOptions(templateList[template].schemas)
+        })
 
-      await router.replace(`/product/${productId}/edit`)
-    } catch (err: any) {
-      setError(err.message)
-    }
+        await router.replace(`/product/${productId}/edit`)
+      } catch (err: any) {
+        setError(err.message)
+      }
 
-    setLoading(false)
-  }, [product])
+      setLoading(false)
+    },
+    [product]
+  )
 
   function handleBack() {
     setStep(2)
   }
 
-  const handleNext = useCallback(() => {
-    const tmpl = templates.find(t => t.id === product?.template)
+  const handleSelect = useCallback(
+    (template: string) => {
+      setTemplate(undefined)
+      setProduct({
+        ...product,
+        template
+      })
 
-    if (tmpl?.categoryId.toLowerCase() === 'portfolio') {
-      return handleCreate()
-    }
+      const tmpl = templates.find(t => t.id === template)
 
-    setStep(4)
-  }, [product?.template, templates])
+      if (tmpl?.categoryId.toLowerCase() === 'portfolio') {
+        return handleCreate(template)
+      }
 
-  function handleSelect(template: string) {
-    setTemplate(undefined)
-    setProduct({
-      ...product,
-      template
-    })
-  }
+      setStep(4)
+    },
+    [templates]
+  )
 
   useEffect(() => {
     // 当 templateId 有值时跳过模板选择界面
@@ -219,6 +244,7 @@ export const Step3 = () => {
                   key={template.id}
                   template={template}
                   isSelected={product?.template === template.id}
+                  loading={loading}
                   onPreview={setTemplate}
                   onClick={handleSelect}
                 />
@@ -226,16 +252,6 @@ export const Step3 = () => {
             </div>
           </>
         )}
-
-        <Button
-          type="success"
-          loading={loading}
-          disabled={isEmpty(product?.template)}
-          className="!px-6 !py-2 !rounded-full !text-lg"
-          onClick={handleNext}
-        >
-          Next
-        </Button>
 
         {error && <div className="mt-2 text-sm text-red-500">{error}</div>}
       </div>
