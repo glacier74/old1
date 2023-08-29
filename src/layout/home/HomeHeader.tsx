@@ -71,11 +71,18 @@ export const HomeHeader: FC = () => {
                 Templates
               </Link>
               <Link
-                href="/collections"
-                title={t('collections.title')}
+                href="/integrations"
+                title={t('integrations.title')}
                 className="hidden md:block hover:opacity-80 hover:text-emerald-600"
               >
-                Collections
+                Integrations
+              </Link>
+              <Link
+                href="/about"
+                title={t('about.title')}
+                className="hidden md:block hover:opacity-80 hover:text-emerald-600"
+              >
+                About
               </Link>
               <Link
                 href="/blog"
@@ -128,8 +135,11 @@ export const HomeHeader: FC = () => {
               <Link href="/templates" title={t('templates.title')} className="hover:opacity-80">
                 Templates
               </Link>
-              <Link href="/collections" title={t('collections.title')} className="hover:opacity-80">
-                Collections
+              <Link href="/integrations" title={t('integrations.title')} className="hover:opacity-80">
+                Integrations
+              </Link>
+              <Link href="/about" title={t('about.title')} className="hover:opacity-80">
+                About
               </Link>
               <Link href="/blog" title={t('blog.title')} className="hover:opacity-80">
                 Blog
