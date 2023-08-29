@@ -15,8 +15,7 @@ export const HomeFeature: FC = () => (
         <div className="py-8 md:py-32">
           <div className="text-3xl md:text-5xl font-bold text-slate-900">Build a landing page</div>
           <div className="mt-5 mb-7 max-w-xl text-xl md:text-2xl leading-tight text-slate-700">
-            Easily build a simple landing page for your idea in minutes from a template or start
-            fresh. Seek no help from a designer or developer.
+            Easily build a simple landing page for your idea in minutes from a template. Seek no help from a designer or developer.
           </div>
           <Image
             src={FeatureBuildImage}

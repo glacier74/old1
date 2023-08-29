@@ -7,7 +7,7 @@ import {
   TablerIconProps
 } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 interface LinkButtonProps {
   icon: FC<TablerIconProps>
@@ -23,7 +23,7 @@ const LinkButton = ({ icon: Icon, href, title }: LinkButtonProps) => {
   return (
     <button
       type="button"
-      className="w-full text-slate-700 hover:bg-slate-200 hover:text-slate-900 group flex items-center px-2 py-1 text-sm rounded-md"
+      className="w-full text-slate-700 hover:bg-slate-100 hover:text-slate-900 group flex items-center px-2 py-1 text-sm rounded-md"
       onClick={handleClick}
     >
       <Icon className="text-slate-700 mr-3 flex-shrink-0 h-5 w-5" />
@@ -34,6 +34,15 @@ const LinkButton = ({ icon: Icon, href, title }: LinkButtonProps) => {
 
 export const HelpFloatButton = () => {
   const { t } = useTranslation()
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleMouseEnter = () => {
+    setIsOpen(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsOpen(false)
+  }
 
   const Overlay = (
     <Menus className="w-[13rem] space-y-1 px-2 py-4">
@@ -43,7 +52,7 @@ export const HelpFloatButton = () => {
         title={t('sidebar.helpCenter')}
       />
       <LinkButton
-        href="https://vue.mx/discord"
+        href="https://discord.gg/S6sbYd5h8G"
         icon={IconMessageDots}
         title={t('sidebar.joinCommunity')}
       />
@@ -62,7 +71,11 @@ export const HelpFloatButton = () => {
 
   return (
     <Dropdown className="fixed bottom-8 right-8" placement="top-end" overlay={Overlay}>
-      <button className="p-1 rounded-full bg-white hover:bg-slate-50 hover:text-slate-800 shadow-[rgba(0,0,0,0.08)_0px_2px_4px,rgba(0,0,0,0.06)_0px_2px_12px,rgba(0,0,0,0.04)_0px_8px_14px,rgba(0,0,0,0.02)_0px_12px_16px]">
+      <button 
+      className="p-1 rounded-full bg-white hover:bg-slate-50 hover:text-slate-800 shadow-[rgba(0,0,0,0.08)_0px_2px_4px,rgba(0,0,0,0.06)_0px_2px_12px,rgba(0,0,0,0.04)_0px_8px_14px,rgba(0,0,0,0.02)_0px_12px_16px]"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave} 
+      > 
         <IconHelp className="w-6 h-6 text-slate-500" />
       </button>
     </Dropdown>
