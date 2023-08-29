@@ -12,9 +12,9 @@ export const HomeUsecase: FC = () => {
             <div>
               <h3 className="text-4xl font-bold mb-8">EarlyBird is for</h3>
               <ul className="list-disc text-2xl leading-relaxed pl-4 leading-loose">
-                <li>Users without development and design skills</li>
-                <li>Running a simple online business</li>
-                <li>Finding the best product-market fit</li>
+                <li>Individuals lacking design or development skills</li>
+                <li>Entrepreneurs operating simple online businesses</li>
+                <li>Startups seeking the perfect product-market fit</li>
               </ul>
             </div>
           </div>
@@ -24,9 +24,9 @@ export const HomeUsecase: FC = () => {
         <div className="px-8 md:pl-32">
           <h3 className="text-4xl font-bold mb-8">EarlyBird is NOT for</h3>
           <ul className="list-disc text-2xl leading-relaxed pl-4 leading-loose">
-            <li>Building a complex web app</li>
-            <li>Launching a website with bespoke design</li>
-            <li>Running an offensive or illegal business</li>
+            <li>Developers aiming to build complex web applications</li>
+            <li>Businesses requiring bespoke website designs</li>
+            <li>Those requiring advanced customizations and integrations</li>
           </ul>
         </div>
       </div>

@@ -38,9 +38,9 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
             </span>{' '}
             that capture early adopters
           </h1>
-          <div className="max-w-3xl mx-auto text-slate-500 text-lg md:text-2xl mt-6 leading-snug">
+          <div className="max-w-3xl mx-auto text-slate-700 text-lg md:text-2xl mt-6 leading-snug">
             Your ideas have the potential to be worth millions, and you can start without any
-            technical knowledge!
+            technical knowledge, aided by ChatGPT!
           </div>
         </div>
 
