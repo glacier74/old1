@@ -105,7 +105,7 @@ export const HomeHeader: FC = () => {
 
             <div className="md:hidden">
               <Button.Link
-                className="block-header-button"
+                className="mr-2.5 block-header-button"
                 leading={isOpen ? <IconX /> : <IconMenu2 />}
                 onClick={handleClick}
                 aria-label="Menu"
@@ -124,6 +124,9 @@ export const HomeHeader: FC = () => {
               </Link>
               <Link href="/pricing" title={t('pricing.title')} className="hover:opacity-80">
                 Pricing
+              </Link>
+              <Link href="/templates" title={t('templates.title')} className="hover:opacity-80">
+                Templates
               </Link>
               <Link href="/collections" title={t('collections.title')} className="hover:opacity-80">
                 Collections
