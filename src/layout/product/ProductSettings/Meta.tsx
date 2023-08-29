@@ -74,7 +74,7 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
                   <div className="mb-1 pt-1 text-xl leading-[1.3] text-[#1a0dab] font-serif whitespace-nowrap break-words text-ellipsis overflow-hidden">
                     {values.metaTitle || values.name}
                   </div>
-                  <div className="font-serif text-[0.875rem] leading-[1.57] text-[#4d5156] font-serif">
+                  <div className="font-serif text-[0.875rem] leading-[1.57] text-[#4d5156] font-serif break-words">
                     {values.metaDescription || values.tagline}
                   </div>
                 </div>
