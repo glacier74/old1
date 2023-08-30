@@ -177,7 +177,7 @@ export const schemas = [
         default: [
           {
             icon: 'brand-twitter',
-            link: 'https://twitter.com/nurpraditya'
+            link: 'https://twitter.com/'
           },
           {
             icon: 'brand-instagram-line',
@@ -185,7 +185,7 @@ export const schemas = [
           },
           {
             icon: 'brand-dribbble-line',
-            link: 'https://dribbble.com/nurpraditya'
+            link: 'https://dribbble.com/'
           },
           {
             icon: 'brand-linkedin',
