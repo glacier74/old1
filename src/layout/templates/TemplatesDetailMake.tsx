@@ -5,7 +5,7 @@ import { FC } from 'react'
 export const TemplatesDetailMake: FC = () => {
   const { t } = useTranslation()
   return (
-    <section className="max-w-6xl mx-auto md:px-12 px-6 lg:py-20 py-12 z-10">
+    <section className="max-w-5xl mx-auto md:px-12 px-6 lg:py-20 py-12 z-10">
       <div className="flex sm:flex-row flex-col justify-between items-center max-w-5xl mx-auto md:gap-5 gap-7">
         <div className="sm:max-w-sm max-w-[500px] flex flex-col justify-center items-start xl:gap-6 gap-4">
           <div className="lg:text-3xl text-2xl font-bold">Make it uniquely yours</div>
@@ -21,8 +21,8 @@ export const TemplatesDetailMake: FC = () => {
         </div>
         <Image
           src="/static/template-make.png"
-          width={400}
-          height={400}
+          width={320}
+          height={320}
           alt="Make it uniquely yours"
           className="rounded-full shadow-md"
         />

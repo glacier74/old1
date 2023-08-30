@@ -1,8 +1,8 @@
 {
   "common": {
     "shortName": "EarlyBird",
-    "name": "EarlyBird: Landing Page Builder for Startups to Validate Ideas",
-    "description": "EarlyBird is the brand-new landing page builder for startups. Start pitching and validating business ideas in minutes.",
+    "name": "EarlyBird: Your landing page builder for effective lead capture",
+    "description": "EarlyBird is a no-code landing page builder for startups. Effortlessly create customized, high-converting landing pages to validate your startup ideas. Begin your journey to success with EarlyBird today.",
     "logo": "Logo",
     "change": "Change",
     "cancel": "Cancel",
@@ -45,7 +45,7 @@
     "title": "Showcase - EarlyBird"
   },
   "microSaasIdeas": {
-    "title": "MicroSaasIdeas - EarlyBird"
+    "title": "Micro Saas Ideas - EarlyBird"
   },
   "useCase": {
     "title": "UseCase - EarlyBird"

@@ -9,9 +9,9 @@ export const TemplatesDetailMakeInt: FC<{ integrations: IntegrationRecord[] }> =
   const { t } = useTranslation()
 
   return (
-    <section className="bg-emerald-900/80 md:px-12 px-6 md:py-32 py-20 z-10">
+    <section className="bg-emerald-200/50 md:px-12 px-6 md:py-32 py-20 z-10">
       <div className="max-w-7xl mx-auto text-center">
-        <div className="sm:text-5xl text-3xl font-bold text-white">
+        <div className="sm:text-5xl text-3xl font-bold text-slate-950">
           Make life easy with integrations
         </div>
         <div className="grid grid-cols-3 mt-8 md:mt-16 md:grid-cols-6 gap-6 md:gap-12">
@@ -29,7 +29,7 @@ export const TemplatesDetailMakeInt: FC<{ integrations: IntegrationRecord[] }> =
                 quality={100}
                 className="w-[60px] h-[60px] md:w-[80px] md:h-[80px] object-cover"
               />
-              <div className="text-white">{row.Name}</div>
+              <div className="text-slate-950">{row.Name}</div>
             </Link>
           ))}
         </div>
