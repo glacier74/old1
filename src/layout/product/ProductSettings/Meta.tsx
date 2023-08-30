@@ -120,9 +120,9 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
               <div className="max-w-full mt-1 overflow-hidden text-black border border-slate-300 bg-white shadow-sm rounded-md">
                 <div className="flex h-full flex-col items-center justify-center rounded-t-md">
                   <OpenGraphImage
-                    text={values.metaTitle || values.name}
-                    width={1200}
-                    height={630}
+                    name={values.name}
+                    metaTitle={values.metaTitle?.slice(0, 60)}
+                    metaDescription={(values.metaDescription || values.tagline)?.slice(0, 120)}
                   />
                 </div>
                 <div className="font-serif break-words border-t border-slate-300 p-4 antialiased">
