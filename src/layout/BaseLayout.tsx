@@ -28,7 +28,7 @@ export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
       url,
       images: [
         {
-          url: 'https://storage.earlybird.im/static/og-image.png'
+          url: 'https://storage.earlybird.im/static/og.png'
         }
       ]
     },
