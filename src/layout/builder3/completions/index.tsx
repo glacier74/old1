@@ -61,10 +61,10 @@ export const Completions = () => {
         }
 
         // Generating again if error occurred in GPT response.
-        if (isEmpty(data)) {
+        if (isEmpty(data) || isEmpty(data![selected.name])) {
           return setTimeout(() => {
             handleCompletions(unfinished)
-          }, 1_000)
+          }, 2_000)
         }
 
         // 删除第一个
