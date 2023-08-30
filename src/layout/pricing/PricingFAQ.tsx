@@ -38,7 +38,7 @@ export const PricingFAQ: FC = () => {
 
   return (
     <section>
-      <div className="max-w-7xl mx-auto px-4 pb-32 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 pb-32 sm:px-6 lg:px-8 mt-16 sm:mt-0">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-center text-2xl font-bold text-slate-900 sm:text-3xl">
             Frequently asked questions
@@ -60,8 +60,8 @@ export const PricingFAQ: FC = () => {
                         </span>
                       </Disclosure.Button>
                     </dt>
-                    <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                      <p className="mt-4 text-slate-700">{faq.answer}</p>
+                    <Disclosure.Panel as="dd" className="py-2">
+                      <p className="text-slate-700">{faq.answer}</p>
                     </Disclosure.Panel>
                   </>
                 )}

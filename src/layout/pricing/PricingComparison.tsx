@@ -52,14 +52,6 @@ const sections = [
         tiers: { Free: '100', Starter: '1,000', Superior: '50,000', Shipper: '200,000' }
       },
       {
-        name: 'Access to all UI blocks',
-        tiers: { Free: true, Starter: true, Superior: true, Shipper: true }
-      },
-      {
-        name: 'Unlimited blocks',
-        tiers: { Free: true, Starter: true, Superior: true, Shipper: true }
-      },
-      {
         name: 'Text formatting',
         tiers: { Free: true, Starter: true, Superior: true, Shipper: true }
       },
@@ -255,7 +247,7 @@ export const PricingComparison: FC<{
 
   return (
     <section className="hidden lg:block">
-      <div className="max-w-7xl mx-auto py-16 sm:py-48 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto py-16 sm:py-32 sm:px-6 lg:px-8">
         <h2 className="max-w-3xl mx-auto text-slate-900 font-bold text-5xl text-center">
           Compare Plans
         </h2>

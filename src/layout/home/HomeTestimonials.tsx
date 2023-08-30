@@ -184,7 +184,7 @@ export const HomeTestimonials: FC<{ testimonials: TestimonialRecord[] }> = ({ te
   return (
     <section className="relative py-32">
       <div className="max-w-7xl mx-auto px-5">
-        <h2 className="text-3xl text-center font-extrabold md:text-5xl text-slate-900">
+        <h2 className="text-2xl text-center font-bold md:text-5xl text-slate-900">
           People really love EarlyBird
         </h2>
         <div className="mt-6 flex justify-center">

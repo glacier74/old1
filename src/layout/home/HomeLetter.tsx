@@ -10,7 +10,7 @@ export const HomeLetter: FC = () => {
   return (
     <section className="relative pb-0 bg-emerald-50">
       <div className="py-32 px-4 md:px-8 max-w-4xl mx-auto">
-        <h2 className="text-5xl font-extrabold text-center">Founder letter</h2>
+        <h2 className="sm:text-5xl text-3xl font-extrabold text-center">Founder letter</h2>
         <div className="mt-8 shadow-xl p-8 md:p-16 text-base md:text-lg bg-white text-slate-800 whitespace-pre-line space-y-3 rounded-lg">
           <p>Hi everyone,</p>
           <p>I’m Luo, the founder of EarlyBird.</p>

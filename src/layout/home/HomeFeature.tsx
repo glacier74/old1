@@ -7,17 +7,16 @@ import FeatureValidateImage from '~public/static/feature-validate.png'
 
 export const HomeFeature: FC = () => (
   <>
-    <section className="bg-sky-50 grid md:grid-cols-2">
-      <div className="flex md:justify-end py-8 md:py-32 px-8 md:pr-32">
-        <h2 className="text-2xl md:text-4xl">Here's how it works</h2>
-      </div>
-      <div className="px-8">
-        <div className="py-8 md:py-32">
-          <div className="text-3xl md:text-5xl font-bold text-slate-900">Build a landing page</div>
-          <div className="mt-5 mb-7 max-w-xl text-xl md:text-2xl leading-tight text-slate-700">
+    <section className="max-w-7xl mx-auto">
+      <div className="grid md:grid-cols-2">
+        <div className="sm:px-16 px-8 pt-8 flex flex-col justify-center">
+          <h3 className="text-2xl md:text-4xl font-bold text-slate-900">Build a landing page</h3>
+          <div className="mt-5 mb-7 max-w-xl text-lg md:text-xl text-slate-500">
             Easily build a simple landing page for your idea in minutes from a template. Seek no
             help from a designer or developer.
           </div>
+        </div>
+        <div className="py-0 md:py-16">
           <Image
             src={FeatureBuildImage}
             alt="Create your own minimum-viable-product landing page"
@@ -29,9 +28,9 @@ export const HomeFeature: FC = () => (
       </div>
     </section>
 
-    <section className="grid md:grid-cols-2">
-      <div className="flex justify-end px-8">
-        <div className="py-8 md:py-32">
+    <section className="max-w-7xl mx-auto grid md:grid-cols-2">
+      <div className="flex justify-end order-last md:order-first">
+        <div className="py-0 md:py-16">
           <Image
             src={FeaturePitchImage}
             alt="Channel your idea into a convincing pitch deck for the masses"
@@ -41,10 +40,10 @@ export const HomeFeature: FC = () => (
           />
         </div>
       </div>
-      <div className="flex items-center py-8 md:py-32 px-8 md:pr-32">
+      <div className="flex items-center sm:px-16 px-8 md:pr-32 pt-16 order-first md:order-last">
         <div className="max-w-xl mx-auto">
-          <div className="text-3xl md:text-5xl font-bold">Market your idea</div>
-          <div className="mt-5 mb-7 w-full text-xl md:text-2xl leading-tight text-slate-700">
+          <div className="text-2xl md:text-4xl font-bold">Market your idea</div>
+          <div className="mt-5 mb-7 w-full text-lg md:text-xl leading-tight text-slate-500">
             Transform your idea into a compelling pitch deck that interests your audience. Spend
             less time creating copies.
           </div>
@@ -52,17 +51,18 @@ export const HomeFeature: FC = () => (
       </div>
     </section>
 
-    <section className="bg-amber-50/70 grid md:grid-cols-2">
-      <div className="flex items-center justify-end px-8 pt-8">
-        <div className="py-8 md:py-32 max-w-xl mx-auto">
-          <div className="text-3xl md:text-5xl font-bold ">Validate the idea</div>
-          <div className="mt-5 w-full text-xl md:text-2xl leading-tight text-slate-700">
+
+    <section className="max-w-7xl mx-auto grid md:grid-cols-2">
+      <div className="flex items-center justify-end sm:pl-16 sm:pr-24 px-8 pt-16 pb-8">
+        <div className="max-w-xl mx-auto">
+          <div className="text-2xl md:text-4xl font-bold ">Validate the idea</div>
+          <div className="mt-5 w-full text-lg md:text-xl leading-tight text-slate-500">
             Start engaging with potential customers. Validate the demand for your product and accept
             payments before launch.
           </div>
         </div>
       </div>
-      <div className="pb-8 md:py-32 px-8">
+      <div className="py-0 md:py-16">
         <Image
           src={FeatureValidateImage}
           alt="Start engaging with potential buyers and communities"

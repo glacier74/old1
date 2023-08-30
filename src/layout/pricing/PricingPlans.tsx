@@ -171,7 +171,7 @@ export const PricingPlans: FC<{
             , forever (yes really)!
           </div>
 
-          <div className="mt-16 sm:flex sm:justify-between bg-lime-50 rounded-lg shadow-sm px-4 sm:px-16 py-16">
+          <div className="mt-16 sm:flex sm:justify-between rounded-lg shadow-sm px-4 sm:px-16 py-16 border border-lime-600">
             <div className="px-4">
               <h3 className="text-4xl font-bold mb-4">Looking for custom plans?</h3>
               <div className="max-w-xl text-lg text-slate-700">

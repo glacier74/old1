@@ -23,7 +23,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
             </span>{' '}
             with no waiting
           </div>
-          <h1 className="max-w-5xl mx-auto text-3xl md:text-7xl font-bold md:font-extrabold">
+          <h1 className="max-w-3xl mx-auto text-3xl md:text-6xl font-bold md:font-extrabold">
             Create{' '}
             <span className="relative whitespace-nowrap text-emerald-500">
               <svg
@@ -38,7 +38,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
             </span>{' '}
             that capture early adopters
           </h1>
-          <div className="max-w-3xl mx-auto text-slate-700 text-lg md:text-2xl mt-6 leading-snug">
+          <div className="max-w-3xl mx-auto text-slate-700 text-lg md:text-xl mt-6 leading-snug">
             Your ideas have the potential to be worth millions, and you can start without any
             technical knowledge, aided by ChatGPT!
           </div>
@@ -48,7 +48,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
           <div className="flex justify-center flex-col md:flex-row items-center space-y-5 space-x-0 md:space-y-0 md:space-x-5">
             <Link
               href="/sign-up"
-              className="w-auto px-4 py-3 md:px-8 md:py-3 bg-slate-900 rounded-full text-white text-lg font-medium"
+              className="w-auto px-4 py-3 md:px-8 md:py-3 bg-slate-900 rounded-full text-white sm:text-lg text-base font-medium"
               title={t('home.signUp')}
             >
               Get started for free -&#62;
