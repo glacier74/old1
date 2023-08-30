@@ -9,7 +9,8 @@ export const schemas = [
         name: 'brand_name',
         title: 'Brand name',
         type: 'text',
-        default: 'EarlyBird'
+        default: 'EarlyBird',
+        ai: true
       },
       {
         name: 'cta1',
