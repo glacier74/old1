@@ -47,14 +47,14 @@ const Home = ({ isLoggedIn, usersCount, testimonials }: HomeProps): JSX.Element 
 }
 
 export const getServerSideProps = withTranslations(async context => {
-  const [usersCount, testimonials] = await Promise.all([
+  const [res1, testimonials] = await Promise.all([
     PublicApiService.userCount(),
     TestimonialService.records()
   ])
 
   return {
     props: {
-      usersCount,
+      usersCount: res1.count,
       testimonials,
       isLoggedIn: isLoggedIn(context.req.cookies)
     }
