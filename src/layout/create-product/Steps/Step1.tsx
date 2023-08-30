@@ -1,15 +1,10 @@
 import { Button, Input } from '@heyforms/ui'
 import { isEmpty } from '@nily/utils'
-import { IconArrowLeft } from '@tabler/icons'
 
 import { useStore } from '~/store'
 
 export const Step1 = () => {
   const { product, setStep, setProduct } = useStore()
-
-  function handleBack() {
-    setStep(0)
-  }
 
   function handleClick() {
     setStep(2)
@@ -24,9 +19,6 @@ export const Step1 = () => {
 
   return (
     <div>
-      <button className="mb-8 text-gray-500 hover:text-gray-800" onClick={handleBack}>
-        <IconArrowLeft />
-      </button>
       <div className="flex items-center mb-2 text-3xl font-semibold text-slate-950">
         I would call the landing page{' '}
         <Input className="create-product-input" value={product?.name} onChange={handleChange} />

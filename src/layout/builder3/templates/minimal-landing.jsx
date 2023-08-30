@@ -210,7 +210,8 @@ export const schemas = [
         name: 'copyright',
         title: 'Copyright',
         type: 'html',
-        default: '© 2023 Earlybird Inc.'
+        default: '© 2023 Earlybird Inc.',
+        ai: true
       },
       {
         name: 'socials',

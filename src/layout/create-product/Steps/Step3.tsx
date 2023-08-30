@@ -1,5 +1,4 @@
-import { Button } from '@heyforms/ui'
-import { arrayUnique, isEmpty, isValid } from '@nily/utils'
+import { arrayUnique, isValid } from '@nily/utils'
 import { IconArrowLeft, IconCheck } from '@tabler/icons'
 import clsx from 'clsx'
 import Image from 'next/image'
@@ -14,6 +13,7 @@ import { useStore } from '~/store'
 import { useParam, useRequest } from '~/utils'
 
 import { PreviewModal } from '../PreviewModal'
+import { notification } from '@heyforms/ui'
 
 interface TemplateItemProps {
   template: Template_V3
@@ -134,7 +134,6 @@ export const Step3 = () => {
   const [template, setTemplate] = useState<Template_V3>()
 
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string>()
 
   const filteredTemplates = useMemo(() => {
     if (categoryId === ALL_CATEGORY_NAME) {
@@ -155,7 +154,6 @@ export const Step3 = () => {
   const handleCreate = useCallback(
     async (template: string) => {
       setLoading(true)
-      setError(undefined)
 
       try {
         const productId = await ProductService.create({
@@ -166,7 +164,9 @@ export const Step3 = () => {
 
         await router.replace(`/product/${productId}/edit`)
       } catch (err: any) {
-        setError(err.message)
+        notification.error({
+          title: err.message
+        })
       }
 
       setLoading(false)
@@ -252,8 +252,6 @@ export const Step3 = () => {
             </div>
           </>
         )}
-
-        {error && <div className="mt-2 text-sm text-red-500">{error}</div>}
       </div>
 
       <PreviewModal

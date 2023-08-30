@@ -1,5 +1,6 @@
 import { Button, Select } from '@heyforms/ui'
 import { isEmpty, isValid } from '@nily/utils'
+import { IconArrowLeft } from '@tabler/icons'
 import router from 'next/router'
 import { useCallback, useState } from 'react'
 
@@ -77,6 +78,10 @@ export const Step2 = () => {
     setLoading(false)
   }, [product])
 
+  function handleBack() {
+    setStep(1)
+  }
+
   function handleClick() {
     if (isValid(templateId) && templateCategory.toLowerCase() === 'portfolio') {
       return handleCreate()
@@ -94,6 +99,9 @@ export const Step2 = () => {
 
   return (
     <div>
+      <button className="mb-8 text-gray-500 hover:text-gray-800" onClick={handleBack}>
+        <IconArrowLeft />
+      </button>
       <div className="flex items-center mb-2 text-3xl font-semibold text-slate-900">
         I am creating a landing page for{' '}
         <Select
@@ -118,6 +126,8 @@ export const Step2 = () => {
       >
         Next
       </Button>
+
+      {error && <div className="mt-2 text-sm text-red-500">{error}</div>}
     </div>
   )
 }
