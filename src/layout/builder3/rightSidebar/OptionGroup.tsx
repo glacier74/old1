@@ -23,7 +23,7 @@ export interface OptionProps {
 
 interface OptionGroupProps extends OptionProps {
   isSelected?: boolean
-  onSelect: (name: string) => void
+  onSelect: (name?: string) => void
 }
 
 export const Option: FC<OptionProps> = ({ schema, parentName }) => {
@@ -70,7 +70,7 @@ export const OptionGroup: FC<OptionGroupProps> = ({ schema, onSelect }) => {
   const { state } = useBuilderContext()
 
   function handleClick() {
-    onSelect(schema.name)
+    onSelect(state.selectedOptionName !== schema.name ? schema.name : undefined)
   }
 
   if (state.selectedOptionName && state.selectedOptionName !== schema.name) {

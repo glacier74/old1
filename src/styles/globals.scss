@@ -2298,3 +2298,13 @@ button.button-success {
     }
   }
 }
+
+.builder3-sidebar-tabs {
+  .tabs-navbar {
+    @apply sticky top-0 z-10 bg-white px-4;
+  }
+
+  .tabs-pane {
+    @apply py-6;
+  }
+}

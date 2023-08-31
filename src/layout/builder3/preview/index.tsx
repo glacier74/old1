@@ -3,6 +3,7 @@ import { FC, useCallback, useEffect, useMemo } from 'react'
 import Frame from 'react-frame-component'
 
 import { useProductId } from '~/layout'
+import { PublicSiteDangerouslyHTML } from '~/layout/public-site/PublicSiteDangerouslyHTML'
 import { SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
 import { useVisible } from '~/utils'
@@ -91,6 +92,7 @@ export const Preview: FC = () => {
           className="w-full h-full scrollbar"
           initialContent="<!DOCTYPE html><html class='scroll-smooth'><head><script src='https://cdn.tailwindcss.com'></script></head><body class='iframe-scrollbar'><div></div></body></html>"
         >
+          <PublicSiteDangerouslyHTML html={siteSettings.customCode} />
           <ScrollIntoView
             selectedOptionName={state.selectedOptionName}
             selectedCompletionName={state.selectedCompletionName}
