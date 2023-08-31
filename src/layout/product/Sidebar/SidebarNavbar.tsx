@@ -134,7 +134,7 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
             title={t('sidebar.gettingStarted')}
           />
           <ExternalLink
-            href="https://earlybird.im/blog/tag/changelog/"
+            href="https://changelog.earlybird.im"
             icon={IconGift}
             title={t('sidebar.whatsNew')}
           />
@@ -166,7 +166,7 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
             title={t('sidebar.helpCenter')}
           />
           <ExternalLink
-            href="https://vue.mx/discord"
+            href="https://discord.gg/S6sbYd5h8G"
             icon={IconMessageDots}
             title={t('sidebar.joinCommunity')}
           />

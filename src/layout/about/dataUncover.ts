@@ -6,7 +6,7 @@ export const dataUncover = [
   },
   {
     name: 'EarlyBird Changelog',
-    url: 'https://earlybird.im/blog/tag/changelog/',
+    url: 'https://changelog.earlybird.im',
     desc: 'Stay updated on the latest changes happening.'
   },
   {
