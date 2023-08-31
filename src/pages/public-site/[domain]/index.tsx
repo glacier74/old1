@@ -1,6 +1,6 @@
 import { GlobalContext } from '@earlybirdim/components'
 import { Form, Input } from '@heyforms/ui'
-import { isValid } from '@nily/utils'
+import { conv, isValid } from '@nily/utils'
 import { IconCheck } from '@tabler/icons'
 import AES from 'crypto-js/aes'
 import JsCookie from 'js-cookie'
@@ -209,9 +209,7 @@ const PublicSite: FC<PublicSiteProps> = ({
         <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <div>
-              <h1 className="text-center text-2xl font-bold text-slate-900">
-                Access restricted
-              </h1>
+              <h1 className="text-center text-2xl font-bold text-slate-900">Access restricted</h1>
               <p className="text-center text-sm text-slate-700">
                 Access to this landing page is currently restricted. If you believe this is a
                 mistake, please contact us.
@@ -361,8 +359,16 @@ export const getServerSideProps = withTranslations(async context => {
   }
 
   if (!product.openGraphImage) {
-    const title = (product.metaTitle || product.name).slice(0, 72)
-    const e = AES.encrypt(title, process.env.NEXT_API_VERIFICATION_KEY!).toString()
+    const payload = {
+      name: product.name,
+      metaTitle: product.metaTitle?.slice(0, 60),
+      metaDescription: (product.metaDescription || product.tagline)?.slice(0, 120)
+    }
+
+    const e = AES.encrypt(
+      conv.jsonString(payload),
+      process.env.NEXT_API_VERIFICATION_KEY!
+    ).toString()
 
     product.openGraphImage = `${process.env.NEXT_PUBLIC_HOMEPAGE}/api/og?e=${encodeURIComponent(e)}`
   }
