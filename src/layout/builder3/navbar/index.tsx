@@ -38,6 +38,7 @@ export const Navbar: FC = () => {
       notification.success({
         title: 'Your landing page has been successfully published.'
       })
+      openShareModal()
     } catch (err: any) {
       if (err.error === 'invalid_draft_version') {
         openAlertModal()
@@ -71,18 +72,6 @@ export const Navbar: FC = () => {
       }
     })
   }
-
-  const handleShare = useCallback(() => {
-    if (window.navigator.canShare?.()) {
-      window.navigator.share({
-        title: product.name,
-        text: product.tagline,
-        url: `https://${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`
-      })
-    } else {
-      openShareModal()
-    }
-  }, [product.domain, product.name, product.tagline])
 
   const handleButtonClick = useCallback(() => {
     if (!product.subscription?.isActive) {
@@ -136,7 +125,7 @@ export const Navbar: FC = () => {
         </div>
 
         <div className="flex-1 flex items-center justify-end space-x-2">
-          <Button className="!py-1.5 !rounded" onClick={handleShare}>
+          <Button className="!py-1.5 !rounded" onClick={openShareModal}>
             Share
           </Button>
 
