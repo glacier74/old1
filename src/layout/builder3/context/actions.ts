@@ -39,14 +39,18 @@ export function updateState(state: IState, updates: UpdateStateAction['payload']
   }
 }
 
-const BASIC_TYPES = ['string', 'number', 'boolean']
+const BASIC_TYPES = ['string', 'number', 'boolean', 'undefined']
 const OLD_TYPES = [...BASIC_TYPES, 'undefined']
 
 function isSameType(oldValue: any, newValue: any) {
   const oldType = type(oldValue)
   const newType = type(newValue)
 
-  return oldType === newType || (OLD_TYPES.includes(oldType) && BASIC_TYPES.includes(newType))
+  return (
+    oldType === newType ||
+    (BASIC_TYPES.includes(oldType) && BASIC_TYPES.includes(newType)) ||
+    (OLD_TYPES.includes(newType) && BASIC_TYPES.includes(oldType))
+  )
 }
 
 export function updateOptions(state: IState, { options }: UpdateOptionsAction['payload']): IState {
