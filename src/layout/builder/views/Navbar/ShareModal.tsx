@@ -11,14 +11,17 @@ export const ShareModal: FC<IModalProps> = ({ visible, onClose }) => {
 
   const host = useProductURL(product)
   const shareURL = useMemo(() => `https://${host}`, [host])
+  const shareText = useMemo(() => {
+    return `🚀 Just launched ${product.name} landing page with @EarlyBirdIM in 10 minutes!
+
+I'd really appreciate it if you could take a moment to check it out and let me know what you think:
+${shareURL}.`
+  }, [shareURL, product.name])
 
   function handleEmail() {
     const url = urlBuilder('mailto:', {
       subject: 'Seeking feedback on my landing page',
-      body:
-        'Hi,\n\nI hope this email finds you well. I am reaching out because I recently created a landing page for my business and I am looking for some feedback.\n\nI would really appreciate it if you could take a few minutes to check out the page and let me know what you think. Any feedback, big or small, would be greatly appreciated.\n\nHere is the link to the page: ' +
-        shareURL +
-        '\n\nThanks in advance for your help. I am looking forward to hearing your thoughts.'
+      body: shareText
     })
     window.open(url)
   }
@@ -39,8 +42,7 @@ export const ShareModal: FC<IModalProps> = ({ visible, onClose }) => {
 
   function handleTwitter() {
     const url = urlBuilder('https://twitter.com/share', {
-      url: shareURL,
-      title: product.name
+      title: shareText
     })
     window.open(url)
   }
@@ -76,7 +78,7 @@ export const ShareModal: FC<IModalProps> = ({ visible, onClose }) => {
           <div className="text-slate-700 font-semibold mb-2">Landing page link</div>
           <div className="mt-1 flex items-center">
             <div className="flex-1 p-2 border border-slate-300 rounded">{shareURL}</div>
-            <CopyButton className="ml-2 !px-4 !py-2 !bg-emerald-500 !text-white" text={shareURL} />
+            <CopyButton className="ml-2 !px-4 !py-2 !bg-emerald-500 !text-white" text={shareText} />
           </div>
         </div>
       </div>
