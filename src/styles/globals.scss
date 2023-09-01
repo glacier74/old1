@@ -2308,3 +2308,9 @@ button.button-success {
     @apply py-6;
   }
 }
+
+.drag-uploader {
+  .button-success {
+    @apply bg-transparent text-emerald-500 hover:text-emerald-600 #{!important};
+  }
+}
