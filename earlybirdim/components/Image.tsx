@@ -19,6 +19,10 @@ export const Image: FC<ImageProps> = ({
   quality = 100,
   ...restProps
 }) => {
+  if (!/https?:\/\//.test(src)) {
+    return null
+  }
+
   return (
     <NextImage
       src={src}
