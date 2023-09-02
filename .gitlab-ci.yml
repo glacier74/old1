@@ -36,6 +36,7 @@ development:
     rm -rf .next/cache/
     cp -r .next tmp/
     cp -r public tmp/
+    cp -r patches tmp/
     cp .npmrc tmp/
     cp .env.production tmp/
     cp next.config.js tmp/
