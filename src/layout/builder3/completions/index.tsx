@@ -14,12 +14,13 @@ export const Completions = () => {
   const { state, dispatch } = useBuilderContext()
   const mergeOptions = useMergeOptions()
 
-  const unfinished = useMemo(
-    () => state.completions.filter(c => !siteSettings.completions.includes(c.name)),
-    [siteSettings.completions, state.completions]
+  const unfinished = useRef(
+    state.completions.filter(c => !siteSettings.completions.includes(c.name))
   )
 
   const [error, setError] = useState<string>()
+  const [isFailed, setFailed] = useState(false)
+
   const loadingRef = useRef(false)
 
   const [visible, open, close] = useVisible()
@@ -29,15 +30,17 @@ export const Completions = () => {
     [state.completions, state.selectedCompletionName]
   )
 
-  async function handleCompletions(unfinished: any[]) {
-    if (loadingRef.current || unfinished.length < 1) {
+  async function handleCompletions() {
+    if (loadingRef.current || unfinished.current.length < 1) {
       return
     }
 
     setError(undefined)
+    setFailed(false)
+
     loadingRef.current = true
 
-    const selected = unfinished[0]
+    const selected = unfinished.current[0]
 
     dispatch({
       type: 'updateState',
@@ -57,20 +60,20 @@ export const Completions = () => {
         loadingRef.current = false
 
         if (err) {
+          setFailed(true)
           return setError(err)
         }
 
         // Generating again if error occurred in GPT response.
         if (isEmpty(data) || isEmpty(data![selected.name])) {
-          return setTimeout(() => {
-            handleCompletions(unfinished)
-          }, 2_000)
+          setFailed(true)
+          return setError(undefined)
         }
 
         // 删除第一个
-        unfinished.shift()
+        unfinished.current.shift()
 
-        const unfinishedNames = unfinished.map(u => u.name)
+        const unfinishedNames = unfinished.current.map(u => u.name)
 
         await SiteSettingsService.updateSettings(siteSettings.productId, {
           completions: state.completions
@@ -78,10 +81,10 @@ export const Completions = () => {
             .map(c => c.name)
         })
 
-        if (unfinished.length > 0) {
+        if (unfinished.current.length > 0) {
           return setTimeout(() => {
-            handleCompletions(unfinished)
-          }, 1_000)
+            handleCompletions()
+          }, 2_000)
         }
 
         party.confetti(document.querySelector('.builder-editor') as HTMLElement, {
@@ -101,18 +104,18 @@ export const Completions = () => {
   }
 
   function handleConfirm() {
-    handleCompletions(unfinished)
+    handleCompletions()
     close()
   }
 
   useEffect(() => {
     // 新建 project
     if (siteSettings.version === 0) {
-      handleCompletions(unfinished)
+      handleCompletions()
     }
 
     // 上次未完成 AI completions，询问用户是否继续
-    else if (unfinished.length > 0) {
+    else if (unfinished.current.length > 0) {
       open()
     }
   }, [])
@@ -123,8 +126,21 @@ export const Completions = () => {
         <div className="fixed inset-0 bg-black/70 z-[9999]">
           <div className="w-full h-full flex flex-col items-center justify-center gap-6">
             <Spin className="!w-6 !h-6 !text-white" />
-            {error ? (
-              <div className="text-xl font-semibold text-red-500 text-center">{error}</div>
+            {isFailed ? (
+              <div className="text-white text-center space-y-2">
+                <div className="text-xl font-semibold">
+                  Failed to generate copies for {state.selectedCompletionTitle}
+                </div>
+                <div className="text-sm">{error}</div>
+                <div className="flex justify-center">
+                  <button
+                    className="mt-4 px-4 py-1.5 text-sm rounded-[999px] border border-white hover:bg-white/10"
+                    onClick={handleCompletions}
+                  >
+                    Try again
+                  </button>
+                </div>
+              </div>
             ) : (
               <div className="text-white text-center">
                 <div className="text-xl font-semibold">
