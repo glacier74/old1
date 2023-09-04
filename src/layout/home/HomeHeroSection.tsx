@@ -15,7 +15,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
   return (
     <section className="homeHero">
       <div className="relative text-slate-900 max-w-7xl mx-auto px-8 md:px-12 z-10">
-        <div className="sm:pt-32 pt-8 text-center">
+        <div className="sm:pt-24 pt-8 text-center">
           <div className="inline-block rounded-full bg-emerald-100/50 px-6 py-2 mb-8 text-sm md:text-base text-emerald-700">
             Acquire your first customer by{' '}
             <span className="font-bold text-emerald-900">
@@ -94,6 +94,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
             className="w-full shadow-sm rounded-lg"
             quality={100}
             width={1184}
+            priority
           />
         </div>
       </div>

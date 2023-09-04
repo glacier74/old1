@@ -41,7 +41,7 @@ export const HomeHeader: FC = () => {
         {/* absolute */}
         <div className="md:px-5">
           <div className="py-6 flex items-center justify-between">
-            <div className="flex items-center text-slate-900 text-base font-medium md:space-x-8">
+            <div className="flex items-center text-slate-500 text-base font-medium md:space-x-8">
               <Link
                 href="/"
                 title={t('common.name')}
@@ -52,51 +52,51 @@ export const HomeHeader: FC = () => {
               <Link
                 href="/features"
                 title={t('features.title')}
-                className="hidden md:block hover:opacity-80 hover:text-emerald-600"
+                className="hidden md:block hover:text-slate-950 hover:opacity-80"
               >
                 Features
               </Link>
               <Link
                 href="/pricing"
                 title={t('pricing.title')}
-                className="hidden md:block hover:opacity-80 hover:text-emerald-600"
+                className="hidden md:block hover:text-slate-950 hover:opacity-80"
               >
                 Pricing
               </Link>
               <Link
                 href="/templates"
                 title={t('templates.title')}
-                className="hidden md:block hover:opacity-80 hover:text-emerald-600"
+                className="hidden md:block hover:text-slate-950 hover:opacity-80"
               >
                 Templates
               </Link>
               <Link
                 href="/integrations"
                 title={t('integrations.title')}
-                className="hidden md:block hover:opacity-80 hover:text-emerald-600"
+                className="hidden md:block hover:text-slate-950 hover:opacity-80" 
               >
                 Integrations
               </Link>
               <Link
                 href="/about"
                 title={t('about.title')}
-                className="hidden md:block hover:opacity-80 hover:text-emerald-600"
+                className="hidden md:block hover:text-slate-950 hover:opacity-80"
               >
                 About
               </Link>
               <Link
                 href="/blog"
                 title={t('blog.title')}
-                className="hidden md:block hover:opacity-80 hover:text-emerald-600"
+                className="hidden md:block hover:text-slate-950 hover:opacity-80"
               >
                 Blog
               </Link>
             </div>
 
-            <div className="hidden items-center text-slate-900 font-medium space-x-5 md:flex">
+            <div className="hidden items-center font-medium space-x-5 md:flex">
               <Link
                 href="/login"
-                className="py-2 px-4 rounded text-slate-900 font-medium"
+                className="py-2 px-4 rounded text-slate-500 font-medium"
                 title={t('common.login')}
               >
                 Log in

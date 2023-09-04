@@ -23,6 +23,7 @@ export const HomeFeature: FC = () => (
             className="w-full object-cover rounded-md shadow-lg"
             quality={100}
             width={984}
+            layout="responsive"
           />
         </div>
       </div>
@@ -37,6 +38,7 @@ export const HomeFeature: FC = () => (
             className="w-full object-cover rounded-md shadow-lg"
             quality={100}
             width={984}
+            layout="responsive"
           />
         </div>
       </div>
@@ -69,6 +71,7 @@ export const HomeFeature: FC = () => (
           className="w-full object-cover rounded-md shadow-lg"
           quality={100}
           width={984}
+          layout="responsive"
         />
       </div>
     </section>
