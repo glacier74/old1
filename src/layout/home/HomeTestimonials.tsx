@@ -1,9 +1,8 @@
 import dayjs from 'dayjs'
 import Image from 'next/image'
-import { FC, useMemo } from 'react'
+import { FC } from 'react'
 
 import { IconProducthunt, IconTwitter } from '~/components'
-import { waterfall } from '~/utils'
 
 const TestimonialTwitter: FC<{ testimonial: TestimonialRecord }> = ({ testimonial }) => {
   return (
@@ -172,15 +171,7 @@ export const TestimonialItem: FC<{ testimonial: TestimonialRecord }> = ({ testim
   }
 }
 
-export const HomeTestimonials: FC<{ testimonials: TestimonialRecord[] }> = ({ testimonials }) => {
-  const columns = useMemo(
-    () =>
-      waterfall<TestimonialRecord>(testimonials, 3, testimonial => {
-        return testimonial.Testimonial.length
-      }),
-    [testimonials]
-  )
-
+export const HomeTestimonials: FC<{ columns: TestimonialRecord[][] }> = ({ columns }) => {
   return (
     <section className="relative py-32">
       <div className="max-w-7xl mx-auto px-5">
