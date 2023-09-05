@@ -7,10 +7,12 @@ import sanitizeHtml from 'sanitize-html'
 
 const SCRIPT_REGEX = /<script[\s\S]*?>[\s\S]*?<\/script>/gi
 const REMOTE_SCRIPT_REGEX = /<script.*?src="([^"]+)".*?><\/script>/i
+const REMOTE_SCRIPT_ATTRIBUTE_REGEX =
+  /(?<name>\w+)=["']?(?<value>(?:.(?!["']?\s+(?:\S+)=|\s*\/?[>"']))+.)["']?/gi
 const INLINE_SCRIPT_REGEX = /<script[\s\S]*?>([\s\S]*?)<\/script>/i
 
 function parseScripts(html: string) {
-  const remoteScripts: string[] = []
+  const remoteScripts: AnyMap<string>[] = []
   const inlineScripts: string[] = []
 
   const matches = html.match(SCRIPT_REGEX)
@@ -20,7 +22,13 @@ function parseScripts(html: string) {
       let match = script.match(REMOTE_SCRIPT_REGEX)
 
       if (match) {
-        remoteScripts.push(match[1])
+        const attributes: AnyMap<string> = {}
+
+        for (const { groups } of script.matchAll(REMOTE_SCRIPT_ATTRIBUTE_REGEX)) {
+          attributes[groups!.name] = groups!.value
+        }
+
+        remoteScripts.push(attributes)
         continue
       }
 
@@ -67,12 +75,13 @@ export const PublicSiteDangerouslyHTML: FC<{ html?: string }> = ({ html }) => {
         sanitizeHtml(html!, {
           allowedTags: OTHER_TAGS,
           allowedAttributes: OTHER_ATTRIBUTES,
+          allowVulnerableTags: true,
           nonTextTags: [...HEAD_TAGS, 'script']
         })
       )}
 
-      {remoteScripts.map((src, index) => (
-        <Script key={index} src={src} strategy="beforeInteractive" />
+      {remoteScripts.map((row, index) => (
+        <Script key={index} {...row} strategy="beforeInteractive" />
       ))}
 
       {inlineScripts.map((html, index) => (
