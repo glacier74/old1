@@ -1,3 +1,4 @@
+import { notification } from '@heyforms/ui'
 import { arrayUnique, isValid } from '@nily/utils'
 import { IconArrowLeft, IconCheck } from '@tabler/icons'
 import clsx from 'clsx'
@@ -13,7 +14,6 @@ import { useStore } from '~/store'
 import { useParam, useRequest } from '~/utils'
 
 import { PreviewModal } from '../PreviewModal'
-import { notification } from '@heyforms/ui'
 
 interface TemplateItemProps {
   template: Template_V3
