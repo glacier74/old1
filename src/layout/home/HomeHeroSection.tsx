@@ -16,14 +16,14 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
     <section className="homeHero">
       <div className="relative text-slate-900 max-w-7xl mx-auto px-8 md:px-12 z-10">
         <div className="sm:pt-24 pt-8 text-center">
-          <div className="inline-block rounded-full bg-emerald-100/50 px-6 py-2 mb-8 text-sm md:text-base text-emerald-700">
+          <div className="inline-block rounded-full px-6 py-2 mb-8 text-sm md:text-base text-slate-700 border border-slate-200">
             Acquire your first customer by{' '}
-            <span className="font-bold text-emerald-900">
+            <span className="font-bold text-emerald-500">
               {dayjs().add(10, 'm').format('h:mm A')}
             </span>{' '}
             with no waiting
           </div>
-          <h1 className="max-w-3xl mx-auto text-3xl md:text-6xl font-bold md:font-extrabold">
+          <h1 className="max-w-3xl mx-auto text-4xl md:text-6xl font-bold md:font-extrabold">
             Create{' '}
             <span className="relative whitespace-nowrap text-emerald-500">
               <svg
@@ -48,7 +48,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
           <div className="flex justify-center flex-col md:flex-row items-center space-y-5 space-x-0 md:space-y-0 md:space-x-5">
             <Link
               href="/sign-up"
-              className="w-auto px-4 py-3 md:px-8 md:py-3 bg-slate-900 rounded-full text-white sm:text-lg text-base font-medium"
+              className="w-auto px-4 py-3 md:px-8 md:py-3 bg-emerald-400/30 hover:bg-emerald-500/30 rounded-full text-slate-950 sm:text-lg text-base font-medium"
               title={t('home.signUp')}
             >
               Get started for free -&#62;
