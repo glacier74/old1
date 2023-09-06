@@ -13,15 +13,15 @@ import {
 } from '~/layout'
 import { PublicApiService } from '~/service/public-api'
 import { TestimonialService } from '~/service/testimonial'
-import { isLoggedIn, withTranslations } from '~/utils'
+import { isLoggedIn, waterfall, withTranslations } from '~/utils'
 
 interface HomeProps {
   isLoggedIn: boolean
   usersCount: number
-  testimonials: TestimonialRecord[]
+  columns: TestimonialRecord[][]
 }
 
-const Home = ({ isLoggedIn, usersCount, testimonials }: HomeProps): JSX.Element => {
+const Home = ({ isLoggedIn, usersCount, columns }: HomeProps): JSX.Element => {
   /**
    * 如果用户已经登录，拉取 user 和 product 信息
    * 如果 token 过期，请求 /logout 接口退出登录
@@ -38,7 +38,7 @@ const Home = ({ isLoggedIn, usersCount, testimonials }: HomeProps): JSX.Element 
       <HomeUsecase />
       <HomeUserImage />
       <HomeFeature />
-      <HomeTestimonials testimonials={testimonials} />
+      <HomeTestimonials columns={columns} />
       <HomeLetter />
       <HomeBottom />
       <HomeFooter />
@@ -55,7 +55,9 @@ export const getServerSideProps = withTranslations(async context => {
   return {
     props: {
       usersCount: res1.count,
-      testimonials,
+      columns: waterfall<TestimonialRecord>(testimonials, 3, testimonial => {
+        return testimonial.Testimonial.length
+      }),
       isLoggedIn: isLoggedIn(context.req.cookies)
     }
   }

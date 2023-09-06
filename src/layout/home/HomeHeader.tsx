@@ -73,7 +73,7 @@ export const HomeHeader: FC = () => {
               <Link
                 href="/integrations"
                 title={t('integrations.title')}
-                className="hidden md:block hover:text-slate-950 hover:opacity-80" 
+                className="hidden md:block hover:text-slate-950 hover:opacity-80"
               >
                 Integrations
               </Link>
@@ -135,7 +135,11 @@ export const HomeHeader: FC = () => {
               <Link href="/templates" title={t('templates.title')} className="hover:opacity-80">
                 Templates
               </Link>
-              <Link href="/integrations" title={t('integrations.title')} className="hover:opacity-80">
+              <Link
+                href="/integrations"
+                title={t('integrations.title')}
+                className="hover:opacity-80"
+              >
                 Integrations
               </Link>
               <Link href="/about" title={t('about.title')} className="hover:opacity-80">

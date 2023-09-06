@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import HomeBanner from '~public/static/home-banner.png'
 import UserAvatar1 from '~public/static/userAvatar-1.png'
@@ -11,6 +11,11 @@ import UserAvatar2 from '~public/static/userAvatar-2.png'
 
 export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
   const { t } = useTranslation()
+  const [time, setTime] = useState<string>()
+
+  useEffect(() => {
+    setTime(dayjs().add(10, 'm').format('h:mm A'))
+  }, [])
 
   return (
     <section className="homeHero">
@@ -18,10 +23,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
         <div className="sm:pt-24 pt-8 text-center">
           <div className="inline-block rounded-full px-6 py-2 mb-8 text-sm md:text-base text-slate-700 border border-slate-200">
             Acquire your first customer by{' '}
-            <span className="font-bold text-emerald-500">
-              {dayjs().add(10, 'm').format('h:mm A')}
-            </span>{' '}
-            with no waiting
+            <span className="font-bold text-emerald-500">{time}</span> with no waiting
           </div>
           <h1 className="max-w-3xl mx-auto text-4xl md:text-6xl font-bold md:font-extrabold">
             Create{' '}

@@ -23,7 +23,6 @@ export const HomeFeature: FC = () => (
             className="w-full object-cover rounded-md shadow-lg"
             quality={100}
             width={984}
-            layout="responsive"
           />
         </div>
       </div>
@@ -38,7 +37,6 @@ export const HomeFeature: FC = () => (
             className="w-full object-cover rounded-md shadow-lg"
             quality={100}
             width={984}
-            layout="responsive"
           />
         </div>
       </div>
@@ -52,7 +50,6 @@ export const HomeFeature: FC = () => (
         </div>
       </div>
     </section>
-
 
     <section className="max-w-7xl mx-auto grid md:grid-cols-2">
       <div className="flex items-center justify-end sm:pl-16 sm:pr-24 px-8 pt-16 pb-8">
@@ -71,7 +68,6 @@ export const HomeFeature: FC = () => (
           className="w-full object-cover rounded-md shadow-lg"
           quality={100}
           width={984}
-          layout="responsive"
         />
       </div>
     </section>
