@@ -34,15 +34,6 @@ const LinkButton = ({ icon: Icon, href, title }: LinkButtonProps) => {
 
 export const HelpFloatButton = () => {
   const { t } = useTranslation()
-  const [isOpen, setIsOpen] = useState(false)
-
-  const handleMouseEnter = () => {
-    setIsOpen(true)
-  }
-
-  const handleMouseLeave = () => {
-    setIsOpen(false)
-  }
 
   const Overlay = (
     <Menus className="w-[13rem] space-y-1 px-2 py-4">
@@ -70,11 +61,9 @@ export const HelpFloatButton = () => {
   )
 
   return (
-    <Dropdown className="fixed bottom-8 right-8" placement="top-end" overlay={Overlay}>
+    <Dropdown className="fixed bottom-8 right-8 z-20" placement="top-end" overlay={Overlay}>
       <button
-        className="p-1 rounded-full bg-white hover:bg-slate-50 hover:text-slate-800 shadow-[rgba(0,0,0,0.08)_0px_2px_4px,rgba(0,0,0,0.06)_0px_2px_12px,rgba(0,0,0,0.04)_0px_8px_14px,rgba(0,0,0,0.02)_0px_12px_16px]"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        className="p-1.5 md:p-1 rounded-full bg-white hover:bg-slate-50 hover:text-slate-800 shadow-[rgba(0,0,0,0.08)_0px_2px_4px,rgba(0,0,0,0.06)_0px_2px_12px,rgba(0,0,0,0.04)_0px_8px_14px,rgba(0,0,0,0.02)_0px_12px_16px]"
         role="button"
         aria-label="Help Button"
       >
