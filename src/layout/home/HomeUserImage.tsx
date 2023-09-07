@@ -22,7 +22,9 @@ export const HomeUserImage: FC = () => {
                 How long could it take to launch a business?
               </h3>
               <p>It could range from a week to a year, depending on the individual.</p>
-              <h3 className="sm:text-2xl text-xl font-semibold mt-8 mb-2">And how much would it cost?</h3>
+              <h3 className="sm:text-2xl text-xl font-semibold mt-8 mb-2">
+                And how much would it cost?
+              </h3>
               <p>It could cost anywhere from hundreds to thousands of dollars, or even more.</p>
               <p className="mt-8">
                 It's important to be mindful of your time and money when starting a business.{' '}

@@ -25,7 +25,7 @@ const NotFound = (): JSX.Element => {
               Page not found
             </h1>
             <div className="max-w-2xl mx-auto text-slate-700 text-lg md:text-xl mt-8 font-medium">
-            The page you are looking for doesn't exist or has been moved.
+              The page you are looking for doesn't exist or has been moved.
             </div>
           </div>
           <div className="mt-8 pb-8">

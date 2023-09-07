@@ -1,8 +1,7 @@
 import { IconCheck } from '@tabler/icons'
 import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
-import Link from 'next/link'
-import { FC, useState } from 'react'
+import { FC } from 'react'
 
 const tiers = [
   {
