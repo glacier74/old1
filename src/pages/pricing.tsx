@@ -13,7 +13,7 @@ import { withTranslations } from '~/utils'
 
 const Pricing = (): JSX.Element => {
   const { t } = useTranslation()
-  const [billingCycle, setBillingCycle] = useState('monthly')
+  const [billingCycle, setBillingCycle] = useState('yearly')
 
   return (
     <HomeLayout
