@@ -48,7 +48,6 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
   const [user, setUser] = useState<User>({} as User)
   const [products, setProducts] = useState<Product[]>([])
   const [siteSettings, setSiteSettings] = useState<SiteSettings>({} as SiteSettings)
-  const [aiOptions, setAIOptions] = useState<any[]>([])
   const [isMemberListShow, openMemberList, closeMemberList] = useVisible()
   const [isAccountSettingsShow, openAccountSettings, closeAccountSettings] = useVisible()
   const [isDeletionAlertShow, openDeletionAlert, closeDeletionAlert] = useVisible()

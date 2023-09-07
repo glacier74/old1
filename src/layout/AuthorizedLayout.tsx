@@ -1,5 +1,5 @@
 import { Modal, notification } from '@heyforms/ui'
-import { date } from '@nily/utils'
+import { date, isValid } from '@nily/utils'
 import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
@@ -9,6 +9,10 @@ import { BaseLayout } from '~/layout/BaseLayout'
 import { AuthService, ProductService, UserService } from '~/service'
 import { useStore } from '~/store'
 import { setRedirectURL, useAsyncEffect, useRequest } from '~/utils'
+import { expireLocalStorage } from '~/utils/localstorage'
+
+const userKey = process.env.NEXT_PUBLIC_USER_STORAGE_NAME!
+const productsKey = process.env.NEXT_PUBLIC_PRODUCTS_STORAGE_NAME!
 
 const DeletionAlertModal = () => {
   const { t } = useTranslation()
@@ -76,21 +80,43 @@ export const AuthorizedLayout = ({ seo, children }: LayoutProps) => {
   const router = useRouter()
   const { setUser, setProducts, setIsReady } = useStore()
 
-  useAsyncEffect(async () => {
+  async function fetchData() {
     try {
       const [user, products] = await Promise.all([UserService.user(), ProductService.products()])
 
       setUser(user)
       setProducts(products)
-      setIsReady(true)
+
+      // Save to localstorage
+      expireLocalStorage.setItem<User>(userKey, user)
+      expireLocalStorage.setItem<Product[]>(productsKey, products)
     } catch (err: any) {
-      if (err.statusCode === 401) {
+      console.error(err)
+
+      if (err.response?.statusCode === 401 || err.statusCode === 401) {
         setRedirectURL(JsCookie, router.asPath)
 
         await AuthService.logout()
         await router.replace('/login')
       }
     }
+  }
+
+  useAsyncEffect(async () => {
+    const user = expireLocalStorage.getItem<User>(userKey)
+    const products = expireLocalStorage.getItem<Product[]>(productsKey, [])
+
+    if (isValid(user) && isValid(products)) {
+      // Re-fetch new data without block
+      fetchData()
+
+      setUser(user)
+      setProducts(products)
+    } else {
+      await fetchData()
+    }
+
+    setIsReady(true)
   }, [])
 
   return (

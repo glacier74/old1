@@ -2216,7 +2216,10 @@ button.block-header-button {
 }
 
 button.button-success {
-  @apply bg-emerald-500;
+  &,
+  .button-loading {
+    @apply bg-emerald-500;
+  }
 
   &:not(:disabled):hover {
     @apply bg-emerald-600;

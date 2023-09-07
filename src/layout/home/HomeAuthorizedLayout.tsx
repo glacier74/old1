@@ -3,7 +3,7 @@ import JsCookie from 'js-cookie'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-import { Loading } from '~/components'
+import { IconLogo2 } from '~/components/Icon/IconLogo2'
 import { AuthorizedLayout } from '~/layout'
 import { useStore } from '~/store'
 import { deleteRedirectURL, getRedirectURL } from '~/utils'
@@ -39,7 +39,10 @@ export function HomeAuthorizedLayout() {
 
   return (
     <AuthorizedLayout>
-      <Loading className="h-screen bg-slate-50" />
+      <div className="w-screen h-screen flex flex-col items-center justify-center gap-4 bg-slate-50">
+        <IconLogo2 className="animate-pulse w-[60px] h-[60px]" />
+        <span className="text-xs text-slate-400">Loading...</span>
+      </div>
     </AuthorizedLayout>
   )
 }

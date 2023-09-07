@@ -119,7 +119,7 @@ const IntervalSwitch: FC<{ interval: string; onChange: (interval: string) => voi
 
 export const PlanHeader: FC = () => {
   const { user } = useStore()
-  const [interval, setInterval] = useState(user.subscription?.price?.interval || 'month')
+  const [interval, setInterval] = useState(user.subscription?.price?.interval || 'year')
 
   return (
     <tr>
