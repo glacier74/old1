@@ -1,39 +1,97 @@
-import { useEffect } from 'react'
+import { arrayUnique, isFalse } from '@nily/utils'
+import { useContext, useEffect, useMemo, useReducer } from 'react'
 
+import { ProductService } from '~/service'
 import { useStore } from '~/store'
+import { useAsyncEffect } from '~/utils'
 
-import { Step0 } from './Step0'
-import { Step1 } from './Step1'
-import { Step2 } from './Step2'
-import { Step3 } from './Step3'
-import { Step4 } from './Step4'
-import { Step5 } from './Step5'
+import { StepCategory } from './StepCategory'
+import { StepInitial } from './StepInitial'
+import { StepName } from './StepName'
+import { StepTemplate } from './StepTemplate'
+import { StepsStoreContext, StepsStoreReducer } from './context'
+
+const STEPS = [
+  {
+    value: 'initial',
+    component: StepInitial,
+    isAllowToPrev: false
+  },
+  {
+    value: 'template',
+    component: StepTemplate,
+    isAllowToPrev: false,
+    isNextButtonShow: false
+  },
+  {
+    value: 'name',
+    component: StepName
+  },
+  {
+    value: 'category',
+    component: StepCategory
+  }
+]
+
+const StepComponent = () => {
+  const { state } = useContext(StepsStoreContext)
+
+  return useMemo(() => {
+    const Component = STEPS.find(s => s.value === state.active)?.component
+
+    if (Component) {
+      return <Component />
+    }
+
+    return null
+  }, [state.active])
+}
 
 export const Steps = () => {
-  const { step, setStep, setProduct } = useStore()
+  const { setProduct } = useStore()
 
-  useEffect(() => {
-    setStep(0)
-    setProduct(undefined)
+  const [state, dispatch] = useReducer(StepsStoreReducer, {
+    templates: [],
+    categories: [],
+    steps: STEPS.map((s: any) => ({
+      value: s.value,
+      isAllowToPrev: !isFalse(s.isAllowToPrev),
+      isNextButtonShow: !isFalse(s.isNextButtonShow)
+    })),
+    active: STEPS[0].value
+  })
+  const storeValue = useMemo(() => ({ state, dispatch }), [state])
+
+  useAsyncEffect(async () => {
+    dispatch({
+      type: 'setState',
+      payload: {
+        isTemplateLoading: true
+      }
+    })
+
+    const templates = await ProductService.templates()
+    const categories = arrayUnique(templates.map(t => t.categoryId))
+
+    dispatch({
+      type: 'setState',
+      payload: {
+        templates,
+        categories,
+        isTemplateLoading: false
+      }
+    })
   }, [])
 
-  switch (step) {
-    case 1:
-      return <Step1 />
+  useEffect(() => {
+    return () => {
+      setProduct(undefined)
+    }
+  }, [])
 
-    case 2:
-      return <Step2 />
-
-    case 3:
-      return <Step3 />
-
-    case 4:
-      return <Step4 />
-
-    case 5:
-      return <Step5 />
-
-    default:
-      return <Step0 />
-  }
+  return (
+    <StepsStoreContext.Provider value={storeValue}>
+      <StepComponent />
+    </StepsStoreContext.Provider>
+  )
 }

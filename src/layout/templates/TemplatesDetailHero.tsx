@@ -19,11 +19,7 @@ export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template
   }
 
   function handleSelect() {
-    router.push(
-      `/product/create?templateId=${template.slug}&templateCategory=${encodeURIComponent(
-        template.Category.toLowerCase()
-      )}`
-    )
+    router.push(`/product/create?template=${template.slug}}`)
   }
 
   return (

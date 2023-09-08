@@ -1,7 +1,6 @@
 import { isValid } from '@nily/utils'
 
 import { HelpFloatButton } from '~/components'
-import { Completions } from '~/layout/builder3/completions'
 import templates from '~/layout/builder3/templates'
 import { schemasToCompletions } from '~/layout/builder3/utils'
 import { useStore } from '~/store'
@@ -40,7 +39,7 @@ export const Builder3 = () => {
         <div className="builder-main">
           <Preview />
           <RightSidebar />
-          <Completions />
+          {/*<Completions />*/}
         </div>
       </div>
 

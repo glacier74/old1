@@ -43,7 +43,7 @@ function schemaConverter(schemas: AnyMap<any>[], parent: AnyMap<any> = {}): AnyM
     if (Array.isArray(schema.fields)) {
       if (schema.type === SchemaTypeEnum.list) {
         parent[schema.name] = schema.default.map((r: any) => {
-          listSchemaConverter(schema.fields, r)
+          // listSchemaConverter(schema.fields, r)
 
           return {
             id: nanoid(6),
@@ -54,11 +54,12 @@ function schemaConverter(schemas: AnyMap<any>[], parent: AnyMap<any> = {}): AnyM
         parent[schema.name] = schemaConverter(schema.fields, {})
       }
     } else {
-      if (schema.ai) {
-        parent[schema.name] = schema.type === SchemaTypeEnum.textList ? [] : ''
-      } else {
-        parent[schema.name] = schema.default
-      }
+      parent[schema.name] = schema.default
+      // if (schema.ai) {
+      //   parent[schema.name] = schema.type === SchemaTypeEnum.textList ? [] : ''
+      // } else {
+      //   parent[schema.name] = schema.default
+      // }
     }
   })
 
