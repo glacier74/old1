@@ -23,7 +23,7 @@ import { useProduct, useProductId } from '~/layout'
 import { PlanBadge, PlanCheck } from '~/layout/product/PlanCheck'
 import { CustomDomainService, ProductService } from '~/service'
 import { useStore } from '~/store'
-import { getSubdomain, isValidDomain, useProductURL, useRequest, useVisible } from '~/utils'
+import { getSubdomain, isRootDomain, isValidDomain, useProductURL, useRequest, useVisible } from '~/utils'
 
 interface CustomURLItemProps {
   customDomain: CustomDomain
@@ -233,7 +233,8 @@ const ValidateComponent: FC<{ domain: string; onFinish: () => void }> = ({ domai
   )
 
   const { loading, error, request } = useRequest(async () => {
-    const result = await CustomDomainService.create(product.id, domain!)
+    const theDomain = isRootDomain(domain) ? `www.${domain}` : domain
+    const result = await CustomDomainService.create(product.id, theDomain)
 
     updateProduct(product.id, {
       customDomains: [result, ...(product.customDomains || [])]
@@ -261,36 +262,20 @@ const ValidateComponent: FC<{ domain: string; onFinish: () => void }> = ({ domai
       },
       {
         key: 'status',
-        name: 'Proxy status',
-        render(row) {
-          return (
-            <Tooltip
-              ariaLabel={
-                <div className="w-56 h-auto p-1 text-left whitespace-pre-line">
-                  To domain name providers such as Cloudflare, we request that you disable the proxy
-                  feature.
-                </div>
-              }
-            >
-              <span className="underline decoration-dotted decoration-slate-700 cursor-pointer">
-                {row.status}
-              </span>
-            </Tooltip>
-          )
-        }
+        name: 'Proxy status'
       }
     ]
 
     const data = [
       {
-        recordType: 'A',
-        name: '@',
-        value: process.env.NEXT_PUBLIC_PUBLIC_SITE_A_RECORD,
+        recordType: 'CNAME',
+        name: getSubdomain(domain),
+        value: cnameValue,
         ttl: 'Auto / Default',
-        status: 'DNS Only'
+        status: 'Proxied / DNS Only'
       },
       {
-        recordType: 'CNAME',
+        recordType: 'TXT',
         name: getSubdomain(domain),
         value: cnameValue,
         ttl: 'Auto / Default',

@@ -196,6 +196,11 @@ button.button:not(:disabled):focus {
   @apply ring-emerald-500 border-emerald-500;
 }
 
+button.button-link.button-success, 
+button.button-link.button-success .button-loader {
+  background: transparent;
+}
+
 .input,
 .textarea {
   @apply bg-white;

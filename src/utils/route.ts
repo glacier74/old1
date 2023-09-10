@@ -35,6 +35,10 @@ export function getSubdomain(domain: string) {
   return arr[0]
 }
 
+export function isRootDomain(domain: string) {
+  return isValidDomain(domain) && domain.split('.').length === 2
+}
+
 export function isValidDomain(domain: string) {
   if (
     !isFQDN(domain, {
