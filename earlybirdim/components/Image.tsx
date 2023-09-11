@@ -1,6 +1,8 @@
 import NextImage from 'next/image'
 import { FC } from 'react'
 
+import { useGlobalContext } from './GlobalContext'
+
 export interface ImageProps extends ComponentProps {
   src: string
   width: number
@@ -19,18 +21,22 @@ export const Image: FC<ImageProps> = ({
   quality = 100,
   ...restProps
 }) => {
+  const { isPreview } = useGlobalContext()
+
   if (!/https?:\/\//.test(src)) {
     return null
   }
+
+  const isAdaptiveWidth = width === 0
 
   return (
     <NextImage
       src={src}
       data-src={src}
-      width={width}
+      width={isAdaptiveWidth ? (isPreview ? 9999 : undefined) : width}
       height={height}
       // see https://stackoverflow.com/a/76008677
-      sizes={width === 0 ? '100vw' : undefined}
+      sizes={isAdaptiveWidth ? '100vw' : undefined}
       alt={alt}
       loading={loading}
       quality={quality}

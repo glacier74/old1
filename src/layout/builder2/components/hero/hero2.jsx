@@ -8,14 +8,14 @@ import {
   $H1 as H1,
   $Group as Group
 } from '@earlybirdim/blocks'
-import { isEmpty } from '@nily/utils'
+import { isValid } from '@nily/utils'
 
 const render = function ({ productId, block }) {
   return (
     <Block productId={productId} block={block}>
       <div className="hero2__container">
         <div className="hero2__wrapper">
-          {isEmpty(block.setting.Html1) && (
+          {isValid(block.setting.Html1) && (
             <div className="hero2__announcement-wrapper">
               <Html as="p" className="hero2__announcement" {...block.setting.Html1} />
             </div>

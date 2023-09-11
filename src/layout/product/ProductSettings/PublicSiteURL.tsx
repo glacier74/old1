@@ -23,7 +23,14 @@ import { useProduct, useProductId } from '~/layout'
 import { PlanBadge, PlanCheck } from '~/layout/product/PlanCheck'
 import { CustomDomainService, ProductService } from '~/service'
 import { useStore } from '~/store'
-import { getSubdomain, isRootDomain, isValidDomain, useProductURL, useRequest, useVisible } from '~/utils'
+import {
+  getSubdomain,
+  isRootDomain,
+  isValidDomain,
+  useProductURL,
+  useRequest,
+  useVisible
+} from '~/utils'
 
 interface CustomURLItemProps {
   customDomain: CustomDomain

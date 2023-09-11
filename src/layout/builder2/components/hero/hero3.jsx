@@ -10,7 +10,7 @@ import {
   $Icon as Icon,
   $Style as Style
 } from '@earlybirdim/blocks'
-import { isEmpty } from '@nily/utils'
+import { isValid } from '@nily/utils'
 
 const render = function ({ productId, block }) {
   return (
@@ -23,7 +23,7 @@ const render = function ({ productId, block }) {
                 <Image {...block.setting.Link1.Image1} />
               </Link>
 
-              {isEmpty(block.setting.Html1) && (
+              {isValid(block.setting.Html1) && (
                 <div className="hero3__announcement-wrapper">
                   <Html className="hero3__announcement" {...block.setting.Html1} />
                 </div>

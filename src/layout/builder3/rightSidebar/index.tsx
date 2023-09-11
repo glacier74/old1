@@ -1,5 +1,6 @@
 import { Tabs } from '@heyforms/ui'
 import { ITab } from '@heyforms/ui/types/tabs/context'
+import clsx from 'clsx'
 import { FC, useMemo, useRef } from 'react'
 
 import { PLAN_LEVELS } from '~/constants'
@@ -12,8 +13,8 @@ import { CodeInjection } from './CodeInjection'
 import { OptionGroup } from './OptionGroup'
 
 export const RightSidebar: FC = () => {
-  const { siteSettings } = useStore()
-  const { state, dispatch } = useBuilderContext()
+  const { isBuilderSidebarOpen, siteSettings } = useStore()
+  const { dispatch } = useBuilderContext()
   const containerRef = useRef<HTMLDivElement | null>(null)
 
   const schemas = useMemo(
@@ -50,7 +51,12 @@ export const RightSidebar: FC = () => {
   return (
     <div
       ref={containerRef}
-      className="flex flex-col w-[320px] min-[1400px]:w-[360px] 2xl:w-[480px] h-full bg-white border-l border-slate-200 duration-150 scrollbar"
+      className={clsx(
+        'flex flex-col h-full bg-white border-l border-slate-200 duration-300 scrollbar transition-all',
+        isBuilderSidebarOpen
+          ? 'w-[0px] opacity-0'
+          : 'w-[320px] min-[1400px]:w-[360px] 2xl:w-[480px] opacity-100'
+      )}
     >
       <Tabs className="builder3-sidebar-tabs" navRender={navRender}>
         <Tabs.Pane name="option" title="Options">

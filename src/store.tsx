@@ -8,6 +8,7 @@ interface Store {
   isAccountSettingsShow: boolean
   isDeletionAlertShow: boolean
   isSidebarOpen: boolean
+  isBuilderSidebarOpen: boolean
   email: string | undefined
   user: User
   products: Product[]
@@ -32,6 +33,8 @@ interface Store {
   closeAccountSettings: () => void
   openDeletionAlert: () => void
   closeDeletionAlert: () => void
+  openBuilderSidebar: () => void
+  closeBuilderSidebar: () => void
 }
 
 const context = createContext<Store>({} as Store)
@@ -51,6 +54,7 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
   const [isDeletionAlertShow, openDeletionAlert, closeDeletionAlert] = useVisible()
   const [isSidebarOpen, openSidebar, closeSidebar] = useVisible()
   const [product, setProduct] = useState<Partial<Product>>()
+  const [isBuilderSidebarOpen, openBuilderSidebar, closeBuilderSidebar] = useVisible()
 
   const updateUser = useCallback(
     (updates: Partial<User>) => {
@@ -105,6 +109,7 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
     isAccountSettingsShow,
     isDeletionAlertShow,
     isSidebarOpen,
+    isBuilderSidebarOpen,
     email,
     user,
     products,
@@ -128,7 +133,9 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
     openSidebar,
     closeSidebar,
     openDeletionAlert,
-    closeDeletionAlert
+    closeDeletionAlert,
+    openBuilderSidebar,
+    closeBuilderSidebar
   }
 
   return <context.Provider value={value}>{children}</context.Provider>

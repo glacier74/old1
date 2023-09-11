@@ -4,6 +4,7 @@ import dayjs from 'dayjs'
 import Link from 'next/link'
 import { FC, useCallback, useMemo } from 'react'
 
+import { IconSidebar } from '~/components'
 import { useProduct } from '~/layout'
 import { ShareModal } from '~/layout/builder/views/Navbar/ShareModal'
 import { SiteSettingsService } from '~/service'
@@ -15,7 +16,13 @@ import { UpgradeModal } from '../navbar/UpgradeModal'
 import { AlertModal } from '../preview/AlertModal'
 
 export const Navbar: FC = () => {
-  const { siteSettings, updateSiteSettings } = useStore()
+  const {
+    siteSettings,
+    updateSiteSettings,
+    isBuilderSidebarOpen,
+    openBuilderSidebar,
+    closeBuilderSidebar
+  } = useStore()
   const { state, dispatch } = useBuilderContext()
   const product = useProduct()
 
@@ -86,6 +93,10 @@ export const Navbar: FC = () => {
     request()
   }, [request])
 
+  const handleToggleSidebar = useCallback(() => {
+    isBuilderSidebarOpen ? closeBuilderSidebar() : openBuilderSidebar()
+  }, [isBuilderSidebarOpen])
+
   return (
     <>
       <div className="flex items-center justify-between h-[3.5rem] px-4 border-b border-slate-200">
@@ -124,20 +135,30 @@ export const Navbar: FC = () => {
           />
         </div>
 
-        <div className="flex-1 flex items-center justify-end space-x-2">
-          <Button className="!py-1.5 !rounded" onClick={openShareModal}>
-            Share
-          </Button>
+        <div className="flex-1 flex items-center justify-end gap-3">
+          <div className="flex items-center justify-end gap-2">
+            <Button className="!py-1.5 !rounded" onClick={openShareModal}>
+              Share
+            </Button>
+
+            <Button
+              type="success"
+              className="!py-1.5 !rounded !bg-[#10b981] disabled:!opacity-50"
+              loading={loading}
+              disabled={!siteSettings.canPublish || state.isSyncing}
+              onClick={handleButtonClick}
+            >
+              Publish
+            </Button>
+          </div>
+
+          <div className="w-px h-[20px] bg-slate-200"></div>
 
           <Button
-            type="success"
-            className="!py-1.5 !rounded !bg-[#10b981] disabled:!opacity-50"
-            loading={loading}
-            disabled={!siteSettings.canPublish || state.isSyncing}
-            onClick={handleButtonClick}
-          >
-            Publish
-          </Button>
+            className="!py-1.5 !rounded"
+            leading={<IconSidebar className="w-7 h-7 text-slate-800" />}
+            onClick={handleToggleSidebar}
+          />
         </div>
       </div>
 
