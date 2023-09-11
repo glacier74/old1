@@ -7,15 +7,19 @@ import {
   $Group as Group,
   $Image as Image
 } from '@earlybirdim/blocks'
+import { isEmpty } from '@nily/utils'
+
 const render = function ({ productId, block }) {
   return (
     <Block productId={productId} block={block}>
       <div className="hero4__container">
         <div className="hero4__wrapper">
           <div className="hero4__left">
-            <div className="hero4__announcement-wrapper">
-              <Html as="p" className="hero4__announcement" {...block.setting.Html1} />
-            </div>
+            {isEmpty(block.setting.Html1) && (
+              <div className="hero4__announcement-wrapper">
+                <Html as="p" className="hero4__announcement" {...block.setting.Html1} />
+              </div>
+            )}
 
             <H1 className="hero4__title" {...block.setting.H11} />
 
