@@ -111,7 +111,6 @@ export function render({ options: { header, user_info, newsletter } }) {
           <div>
             <Image
               className="earlybird-EynhuJ object-cover w-full bg-white h-36 lg:h-64"
-              width={9999}
               height={256}
               src={header.cover_img}
               alt={user_info.username}

@@ -256,7 +256,6 @@ transform: scale(1);
                   <div className="earlybird-VsHeNC lg:h-[400px] md:h-[300px] h-[200px] transition-all duration-300">
                     <Image
                       src={banner_image}
-                      width={9999}
                       height={200}
                       className="earlybird-HeZyA6 h-full w-full object-cover"
                     />

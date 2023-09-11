@@ -134,7 +134,6 @@ export function render({ options: { product, footer } }) {
                   <Image
                     className="earlybird-srE1NC h-11 w-auto"
                     src={product.logo}
-                    width={9999}
                     height={44}
                     alt={product.name}
                   />
@@ -185,7 +184,6 @@ export function render({ options: { product, footer } }) {
               <div className="earlybird-99Qu5A w-full h-full flex items-center justify-center">
                 <Image
                   className="earlybird-GJZoxP max-w-[90%] max-h-[90%] object-contain"
-                  width={9999}
                   height={800}
                   src={product.image}
                   alt={product.name}

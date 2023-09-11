@@ -285,7 +285,6 @@ export function render({ options: { main, bio, products, contact } }) {
                     className="earlybird-LHLhdW h-48 w-full object-cover lg:h-64"
                     src={main.profile_cover}
                     alt="{main.profile_name}"
-                    width={9999}
                     height={256}
                   />
 

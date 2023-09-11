@@ -15,7 +15,7 @@ export const Image: FC<ImageProps> = ({
   width = 0,
   height = 0,
   alt = '',
-  loading = 'lazy',
+  loading,
   quality = 100,
   ...restProps
 }) => {
@@ -29,6 +29,8 @@ export const Image: FC<ImageProps> = ({
       data-src={src}
       width={width}
       height={height}
+      // see https://stackoverflow.com/a/76008677
+      sizes={width === 0 ? '100vw' : undefined}
       alt={alt}
       loading={loading}
       quality={quality}
