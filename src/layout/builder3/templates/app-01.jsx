@@ -184,7 +184,7 @@ export function render({
           </div>
 
           <div className="earlybird-sbglri flex-1 h-screen bg-blue-50">
-            <div className="earlybird-99Qu5A w-full h-full lg:h-auto flex items-center justify-center">
+            <div className="earlybird-99Qu5A w-full h-auto lg:h-full flex items-center justify-center">
               <Image
                 className="earlybird-GJZoxP max-w-[90%] max-h-[90vh] object-contain"
                 height={800}
