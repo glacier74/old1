@@ -31,40 +31,37 @@ export const schemas = [
           'Go Explore helps you discover and explore hidden gems, popular attractions, and local experiences in your destination.'
       },
       {
-        name: 'ios',
-        title: 'App store link',
-        type: 'object',
+        name: 'download_links',
+        title: 'Download Links',
+        type: 'list',
         fields: [
           {
-            name: 'title',
-            title: 'Title',
-            type: 'text',
-            default: 'App Store'
+            name: 'icon',
+            title: 'Icon',
+            type: 'icon'
           },
           {
-            name: 'url',
-            title: 'Link',
+            name: 'title',
+            title: 'Text',
             type: 'text',
-            default: '#'
+            primary: true
+          },
+          {
+            name: 'link',
+            title: 'Link',
+            type: 'text'
           }
-        ]
-      },
-      {
-        name: 'android',
-        title: 'Google play link',
-        type: 'object',
-        fields: [
+        ],
+        default: [
           {
-            name: 'title',
-            title: 'Title',
-            type: 'text',
-            default: 'Google Play'
+            icon: 'brand-apple',
+            link: '',
+            title: 'App Store'
           },
           {
-            name: 'url',
-            title: 'Link',
-            type: 'text',
-            default: '#'
+            icon: 'brand-google-play',
+            link: '',
+            title: 'Google Play'
           }
         ]
       },
@@ -167,23 +164,18 @@ export function render({ options: { product, footer } }) {
                 />
 
                 <div className="earlybird-EdG6jL mt-10">
-                  <div className="earlybird-qnQMut flex items-center gap-6">
-                    <a
-                      className="earlybird-Or1x2O flex items-center gap-2 py-2 px-4 text-white bg-slate-900 rounded-md font-medium"
-                      href={product.ios.url}
-                      title={product.ios.title}
-                    >
-                      <Icon className="earlybird-whA8ZD w-6 h-6" name="brand-apple" />
-                      {product.ios.title}
-                    </a>
-                    <a
-                      className="earlybird-IxtLI5 flex items-center gap-2 py-2 px-4 text-white bg-slate-900 rounded-md font-medium"
-                      href={product.android.url}
-                      title={product.android.title}
-                    >
-                      <Icon className="earlybird-aihK7P w-6 h-6" name="brand-google-play" />
-                      {product.android.title}
-                    </a>
+                  <div className="earlybird-qnQMut flex flex-col sm:flex-row sm:items-center gap-6">
+                    {product.download_links?.map((row, index) => (
+                      <a
+                        key={index}
+                        className="earlybird-Or1x2O flex items-center justify-center sm:justify-start gap-2 py-2 px-4 text-white bg-slate-900 rounded-md font-medium"
+                        href={row.link}
+                        title={row.title}
+                      >
+                        <Icon className="earlybird-whA8ZD w-6 h-6" name={row.icon} />
+                        {row.title}
+                      </a>
+                    ))}
                   </div>
                 </div>
               </div>
