@@ -127,7 +127,7 @@ export function render({
       <div className="earlybird-0jcSom">
         <div
           id="product"
-          className="earlybird-tZz0Bm min-h-screen lg:flex lg:items-center"
+          className="earlybird-tZz0Bm lg:min-h-screen lg:flex lg:items-center"
         >
           <div className="earlybird-qswwD0 flex-1 lg:h-full lg:flex lg:flex-row lg:items-center lg:justify-center">
             <div className="earlybird-EteRkN mx-auto max-w-full pb-20 lg:max-w-2xl max-[800px]:px-[20px] max-[1400px]:px-[30px] max-[1600px]:px-[40px]">
@@ -183,10 +183,10 @@ export function render({
             </div>
           </div>
 
-          <div className="earlybird-sbglri flex-1 h-screen bg-blue-50">
-            <div className="earlybird-99Qu5A w-full h-auto lg:h-full flex items-center justify-center">
+          <div className="earlybird-sbglri flex-1 h-auto lg:h-screen bg-blue-50">
+            <div className="earlybird-99Qu5A w-full h-auto lg:h-full md:flex md:items-center md:justify-center">
               <Image
-                className="earlybird-GJZoxP max-w-[90%] max-h-[90vh] object-contain"
+                className="earlybird-GJZoxP max-w-full w-full h-auto md:w-auto md:max-w-[90%] md:max-h-[90vh] object-contain"
                 height={800}
                 src={product.image}
                 alt={product.title}
