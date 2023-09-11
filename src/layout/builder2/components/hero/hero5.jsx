@@ -14,13 +14,13 @@ const render = function ({ productId, block }) {
         <div className="hero5__wrapper">
           {isValid(block.setting.Html1) && (
             <div className="hero5__announcement-wrapper">
-              <Html as="p" className="hero5__announcement" {...block.setting.Html1} />
+              <Html as="div" className="hero5__announcement" {...block.setting.Html1} />
             </div>
           )}
 
           <H1 className="hero5__title" {...block.setting.H11} />
 
-          <Html as="p" className="hero5__subtitle" {...block.setting.Html2} />
+          <Html as="div" className="hero5__subtitle" {...block.setting.Html2} />
 
           <div className="hero5__cta">
             <EmailCapture className="hero5__email-capture" {...block.setting.EmailCapture1} />

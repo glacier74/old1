@@ -16,7 +16,7 @@ const render = function ({ productId, block }) {
         <div className="payment1__wrapper">
           <div className="payment1__header">
             <H2 className="payment1__title" {...block.setting.H21} />
-            <Html as="p" className="payment1__subtitle" {...block.setting.Html1} />
+            <Html as="div" className="payment1__subtitle" {...block.setting.Html1} />
           </div>
 
           <div className="payment1__body">
@@ -44,7 +44,7 @@ const render = function ({ productId, block }) {
 
                   <Payment className="payment1__payment-button" {...block.setting.Payment1} />
 
-                  <Html as="p" className="payment1__bottom-text" {...block.setting.Html2} />
+                  <Html as="div" className="payment1__bottom-text" {...block.setting.Html2} />
                 </div>
               </Style>
             </div>

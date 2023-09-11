@@ -29,7 +29,7 @@ const render = function ({ productId, block }) {
 
               <H1 className="hero6__title" {...block.setting.H11} />
 
-              <Html as="p" className="hero6__subtitle" {...block.setting.Html2} />
+              <Html as="div" className="hero6__subtitle" {...block.setting.Html2} />
 
               <Group className="hero6__cta">
                 <EmailCapture

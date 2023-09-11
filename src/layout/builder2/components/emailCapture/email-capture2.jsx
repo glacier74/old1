@@ -10,7 +10,7 @@ const render = function ({ productId, block }) {
       <div className="email_capture2__container">
         <div className="email_capture2__wrapper">
           <H2 className="email_capture2__title" {...block.setting.H21} />
-          <Html as="p" className="email_capture2__subtitle" {...block.setting.Html1} />
+          <Html as="div" className="email_capture2__subtitle" {...block.setting.Html1} />
           <EmailCapture className="email-capture2__form" {...block.setting.EmailCapture1} />
         </div>
       </div>

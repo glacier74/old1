@@ -15,11 +15,11 @@ const render = function ({ productId, block }) {
           <div className="feature1__col-wrapper">
             <div className="feature1__col1">
               <div className="feature1__col1-body">
-                <Html as="p" className="feature1__caption" {...block.setting.Html1} />
+                <Html as="div" className="feature1__caption" {...block.setting.Html1} />
 
                 <H2 className="feature1__title" {...block.setting.H21} />
 
-                <Html as="p" className="feature1__subtitle" {...block.setting.Html2} />
+                <Html as="div" className="feature1__subtitle" {...block.setting.Html2} />
 
                 <List className="feature1__buttons">
                   {block.setting.List1?.map(List1 => (

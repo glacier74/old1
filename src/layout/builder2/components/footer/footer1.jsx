@@ -18,7 +18,7 @@ const render = function ({ productId, block }) {
         </List>
 
         <div className="footer1__right">
-          <Html as="p" className="footer1__copyright" {...block.setting.Html1} />
+          <Html as="div" className="footer1__copyright" {...block.setting.Html1} />
         </div>
       </div>
     </Block>

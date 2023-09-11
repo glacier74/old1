@@ -11,7 +11,7 @@ const render = function ({ productId, block }) {
         <div className="testimonial1__wrapper">
           <H1 className="testimonial1__title" {...block.setting.H11} />
 
-          <Html as="p" className="testimonial1__subtitle" {...block.setting.Html1} />
+          <Html as="div" className="testimonial1__subtitle" {...block.setting.Html1} />
 
           <Testimonial {...block.setting.Testimonial1} />
         </div>
