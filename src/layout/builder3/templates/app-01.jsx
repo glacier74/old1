@@ -152,14 +152,14 @@ export function render({
               )}
 
               <h1
-                className="earlybird-a9PDkW text-5xl 2xl:text-6xl font-bold tracking-tight text-gray-900"
+                className="earlybird-a9PDkW text-3xl font-bold tracking-tight text-gray-950 sm:text-4xl"
                 dangerouslySetInnerHTML={{
                   __html: product.title
                 }}
               />
 
               <div
-                className="earlybird-nHSobm mt-6 text-lg leading-8 text-gray-600"
+                className="earlybird-nHSobm mt-6 text-lg leading-normal text-gray-600"
                 dangerouslySetInnerHTML={{
                   __html: product.description
                 }}
