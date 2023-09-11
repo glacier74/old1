@@ -24,6 +24,7 @@ import { PlanBadge, PlanCheck } from '~/layout/product/PlanCheck'
 import { CustomDomainService, ProductService } from '~/service'
 import { useStore } from '~/store'
 import {
+  getDomainName,
   getSubdomain,
   isRootDomain,
   isValidDomain,
@@ -240,8 +241,7 @@ const ValidateComponent: FC<{ domain: string; onFinish: () => void }> = ({ domai
   )
 
   const { loading, error, request } = useRequest(async () => {
-    const theDomain = isRootDomain(domain) ? `www.${domain}` : domain
-    const result = await CustomDomainService.create(product.id, theDomain)
+    const result = await CustomDomainService.create(product.id, domain)
 
     updateProduct(product.id, {
       customDomains: [result, ...(product.customDomains || [])]
@@ -279,16 +279,25 @@ const ValidateComponent: FC<{ domain: string; onFinish: () => void }> = ({ domai
         name: getSubdomain(domain),
         value: cnameValue,
         ttl: 'Auto / Default',
-        status: 'Proxied / DNS Only'
+        status: 'DNS Only'
       },
       {
         recordType: 'TXT',
-        name: getSubdomain(domain),
+        name: getDomainName(domain),
         value: cnameValue,
         ttl: 'Auto / Default',
         status: 'DNS Only'
-      }
-    ]
+      },
+      isRootDomain(domain)
+        ? {
+            recordType: 'FORWARD',
+            name: '@',
+            value: `www.${domain}`,
+            ttl: 'Auto / Default',
+            status: 'DNS Only'
+          }
+        : null
+    ].filter(Boolean)
 
     return <Table<any> className="table-compact" columns={columns} data={data} />
   }, [domain, cnameValue])

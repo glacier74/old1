@@ -35,6 +35,20 @@ export function getSubdomain(domain: string) {
   return arr[0]
 }
 
+export function getDomainName(domain: string) {
+  if (!isValidDomain(domain)) {
+    return
+  }
+
+  const arr = domain.split('.')
+
+  if (arr.length === 2) {
+    return '@'
+  }
+
+  return arr[0]
+}
+
 export function isRootDomain(domain: string) {
   return isValidDomain(domain) && domain.split('.').length === 2
 }
