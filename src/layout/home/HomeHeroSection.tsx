@@ -96,6 +96,7 @@ export const HomeHeroSection: FC<{ usersCount: number }> = ({ usersCount }) => {
             className="w-full shadow-sm rounded-lg"
             quality={100}
             width={1184}
+            
             priority
           />
         </div>

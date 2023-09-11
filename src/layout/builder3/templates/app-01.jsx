@@ -1,112 +1,112 @@
-import { Icon, Image } from '@earlybirdim/components'
+import { Fragment } from 'react'
+import { Collapse, Toggle, Form, Icon, Image, Tab, clsx } from '@earlybirdim/components'
 
 export const schemas = [
   {
-    name: 'product',
-    title: 'Product',
-    fields: [
+    "name": "product",
+    "title": "Product",
+    "fields": [
       {
-        name: 'announcement',
-        title: 'Announcement',
-        type: 'html',
-        default: 'Take a look at our latest <a href="#" style="color:#2563eb">blog post</a>'
+        "name": "announcement",
+        "title": "Announcement",
+        "type": "html",
+        "default": "Take a look at our latest <a href=\"#\" style=\"color:#2563eb\">blog post</a>"
       },
       {
-        name: 'logo',
-        title: 'Product logo',
-        type: 'image',
-        default: 'https://storage.earlybird.im/examples/logo.png'
+        "name": "logo",
+        "title": "Product logo",
+        "type": "image",
+        "default": "https://storage.earlybird.im/examples/logo.png"
       },
       {
-        name: 'name',
-        title: 'Product name',
-        type: 'html',
-        default: 'Go Explore'
+        "name": "title",
+        "title": "Hero title",
+        "type": "html",
+        "default": "Your browser, your way"
       },
       {
-        name: 'description',
-        title: 'Description',
-        type: 'html',
-        default:
-          'Go Explore helps you discover and explore hidden gems, popular attractions, and local experiences in your destination.'
+        "name": "description",
+        "title": "Description",
+        "type": "html",
+        "default": "Go Explore helps you discover and explore hidden gems, popular attractions, and local experiences in your destination."
       },
       {
-        name: 'download_links',
-        title: 'Download Links',
-        type: 'list',
-        fields: [
+        "name": "download_links",
+        "title": "Download Links",
+        "type": "list",
+        "fields": [
           {
-            name: 'icon',
-            title: 'Icon',
-            type: 'icon'
+            "name": "icon",
+            "title": "Icon",
+            "type": "icon"
           },
           {
-            name: 'title',
-            title: 'Text',
-            type: 'text',
-            primary: true
+            "name": "title",
+            "title": "Text",
+            "type": "text",
+            "primary": true
           },
           {
-            name: 'link',
-            title: 'Link',
-            type: 'text'
+            "name": "link",
+            "title": "Link",
+            "type": "text"
           }
         ],
-        default: [
+        "default": [
           {
-            icon: 'brand-apple',
-            link: '',
-            title: 'App Store'
+            "icon": "brand-apple",
+            "link": "",
+            "title": "App Store"
           },
           {
-            icon: 'brand-google-play',
-            link: '',
-            title: 'Google Play'
+            "icon": "brand-google-play",
+            "link": "",
+            "title": "Google Play"
           }
         ]
       },
       {
-        name: 'image',
-        title: 'Image',
-        type: 'image',
-        default: 'https://storage.earlybird.im/examples/hero-02.png'
+        "name": "image",
+        "title": "Image",
+        "type": "image",
+        "default": "https://storage.earlybird.im/examples/hero-02.png"
       }
     ]
   },
   {
-    name: 'footer',
-    title: 'Footer',
-    fields: [
+    "name": "footer",
+    "title": "Footer",
+    "fields": [
       {
-        name: 'copyright',
-        title: 'Copyright',
-        type: 'html',
-        default: '© 2023 Your Company, Inc. All rights reserved.'
+        "name": "copyright",
+        "title": "Copyright",
+        "type": "html",
+        "default": "© 2023 Your Company, Inc. All rights reserved."
       },
       {
-        name: 'social_links',
-        title: 'Social Links',
-        type: 'list',
-        fields: [
+        "name": "social_links",
+        "title": "Social Links",
+        "type": "list",
+        "fields": [
           {
-            name: 'icon',
-            title: 'Icon',
-            type: 'icon'
+            "name": "icon",
+            "title": "Icon",
+            "type": "icon"
           },
           {
-            name: 'link',
-            title: 'Link',
-            type: 'text'
+            "name": "link",
+            "title": "Link",
+            "type": "text"
           }
         ],
-        default: [
+        "default": [
           {
-            icon: 'brand-x-line',
-            link: 'https://twitter.com/LuoBaishun'
+            "icon": "brand-x-line",
+            "link": "https://twitter.com/LuoBaishun"
           },
           {
-            icon: 'brand-linkedin-line',
-            link: 'https://www.linkedin.com/in/luobaishun/'
+            "icon": "brand-linkedin-line",
+            "link": "https://www.linkedin.com/in/luobaishun/"
           }
         ]
       }
@@ -114,9 +114,13 @@ export const schemas = [
   }
 ]
 
-export function render({ options: { product, footer } }) {
+export function render({
+  options: { product,footer }
+}) {
   return (
-    <div>
+    
+      <div>
+            <div>
       <div className="earlybird-U2Oeht antialiased font-[Inter] bg-white">
         <link
           rel="stylesheet"
@@ -128,18 +132,18 @@ export function render({ options: { product, footer } }) {
             id="product"
             className="earlybird-tZz0Bm mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8"
           >
-            <div className="earlybird-qswwD0 px-6 pt-10 pb-24 sm:pb-32 xl:col-span-7 lg:px-0 lg:pt-12 lg:pb-12 xl:pt-48 xl:pb-56 lg:col-span-6">
+            <div className="earlybird-qswwD0 px-6 pt-10 pb-24 sm:pb-32 xl:col-span-7 lg:px-0 lg:pt-12 lg:pb-12 xl:pt-48 xl:pb-56 lg:col-span-6 flex items-center justify-center h-screen">
               <div className="earlybird-EteRkN mx-auto max-w-2xl lg:mx-0 lg:mr-8 xl:mr-16">
-                <div className="earlybird-stgZun mb-12 sm:flex md:mb-14 lg:mb-16">
+                <div className="earlybird-stgZun mb-6 sm:flex md:mb-8 lg:mb-12">
                   <Image
                     className="earlybird-srE1NC h-11 w-auto"
                     src={product.logo}
                     height={44}
-                    alt={product.name}
+                    alt={product.title}
                   />
                 </div>
 
-                <div className="earlybird-kTjhdr mb-10">
+                <div className="earlybird-kTjhdr mb-6">
                   <div
                     className="earlybird-Vl1ZBh empty:hidden sm:inline-block rounded-full py-1.5 px-3 text-sm leading-6 text-gray-600 ring-1 ring-gray-800/10 hover:ring-gray-800/20"
                     dangerouslySetInnerHTML={{
@@ -149,9 +153,9 @@ export function render({ options: { product, footer } }) {
                 </div>
 
                 <h1
-                  className="earlybird-a9PDkW text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
+                  className="earlybird-a9PDkW text-3xl font-bold tracking-tight text-gray-950 sm:text-4xl"
                   dangerouslySetInnerHTML={{
-                    __html: product.name
+                    __html: product.title
                   }}
                 />
 
@@ -186,7 +190,7 @@ export function render({ options: { product, footer } }) {
                   className="earlybird-GJZoxP max-w-[90%] max-h-[90%] object-contain"
                   height={800}
                   src={product.image}
-                  alt={product.name}
+                  alt={product.title}
                 />
               </div>
             </div>
@@ -221,5 +225,8 @@ export function render({ options: { product, footer } }) {
         </div>
       </div>
     </div>
+
+      </div>
+    
   )
 }
