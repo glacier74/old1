@@ -78,7 +78,7 @@ ${shareURL}.`
           <div className="text-slate-700 font-semibold mb-2">Landing page link</div>
           <div className="mt-1 flex items-center">
             <div className="flex-1 p-2 border border-slate-300 rounded">{shareURL}</div>
-            <CopyButton className="ml-2 !px-4 !py-2 !bg-emerald-500 !text-white" text={shareText} />
+            <CopyButton className="ml-2 !px-4 !py-2 !bg-emerald-500 !text-white" text={shareURL} />
           </div>
         </div>
       </div>
