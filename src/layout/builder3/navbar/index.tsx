@@ -137,13 +137,13 @@ export const Navbar: FC = () => {
 
         <div className="flex-1 flex items-center justify-end gap-3">
           <div className="flex items-center justify-end gap-2">
-            <Button className="!py-1.5 !rounded" onClick={openShareModal}>
+            <Button className="!py-1.5" onClick={openShareModal}>
               Share
             </Button>
 
             <Button
               type="success"
-              className="!py-1.5 !rounded !bg-[#10b981] disabled:!opacity-50"
+              className="!py-1.5 !bg-[#10b981] disabled:!opacity-50"
               loading={loading}
               disabled={!siteSettings.canPublish || state.isSyncing}
               onClick={handleButtonClick}
@@ -155,7 +155,7 @@ export const Navbar: FC = () => {
           <div className="w-px h-[20px] bg-slate-200"></div>
 
           <Button
-            className="!py-1.5 !rounded"
+            className="!py-1.5"
             leading={<IconSidebar className="w-7 h-7 text-slate-800" />}
             onClick={handleToggleSidebar}
           />

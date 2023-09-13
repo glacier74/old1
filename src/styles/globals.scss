@@ -196,7 +196,7 @@ button.button:not(:disabled):focus {
   @apply ring-emerald-500 border-emerald-500;
 }
 
-button.button-link.button-success, 
+button.button-link.button-success,
 button.button-link.button-success .button-loader {
   background: transparent;
 }
@@ -2321,4 +2321,12 @@ button.button-success {
   .button-success {
     @apply bg-transparent text-emerald-500 hover:text-emerald-600 #{!important};
   }
+}
+
+.input,
+.textarea,
+.select-button,
+.link-button,
+button.button {
+  box-shadow: none !important;
 }

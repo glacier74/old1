@@ -80,12 +80,7 @@ export const Breakdown: FC<BreakdownProps> = ({
   }
 
   return (
-    <div
-      className={clsx(
-        'relative shadow-sm border border-slate-50 mb-8 md:mb-0 p-6 rounded',
-        className
-      )}
-    >
+    <div className={clsx('relative border border-slate-200 mb-8 md:mb-0 p-6 rounded', className)}>
       <div className="flex justify-between">
         <h3 className="font-bold dark:text-slate-100">{t(sourceName)}</h3>
       </div>

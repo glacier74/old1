@@ -37,12 +37,12 @@ export function MainGraph({ date, period }: MainGraphProps) {
   }, [product?.id, date, period])
 
   return (
-    <div className="relative w-full border border-slate-50 shadow-sm px-0 py-4 md:px-4 md:py-8 rounded">
+    <div className="relative w-full border border-slate-200 px-0 py-4 md:px-4 md:py-8 rounded">
       <div>
         <TotalStats totalStats={totalStats} />
         <ChartGraph graphData={graphData} period={period} />
       </div>
-      {loading && <Loading className="absolute inset-0 bg-slate-50 rounded" />}
+      {loading && <Loading className="absolute inset-0 bg-white rounded" />}
     </div>
   )
 }
