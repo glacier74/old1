@@ -161,7 +161,7 @@ background: radial-gradient(52.56% 52.56% at 50% 117.61%,#1c1c21 0,rgba(28,28,33
                   <ul className="earlybird-EukmC3 flex flex-row gap-4 text-slate-700 dark:text-slate-300">
                     {socials.map((row, index) => (
                       <li key={index} className="earlybird-M92YwO text-xl">
-                        <a href={row.link}>
+                        <a href={row.url}>
                           <Icon className="earlybird-LyKHRU w-5 h-5" name={row.icon} />
                         </a>
                       </li>
