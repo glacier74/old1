@@ -1,5 +1,6 @@
 import { IconMenu2 } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 import { AuthorizedLayout } from '~/layout'
@@ -33,8 +34,16 @@ export function ProductLayout({ seo, children }: LayoutProps) {
 
 export function ProductSidebarLayout({ seo, children }: LayoutProps) {
   const { t } = useTranslation()
+  const router = useRouter()
   const { isMemberListShow, openSidebar } = useStore()
   const product = useProduct()
+
+  // Preload account pages
+  useEffect(() => {
+    router.prefetch('/account')
+    router.prefetch('/account/plan')
+    router.prefetch('/account/billing')
+  }, [])
 
   return (
     <>
