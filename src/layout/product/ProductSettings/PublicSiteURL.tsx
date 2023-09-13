@@ -290,11 +290,11 @@ const ValidateComponent: FC<{ domain: string; onFinish: () => void }> = ({ domai
       },
       isRootDomain(domain)
         ? {
-            recordType: 'FORWARD',
+            recordType: 'CNAME',
             name: '@',
             value: `www.${domain}`,
             ttl: 'Auto / Default',
-            status: 'DNS Only'
+            status: 'Proxied / DNS Only'
           }
         : null
     ].filter(Boolean)
