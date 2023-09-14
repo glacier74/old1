@@ -164,6 +164,7 @@ export class ProductService {
   static async completions(
     productId: number,
     completion: any,
+    needs: string,
     { timeout = 30_000, onMessage, onFinish }: CompletionsOptions
   ) {
     const controller = new AbortController()
@@ -181,7 +182,8 @@ export class ProductService {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        completion
+        completion,
+        needs
       }),
       signal: controller.signal,
       credentials: 'include',
@@ -213,6 +215,8 @@ export class ProductService {
         responseText += msg.data
 
         try {
+          responseText = responseText.replace(/(-|=){3,}/g, '')
+
           onMessage(YAML.parse(responseText))
         } catch {}
       },

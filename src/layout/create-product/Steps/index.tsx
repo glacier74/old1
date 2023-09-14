@@ -5,7 +5,6 @@ import { ProductService } from '~/service'
 import { useStore } from '~/store'
 import { useAsyncEffect } from '~/utils'
 
-import { StepCategory } from './StepCategory'
 import { StepInitial } from './StepInitial'
 import { StepName } from './StepName'
 import { StepTemplate } from './StepTemplate'
@@ -26,10 +25,6 @@ const STEPS = [
   {
     value: 'name',
     component: StepName
-  },
-  {
-    value: 'category',
-    component: StepCategory
   }
 ]
 

@@ -54,8 +54,8 @@ export const RightSidebar: FC = () => {
       className={clsx(
         'flex flex-col h-full bg-white border-l border-slate-200 duration-300 scrollbar transition-all',
         isBuilderSidebarOpen
-          ? 'w-[0px] opacity-0'
-          : 'w-[320px] min-[1400px]:w-[360px] 2xl:w-[480px] opacity-100'
+          ? 'w-[320px] min-[1400px]:w-[360px] 2xl:w-[480px] opacity-100'
+          : 'w-[0px] opacity-0'
       )}
     >
       <Tabs className="builder3-sidebar-tabs" navRender={navRender}>

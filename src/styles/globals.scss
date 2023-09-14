@@ -224,7 +224,7 @@ button.switch-checked {
 
 [type='checkbox'],
 [type='radio'] {
-  @apply text-emerald-500;
+  @apply text-emerald-500 outline-emerald-600 #{!important};
 }
 
 .switch-group {
@@ -2319,10 +2319,8 @@ button.button-success {
   }
 }
 
-.input,
-.textarea,
-.select-button,
-.link-button,
-button.button {
-  box-shadow: none !important;
+.ai-modal {
+  .modal-body {
+    @apply p-0;
+  }
 }

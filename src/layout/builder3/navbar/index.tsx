@@ -1,10 +1,10 @@
-import { Button, Spin, Switch, notification } from '@heyforms/ui'
+import { Button, Spin, Switch, Tooltip, notification } from '@heyforms/ui'
 import { IconChecks, IconChevronLeft } from '@tabler/icons'
 import dayjs from 'dayjs'
 import Link from 'next/link'
 import { FC, useCallback, useMemo } from 'react'
 
-import { IconSidebar } from '~/components'
+import { IconAI, IconSidebar, IconSidebarOpen } from '~/components'
 import { useProduct } from '~/layout'
 import { ShareModal } from '~/layout/builder/views/Navbar/ShareModal'
 import { SiteSettingsService } from '~/service'
@@ -21,7 +21,8 @@ export const Navbar: FC = () => {
     updateSiteSettings,
     isBuilderSidebarOpen,
     openBuilderSidebar,
-    closeBuilderSidebar
+    closeBuilderSidebar,
+    openAIModal
   } = useStore()
   const { state, dispatch } = useBuilderContext()
   const product = useProduct()
@@ -93,10 +94,6 @@ export const Navbar: FC = () => {
     request()
   }, [request])
 
-  const handleToggleSidebar = useCallback(() => {
-    isBuilderSidebarOpen ? closeBuilderSidebar() : openBuilderSidebar()
-  }, [isBuilderSidebarOpen])
-
   return (
     <>
       <div className="flex items-center justify-between h-[3.5rem] px-4 border-b border-slate-200">
@@ -137,6 +134,16 @@ export const Navbar: FC = () => {
 
         <div className="flex-1 flex items-center justify-end gap-3">
           <div className="flex items-center justify-end gap-2">
+            <Tooltip ariaLabel="AI assistant">
+              <div>
+                <Button
+                  className="!py-1.5"
+                  leading={<IconAI className="w-7 h-7 text-slate-800" />}
+                  onClick={openAIModal}
+                />
+              </div>
+            </Tooltip>
+
             <Button className="!py-1.5" onClick={openShareModal}>
               Share
             </Button>
@@ -154,11 +161,27 @@ export const Navbar: FC = () => {
 
           <div className="w-px h-[20px] bg-slate-200"></div>
 
-          <Button
-            className="!py-1.5"
-            leading={<IconSidebar className="w-7 h-7 text-slate-800" />}
-            onClick={handleToggleSidebar}
-          />
+          {isBuilderSidebarOpen ? (
+            <Tooltip ariaLabel="Close sidebar">
+              <div>
+                <Button
+                  className="!py-1.5"
+                  leading={<IconSidebarOpen className="w-7 h-7 text-slate-800" />}
+                  onClick={closeBuilderSidebar}
+                />
+              </div>
+            </Tooltip>
+          ) : (
+            <Tooltip ariaLabel="Open sidebar">
+              <div>
+                <Button
+                  className="!py-1.5"
+                  leading={<IconSidebar className="w-7 h-7 text-slate-800" />}
+                  onClick={openBuilderSidebar}
+                />
+              </div>
+            </Tooltip>
+          )}
         </div>
       </div>
 

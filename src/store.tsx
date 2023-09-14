@@ -35,6 +35,11 @@ interface Store {
   closeDeletionAlert: () => void
   openBuilderSidebar: () => void
   closeBuilderSidebar: () => void
+  isAIModalOpen: boolean
+  isAIModalClosable: boolean
+  openAIModal: () => void
+  closeAIModal: () => void
+  setAIModalClosable: (isAIModalClosable: boolean) => void
 }
 
 const context = createContext<Store>({} as Store)
@@ -54,7 +59,9 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
   const [isDeletionAlertShow, openDeletionAlert, closeDeletionAlert] = useVisible()
   const [isSidebarOpen, openSidebar, closeSidebar] = useVisible()
   const [product, setProduct] = useState<Partial<Product>>()
-  const [isBuilderSidebarOpen, openBuilderSidebar, closeBuilderSidebar] = useVisible()
+  const [isBuilderSidebarOpen, openBuilderSidebar, closeBuilderSidebar] = useVisible(true)
+  const [isAIModalOpen, openAIModal, closeAIModal] = useVisible()
+  const [isAIModalClosable, setAIModalClosable] = useState(true)
 
   const updateUser = useCallback(
     (updates: Partial<User>) => {
@@ -135,7 +142,12 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
     openDeletionAlert,
     closeDeletionAlert,
     openBuilderSidebar,
-    closeBuilderSidebar
+    closeBuilderSidebar,
+    isAIModalOpen,
+    openAIModal,
+    closeAIModal,
+    isAIModalClosable,
+    setAIModalClosable
   }
 
   return <context.Provider value={value}>{children}</context.Provider>
