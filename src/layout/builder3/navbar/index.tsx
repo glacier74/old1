@@ -143,7 +143,7 @@ export const Navbar: FC = () => {
 
             <Button
               type="success"
-              className="!py-1.5 !bg-[#10b981] disabled:!opacity-50"
+              className="!py-1.5 !bg-[#10b981]"
               loading={loading}
               disabled={!siteSettings.canPublish || state.isSyncing}
               onClick={handleButtonClick}

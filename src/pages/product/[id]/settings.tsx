@@ -63,10 +63,10 @@ const ProductSettings = (): JSX.Element => {
           <Settings form={form} onValueChanged={setValueChanged} onFinish={handleFinish} />
 
           <div className="fixed left-0 md:left-[18rem] bottom-0 right-0 bg-white border-t border-slate-200">
-            <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 md:px-8">
+            <div className="max-w-7xl mx-auto px-4 py-2 sm:px-6 md:px-8">
               <Button
                 type="success"
-                className="w-full md:w-auto"
+                className="w-full h-[36px] md:w-auto"
                 loading={loading}
                 disabled={!isValueChanged}
                 onClick={handleSubmit}

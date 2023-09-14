@@ -1,11 +1,11 @@
-import { Form, Input } from '@heyforms/ui'
-import { Trans, useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
-import { LoginLayout, SocialLogin } from '~/layout'
-import { AuthService } from '~/service'
-import { useStore } from '~/store'
-import { withTranslations } from '~/utils'
-import { useEffect } from 'react'
+import {Form, Input} from '@heyforms/ui'
+import {Trans, useTranslation} from 'next-i18next'
+import {useRouter} from 'next/router'
+import {LoginLayout, SocialLogin} from '~/layout'
+import {AuthService} from '~/service'
+import {useStore} from '~/store'
+import {withTranslations} from '~/utils'
+import {useEffect} from 'react'
 
 const SignUp = (): JSX.Element => {
   const { t } = useTranslation()
@@ -96,7 +96,7 @@ const SignUp = (): JSX.Element => {
               <div className="mt-6">
                 <p className="text-sm text-slate-500">
                   <Trans i18nKey="signUp.agreeWith">
-                    By signing up, you agree to our <a href="https://help.earlybird.im/tos" className="font-medium text-slate-500 underline" target="_blank" rel="noreferrer">terms of service</a> and <a href="https://help.earlybird.im/privacy" className="font-medium text-slate-500 underline" target="_blank" rel="noreferrer">privacy policy</a>.
+                    By signing up, you agree to our <a href="https://help.earlybird.im/tos" className="font-medium text-slate-500 underline hover:text-emerald-700" target="_blank" rel="noreferrer">terms of service</a> and <a href="https://help.earlybird.im/privacy" className="font-medium text-slate-500 underline hover:text-emerald-700" target="_blank" rel="noreferrer">privacy policy</a>.
                   </Trans>
                 </p>
               </div>

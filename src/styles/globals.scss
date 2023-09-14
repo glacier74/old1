@@ -2004,10 +2004,6 @@ button.block-header-button {
 .earlybird-submit-button {
   @apply relative;
 
-  &[disabled] {
-    @apply opacity-70 pointer-events-none;
-  }
-
   .spin {
     @apply absolute top-1/2 left-1/2 -ml-2.5 -mt-2.5;
   }

@@ -1,5 +1,6 @@
 import { Button, Form, Input, Modal, Table, notification } from '@heyforms/ui'
 import { TableColumn } from '@heyforms/ui/types/table'
+import dayjs from 'dayjs'
 import { useTranslation } from 'next-i18next'
 import { FC, useMemo, useState } from 'react'
 
@@ -112,6 +113,7 @@ export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
             inline
             submitText={t('member.emailInvitation.send')}
             submitOptions={{
+              type: 'success',
               className: 'mt-5 ml-3'
             }}
             onlySubmitOnValueChange={true}
@@ -136,12 +138,16 @@ export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
             <div className="input">
               <div className="flex-1 text-sm truncate">{invitationURL}</div>
               <CopyButton
-                className="ml-4"
+                className="ml-4 !px-1.5 !py-0.5"
                 text={invitationURL}
                 copyText={t('member.linkInvitation.copy')}
                 copiedText={t('member.linkInvitation.copied')}
               />
             </div>
+            <p className="mt-1 text-slate-500 text-xs">
+              This invitation link will be reset on{' '}
+              {dayjs.unix(product?.inviteExpiredAt).format('MMM DD, YYYY')}.
+            </p>
           </div>
 
           {/* Members */}

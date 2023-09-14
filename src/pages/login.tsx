@@ -1,11 +1,11 @@
-import { Checkbox, Form, Input } from '@heyforms/ui'
-import { Trans, useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
-import { LoginLayout, SocialLogin } from '~/layout'
-import { AuthService } from '~/service'
-import { useStore } from '~/store'
-import { withTranslations } from '~/utils'
-import { useEffect } from 'react'
+import {Checkbox, Form, Input} from '@heyforms/ui'
+import {Trans, useTranslation} from 'next-i18next'
+import {useRouter} from 'next/router'
+import {LoginLayout, SocialLogin} from '~/layout'
+import {AuthService} from '~/service'
+import {useStore} from '~/store'
+import {withTranslations} from '~/utils'
+import {useEffect} from 'react'
 
 const Login = (): JSX.Element => {
   const { t } = useTranslation()
@@ -15,7 +15,7 @@ const Login = (): JSX.Element => {
   async function handleFinish(values: StringMap) {
     try {
       await AuthService.login(values.email, values.password)
-      router.replace('/')
+      await router.replace('/')
     } catch (err: any) {
       // 邮箱未认证
       if (err.error === 'email_not_verified') {
@@ -44,13 +44,13 @@ const Login = (): JSX.Element => {
         </h1>
         <p className="mt-2 text-center text-sm text-slate-600">
           <Trans i18nKey="login.description">
-            Log in to your account or <a href="/sign-up" className="font-medium text-emerald-500 hover:text-emerald-600">create an account</a>
+            Log in to your account or <a href="/sign-up" className="font-medium text-emerald-600 hover:text-emerald-700">create an account</a>
           </Trans>
         </p>
       </div>
 
       <div className="mt-8 mx-5 md:mx-0">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 shadow">
+        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <div>
             <p className="text-sm font-medium text-slate-700"> {t('login.signInWith')}</p>
             <SocialLogin />
@@ -99,7 +99,7 @@ const Login = (): JSX.Element => {
                 <div className="text-sm">
                   <a
                     href="/forgot-password"
-                    className="font-medium text-emerald-500 hover:text-emerald-600"
+                    className="font-medium text-emerald-600 hover:text-emerald-700"
                   >
                     {t('login.forgot')}
                   </a>

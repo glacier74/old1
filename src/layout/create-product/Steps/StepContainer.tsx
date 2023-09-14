@@ -53,7 +53,7 @@ export const StepContainer: FC<StepContainerProps> = ({
       {step?.isNextButtonShow && (
         <Button
           type="success"
-          className="!px-6 !py-1.5 !rounded-full !text-base disabled:!opacity-50"
+          className="!px-6 !py-1.5 !rounded-full !text-base"
           loaderClassName="!rounded-full"
           disabled={isNextButtonDisabled}
           loading={isNextButtonLoading}
