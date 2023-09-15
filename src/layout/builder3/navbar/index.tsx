@@ -1,4 +1,5 @@
 import { Button, Spin, Switch, Tooltip, notification } from '@heyforms/ui'
+import { isValid } from '@nily/utils'
 import { IconChecks, IconChevronLeft } from '@tabler/icons'
 import dayjs from 'dayjs'
 import Link from 'next/link'
@@ -134,15 +135,17 @@ export const Navbar: FC = () => {
 
         <div className="flex-1 flex items-center justify-end gap-3">
           <div className="flex items-center justify-end gap-2">
-            <Tooltip ariaLabel="AI assistant">
-              <div>
-                <Button
-                  className="!py-1.5"
-                  leading={<IconAI className="w-7 h-7 text-slate-800" />}
-                  onClick={openAIModal}
-                />
-              </div>
-            </Tooltip>
+            {isValid(state.completions) && (
+              <Tooltip ariaLabel="AI assistant">
+                <div>
+                  <Button
+                    className="!py-1.5"
+                    leading={<IconAI className="w-7 h-7 text-slate-800" />}
+                    onClick={openAIModal}
+                  />
+                </div>
+              </Tooltip>
+            )}
 
             <Button className="!py-1.5" onClick={openShareModal}>
               Share

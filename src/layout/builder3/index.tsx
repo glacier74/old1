@@ -27,12 +27,13 @@ function getCompletions(id: string) {
 
 export const Builder3 = () => {
   const { siteSettings } = useStore()
+  const completions = getCompletions(siteSettings.template)
 
   return (
     <BuilderProvider
       initialState={{
         options: siteSettings.draft as any,
-        completions: getCompletions(siteSettings.template)
+        completions
       }}
     >
       <div className="flex flex-col w-full w-screen h-full h-screen overflow-hidden">
@@ -43,7 +44,8 @@ export const Builder3 = () => {
         </div>
       </div>
 
-      <AIModal />
+      {isValid(completions) && <AIModal />}
+
       <HelpFloatButton />
     </BuilderProvider>
   )
