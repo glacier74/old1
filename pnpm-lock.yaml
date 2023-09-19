@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -26,8 +26,8 @@ dependencies:
     specifier: ^1.7.12
     version: 1.7.16(react-dom@18.2.0)(react@18.2.0)
   '@heyforms/ui':
-    specifier: ^2023.9.5
-    version: 2023.9.5(@floating-ui/react@0.19.2)(@headlessui/react@1.7.16)(@heroicons/react@1.0.6)(@hpnp/utils@2.9.3)(@popperjs/core@2.11.8)(@tailwindcss/forms@0.5.4)(clsx@1.2.1)(color-rgba@2.4.0)(dayjs@1.11.9)(fast-equals@4.0.3)(rc-field-form@1.37.0)(rc-picker@2.7.3)(react-colorful@5.6.1)(react-dom@18.2.0)(react-popper@2.3.0)(react-transition-state@1.1.5)(react-use@17.4.0)(react@18.2.0)
+    specifier: ^2023.9.6
+    version: 2023.9.6(@floating-ui/react@0.19.2)(@headlessui/react@1.7.16)(@heroicons/react@1.0.6)(@hpnp/utils@2.9.3)(@popperjs/core@2.11.8)(@tailwindcss/forms@0.5.4)(clsx@1.2.1)(color-rgba@2.4.0)(dayjs@1.11.9)(fast-equals@4.0.3)(rc-field-form@1.37.0)(rc-picker@2.7.3)(react-colorful@5.6.1)(react-dom@18.2.0)(react-popper@2.3.0)(react-transition-state@1.1.5)(react-use@17.4.0)(react@18.2.0)
   '@nily/utils':
     specifier: ^0.3.6
     version: 0.3.6
@@ -187,6 +187,9 @@ dependencies:
   react-sortablejs:
     specifier: ^6.1.4
     version: 6.1.4(@types/sortablejs@1.15.1)(react-dom@18.2.0)(react@18.2.0)(sortablejs@1.15.0)
+  react-textarea-autosize:
+    specifier: ^8.5.3
+    version: 8.5.3(@types/react@18.2.20)(react@18.2.0)
   react-transition-group:
     specifier: ^4.4.5
     version: 4.4.5(react-dom@18.2.0)(react@18.2.0)
@@ -667,8 +670,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@heyforms/ui@2023.9.5(@floating-ui/react@0.19.2)(@headlessui/react@1.7.16)(@heroicons/react@1.0.6)(@hpnp/utils@2.9.3)(@popperjs/core@2.11.8)(@tailwindcss/forms@0.5.4)(clsx@1.2.1)(color-rgba@2.4.0)(dayjs@1.11.9)(fast-equals@4.0.3)(rc-field-form@1.37.0)(rc-picker@2.7.3)(react-colorful@5.6.1)(react-dom@18.2.0)(react-popper@2.3.0)(react-transition-state@1.1.5)(react-use@17.4.0)(react@18.2.0):
-    resolution: {integrity: sha512-0d+vfgzV+dC+yKmqrYF0Kh6aSVTqTk0h9868J/z81IpeQ7L938aGLGwcsuvyfrJD6/2tQAab+lTRWubbBoV3Lw==}
+  /@heyforms/ui@2023.9.6(@floating-ui/react@0.19.2)(@headlessui/react@1.7.16)(@heroicons/react@1.0.6)(@hpnp/utils@2.9.3)(@popperjs/core@2.11.8)(@tailwindcss/forms@0.5.4)(clsx@1.2.1)(color-rgba@2.4.0)(dayjs@1.11.9)(fast-equals@4.0.3)(rc-field-form@1.37.0)(rc-picker@2.7.3)(react-colorful@5.6.1)(react-dom@18.2.0)(react-popper@2.3.0)(react-transition-state@1.1.5)(react-use@17.4.0)(react@18.2.0):
+    resolution: {integrity: sha512-o1mWClhjg23XhXQW/YTASuJ1UlE7BPCEw/ryxgVjWBmxsXfZbKgggIpq/qHblvbZQx3OYoUdOS2HGUFCz/6JTQ==}
     peerDependencies:
       '@floating-ui/react': ^0.19.2
       '@headlessui/react': ^1.6.6
@@ -4696,6 +4699,20 @@ packages:
       tiny-invariant: 1.2.0
     dev: false
 
+  /react-textarea-autosize@8.5.3(@types/react@18.2.20)(react@18.2.0):
+    resolution: {integrity: sha512-XT1024o2pqCuZSuBt9FwHlaDeNtVrtCXu0Rnz88t1jUGheCLa3PhjE1GH8Ctm2axEtvdCl5SUHYschyQ0L5QHQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.22.10
+      react: 18.2.0
+      use-composed-ref: 1.3.0(react@18.2.0)
+      use-latest: 1.2.1(@types/react@18.2.20)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+    dev: false
+
   /react-transition-group@4.4.5(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
     peerDependencies:
@@ -5551,6 +5568,41 @@ packages:
     dependencies:
       punycode: 2.3.0
     dev: true
+
+  /use-composed-ref@1.3.0(react@18.2.0):
+    resolution: {integrity: sha512-GLMG0Jc/jiKov/3Ulid1wbv3r54K9HlMW29IWcDFPEqFkSO2nS0MuefWgMJpeHQ9YJeXDL3ZUF+P3jdXlZX/cQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /use-isomorphic-layout-effect@1.1.2(@types/react@18.2.20)(react@18.2.0):
+    resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 18.2.20
+      react: 18.2.0
+    dev: false
+
+  /use-latest@1.2.1(@types/react@18.2.20)(react@18.2.0):
+    resolution: {integrity: sha512-xA+AVm/Wlg3e2P/JiItTziwS7FK92LWrDB0p+hgXloIMuVCeJJ8v6f0eeHyPZaJrM+usM1FkFfbNCrJGs8A/zw==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 18.2.20
+      react: 18.2.0
+      use-isomorphic-layout-effect: 1.1.2(@types/react@18.2.20)(react@18.2.0)
+    dev: false
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=}
