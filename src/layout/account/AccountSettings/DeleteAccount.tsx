@@ -1,11 +1,12 @@
 import { Button, Form, Input, Modal, notification } from '@heyforms/ui'
+import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import type { FC } from 'react'
 
 import { AuthService, UserService } from '~/service'
 import { useStore } from '~/store'
-import { useAsyncEffect, useVisible } from '~/utils'
+import { deleteRedirectURL, useAsyncEffect, useVisible } from '~/utils'
 
 const VerifyEmail: FC<IModalProps> = ({ visible, onClose, onComplete }) => {
   const { t } = useTranslation()
@@ -14,12 +15,13 @@ const VerifyEmail: FC<IModalProps> = ({ visible, onClose, onComplete }) => {
 
   async function handleFinish(values: AnyMap<any>) {
     await UserService.verifyDeletion(values.code)
+    deleteRedirectURL(JsCookie)
 
     // Clear the auth state and logout the user
     setTimeout(async () => {
       await AuthService.logout()
       closeAccountSettings()
-      router.replace('/login')
+      router.replace('/')
     }, 10_000)
 
     onComplete?.()

@@ -1,10 +1,12 @@
 import { Dropdown, Menus } from '@heyforms/ui'
+import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import type { FC } from 'react'
 
 import { AuthService } from '~/service'
 import { useStore } from '~/store'
+import { deleteRedirectURL } from '~/utils'
 
 export const LoggedAccount: FC = () => {
   const { t } = useTranslation()
@@ -15,6 +17,7 @@ export const LoggedAccount: FC = () => {
     switch (name) {
       case 'logout':
         await AuthService.logout()
+        deleteRedirectURL(JsCookie)
         router.replace('/')
         break
     }

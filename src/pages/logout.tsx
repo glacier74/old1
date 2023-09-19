@@ -1,15 +1,17 @@
 import { Spin } from '@heyforms/ui'
+import JsCookie from 'js-cookie'
 import { useRouter } from 'next/router'
 
 import { BaseLayout } from '~/layout'
 import { AuthService } from '~/service'
-import { useAsyncEffect, withTranslations } from '~/utils'
+import { deleteRedirectURL, useAsyncEffect, withTranslations } from '~/utils'
 
 const Logout = (): JSX.Element => {
   const router = useRouter()
 
   useAsyncEffect(async () => {
     await AuthService.logout()
+    deleteRedirectURL(JsCookie)
     router.replace('/')
   }, [])
 
