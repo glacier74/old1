@@ -90,7 +90,7 @@ export const Preview: FC = () => {
       <div className={`builder-editor builder-editor-${state.previewMode}`}>
         <Frame
           className="w-full h-full scrollbar"
-          initialContent="<!DOCTYPE html><html class='scroll-smooth'><head><script src='https://cdn.tailwindcss.com'></script></head><body class='iframe-scrollbar'><div></div></body></html>"
+          initialContent="<!DOCTYPE html><html class='scroll-smooth'><head><script src='https://cdn.tailwindcss.com'></script><script>document.addEventListener('click',function(event){var a=event.target;var depth=3;while(a&&a.tagName!=='A'&&depth-->0){a=a.parentNode}if(a&&a.tagName=='A'){event.preventDefault()}});</script></head><body class='iframe-scrollbar'><div></div></body></html>"
         >
           <PublicSiteDangerouslyHTML html={siteSettings.customCode} />
           <ScrollIntoView
