@@ -378,7 +378,11 @@ const CustomURL: FC = () => {
 
   return (
     <>
-      <PlanCheck className="cursor-pointer" minimalLevel={PLAN_LEVELS.plan_starter}>
+      <PlanCheck
+        className="cursor-pointer"
+        minimalLevel={PLAN_LEVELS.plan_starter}
+        redirectUrl={`/product/${product.id}/settings`}
+      >
         <div>
           <div className="form-item-label">
             <span>Custom URL</span>

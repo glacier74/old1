@@ -4,10 +4,12 @@ import { FC } from 'react'
 
 import { SwitchField } from '~/components'
 import { PLAN_LEVELS } from '~/constants'
+import { useProductId } from '~/layout'
 import { PlanBadge, PlanCheck } from '~/layout/product/PlanCheck'
 
 export const Advanced: FC<{ values: any }> = ({ values }) => {
   const { t } = useTranslation()
+  const productId = useProductId()
 
   return (
     <div className="space-y-2">
@@ -15,7 +17,11 @@ export const Advanced: FC<{ values: any }> = ({ values }) => {
 
       <div className="bg-slate-50 rounded-lg divide-y divide-slate-100">
         <div className="expandable expandable-advanced px-6 pt-5 py-5">
-          <PlanCheck className="cursor-pointer" minimalLevel={PLAN_LEVELS.plan_superior}>
+          <PlanCheck
+            className="cursor-pointer"
+            minimalLevel={PLAN_LEVELS.plan_superior}
+            redirectUrl={`/product/${productId}/settings`}
+          >
             <div>
               <Form.Item name="isSitePrivate">
                 <SwitchField
@@ -50,7 +56,11 @@ export const Advanced: FC<{ values: any }> = ({ values }) => {
         </div>
 
         <div className="expandable expandable-advanced px-6 pt-5 py-5">
-          <PlanCheck className="cursor-pointer" minimalLevel={PLAN_LEVELS.plan_superior}>
+          <PlanCheck
+            className="cursor-pointer"
+            minimalLevel={PLAN_LEVELS.plan_superior}
+            redirectUrl={`/product/${productId}/settings`}
+          >
             <Form.Item className="mb-0" name="removeBranding">
               <SwitchField
                 label={

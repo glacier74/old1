@@ -5,10 +5,11 @@ import { FC, cloneElement, useEffect } from 'react'
 
 import { PLAN_NAMES } from '~/constants'
 import { useProduct } from '~/layout'
-import { useSubscriptionPlanLevel } from '~/utils'
+import { urlBuilder, useSubscriptionPlanLevel } from '~/utils'
 
 interface PlanCheckProps extends ComponentProps {
   minimalLevel: number
+  redirectUrl?: string
 }
 
 export const PlanBadge: FC<PlanCheckProps> = ({ className, minimalLevel, ...restProps }) => {
@@ -33,6 +34,7 @@ export function planLevelCompare(minimalLevel: number, planLevel?: number) {
 export const PlanCheck: FC<PlanCheckProps> = ({
   className,
   minimalLevel,
+  redirectUrl,
   children,
   ...restProps
 }) => {
@@ -41,7 +43,12 @@ export const PlanCheck: FC<PlanCheckProps> = ({
   const planLevel = useSubscriptionPlanLevel(product.subscription)
 
   function handleClick() {
-    router.push('/account/plan?utm_source=upgrade-plan')
+    router.push(
+      urlBuilder('/account/plan', {
+        utm_source: 'upgrade-plan',
+        redirect_url: redirectUrl
+      })
+    )
   }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks

@@ -5,12 +5,14 @@ import { FC, useMemo } from 'react'
 
 import { Expandable, IconGoogle2, ImagePickerField } from '~/components'
 import { PLAN_LEVELS } from '~/constants'
+import { useProductId } from '~/layout'
 import { PlanBadge, PlanCheck } from '~/layout/product/PlanCheck'
 
 import { OpenGraphImage } from './OpenGraphImage'
 
 export const Meta: FC<{ values: any }> = ({ values }) => {
   const { t } = useTranslation()
+  const productId = useProductId()
 
   const url = useMemo(
     () => `${values.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`,
@@ -89,7 +91,11 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
         >
           <div className="flex flex-col lg:flex-row justify-start space-y-2 lg:space-x-8 lg:space-y-0">
             <div className="w-full lg:w-1/2 lg:flex-1">
-              <PlanCheck className="cursor-pointer" minimalLevel={PLAN_LEVELS.plan_starter}>
+              <PlanCheck
+                className="cursor-pointer"
+                minimalLevel={PLAN_LEVELS.plan_starter}
+                redirectUrl={`/product/${productId}/settings`}
+              >
                 <Form.Item
                   name="openGraphImage"
                   className="mb-4"

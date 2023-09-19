@@ -1,9 +1,11 @@
+import { isValid } from '@nily/utils'
 import { IconChevronLeft, IconCreditCard, TablerIconProps } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import type { FC } from 'react'
 
 import { IconPlan, IconUser } from '~/components'
+import { useParam } from '~/utils'
 
 interface SidebarNavProps {
   isMobile?: boolean
@@ -29,13 +31,14 @@ const NavLink = ({ icon: Icon, href, title }: ExternalLinkProps) => {
 
 export const AccountSidebarNav: FC<SidebarNavProps> = ({ isMobile = false }) => {
   const { t } = useTranslation()
+  const redirectUrl = useParam('redirect_url')
 
   return (
     <div className="flex flex-col flex-1">
       <div className="pl-5">
         <Link
           className="flex items-center text-base -ml-2 pl-1 pr-3 py-1.5 hover:text-slate-900"
-          href="/"
+          href={isValid(redirectUrl) ? redirectUrl : '/'}
         >
           <IconChevronLeft className="w-5 h-5 text-slate-500" />
           <span className="ml-1">Dashboard</span>

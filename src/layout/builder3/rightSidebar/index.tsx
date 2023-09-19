@@ -26,7 +26,11 @@ export const RightSidebar: FC = () => {
     switch (tab.name) {
       case 'codeInjection':
         return (
-          <PlanCheck className="-my-4 py-4 cursor-pointer" minimalLevel={PLAN_LEVELS.plan_shipper}>
+          <PlanCheck
+            className="-my-4 py-4 cursor-pointer"
+            minimalLevel={PLAN_LEVELS.plan_shipper}
+            redirectUrl={`/product/${siteSettings.productId}/edit`}
+          >
             <div>
               <span>{tab.title}</span>
               <PlanBadge className="ml-2" minimalLevel={PLAN_LEVELS.plan_shipper} />
