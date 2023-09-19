@@ -273,18 +273,26 @@ export function render({ options: { header, hero, features, newsletter, footer }
           <div id="hero" className="earlybird-8UpJHb max-w-5xl mx-auto my-24 px-5">
             <div className="earlybird-CEuNdx flex flex-wrap items-center">
               <div className="earlybird-Y6qLQO max-w-md mb-8 w-full md:w-1/2">
-                <h1 className="earlybird-qf8Zph text-4xl font-extrabold mb-5" dangerouslySetInnerHTML={{
-                  __html: hero.title
-                }} />
-                <div className="earlybird-dGehra text-lg md:text-xl text-slate-500" dangerouslySetInnerHTML={{
+                <h1
+                  className="earlybird-qf8Zph text-4xl font-extrabold mb-5"
+                  dangerouslySetInnerHTML={{
+                    __html: hero.title
+                  }}
+                />
+                <div
+                  className="earlybird-dGehra text-lg md:text-xl text-slate-500"
+                  dangerouslySetInnerHTML={{
                     __html: hero.subtitle
                   }}
                 />
 
                 <div className="earlybird-0yRjHM flex items-center gap-4 mt-4">
-                  <button className="earlybird-8u4Quz flex items-center gap-2 py-3 bg-slate-950 px-6 rounded-md">
+                  <a
+                    href={hero.cta1.url}
+                    className="earlybird-8u4Quz flex items-center gap-2 py-3 bg-slate-950 px-6 rounded-md"
+                  >
                     <span className="earlybird-KVT5ZY text-slate-50">{hero.cta1.title}</span>
-                  </button>
+                  </a>
 
                   <a href={hero.cta2.url} className="earlybird-WqWTZ3 text-slate-950 font-medium">
                     <span className="">{hero.cta2.title}</span>
@@ -306,9 +314,12 @@ export function render({ options: { header, hero, features, newsletter, footer }
 
           <div id="features" className="earlybird-PKV16p max-w-5xl mx-auto my-24 px-5">
             <div className="">
-              <h1 className="earlybird-SZzPeR text-2xl leading-[1.25] font-bold mb-6" dangerouslySetInnerHTML={{
-                __html: features.title
-              }} />
+              <h1
+                className="earlybird-SZzPeR text-2xl leading-[1.25] font-bold mb-6"
+                dangerouslySetInnerHTML={{
+                  __html: features.title
+                }}
+              />
 
               <div className="earlybird-nmAu9f grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-6">
                 {features.feature_list.map((row, index) => (
@@ -325,9 +336,12 @@ export function render({ options: { header, hero, features, newsletter, footer }
           </div>
 
           <div id="newsletter" className="earlybird-RgxkZ1 sm:max-w-3xl mx-auto px-8 mb-16">
-            <h3 className="earlybird-7q127M text-2xl font-medium mb-8 text-center" dangerouslySetInnerHTML={{
-              __html: newsletter.headline
-            }} />
+            <h3
+              className="earlybird-7q127M text-2xl font-medium mb-8 text-center"
+              dangerouslySetInnerHTML={{
+                __html: newsletter.headline
+              }}
+            />
             <div className="earlybird-hBI4NF max-w-md mx-auto">
               <Form
                 className="earlybird-rSzuDp  flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 border-slate-300"
