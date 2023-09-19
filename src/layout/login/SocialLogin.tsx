@@ -1,6 +1,6 @@
+import { Button } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
-import { FC, SVGProps } from 'react'
+import { FC, SVGProps, useEffect, useState } from 'react'
 
 import { IconGithub, IconGoogle } from '~/components'
 
@@ -10,23 +10,32 @@ interface SocialLoginItemProps {
   provider: string
 }
 
+const API_URI = process.env.NEXT_PUBLIC_API_URI
+
 const SocialLoginItem: FC<SocialLoginItemProps> = ({ label, icon: Icon, provider }) => {
-  const router = useRouter()
+  const [loading, setLoading] = useState(false)
 
   function handleClick() {
-    router.push(`/login/${provider}`)
+    setLoading(true)
+    window.location.href = `${API_URI}/login/${provider}`
   }
 
+  useEffect(() => {
+    return () => {
+      setLoading(false)
+    }
+  }, [])
+
   return (
-    <div>
-      <div
-        className="w-full inline-flex justify-center py-2 px-4 border border-slate-200 rounded-md shadow-sm bg-white text-sm font-medium text-slate-700 cursor-pointer hover:bg-slate-50"
-        onClick={handleClick}
-      >
-        <Icon className="w-5 h-5" />
-        <span className="ml-2">{label}</span>
-      </div>
-    </div>
+    <Button
+      className="w-full !py-2.5 md:!py-2 border border-slate-200 text-sm font-medium text-slate-700 !bg-white hover:bg-slate-50"
+      loaderClassName="bg-white text-slate-700"
+      leading={<Icon className="w-5 h-5" />}
+      loading={loading}
+      onClick={handleClick}
+    >
+      {label}
+    </Button>
   )
 }
 

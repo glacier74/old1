@@ -1,8 +1,10 @@
 // @ts-check
 const dotenv = require('dotenv')
 const { resolve } = require('path')
+
 const pkg = require('./package.json')
 const { i18n } = require('./next-i18next.config.js')
+
 const env = process.env.NODE_ENV || 'development'
 
 dotenv.config({
@@ -97,30 +99,6 @@ module.exports = {
             value: 'public, max-age=31536000, immutable'
           }
         ]
-      }
-    ]
-  },
-  async redirects() {
-    return [
-      {
-        source: '/login/google',
-        destination: `${process.env.NEXT_PUBLIC_API_URI}/login/google`,
-        permanent: false
-      },
-      {
-        source: '/login/google/callback',
-        destination: `${process.env.NEXT_PUBLIC_API_URI}/login/google/callback`,
-        permanent: false
-      },
-      {
-        source: '/login/github',
-        destination: `${process.env.NEXT_PUBLIC_API_URI}/login/github`,
-        permanent: false
-      },
-      {
-        source: '/login/github/callback',
-        destination: `${process.env.NEXT_PUBLIC_API_URI}/login/github/callback`,
-        permanent: false
       }
     ]
   },
