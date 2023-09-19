@@ -1,7 +1,7 @@
 import { isNotNil } from '@nily/utils'
 import clsx from 'clsx'
 import { useRouter } from 'next/router'
-import { FC, cloneElement, useEffect } from 'react'
+import { FC, MouseEvent, cloneElement, useEffect } from 'react'
 
 import { PLAN_NAMES } from '~/constants'
 import { useProduct } from '~/layout'
@@ -42,7 +42,9 @@ export const PlanCheck: FC<PlanCheckProps> = ({
   const product = useProduct()
   const planLevel = useSubscriptionPlanLevel(product.subscription)
 
-  function handleClick() {
+  function handleClick(event: MouseEvent<HTMLDivElement>) {
+    event.stopPropagation()
+
     router.push(
       urlBuilder('/account/plan', {
         utm_source: 'upgrade-plan',
