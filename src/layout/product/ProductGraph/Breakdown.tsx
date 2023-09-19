@@ -85,7 +85,7 @@ export const Breakdown: FC<BreakdownProps> = ({
         <h3 className="font-bold dark:text-slate-100">{t(sourceName)}</h3>
       </div>
       <div className="flex flex-col flex-grow fade-enter-active">
-        <div className="flex items-center justify-between mt-3 mb-2 text-xs font-bold tracking-wide text-slate-500">
+        <div className="flex items-center justify-between mt-3 mb-2 text-xs font-semibold tracking-wide text-slate-800">
           <span>{t(propertyName)}</span>
           <div className="text-right">
             <span className="inline-block w-20">{t('productStats.visitors')}</span>

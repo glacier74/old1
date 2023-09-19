@@ -31,11 +31,11 @@ const StatsItem: FC<StatsItemProps> = ({ className, label, name, data }) => {
 
   return (
     <div className={clsx('w-1/2 px-4 md:px-8 lg:w-auto border-r', className)}>
-      <div className="text-xs font-bold tracking-wide text-slate-500 uppercase dark:text-slate-400 whitespace-nowrap">
+      <div className="text-xs font-semibold tracking-wide text-slate-800 uppercase dark:text-slate-400 whitespace-nowrap">
         {label}
       </div>
-      <div className="flex items-center justify-between my-1 whitespace-nowrap">
-        <b className="mr-4 text-xl md:text-2xl dark:text-slate-100">{text}</b>
+      <div className="flex items-center justify-between my-3 whitespace-nowrap">
+        <strong className="mr-4 text-xl md:text-4xl">{text}</strong>
         {isValid(value?.change) && (
           <span className="text-xs dark:text-slate-100">
             <span className={clsx('font-bold', growth ? 'text-emerald-400' : 'text-red-400')}>
