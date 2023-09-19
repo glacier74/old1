@@ -15,7 +15,7 @@ export const LoggedAccount: FC = () => {
     switch (name) {
       case 'logout':
         await AuthService.logout()
-        router.replace('/login')
+        router.replace('/')
         break
     }
   }

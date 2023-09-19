@@ -10,7 +10,7 @@ const Logout = (): JSX.Element => {
 
   useAsyncEffect(async () => {
     await AuthService.logout()
-    router.replace('/login')
+    router.replace('/')
   }, [])
 
   return (
