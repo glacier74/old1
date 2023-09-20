@@ -47,9 +47,22 @@ function parseScripts(html: string) {
 }
 
 const HEAD_TAGS = ['meta', 'link', 'title', 'base']
-const OTHER_TAGS = sanitizeHtml.defaults.allowedTags.concat(['style'])
+const OTHER_TAGS = sanitizeHtml.defaults.allowedTags.concat(['style', 'iframe'])
 const OTHER_ATTRIBUTES = {
   ...sanitizeHtml.defaults.allowedAttributes,
+  iframe: [
+    'src',
+    'id',
+    'class',
+    'data-*',
+    'width',
+    'height',
+    'style',
+    'allowfullscreen',
+    'allow',
+    'title',
+    'scrolling'
+  ],
   '*': ['id', 'class', 'data-*', 'href', 'align', 'alt', 'center', 'style']
 }
 
