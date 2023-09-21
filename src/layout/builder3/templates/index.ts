@@ -11,6 +11,7 @@ import * as landingPage01 from './landing-page-01'
 import * as landingPage02 from './landing-page-02'
 import * as minimalLanding from './minimal-landing'
 import * as obsidian from './obsidian'
+import * as pandaZen from './panda-zen'
 import * as simpleBio from './simple-bio'
 import * as tinyFolio from './tiny-folio'
 import * as waitlist01 from './waitlist-01'
@@ -34,7 +35,8 @@ const templates: AnyMap<Template> = {
   ebony: ebony,
   'black-matrix': blackMatrix,
   'black-canvas': blackCanvas,
-  'minimal-landing-01': minimalLanding
+  'minimal-landing-01': minimalLanding,
+  'panda-zen': pandaZen
 }
 
 export default templates
