@@ -1,9 +1,7 @@
-import {
-  $Block as Block,
-  $H1 as H1,
-  $Html as Html,
-  $Testimonial as Testimonial
-} from '@earlybirdim/blocks'
+import { $Block as Block, $H1 as H1, $Html as Html } from '@earlybirdim/blocks'
+
+import { PublicSiteDangerouslyHTML } from '~/layout/public-site/PublicSiteDangerouslyHTML'
+
 const render = function ({ productId, block }) {
   return (
     <Block productId={productId} block={block}>
@@ -12,8 +10,7 @@ const render = function ({ productId, block }) {
           <H1 className="testimonial1__title" {...block.setting.H11} />
 
           <Html as="div" className="testimonial1__subtitle" {...block.setting.Html1} />
-
-          <Testimonial {...block.setting.Testimonial1} />
+          <PublicSiteDangerouslyHTML html={block.setting.Testimonial1.code} />
         </div>
       </div>
     </Block>
