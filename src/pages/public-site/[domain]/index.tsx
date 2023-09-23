@@ -29,6 +29,7 @@ import { SlideGalleryPreview } from '~/layout/builder/blocks/SlideGallery'
 import { TestimonialPreview } from '~/layout/builder/blocks/Testimonial'
 import { TextPreview } from '~/layout/builder/blocks/Text'
 import { PublicSiteDangerouslyHTML } from '~/layout/public-site/PublicSiteDangerouslyHTML'
+import { PublicSiteHiddenBlocksStyle } from '~/layout/public-site/PublicSiteHiddenBlocksStyle'
 import { ProductService } from '~/service'
 import { PublicApiService } from '~/service/public-api'
 import { getPrivateToken, setPrivateToken, withTranslations } from '~/utils'
@@ -277,7 +278,8 @@ const PublicSite: FC<PublicSiteProps> = ({
         >
           {isValid(product.siteSetting.blocks)
             ? templates[product.siteSetting.template]?.render({
-                options: product.siteSetting.blocks
+                options: product.siteSetting.blocks,
+                hiddenBlocks: product.siteSetting.hiddenBlocks
               })
             : null}
         </GlobalContext.Provider>
@@ -307,6 +309,7 @@ const PublicSite: FC<PublicSiteProps> = ({
       )}
 
       <PublicSiteDangerouslyHTML html={product.siteSetting.customCode} />
+      <PublicSiteHiddenBlocksStyle hiddenBlocks={product.siteSetting.hiddenBlocks} />
 
       <Script
         data-domain={product.analyticId}

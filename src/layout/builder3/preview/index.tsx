@@ -4,6 +4,7 @@ import Frame from 'react-frame-component'
 
 import { useProductId } from '~/layout'
 import { PublicSiteDangerouslyHTML } from '~/layout/public-site/PublicSiteDangerouslyHTML'
+import { PublicSiteHiddenBlocksStyle } from '~/layout/public-site/PublicSiteHiddenBlocksStyle'
 import { SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
 import { useVisible } from '~/utils'
@@ -92,11 +93,11 @@ export const Preview: FC = () => {
           className="w-full h-full scrollbar"
           initialContent="<!DOCTYPE html><html class='scroll-smooth'><head><script src='https://cdn.tailwindcss.com'></script><script>document.addEventListener('click',function(event){var a=event.target;var depth=3;while(a&&a.tagName!=='A'&&depth-->0){a=a.parentNode}if(a&&a.tagName=='A'){event.preventDefault()}});</script></head><body class='iframe-scrollbar'><div></div></body></html>"
         >
-          <PublicSiteDangerouslyHTML html={siteSettings.customCode} />
           <ScrollIntoView
             selectedOptionName={state.selectedOptionName}
             selectedCompletionName={state.selectedCompletionName}
           />
+
           <GlobalContext.Provider
             value={{
               productId,
@@ -104,9 +105,13 @@ export const Preview: FC = () => {
             }}
           >
             {templates[siteSettings.template]?.render({
-              options: state.options
+              options: state.options,
+              hiddenBlocks: siteSettings.hiddenBlocks
             })}
           </GlobalContext.Provider>
+
+          <PublicSiteDangerouslyHTML html={siteSettings.customCode} />
+          <PublicSiteHiddenBlocksStyle hiddenBlocks={siteSettings.hiddenBlocks} />
         </Frame>
       </div>
 

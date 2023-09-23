@@ -23,15 +23,7 @@ import { useProduct, useProductId } from '~/layout'
 import { PlanBadge, PlanCheck } from '~/layout/product/PlanCheck'
 import { CustomDomainService, ProductService } from '~/service'
 import { useStore } from '~/store'
-import {
-  getDomainName,
-  getSubdomain,
-  isRootDomain,
-  isValidDomain,
-  useProductURL,
-  useRequest,
-  useVisible
-} from '~/utils'
+import { getDomainName, isValidDomain, useProductURL, useRequest, useVisible } from '~/utils'
 
 interface CustomURLItemProps {
   customDomain: CustomDomain
@@ -179,7 +171,11 @@ const CustomURLItem: FC<CustomURLItemProps> = ({ customDomain, onSetPrimary, onD
       </div>
 
       <Dropdown className="w-6 h-6" overlay={Overlay}>
-        <Button.Link className="!p-0.5" leading={<IconDotsVertical />} loading={loading} />
+        <Button.Link
+          className="!p-0.5 bg-slate-200"
+          leading={<IconDotsVertical />}
+          loading={loading}
+        />
       </Dropdown>
     </div>
   )
@@ -275,9 +271,9 @@ const ValidateComponent: FC<{ domain: string; onFinish: () => void }> = ({ domai
 
     const data = [
       {
-        recordType: 'CNAME',
-        name: getSubdomain(domain),
-        value: cnameValue,
+        recordType: 'A',
+        name: getDomainName(domain),
+        value: process.env.NEXT_PUBLIC_PUBLIC_SITE_A_RECORD,
         ttl: 'Auto / Default',
         status: 'DNS Only'
       },
@@ -287,16 +283,7 @@ const ValidateComponent: FC<{ domain: string; onFinish: () => void }> = ({ domai
         value: cnameValue,
         ttl: 'Auto / Default',
         status: 'DNS Only'
-      },
-      isRootDomain(domain)
-        ? {
-            recordType: 'CNAME',
-            name: '@',
-            value: `www.${domain}`,
-            ttl: 'Auto / Default',
-            status: 'Proxied / DNS Only'
-          }
-        : null
+      }
     ].filter(Boolean)
 
     return <Table<any> className="table-compact" columns={columns} data={data} />
@@ -406,7 +393,13 @@ const CustomURL: FC = () => {
         </div>
       </PlanCheck>
 
-      <Modal contentClassName="max-w-2xl" visible={visible} showCloseIcon onClose={close}>
+      <Modal
+        contentClassName="max-w-2xl"
+        visible={visible}
+        maskClosable={false}
+        showCloseIcon
+        onClose={close}
+      >
         <div className="space-y-6">
           <div>
             <h1 className="text-lg leading-6 font-medium text-slate-900">New custom URL</h1>

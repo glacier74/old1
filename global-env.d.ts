@@ -140,6 +140,7 @@ declare global {
     blocks: any
     draft: any
     completions: string[]
+    hiddenBlocks: string[]
     version: number
     theme: Theme
     customCode: string
