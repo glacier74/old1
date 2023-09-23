@@ -1,4 +1,4 @@
-import { Collapse, Form, Icon, Image, Tab, Toggle } from '@earlybirdim/components'
+import { Icon, Image } from '@earlybirdim/components'
 import { Fragment } from 'react'
 
 export const schemas = [
@@ -160,11 +160,13 @@ font-family: 'Karla', sans-serif;
                 rel="stylesheet"
               />
               <div className="earlybird-zNZErc lg:max-w-[1280px] max-w-[768px] fixed w-full px-8 py-10 flex flex-col z-50 lg:bg-transparent bg-slate-950">
-                <h1 className="earlybird-FqN2Kn text-3xl font-bold md:mb-2 mb-0 mr-1">
+                <h1 id="header" className="earlybird-FqN2Kn text-3xl font-bold md:mb-2 mb-0 mr-1">
                   {header.title}
                 </h1>
-                <p className="earlybird-VDqt3a text-base text-slate-300">{header.subtitle}</p>
-                <div className="earlybird-cL7bSr mt-4">
+                <p id="header" className="earlybird-VDqt3a text-base text-slate-300">
+                  {header.subtitle}
+                </p>
+                <div id="about_me" className="earlybird-cL7bSr mt-4">
                   {about_me.social_links.map((item, key) => (
                     <a
                       key={key}
@@ -181,41 +183,49 @@ font-family: 'Karla', sans-serif;
                 </div>
               </div>
               <div className="earlybird-9pUSV4 lg:max-w-[1280px] max-w-[768px] px-8 w-full mx-auto lg:grid block grid-cols-12 gap-8 relative lg:py-6 py-10 mt-32 lg:mt-0">
-                <div className="earlybird-z0D2Oq col-span-3">
+                <div id="about_me" className="earlybird-z0D2Oq col-span-3">
                   <div className="earlybird-Umkb0p xl:hidden lg:block hidden fixed w-[20%] bottom-6">
                     <Image src={about_me.image} className="earlybird-7M1bho w-full" width={200} />
                   </div>
                 </div>
                 <div className="earlybird-4N8bMq xl:col-span-5 col-span-9 max-w-[620px]">
                   <div className="earlybird-wihLRD lg:pl-8">
-                    <p className="earlybird-TFbcfc py-6 text-slate-300/80 text-lg">
+                    <p id="about_me" className="earlybird-TFbcfc py-6 text-slate-300/80 text-lg">
                       {about_me.description}
                     </p>
-                    <h1 className="earlybird-MK4kwn text-2xl font-bold text-slate-200 mt-8 mb-4">
+                    <h1
+                      id="made"
+                      className="earlybird-MK4kwn text-2xl font-bold text-slate-200 mt-8 mb-4"
+                    >
                       {made.title}
                     </h1>
                   </div>
-                  {made.list.map((item, key) => (
-                    <div key={key} className="earlybird-PPMmTO mb-12 flex lg:flex-row flex-col">
-                      <div className="earlybird-VHDE2b lg:py-8 lg:-rotate-90 h-fit">
-                        <span className="earlybird-CXGYu3 text-xs ml-auto text-slate-400">
-                          {item.date}
-                        </span>
+                  <div id="made">
+                    {made.list.map((item, key) => (
+                      <div key={key} className="earlybird-PPMmTO mb-12 flex lg:flex-row flex-col">
+                        <div className="earlybird-VHDE2b lg:py-8 lg:-rotate-90 h-fit">
+                          <span className="earlybird-CXGYu3 text-xs ml-auto text-slate-400">
+                            {item.date}
+                          </span>
+                        </div>
+                        <div>
+                          <a href={item.link}>
+                            <h1 className="earlybird-Ppye7K text-xl text-slate-200 hover:text-white">
+                              {item.title}
+                            </h1>
+                          </a>
+                          <p className="earlybird-s5acAh text-lg text-slate-300/80">
+                            {item.description}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <a href={item.link}>
-                          <h1 className="earlybird-Ppye7K text-xl text-slate-200 hover:text-white">
-                            {item.title}
-                          </h1>
-                        </a>
-                        <p className="earlybird-s5acAh text-lg text-slate-300/80">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-                <div className="earlybird-FBkeIO xl:block lg:hidden block col-span-4 lg:mt-0 mt-8">
+                <div
+                  id="about_me"
+                  className="earlybird-FBkeIO xl:block lg:hidden block col-span-4 lg:mt-0 mt-8"
+                >
                   <div className="earlybird-14e2WH sticky top-6">
                     <Image src={about_me.image} className="earlybird-oDwGGJ w-full" width={360} />
                   </div>

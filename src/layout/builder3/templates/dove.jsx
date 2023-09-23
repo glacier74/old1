@@ -234,7 +234,7 @@ box-shadow: 0px 1px 1px 0px rgba(102, 109, 128, 0.08), 0px 4px 8px 0px rgba(102,
             />
             <div className="earlybird-muRDDY min-h-screen px-2 pt-24 pb-10 bg-slate-50 flex flex-col items-center">
               <div className="earlybird-KlKSzb main-content max-w-2xl w-full bg-white rounded-xl pt-8 pb-2 px-2">
-                <div className="earlybird-t85i3O pb-10 px-6">
+                <div id="user_info" className="earlybird-t85i3O pb-10 px-6">
                   <div className="earlybird-A75me4 flex flex-col-reverse md:flex-row items-center md:justify-between justify-center">
                     <div className="earlybird-DHyLIP flex flex-col md:items-start items-center md:text-start text-center">
                       <h1 className="earlybird-6LHEan text-3xl font-semibold text-slate-950">
@@ -257,7 +257,7 @@ box-shadow: 0px 1px 1px 0px rgba(102, 109, 128, 0.08), 0px 4px 8px 0px rgba(102,
                     </div>
                   </div>
                 </div>
-                <div className="earlybird-zdxwc2 mt-2 bg-slate-50 p-6 rounded-xl">
+                <div id="products" className="earlybird-zdxwc2 mt-2 bg-slate-50 p-6 rounded-xl">
                   <div className="earlybird-DOjZjs flex items-center mb-6">
                     <p className="earlybird-F9cYSS text-xl leading-none font-bold text-slate-900">
                       {products.title}
@@ -342,7 +342,7 @@ box-shadow: 0px 1px 1px 0px rgba(102, 109, 128, 0.08), 0px 4px 8px 0px rgba(102,
                     ))}
                   </div>
                 </div>
-                <div className="earlybird-JnUbBQ mt-2 py-12 px-2 text-center">
+                <div id="subscribe" className="earlybird-JnUbBQ mt-2 py-12 px-2 text-center">
                   <h1 className="earlybird-ogs8Y3 sm:text-3xl text-2xl font-bold text-slate-900">
                     {subscribe.title}
                   </h1>
@@ -371,7 +371,10 @@ box-shadow: 0px 1px 1px 0px rgba(102, 109, 128, 0.08), 0px 4px 8px 0px rgba(102,
                     </Form>
                   </div>
                 </div>
-                <div className="earlybird-Oy2n9G mt-2 bg-slate-50 p-6 rounded-xl flex justify-between items-center">
+                <div
+                  id="follow_me"
+                  className="earlybird-Oy2n9G mt-2 bg-slate-50 p-6 rounded-xl flex justify-between items-center"
+                >
                   <div className="earlybird-3zk33U flex items-center">
                     <p className="earlybird-q963aB sm:text-lg leading-none font-medium text-slate-900">
                       {follow_me.title}

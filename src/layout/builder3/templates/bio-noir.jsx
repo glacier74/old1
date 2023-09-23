@@ -189,7 +189,7 @@ export function render({ options: { header, products, connect } }) {
       <div>
         <div className="earlybird-3KlM0N min-h-screen bg-black md:py-16 py-6 text-white">
           <div className="earlybird-OTpX01 max-w-5xl w-[95%] m-auto">
-            <div className="earlybird-yEsBLY rounded-3xl p-10 relative overflow-hidden">
+            <div id="header" className="earlybird-yEsBLY rounded-3xl p-10 relative overflow-hidden">
               <div className="earlybird-s5vUFy absolute left-0 top-0 bottom-0 right-0">
                 <div
                   className="earlybird-Qtxhh8 w-full h-[60%] bg-center bg-no-repeat bg-cover"
@@ -217,7 +217,7 @@ export function render({ options: { header, products, connect } }) {
                 </div>
               </div>
             </div>
-            <div className="earlybird-OJIwFw md:mt-11 mt-5">
+            <div id="products" className="earlybird-OJIwFw md:mt-11 mt-5">
               <h1 className="earlybird-lwkf3S text-3xl font-bold pl-5">{products.title}</h1>
               <div className="earlybird-1Oa21J grid md:grid-cols-2 gap-5 mt-5">
                 {products.list.map((item, key) => (
@@ -246,7 +246,7 @@ export function render({ options: { header, products, connect } }) {
                 ))}
               </div>
             </div>
-            <div className="earlybird-gp5EVJ md:mt-11 mt-5">
+            <div id="connect" className="earlybird-gp5EVJ md:mt-11 mt-5">
               <h1 className="earlybird-Iqf3YH text-3xl font-bold pl-5">{connect.title}</h1>
               <div className="earlybird-7wsQQM grid sm:grid-cols-4 grid-cols-1 gap-5 mt-5">
                 {connect.list.map((item, key) => (

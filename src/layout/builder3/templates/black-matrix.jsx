@@ -330,6 +330,7 @@ background-color: rgba(0, 0, 0, .62);
               rel="stylesheet"
             />
             <div
+              id="user_info"
               className={`earlybird-EkaQTK lg:pt-[10%] md:pt-[20%] pt-[40%] relative bg-fixed min-h-[660px] bg-center bg-no-repeat bg-cover app-bg`}
               style={{
                 backgroundImage: `url(${user_info.bg})`
@@ -357,7 +358,10 @@ background-color: rgba(0, 0, 0, .62);
                 </div>
               </div>
             </div>
-            <div className="earlybird-IA5Ryv md:py-20 py-10 lg:max-w-5xl max-w-3xl w-[95%] m-auto">
+            <div
+              id="products"
+              className="earlybird-IA5Ryv md:py-20 py-10 lg:max-w-5xl max-w-3xl w-[95%] m-auto"
+            >
               <h2 className="earlybird-rCqMbz sm:text-5xl text-3xl py-5 text-center font-bold">
                 {products.title}
               </h2>
@@ -422,7 +426,10 @@ background-color: rgba(0, 0, 0, .62);
                 </a>
               ))}
             </div>
-            <div className="earlybird-nMrDwB md:py-20 py-10 sm:px-0 px-4 lg:max-w-3xl max-w-2xl w-[95%] m-auto flex md:flex-row flex-col">
+            <div
+              id="about"
+              className="earlybird-nMrDwB md:py-20 py-10 sm:px-0 px-4 lg:max-w-3xl max-w-2xl w-[95%] m-auto flex md:flex-row flex-col"
+            >
               <div className="earlybird-8nUBau md:w-[45%] w-full">
                 {about.role.map((item, key) => (
                   <h1
@@ -445,7 +452,10 @@ background-color: rgba(0, 0, 0, .62);
               </div>
             </div>
 
-            <div className="earlybird-7fnU2i md:py-20 py-10 lg:max-w-3xl gap-[5px] max-w-[720px] w-[95%] m-auto grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:pl-0 pl-10">
+            <div
+              id="skillset"
+              className="earlybird-7fnU2i md:py-20 py-10 lg:max-w-3xl gap-[5px] max-w-[720px] w-[95%] m-auto grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:pl-0 pl-10"
+            >
               <div className="earlybird-rfuAQe md:row-span-2 sm:row-span-1 md:col-span-1 sm:col-span-2 col-span-1 row-span-1 text-3xl font-bold md:mb-0 mb-20">
                 {skillset.title}
               </div>
@@ -461,7 +471,7 @@ background-color: rgba(0, 0, 0, .62);
               ))}
             </div>
 
-            <div className="earlybird-VL9Obq sm:max-w-3xl mx-auto px-8">
+            <div id="newsletter" className="earlybird-VL9Obq sm:max-w-3xl mx-auto px-8">
               <h3 className="earlybird-pWjLKg text-2xl font-medium mb-3">{newsletter.headline}</h3>
               <Form
                 className="earlybird-DRNhU0 flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 border-slate-300"
@@ -480,7 +490,10 @@ background-color: rgba(0, 0, 0, .62);
               </Form>
             </div>
 
-            <div className="earlybird-USKeHg md:py-20 py-10 lg:max-w-3xl max-w-2xl w-[95%] m-auto">
+            <div
+              id="footer"
+              className="earlybird-USKeHg md:py-20 py-10 lg:max-w-3xl max-w-2xl w-[95%] m-auto"
+            >
               <div className="earlybird-opLHbM text-center py-10 text-slate-300/80 text-sm">
                 {footer.footer_text}
               </div>

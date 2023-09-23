@@ -272,7 +272,7 @@ export const schemas = [
   }
 ]
 
-export function render({ options: { main, bio, products, contact } }) {
+export function render({ options: { main, bio, products, contact }, hiddenBlocks }) {
   return (
     <div>
       <div className="earlybird-GyjwHS mx-auto flex w-full overflow-hidden bg-black">
@@ -280,7 +280,7 @@ export function render({ options: { main, bio, products, contact } }) {
           <div className="earlybird-KMJC4Z relative z-0 flex flex-1 overflow-hidden">
             <main className="earlybird-vK9Zv7 relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
               <div className="earlybird-US6s8o min-h-screen pb-20">
-                <div className="earlybird-YhNHKz relative">
+                <div id="main" className="earlybird-YhNHKz relative">
                   <Image
                     className="earlybird-LHLhdW h-48 w-full object-cover lg:h-64"
                     src={main.profile_cover}
@@ -320,180 +320,184 @@ export function render({ options: { main, bio, products, contact } }) {
                   </div>
                 </div>
                 <div className="earlybird-pp9Vjc mt-6 sm:mt-2 2xl:mt-5 ">
-                  <Tab defaultActiveKey="bio">
-                    <div className="earlybird-9LKvpq border-b border-gray-800">
-                      <div className="earlybird-iSxdWL mx-auto mt-10 max-w-3xl px-4 sm:px-6 lg:px-8">
-                        <Tab.NavList
-                          className="earlybird-M2qUAk -mb-px flex space-x-8"
-                          aria-label="Tabs"
-                        >
-                          {(() => {
-                            const navigations = [
-                              {
-                                name: 'bio',
-                                title: bio.bio_title
-                              },
-                              {
-                                name: 'products',
-                                title: products.products_title
-                              },
-                              {
-                                name: 'contact',
-                                title: contact.contact_title
-                              }
-                            ]
+                  {(() => {
+                    const navigations = [
+                      {
+                        name: 'bio',
+                        title: bio.bio_title
+                      },
+                      {
+                        name: 'products',
+                        title: products.products_title
+                      },
+                      {
+                        name: 'contact',
+                        title: contact.contact_title
+                      }
+                    ].filter(row => !hiddenBlocks?.includes(row.name))
 
-                            return navigations.map(row => (
-                              <Tab.Nav key={row.name}>
-                                {(isSelected, select) => (
-                                  <button
-                                    className={`earlybird-5Bxtaa whitespace-nowrap border-white px-1 py-3 font-mono text-sm font-medium text-white ${
-                                      isSelected ? 'border-b-2' : 'border-none'
-                                    }`}
-                                    tabIndex={0}
-                                    type="button"
-                                    role="tab"
-                                    aria-selected={isSelected}
-                                    onClick={select}
-                                  >
-                                    {row.title}
-                                  </button>
-                                )}
-                              </Tab.Nav>
-                            ))
-                          })()}
-                        </Tab.NavList>
-                      </div>
-                    </div>
-                    <Tab.Panel>
-                      {activeKey => {
-                        switch (activeKey) {
-                          case 'bio':
-                            return (
-                              <div className="earlybird-kZwzcB mx-auto mt-16 max-w-3xl px-4 sm:px-6 lg:px-8">
-                                <h2 className="earlybird-JVnhG6 font-mono text-2xl font-semibold text-white">
-                                  {bio.bio_title}
-                                </h2>
-                                <article className="earlybird-OuzwrH prose prose-headings:text-white prose-a:text-white mt-3 max-w-2xl font-mono text-sm leading-6 tracking-wider text-white">
-                                  <div dangerouslySetInnerHTML={{ __html: bio.bio_content }} />
-                                </article>
-                              </div>
-                            )
-
-                          case 'products':
-                            return (
-                              <div className="earlybird-8wgrf3 mx-auto mt-16 max-w-3xl px-4 sm:px-6 lg:px-8">
-                                <h2 className="earlybird-qJhRcg font-mono text-2xl font-semibold text-white">
-                                  {products.products_title}
-                                </h2>
-                                <article className="earlybird-hwMdJG prose prose-headings:text-white prose-a:text-white mt-3 max-w-2xl font-mono text-sm leading-6 tracking-wider text-white">
-                                  <div className="earlybird-G5JfX6 flex flex-col gap-3">
-                                    {products.list.map((item, key) => (
-                                      <a
-                                        href={item.link}
-                                        key={key}
-                                        target="_blank"
-                                        className="earlybird-8Un1Nz project-card-shadow group flex items-center justify-between rounded-xl border border-slate-100 bg-white p-4"
-                                      >
-                                        <div className="earlybird-9BhgDN flex items-center">
-                                          <div className="earlybird-pkMkZc mr-1 flex h-10 w-10 items-center justify-center rounded-full border border-slate-100 sm:mr-4">
-                                            <Image
-                                              src={item.image}
-                                              className="earlybird-1j0ZkF h-8 w-8 rounded-full"
-                                              alt={item.title}
-                                              width={32}
-                                              height={32}
-                                            />
-                                          </div>
-                                          <div className="earlybird-3LvxMj flex flex-col">
-                                            <h3 className="earlybird-NHjwz9 text-lg text-slate-900 sm:text-xl">
-                                              {item.title}
-                                            </h3>
-                                            <p className="earlybird-ok71m0 mr-8 mt-2 hidden text-xs text-slate-500 sm:block">
-                                              {item.description}
-                                            </p>
-                                          </div>
-                                        </div>
-
-                                        <div className="earlybird-PleHhm flex items-center justify-center">
-                                          {(() => {
-                                            const commonClasses =
-                                              'group inline-flex items-center justify-center gap-1 sm:px-4 px-2 py-1 shadow-md sm:text-sm text-xs text-white rounded-md mr-2'
-
-                                            switch (item.status) {
-                                              case 'Active':
-                                                return (
-                                                  <div
-                                                    className={`earlybird-S1VlYi ${commonClasses} bg-emerald-500`}
-                                                  >
-                                                    {item.status}
-                                                  </div>
-                                                )
-
-                                              case 'Paused':
-                                                return (
-                                                  <div
-                                                    className={`earlybird-uXwEr6 ${commonClasses} bg-orange-500`}
-                                                  >
-                                                    {item.status}
-                                                  </div>
-                                                )
-
-                                              case 'Acquired':
-                                                return (
-                                                  <div
-                                                    className={`earlybird-mevB2p ${commonClasses} bg-blue-500`}
-                                                  >
-                                                    {item.status}
-                                                  </div>
-                                                )
-
-                                              case 'Discontinued':
-                                                return (
-                                                  <div
-                                                    className={`earlybird-YeMGeT ${commonClasses} bg-slate-700`}
-                                                  >
-                                                    {item.status}
-                                                  </div>
-                                                )
-
-                                              default:
-                                                return null
-                                            }
-                                          })()}
-
-                                          <Icon
-                                            name="arrow-up-right-line"
-                                            className="earlybird-QHz5EO h-5 w-5 text-slate-400 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-slate-500"
-                                          />
-                                        </div>
-                                      </a>
-                                    ))}
+                    return (
+                      <Tab key={navigations[0]?.name} defaultActiveKey={navigations[0]?.name}>
+                        <div className="earlybird-9LKvpq border-b border-gray-800">
+                          <div className="earlybird-iSxdWL mx-auto mt-10 max-w-3xl px-4 sm:px-6 lg:px-8">
+                            <Tab.NavList
+                              className="earlybird-M2qUAk -mb-px flex space-x-8"
+                              aria-label="Tabs"
+                            >
+                              {navigations.map(row => (
+                                <Tab.Nav id={row.name} key={row.name}>
+                                  {(isSelected, select) => (
+                                    <button
+                                      className={`earlybird-5Bxtaa whitespace-nowrap border-white px-1 py-3 font-mono text-sm font-medium text-white ${
+                                        isSelected ? 'border-b-2' : 'border-none'
+                                      }`}
+                                      tabIndex={0}
+                                      type="button"
+                                      role="tab"
+                                      aria-selected={isSelected}
+                                      onClick={select}
+                                    >
+                                      {row.title}
+                                    </button>
+                                  )}
+                                </Tab.Nav>
+                              ))}
+                            </Tab.NavList>
+                          </div>
+                        </div>
+                        <Tab.Panel>
+                          {activeKey => {
+                            switch (activeKey) {
+                              case 'bio':
+                                return (
+                                  <div className="earlybird-kZwzcB mx-auto mt-16 max-w-3xl px-4 sm:px-6 lg:px-8">
+                                    <h2 className="earlybird-JVnhG6 font-mono text-2xl font-semibold text-white">
+                                      {bio.bio_title}
+                                    </h2>
+                                    <article className="earlybird-OuzwrH prose prose-headings:text-white prose-a:text-white mt-3 max-w-2xl font-mono text-sm leading-6 tracking-wider text-white">
+                                      <div dangerouslySetInnerHTML={{ __html: bio.bio_content }} />
+                                    </article>
                                   </div>
-                                </article>
-                              </div>
-                            )
+                                )
 
-                          case 'contact':
-                            return (
-                              <div className="earlybird-8Jkk2p mx-auto mt-16 max-w-3xl px-4 sm:px-6 lg:px-8">
-                                <h2 className="earlybird-0zHKmt font-mono text-2xl font-semibold text-white">
-                                  {contact.contact_title}
-                                </h2>
-                                <article className="earlybird-iotKGc prose prose-headings:text-white prose-a:text-white mt-3 max-w-2xl font-mono text-sm leading-6 tracking-wider text-white">
-                                  <div
-                                    dangerouslySetInnerHTML={{ __html: contact.contact_content }}
-                                  />
-                                </article>
-                              </div>
-                            )
+                              case 'products':
+                                return (
+                                  <div className="earlybird-8wgrf3 mx-auto mt-16 max-w-3xl px-4 sm:px-6 lg:px-8">
+                                    <h2 className="earlybird-qJhRcg font-mono text-2xl font-semibold text-white">
+                                      {products.products_title}
+                                    </h2>
+                                    <article className="earlybird-hwMdJG prose prose-headings:text-white prose-a:text-white mt-3 max-w-2xl font-mono text-sm leading-6 tracking-wider text-white">
+                                      <div className="earlybird-G5JfX6 flex flex-col gap-3">
+                                        {products.list.map((item, key) => (
+                                          <a
+                                            href={item.link}
+                                            key={key}
+                                            target="_blank"
+                                            className="earlybird-8Un1Nz project-card-shadow group flex items-center justify-between rounded-xl border border-slate-100 bg-white p-4"
+                                          >
+                                            <div className="earlybird-9BhgDN flex items-center">
+                                              <div className="earlybird-pkMkZc mr-1 flex h-10 w-10 items-center justify-center rounded-full border border-slate-100 sm:mr-4">
+                                                <Image
+                                                  src={item.image}
+                                                  className="earlybird-1j0ZkF h-8 w-8 rounded-full"
+                                                  alt={item.title}
+                                                  width={32}
+                                                  height={32}
+                                                />
+                                              </div>
+                                              <div className="earlybird-3LvxMj flex flex-col">
+                                                <h3 className="earlybird-NHjwz9 text-lg text-slate-900 sm:text-xl">
+                                                  {item.title}
+                                                </h3>
+                                                <p className="earlybird-ok71m0 mr-8 mt-2 hidden text-xs text-slate-500 sm:block">
+                                                  {item.description}
+                                                </p>
+                                              </div>
+                                            </div>
 
-                          default:
-                            return null
-                        }
-                      }}
-                    </Tab.Panel>
-                  </Tab>
+                                            <div className="earlybird-PleHhm flex items-center justify-center">
+                                              {(() => {
+                                                const commonClasses =
+                                                  'group inline-flex items-center justify-center gap-1 sm:px-4 px-2 py-1 shadow-md sm:text-sm text-xs text-white rounded-md mr-2'
+
+                                                switch (item.status) {
+                                                  case 'Active':
+                                                    return (
+                                                      <div
+                                                        className={`earlybird-S1VlYi ${commonClasses} bg-emerald-500`}
+                                                      >
+                                                        {item.status}
+                                                      </div>
+                                                    )
+
+                                                  case 'Paused':
+                                                    return (
+                                                      <div
+                                                        className={`earlybird-uXwEr6 ${commonClasses} bg-orange-500`}
+                                                      >
+                                                        {item.status}
+                                                      </div>
+                                                    )
+
+                                                  case 'Acquired':
+                                                    return (
+                                                      <div
+                                                        className={`earlybird-mevB2p ${commonClasses} bg-blue-500`}
+                                                      >
+                                                        {item.status}
+                                                      </div>
+                                                    )
+
+                                                  case 'Discontinued':
+                                                    return (
+                                                      <div
+                                                        className={`earlybird-YeMGeT ${commonClasses} bg-slate-700`}
+                                                      >
+                                                        {item.status}
+                                                      </div>
+                                                    )
+
+                                                  default:
+                                                    return null
+                                                }
+                                              })()}
+
+                                              <Icon
+                                                name="arrow-up-right-line"
+                                                className="earlybird-QHz5EO h-5 w-5 text-slate-400 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-slate-500"
+                                              />
+                                            </div>
+                                          </a>
+                                        ))}
+                                      </div>
+                                    </article>
+                                  </div>
+                                )
+
+                              case 'contact':
+                                return (
+                                  <div className="earlybird-8Jkk2p mx-auto mt-16 max-w-3xl px-4 sm:px-6 lg:px-8">
+                                    <h2 className="earlybird-0zHKmt font-mono text-2xl font-semibold text-white">
+                                      {contact.contact_title}
+                                    </h2>
+                                    <article className="earlybird-iotKGc prose prose-headings:text-white prose-a:text-white mt-3 max-w-2xl font-mono text-sm leading-6 tracking-wider text-white">
+                                      <div
+                                        dangerouslySetInnerHTML={{
+                                          __html: contact.contact_content
+                                        }}
+                                      />
+                                    </article>
+                                  </div>
+                                )
+
+                              default:
+                                return null
+                            }
+                          }}
+                        </Tab.Panel>
+                      </Tab>
+                    )
+                  })()}
                 </div>
               </div>
             </main>

@@ -228,7 +228,10 @@ transform: scale(1);
                         onClick={toggle}
                       />
                     </div>
-                    <div className="earlybird-voKov5 w-full h-full flex flex-col items-center justify-center">
+                    <div
+                      id="newsletter"
+                      className="earlybird-voKov5 w-full h-full flex flex-col items-center justify-center"
+                    >
                       <h1 className="earlybird-xs5LfE text-4xl mb-10 font-bold text-center">
                         {newsletter.headline}
                       </h1>
@@ -253,14 +256,20 @@ transform: scale(1);
                       </Form>
                     </div>
                   </div>
-                  <div className="earlybird-VsHeNC lg:h-[400px] md:h-[300px] h-[200px] transition-all duration-300">
+                  <div
+                    id="banner_image"
+                    className="earlybird-VsHeNC lg:h-[400px] md:h-[300px] h-[200px] transition-all duration-300"
+                  >
                     <Image
                       src={banner_image}
                       height={200}
                       className="earlybird-HeZyA6 h-full w-full object-cover"
                     />
                   </div>
-                  <div className="earlybird-zTGBaB max-w-[380px] text-center w-[95%] m-auto text-[#e0e2e5] py-10">
+                  <div
+                    id="user_info"
+                    className="earlybird-zTGBaB max-w-[380px] text-center w-[95%] m-auto text-[#e0e2e5] py-10"
+                  >
                     <h1 className="earlybird-dCT6dp text-[41px] font-bold mb-4">
                       {user_info.name}
                     </h1>
@@ -277,7 +286,7 @@ transform: scale(1);
                         </a>
                       ))}
                     </div>
-                    <div className="earlybird-t3P3GD flex flex-col gap-3 mb-11">
+                    <div id="buttons" className="earlybird-t3P3GD flex flex-col gap-3 mb-11">
                       <button className="earlybird-xsxucp bg-emerald-400 px-[26px] flex items-center h-[47px] justify-center rounded-md relative button text-slate-950">
                         <span className="earlybird-j5zI1I mr-3">
                           <Icon
@@ -304,7 +313,7 @@ transform: scale(1);
                         </span>
                       </button>
                     </div>
-                    <div className="earlybird-6Hux87 flex flex-col gap-6">
+                    <div id="products" className="earlybird-6Hux87 flex flex-col gap-6">
                       {products.map((item, key) => (
                         <a
                           href={item.link}

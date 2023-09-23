@@ -108,7 +108,7 @@ export function render({ options: { header, user_info, newsletter } }) {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
         />
         <div className="earlybird-FdmYsw min-h-screen bg-white">
-          <div>
+          <div id="header">
             <Image
               className="earlybird-EynhuJ object-cover w-full bg-white h-36 lg:h-64"
               height={256}
@@ -116,7 +116,7 @@ export function render({ options: { header, user_info, newsletter } }) {
               alt={user_info.username}
             />
           </div>
-          <div className="earlybird-SJgudv max-w-3xl mx-auto px-4 pb-16">
+          <div id="user_info" className="earlybird-SJgudv max-w-3xl mx-auto px-4 pb-16">
             <div className="earlybird-gp502l px-4 flex items-center justify-between">
               <div className="earlybird-nY5nGB -mt-16">
                 <a href="#" className="earlybird-yDTU4a flex">
@@ -160,7 +160,7 @@ export function render({ options: { header, user_info, newsletter } }) {
               />
             </div>
           </div>
-          <div className="earlybird-ry8Fph bg-slate-50 py-12">
+          <div id="newsletter" className="earlybird-ry8Fph bg-slate-50 py-12">
             <div className="earlybird-U5ET6h w-full max-w-3xl mx-auto px-8 mb-4">
               <Form {...newsletter.form}>
                 <label className="earlybird-wsLumu block text-slate-700 mb-2" htmlFor="email">

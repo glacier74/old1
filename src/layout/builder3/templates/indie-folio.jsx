@@ -196,7 +196,10 @@ export function render({ options: { profile, products, newsletter } }) {
           <div className="earlybird-VrDC9W relative grid md:grid-cols-3 gap-6 mt-12">
             <div className="earlybird-HSY8kz relative">
               <div className="earlybird-ELhxa2 sticky top-6 space-y-6">
-                <div className="earlybird-2NP1u6 bg-white px-6 py-8 rounded-2xl text-slate-900 border border-slate-300/50 shadow-sm mb-8">
+                <div
+                  id="profile"
+                  className="earlybird-2NP1u6 bg-white px-6 py-8 rounded-2xl text-slate-900 border border-slate-300/50 shadow-sm mb-8"
+                >
                   <Image
                     alt={profile.profile_name}
                     src={profile.profile_logo}
@@ -230,7 +233,7 @@ export function render({ options: { profile, products, newsletter } }) {
                   </div>
                 </div>
 
-                <div className="earlybird-LlU0Bq mt-4">
+                <div id="newsletter" className="earlybird-LlU0Bq mt-4">
                   <h3 className="earlybird-mZ6JEc font-medium mb-3">{newsletter.headline}</h3>
                   <Form
                     className="earlybird-46FCAp flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 border-slate-300"
@@ -250,7 +253,7 @@ export function render({ options: { profile, products, newsletter } }) {
                 </div>
               </div>
             </div>
-            <div className="earlybird-LVWr93 md:col-span-2">
+            <div id="products" className="earlybird-LVWr93 md:col-span-2">
               <div>
                 <h2 className="earlybird-7TIfXp text-2xl font-medium" id="products">
                   {products.title}

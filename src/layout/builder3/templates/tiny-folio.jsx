@@ -195,7 +195,7 @@ font-size: 24px;
             />
             <div className="earlybird-XlDwbb bg-white">
               <div className="earlybird-6xjn91 custom-container py-16 px-8">
-                <div className="earlybird-xdRVLP flex flex-col gap-8 user-info">
+                <div id="my_info" className="earlybird-xdRVLP flex flex-col gap-8 user-info">
                   <Image
                     src={my_info.avatar}
                     alt={my_info.name}
@@ -213,7 +213,7 @@ font-size: 24px;
                     </p>
                   </div>
                 </div>
-                <div>
+                <div id="my_products">
                   <h2 className="earlybird-rFKUoR font-bold text-2xl tracking-tighter text-slate-700 my-4 px-2">
                     {my_products.title}
                   </h2>
@@ -255,7 +255,7 @@ font-size: 24px;
                   </div>
                 </div>
               </div>
-              <div className="earlybird-B21CsN footer bg-slate-50 flex items-center">
+              <div id="footer" className="earlybird-B21CsN footer bg-slate-50 flex items-center">
                 <div className="earlybird-xgEUtf custom-container py-16 px-8 flex space-x-3">
                   <p className="earlybird-NQ5X9x text-slate-700 ">{footer.social_text}</p>
                   {footer.social_links.map((item, key) => (

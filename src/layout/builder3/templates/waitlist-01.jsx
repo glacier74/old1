@@ -128,7 +128,7 @@ background: radial-gradient(52.56% 52.56% at 50% 117.61%,#1c1c21 0,rgba(28,28,33
                 </div>
               </div>
 
-              <div className="earlybird-d2fgt6 mt-8 max-w-sm mx-auto">
+              <div id="subscribe" className="earlybird-d2fgt6 mt-8 max-w-sm mx-auto">
                 <Form id="form" {...subscribe.form}>
                   <div className="earlybird-lsbzn3 flex flex-col mb-6 space-y-3">
                     <Form.Item name="name">
