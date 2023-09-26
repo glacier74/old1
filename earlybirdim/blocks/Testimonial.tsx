@@ -23,7 +23,11 @@ const Embed: FC<{ code: string }> = ({ code }) => {
 
       if (matches) {
         if (document) {
-          loadScript(document.body, 'https://embed.praisehive.com/js/embed.js')
+          loadScript(document.body, {
+            src: 'https://embed.praisehive.com/js/embed.js'
+          }, {
+            retry: 2
+          })
         }
 
         return <div className="praisehive-embed" id={matches[1]} />
@@ -36,7 +40,11 @@ const Embed: FC<{ code: string }> = ({ code }) => {
 
       if (matches) {
         if (document) {
-          loadScript(document.body, 'https://widget.senja.io/embed/frame.js')
+          loadScript(document.body, {
+            src: 'https://widget.senja.io/embed/frame.js'
+          }, {
+            retry: 2
+          })
         }
 
         return <div className="senja-frame-embed" data-id={matches[1]} />
@@ -49,8 +57,11 @@ const Embed: FC<{ code: string }> = ({ code }) => {
 
       if (matches) {
         if (document) {
-          loadScript(document.body, 'https://testimonial.to/js/iframeResizer.min.js', 2, () => {
-            ;(window as any).iFrameResize({ log: false, checkOrigin: false }, `#${matches![1]}`)
+          loadScript(document.body, { src: 'https://testimonial.to/js/iframeResizer.min.js'}, {
+            retry: 2,
+            onLoad: () => {
+              ;(window as any).iFrameResize({ log: false, checkOrigin: false }, `#${matches![1]}`)
+            }
           })
         }
 

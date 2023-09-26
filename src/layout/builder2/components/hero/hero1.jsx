@@ -18,13 +18,13 @@ const render = function ({ productId, block }) {
           <div className="hero1__left">
             {isValid(block.setting.Html1) && (
               <div className="hero1__announcement-wrapper">
-                <Html as="div" className="hero1__announcement" {...block.setting.Html1} />
+                <Html className="hero1__announcement" {...block.setting.Html1} as="div" />
               </div>
             )}
 
             <H1 className="hero1__title" {...block.setting.H11} />
 
-            <Html as="div" className="hero1__subtitle" {...block.setting.Html2} />
+            <Html className="hero1__subtitle" {...block.setting.Html2} as="div" />
 
             <Group className="hero1__cta">
               <List className="hero1__cta-buttons">

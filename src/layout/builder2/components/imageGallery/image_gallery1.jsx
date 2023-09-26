@@ -13,11 +13,11 @@ const render = function ({ productId, block }) {
       <Block productId={productId} block={block}>
         <div className="image_gallery1__container">
           <div className="image_gallery1__wrapper">
-            <Html as="div" className="image_gallery1__caption" {...block.setting.Html1} />
+            <Html className="image_gallery1__caption" {...block.setting.Html1} as="div"  />
 
             <H1 className="image_gallery1__title" {...block.setting.H11} />
 
-            <Html as="div" className="image_gallery1__subtitle" {...block.setting.Html2} />
+            <Html className="image_gallery1__subtitle" {...block.setting.Html2} as="div" />
 
             <List as="ul" className="image_gallery1__list">
               {block.setting.List1?.map(List1 => (

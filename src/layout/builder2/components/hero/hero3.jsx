@@ -31,7 +31,7 @@ const render = function ({ productId, block }) {
 
               <H1 className="hero3__title" {...block.setting.H11} />
 
-              <Html as="div" className="hero3__subtitle" {...block.setting.Html2} />
+              <Html className="hero3__subtitle" {...block.setting.Html2} as="div" />
 
               <Group className="hero3__cta">
                 <List className="hero3__cta-buttons">

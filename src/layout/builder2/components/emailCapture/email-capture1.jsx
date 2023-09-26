@@ -12,7 +12,7 @@ const render = function ({ productId, block }) {
         <Style className="email-capture1__wrapper" {...block.setting.Style1}>
           <div className="email-capture1__left">
             <H2 className="email-capture1__title" {...block.setting.H21} />
-            <Html as="div" className="email-capture1__subtitle" {...block.setting.Html1} />
+            <Html className="email-capture1__subtitle" {...block.setting.Html1} as="div" />
           </div>
 
           <div className="email-capture1__right">

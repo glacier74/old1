@@ -10,15 +10,15 @@ const render = function ({ productId, block }) {
     <Block productId={productId} block={block}>
       <div className="footer1__container">
         <List className="footer1__left">
-          {block.setting.List1?.map(List1 => (
-            <Link {...List1.Link1} key={List1.id}>
+          {block.setting.List1?.map((List1, index) => (
+            <Link {...List1.Link1} key={index}>
               <Icon {...List1.Link1.Icon1} />
             </Link>
           ))}
         </List>
 
         <div className="footer1__right">
-          <Html as="div" className="footer1__copyright" {...block.setting.Html1} />
+          <Html className="footer1__copyright" {...block.setting.Html1} as="div" />
         </div>
       </div>
     </Block>

@@ -45,19 +45,18 @@ const render = function ({ productId, block }) {
 
             <div className="header1__nav-right">
               <List as="nav" className="header1__navigation" onClick={handleLinkClick}>
-                {block.setting.List1?.map(List1 => (
-                  <Link {...List1.Link1} key={List1.id}>
+                {block.setting.List1?.map((List1, index) => (
+                  <Link {...List1.Link1} key={index}>
                     <Text {...List1.Link1.Text1} />
                   </Link>
                 ))}
               </List>
 
               <List className="header1__cta">
-                {block.setting.List2?.map(List2 => (
-                  <Link {...List2.Link1} key={List2.id} onClick={handleLinkClick}>
-                    <Icon {...List2.Link1.Icon1} />
-
-                    <Text {...List2.Link1.Text1} />
+                {block.setting.List2?.map((List2, index) => (
+                  <Link {...List2.Link1} key={index} onClick={handleLinkClick}>
+                    <Icon {...List2.Link1.Icon1} key={`${List2.id}-icon-${index}`} />
+                    <Text {...List2.Link1.Text1} key={`${List2.id}-text-${index}`} />
                   </Link>
                 ))}
               </List>

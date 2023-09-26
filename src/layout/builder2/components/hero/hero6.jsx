@@ -23,13 +23,13 @@ const render = function ({ productId, block }) {
 
               {isValid(block.setting.Html1) && (
                 <div className="hero6__announcement-wrapper">
-                  <Html className="hero6__announcement" {...block.setting.Html1} />
+                  <Html className="hero6__announcement" {...block.setting.Html1} as="div" />
                 </div>
               )}
 
               <H1 className="hero6__title" {...block.setting.H11} />
 
-              <Html as="div" className="hero6__subtitle" {...block.setting.Html2} />
+              <Html className="hero6__subtitle" {...block.setting.Html2} as="div" />
 
               <Group className="hero6__cta">
                 <EmailCapture

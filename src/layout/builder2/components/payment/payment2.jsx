@@ -20,7 +20,7 @@ const render = function ({ productId, block }) {
         <div className="payment2__wrapper">
           <div className="payment2__header">
             <H2 className="payment2__title" {...block.setting.H21} />
-            <Html as="div" className="payment2__subtitle" {...block.setting.Html1} />
+            <Html className="payment2__subtitle" {...block.setting.Html1} as="div" />
           </div>
 
           <div className="payment2__interval-switcher">

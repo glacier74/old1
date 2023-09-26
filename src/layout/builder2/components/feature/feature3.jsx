@@ -13,9 +13,9 @@ const render = function ({ productId, block }) {
       <div className="feature3__container">
         <div className="feature3__wrapper">
           <div className="feature3__header">
-            <Html as="div" className="feature3__caption" {...block.setting.Html1} />
+            <Html className="feature3__caption" {...block.setting.Html1} as="div" />
             <H2 className="feature3__title" {...block.setting.H21} />
-            <Html as="div" className="feature3__subtitle" {...block.setting.Html2} />
+            <Html className="feature3__subtitle" {...block.setting.Html2} as="div" />
           </div>
 
           <div className="feature3__list">

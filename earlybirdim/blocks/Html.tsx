@@ -22,7 +22,7 @@ export const $Html: FC<$HtmlProps> = ({
         __html: sanitizeHtml(html, {
           allowedAttributes: {
             a: ['href', 'target', 'rel'],
-            '*': ['style']
+            '*': ['style', 'class']
           }
         })
       }}
