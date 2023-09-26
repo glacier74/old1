@@ -14,7 +14,7 @@ export function loadScript(root: HTMLElement, data: AnyMap<string>, options: Loa
   const script = document.createElement('script')
 
   Object.keys(data).forEach(key => {
-    if (key !== 'defer') {
+    if (key !== 'content') {
       script.setAttribute(key, data[key])
     }
   })
