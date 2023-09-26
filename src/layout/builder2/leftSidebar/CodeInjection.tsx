@@ -60,7 +60,7 @@ export const CodeInjection: FC = () => {
           request={handleFinish}
           onlySubmitOnValueChange
         >
-          <Form.Item name="customCode" rules={[{ required: true }]}>
+          <Form.Item name="customCode" rules={[{ required: false }]}>
             <Input.Textarea rows={8} />
           </Form.Item>
         </Form.Custom>
