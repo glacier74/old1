@@ -10,7 +10,7 @@ import { useProduct } from '~/layout'
 import { ShareModal } from '~/layout/builder/views/Navbar/ShareModal'
 import { SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
-import { useRequest, useVisible } from '~/utils'
+import { isResponseError, useRequest, useVisible } from '~/utils'
 
 import { useBuilderContext } from '../context'
 import { UpgradeModal } from '../navbar/UpgradeModal'
@@ -49,7 +49,7 @@ export const Navbar: FC = () => {
       })
       openShareModal()
     } catch (err: any) {
-      if (err.error === 'invalid_draft_version') {
+      if (isResponseError(err, 'invalid_draft_version')) {
         openAlertModal()
       }
     }

@@ -10,7 +10,7 @@ export function LoginLayout({ seo, children }: LayoutProps) {
 
   return (
     <BaseLayout seo={seo}>
-      <div className="h-screen flex flex-col bg-slate-50">
+      <div className="min-h-screen flex flex-col bg-slate-50">
         <div className="p-5 sm:px-6 lg:px-8">
           <Link
             href="/"

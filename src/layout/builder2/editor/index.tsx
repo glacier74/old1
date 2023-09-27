@@ -10,7 +10,7 @@ import { AlertModal } from '~/layout/builder2/editor/AlertModal'
 import { Queue } from '~/layout/builder2/utils'
 import { SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
-import { useVisible } from '~/utils'
+import { isResponseError, useVisible } from '~/utils'
 
 import { BlockWrapper } from './BlockWrapper'
 
@@ -101,7 +101,7 @@ export const Editor: FC = () => {
 
       updateSiteSettings(result)
     } catch (err: any) {
-      if (err.error === 'invalid_draft_version') {
+      if (isResponseError(err, 'invalid_draft_version')) {
         openAlertModal()
       }
     }

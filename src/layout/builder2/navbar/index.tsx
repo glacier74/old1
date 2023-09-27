@@ -11,7 +11,7 @@ import { UpgradeModal } from '~/layout/builder2/navbar/UpgradeModal'
 import { ShareModal } from '~/layout/builder/views/Navbar/ShareModal'
 import { SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
-import { useRequest, useVisible } from '~/utils'
+import { isResponseError, useRequest, useVisible } from '~/utils'
 
 export const Navbar: FC = () => {
   const { siteSettings, updateSiteSettings } = useStore()
@@ -38,7 +38,7 @@ export const Navbar: FC = () => {
         title: 'Your landing page has been successfully published.'
       })
     } catch (err: any) {
-      if (err.error === 'invalid_draft_version') {
+      if (isResponseError(err, 'invalid_draft_version')) {
         openAlertModal()
       }
     }

@@ -7,7 +7,7 @@ import { PublicSiteDangerouslyHTML } from '~/layout/public-site/PublicSiteDanger
 import { PublicSiteHiddenBlocksStyle } from '~/layout/public-site/PublicSiteHiddenBlocksStyle'
 import { SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
-import { useVisible } from '~/utils'
+import { isResponseError, useVisible } from '~/utils'
 
 import { useBuilderContext } from '../context'
 import templates from '../templates'
@@ -38,7 +38,7 @@ export const Preview: FC = () => {
 
       updateSiteSettings(result)
     } catch (err: any) {
-      if (err.error === 'invalid_draft_version') {
+      if (isResponseError(err, 'invalid_draft_version')) {
         openAlertModal()
       }
     }

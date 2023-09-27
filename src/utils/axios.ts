@@ -30,3 +30,7 @@ instance.interceptors.response.use(
 )
 
 export const axios = instance
+
+export function isResponseError(err: any, errorCode: string) {
+  return err.error === errorCode || err.response?.error === errorCode
+}

@@ -29,14 +29,14 @@ const SignUp = (): JSX.Element => {
         title: t('signUp.title')
       }}
     >
-      <div>
+      <div className="mt-8 md:mt-0">
         <h1 className="text-center text-3xl font-bold text-slate-900">
           {t('signUp.heading')}
         </h1>
         <p className="mt-2 text-center text-sm text-slate-600">{t('signUp.description')}</p>
       </div>
 
-      <div className="mt-8 mx-5 md:mx-0">
+      <div className="mt-8 mx-5 pb-16 md:mx-0">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <div>
             <p className="text-sm font-medium text-slate-700"> {t('login.signUpWith')}</p>

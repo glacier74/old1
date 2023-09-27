@@ -4,7 +4,7 @@ import {useRouter} from 'next/router'
 import {LoginLayout, SocialLogin} from '~/layout'
 import {AuthService} from '~/service'
 import {useStore} from '~/store'
-import {withTranslations} from '~/utils'
+import {isResponseError, withTranslations} from '~/utils'
 import {useEffect} from 'react'
 
 const Login = (): JSX.Element => {
@@ -18,7 +18,7 @@ const Login = (): JSX.Element => {
       await router.replace('/')
     } catch (err: any) {
       // 邮箱未认证
-      if (err.error === 'email_not_verified') {
+      if (isResponseError(err, 'email_not_verified')) {
         setEmail(values.email)
         return router.push('/confirm-email')
       }
