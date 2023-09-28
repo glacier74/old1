@@ -9,6 +9,7 @@ import { useEffect } from 'react'
 import { getBrowserId, setBrowserId } from '~/utils'
 
 const NEXT_PUBLIC_HOMEPAGE = process.env.NEXT_PUBLIC_HOMEPAGE!
+const OG_IMAGE_URL = 'https://storage.earlybird.im/static/og.png'
 
 export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
   const { t } = useTranslation()
@@ -28,7 +29,7 @@ export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
       url,
       images: [
         {
-          url: 'https://storage.earlybird.im/static/og.png'
+          url: OG_IMAGE_URL
         }
       ]
     },
@@ -55,6 +56,11 @@ export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
         <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
         <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+
+        {/* Twitter missing meta for next-seo */}
+        <meta property="twitter:title" content={t('common.name')} />
+        <meta property="twitter:description" content={t('common.description')} />
+        <meta property="twitter:image" content={OG_IMAGE_URL} />
       </Head>
 
       {/* SEO */}
