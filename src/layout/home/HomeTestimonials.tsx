@@ -20,7 +20,7 @@ const TestimonialTwitter: FC<{ testimonial: TestimonialRecord }> = ({ testimonia
         <div className="flex-grow pl-3">
           <div className="flex justify-between my-auto">
             <div>
-              <h3 className="font-bold inline text-md">
+              <div className="font-bold inline text-md">
                 <a
                   className="hover:underline"
                   href={testimonial.URL}
@@ -29,7 +29,7 @@ const TestimonialTwitter: FC<{ testimonial: TestimonialRecord }> = ({ testimonia
                 >
                   {testimonial.Name}
                 </a>
-              </h3>
+              </div>
               <div className="text-sm text-slate-500 ">
                 <a
                   className="hover:underline"
@@ -81,7 +81,7 @@ const TestimonialProducthunt: FC<{ testimonial: TestimonialRecord }> = ({ testim
         <div className="flex-grow pl-3">
           <div className="flex justify-between my-auto">
             <div>
-              <h3 className="font-bold inline text-md">
+              <div className="font-bold inline text-md">
                 <a
                   className="hover:underline"
                   href={testimonial.URL}
@@ -90,7 +90,7 @@ const TestimonialProducthunt: FC<{ testimonial: TestimonialRecord }> = ({ testim
                 >
                   {testimonial.Name}
                 </a>
-              </h3>
+              </div>
               <div className="text-sm text-slate-500 ">{testimonial.Title}</div>
             </div>
             <a href={testimonial.URL} target="_blank" rel="noreferrer" aria-label="Product Hunt">
@@ -133,7 +133,7 @@ const TestimonialEmail: FC<{ testimonial: TestimonialRecord }> = ({ testimonial 
         <div className="flex-grow pl-3">
           <div className="flex justify-between my-auto">
             <div>
-              <h3 className="font-bold inline text-md">{testimonial.Name}</h3>
+              <div className="font-bold inline text-md">{testimonial.Name}</div>
               <div className="text-sm text-slate-500 ">{testimonial.Title}</div>
             </div>
           </div>
