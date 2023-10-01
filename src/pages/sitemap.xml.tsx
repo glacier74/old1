@@ -2,7 +2,6 @@ import { NextPageContext } from 'next'
 
 import { CollectionService } from '~/service/collection'
 import { Integration2Service } from '~/service/integration2'
-import { PublicApiService } from '~/service/public-api'
 import { TemplateService } from '~/service/template'
 
 const PUBLIC_HOMEPAGE = process.env.NEXT_PUBLIC_HOMEPAGE
@@ -22,12 +21,6 @@ function getUrls(list: AnyMap<string>[], priority: number) {
     </url>`
     )
     .join('\n')
-}
-
-async function getSubdomains() {
-  const result = await PublicApiService.sitemapSubdomains()
-
-  return getUrls(result, 0.5)
 }
 
 async function getCollections() {
