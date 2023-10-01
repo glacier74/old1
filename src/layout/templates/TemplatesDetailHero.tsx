@@ -37,9 +37,9 @@ export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center md:gap-20 gap-8">
             <div className="flex-1 xl:space-y-7 space-y-5">
-              <div className="text-3xl leading-8 font-bold md:text-5xl md:leading-[48px]">
+              <h1 className="text-3xl leading-8 font-bold md:text-5xl md:leading-[48px]">
                 {template.Name}
-              </div>
+              </h1>
               <div className="text-slate-500 sm:text-xl text-base whitespace-pre-line">
                 {template.Description}
               </div>
