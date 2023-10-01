@@ -13,7 +13,7 @@ const OG_IMAGE_URL = 'https://storage.earlybird.im/static/og.png'
 
 export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
   const { t } = useTranslation()
-  const url = (new URL(seo.url || '/', NEXT_PUBLIC_HOMEPAGE)).href
+  const url = (new URL(seo?.url || '/', NEXT_PUBLIC_HOMEPAGE)).href
 
   const seoProps: NextSeoProps = {
     title: t('common.name'),
