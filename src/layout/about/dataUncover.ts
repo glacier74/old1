@@ -11,7 +11,7 @@ export const dataUncover = [
   },
   {
     name: 'EarlyBird Roadmap',
-    url: 'https://earlybird.im/help/roadmap/',
+    url: 'https://help.earlybird.im/user/roadmap.html',
     desc: 'Discuss feature ideas and future plans with us.'
   }
 ]
