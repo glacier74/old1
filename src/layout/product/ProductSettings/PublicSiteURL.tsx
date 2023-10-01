@@ -23,7 +23,17 @@ import { useProduct, useProductId } from '~/layout'
 import { PlanBadge, PlanCheck } from '~/layout/product/PlanCheck'
 import { CustomDomainService, ProductService } from '~/service'
 import { useStore } from '~/store'
-import { getDomainName, isValidDomain, useProductURL, useRequest, useVisible } from '~/utils'
+import {
+  getDomainName,
+  isRootDomain,
+  isValidDomain,
+  useProductURL,
+  useRequest,
+  useVisible
+} from '~/utils'
+
+const CNAME_RECORD = process.env.NEXT_PUBLIC_PUBLIC_SITE_CNAME_RECORD as string
+const A_RECORD = process.env.NEXT_PUBLIC_PUBLIC_SITE_A_RECORD as string
 
 interface CustomURLItemProps {
   customDomain: CustomDomain
@@ -69,13 +79,7 @@ const SubdomainURL = () => {
 
       <Modal contentClassName="max-w-md" visible={visible} showCloseIcon onClose={close}>
         <div className="space-y-6">
-          <div>
-            <h1 className="text-lg leading-6 font-medium text-slate-900">Edit my EarlyBird URL</h1>
-            <div className="mt-4 rounded-md bg-yellow-50 p-2 text-sm text-yellow-800">
-              ⚠️ Please ensure that you update the CNAME record for all custom domains that have
-              been added after modifying the EarlyBird URL.
-            </div>
-          </div>
+          <h1 className="text-lg leading-6 font-medium text-slate-900">Edit my EarlyBird URL</h1>
 
           <Form.Custom
             initialValues={product}
@@ -265,26 +269,34 @@ const ValidateComponent: FC<{ domain: string; onFinish: () => void }> = ({ domai
       },
       {
         key: 'status',
-        name: 'Proxy status'
+        name: 'Proxy status',
+        render(row) {
+          return (
+            <Tooltip
+              ariaLabel={
+                <div className="w-56 h-auto p-1 text-left whitespace-pre-line">
+                  To domain name providers such as Cloudflare, we request that you <strong>disable the Proxy feature</strong>.
+                </div>
+              }
+            >
+              <span className="underline decoration-dotted decoration-slate-700 cursor-pointer">
+                {row.status}
+              </span>
+            </Tooltip>
+          )
+        }
       }
     ]
 
     const data = [
       {
-        recordType: 'A',
+        recordType: isRootDomain(domain) ? 'A' : 'CNAME',
         name: getDomainName(domain),
-        value: process.env.NEXT_PUBLIC_PUBLIC_SITE_A_RECORD,
+        value: isRootDomain(domain) ? A_RECORD : CNAME_RECORD,
         ttl: 'Auto / Default',
-        status: 'DNS Only'
-      },
-      {
-        recordType: 'TXT',
-        name: getDomainName(domain),
-        value: cnameValue,
-        ttl: 'Auto / Default',
-        status: 'DNS Only'
+        status: 'DNS only' 
       }
-    ].filter(Boolean)
+    ]
 
     return <Table<any> className="table-compact" columns={columns} data={data} />
   }, [domain, cnameValue])
