@@ -15,10 +15,10 @@ export const HomeFooter: FC = () => {
             Copyright © {new Date().getFullYear()} EarlyBird, Inc. All rights reserved.
           </div>
           <div className="flex items-center justify-center mt-4 md:mt-0 space-x-3">
-            <Link href="https://help.earlybird.im/privacy" title={t('home.privacy')}>
+            <Link href="https://help.earlybird.im/user/privacy.html" title={t('home.privacy')}>
               Privacy
             </Link>
-            <Link href="https://help.earlybird.im/tos" title={t('home.terms')}>
+            <Link href="https://help.earlybird.im/user/tos.html" title={t('home.terms')}>
               Terms
             </Link>
           </div>

@@ -38,7 +38,7 @@ export const HelpFloatButton = () => {
   const Overlay = (
     <Menus className="w-[13rem] space-y-1 px-2 py-4">
       <LinkButton
-        href="https://help.earlybird.im"
+        href="https://help.earlybird.im/?ref=floatButton"
         icon={IconHelp}
         title={t('sidebar.helpCenter')}
       />

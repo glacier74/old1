@@ -161,7 +161,7 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
         </h3>
         <div className="mt-1 space-y-1" aria-labelledby="resources-headline">
           <ExternalLink
-            href="https://help.earlybird.im"
+            href="https://help.earlybird.im/?ref=dashboard"
             icon={IconHelp}
             title={t('sidebar.helpCenter')}
           />
