@@ -133,8 +133,7 @@ async function getIntegrations() {
 }
 
 export async function getServerSideProps({ res }: NextPageContext): Promise<unknown> {
-  const [subdomains, collections, templates, integrations] = await Promise.all([
-    getSubdomains(),
+  const [collections, templates, integrations] = await Promise.all([
     getCollections(),
     getTemplates(),
     getIntegrations()
@@ -169,7 +168,6 @@ export async function getServerSideProps({ res }: NextPageContext): Promise<unkn
     ${templates}
     ${integrations}
     ${collections}
-    ${subdomains}
   </urlset>`
 
   res!.setHeader('Content-Type', 'text/xml')
