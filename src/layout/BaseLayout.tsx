@@ -8,12 +8,12 @@ import { useEffect } from 'react'
 
 import { getBrowserId, setBrowserId } from '~/utils'
 
-const NEXT_PUBLIC_HOMEPAGE = process.env.NEXT_PUBLIC_HOMEPAGE!
+const NEXT_PUBLIC_HOMEPAGE = process.env.NEXT_PUBLIC_HOMEPAGE as string
 const OG_IMAGE_URL = 'https://storage.earlybird.im/static/og.png'
 
 export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
   const { t } = useTranslation()
-  const url = seo?.url ? NEXT_PUBLIC_HOMEPAGE.replace(/\/$/, '') + seo.url : undefined
+  const url = (new URL(seo?.url || '/', NEXT_PUBLIC_HOMEPAGE)).href
 
   const seoProps: NextSeoProps = {
     title: t('common.name'),
@@ -21,6 +21,7 @@ export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
     noindex: true,
     nofollow: true,
     ...seo,
+    canonical: url,
     openGraph: {
       type: 'website',
       title: seo?.title || t('common.name'),
