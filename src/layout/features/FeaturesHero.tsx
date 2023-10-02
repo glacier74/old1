@@ -28,7 +28,7 @@ export const FeaturesHero: FC = () => {
               Get started for free
             </Link>
             <a
-              href="https://help.earlybird.im/roadmap/"
+              href="https://help.earlybird.im/user/roadmap.html"
               className="w-full md:w-auto px-4 py-2 md:px-8 md:py-3 text-lg text-center font-medium border border-slate-700 rounded-full"
             >
               View the roadmap
