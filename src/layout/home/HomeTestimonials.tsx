@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import { FC } from 'react'
 
@@ -17,7 +18,7 @@ const TestimonialTwitter: FC<{ testimonial: TestimonialRecord }> = ({ testimonia
             alt={testimonial.Name}
           />
         </a>
-        <div className="flex-grow pl-3">
+        <div className="flex-1 flex-grow pl-3">
           <div className="flex justify-between my-auto">
             <div>
               <div className="font-bold inline text-md">
@@ -78,7 +79,7 @@ const TestimonialProducthunt: FC<{ testimonial: TestimonialRecord }> = ({ testim
             alt={testimonial.Name}
           />
         </a>
-        <div className="flex-grow pl-3">
+        <div className="flex-1 flex-grow pl-3">
           <div className="flex justify-between my-auto">
             <div>
               <div className="font-bold inline text-md">
@@ -130,7 +131,7 @@ const TestimonialEmail: FC<{ testimonial: TestimonialRecord }> = ({ testimonial 
             alt={testimonial.Name}
           />
         </div>
-        <div className="flex-grow pl-3">
+        <div className="flex-1 flex-grow pl-3">
           <div className="flex justify-between my-auto">
             <div>
               <div className="font-bold inline text-md">{testimonial.Name}</div>
@@ -172,11 +173,13 @@ export const TestimonialItem: FC<{ testimonial: TestimonialRecord }> = ({ testim
 }
 
 export const HomeTestimonials: FC<{ columns: TestimonialRecord[][] }> = ({ columns }) => {
+  const { t } = useTranslation('home')
+
   return (
     <section className="relative py-32">
       <div className="max-w-7xl mx-auto px-5">
         <h2 className="text-2xl text-center font-bold md:text-5xl text-slate-900">
-          People really love EarlyBird
+          {t('testimonial.headline')}
         </h2>
         <div className="mt-6 flex justify-center">
           <div className="flex self-center place-content-center md:flex-row space-x-0 md:space-y-0 md:space-x-5">
@@ -199,8 +202,7 @@ export const HomeTestimonials: FC<{ columns: TestimonialRecord[][] }> = ({ colum
           </div>
         </div>
         <div className="max-w-3xl mx-auto text-center text-sm text-slate-700 mt-4">
-          They even put in extra effort to express how much they adore crafting their landing pages
-          on EarlyBird.
+          {t('testimonial.subHeadline')}
         </div>
 
         <div className="relative mt-16 md:flex md:space-x-8">

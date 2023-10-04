@@ -1,1 +1,27 @@
-{}
+{
+  "appName": "EarlyBird",
+  "appSlogan": "您的落地页构建器，轻松捕获潜在客户和验证创意。",
+  "appDescription": "EarlyBird 是一款为初创企业设计的无代码落地页构建工具。轻松创建定制化、高转化率的落地页，以验证您的创业理念。",
+  "product": "产品",
+  "features": "特点",
+  "pricing": "定价",
+  "whatsNew": "有什么新的？",
+  "roadmap": "路线图",
+  "templates": "模板",
+  "integrations": "集成",
+  "help": "帮助",
+  "getStarted": "开始",
+  "helpCenter": "帮助中心",
+  "contactSupport": "联系支持",
+  "developer": "开发者",
+  "company": "公司",
+  "about": "关于",
+  "blog": "博客",
+  "community": "社区",
+  "legal": "法律",
+  "terms": "使用条款",
+  "privacy": "隐私政策",
+  "login": "登录",
+  "signUp": "注册",
+  "copyright": "Copyright © {{year}} EarlyBird, Inc. 保留所有权利。"
+}

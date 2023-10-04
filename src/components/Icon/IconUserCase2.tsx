@@ -26,7 +26,7 @@ export const IconUserCase2: FC = props => {
           rx="36"
         ></rect>
         <g transform="translate(-4 -2) rotate(-8 18 18)">
-          <path d="M15 21c2 -1 4 -1 6 0" stroke="#000000" fill="none" stroke-linecap="round"></path>
+          <path d="M15 21c2 -1 4 -1 6 0" stroke="#000000" fill="none" strokeLinecap="round"></path>
           <rect x="11" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#000000"></rect>
           <rect x="23" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#000000"></rect>
         </g>

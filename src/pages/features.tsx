@@ -11,12 +11,12 @@ import {
 import { withTranslations } from '~/utils'
 
 const Features = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('features')
 
   return (
     <HomeLayout
       seo={{
-        title: t('features.title'),
+        title: t('title'),
         url: '/features'
       }}
     >
@@ -31,10 +31,13 @@ const Features = (): JSX.Element => {
   )
 }
 
-export const getStaticProps = withTranslations(async context => {
-  return {
-    props: {}
-  }
-})
+export const getStaticProps = withTranslations(
+  async context => {
+    return {
+      props: {}
+    }
+  },
+  ['common', 'features']
+)
 
 export default Features

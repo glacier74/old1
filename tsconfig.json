@@ -4,6 +4,7 @@
     "paths": {
       "~/*": ["src/*"],
       "~public/*": ["public/*"],
+      "~i18next-config": ["next-i18next.config.js"],
       "@earlybirdim/*": [
         "./earlybirdim/*"
       ]

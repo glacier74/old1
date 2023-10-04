@@ -4,7 +4,7 @@ import { FC } from 'react'
 import { IconUserCase1, IconUserCase2 } from '~/components'
 
 export const HomeUsecase: FC = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('home')
 
   return (
     <section className="relative grid md:grid-cols-2">
@@ -15,11 +15,11 @@ export const HomeUsecase: FC = () => {
               <div className="mb-8">
                 <IconUserCase1 />
               </div>
-              <h2 className="sm:text-3xl text-2xl font-bold mb-4">EarlyBird is for</h2>
+              <h2 className="sm:text-3xl text-2xl font-bold mb-4">{t('useCase.for')}</h2>
               <ul className="list-disc sm:text-xl text-lg pl-4 sm:space-y-2 space-y-1">
-                <li>Individuals lacking design or development skills</li>
-                <li>Entrepreneurs operating simple online businesses</li>
-                <li>Startups seeking the perfect product-market fit</li>
+                <li>{t('useCase.for1')}</li>
+                <li>{t('useCase.for2')}</li>
+                <li>{t('useCase.for3')}</li>
               </ul>
             </div>
           </div>
@@ -30,11 +30,11 @@ export const HomeUsecase: FC = () => {
           <div className="mb-8">
             <IconUserCase2 />
           </div>
-          <h2 className="sm:text-3xl text-2xl font-bold mb-4">EarlyBird is NOT for</h2>
+          <h2 className="sm:text-3xl text-2xl font-bold mb-4">{t('useCase.notFor')}</h2>
           <ul className="list-disc sm:text-xl text-lg pl-4 sm:space-y-2 space-y-1">
-            <li>Developers aiming to build complex web applications</li>
-            <li>Businesses requiring bespoke website designs</li>
-            <li>Those requiring advanced customizations and integrations</li>
+            <li>{t('useCase.notFor1')}</li>
+            <li>{t('useCase.notFor2')}</li>
+            <li>{t('useCase.notFor3')}</li>
           </ul>
         </div>
       </div>

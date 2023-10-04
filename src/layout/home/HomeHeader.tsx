@@ -44,52 +44,52 @@ export const HomeHeader: FC = () => {
             <div className="flex items-center text-slate-500 text-base font-medium md:space-x-8">
               <Link
                 href="/"
-                title={t('common.name')}
+                title={t('appName')}
                 className="h-[2rem] md:h-[2.25rem] hover:opacity-80 mx-5 lg:mx-8"
               >
-                <Image src={IconLogo} alt="EarlyBird Logo" width={110} height={36} quality={100} />
+                <Image src={IconLogo} alt={t('appName')} width={110} height={36} quality={100} />
               </Link>
               <Link
                 href="/features"
-                title={t('features.title')}
+                title={t('features')}
                 className="hidden md:block hover:text-slate-950 hover:opacity-80"
               >
-                Features
+                {t('features')}
               </Link>
               <Link
                 href="/pricing"
-                title={t('pricing.title')}
+                title={t('pricing')}
                 className="hidden md:block hover:text-slate-950 hover:opacity-80"
               >
-                Pricing
+                {t('pricing')}
               </Link>
               <Link
                 href="/templates"
-                title={t('templates.title')}
+                title={t('templates')}
                 className="hidden md:block hover:text-slate-950 hover:opacity-80"
               >
-                Templates
+                {t('templates')}
               </Link>
               <Link
                 href="/integrations"
-                title={t('integrations.title')}
+                title={t('integrations')}
                 className="hidden md:block hover:text-slate-950 hover:opacity-80"
               >
-                Integrations
+                {t('integrations')}
               </Link>
               <Link
                 href="/about"
-                title={t('about.title')}
+                title={t('about')}
                 className="hidden md:block hover:text-slate-950 hover:opacity-80"
               >
-                About
+                {t('about')}
               </Link>
               <Link
                 href="/blog"
-                title={t('blog.title')}
+                title={t('blog')}
                 className="hidden md:block hover:text-slate-950 hover:opacity-80"
               >
-                Blog
+                {t('blog')}
               </Link>
             </div>
 
@@ -97,16 +97,18 @@ export const HomeHeader: FC = () => {
               <Link
                 href="/login"
                 className="py-2 px-4 rounded text-slate-500 font-medium"
-                title={t('common.login')}
+                title={t('login')}
+                locale={false}
               >
-                Log in
+                {t('login')}
               </Link>
               <Link
                 href="/sign-up"
                 className="py-2 px-6 rounded-full text-white bg-slate-900 font-medium"
-                title={t('common.signup')}
+                title={t('signUp')}
+                locale={false}
               >
-                Sign up
+                {t('signUp')}
               </Link>
             </div>
 
@@ -126,27 +128,23 @@ export const HomeHeader: FC = () => {
         <div className="fixed top-20 left-0 right-0 bg-white rounded-lg shadow-xl z-10 md:hidden">
           <div className="flex flex-col py-8 px-5">
             <div className="flex flex-col space-y-4 text-center">
-              <Link href="/features" title={t('features.title')} className="hover:opacity-80">
-                Features
+              <Link href="/features" title={t('features')} className="hover:opacity-80">
+                {t('features')}
               </Link>
-              <Link href="/pricing" title={t('pricing.title')} className="hover:opacity-80">
-                Pricing
+              <Link href="/pricing" title={t('pricing')} className="hover:opacity-80">
+                {t('pricing')}
               </Link>
-              <Link href="/templates" title={t('templates.title')} className="hover:opacity-80">
-                Templates
+              <Link href="/templates" title={t('templates')} className="hover:opacity-80">
+                {t('templates')}
               </Link>
-              <Link
-                href="/integrations"
-                title={t('integrations.title')}
-                className="hover:opacity-80"
-              >
-                Integrations
+              <Link href="/integrations" title={t('integrations')} className="hover:opacity-80">
+                {t('integrations')}
               </Link>
-              <Link href="/about" title={t('about.title')} className="hover:opacity-80">
-                About
+              <Link href="/about" title={t('about')} className="hover:opacity-80">
+                {t('about')}
               </Link>
-              <Link href="/blog" title={t('blog.title')} className="hover:opacity-80">
-                Blog
+              <Link href="/blog" title={t('blog')} className="hover:opacity-80">
+                {t('blog')}
               </Link>
             </div>
 
@@ -154,16 +152,16 @@ export const HomeHeader: FC = () => {
               <Link
                 href="/login"
                 className="py-2 px-3 border border-emerald-500 text-emerald-500 rounded-full font-medium text-center"
-                title={t('common.name')}
+                title={t('login')}
               >
-                Login
+                {t('login')}
               </Link>
               <Link
                 href="/sign-up"
                 className="py-2 px-6 rounded-full text-white bg-slate-900 font-medium text-center"
-                title={t('common.signup')}
+                title={t('signUp')}
               >
-                Sign up
+                {t('signUp')}
               </Link>
             </div>
           </div>

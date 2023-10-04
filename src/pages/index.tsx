@@ -1,3 +1,5 @@
+import { useTranslation } from 'next-i18next'
+
 import {
   HomeAuthorizedLayout,
   HomeBottom,
@@ -22,6 +24,8 @@ interface HomeProps {
 }
 
 const Home = ({ isLoggedIn, usersCount, columns }: HomeProps): JSX.Element => {
+  const { t } = useTranslation('home')
+
   /**
    * 如果用户已经登录，拉取 user 和 product 信息
    * 如果 token 过期，请求 /logout 接口退出登录
@@ -32,7 +36,7 @@ const Home = ({ isLoggedIn, usersCount, columns }: HomeProps): JSX.Element => {
   }
 
   return (
-    <HomeLayout seo={{ url: '/' }}>
+    <HomeLayout seo={{ url: '/', title: t('title') }}>
       <HomeHeader />
       <HomeHeroSection usersCount={usersCount} />
       <HomeUsecase />
@@ -46,21 +50,24 @@ const Home = ({ isLoggedIn, usersCount, columns }: HomeProps): JSX.Element => {
   )
 }
 
-export const getServerSideProps = withTranslations(async context => {
-  const [res1, testimonials] = await Promise.all([
-    PublicApiService.userCount(),
-    TestimonialService.records()
-  ])
+export const getServerSideProps = withTranslations(
+  async context => {
+    const [res1, testimonials] = await Promise.all([
+      PublicApiService.userCount(),
+      TestimonialService.records()
+    ])
 
-  return {
-    props: {
-      usersCount: res1.count,
-      columns: waterfall<TestimonialRecord>(testimonials, 3, testimonial => {
-        return testimonial.Testimonial.length
-      }),
-      isLoggedIn: isLoggedIn(context.req.cookies)
+    return {
+      props: {
+        usersCount: res1.count,
+        columns: waterfall<TestimonialRecord>(testimonials, 3, testimonial => {
+          return testimonial.Testimonial.length
+        }),
+        isLoggedIn: isLoggedIn(context.req.cookies)
+      }
     }
-  }
-})
+  },
+  ['common', 'home']
+)
 
 export default Home

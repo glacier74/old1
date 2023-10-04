@@ -1,6 +1,7 @@
 import { IconCheck } from '@tabler/icons'
 import clsx from 'clsx'
-import { useTranslation } from 'next-i18next'
+import { Trans, useTranslation } from 'next-i18next'
+import Link from 'next/link'
 import { FC } from 'react'
 
 const tiers = [
@@ -56,7 +57,7 @@ export const PricingPlans: FC<{
   billingCycle: string
   onChange: (billingCycle: string) => void
 }> = ({ billingCycle, onChange }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('pricing')
 
   function switchToMonthly() {
     onChange('monthly')
@@ -81,7 +82,7 @@ export const PricingPlans: FC<{
               )}
               onClick={switchToMonthly}
             >
-              Monthly
+              {t('plan.monthly')}
             </button>
             <button
               type="button"
@@ -93,7 +94,7 @@ export const PricingPlans: FC<{
               )}
               onClick={switchToYearly}
             >
-              Annually
+              {t('plan.annually')}
             </button>
           </div>
 
@@ -163,28 +164,26 @@ export const PricingPlans: FC<{
           </div>
 
           <div className="text-center mt-16 text-xl font-medium">
-            Just getting started?{' '}
-            <a href="/sign-up" className="underline">
-              Try EarlyBird out for free
-            </a>
-            , forever (yes really)!
+            <Trans
+              i18nKey="cta.caption"
+              t={t}
+              components={{
+                a: <Link href="/sign-up" className="underline" locale={false} />
+              }}
+            />
           </div>
 
           <div className="mt-16 sm:flex sm:justify-between rounded-lg shadow-sm px-4 sm:px-16 py-16 border border-lime-600">
             <div className="px-4">
-              <h3 className="text-4xl font-bold mb-4">Looking for custom plans?</h3>
-              <div className="max-w-xl text-lg text-slate-700">
-                If you require higher limits on landing pages, traffic and conversions or need a
-                customized landing page design, feel free to get in touch with us for custom
-                pricing.
-              </div>
+              <h3 className="text-4xl font-bold mb-4">{t('cta.headline')}</h3>
+              <div className="max-w-xl text-lg text-slate-700">{t('cta.subHeadline')}</div>
             </div>
             <div className="px-4 self-center mt-8 sm:mt-0">
               <a
                 href="mailto:support@earlybird.im"
                 className="px-6 py-4 bg-slate-900 text-slate-50 font-bold rounded-full"
               >
-                Contact us
+                {t('cta.button')}
               </a>
             </div>
           </div>

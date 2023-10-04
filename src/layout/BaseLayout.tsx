@@ -3,29 +3,33 @@ import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import { NextSeo, NextSeoProps } from 'next-seo'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import Script from 'next/script'
 import { useEffect } from 'react'
 
-import { getBrowserId, setBrowserId } from '~/utils'
+import { getBrowserId, getHomeURL, getPageURL, setBrowserId } from '~/utils'
+import { i18n } from '~i18next-config'
 
-const NEXT_PUBLIC_HOMEPAGE = process.env.NEXT_PUBLIC_HOMEPAGE as string
 const OG_IMAGE_URL = 'https://storage.earlybird.im/static/og.png'
 
 export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
   const { t } = useTranslation()
-  const url = (new URL(seo?.url || '/', NEXT_PUBLIC_HOMEPAGE)).href
+  const router = useRouter()
+
+  const locale = router.locale || i18n.defaultLocale
+  const url = getPageURL(seo?.url || '/', locale)
 
   const seoProps: NextSeoProps = {
-    title: t('common.name'),
-    description: t('common.description'),
+    title: t('appName'),
+    description: t('appDescription'),
     noindex: true,
     nofollow: true,
     ...seo,
     canonical: url,
     openGraph: {
       type: 'website',
-      title: seo?.title || t('common.name'),
-      description: seo?.description || t('common.description'),
+      title: seo?.title || t('appName'),
+      description: seo?.description || t('appDescription'),
       ...seo?.openGraph,
       url,
       images: [
@@ -52,15 +56,21 @@ export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
   return (
     <>
       <Head>
-        <meta content={t('common.shortName')} name="application-name" />
-        <meta content={t('common.shortName')} name="apple-mobile-web-app-title" />
+        <meta content={t('appName')} name="application-name" />
+        <meta content={t('appName')} name="apple-mobile-web-app-title" />
         <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
         <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
 
+        <meta httpEquiv="Content-Language" content={locale} />
+
+        {i18n.locales.map(row => (
+          <link key={row} href={getHomeURL(row)} hrefLang={row} rel="alternate" />
+        ))}
+
         {/* Twitter missing meta for next-seo */}
-        <meta property="twitter:title" content={t('common.name')} />
-        <meta property="twitter:description" content={t('common.description')} />
+        <meta property="twitter:title" content={t('appName')} />
+        <meta property="twitter:description" content={t('appDescription')} />
         <meta property="twitter:image" content={OG_IMAGE_URL} />
       </Head>
 

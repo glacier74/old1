@@ -1,0 +1,47 @@
+{
+  "title": "EarlyBird: Your landing page builder for effective lead capture",
+  "hero": {
+    "caption": "Acquire your first customer by <span>{{time}}</span> with no waiting",
+    "headline": "Create <wrap><icon></icon><span>landing pages</span></wrap> that capture early adopters",
+    "subHeadline": "Your ideas have the potential to be worth millions, and you can start without any technical knowledge, aided by ChatGPT!",
+    "cta": "Get started for free ->",
+    "users": "<span>{{count}}</span> makers and startups are building their landing pages with EarlyBird"
+  },
+  "useCase": {
+    "for": "EarlyBird is for",
+    "for1": "Individuals lacking design or development skills",
+    "for2": "Entrepreneurs operating simple online businesses",
+    "for3": "Startups seeking the perfect product-market fit",
+    "notFor": "EarlyBird is NOT for",
+    "notFor1": "Developers aiming to build complex web applications",
+    "notFor2": "Businesses requiring bespoke website designs",
+    "notFor3": "Those requiring advanced customizations and integrations"
+  },
+  "userImage": {
+    "headline": "Stop <span>wasting time and money</span> at early stage",
+    "q1": "How long could it take to launch a business?",
+    "a1": "It could range from a week to a year, depending on the individual.",
+    "q2": "And how much would it cost?",
+    "a2": "It could cost anywhere from hundreds to thousands of dollars, or even more.",
+    "a3": "It's important to be mindful of your time and money when starting a business. <span>You don't want to regret wasting either of them.</span>",
+    "q4": "So what if you could build a landing page in 10 minutes to test if people are truly interested in what you are creating?",
+    "a4": "Read our story 👉 <a>how we built a side project in 16 hours with EarlyBird</a>"
+  },
+  "feature": {
+    "headline1": "Build a landing page",
+    "subHeadline1": "Easily build a simple landing page for your idea in minutes from a template. Seek no help from a designer or developer.",
+    "headline2": "Market your idea",
+    "subHeadline2": "Transform your idea into a compelling pitch deck that interests your audience. Spend less time creating copies.",
+    "headline3": "Validate the idea",
+    "subHeadline3": "Start engaging with potential customers. Validate the demand for your product and accept payments before launch."
+  },
+  "testimonial": {
+    "headline": "People really love EarlyBird",
+    "subHeadline": "They even put in extra effort to express how much they adore crafting their landing pages on EarlyBird."
+  },
+  "bottom": {
+    "headline": "The place for early stage entrepreneurs to bootstrap",
+    "subHeadline": "EarlyBird is the perfect platform for launching a new product, building a newsletter, or creating a business profile.",
+    "cta": "Secure your first customer today!"
+  }
+}

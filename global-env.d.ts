@@ -1,6 +1,16 @@
-import { AriaAttributes, CSSProperties, FC, ReactNode } from 'react'
+import 'i18next'
+import type { AriaAttributes, CSSProperties, FC, ReactNode } from 'react'
 
-export {}
+declare module 'i18next' {
+  interface CustomTypeOptions {
+    defaultNS: 'common'
+    resources: {
+      common: Record<string, string>
+    }
+    returnNull: false
+    returnEmptyString: false
+  }
+}
 
 declare global {
   import type { NextSeoProps } from 'next-seo'
@@ -708,3 +718,5 @@ declare global {
     }>
   }
 }
+
+export {}

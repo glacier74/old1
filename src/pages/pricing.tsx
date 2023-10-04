@@ -12,13 +12,13 @@ import {
 import { withTranslations } from '~/utils'
 
 const Pricing = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('pricing')
   const [billingCycle, setBillingCycle] = useState('yearly')
 
   return (
     <HomeLayout
       seo={{
-        title: t('pricing.title'),
+        title: t('title'),
         url: '/pricing'
       }}
     >
@@ -33,10 +33,13 @@ const Pricing = (): JSX.Element => {
   )
 }
 
-export const getStaticProps = withTranslations(async context => {
-  return {
-    props: {}
-  }
-})
+export const getStaticProps = withTranslations(
+  async context => {
+    return {
+      props: {}
+    }
+  },
+  ['common', 'pricing']
+)
 
 export default Pricing

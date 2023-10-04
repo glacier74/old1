@@ -1,7 +1,7 @@
 import type { NextPageContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-export function withTranslations(nextPageFunction: NextPageFunction, namespaces?: string[]) {
+export function withTranslations(nextPageFunction: NextPageFunction, namespaces = ['common']) {
   return async (context: NextPageContext) => {
     const pageData = await nextPageFunction(context)
 
@@ -9,9 +9,13 @@ export function withTranslations(nextPageFunction: NextPageFunction, namespaces?
       return pageData
     }
 
+    const locale = context.locale || context.defaultLocale!
+    console.log(locale, namespaces)
+
     return {
       props: {
-        ...(await serverSideTranslations(context.locale || context.defaultLocale!, namespaces)),
+        locale,
+        ...(await serverSideTranslations(locale, namespaces)),
         ...pageData.props
       }
     }

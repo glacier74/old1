@@ -1,6 +1,8 @@
 # robots.txt for https://earlybird.im
 
 User-agent: *
+Disallow: /en/*
+Disallow: /public-site/*
 Disallow: /api/*
 Disallow: /login*
 Disallow: /sign-up

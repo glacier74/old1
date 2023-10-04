@@ -49,6 +49,8 @@ export function useRequest(
   deps: any[] = [],
   options?: UseRequestOptions
 ) {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const { t } = useTranslation()
 
   const [loading, setLoading] = useState(false)

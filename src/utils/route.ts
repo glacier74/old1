@@ -3,6 +3,8 @@ import { NextRequest } from 'next/server'
 import { pathToRegexp } from 'path-to-regexp'
 import isFQDN from 'validator/lib/isFQDN'
 
+import { i18n } from '~i18next-config'
+
 const routeRegexps: AnyMap<RegExp> = {}
 
 function getRouteRegex(route: string) {
@@ -65,4 +67,14 @@ export function isValidDomain(domain: string) {
   }
 
   return domain.split('.').length <= 3
+}
+
+const NEXT_PUBLIC_HOMEPAGE = process.env.NEXT_PUBLIC_HOMEPAGE as string
+
+export function getHomeURL(locale = i18n.defaultLocale) {
+  return new URL(locale === i18n.defaultLocale ? '/' : locale, NEXT_PUBLIC_HOMEPAGE).href
+}
+
+export function getPageURL(url: string, locale = i18n.defaultLocale) {
+  return getHomeURL(locale).replace(/\/$/, '') + '/' + url.replace(/^\//, '')
 }

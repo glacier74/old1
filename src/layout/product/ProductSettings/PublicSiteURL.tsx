@@ -275,7 +275,8 @@ const ValidateComponent: FC<{ domain: string; onFinish: () => void }> = ({ domai
             <Tooltip
               ariaLabel={
                 <div className="w-56 h-auto p-1 text-left whitespace-pre-line">
-                  To domain name providers such as Cloudflare, we request that you <strong>disable the Proxy feature</strong>.
+                  To domain name providers such as Cloudflare, we request that you{' '}
+                  <strong>disable the Proxy feature</strong>.
                 </div>
               }
             >
@@ -294,7 +295,7 @@ const ValidateComponent: FC<{ domain: string; onFinish: () => void }> = ({ domai
         name: getDomainName(domain),
         value: isRootDomain(domain) ? A_RECORD : CNAME_RECORD,
         ttl: 'Auto / Default',
-        status: 'DNS only' 
+        status: 'DNS only'
       }
     ]
 

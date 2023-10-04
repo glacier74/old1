@@ -2324,3 +2324,20 @@ button.button-success {
     @apply p-0;
   }
 }
+
+.select-locale {
+  @apply w-[120px];
+
+  .select-button {
+    @apply bg-gray-700 border border-transparent;
+  }
+
+  .input {
+    @apply bg-transparent border-none;
+  }
+
+  .select-value,
+  .select-arrow-icon  {
+    @apply text-white;
+  }
+}

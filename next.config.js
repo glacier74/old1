@@ -63,9 +63,6 @@ module.exports = {
       }
     ]
   },
-  experimental: {
-    fontLoaders: [{ loader: 'next/font/google', options: { subsets: ['latin'] } }]
-  },
   // https://nextjs.org/docs/advanced-features/security-headers
   async headers() {
     return [

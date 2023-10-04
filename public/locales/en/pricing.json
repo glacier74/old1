@@ -1,0 +1,35 @@
+{
+  "title": "Pricing - $t(appName)",
+  "hero": {
+    "headline": "Simple & flexible pricing",
+    "subHeadline": "Supercharge your EarlyBird landing page with a paid plan starting from just $4/mo"
+  },
+  "plan": {
+    "monthly": "Monthly",
+    "annually": "Annually"
+  },
+  "cta": {
+    "caption": "Just getting started? <a>Try EarlyBird out for free</a>, forever (yes really)!",
+    "headline": "Looking for custom plans?",
+    "subHeadline": "If you require higher limits on landing pages, traffic and conversions or need a customized landing page design, feel free to get in touch with us for custom pricing.",
+    "button": "Contact us"
+  },
+  "faq": {
+    "headline": "Frequently asked questions",
+    "q1": "Who is behind EarlyBird?",
+    "a1": "Hi! My name is Luo and I created EarlyBird to solve a problem I was facing as a creator. I had multiple startup ideas, but as a developer, it took me a long time to create a landing page and validate each idea. I wondered how people without technical skills could do this quickly and easily, so I decided to build something for them. And that\"s how EarlyBird was born!",
+    "q2": "Do you offer discounts?",
+    "a2": "Discounts are only available for members on special occasions. To stay informed about discounts, follow us on Twitter or subscribe to our newsletter. Additionally, if you have a blog or newsletter, you can write a post about EarlyBird and receive 3 months of free membership.",
+    "q3": "Can I start for free and upgrade later?",
+    "a3": "You can upgrade your plan at any time through the dashboard billing. Simply log in to your dashboard and navigate to the billing section to choose a new plan.",
+    "q4": "Can I cancel my plan anytime?",
+    "a4": "Yes, you can cancel your plan at any time through your dashboard. Simply log in to your dashboard and navigate to the billing section to cancel your plan.",
+    "q5": "Do you offer refunds?",
+    "a5": "There is a 72-hour money-back guarantee, no questions asked. However, we do love to hear your feedback. Please send a refund request to support@earlybird.im and we"ll process it as soon as we can."
+  },
+  "bottom": {
+    "headline": "Try EarlyBird today for free",
+    "subHeadline": "Build a rockin' no-code landing page in just 10 minutes.",
+    "cta": "Create your account"
+  }
+}

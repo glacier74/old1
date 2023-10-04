@@ -1,0 +1,62 @@
+{
+  "title": "Features - $t(appName)",
+  "hero": {
+    "headline": "Transform your idea into a thriving customer base",
+    "subHeadline": "Save time and resources by using EarlyBird to validate your idea before diving into product development.",
+    "cta1": "Get started for free",
+    "cta2": "View the roadmap"
+  },
+  "build": {
+    "headline": "Build a landing page in 10 minutes",
+    "subHeadline": "Create a high-quality landing page in no time, and start promoting your business and generating leads quickly.",
+    "title1": "Start with a template",
+    "desc1": "Choose your ideal template and effortlessly build a landing page. Our intuitive design makes it user-friendly, even for those not familiar with technology.",
+    "title2": "Copywriting from the wise",
+    "desc2": "Tap into the potential of AI for generating engaging copy for your landing page. We simplifie content creation, crafting compelling narratives that resonate with your audience.",
+    "title3": "Fully responsive",
+    "desc3": "Every landing page is set to be responsive and looks great on all devices, ensuring accessibility for everyone.",
+    "title4": "Text formatting",
+    "desc4": "Easily add headings, links, paragraphs, and apply various text styles, including bold, italic, underline, etc.",
+    "title5": "SEO ready",
+    "desc5": "All landing pages are optimized for search engines by default, and you can customize the SEO fields to suit your specific needs.",
+    "title6": "Private mode",
+    "desc6": "Restrict access to your landing pages by keeping them password-protected for a select group of users.",
+    "title7": "Teamwork made easy",
+    "desc7": "Invite team members to collaborate directly on your landing pages. Streamline workflow, share ideas, and create compelling content together."
+  },
+  "pitch": {
+    "headline": "Pitch an idea and convince the audience",
+    "subHeadline": "Convince the audience that your idea is worth their attention and investment, and encourage them to take the desired action.",
+    "title1": "Instant outreach",
+    "desc1": "Share your landing pages instantly with one click. Reach your audience faster, spread your ideas wider, and make your online presence felt. ",
+    "title2": "Custom domain",
+    "desc2": "Use your own domain name to create a more professional-looking and cohesive experience for your customers.",
+    "title3": "Custom Open Graph",
+    "desc3": "Get your content stand out and attract more attention on social media with custom title, description, image, and other information.",
+    "title4": "Features walkthrough",
+    "desc4": "Highlight the key benefits and features of your product, and explain how it solves specific problems that your target customers have.",
+    "title5": "Image Carousel",
+    "desc5": "Showcase your product, service, or other visual content in an engaging way to your customers that your offering is worth investing in.",
+    "title6": "Social proof",
+    "desc6": "Show testimonials and ratings to build trust and credibility with potential customers."
+  },
+  "validate": {
+    "headline": "Maximize engagement to ensure success",
+    "subHeadline": "Benchmark with your customers to test the idea, gather interests, insights, and initial funding, and ensure that you have the potential to succeed.",
+    "title1": "Comprehensive analytics",
+    "desc1": "View detailed information, including the number of visitors, page visits, top source, geo-location, and more.",
+    "title2": "Understand interests",
+    "desc2": "Build a list of interested individuals to keep them engaged and informed about your product development and offer.",
+    "title3": "Accept payments",
+    "desc3": "Easily collect payments, track your income and manage your paid subscribers.",
+    "title4": "Collect feedback",
+    "desc4": "Add a simple form that users can fill out to provide their thoughts, opinions, and suggestions about your product or service.",
+    "title5": "Quick polls",
+    "desc5": "Get insights faster. Add user-friendly online polls to understand the needs and preferences of your target audience."
+  },
+  "bottom": {
+    "headline": "Try EarlyBird today for free",
+    "subHeadline": "Build a rockin' no-code landing page in just 10 minutes.",
+    "cta": "Create your account"
+  }
+}
