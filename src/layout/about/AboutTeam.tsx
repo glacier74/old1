@@ -6,13 +6,13 @@ import { FC } from 'react'
 import { dataTeam } from './dataTeam'
 
 export const AboutTeam: FC = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('about')
 
   return (
     <section>
       <div className="lg:max-w-5xl max-w-3xl mx-auto px-6 z-10 mt-12">
         <div className="flex flex-col justify-center lg:gap-20 sm:gap-14 gap-10 text-center">
-          <h3 className="sm:text-4xl text-2xl font-bold">The minds behind the magic</h3>
+          <h3 className="sm:text-4xl text-2xl font-bold">{t('team.headline')}</h3>
           <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
             {dataTeam.map((team, index) => (
               <div

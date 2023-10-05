@@ -1,62 +1,62 @@
 {
-    "title": "Features - $t(appName)",
-    "hero": {
-      "headline": "Transform your idea into a thriving customer base",
-      "subHeadline": "Save time and resources by using EarlyBird to validate your idea before diving into product development.",
-      "cta1": "Get started for free",
-      "cta2": "View the roadmap"
-    },
-    "build": {
-      "headline": "Build a landing page in 10 minutes",
-      "subHeadline": "Create a high-quality landing page in no time, and start promoting your business and generating leads quickly.",
-      "title1": "Start with a template",
-      "desc1": "Choose your ideal template and effortlessly build a landing page. Our intuitive design makes it user-friendly, even for those not familiar with technology.",
-      "title2": "Copywriting from the wise",
-      "desc2": "Tap into the potential of AI for generating engaging copy for your landing page. We simplifie content creation, crafting compelling narratives that resonate with your audience.",
-      "title3": "Fully responsive",
-      "desc3": "Every landing page is set to be responsive and looks great on all devices, ensuring accessibility for everyone.",
-      "title4": "Text formatting",
-      "desc4": "Easily add headings, links, paragraphs, and apply various text styles, including bold, italic, underline, etc.",
-      "title5": "SEO ready",
-      "desc5": "All landing pages are optimized for search engines by default, and you can customize the SEO fields to suit your specific needs.",
-      "title6": "Private mode",
-      "desc6": "Restrict access to your landing pages by keeping them password-protected for a select group of users.",
-      "title7": "Teamwork made easy",
-      "desc7": "Invite team members to collaborate directly on your landing pages. Streamline workflow, share ideas, and create compelling content together."
-    },
-    "pitch": {
-      "headline": "Pitch an idea and convince the audience",
-      "subHeadline": "Convince the audience that your idea is worth their attention and investment, and encourage them to take the desired action.",
-      "title1": "Instant outreach",
-      "desc1": "Share your landing pages instantly with one click. Reach your audience faster, spread your ideas wider, and make your online presence felt. ",
-      "title2": "Custom domain",
-      "desc2": "Use your own domain name to create a more professional-looking and cohesive experience for your customers.",
-      "title3": "Custom Open Graph",
-      "desc3": "Get your content stand out and attract more attention on social media with custom title, description, image, and other information.",
-      "title4": "Features walkthrough",
-      "desc4": "Highlight the key benefits and features of your product, and explain how it solves specific problems that your target customers have.",
-      "title5": "Image Carousel",
-      "desc5": "Showcase your product, service, or other visual content in an engaging way to your customers that your offering is worth investing in.",
-      "title6": "Social proof",
-      "desc6": "Show testimonials and ratings to build trust and credibility with potential customers."
-    },
-    "validate": {
-      "headline": "Maximize engagement to ensure success",
-      "subHeadline": "Benchmark with your customers to test the idea, gather interests, insights, and initial funding, and ensure that you have the potential to succeed.",
-      "title1": "Comprehensive analytics",
-      "desc1": "View detailed information, including the number of visitors, page visits, top source, geo-location, and more.",
-      "title2": "Understand interests",
-      "desc2": "Build a list of interested individuals to keep them engaged and informed about your product development and offer.",
-      "title3": "Accept payments",
-      "desc3": "Easily collect payments, track your income and manage your paid subscribers.",
-      "title4": "Collect feedback",
-      "desc4": "Add a simple form that users can fill out to provide their thoughts, opinions, and suggestions about your product or service.",
-      "title5": "Quick polls",
-      "desc5": "Get insights faster. Add user-friendly online polls to understand the needs and preferences of your target audience."
-    },
-    "bottom": {
-      "headline": "Try EarlyBird today for free",
-      "subHeadline": "Build a rockin' no-code landing page in just 10 minutes.",
-      "cta": "Create your account"
-    }
+  "title": "特性 - $t(appName)",
+  "hero": {
+    "headline": "将你的想法转化为不断增长的客户名单",
+    "subHeadline": "在进行产品开发之前，使用 EarlyBird 来验证你的想法，大大节省时间和资源，提升成功概率。",
+    "cta1": "免费开始",
+    "cta2": "开发路线"
+  },
+  "build": {
+    "headline": "在 10 分钟内建立一个落地页",
+    "subHeadline": "在短时间内创建一个简洁优雅的落地页，快速推广你的业务并迅速获取潜在客户。",
+    "title1": "从一个模板开始",
+    "desc1": "选择你喜欢的模板，轻松构建一个落地页。我们在设计上不断努力，使其对于不熟悉技术的人也很友好。",
+    "title2": "使用 AI 进行文案创作",
+    "desc2": "利用 AI 的强大能力为你的落地页生成高质量的文案。我们简化内容创作，打造与你的受众产生共鸣的演示文稿。",
+    "title3": "响应式布局",
+    "desc3": "每个落地页都采取响应式设计，并在所有设备上表现出色，确保对每个人都具有可访问性。",
+    "title4": "富文本编辑",
+    "desc4": "轻松添加标题、链接、段落，并应用各种文本样式，包括粗体、斜体、下划线等。",
+    "title5": "SEO 友好",
+    "desc5": "所有落地页默认都经过 SEO（搜索引擎优化），并且可以根据你自己的需求自定义 SEO 字段。",
+    "title6": "私密模式",
+    "desc6": "通过将落地页设为密码保护，限制访问权限仅供特定用户访问。",
+    "title7": "团队写作",
+    "desc7": "邀请团队成员直接在落地页上协作。简化工作流程，分享想法，并共同创建引人注目的内容。"
+  },
+  "pitch": {
+    "headline": "提出一个创意并说服受众",
+    "subHeadline": "说服受众，让他们相信你的想法值得他们关注和投资，并鼓励他们采取所期望的行动。",
+    "title1": "实时分享",
+    "desc1": "一键即可立即分享你的落地页。更快地触达你的受众，扩大你的想法传播范围，并强化你的在线存在感。",
+    "title2": "自定义域名",
+    "desc2": "使用你自己的域名为客户创建更专业和统一的体验。",
+    "title3": "自定义开放图谱",
+    "desc3": "通过自定义标题、描述、图片和其他信息，使你的内容在社交媒体上脱颖而出，吸引更多关注。",
+    "title4": "功能演示",
+    "desc4": "突出你产品的主要优势和特点，并解释它如何解决目标客户所面临的具体问题。",
+    "title5": "图片轮播",
+    "desc5": "以引人入胜的方式展示你的产品、服务或其他视觉内容，向客户展示你的投资价值。",
+    "title6": "社会证明",
+    "desc6": "展示客户的推荐和评级，以建立与潜在客户的信任和可靠性。"
+  },
+  "validate": {
+    "headline": "最大化参与度以确保成功",
+    "subHeadline": "与你的客户进行基准测试，以测试想法、收集兴趣、洞察和初步资金，并确保你有成功的潜力。",
+    "title1": "数据分析",
+    "desc1": "查看详细信息，包括访客数量、页面访问量、顶级来源、地理位置等。",
+    "title2": "理解兴趣",
+    "desc2": "建立一个感兴趣的个人名单，以保持他们对你的产品开发和优惠活动的参与和了解。",
+    "title3": "接受付款",
+    "desc3": "轻松收款，追踪你的收入并管理已付费订阅者。",
+    "title4": "收集反馈",
+    "desc4": "添加一个简单的表格，让用户填写他们对你的产品或服务的想法、意见和建议。",
+    "title5": "快速投票",
+    "desc5": "更快地获取洞察。添加用户友好的在线投票，了解目标受众的需求和偏好。"
+  },
+  "bottom": {
+    "headline": "免费试用 EarlyBird",
+    "subHeadline": "在短短 10 分钟内，构建一个令人兴奋的低代码落地页。",
+    "cta": "创建你的账户"
   }
+}

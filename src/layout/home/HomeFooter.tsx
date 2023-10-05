@@ -37,17 +37,17 @@ const navigation = {
   legal: [
     { name: 'terms', href: 'https://help.earlybird.im/user/tos.html' },
     { name: 'privacy', href: 'https://help.earlybird.im/user/privacy.html' },
-    { name: 'DMCA', href: 'https://help.earlybird.im/user/dmca.html' }
+    { name: 'dmca', href: 'https://help.earlybird.im/user/dmca.html' }
   ],
   social: [
     {
       name: 'Twitter',
-      href: '#',
+      href: 'https://twitter.com/earlybirdim',
       icon: IconTwitterGray
     },
     {
       name: 'Linkedin',
-      href: '#',
+      href: 'https://www.linkedin.com/company/earlybirdim/',
       icon: IconLinkedin
     }
   ]

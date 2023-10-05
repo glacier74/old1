@@ -1,21 +1,23 @@
 import Image from 'next/image'
 import { FC } from 'react'
+import { useTranslation } from 'next-i18next'
 
 import AboutImage from '~public/static/about.webp'
 
 export const AboutEvolution: FC = () => {
+  const { t } = useTranslation('about')
   return (
     <section className="xl:py-24 md:py-16 py-12 md:px-12 px-6 z-10">
       <div className="max-w-2xl mx-auto">
         <Image
           src={AboutImage}
-          alt="The birth of the EarlyBird"
+          alt={t('evolution.headline')}
           className="mx-auto mb-8"
           quality={100}
           width={200}
         />
         <h2 className="text-4xl font-bold text-slate-950 mb-8 text-center">
-          The birth of the little bird
+          {t('evolution.headline')}
         </h2>
         <div className="text-lg leading-normal text-slate-900 space-y-4">
           <p>

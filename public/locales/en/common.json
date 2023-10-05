@@ -21,7 +21,14 @@
   "legal": "Legal",
   "terms": "Terms",
   "privacy": "Privacy",
+  "dmca": "DMCA",
   "login": "Log in",
   "signUp": "Sign up",
-  "copyright": "Copyright © {{year}} EarlyBird, Inc. All rights reserved."
+  "copyright": "Copyright © {{year}} EarlyBird, Inc. All rights reserved.",
+  "sidebar": {
+    "helpCenter": "Help center",
+    "joinCommunity": "Join our community",
+    "sendEmail": "Send us an email",
+    "twitter": "Follow us on Twitter",
+  }
 }

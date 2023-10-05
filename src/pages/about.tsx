@@ -5,7 +5,7 @@ import { AboutEvolution, AboutHero, AboutPhilosophy, AboutTeam, AboutUncover } f
 import { withTranslations } from '~/utils'
 
 const About = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('about')
 
   return (
     <HomeLayout
