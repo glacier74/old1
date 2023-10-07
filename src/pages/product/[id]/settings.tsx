@@ -19,7 +19,7 @@ const Skeleton = () => {
 }
 
 const ProductSettings = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const productId = useProductId()
   const { isReady, updateProduct } = useStore()
 
@@ -71,7 +71,7 @@ const ProductSettings = (): JSX.Element => {
                 disabled={!isValueChanged}
                 onClick={handleSubmit}
               >
-                {t('common.saveChanges')}
+                {t('saveChanges')}
               </Button>
             </div>
           </div>
@@ -94,6 +94,7 @@ export const getStaticProps = withTranslations(async context => {
   return {
     props: {}
   }
-})
+},
+['common', 'dashboard'])
 
 export default ProductSettings

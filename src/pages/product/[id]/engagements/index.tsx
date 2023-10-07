@@ -15,7 +15,7 @@ import { ProductService } from '~/service'
 import { currencyFormatter, withTranslations } from '~/utils'
 
 const ProductEngagements = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const router = useRouter()
   const productId = useProductId()
 
@@ -133,6 +133,7 @@ export const getStaticProps = withTranslations(async context => {
   return {
     props: {}
   }
-})
+},
+['common', 'dashboard'])
 
 export default ProductEngagements

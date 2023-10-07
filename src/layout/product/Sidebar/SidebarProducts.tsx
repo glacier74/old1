@@ -20,7 +20,7 @@ interface ProductItemProps {
 }
 
 const ProductItem: FC<ProductItemProps> = ({ product, onClick }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const productId = useProductId()
 
   function handleClick() {

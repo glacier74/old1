@@ -8,7 +8,7 @@ import {withTranslations} from '~/utils'
 import {useEffect} from 'react'
 
 const SignUp = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const router = useRouter()
   const { setEmail } = useStore()
 
@@ -39,7 +39,7 @@ const SignUp = (): JSX.Element => {
       <div className="mt-8 mx-5 pb-16 md:mx-0">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <div>
-            <p className="text-sm font-medium text-slate-700"> {t('login.signUpWith')}</p>
+            <p className="text-sm font-medium text-slate-700"> {t('signUp.signUpWith')}</p>
             <SocialLogin />
           </div>
 
@@ -112,6 +112,7 @@ export const getServerSideProps = withTranslations(async context => {
   return {
     props: {}
   }
-})
+},
+['common', 'dashboard'])
 
 export default SignUp

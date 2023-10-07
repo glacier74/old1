@@ -16,7 +16,7 @@ const Skeleton = () => {
 }
 
 const Plan = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const { isReady, user } = useStore()
 
   const subscription = useSubscription(user)
@@ -50,6 +50,7 @@ export const getStaticProps = withTranslations(async context => {
   return {
     props: {}
   }
-})
+},
+['common', 'dashboard'])
 
 export default Plan

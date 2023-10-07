@@ -148,7 +148,7 @@ const WebhookLogModal: FC<IModalProps & { productId: number; webhookId: number }
 }
 
 export const Webhook: FC<{ integration: Integration }> = ({ integration }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const productId = useProductId()
   const { reload } = useIntegrationsContext()
 
@@ -253,7 +253,7 @@ export const Webhook: FC<{ integration: Integration }> = ({ integration }) => {
             initialValues={{
               url: integration.webhookUrl
             }}
-            submitText={t('common.saveChanges')}
+            submitText={t('saveChanges')}
             submitOptions={{
               type: 'success'
             }}

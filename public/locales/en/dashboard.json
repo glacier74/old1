@@ -1,0 +1,266 @@
+{
+    "change": "Change",
+    "saveChanges": "Save changes",
+    "uploadImage": "Upload image",
+    "upload": "Upload",
+    "uploading": "Uploading",
+    "drag": "or drag and drop",
+    "sizeLimit": "PNG, JPG, GIF up to {{maxSize}}",
+    "exceedsLimit": "The selected file exceeds the {{maxSize}} file limit",
+    "unsupported": "Unsupported file type",
+    "duplicate": "Duplicate",
+    "delete": "Delete",
+    "update": "Update",
+    "previous": "Previous",
+    "next": "Next",
+    "finish": "Finish",
+    "404": "Page not found - EarlyBird",
+    "500": "Internal server error - EarlyBird"
+    "login": {
+        "title": "Log in - EarlyBird",
+        "description": "Log in to your account or <1>create an account</1> for free",
+        "signInWith": "Sign in with",
+        "continueWith": "Or continue with",
+        "loginWithGoogle": "Google",
+        "loginWithGithub": "Github",
+        "heading": "👋 Welcome back!",
+        "submit": "Log in",
+        "email": "Email address",
+        "invalidEmail": "Invalid email address",
+        "password": "Password",
+        "invalidPassword": "Invalid password",
+        "remember": "Remember me",
+        "forgot": "Forgot your password?"
+    },
+    "signUp": {
+        "title": "Sign up - EarlyBird",
+        "heading": "Create an account",
+        "description": "Get started for free, no credit card required.",
+        "signUpWith": "Sign up with",
+        "submit": "Get started",
+        "name": "Your name",
+        "invalidName": "Name must not be empty",
+        "email": "Email address",
+        "invalidEmail": "Invalid email address",
+        "password": "Password",
+        "invalidPassword": "Invalid password",
+        "agreeWith": "By signing up, you agree to our <a>Terms of Service</a> and <a>Privacy Policy</a>."
+    },
+    "forgotPassword": {
+        "title":"Forgot password - EarlyBird",
+        "heading": "Forgot password?",
+        "description": "We'll send you an email with verification code.",
+        "continue": "Continue",
+        "back": "Back to login"
+    },
+    "confirmEmail": {
+        "title": "Confirm email - EarlyBird",
+        "heading": "Check your email",
+        "code": "Verification code",
+        "invalidCode": "Invalid verification code"
+    },
+      "resetPassword": {
+        "title": "$t(resetPassword.heading) - EarlyBird",
+        "heading": "Reset password",
+        "description": "We've sent you an email with a 6-digit verification code, please check your inbox at",
+        "code": "Verification code",
+        "invalidCode": "Invalid verification code",
+        "newPassword": "New password",
+        "repeatPassword": "Repeat password",
+        "passwordMismatch": "Your new password and repeat password do not match."
+    },
+    "account": {
+        "title": "Account - EarlyBird",
+        "heading": "Account",
+        "description": "Changes to account will apply to all of your products.",
+        "avatar": {
+          "heading": "Avatar",
+          "description": "Gravatar is the default avatar used for EarlyBird, but you can upload your own custom avatar here.",
+          "change": "Change",
+          "remove": "Remove"
+        },
+        "user": {
+          "heading": "Your name",
+          "button": "Update"
+        },
+        "email": {
+          "change": "Change your email address",
+          "button": "Change email address",
+          "newEmail": "New email address",
+          "send": "Send",
+          "check": "Check your email"
+        },
+        "password": {
+          "currentPassword": "Current password",
+          "changeText": "Your password has been changed",
+          "button": "Change password"
+        },
+        "dangerZone": {
+          "heading": "Danger zone",
+          "description": "This will permanently delete your entire account, including all your landing pages, conversions, and members.",
+          "button": "Delete account",
+          "confirm": "Delete my account",
+          "tip1": "This action cannot be undone. This will permanently delete your entire account. All workspaces you created will be deleted, and you will be removed from all shared workspaces.",
+          "tip2": "If you are sure you want to proceed with the deletion of your account, please continue below.",
+          "scheduled": "Account deletion scheduled",
+          "tip3": "We have scheduled your account deletion in 48 hours. You will receive an email confirmation when it has completed.",
+          "tip4": "You will now be logged out.",
+          "deletionAlert": "Your account has been scheduled for deletion",
+          "alertTip1": "All of your account data, including but not limited to workspaces, projects, forms and submissions will be permanently deleted within {{remainingTime}} hours of the deletion request.",
+          "alertTip2": "If this was done in error, you can cancel the deletion of your account below.",
+          "cancel": "Cancel scheduled deletion",
+          "canceledText": "Your account is no longer scheduled for deletion"
+        }
+    },
+      "billing": {
+        "title": "Billing - EarlyBird",
+        "heading": "Billing",
+        "description": "Manage your billing information and invoices."
+    },
+      "plan": {
+        "title": "Plans - EarlyBird",
+        "heading": "Plans",
+        "description": "You are currently on the {{planName}} plan.",
+        "upgrade": "You have successfully upgraded to the {{planName}} plan.",
+        "downgrade": "You have successfully downgraded to the {{planName}} plan."
+    },
+    "sidebar": {
+        "dashboard": "Dashboard",
+        "engagements": "Conversions",
+        "integrate": "Integrate with Apps",
+        "members": "Team members",
+        "productSettings": "Landing page settings",
+        "resources": "Resources",
+        "gettingStarted": "Getting started",
+        "whatsNew": "What's new",
+        "roadmap": "Roadmap",
+        "blog": "Blog",
+        "helpSupport": "Help & Support",
+        "createProduct": "Create a landing page",
+        "viewProfile": "View Profile",
+        "logout": "Log out",
+        "version": "Current deployed version"
+    },
+    "product": {
+        "member": "{{count}} member",
+        "editSite": "Edit page",
+        "viewSite": "View Page",
+        "title": "Landing page dashboard - {{product.name}}"
+    },
+    "productStats": {
+        "topSources": "Top sources",
+        "source": "Source",
+        "topPages": "Top pages",
+        "pageUrl": "Page URL",
+        "countries": "Countries",
+        "country": "Country",
+        "devices": "Devices",
+        "operatingSystem": "Operating system",
+        "today": "Today",
+        "last7Days": "Last 7 days",
+        "last30Days": "Last 30 days",
+        "monthToDate": "Month to date",
+        "last6Months": "Last 6 months",
+        "last12Months": "Last 12 months",
+        "visitors": "Visitors",
+        "uniqueVisitors": "Unique Visitors",
+        "totalPageviews": "Total Pageviews",
+        "bounceRate": "Bounce Rate",
+        "visitDuration": "Visit Duration"
+    },
+    "engagements": {
+        "title": "Conversions",
+        "notFound": {
+            "title": "You don't have any conversions yet",
+            "description": "Share your landing page with others, and get them involved."
+        },
+        "heading": "Conversions",
+        "description": "Start engaging with potential buyers and communities.",
+        "payment": "Payment",
+        "emailCapture": "Email Capture",
+        "contacts": "Contact Message"
+    },
+    "integrations": {
+        "heading": "Integrate with apps",
+        "description": "Connect your conversions data with your favorite apps."
+    },
+    "member": {
+        "heading": "Members",
+        "description": "Give your teammates access to this landing page and start collaboration in real time.",
+        "emailInvitation": {
+          "heading": "Send email invitation",
+          "send": "Send invitation",
+          "invalid": "The email address is invalid",
+          "success": "Invitation has been sent"
+        },
+        "linkInvitation": {
+          "heading": "Your invite link",
+          "copy": "Copy link",
+          "copied": "Copied"
+        },
+        "removeModal": {
+          "heading": "Are you sure you want to remove this member?",
+          "description": "Once you confirm to remove this member, member will no longer have access to this landing page data.",
+          "button": "Remove"
+        },
+        "leaveModal": {
+          "heading": "Are you sure you want to leave this landing page?",
+          "description": "Once you confirm to leave this landing page, you will no longer have access to this landing page data.",
+          "button": "Leave"
+        },
+        "you": "You"
+      },
+      "productSettings": {
+        "title": "Settings - {{name}}",
+        "heading": "Settings",
+        "updated": "Landing page settings have been updated successfully",
+        "general": {
+          "heading": "General"
+        },
+        "language": {
+          "heading": "Language",
+          "description": "Choose the language in which visitors will view your site. This applies to text that has not been customized by you, such as default buttons, errors, etc."
+        },
+        "domain": {
+          "description": "Landing page shared to web will be under",
+          "copyTip": "Click to copy link",
+          "copiedTip": "Copied link to clipboard"
+        },
+        "advanced": {
+          "heading": "Advanced"
+        },
+        "sitePrivate": {
+          "heading": "Make the site private",
+          "description": "Secure your landing page with a single, easy-to-remember password. All SEO and social media capabilities will be deactivated.",
+          "invalidPassword": "Your password should be between 4 and 16 characters.",
+          "placeholder": "Set the password for the site"
+        },
+        "removeBranding": {
+          "heading": "Remove EarlyBird branding",
+          "description": "Remove \"Made with EarlyBird\" badge on your page."
+        },
+        "metaData": {
+          "heading": "Meta data",
+          "description": "Set how your landing page is displayed on the web and when shared on social media",
+          "title": "Meta title",
+          "description2": "Meta description",
+          "openGraphImage": "Open graph image",
+          "uploadTip1": "Recommended size: 1200x630 | JPG, PNG.",
+          "uploadTip2": "Max size: 5MB"
+        },
+        "dangerZone": {
+          "heading": "Danger zone"
+        },
+        "deleteProduct": {
+          "heading": "Delete the landing page",
+          "description": "Beware! Deleting the landing page will result in the permanent loss of all conversions, members, and data - they cannot be recovered!",
+          "button": "Delete",
+          "success": "The landing page has been deleted successfully"
+        },
+        "deleteProductModal": {
+          "warn1": "Keep in mind this operation is irreversible and will permanently delete all the data associated with this landing page.",
+          "warn2": "Once you confirm to delete the landing page, you will no longer have access to the landing page data.",
+          "button": "Delete the landing page"
+        }
+      }
+}

@@ -6,7 +6,7 @@ import { UserService } from '~/service'
 import { useStore } from '~/store'
 
 export const UserName: FC = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const { user, updateUser } = useStore()
 
   async function handleFinish(values: AnyMap<any>) {

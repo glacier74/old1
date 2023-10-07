@@ -37,7 +37,7 @@ const Skeleton = () => {
 }
 
 const ProductIntegrations = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const productId = useProductId()
 
   const asyncRequestRef = useRef<AsyncRequestInstance>()
@@ -88,6 +88,7 @@ export const getStaticProps = withTranslations(async context => {
   return {
     props: {}
   }
-})
+},
+['common', 'dashboard'])
 
 export default ProductIntegrations

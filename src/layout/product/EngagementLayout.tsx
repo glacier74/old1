@@ -56,7 +56,7 @@ export function EngagementLayout({
   emptyState,
   children
 }: EngagementLayoutProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const productId = useProductId()
 
   return (

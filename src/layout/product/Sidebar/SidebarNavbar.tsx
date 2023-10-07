@@ -62,7 +62,7 @@ const NavLink = ({ icon: Icon, href, title }: ExternalLinkProps) => {
 }
 
 export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['dashboard', 'common']);
   const product = useProduct()
   const { user, openMemberList } = useStore()
 
@@ -163,22 +163,22 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
           <ExternalLink
             href="https://help.earlybird.im/?ref=dashboard"
             icon={IconHelp}
-            title={t('sidebar.helpCenter')}
+            title={t('common:sidebar.helpCenter')}
           />
           <ExternalLink
             href="https://discord.gg/S6sbYd5h8G"
             icon={IconMessageDots}
-            title={t('sidebar.joinCommunity')}
+            title={t('common:sidebar.joinCommunity')}
           />
           <ExternalLink
             href="mailto:support@earlybird.im"
             icon={IconMail}
-            title={t('sidebar.sendEmail')}
+            title={t('common:sidebar.sendEmail')}
           />
           <ExternalLink
             href="https://twitter.com/earlybirdim"
             icon={IconBrandTwitter}
-            title={t('sidebar.twitter')}
+            title={t('common:sidebar.twitter')}
           />
         </div>
       </div>

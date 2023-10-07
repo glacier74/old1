@@ -29,7 +29,7 @@ const TaglineSkeleton = () => {
 }
 
 const Product = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const { isReady } = useStore()
   const product = useProduct()
 
@@ -188,7 +188,7 @@ export const getStaticProps = withTranslations(
       props: {}
     }
   },
-  ['common', 'country']
+  ['common', 'dashboard', 'country']
 )
 
 export default Product

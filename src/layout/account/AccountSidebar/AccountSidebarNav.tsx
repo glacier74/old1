@@ -30,7 +30,7 @@ const NavLink = ({ icon: Icon, href, title }: ExternalLinkProps) => {
 }
 
 export const AccountSidebarNav: FC<SidebarNavProps> = ({ isMobile = false }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const redirectUrl = useParam('redirect_url')
 
   return (

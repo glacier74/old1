@@ -137,7 +137,7 @@ function buildDataSet(
 }
 
 export const ChartGraph: FC<ChartGraphProps> = ({ period, graphData }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const chatRef = useRef<Chart | null>(null)
 
   function regenerateChart(plots: number[], labels: string[]) {

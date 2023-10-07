@@ -14,7 +14,7 @@ const Skeleton = () => {
 }
 
 const Account = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const { isReady } = useStore()
 
   return (
@@ -31,6 +31,7 @@ export const getStaticProps = withTranslations(async context => {
   return {
     props: {}
   }
-})
+},
+['common', 'dashboard'])
 
 export default Account

@@ -54,7 +54,7 @@ interface TotalStatsProps {
 }
 
 export function TotalStats({ totalStats }: TotalStatsProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
 
   return (
     <div className="flex flex-wrap">

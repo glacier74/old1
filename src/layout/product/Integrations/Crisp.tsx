@@ -14,7 +14,7 @@ import { useIntegrationsContext } from './context'
 const TYPE = 'crisp'
 
 export const Crisp: FC<{ integration: Integration }> = ({ integration }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const productId = useProductId()
   const { reload } = useIntegrationsContext()
 
@@ -105,7 +105,7 @@ export const Crisp: FC<{ integration: Integration }> = ({ integration }) => {
 
           <Form.Custom
             initialValues={integration.settings}
-            submitText={t('common.saveChanges')}
+            submitText={t('saveChanges')}
             submitOptions={{
               type: 'success'
             }}

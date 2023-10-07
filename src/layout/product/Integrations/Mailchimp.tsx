@@ -15,7 +15,7 @@ import { useIntegrationsContext } from './context'
 const TYPE = 'mailchimp'
 
 export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const productId = useProductId()
   const { reload } = useIntegrationsContext()
   const [visible, open, close] = useVisible()
@@ -129,7 +129,7 @@ export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => 
 
           <Form.Custom
             initialValues={integration.settings}
-            submitText={t('common.saveChanges')}
+            submitText={t('saveChanges')}
             submitOptions={{
               type: 'success'
             }}

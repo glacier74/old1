@@ -30,5 +30,6 @@
     "joinCommunity": "Join our community",
     "sendEmail": "Send us an email",
     "twitter": "Follow us on Twitter"
-  }
+  },
+  "loading": "Let the little bird fly for a while..."
 }

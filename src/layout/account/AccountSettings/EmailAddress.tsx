@@ -21,7 +21,7 @@ interface VerifyEmailProps extends IModalProps {
 }
 
 export const SendCode: FC<SendCodeProps> = ({ visible, onClose, onComplete }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
 
   async function handleFinish(values: FormValues) {
     await UserService.changeEmail(values.email)
@@ -61,7 +61,7 @@ export const SendCode: FC<SendCodeProps> = ({ visible, onClose, onComplete }) =>
 }
 
 export const VerifyEmail: FC<VerifyEmailProps> = ({ visible, formValues, onClose, onComplete }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const { updateUser } = useStore()
 
   async function handleFinish(values: AnyMap<any>) {
@@ -104,7 +104,7 @@ export const VerifyEmail: FC<VerifyEmailProps> = ({ visible, formValues, onClose
 }
 
 export const EmailAddress: FC = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const { user } = useStore()
 
   const [sendCodeVisible, openSendCode, closeSendCode] = useVisible()

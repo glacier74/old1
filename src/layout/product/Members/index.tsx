@@ -14,7 +14,7 @@ import { LeaveProduct } from './LeaveProduct'
 import { RemoveMember } from './RemoveMember'
 
 export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const { user, closeMemberList } = useStore()
   const product = useProduct()
 

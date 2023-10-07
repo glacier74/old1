@@ -9,7 +9,7 @@ import { useStore } from '~/store'
 import { useRequest } from '~/utils'
 
 export const AvatarSettings: FC = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const { user, updateUser } = useStore()
 
   const { error, request } = useRequest(async (avatar: string) => {

@@ -13,7 +13,7 @@ interface BreakdownItemProps extends ComponentProps {
 }
 
 const BreakdownItem: FC<BreakdownItemProps> = ({ className, label, value, percentage }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
 
   return (
     <div className="flex items-center justify-between text-sm">
@@ -56,7 +56,7 @@ export const Breakdown: FC<BreakdownProps> = ({
   valueKey = 'visitors',
   backgroundClassName
 }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const product = useProduct()
   const [data, setData] = useState<any[]>([])
 

@@ -9,7 +9,7 @@ import { useStore } from '~/store'
 import { deleteRedirectURL, useAsyncEffect, useVisible } from '~/utils'
 
 const VerifyEmail: FC<IModalProps> = ({ visible, onClose, onComplete }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const router = useRouter()
   const { user, closeAccountSettings } = useStore()
 
@@ -89,7 +89,7 @@ const DeletionWarning: FC<IModalProps> = ({ visible }) => {
 export const DeleteAccount: FC = () => {
   const [verifyEmailVisible, openVerifyEmail, closeVerifyEmail] = useVisible()
   const [deletionWarningVisible, openDeletionWarning] = useVisible()
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
 
   return (
     <div>

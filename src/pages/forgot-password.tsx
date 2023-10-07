@@ -9,7 +9,7 @@ import { useStore } from '~/store'
 import { withTranslations } from '~/utils'
 
 const ForgotPassword = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const router = useRouter()
   const { setEmail } = useStore()
 
@@ -75,6 +75,7 @@ export const getServerSideProps = withTranslations(async context => {
   return {
     props: {}
   }
-})
+},
+['common', 'dashboard'])
 
 export default ForgotPassword

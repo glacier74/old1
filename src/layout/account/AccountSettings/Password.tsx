@@ -9,7 +9,7 @@ import { useStore } from '~/store'
 import { useVisible } from '~/utils'
 
 const ChangePassword: FC<IModalProps> = ({ visible, onClose }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const { user } = useStore()
   const [values, setValues] = useState<AnyMap<any>>({})
 
@@ -92,7 +92,7 @@ const ChangePassword: FC<IModalProps> = ({ visible, onClose }) => {
 
 export const Password: FC = () => {
   const { user } = useStore()
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const [visible, open, close] = useVisible()
 
   if (user.isSocialAccount) {

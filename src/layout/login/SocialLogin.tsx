@@ -40,7 +40,7 @@ const SocialLoginItem: FC<SocialLoginItemProps> = ({ label, icon: Icon, provider
 }
 
 export const SocialLogin = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
 
   return (
     <div className="mt-1 grid grid-cols-2 gap-2">

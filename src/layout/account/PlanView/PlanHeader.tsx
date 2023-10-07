@@ -10,7 +10,7 @@ import { useStore } from '~/store'
 import { useRequest, useSubscriptionPlanLevel } from '~/utils'
 
 const PricingButton: FC<{ plan: any; interval: string }> = ({ plan, interval }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const { user, updateUser } = useStore()
   const planLevel = PLAN_LEVELS[plan.id]
   const currPlanLevel = useSubscriptionPlanLevel(user.subscription)

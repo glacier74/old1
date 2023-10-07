@@ -2,11 +2,13 @@ import { isEqual, isValid } from '@nily/utils'
 import JsCookie from 'js-cookie'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import { useTranslation } from 'next-i18next'
 
 import { IconLogo2 } from '~/components/Icon/IconLogo2'
 import { AuthorizedLayout } from '~/layout'
 import { useStore } from '~/store'
 import { deleteRedirectURL, getRedirectURL } from '~/utils'
+import { withTranslations } from '~/utils'
 
 const productIdKey = process.env.NEXT_PUBLIC_PRODUCT_ID_STORAGE_NAME!
 
@@ -37,12 +39,15 @@ export function HomeAuthorizedLayout() {
     }
   }, [isReady])
 
+  const { t } = useTranslation('common')
+
   return (
     <AuthorizedLayout>
       <div className="w-screen h-screen flex flex-col items-center justify-center gap-4 bg-slate-50">
         <IconLogo2 className="animate-pulse w-[60px] h-[60px]" />
-        <span className="text-xs text-slate-400">Loading...</span>
+        <span className="text-xs text-slate-400">{t('loading')}</span>
       </div>
     </AuthorizedLayout>
   )
+  
 }

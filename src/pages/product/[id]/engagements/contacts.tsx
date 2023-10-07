@@ -14,7 +14,7 @@ import { ProductService } from '~/service'
 import { withTranslations } from '~/utils'
 
 const ProductContacts = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const router = useRouter()
   const productId = useProductId()
 
@@ -143,6 +143,7 @@ export const getStaticProps = withTranslations(async context => {
   return {
     props: {}
   }
-})
+},
+['common', 'dashboard'])
 
 export default ProductContacts

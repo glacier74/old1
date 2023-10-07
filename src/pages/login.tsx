@@ -8,7 +8,7 @@ import {isResponseError, withTranslations} from '~/utils'
 import {useEffect} from 'react'
 
 const Login = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const router = useRouter()
   const { setEmail } = useStore()
 
@@ -117,6 +117,7 @@ export const getServerSideProps = withTranslations(async context => {
   return {
     props: {}
   }
-})
+},
+['common', 'dashboard'])
 
 export default Login

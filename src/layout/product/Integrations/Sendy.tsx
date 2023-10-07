@@ -14,7 +14,7 @@ import { useIntegrationsContext } from './context'
 const TYPE = 'sendy'
 
 export const Sendy: FC<{ integration: Integration }> = ({ integration }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const productId = useProductId()
   const { reload } = useIntegrationsContext()
 
@@ -162,7 +162,7 @@ export const Sendy: FC<{ integration: Integration }> = ({ integration }) => {
           <Form.Custom
             form={form}
             initialValues={values}
-            submitText={t('common.saveChanges')}
+            submitText={t('saveChanges')}
             submitOptions={{
               type: 'success'
             }}
