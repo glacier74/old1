@@ -1,7 +1,23 @@
 import { useTranslation } from 'next-i18next'
 import { FC } from 'react'
 
-import { dataUncover } from './dataUncover'
+const dataUncover = [
+  {
+    name: 'uncover.name1',
+    url: '/blog',
+    desc: 'uncover.desc1'
+  },
+  {
+    name: 'uncover.name2',
+    url: 'https://changelog.earlybird.im',
+    desc: 'uncover.desc2'
+  },
+  {
+    name: 'uncover.name3',
+    url: 'https://help.earlybird.im/user/roadmap.html',
+    desc: 'uncover.desc3'
+  }
+]
 
 export const AboutUncover: FC = () => {
   const { t } = useTranslation('about')
@@ -14,9 +30,9 @@ export const AboutUncover: FC = () => {
           <div key={index} className="flex flex-col justify-between p-8 w-full gap-3">
             <div>
               <a className="text-lg font-bold underline" href={uncover.url}>
-              {t('uncover.name')} <span>-&gt;</span>
+              {t(uncover.name)} <span>-&gt;</span>
               </a>
-              <div className="mt-2">{t('uncover.desc')}</div>
+              <div className="mt-2">{t(uncover.desc)}</div>
             </div>
           </div>
         ))}

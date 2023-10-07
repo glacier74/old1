@@ -31,13 +31,13 @@ const TemplateDetail: FC<TemplateDetailProps> = ({
   testimonials,
   categories
 }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('templates')
 
   return (
     <>
       <HomeLayout
         seo={{
-          title: t('templates.detailTitle', { title: template.Name }),
+          title: t('detailTitle', { title: template.Name }),
           url: `/templates/${template.slug}`
         }}
       >
@@ -90,6 +90,7 @@ export const getServerSideProps = withTranslations(async ({ query }) => {
       integrations: integrations.splice(0, 6)
     }
   }
-})
+},
+['common', 'templates'])
 
 export default TemplateDetail

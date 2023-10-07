@@ -1,0 +1,17 @@
+{
+    "title": "Landing Page Templates - EarlyBird",
+    "detailTitle": "Landing Page Template - {{title}}",
+    "hero": {
+        "headline": "Use beautiful templates to kickstart your next venture",
+        "desc": "Explore our diverse array of templates designed to make your idea shine. No coding or design skills required."
+    },
+    "detail": {
+        "heroHeadline": "All templates",
+        "useButton": "Use this template",
+        "preview": "Preview",
+        "ctaHeadline": "Make it uniquely yours",
+        "ctaDesc": "Customize our templates to capture the essence of your startup. With EarlyBird, establish a distinctive online presence without any coding skills needed.",
+        "ctaButton": "Get started, it's free!",
+        "integrationHeadline": "Make life easy with integrations"
+    }
+}

@@ -17,12 +17,12 @@ interface IntegrationsDetailProps {
 }
 
 const IntegrationsDetail: FC<IntegrationsDetailProps> = ({ integration }): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('integrations')
 
   return (
     <HomeLayout
       seo={{
-        title: t('integrations.detailTitle', { title: integration.Name }),
+        title: t('detailTitle', { title: integration.Name }),
         url: `/integrations/${integration.slug}`
       }}
     >
@@ -50,6 +50,7 @@ export const getServerSideProps = withTranslations(async ({ query }) => {
       integration
     }
   }
-})
+},
+['common', 'integrations'])
 
 export default IntegrationsDetail

@@ -17,13 +17,13 @@ interface IntegrationsProps {
 }
 
 const Integrations: FC<IntegrationsProps> = props => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('integrations')
   const title = props.category.replace(/^\S/, (s: string) => s.toUpperCase())
 
   return (
     <HomeLayout
       seo={{
-        title: t('integrations.detailTitle', { title }),
+        title: t('detailTitle', { title }),
         url: '/integrations'
       }}
     >
@@ -59,6 +59,7 @@ export const getServerSideProps = withTranslations(async ({ query }) => {
       limit
     }
   }
-})
+},
+['common', 'integrations'])
 
 export default Integrations

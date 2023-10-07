@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next'
 import { FC } from 'react'
 
 export const IntegrationsHero: FC = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('integrations')
 
   return (
     <section className="bg-[#f8fafc]">

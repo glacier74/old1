@@ -2,17 +2,19 @@ import { IconArrowLeft, IconArrowsLeftRight } from '@tabler/icons'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
+import { useTranslation } from 'next-i18next'
 
 import { Markdown } from '~/components/Markdown'
 
 export const IntegrationsDetailHero: FC<{ integration: IntegrationRecord }> = ({ integration }) => {
+  const { t } = useTranslation('integrations')
   return (
     <>
       <section className="bg-slate-800 md:px-12 px-6 xl:py-20 lg:py-24 py-12 z-10">
         <div className="max-w-5xl mx-auto flex flex-wrap">
           <div className="w-full md:w-1/2">
             <Link href="/integrations" className="text-emerald-500 hover:text-emerald-600">
-              <IconArrowLeft className="inline" /> All Integrations
+              <IconArrowLeft className="inline" /> {t('detail.breadcumb')}
             </Link>
             <h1 className="text-3xl text-slate-50 leading-8 font-bold md:text-5xl my-4">
               {integration.Name}
@@ -26,7 +28,7 @@ export const IntegrationsDetailHero: FC<{ integration: IntegrationRecord }> = ({
                 href="/sign-up"
                 className="bg-emerald-500 text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-emerald-600"
               >
-                Get started for free
+                {t('detail.heroCTA')}
               </a>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { FC } from 'react'
-import { useTranslation } from 'next-i18next'
+import { Trans, useTranslation } from 'next-i18next'
 
 import AboutImage from '~public/static/about.webp'
 
@@ -21,34 +21,35 @@ export const AboutEvolution: FC = () => {
         </h2>
         <div className="text-lg leading-normal text-slate-900 space-y-4">
           <p>
-            EarlyBird was hatched in December 2022. After our previous 2 products,{' '}
-            <a className="underline" href="https://heyform.net" target="_blank">
-              HeyForm
-            </a>{' '}
-            and{' '}
-            <a className="underline" href="https://tinysnap.app" target="_blank">
-              TinySnap
-            </a>
-            , didn't take off as we'd hoped, we were eager to explore new ideas. We recognized the
-            time-consuming nature of creating landing pages for each new concept, and thus,
-            EarlyBird was born. Initially, it was a no-code solution built for ourselves to quickly
-            test and validate ideas.
+            <Trans
+              i18nKey="evolution.desc1"
+              t={t}
+              components={{
+                link1: (
+                  <a
+                    href="https://heyform.net"
+                    className="text-emerald-500 underline"
+                    target="_blank"
+                  />
+                ),
+                link2: (
+                  <a
+                    href="https://tinysnap.app"
+                    className="text-emerald-500 underline"
+                    target="_blank"
+                  />
+                )
+              }}
+            />
           </p>
           <p>
-            Juggling our day jobs and this project, we spent about four weeks developing the MVP of
-            EarlyBird, fueled by countless cups of coffee and working through many a baby's night
-            cry. We then launched our MVP on Product Hunt, where it soared to become the #2 Product
-            of the Day.
+            {t('evolution.desc2')}
           </p>
           <p>
-            The journey didn't stop there. We were thrilled to receive the Product Hunt Golden Kitty
-            Award 2022, a testament to the value EarlyBird provides to its users.
+            {t('evolution.desc3')}
           </p>
           <p>
-            Today, EarlyBird has grown steadily, with thousands of users worldwide. These indie
-            makers and startups leverage our landing page builder to bring their ideas to life and
-            transform them into successful ventures. We are proud to be part of their journey and
-            look forward to what the future brings.
+            {t('evolution.desc4')}
           </p>
         </div>
       </div>

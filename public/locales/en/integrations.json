@@ -1,0 +1,31 @@
+{
+    "title": "Integrations - EarlyBIrd",
+    "detailTitle": "Integrate {{title}} with EarlyBird",
+    "hero": {
+        "headline": "Supercharge your workflow with your favorite apps",
+        "desc": "Welcome to a world where your landing page and your favorite tools work in perfect harmony. Discover how our integrations can open doors to seamless and streamlined workflows."
+    },
+    "category": {
+        "category": "Categories",
+        "ctaRequest":"Looking for a particular integration that you don’t see here? Go ahead and",
+        "ctaRequestLink": "request it"
+    },
+    "detail": {
+        "breadcumb": "All Integrations",
+        "heroCTA": "Get started for free",
+        "ctaDesc": "No credit card required",
+        "whatIs": "What is"
+    },
+    "guide": {
+        "howTo": "How to connect",
+        "connectWith": "Integrating EarlyBird with",
+        "connectDesc": "is easy and keeps your team in the loop at all times.",
+        "tutorial": "Read the tutorial"
+    },
+    "journey": {
+        "headline": "Why EarlyBird?",
+        "desc": "With EarlyBird, create landing pages that help you understand your market, validate your ideas, and kickstart your business journey.",
+        "desc2": "We enable people to setup working landing pages faster, reduce code complexity, and save tons of time without giving up control of landing page design or functionality.",
+        "cta": "Get started for free"
+    }
+}

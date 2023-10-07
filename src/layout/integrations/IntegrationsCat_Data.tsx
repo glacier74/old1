@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
+import { useTranslation } from 'next-i18next'
 
 interface Props {
   groups: Array<{
@@ -10,6 +11,7 @@ interface Props {
 }
 
 export const IntegrationsCat_Data: FC<Props> = ({ groups }) => {
+  const { t } = useTranslation('integrations')
   return (
     <div className="w-full">
       <div className="my-12 space-y-12">
@@ -43,13 +45,13 @@ export const IntegrationsCat_Data: FC<Props> = ({ groups }) => {
 
       <div className="bg-emerald-200/30 rounded-md py-4 px-5 my-8 text-center">
         <p className="sm:text-lg text-base mb-2 mt-2 text-slate-700">
-          Looking for a particular integration that you don’t see here? Go ahead and&nbsp;
+          {t('category.ctaRequest')}
           <a
-            className="font-bold underline text-emerald-500"
+            className="font-bold underline text-emerald-500 ml-1"
             href="https://earlybird.canny.io/feature-requests"
             target="_blank"
           >
-            request it
+            {t('category.ctaRequestLink')}
           </a>
           .
         </p>

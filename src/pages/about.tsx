@@ -10,7 +10,7 @@ const About = (): JSX.Element => {
   return (
     <HomeLayout
       seo={{
-        title: t('about.title'),
+        title: t('title'),
         url: '/about'
       }}
     >
@@ -25,10 +25,13 @@ const About = (): JSX.Element => {
   )
 }
 
-export const getStaticProps = withTranslations(async context => {
-  return {
-    props: {}
-  }
-})
+export const getStaticProps = withTranslations(
+  async context => {
+    return {
+      props: {}
+    }
+  },
+  ['common', 'about']
+)
 
 export default About

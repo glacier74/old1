@@ -2,12 +2,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
+import { useTranslation } from 'next-i18next'
 
 import { PreviewModal } from '../create-product/PreviewModal'
 
 export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template }) => {
   const router = useRouter()
   const [payload, setPayload] = useState<Template_V3>()
+  const { t } = useTranslation('templates')
 
   function handleClick() {
     setPayload({
@@ -26,7 +28,7 @@ export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template
     <>
       <section className="max-w-7xl mx-auto md:px-12 px-6 xl:py-20 lg:py-20 py-12 md:pt-12 pt-6 z-10">
         <div className="mb-8 text-base font-medium">
-          <Link href="/templates">All templates</Link>
+          <Link href="/templates">{t('detail.heroHeadline')}</Link>
           <span className="px-2 text-slate-500">-</span>
           <Link href={`/templates/category/${template.LowerCaseCategory}`}>
             {template.Category}
@@ -49,7 +51,7 @@ export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template
                   className="w-full md:w-auto bg-slate-900 rounded-full py-2 px-8 text-slate-50 md:text-lg text-base"
                   onClick={handleSelect}
                 >
-                  Use this template
+                  {t('detail.useButton')}
                 </button>
               </div>
             </div>
@@ -61,7 +63,7 @@ export const TemplatesDetailHero: FC<{ template: TemplateRecord }> = ({ template
                   className="px-5 py-2 rounded-lg bg-emerald-500 text-white text-sm z-10 shadow-lg transition-colors hover:bg-emerald-600"
                   onClick={handleClick}
                 >
-                  Preview
+                  {t('detail.preview')}
                 </button>
               </div>
               <div className="px-8 pt-8 overflow-hidden aspect-video bg-gradient-to-br from-emerald-50 via-blue-50 to-sky-100">

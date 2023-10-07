@@ -9,7 +9,7 @@ import { useLockBodyScroll } from 'react-use'
 import IconLogo from '~public/static/header-logo.png'
 
 export const HomeHeader: FC = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('common')
   const [isOpen, setIsOpen] = useState(false)
 
   function handleClick() {

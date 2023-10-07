@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next'
+import { Trans, useTranslation } from 'next-i18next'
 import { FC } from 'react'
 
 export const AboutPhilosophy: FC = () => {
@@ -10,13 +10,31 @@ export const AboutPhilosophy: FC = () => {
         <h3 className="sm:text-4xl text-2xl font-bold text-center mb-8">{t('philosophy.headline')}</h3>
         <div className="text-slate-900 text-lg leading-relaxed">
           <p className="mb-4">
-            {t('philosophy.transparency')}
+            <Trans
+              i18nKey="philosophy.transparency"
+              t={t}
+              components={{
+                strong: <span className="font-bold" />
+              }}
+            />
           </p>
           <p className="mb-4">
-            {t('philosophy.human')}
+            <Trans
+              i18nKey="philosophy.human"
+              t={t}
+              components={{
+                strong: <span className="font-bold" />
+              }}
+            />
           </p>
           <p className="mb-4">
-            {t('philosophy.focus')}
+            <Trans
+              i18nKey="philosophy.focus"
+              t={t}
+              components={{
+                strong: <span className="font-bold" />
+              }}
+            />
           </p>
         </div>
       </div>

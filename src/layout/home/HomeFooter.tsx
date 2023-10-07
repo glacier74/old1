@@ -54,7 +54,7 @@ const navigation = {
 }
 
 export const HomeFooter: FC = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('common')
   const router = useRouter()
 
   function handleLocaleChange(newLocale: string) {

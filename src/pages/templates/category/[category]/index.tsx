@@ -17,13 +17,13 @@ interface TemplatesProps {
 }
 
 const Templates: FC<TemplatesProps> = ({ categories, category, templates, total, page, limit }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('templates')
   const title = category.replace(/^\S/, (s: string) => s.toUpperCase())
 
   return (
     <HomeLayout
       seo={{
-        title: t('templates.detailTitle', { title }),
+        title: t('detailTitle', { title }),
         url: `/templates/category/${category}`
       }}
     >
@@ -63,6 +63,7 @@ export const getServerSideProps = withTranslations(async ({ query }) => {
       limit
     }
   }
-})
+},
+['common', 'templates'])
 
 export default Templates
