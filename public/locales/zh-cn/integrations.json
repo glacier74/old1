@@ -1,0 +1,31 @@
+{
+    "title": "应用集成 - EarlyBird",
+    "detailTitle": "将 {{title}} 与 EarlyBird 集成",
+    "hero": {
+      "headline": "连接你最喜欢的应用来提升工作效率",
+      "desc": "让你的落地页和你最喜爱的工具完美协同，为简化流程和高效工作提供便利。"
+    },
+    "category": {
+      "category": "分类",
+      "ctaRequest": "没有找到你需要的特定集成？",
+      "ctaRequestLink": "向我们提出要求"
+    },
+    "detail": {
+      "breadcumb": "所有集成",
+      "heroCTA": "免费开始",
+      "ctaDesc": "无需绑定信用卡",
+      "whatIs": "什么是"
+    },
+    "guide": {
+      "howTo": "如何连接",
+      "connectWith": "将EarlyBird与整合",
+      "connectDesc": "简单易行，始终让你的团队保持同步。",
+      "tutorial": "阅读教程"
+    },
+    "journey": {
+      "headline": "为什么选择 EarlyBird？",
+      "desc": "通过 EarlyBird，创建能帮助你了解市场、验证想法并启动业务的落地页。",
+      "desc2": "我们能帮助更快地创建落地页，减少代码复杂性，并节省大量时间，而不放弃对落地页设计或功能的控制。",
+      "cta": "免费开始"
+    }
+  }

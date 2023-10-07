@@ -1,0 +1,32 @@
+{
+    "title": "About us - EarlyBird",
+    "hero": {
+        "headline": "The early bird gets the worm",
+        "description": "We want to help you hunt your early adopters effortlessly."
+    },
+    "evolution": {
+        "headline": "The birth of the little bird",
+        "desc1": "EarlyBird was hatched in December 2022. After our previous 2 products, <link1>HeyForm</link1> and <link2>TinySnap</link2>, didn't take off as we'd hoped, we were eager to explore new ideas. We recognized the time-consuming nature of creating landing pages for each new concept, and thus, EarlyBird was born. Initially, it was a no-code solution built for ourselves to quickly test and validate ideas.",
+        "desc2": "Juggling our day jobs and this project, we spent about four weeks developing the MVP of EarlyBird, fueled by countless cups of coffee and working through many a baby's night cry. We then launched our MVP on Product Hunt, where it soared to become the #2 Product of the Day.",
+        "desc3": "The journey didn't stop there. We were thrilled to receive the Product Hunt Golden Kitty Award 2022, a testament to the value EarlyBird provides to its users.",
+        "desc4": "Today, EarlyBird has grown steadily, with thousands of users worldwide. These indie makers and startups leverage our landing page builder to bring their ideas to life and transform them into successful ventures. We are proud to be part of their journey and look forward to what the future brings."
+    },
+    "team": {
+        "headline": "The minds behind the magic"
+    },
+    "philosophy": {
+        "headline": "Our philosophy",
+        "transparency": "<strong>We are transparent.</strong> We maintain a public roadmap. We openly discuss feature ideas and future plans with our customers. And we believe in simple and transparent pricing.",
+        "human": "<strong>We are human.</strong> We give free trials of paid plans upon request. We offer refunds if you accidentally forget to cancel at the beginning of a new billing period. We respect your privacy and care about the security of your data. And we make mistakes, but when we do, we own up to them and do what we can to make amends.",
+        "focus": "<strong>We are focused on product.</strong> We invest our time and energy into product development rather than marketing or sales. We prefer letting our features and overall UX do the selling over hiring a sales team. And when we do work on other things not entirely product-related, we hold ourselves to the same standard of quality."
+    },
+    "uncover": {
+        "headline": "Uncover more",
+        "name1": "EarlyBird Blog",
+        "desc1": "Guides, insights, and primers for entrepreneurs.",
+        "name2": "EarlyBird Changelog",
+        "desc2": "Stay updated on the latest changes happening.",
+        "name3": "EarlyBird Roadmap",
+        "desc3": "Discuss feature ideas and future plans with us."
+    }
+}

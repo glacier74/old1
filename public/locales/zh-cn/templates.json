@@ -1,0 +1,17 @@
+{
+    "title": "落地页模板 - EarlyBird",
+    "detailTitle": "落地页模板 - {{title}}",
+    "hero": {
+      "headline": "使用漂亮的模板来启动你的下一个创业项目",
+      "desc": "探索我们多样化的模板，让你的想法快速落地，无需编码或设计技能。"
+    },
+    "detail": {
+      "heroHeadline": "所有模板",
+      "useButton": "使用这个模板",
+      "preview": "预览",
+      "ctaHeadline": "让它装载你的创业想法",
+      "ctaDesc": "将模板内容填充为你的创业想法，即刻开始获取客户线索，转化你的早期采用者。通过 EarlyBird，建立独特的品牌展示，无需任何编码技能。",
+      "ctaButton": "免费开始",
+      "integrationHeadline": "使用集成工具让工作变得更简单"
+    }
+  }
