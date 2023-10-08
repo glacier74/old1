@@ -68,8 +68,20 @@ export class ProductService {
     })
   }
 
+  static async transfer(productId: number, memberId: number) {
+    return axios.post(`/products/${productId}/transfer`, {
+      memberId
+    })
+  }
+
   static async removeMember(productId: number, memberId: number) {
     return axios.delete(`/products/${productId}/members/${memberId}`)
+  }
+
+  static async updateMember(productId: number, memberId: number, role: string) {
+    return axios.patch(`/products/${productId}/members/${memberId}`, {
+      role
+    })
   }
 
   static async totalStats(productId: number, date: string, period: string) {

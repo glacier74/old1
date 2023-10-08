@@ -1,21 +1,21 @@
 import { Modal } from '@heyforms/ui'
-import { IconUserMinus } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
 import type { FC } from 'react'
 import { useCallback, useState } from 'react'
 
+import { IconTransfer } from '~/components'
 import { useProductId } from '~/layout'
 import { ProductService } from '~/service'
 import { useStore } from '~/store'
 
-interface RemoveMemberProps extends IModalProps {
+interface TransferProductProps extends IModalProps {
   member?: User
 }
 
-export const RemoveMember: FC<RemoveMemberProps> = ({ visible, member, onClose }) => {
+export const TransferProduct: FC<TransferProductProps> = ({ visible, member, onClose }) => {
   const { t } = useTranslation('dashboard')
-  const { removeMember } = useStore()
   const productId = useProductId()
+  const { user, updateMember } = useStore()
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<Error | null>(null)
@@ -25,8 +25,18 @@ export const RemoveMember: FC<RemoveMemberProps> = ({ visible, member, onClose }
     setError(null)
 
     try {
-      await ProductService.removeMember(productId, member!.id)
-      removeMember(productId, member!.id)
+      await ProductService.transfer(productId, member!.id)
+
+      updateMember(productId, [
+        {
+          id: user.id,
+          role: 'admin'
+        },
+        {
+          id: member!.id,
+          role: 'owner'
+        }
+      ])
 
       // Hide modal
       onClose?.()
@@ -41,16 +51,16 @@ export const RemoveMember: FC<RemoveMemberProps> = ({ visible, member, onClose }
     <Modal.Confirm
       type="danger"
       visible={visible}
-      icon={<IconUserMinus />}
-      title={t('member.removeModal.heading')}
+      icon={<IconTransfer />}
+      title={t('member.transferModal.heading', { name: member?.name })}
       description={
         <div className="space-y-2">
-          <p>{t('member.removeModal.description')}</p>
+          <p>{t('member.transferModal.description', { name: member?.name })}</p>
           {error && <div className="form-item-error">{error.message}</div>}
         </div>
       }
       cancelLabel={t('common.cancel')}
-      confirmLabel={t('member.removeModal.button')}
+      confirmLabel={t('member.transferModal.button')}
       confirmDisabled={loading}
       confirmLoading={loading}
       onClose={onClose}

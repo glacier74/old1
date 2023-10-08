@@ -1,5 +1,7 @@
-import { Button, Form, Input, Modal, Table, notification } from '@heyforms/ui'
+import { Dropdown, Form, Input, Menus, Modal, Select, Table, notification } from '@heyforms/ui'
 import { TableColumn } from '@heyforms/ui/types/table'
+import { IconDots } from '@tabler/icons'
+import clsx from 'clsx'
 import dayjs from 'dayjs'
 import { useTranslation } from 'next-i18next'
 import { FC, useMemo, useState } from 'react'
@@ -12,6 +14,86 @@ import { useVisible } from '~/utils'
 
 import { LeaveProduct } from './LeaveProduct'
 import { RemoveMember } from './RemoveMember'
+import { TransferProduct } from './TransferProduct'
+
+interface MemberRoleProps {
+  productId: number
+  isOwner?: boolean
+  member: User
+}
+
+const MemberRole: FC<MemberRoleProps> = ({ productId, member, isOwner }) => {
+  const { t } = useTranslation('dashboard')
+  const { updateMember } = useStore()
+
+  const [loading, setLoading] = useState(false)
+
+  const roleMap: AnyMap<{ label: string; className: string }> = {
+    owner: {
+      label: t('member.role.owner'),
+      className: 'bg-emerald-100 text-emerald-600'
+    },
+    admin: {
+      label: t('member.role.admin'),
+      className: 'bg-blue-100 text-blue-600'
+    },
+    member: {
+      label: t('member.role.member'),
+      className: 'bg-slate-100 text-slate-600'
+    }
+  }
+
+  const roleOptions = [
+    {
+      label: roleMap.admin.label,
+      value: 'admin'
+    },
+    {
+      label: roleMap.member.label,
+      value: 'member'
+    }
+  ]
+
+  async function handleChange(newRole: any) {
+    setLoading(true)
+
+    try {
+      await ProductService.updateMember(productId, member.id, newRole)
+      updateMember(productId, [{ id: member.id, role: newRole }])
+    } catch (err: any) {
+      notification.error({
+        title: err.message
+      })
+    }
+
+    setLoading(false)
+  }
+
+  if (isOwner && member.role !== 'owner') {
+    return (
+      <Select
+        className="mr-4 !w-[110px]"
+        value={member.role}
+        options={roleOptions}
+        loading={loading}
+        onChange={handleChange}
+      />
+    )
+  }
+
+  const role = roleMap[member.role]
+
+  return (
+    <span
+      className={clsx(
+        'inline-block mr-4 w-[64px] text-[13px] text-center py-1 rounded-[14px]',
+        role.className
+      )}
+    >
+      {role.label}
+    </span>
+  )
+}
 
 export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
   const { t } = useTranslation('dashboard')
@@ -20,6 +102,7 @@ export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
 
   const [leaveModalVisible, openLeaveModal, closeLeaveModal] = useVisible()
   const [removeModalVisible, openRemoveModal, closeRemoveModal] = useVisible()
+  const [transferModalVisible, openTransferModal, closeTransferModal] = useVisible()
 
   const [member, setMember] = useState<User>()
 
@@ -50,6 +133,16 @@ export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
     closeRemoveModal()
   }
 
+  function handleTransfer(row: User) {
+    setMember(row)
+    openTransferModal()
+  }
+
+  function handleCloseTransferModal() {
+    setMember(undefined)
+    closeTransferModal()
+  }
+
   // Table columns
   const columns: TableColumn<User>[] = [
     {
@@ -63,7 +156,10 @@ export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
             </div>
             <div className="flex-1 px-4">
               <p className="text-sm font-medium text-slate-700 truncate">
-                {row.name} {user.id === row.id && <span>({t('member.you')})</span>}
+                {row.name}{' '}
+                {user.id === row.id && (
+                  <span className="text-emerald-600">({t('member.you')})</span>
+                )}
               </p>
               <p className="font-normal text-sm text-slate-400">{row.email}</p>
             </div>
@@ -72,29 +168,46 @@ export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
       }
     },
     {
+      key: 'role',
+      name: '',
+      align: 'right',
+      render: row => <MemberRole productId={product.id} isOwner={isOwner} member={row} />
+    },
+    {
       key: 'action',
       name: '',
       align: 'right',
       render(row) {
-        if (row.role !== 'owner') {
-          if (isOwner) {
-            return (
-              <Button type="danger" onClick={() => handleRemove(row)}>
-                {t('member.removeModal.button')}
-              </Button>
-            )
-          }
-
-          if (user.id === row.id) {
-            return (
-              <Button type="danger" onClick={openLeaveModal}>
-                {t('member.leaveModal.button')}
-              </Button>
-            )
-          }
+        if (row.role === 'owner' || (!isOwner && row.id !== user.id)) {
+          return null
         }
 
-        return null
+        const Overlay = isOwner ? (
+          <Menus>
+            <Menus.Item label="Transfer" onClick={() => handleTransfer(row)} />
+            <Menus.Item
+              role="danger"
+              label={t('member.removeModal.button')}
+              onClick={() => handleRemove(row)}
+            />
+          </Menus>
+        ) : (
+          <Menus>
+            <Menus.Item label={t('member.leaveModal.button')} onClick={openLeaveModal} />
+          </Menus>
+        )
+
+        return (
+          <Dropdown
+            className="inline-flex items-center"
+            overlay={Overlay}
+            popupClassName="member-role-popup"
+          >
+            <button className="text-slate-500 hover:text-slate-800">
+              <IconDots />
+            </button>
+          </Dropdown>
+        )
       }
     }
   ]
@@ -110,16 +223,18 @@ export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
 
           {/* Email invitation */}
           <Form.Custom
+            className="flex-col md:flex-row"
             inline
             submitText={t('member.emailInvitation.send')}
             submitOptions={{
               type: 'success',
-              className: 'mt-5 ml-3'
+              className: 'w-full mt-3 md:ml-3 md:mt-5 md:w-auto'
             }}
             onlySubmitOnValueChange={true}
             request={handleSendEmailInvitation}
           >
             <Form.Item
+              className="w-full mt-2 md:w-auto md:mt-1"
               name="email"
               label={t('member.emailInvitation.heading')}
               rules={[
@@ -170,6 +285,13 @@ export const ProductMemberModal: FC<IModalProps> = ({ visible }) => {
 
       {/* Remove member */}
       <RemoveMember visible={removeModalVisible} member={member} onClose={handleCloseRemoveModal} />
+
+      {/* Transfer product */}
+      <TransferProduct
+        visible={transferModalVisible}
+        member={member}
+        onClose={handleCloseTransferModal}
+      />
     </>
   )
 }

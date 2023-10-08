@@ -1,4 +1,5 @@
 import { Modal } from '@heyforms/ui'
+import { IconDoorExit } from '@tabler/icons'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import type { FC } from 'react'
@@ -9,7 +10,7 @@ import { ProductService } from '~/service'
 import { useStore } from '~/store'
 
 export const LeaveProduct: FC<IModalProps> = ({ visible, onClose }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const router = useRouter()
   const { user, removeProduct } = useStore()
   const productId = useProductId()
@@ -35,8 +36,9 @@ export const LeaveProduct: FC<IModalProps> = ({ visible, onClose }) => {
 
   return (
     <Modal.Confirm
-      type="danger"
+      type="success"
       visible={visible}
+      icon={<IconDoorExit />}
       title={t('member.leaveModal.heading')}
       description={
         <div className="space-y-2">

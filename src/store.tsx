@@ -40,6 +40,7 @@ interface Store {
   openAIModal: () => void
   closeAIModal: () => void
   setAIModalClosable: (isAIModalClosable: boolean) => void
+  updateMember: (productId: number, members: Partial<User>[]) => void
 }
 
 const context = createContext<Store>({} as Store)
@@ -96,6 +97,35 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
     [siteSettings]
   )
 
+  const updateMember = useCallback(
+    (productId: number, members: Partial<User>[]) => {
+      const newValue = products.map(p => {
+        if (p.id === productId) {
+          return {
+            ...p,
+            users: p.users?.map(u => {
+              const member = members.find(m => m.id === u.id)
+
+              if (member) {
+                return {
+                  ...u,
+                  ...member
+                }
+              }
+
+              return u
+            })
+          }
+        }
+
+        return p
+      })
+
+      setProducts(newValue)
+    },
+    [products]
+  )
+
   const removeMember = useCallback(
     (productId: number, memberId: number) => {
       const newValue = products.map(p => {
@@ -147,7 +177,8 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
     openAIModal,
     closeAIModal,
     isAIModalClosable,
-    setAIModalClosable
+    setAIModalClosable,
+    updateMember
   }
 
   return <context.Provider value={value}>{children}</context.Provider>

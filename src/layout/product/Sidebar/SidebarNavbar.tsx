@@ -62,18 +62,14 @@ const NavLink = ({ icon: Icon, href, title }: ExternalLinkProps) => {
 }
 
 export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
-  const { t } = useTranslation(['dashboard', 'common']);
+  const { t } = useTranslation(['dashboard', 'common'])
   const product = useProduct()
   const { user, openMemberList } = useStore()
 
-  const isOwner = useMemo(
-    () => user.id && product?.ownerId === user.id,
-    [product?.ownerId, user.id]
+  const productUser = useMemo(
+    () => product.users.find(u => u.id === user.id),
+    [product.users, user.id]
   )
-
-  function handleCloseSidebar() {
-    //
-  }
 
   return (
     <nav className="sidebar-nav scrollbar flex-1 mt-5 px-2 pb-4 space-y-8">
@@ -110,7 +106,7 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
         </PlanCheck>
 
         {/* Only owner can update product */}
-        {isOwner && (
+        {(productUser?.role === 'admin' || productUser?.role === 'owner') && (
           <NavLink
             href={`/product/${product.id}/settings`}
             icon={IconSettings}

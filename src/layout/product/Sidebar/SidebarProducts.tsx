@@ -40,7 +40,7 @@ const ProductItem: FC<ProductItemProps> = ({ product, onClick }) => {
         retainLength={2}
       />
 
-      <div className="ml-4 flex-auto min-w-0 max-w-[9.75rem]">
+      <div className="ml-2 flex-auto min-w-0 max-w-[9.75rem]">
         <p className="text-sm font-medium text-slate-700 truncate">{product?.name}</p>
         <p className="text-xs text-slate-500 truncate">
           {product.subscription ? PLAN_NAMES[product.subscription.planId] : 'Free'} Plan -{' '}
@@ -49,7 +49,7 @@ const ProductItem: FC<ProductItemProps> = ({ product, onClick }) => {
       </div>
 
       {isEqual(productId, product?.id) && (
-        <IconCircleCheck className="ml-4 w-5 h-5 text-emerald-500" />
+        <IconCircleCheck className="ml-1 w-5 h-5 text-emerald-500" />
       )}
     </div>
   )
