@@ -16,7 +16,7 @@ export const EmailCapturePreview: FC<EmailCaptureProps & { product: Product }> =
   block,
   product
 }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['publicSite'])
 
   async function handleFinish(values: AnyMap<string>) {
     await PublicApiService.createEmailCapture(product.id!, {
@@ -26,7 +26,7 @@ export const EmailCapturePreview: FC<EmailCaptureProps & { product: Product }> =
     })
 
     notification.success({
-      title: t('publicSite.successfullySubmitted')
+      title: t('successfullySubmitted')
     })
   }
 

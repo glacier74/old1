@@ -182,7 +182,7 @@ const PublicSite: FC<PublicSiteProps> = ({
   paymentStatus,
   successMessage
 }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['publicSite'])
   const seo = getSeoProps(product, isSiteAccessible)
   const faviconURL = useMemo(() => {
     if (isValid(product.logo)) {
@@ -229,7 +229,7 @@ const PublicSite: FC<PublicSiteProps> = ({
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <div>
               <h1 className="text-center text-3xl font-bold text-slate-900">
-                {t('publicSite.privateHeading')}
+                {t('privateHeading')}
               </h1>
             </div>
 
@@ -237,7 +237,7 @@ const PublicSite: FC<PublicSiteProps> = ({
               <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                 <div className="mt-6">
                   <Form.Custom
-                    submitText={t('publicSite.accessSite')}
+                    submitText={t('accessSite')}
                     submitOptions={{
                       type: 'success',
                       className: 'mt-2',
@@ -247,9 +247,9 @@ const PublicSite: FC<PublicSiteProps> = ({
                   >
                     <Form.Item
                       name="password"
-                      rules={[{ required: true, message: t('publicSite.invalidPassword') }]}
+                      rules={[{ required: true, message: t('invalidPassword') }]}
                     >
-                      <Input.Password placeholder={t('publicSite.password')} />
+                      <Input.Password placeholder={t('password')} />
                     </Form.Item>
                   </Form.Custom>
                 </div>
@@ -319,73 +319,78 @@ const PublicSite: FC<PublicSiteProps> = ({
   )
 }
 
-export const getServerSideProps = withTranslations(async context => {
-  const domain = context.params.domain
-  let product: Product
+export const getServerSideProps = withTranslations(
+  async context => {
+    const domain = context.params.domain
+    let product: Product
 
-  try {
-    product = await PublicApiService.product(domain)
-  } catch (err: any) {
-    console.error(err)
+    try {
+      product = await PublicApiService.product(domain)
+    } catch (err: any) {
+      console.error(err)
 
-    return {
-      notFound: true
-    }
-  }
-
-  // Protection with a simple shared password
-  if (product.isSitePrivate) {
-    let isSiteAccessible = false
-    const token = getPrivateToken(context.req.cookies)
-
-    if (isValid(token)) {
-      const json = await PublicApiService.verifyToken(product.id, token)
-
-      if (json.verified) {
-        isSiteAccessible = true
+      return {
+        notFound: true
       }
     }
 
-    if (!isSiteAccessible) {
-      return {
-        props: {
-          product: {
-            id: product.id,
-            name: product.name,
-            metaTitle: product.metaTitle
-          },
-          isSiteAccessible: false,
-          language: product.language
+    // Protection with a simple shared password
+    if (product.isSitePrivate) {
+      let isSiteAccessible = false
+      const token = getPrivateToken(context.req.cookies)
+
+      if (isValid(token)) {
+        const json = await PublicApiService.verifyToken(product.id, token)
+
+        if (json.verified) {
+          isSiteAccessible = true
+        }
+      }
+
+      if (!isSiteAccessible) {
+        return {
+          props: {
+            product: {
+              id: product.id,
+              name: product.name,
+              metaTitle: product.metaTitle
+            },
+            isSiteAccessible: false,
+            language: product.language
+          }
         }
       }
     }
-  }
 
-  if (!product.openGraphImage) {
-    const payload = {
-      name: product.name,
-      metaTitle: product.metaTitle?.slice(0, 60),
-      metaDescription: (product.metaDescription || product.tagline)?.slice(0, 120)
+    if (!product.openGraphImage) {
+      const payload = {
+        name: product.name,
+        metaTitle: product.metaTitle?.slice(0, 60),
+        metaDescription: (product.metaDescription || product.tagline)?.slice(0, 120)
+      }
+
+      const e = AES.encrypt(
+        conv.jsonString(payload),
+        process.env.NEXT_API_VERIFICATION_KEY!
+      ).toString()
+
+      product.openGraphImage = `${process.env.NEXT_PUBLIC_HOMEPAGE}/api/og?e=${encodeURIComponent(
+        e
+      )}`
     }
 
-    const e = AES.encrypt(
-      conv.jsonString(payload),
-      process.env.NEXT_API_VERIFICATION_KEY!
-    ).toString()
-
-    product.openGraphImage = `${process.env.NEXT_PUBLIC_HOMEPAGE}/api/og?e=${encodeURIComponent(e)}`
-  }
-
-  return {
-    props: {
-      product,
-      isSiteAccessible: true,
-      language: product.language,
-      // `undefined` cannot be serialized as JSON
-      paymentStatus: context.query.paymentStatus || null,
-      successMessage: context.query.successMessage || null
+    return {
+      props: {
+        product,
+        isSiteAccessible: true,
+        language: product.language,
+        // `undefined` cannot be serialized as JSON
+        paymentStatus: context.query.paymentStatus || null,
+        successMessage: context.query.successMessage || null
+      }
     }
-  }
-})
+  },
+  ['publicSite']
+)
 
 export default PublicSite

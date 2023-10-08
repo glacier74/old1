@@ -22,7 +22,7 @@ export const PaymentPreview: FC<PaymentProps & { product: Product }> = ({
   product,
   ...restProps
 }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['publicSite'])
 
   async function handleFinish(values: AnyMap<string>) {
     const result = await StripeService.checkout({
@@ -67,7 +67,7 @@ export const PaymentPreview: FC<PaymentProps & { product: Product }> = ({
                   {block.priceType === 'recurring' && `/${block.interval}`}
                 </div>
                 <Form.Custom
-                  submitText={t('publicSite.checkOut')}
+                  submitText={t('checkOut')}
                   submitOptions={{
                     type: 'success',
                     block: true
@@ -76,11 +76,9 @@ export const PaymentPreview: FC<PaymentProps & { product: Product }> = ({
                 >
                   <Form.Item
                     name="email"
-                    rules={[
-                      { required: true, type: 'email', message: t('publicSite.invalidEmail') }
-                    ]}
+                    rules={[{ required: true, type: 'email', message: t('invalidEmail') }]}
                   >
-                    <Input placeholder={t('publicSite.email')} />
+                    <Input placeholder={t('email')} />
                   </Form.Item>
                 </Form.Custom>
               </div>
@@ -150,9 +148,9 @@ const PaymentComponent: FC<PaymentProps> = ({ block, ...restProps }) => {
                   {block.priceType === 'recurring' && `/${block.interval}`}
                 </div>
                 <div className="input mt-6 !cursor-default">
-                  <span className="block-text-placeholder">{t('publicSite.email')}</span>
+                  <span className="block-text-placeholder">{t('email')}</span>
                 </div>
-                <div className="block-payment-button">{t('publicSite.checkOut')}</div>
+                <div className="block-payment-button">{t('checkOut')}</div>
               </div>
             ) : (
               <div className="p-10">

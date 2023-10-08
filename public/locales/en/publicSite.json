@@ -1,0 +1,12 @@
+{
+  "email": "Email address",
+  "checkOut": "Check out",
+  "invalidEmail": "Please provide a valid email address",
+  "privateHeading": "This site is private.",
+  "password": "Password",
+  "invalidPassword": "The password is not allowed to be empty",
+  "successfullySubmitted": "You have successfully submitted",
+  "paymentSuccessMessage": "Thank you for your payment! An automated payment receipt will be sent to the email address provided very shortly.",
+  "accessSite": "Access site",
+  "backTo": "Back to {{name}}"
+}
