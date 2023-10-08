@@ -30,7 +30,7 @@ export const Expandable: FC<ExpandableProps> = ({
           <h4 className="text-base text-slate-900 font-bold">{title}</h4>
           <div className="mt-1 text-slate-500 font-normal">{description}</div>
         </div>
-        <Button className="ml-3 w-[5rem] !px-2.5 !py-1" onClick={handleClick}>
+        <Button className="ml-3 w-[5rem] !px-2.5 !py-1.5" onClick={handleClick}>
           {expanded ? 'Close' : 'Expand'}
         </Button>
       </div>

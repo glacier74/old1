@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 patchedDependencies:
   '@tabler/icons@1.119.0':
     hash: tjmxjsj7pvvhkhqdp6bmei6com
@@ -22,8 +26,8 @@ dependencies:
     specifier: ^1.7.12
     version: 1.7.16(react-dom@18.2.0)(react@18.2.0)
   '@heyforms/ui':
-    specifier: ^2023.9.6
-    version: 2023.9.6(@floating-ui/react@0.19.2)(@headlessui/react@1.7.16)(@heroicons/react@1.0.6)(@hpnp/utils@2.9.3)(@popperjs/core@2.11.8)(@tailwindcss/forms@0.5.4)(clsx@1.2.1)(color-rgba@2.4.0)(dayjs@1.11.9)(fast-equals@4.0.3)(rc-field-form@1.37.0)(rc-picker@2.7.3)(react-colorful@5.6.1)(react-dom@18.2.0)(react-popper@2.3.0)(react-transition-state@1.1.5)(react-use@17.4.0)(react@18.2.0)
+    specifier: ^2023.10.1
+    version: 2023.10.1(@floating-ui/react@0.19.2)(@headlessui/react@1.7.16)(@heroicons/react@1.0.6)(@hpnp/utils@2.9.3)(@popperjs/core@2.11.8)(@tailwindcss/forms@0.5.4)(clsx@1.2.1)(color-rgba@2.4.0)(dayjs@1.11.9)(fast-equals@4.0.3)(rc-field-form@1.37.0)(rc-picker@2.7.3)(react-colorful@5.6.1)(react-dom@18.2.0)(react-popper@2.3.0)(react-transition-state@1.1.5)(react-use@17.4.0)(react@18.2.0)
   '@nily/utils':
     specifier: ^0.3.6
     version: 0.3.6
@@ -672,8 +676,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@heyforms/ui@2023.9.6(@floating-ui/react@0.19.2)(@headlessui/react@1.7.16)(@heroicons/react@1.0.6)(@hpnp/utils@2.9.3)(@popperjs/core@2.11.8)(@tailwindcss/forms@0.5.4)(clsx@1.2.1)(color-rgba@2.4.0)(dayjs@1.11.9)(fast-equals@4.0.3)(rc-field-form@1.37.0)(rc-picker@2.7.3)(react-colorful@5.6.1)(react-dom@18.2.0)(react-popper@2.3.0)(react-transition-state@1.1.5)(react-use@17.4.0)(react@18.2.0):
-    resolution: {integrity: sha512-o1mWClhjg23XhXQW/YTASuJ1UlE7BPCEw/ryxgVjWBmxsXfZbKgggIpq/qHblvbZQx3OYoUdOS2HGUFCz/6JTQ==}
+  /@heyforms/ui@2023.10.1(@floating-ui/react@0.19.2)(@headlessui/react@1.7.16)(@heroicons/react@1.0.6)(@hpnp/utils@2.9.3)(@popperjs/core@2.11.8)(@tailwindcss/forms@0.5.4)(clsx@1.2.1)(color-rgba@2.4.0)(dayjs@1.11.9)(fast-equals@4.0.3)(rc-field-form@1.37.0)(rc-picker@2.7.3)(react-colorful@5.6.1)(react-dom@18.2.0)(react-popper@2.3.0)(react-transition-state@1.1.5)(react-use@17.4.0)(react@18.2.0):
+    resolution: {integrity: sha512-8T/j22CCo1gJD0FlEDABYAMV9S3RyeJP61jRIlmNDU8F20RJWLbJbAen41HQF6PNViZEHKVGIPYdouI2OibzrA==}
     peerDependencies:
       '@floating-ui/react': ^0.19.2
       '@headlessui/react': ^1.6.6
@@ -5910,7 +5914,3 @@ packages:
   /zod@3.21.4:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

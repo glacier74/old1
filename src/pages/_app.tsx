@@ -25,10 +25,12 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta content="yes" name="apple-mobile-web-app-capable" />
           <meta content="white" name="apple-mobile-web-app-status-bar-style" />
           <meta content="telephone=no,email=no" name="format-detection" />
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `:root { --font-inter: ${inter.style.fontFamily} }`
+            }}
+          />
         </Head>
-        <style
-          dangerouslySetInnerHTML={{ __html: `html {font-family: ${inter.style.fontFamily}}` }}
-        />
         <Component {...pageProps} />
       </Suspense>
     </StoreProvider>
