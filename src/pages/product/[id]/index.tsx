@@ -68,7 +68,7 @@ const Product = (): JSX.Element => {
   }
 
   return (
-    <ProductSidebarLayout seo={{ title: 'product.title' }}>
+    <ProductSidebarLayout seo={{ title: t('product.title', { product: { name: product.name } }) }}>
       <div>
         <div className="relative md:flex md:items-center md:justify-between">
           {isReady ? (

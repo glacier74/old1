@@ -8,7 +8,7 @@ import { useProduct } from '../hook'
 import { AccountSidebar } from './AccountSidebar'
 
 export function AccountLayout({ seo, children }: LayoutProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const product = useProduct()
   const { openAccountSettings } = useStore()
 

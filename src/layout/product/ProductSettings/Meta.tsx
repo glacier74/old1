@@ -11,7 +11,7 @@ import { PlanBadge, PlanCheck } from '~/layout/product/PlanCheck'
 import { OpenGraphImage } from './OpenGraphImage'
 
 export const Meta: FC<{ values: any }> = ({ values }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const productId = useProductId()
 
   const url = useMemo(

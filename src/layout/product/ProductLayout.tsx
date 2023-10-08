@@ -33,7 +33,7 @@ export function ProductLayout({ seo, children }: LayoutProps) {
 }
 
 export function ProductSidebarLayout({ seo, children }: LayoutProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const router = useRouter()
   const { isMemberListShow, openSidebar } = useStore()
   const product = useProduct()

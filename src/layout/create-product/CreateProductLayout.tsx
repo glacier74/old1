@@ -19,7 +19,7 @@ export function CreateProductLayout({
   logoElement,
   children
 }: CreateProductLayoutProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
 
   return (
     <AuthorizedLayout seo={seo}>
@@ -30,7 +30,7 @@ export function CreateProductLayout({
           ) : (
             <Link
               href="/"
-              title={t('common.name')}
+              title="EarlyBird"
               className="h-[1.75rem] md:h-[2rem] hover:opacity-80"
             >
               <Image src={IconLogo} alt="EarlyBird Logo" width={110} height={36} quality={100} />

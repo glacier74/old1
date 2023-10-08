@@ -15,7 +15,7 @@
     "next": "Next",
     "finish": "Finish",
     "404": "Page not found - EarlyBird",
-    "500": "Internal server error - EarlyBird"
+    "500": "Internal server error - EarlyBird",
     "login": {
         "title": "Log in - EarlyBird",
         "description": "Log in to your account or <1>create an account</1> for free",
@@ -62,7 +62,7 @@
       "resetPassword": {
         "title": "$t(resetPassword.heading) - EarlyBird",
         "heading": "Reset password",
-        "description": "We've sent you an email with a 6-digit verification code, please check your inbox at",
+        "description": "We've sent you an email with a 6-digit verification code, please check your inbox.",
         "code": "Verification code",
         "invalidCode": "Invalid verification code",
         "newPassword": "New password",
@@ -139,7 +139,7 @@
         "createProduct": "Create a landing page",
         "viewProfile": "View Profile",
         "logout": "Log out",
-        "version": "Current deployed version"
+        "version": "Version"
     },
     "product": {
         "member": "{{count}} member",
@@ -209,9 +209,9 @@
           "button": "Leave"
         },
         "you": "You"
-      },
-      "productSettings": {
-        "title": "Settings - {{name}}",
+    },
+    "productSettings": {
+        "title": "Landing page Settings",
         "heading": "Settings",
         "updated": "Landing page settings have been updated successfully",
         "general": {
@@ -262,5 +262,23 @@
           "warn2": "Once you confirm to delete the landing page, you will no longer have access to the landing page data.",
           "button": "Delete the landing page"
         }
-      }
+    },
+    "createProduct": {
+        "title": "Create a landing page",
+        "loggedAs": "Logged in as:",
+        "logo": "Logo (optional)",
+        "name": "Landing page name",
+        "tagline": "Tagline",
+        "publicSiteURL": "Public site URL",
+        "invalidDomain": "The domain must have at least 3 characters, including uppercase, lowercase, number or \"-\"",
+        "createProductTitle": "Welcome to EarlyBird!",
+        "createProductDesc": "To begin, please enter the required fields like name, tagline, and public site URL. Click on Create the landing page after that.",
+        "createProduct": "Create the landing page",
+        "templates": "Templates",
+        "invalidLogo": "The logo is not allowed to be empty",
+        "invalidName": "The name is not allowed to be empty",
+        "invalidTagline": "The tagline is not allowed to be empty",
+        "invalidDescription": "The description is not allowed to be empty",
+        "invalidTemplate": "The template is not allowed to be empty"
+    },
 }

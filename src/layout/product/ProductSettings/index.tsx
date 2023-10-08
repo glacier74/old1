@@ -21,7 +21,7 @@ interface ProductSettingsProps {
 const EXCLUDE_PROPERTIES = ['customDomains']
 
 export const ProductSettings: FC<ProductSettingsProps> = ({ form, onValueChanged, onFinish }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const product = useProduct()
   const [values, setValues] = useState<any>(
     exclude(product as AnyMap<unknown>, EXCLUDE_PROPERTIES, { deepClone: true })

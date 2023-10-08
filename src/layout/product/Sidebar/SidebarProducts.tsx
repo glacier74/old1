@@ -86,7 +86,7 @@ const Skeleton = () => {
 }
 
 export const SidebarProducts: FC = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const router = useRouter()
   const { isReady, user, products } = useStore()
   const currPlanLevel = useSubscriptionPlanLevel(user.subscription)

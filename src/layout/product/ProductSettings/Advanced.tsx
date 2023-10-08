@@ -8,7 +8,7 @@ import { useProductId } from '~/layout'
 import { PlanBadge, PlanCheck } from '~/layout/product/PlanCheck'
 
 export const Advanced: FC<{ values: any }> = ({ values }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const productId = useProductId()
 
   return (

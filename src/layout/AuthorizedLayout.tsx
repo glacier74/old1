@@ -15,7 +15,7 @@ const userKey = process.env.NEXT_PUBLIC_USER_STORAGE_NAME!
 const productsKey = process.env.NEXT_PUBLIC_PRODUCTS_STORAGE_NAME!
 
 const DeletionAlertModal = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const { user, isDeletionAlertShow, updateUser, openDeletionAlert, closeDeletionAlert } =
     useStore()
 

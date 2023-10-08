@@ -30,7 +30,7 @@ const Skeleton = () => {
 }
 
 export const BillingUsage = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const [usage, setUsage] = useState<SubscriptionUsage>()
 
   async function request() {

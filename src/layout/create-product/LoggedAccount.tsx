@@ -9,7 +9,7 @@ import { useStore } from '~/store'
 import { deleteRedirectURL } from '~/utils'
 
 export const LoggedAccount: FC = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const router = useRouter()
   const { user } = useStore()
 

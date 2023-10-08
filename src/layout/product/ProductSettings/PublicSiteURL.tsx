@@ -42,7 +42,7 @@ interface CustomURLItemProps {
 }
 
 const SubdomainURL = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const product = useProduct()
   const { updateProduct } = useStore()
   const [visible, open, close] = useVisible()

@@ -56,7 +56,7 @@ const ProductIntegrations = (): JSX.Element => {
   }
 
   return (
-    <ProductSidebarLayout seo={{ title: 'integrations.title' }}>
+    <ProductSidebarLayout seo={{ title: t('integrations.title') }}>
       <h1 className="mb-4 text-3xl leading-6 font-bold text-slate-900">
         {t('integrations.heading')}
       </h1>

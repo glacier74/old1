@@ -51,7 +51,7 @@ const ProductSettings = (): JSX.Element => {
   }
 
   return (
-    <ProductSidebarLayout seo={{ title: 'productSettings.title' }}>
+    <ProductSidebarLayout seo={{ title: t('productSettings.title') }}>
       <div className="flex items-center justify-between">
         <h1 className="mb-4 text-3xl leading-6 font-bold text-slate-900">
           {t('productSettings.heading')}

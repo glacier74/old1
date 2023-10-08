@@ -19,7 +19,7 @@ const Skeleton = () => {
 }
 
 export const SidebarAccount: FC = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const { isReady, user } = useStore()
 
   const Overlay = (

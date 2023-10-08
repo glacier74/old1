@@ -27,7 +27,7 @@ const Skeleton = () => {
 }
 
 export const BillingInvoice = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
 
   const [receipts, setReceipts] = useState<Receipt[]>()
 

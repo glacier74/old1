@@ -12,7 +12,7 @@ interface RemoveMemberProps extends IModalProps {
 }
 
 export const RemoveMember: FC<RemoveMemberProps> = ({ visible, member, onClose }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const { removeMember } = useStore()
   const productId = useProductId()
 

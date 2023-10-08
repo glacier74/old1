@@ -18,7 +18,7 @@ const Account = (): JSX.Element => {
   const { isReady } = useStore()
 
   return (
-    <AccountLayout seo={{ title: 'account.title' }}>
+    <AccountLayout seo={{ title: t('account.title') }}>
       <h1 className="mb-4 text-3xl leading-6 font-bold text-slate-900">{t('account.heading')}</h1>
       <div className="mt-4 text-slate-600">{t('account.description')}</div>
 

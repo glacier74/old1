@@ -9,7 +9,7 @@ import { useStore } from '~/store'
 import { useRequest } from '~/utils'
 
 export const RemoveBranding = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const product = useProduct()
   const { updateProduct } = useStore()
 

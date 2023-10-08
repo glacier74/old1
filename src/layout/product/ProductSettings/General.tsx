@@ -8,7 +8,7 @@ import { LANGUAGE_OPTIONS } from '~/constants'
 import { PublicSiteURL } from './PublicSiteURL'
 
 export const General: FC = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
 
   return (
     <div className="space-y-2">

@@ -103,7 +103,7 @@ const ProductEngagements = (): JSX.Element => {
 
   return (
     <EngagementLayout
-      seo={{ title: 'engagements.title' }}
+      seo={{ title: t('engagements.title') }}
       activeRouteName="payment"
       request={fetchData}
       deps={[productId, page]}

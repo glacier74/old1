@@ -9,7 +9,7 @@ import { useStore } from '~/store'
 import { useAsyncEffect, useVisible } from '~/utils'
 
 const DeleteModal: FC<IModalProps> = ({ visible, onClose }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const router = useRouter()
   const productId = useProductId()
   const { user, removeProduct } = useStore()
@@ -69,7 +69,7 @@ const DeleteModal: FC<IModalProps> = ({ visible, onClose }) => {
 
 export const DangerZone = () => {
   const [visible, open, close] = useVisible()
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
 
   return (
     <>

@@ -8,7 +8,7 @@ import { ProductService } from '~/service'
 import { useStore } from '~/store'
 
 export const Domain = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const product = useProduct()
   const { updateProduct } = useStore()
 
