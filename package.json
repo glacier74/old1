@@ -11,6 +11,7 @@
     "lint": "eslint \"{src,earlybirdim,test}/**/*.{ts,tsx}\" --quiet",
     "lint:fix": "eslint \"{src,test}/**/*.{ts,tsx}\" --fix --quiet",
     "lint:staged": "lint-staged",
+    "lint:json": "jsonlint \"public/locales/**/*.json\"",
     "type-check": "tsc --pretty --noEmit",
     "prepare": "node prepare.js"
   },
@@ -88,6 +89,7 @@
     "yaml": "^2.3.1"
   },
   "devDependencies": {
+    "@heyooo-inc/jsonlint": "^0.0.2",
     "@tailwindcss/forms": "^0.5.3",
     "@trivago/prettier-plugin-sort-imports": "^3.4.0",
     "@types/crypto-js": "^4.1.1",
