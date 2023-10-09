@@ -10,9 +10,7 @@ export const AboutHero: FC = () => {
         <h1 className="max-w-4xl mx-auto text-2xl leading-8 font-bold md:text-5xl md:leading-tight">
           {t('hero.headline')}
         </h1>
-        <p className="mt-4 sm:text-xl text-base text-slate-700">
-          {t('hero.description')}
-        </p>
+        <p className="mt-4 sm:text-xl text-base text-slate-700">{t('hero.description')}</p>
       </div>
     </section>
   )

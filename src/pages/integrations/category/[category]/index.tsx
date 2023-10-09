@@ -35,31 +35,33 @@ const Integrations: FC<IntegrationsProps> = props => {
   )
 }
 
-export const getServerSideProps = withTranslations(async ({ query }) => {
-  const category = query.category.toLowerCase()
-  const [records, categories] = await Promise.all([
-    Integration2Service.records(category),
-    Integration2Service.categories()
-  ])
+export const getServerSideProps = withTranslations(
+  async ({ query }) => {
+    const category = query.category.toLowerCase()
+    const [records, categories] = await Promise.all([
+      Integration2Service.records(category),
+      Integration2Service.categories()
+    ])
 
-  const limit = 9
-  const page = conv.int(query.page, 1)!
+    const limit = 9
+    const page = conv.int(query.page, 1)!
 
-  return {
-    props: {
-      categories,
-      category,
-      groups: [
-        {
-          records: records.slice((page - 1) * limit, page * limit)
-        }
-      ],
-      total: records.length,
-      page,
-      limit
+    return {
+      props: {
+        categories,
+        category,
+        groups: [
+          {
+            records: records.slice((page - 1) * limit, page * limit)
+          }
+        ],
+        total: records.length,
+        page,
+        limit
+      }
     }
-  }
-},
-['common', 'integrations'])
+  },
+  ['common', 'integrations']
+)
 
 export default Integrations

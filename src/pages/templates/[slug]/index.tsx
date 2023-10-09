@@ -58,39 +58,41 @@ const TemplateDetail: FC<TemplateDetailProps> = ({
   )
 }
 
-export const getServerSideProps = withTranslations(async ({ query }) => {
-  const slug = query.slug.toLowerCase()
-  const [integrations, templates, testimonials] = await Promise.all([
-    Integration2Service.records(),
-    TemplateService.records(),
-    TestimonialService.records()
-  ])
+export const getServerSideProps = withTranslations(
+  async ({ query }) => {
+    const slug = query.slug.toLowerCase()
+    const [integrations, templates, testimonials] = await Promise.all([
+      Integration2Service.records(),
+      TemplateService.records(),
+      TestimonialService.records()
+    ])
 
-  const template = templates.find(t => t.slug.toLowerCase() === slug)
+    const template = templates.find(t => t.slug.toLowerCase() === slug)
 
-  if (!template) {
+    if (!template) {
+      return {
+        notFound: true
+      }
+    }
+
+    const similars = templates.filter(
+      t => t.Category === template.Category && t.slug.toLowerCase() !== slug
+    )
+    const categories = arrayUnique(templates.map(t => t.Category)).filter(
+      c => c !== template.Category
+    )
+
     return {
-      notFound: true
+      props: {
+        template,
+        similars: similars.splice(0, 6),
+        categories,
+        testimonials: testimonials.splice(0, 6),
+        integrations: integrations.splice(0, 6)
+      }
     }
-  }
-
-  const similars = templates.filter(
-    t => t.Category === template.Category && t.slug.toLowerCase() !== slug
-  )
-  const categories = arrayUnique(templates.map(t => t.Category)).filter(
-    c => c !== template.Category
-  )
-
-  return {
-    props: {
-      template,
-      similars: similars.splice(0, 6),
-      categories,
-      testimonials: testimonials.splice(0, 6),
-      integrations: integrations.splice(0, 6)
-    }
-  }
-},
-['common', 'templates'])
+  },
+  ['common', 'templates']
+)
 
 export default TemplateDetail

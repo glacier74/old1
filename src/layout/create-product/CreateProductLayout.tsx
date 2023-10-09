@@ -28,11 +28,7 @@ export function CreateProductLayout({
           {logoElement ? (
             logoElement
           ) : (
-            <Link
-              href="/"
-              title="EarlyBird"
-              className="h-[1.75rem] md:h-[2rem] hover:opacity-80"
-            >
+            <Link href="/" title="EarlyBird" className="h-[1.75rem] md:h-[2rem] hover:opacity-80">
               <Image src={IconLogo} alt="EarlyBird Logo" width={110} height={36} quality={100} />
             </Link>
           )}

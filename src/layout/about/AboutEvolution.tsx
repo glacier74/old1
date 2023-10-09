@@ -1,6 +1,6 @@
+import { Trans, useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import { FC } from 'react'
-import { Trans, useTranslation } from 'next-i18next'
 
 import AboutImage from '~public/static/about.webp'
 
@@ -42,15 +42,9 @@ export const AboutEvolution: FC = () => {
               }}
             />
           </p>
-          <p>
-            {t('evolution.desc2')}
-          </p>
-          <p>
-            {t('evolution.desc3')}
-          </p>
-          <p>
-            {t('evolution.desc4')}
-          </p>
+          <p>{t('evolution.desc2')}</p>
+          <p>{t('evolution.desc3')}</p>
+          <p>{t('evolution.desc4')}</p>
         </div>
       </div>
     </section>

@@ -1,8 +1,8 @@
 import { IconArrowLeft, IconArrowsLeftRight } from '@tabler/icons'
+import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
-import { useTranslation } from 'next-i18next'
 
 import { Markdown } from '~/components/Markdown'
 

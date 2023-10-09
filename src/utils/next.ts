@@ -10,7 +10,6 @@ export function withTranslations(nextPageFunction: NextPageFunction, namespaces 
     }
 
     const locale = context.locale || context.defaultLocale!
-    console.log(locale, namespaces)
 
     return {
       props: {

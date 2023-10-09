@@ -1,8 +1,8 @@
 import { isEqual, isValid } from '@nily/utils'
 import JsCookie from 'js-cookie'
+import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { useTranslation } from 'next-i18next'
 
 import { IconLogo2 } from '~/components/Icon/IconLogo2'
 import { AuthorizedLayout } from '~/layout'
@@ -49,5 +49,4 @@ export function HomeAuthorizedLayout() {
       </div>
     </AuthorizedLayout>
   )
-  
 }

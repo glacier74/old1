@@ -71,11 +71,13 @@ const ForgotPassword = (): JSX.Element => {
   )
 }
 
-export const getServerSideProps = withTranslations(async context => {
-  return {
-    props: {}
-  }
-},
-['common', 'dashboard'])
+export const getServerSideProps = withTranslations(
+  async context => {
+    return {
+      props: {}
+    }
+  },
+  ['common', 'dashboard']
+)
 
 export default ForgotPassword

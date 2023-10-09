@@ -12,11 +12,7 @@ export function LoginLayout({ seo, children }: LayoutProps) {
     <BaseLayout seo={seo}>
       <div className="min-h-screen flex flex-col bg-slate-50">
         <div className="p-5 sm:px-6 lg:px-8">
-          <Link
-            href="/"
-            title="EarlyBird"
-            className="h-[1.75rem] md:h-[2rem] hover:opacity-80"
-          >
+          <Link href="/" title="EarlyBird" className="h-[1.75rem] md:h-[2rem] hover:opacity-80">
             <Image src={IconLogo} alt="EarlyBird Logo" width={110} height={36} quality={100} />
           </Link>
         </div>

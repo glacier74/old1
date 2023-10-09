@@ -1,8 +1,8 @@
 import clsx from 'clsx'
+import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import React from 'react'
 import { FC } from 'react'
-import { useTranslation } from 'next-i18next'
 
 interface Props {
   categories: string[]
@@ -13,7 +13,9 @@ export const IntegrationsCat_Items: FC<Props> = ({ categories, category }) => {
   const { t } = useTranslation('integrations')
   return (
     <div className="flex flex-col sm:items-start items-center sm:gap-8 gap-5 sm:w-[220px] w-full">
-      <div className="sm:text-base text-xl sm:font-medium font-semibold">{t('category.category')}</div>
+      <div className="sm:text-base text-xl sm:font-medium font-semibold">
+        {t('category.category')}
+      </div>
       <div className="flex sm:flex-col flex-wrap justify-center w-full">
         {categories.map(c => (
           <Link

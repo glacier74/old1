@@ -10,9 +10,7 @@ export const TemplatesDetailMake: FC = () => {
         <div className="sm:max-w-sm max-w-[500px] flex flex-col justify-center items-start xl:gap-6 gap-4">
           <div className="lg:text-3xl text-2xl font-bold">{t('detail.ctaHeadline')}</div>
           <div className="lg:text-xl text-base">
-            <p>
-              {t('detail.ctaDesc')}
-            </p>
+            <p>{t('detail.ctaDesc')}</p>
           </div>
           <a className="bg-slate-900 py-2 px-8 rounded-full flex-inline" href="/sign-up">
             <span className="text-white lg:text-lg text-base">{t('detail.ctaButton')}</span>

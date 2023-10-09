@@ -30,7 +30,7 @@ export const AboutUncover: FC = () => {
           <div key={index} className="flex flex-col justify-between p-8 w-full gap-3">
             <div>
               <a className="text-lg font-bold underline" href={uncover.url}>
-              {t(uncover.name)} <span>-&gt;</span>
+                {t(uncover.name)} <span>-&gt;</span>
               </a>
               <div className="mt-2">{t(uncover.desc)}</div>
             </div>

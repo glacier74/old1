@@ -41,29 +41,31 @@ const Templates: FC<TemplatesProps> = ({ categories, category, templates, total,
   )
 }
 
-export const getServerSideProps = withTranslations(async ({ query }) => {
-  const category = query.category.toLowerCase()
+export const getServerSideProps = withTranslations(
+  async ({ query }) => {
+    const category = query.category.toLowerCase()
 
-  let templates = await TemplateService.records()
-  const categories = arrayUnique(templates.map(t => t.Category))
+    let templates = await TemplateService.records()
+    const categories = arrayUnique(templates.map(t => t.Category))
 
-  const limit = 9
-  const page = conv.int(query.page, 1)!
+    const limit = 9
+    const page = conv.int(query.page, 1)!
 
-  // Filter template
-  templates = templates.filter(t => t.LowerCaseCategory === category)
+    // Filter template
+    templates = templates.filter(t => t.LowerCaseCategory === category)
 
-  return {
-    props: {
-      categories,
-      category,
-      templates: templates.slice((page - 1) * limit, page * limit),
-      total: templates.length,
-      page,
-      limit
+    return {
+      props: {
+        categories,
+        category,
+        templates: templates.slice((page - 1) * limit, page * limit),
+        total: templates.length,
+        page,
+        limit
+      }
     }
-  }
-},
-['common', 'templates'])
+  },
+  ['common', 'templates']
+)
 
 export default Templates

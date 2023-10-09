@@ -12,7 +12,7 @@ export const TemplatesDetailMakeInt: FC<{ integrations: IntegrationRecord[] }> =
     <section className="bg-emerald-200/50 md:px-12 px-6 md:py-32 py-20 z-10">
       <div className="max-w-7xl mx-auto text-center">
         <div className="sm:text-5xl text-3xl font-bold text-slate-950">
-         {t('detail.integrationHeadline')}
+          {t('detail.integrationHeadline')}
         </div>
         <div className="grid grid-cols-3 mt-8 md:mt-16 md:grid-cols-6 gap-6 md:gap-12">
           {integrations.map(row => (

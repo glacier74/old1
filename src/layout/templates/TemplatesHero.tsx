@@ -1,7 +1,7 @@
 import clsx from 'clsx'
+import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import { FC } from 'react'
-import { useTranslation } from 'next-i18next'
 
 const ALL_CATEGORY = 'All'
 

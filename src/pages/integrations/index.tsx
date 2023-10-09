@@ -34,34 +34,38 @@ const Integrations: FC<IntegrationsProps> = props => {
   )
 }
 
-export const getServerSideProps = withTranslations(async context => {
-  const [records, categories] = await Promise.all([
-    Integration2Service.records(),
-    Integration2Service.categories()
-  ])
+export const getServerSideProps = withTranslations(
+  async context => {
+    const [records, categories] = await Promise.all([
+      Integration2Service.records(),
+      Integration2Service.categories()
+    ])
 
-  const groups = categories
-    .map(category => {
-      const filtered = records.filter(record => record.LowerCaseCategory === category.toLowerCase())
+    const groups = categories
+      .map(category => {
+        const filtered = records.filter(
+          record => record.LowerCaseCategory === category.toLowerCase()
+        )
 
-      if (isEmpty(filtered)) {
-        return
+        if (isEmpty(filtered)) {
+          return
+        }
+
+        return {
+          category,
+          records: filtered
+        }
+      })
+      .filter(Boolean)
+
+    return {
+      props: {
+        categories,
+        groups
       }
-
-      return {
-        category,
-        records: filtered
-      }
-    })
-    .filter(Boolean)
-
-  return {
-    props: {
-      categories,
-      groups
     }
-  }
-},
-['common','integrations'])
+  },
+  ['common', 'integrations']
+)
 
 export default Integrations

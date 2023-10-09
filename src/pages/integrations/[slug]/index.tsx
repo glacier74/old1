@@ -36,21 +36,23 @@ const IntegrationsDetail: FC<IntegrationsDetailProps> = ({ integration }): JSX.E
   )
 }
 
-export const getServerSideProps = withTranslations(async ({ query }) => {
-  const integration = await Integration2Service.findBySlug(query.slug.toLowerCase())
+export const getServerSideProps = withTranslations(
+  async ({ query }) => {
+    const integration = await Integration2Service.findBySlug(query.slug.toLowerCase())
 
-  if (!integration) {
+    if (!integration) {
+      return {
+        notFound: true
+      }
+    }
+
     return {
-      notFound: true
+      props: {
+        integration
+      }
     }
-  }
-
-  return {
-    props: {
-      integration
-    }
-  }
-},
-['common', 'integrations'])
+  },
+  ['common', 'integrations']
+)
 
 export default IntegrationsDetail

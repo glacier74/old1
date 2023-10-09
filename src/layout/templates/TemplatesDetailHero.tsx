@@ -1,8 +1,8 @@
+import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
-import { useTranslation } from 'next-i18next'
 
 import { PreviewModal } from '../create-product/PreviewModal'
 
