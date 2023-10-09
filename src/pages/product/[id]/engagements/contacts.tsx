@@ -1,7 +1,7 @@
-import { EmptyStates, Table } from '@heyforms/ui'
+import { Button, EmptyStates, Table } from '@heyforms/ui'
 import { TableColumn } from '@heyforms/ui/types/table'
 import { conv } from '@nily/utils'
-import { IconDatabase } from '@tabler/icons'
+import { IconArrowBarToDown, IconDatabase } from '@tabler/icons'
 import dayjs from 'dayjs'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
@@ -93,6 +93,10 @@ const ProductContacts = (): JSX.Element => {
     return result.contacts.length > 0
   }
 
+  function handleExport() {
+    window.open(`${process.env.NEXT_PUBLIC_API_URI}/products/${productId}/contacts/download`)
+  }
+
   useEffect(() => {
     setPage(conv.int((router.query as AnyMap<string>).page, 1)!)
   }, [router.query])
@@ -113,8 +117,16 @@ const ProductContacts = (): JSX.Element => {
           />
         }
       >
+        {count > 0 && (
+          <div className="flex items-center justify-between mt-8">
+            <div className="text-sm text-slate-500">{count} items</div>
+            <Button type="success" leading={<IconArrowBarToDown />} onClick={handleExport}>
+              Export
+            </Button>
+          </div>
+        )}
         <Table<Contact>
-          className="table-engagement mt-8"
+          className="table-engagement mt-2"
           columns={columns}
           data={contacts}
           hideHead
