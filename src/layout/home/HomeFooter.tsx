@@ -1,4 +1,6 @@
 import { Select } from '@heyforms/ui'
+import { date } from '@nily/utils'
+import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -6,6 +8,7 @@ import { FC } from 'react'
 
 import { IconLinkedin, IconTwitterGray } from '~/components'
 import { LANGUAGE_OPTIONS } from '~/constants'
+import { setCookie } from '~/utils'
 import { i18n } from '~i18next-config'
 
 const navigation = {
@@ -53,6 +56,9 @@ const navigation = {
   ]
 }
 
+// Locale cookie name
+const LOCALE_COOKIE_NAME = process.env.NEXT_PUBLIC_LOCALE_COOKIE_NAME as string
+
 export const HomeFooter: FC = () => {
   const { t } = useTranslation('common')
   const router = useRouter()
@@ -60,6 +66,7 @@ export const HomeFooter: FC = () => {
   function handleLocaleChange(newLocale: string) {
     const { pathname, asPath, query } = router
 
+    setCookie(JsCookie, LOCALE_COOKIE_NAME, newLocale, date.milliseconds('1year')!)
     router.push({ pathname, query }, asPath, { locale: newLocale })
   }
 

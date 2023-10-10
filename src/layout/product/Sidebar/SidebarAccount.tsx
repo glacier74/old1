@@ -1,10 +1,15 @@
 import { Dropdown, Menus } from '@heyforms/ui'
+import { date } from '@nily/utils'
+import { IconChevronRight } from '@tabler/icons'
+import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import type { FC } from 'react'
 
 import { RoundImage } from '~/components'
+import { LANGUAGE_OPTIONS } from '~/constants'
 import { useStore } from '~/store'
+import { setCookie } from '~/utils'
 
 const Skeleton = () => {
   return (
@@ -18,9 +23,17 @@ const Skeleton = () => {
   )
 }
 
+// Locale cookie name
+const LOCALE_COOKIE_NAME = process.env.NEXT_PUBLIC_LOCALE_COOKIE_NAME as string
+
 export const SidebarAccount: FC = () => {
-  const { t } = useTranslation('dashboard')
+  const { t, i18n } = useTranslation('dashboard')
   const { isReady, user } = useStore()
+
+  function handleChangeLocale(locale: string) {
+    i18n.changeLanguage(locale)
+    setCookie(JsCookie, LOCALE_COOKIE_NAME, locale, date.milliseconds('1year')!)
+  }
 
   const Overlay = (
     <Menus className="bottom-12">
@@ -38,6 +51,27 @@ export const SidebarAccount: FC = () => {
           <Link className="block px-4 py-2" href="/account/billing">
             {t('billing.heading')}
           </Link>
+        }
+      />
+      <Menus.Item
+        className="sidebar-submenu !p-0"
+        label={
+          <div className="relative group">
+            <button className="w-full flex items-center justify-between px-4 py-2">
+              <span>{t('sidebar.language')}</span>
+              <IconChevronRight />
+            </button>
+            <Menus className="absolute top-0 left-[220px] !my-0 hidden group-hover:block">
+              {LANGUAGE_OPTIONS.map(row => (
+                <Menus.Item
+                  key={row.value}
+                  label={row.label}
+                  isChecked={i18n.language === row.value}
+                  onClick={() => handleChangeLocale(row.value)}
+                />
+              ))}
+            </Menus>
+          </div>
         }
       />
       <Menus.Item
