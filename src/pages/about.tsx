@@ -25,13 +25,16 @@ const About = (): JSX.Element => {
   )
 }
 
-export const getStaticProps = withTranslations(
+export const getServerSideProps = withTranslations(
   async context => {
     return {
       props: {}
     }
   },
-  ['common', 'about']
+  ['common', 'about'],
+  {
+    redirectOnLocale: true
+  }
 )
 
 export default About

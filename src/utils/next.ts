@@ -35,38 +35,42 @@ export function withTranslations(
       return pageData
     }
 
-    const cookieLocale = getCookie((context.req as any).cookies, LOCALE_COOKIE_NAME)!
-    const browserLocale = acceptLanguage.get((context.req as any).headers['accept-language'])!
-    const contextLocale = context.locale!
+    let locale = context.locale || i18n.defaultLocale
 
-    if (options?.redirectOnLocale) {
-      let locale: string | undefined
-      const asPath = (context as any).resolvedUrl
+    if (context.req) {
+      const cookieLocale = getCookie((context.req as any).cookies, LOCALE_COOKIE_NAME)!
+      const browserLocale = acceptLanguage.get((context.req as any).headers['accept-language'])!
+      const contextLocale = context.locale!
 
-      // 首页在登录时不跳转到其他语言
-      if (!(isHomePage(asPath) && pageData.props?.isLoggedIn)) {
-        if (isValid(cookieLocale)) {
-          if (cookieLocale !== contextLocale) {
-            locale = cookieLocale
+      if (options?.redirectOnLocale) {
+        let locale: string | undefined
+        const asPath = (context as any).resolvedUrl
+
+        // 首页在登录时不跳转到其他语言
+        if (!(isHomePage(asPath) && pageData.props?.isLoggedIn)) {
+          if (isValid(cookieLocale)) {
+            if (cookieLocale !== contextLocale) {
+              locale = cookieLocale
+            }
+          } else {
+            if (browserLocale !== contextLocale) {
+              locale = browserLocale
+            }
           }
-        } else {
-          if (browserLocale !== contextLocale) {
-            locale = browserLocale
-          }
-        }
 
-        if (locale) {
-          return {
-            redirect: {
-              permanent: false,
-              destination: getPageURL(asPath, locale)
+          if (locale) {
+            return {
+              redirect: {
+                permanent: false,
+                destination: getPageURL(asPath, locale)
+              }
             }
           }
         }
       }
-    }
 
-    const locale = isValid(cookieLocale) ? cookieLocale : browserLocale || i18n.defaultLocale
+      locale = isValid(cookieLocale) ? cookieLocale : browserLocale || i18n.defaultLocale
+    }
 
     return {
       props: {

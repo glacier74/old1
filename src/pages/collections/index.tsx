@@ -24,33 +24,39 @@ const Collection = (props: any): JSX.Element => {
   )
 }
 
-export const getServerSideProps = withTranslations(async ({ query }) => {
-  const records = await CollectionService.records()
-  const categories: string[] = arrayUnique(records.map(t => t.Category))
+export const getServerSideProps = withTranslations(
+  async ({ query }) => {
+    const records = await CollectionService.records()
+    const categories: string[] = arrayUnique(records.map(t => t.Category))
 
-  const groups = categories
-    .map(category => {
-      const filtered = records
-        .filter(record => record.LowerCaseCategory === category.toLowerCase())
-        .slice(0, 9)
+    const groups = categories
+      .map(category => {
+        const filtered = records
+          .filter(record => record.LowerCaseCategory === category.toLowerCase())
+          .slice(0, 9)
 
-      if (isEmpty(filtered)) {
-        return
+        if (isEmpty(filtered)) {
+          return
+        }
+
+        return {
+          category,
+          records: filtered
+        }
+      })
+      .filter(Boolean)
+
+    return {
+      props: {
+        categories,
+        groups
       }
-
-      return {
-        category,
-        records: filtered
-      }
-    })
-    .filter(Boolean)
-
-  return {
-    props: {
-      categories,
-      groups
     }
+  },
+  [],
+  {
+    redirectOnLocale: true
   }
-})
+)
 
 export default Collection

@@ -118,14 +118,7 @@ const ProductEmailCaptures = (): JSX.Element => {
   )
 }
 
-export const getStaticPaths = async () => {
-  return {
-    paths: [],
-    fallback: 'blocking'
-  }
-}
-
-export const getStaticProps = withTranslations(
+export const getServerSideProps = withTranslations(
   async context => {
     return {
       props: {}

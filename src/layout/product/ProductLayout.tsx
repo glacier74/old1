@@ -13,7 +13,7 @@ import { Sidebar } from './Sidebar'
 const productIdKey = process.env.NEXT_PUBLIC_PRODUCT_ID_STORAGE_NAME!
 
 export function ProductLayout({ seo, children }: LayoutProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const product = useProduct()
 
   useEffect(() => {

@@ -1,6 +1,5 @@
 import { isValid } from '@nily/utils'
-import { useTranslation } from 'next-i18next'
-import { NextSeo, NextSeoProps } from 'next-seo'
+import { NextSeo } from 'next-seo'
 import Head from 'next/head'
 
 import { THEMES } from '~/constants'
@@ -17,13 +16,6 @@ export function PublicSiteLayout({
   integrations = [],
   children
 }: PublicSiteLayoutProps): JSX.Element {
-  const { t } = useTranslation()
-
-  const seoProps: NextSeoProps = {
-    title: t('common.name'),
-    description: t('common.description'),
-    ...seo
-  }
   const theme = isValid(rawTheme) ? rawTheme! : THEMES[0]
 
   return (
@@ -55,7 +47,7 @@ export function PublicSiteLayout({
       </Head>
 
       {/* SEO */}
-      <NextSeo {...seoProps} />
+      <NextSeo {...seo} />
 
       {/* HTML */}
       {children}

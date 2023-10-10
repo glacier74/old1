@@ -1,15 +1,16 @@
-import { Form, Input } from '@heyforms/ui'
-import { useTranslation } from 'next-i18next'
-import { isEmpty, isValid } from '@nily/utils'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-import { useStore } from '~/store'
-import { AuthService } from '~/service'
-import { withTranslations } from '~/utils'
-import { LoginLayout } from '~/layout'
+import { Form, Input } from "@heyforms/ui";
+import { isEmpty, isValid } from "@nily/utils";
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
+import { LoginLayout } from "~/layout";
+import { AuthService } from "~/service";
+import { useStore } from "~/store";
+import { withTranslations } from "~/utils";
 
 const ResetPassword = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['dashboard'])
   const router = useRouter()
   const { email } = useStore()
 
@@ -43,7 +44,8 @@ const ResetPassword = (): JSX.Element => {
           {t('resetPassword.heading')}
         </h1>
         <p className="mt-2 text-center text-sm text-slate-600">
-          {t('resetPassword.description')} <span className="font-medium text-slate-700">{email}</span>
+          {t('resetPassword.description')}{' '}
+          <span className="font-medium text-slate-700">{email}</span>
         </p>
       </div>
 
@@ -104,10 +106,13 @@ const ResetPassword = (): JSX.Element => {
   )
 }
 
-export const getServerSideProps = withTranslations(async context => {
-  return {
-    props: {}
-  }
-})
+export const getServerSideProps = withTranslations(
+  async context => {
+    return {
+      props: {}
+    }
+  },
+  ['common', 'dashboard']
+)
 
 export default ResetPassword

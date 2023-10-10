@@ -33,13 +33,16 @@ const Pricing = (): JSX.Element => {
   )
 }
 
-export const getStaticProps = withTranslations(
+export const getServerSideProps = withTranslations(
   async context => {
     return {
       props: {}
     }
   },
-  ['common', 'pricing']
+  ['common', 'pricing'],
+  {
+    redirectOnLocale: true
+  }
 )
 
 export default Pricing

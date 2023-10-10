@@ -31,13 +31,16 @@ const Features = (): JSX.Element => {
   )
 }
 
-export const getStaticProps = withTranslations(
+export const getServerSideProps = withTranslations(
   async context => {
     return {
       props: {}
     }
   },
-  ['common', 'features']
+  ['common', 'features'],
+  {
+    redirectOnLocale: true
+  }
 )
 
 export default Features

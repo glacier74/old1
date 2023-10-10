@@ -1,4 +1,4 @@
-import { conv, isEmpty } from '@nily/utils'
+import { conv } from '@nily/utils'
 import { useTranslation } from 'next-i18next'
 import { FC } from 'react'
 
@@ -61,7 +61,10 @@ export const getServerSideProps = withTranslations(
       }
     }
   },
-  ['common', 'integrations']
+  ['common', 'integrations'],
+  {
+    redirectOnLocale: true
+  }
 )
 
 export default Integrations

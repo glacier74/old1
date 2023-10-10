@@ -5,7 +5,7 @@ import { CreateProductLayout, Steps } from '~/layout'
 import { withTranslations } from '~/utils'
 
 const CreateProduct = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['dashboard'])
 
   return (
     <CreateProductLayout
@@ -18,10 +18,13 @@ const CreateProduct = (): JSX.Element => {
   )
 }
 
-export const getStaticProps = withTranslations(async context => {
-  return {
-    props: {}
-  }
-})
+export const getServerSideProps = withTranslations(
+  async context => {
+    return {
+      props: {}
+    }
+  },
+  ['common', 'dashboard']
+)
 
 export default CreateProduct

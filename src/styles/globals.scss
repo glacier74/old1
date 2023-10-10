@@ -480,6 +480,20 @@ button.switch-checked {
   }
 }
 
+.sidebar-submenu {
+  .menu-item-content {
+    @apply max-w-full;
+
+    svg {
+      @apply -mr-1;
+    }
+  }
+
+  .menu-item-label {
+    @apply overflow-visible;
+  }
+}
+
 // =================================================================================
 // Member
 .member-table {

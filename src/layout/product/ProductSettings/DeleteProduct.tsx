@@ -69,7 +69,7 @@ const DeleteModal: FC<IModalProps> = ({ visible, onClose }) => {
 
 export const DeleteProduct = () => {
   const [visible, open, close] = useVisible()
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
 
   return (
     <>

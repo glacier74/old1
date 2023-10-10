@@ -27,7 +27,7 @@ const Account = (): JSX.Element => {
   )
 }
 
-export const getStaticProps = withTranslations(
+export const getServerSideProps = withTranslations(
   async context => {
     return {
       props: {}

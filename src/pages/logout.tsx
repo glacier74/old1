@@ -24,7 +24,7 @@ const Logout = (): JSX.Element => {
   )
 }
 
-export const getStaticProps = withTranslations(async context => {
+export const getServerSideProps = withTranslations(async context => {
   return {
     props: {}
   }

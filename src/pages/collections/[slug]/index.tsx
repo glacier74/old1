@@ -23,20 +23,26 @@ const CollectionDetail = (props: any): JSX.Element => {
   )
 }
 
-export const getServerSideProps = withTranslations(async ({ query }) => {
-  const record = await CollectionService.findBySlug(query.slug.toLowerCase())
+export const getServerSideProps = withTranslations(
+  async ({ query }) => {
+    const record = await CollectionService.findBySlug(query.slug.toLowerCase())
 
-  if (!record) {
+    if (!record) {
+      return {
+        notFound: true
+      }
+    }
+
     return {
-      notFound: true
+      props: {
+        record
+      }
     }
+  },
+  [],
+  {
+    redirectOnLocale: true
   }
-
-  return {
-    props: {
-      record
-    }
-  }
-})
+)
 
 export default CollectionDetail

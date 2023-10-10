@@ -1,5 +1,6 @@
 import { Input } from '@heyforms/ui'
 import { isEmpty } from '@nily/utils'
+import { useTranslation } from 'next-i18next'
 import router from 'next/router'
 import { useCallback, useState } from 'react'
 
@@ -11,6 +12,7 @@ import { useStore } from '~/store'
 import { StepContainer } from './StepContainer'
 
 export const StepName = () => {
+  const { t } = useTranslation('dashboard')
   const { product, setProduct } = useStore()
 
   const [loading, setLoading] = useState(false)
@@ -50,10 +52,10 @@ export const StepName = () => {
       onNextButtonClick={handleCreate}
     >
       <div className="flex items-center mb-2 text-3xl font-semibold text-slate-950">
-        I would call the landing page{' '}
+        {t('createProduct.snHeading')}{' '}
         <Input className="create-product-input" value={product?.name} onChange={handleChange} />
       </div>
-      <p className="mb-8 text-slate-500 text-xl">Choose a name for your landing page.</p>
+      <p className="mb-8 text-slate-500 text-xl">{t('createProduct.snDesc')}</p>
 
       {error && <div className="mb-2 text-sm text-red-500">{error}</div>}
     </StepContainer>

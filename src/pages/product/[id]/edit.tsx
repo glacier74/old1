@@ -11,7 +11,7 @@ import { useStore } from '~/store'
 import { useRequest, withTranslations } from '~/utils'
 
 const ProductEdit = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const { siteSettings, setSiteSettings } = useStore()
   const product = useProduct()
 
@@ -51,17 +51,13 @@ const ProductEdit = (): JSX.Element => {
   )
 }
 
-export const getStaticPaths = async () => {
-  return {
-    paths: [],
-    fallback: 'blocking'
-  }
-}
-
-export const getStaticProps = withTranslations(async context => {
-  return {
-    props: {}
-  }
-})
+export const getServerSideProps = withTranslations(
+  async context => {
+    return {
+      props: {}
+    }
+  },
+  ['common', 'dashboard']
+)
 
 export default ProductEdit

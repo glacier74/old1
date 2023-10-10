@@ -1,0 +1,476 @@
+{
+  "common": {
+    "logo": "标志",
+    "change": "更改",
+    "cancel": "取消",
+    "uploadImage": "上传图片",
+    "embedVideo": "嵌入视频",
+    "embed": "嵌入",
+    "upload": "上传",
+    "uploading": "上传中",
+    "search": "搜索",
+    "selectText": "上传文件",
+    "reselectText": "重新选择要上传的文件",
+    "drag": "或拖放",
+    "sizeLimit": "PNG，JPG，GIF 最大{{maxSize}}",
+    "exceedsLimit": "所选文件超过{{maxSize}}文件限制",
+    "unsupported": "不支持的文件类型",
+    "duplicate": "重复",
+    "delete": "删除",
+    "update": "更新",
+    "saveChanges": "保存更改",
+    "previous": "上一个",
+    "next": "下一个",
+    "finish": "完成"
+  },
+  "login": {
+    "title": "登录 - EarlyBird",
+    "heading": "👋 欢迎回来！",
+    "description": "登录到你的帐户或<1>创建一个账号</1>",
+    "signInWith": "用以下方式登录",
+    "email": "电子邮件地址",
+    "invalidEmail": "无效的电子邮件地址",
+    "password": "密码",
+    "invalidPassword": "无效的密码",
+    "forgot": "忘记密码？",
+    "remember": "记住我",
+    "submit": "登录",
+    "continueWith": "或者继续使用",
+    "loginWithGoogle": "Google",
+    "loginWithTwitter": "Twitter",
+    "loginWithGithub": "Github"
+  },
+  "signUp": {
+    "title": "创建账号 - EarlyBird",
+    "heading": "创建一个账号",
+    "description": "免费开始，无需信用卡。",
+    "signUpWith": "用以下方式注册",
+    "name": "名字",
+    "invalidName": "名字不能为空",
+    "invalidPassword": "密码必须至少有8个字符，至少包含1个大写字母，1个小写字母和1个数字。",
+    "agreeWith": "注册即表示你同意我们的<1>服务条款</1>和<3>隐私政策</3>。",
+    "submit": "开始"
+  },
+  "forgotPassword": {
+    "title": "忘记密码 - EarlyBird",
+    "heading": "忘记密码？",
+    "description": "我们将向你发送带有验证码的电子邮件。",
+    "continue": "继续",
+    "back": "返回登录"
+  },
+  "resetPassword": {
+    "title": "重置密码 - EarlyBird",
+    "heading": "重置密码",
+    "description": "我们已向你发送了带有6位验证码的电子邮件，请检查你的收件箱",
+    "code": "验证码",
+    "invalidCode": "无效的验证码",
+    "newPassword": "新密码",
+    "repeatPassword": "重复密码",
+    "passwordMismatch": "你的新密码和重复密码不匹配。"
+  },
+  "confirmEmail": {
+    "title": "确认电子邮件 - EarlyBird",
+    "heading": "检查你的电子邮件",
+    "code": "验证码",
+    "invalidCode": "无效的验证码"
+  },
+  "sidebar": {
+    "createProduct": "创建落地页",
+    "member": "成员",
+    "logout": "退出登录",
+    "version": "版本",
+    "viewProfile": "查看个人资料",
+    "dashboard": "仪表盘",
+    "engagements": "转化",
+    "integrate": "与应用集成",
+    "members": "团队成员",
+    "productSettings": "落地页设置",
+    "pro": "EarlyBird Pro",
+    "resources": "资源",
+    "gettingStarted": "入门",
+    "whatsNew": "更新日志",
+    "roadmap": "开发路线",
+    "blog": "博客",
+    "language": "语言"
+  },
+  "product": {
+    "title": "{{name}}",
+    "member_one": "{{count}}名成员",
+    "member_other": "{{count}}名成员",
+    "editSite": "编辑页面",
+    "viewSite": "查看页面"
+  },
+  "createProduct": {
+    "title": "创建落地页",
+    "loggedAs": "登录为：",
+    "logo": "Logo（可选）",
+    "name": "落地页名称",
+    "tagline": "标语",
+    "publicSiteURL": "公共网站 URL",
+    "invalidDomain": "域名必须至少包含3个字符，包括大写字母、小写字母、数字或“-”",
+    "createProductTitle": "欢迎来到 EarlyBird！",
+    "createProductDesc": "首先，请输入所需的字段，如名称、标语和公共网站 URL。然后点击创建落地页。",
+    "createProduct": "创建落地页",
+    "templates": "模板",
+    "invalidLogo": "Logo 不允许为空",
+    "invalidName": "名称不允许为空",
+    "invalidTagline": "标语不允许为空",
+    "invalidDescription": "描述不允许为空",
+    "invalidTemplate": "模板不允许为空",
+    "siHeading": "好极了！让我们把你的绝妙想法带到网上。",
+    "siDesc": "回答几个问题，几分钟内就可以建立你的落地页。",
+    "snHeading": "我会把落地页称为",
+    "snDesc": "为你的落地页选择一个名称。",
+    "chooseTemplate": "选择模板",
+    "chooseTemplateDesc": "这些是精选的模板，可能适合你的需求",
+    "preview": "预览模板",
+    "useTemplate": "使用此模板"
+  },
+  "account": {
+    "title": "账户 - EarlyBird",
+    "heading": "账户",
+    "description": "对账户的更改将应用于你的所有产品。",
+    "avatar": {
+      "heading": "头像",
+      "description": "Gravatar 是 EarlyBird 默认使用的头像，但你可以在这里上传自己的自定义头像。",
+      "change": "更改",
+      "remove": "移除"
+    },
+    "user": {
+      "heading": "你的名字",
+      "button": "更新"
+    },
+    "email": {
+      "change": "更改你的电子邮件地址",
+      "button": "更改电子邮件地址",
+      "newEmail": "新的电子邮件地址",
+      "send": "发送",
+      "check": "检查你的电子邮件"
+    },
+    "password": {
+      "currentPassword": "当前密码",
+      "changeText": "你的密码已被更改",
+      "button": "更改密码"
+    },
+    "dangerZone": {
+      "heading": "危险区",
+      "description": "这将永久删除你的整个账户，包括所有的落地页、转化和成员。",
+      "button": "删除账户",
+      "confirm": "删除我的账户",
+      "tip1": "此操作无法撤销。这将永久删除你的整个账户。你创建的所有工作区将被删除，你将从所有共享工作区中移除。",
+      "tip2": "如果你确定要继续删除你的账户，请在下面继续。",
+      "scheduled": "已安排删除账户",
+      "tip3": "我们已经安排在48小时内删除你的账户。当完成时，你将收到一封电子邮件确认。",
+      "tip4": "你现在将被注销。",
+      "deletionAlert": "你的账户已被安排删除",
+      "alertTip1": "你的所有账户数据，包括但不限于工作区、项目、表单和提交将在删除请求后的{{remainingTime}}小时内被永久删除。",
+      "alertTip2": "如果这是错误操作，你可以在下面取消删除你的账户。",
+      "cancel": "取消安排的删除",
+      "canceledText": "你的账户不再安排删除"
+    }
+  },
+  "plan": {
+    "title": "套餐 - EarlyBird",
+    "heading": "套餐",
+    "description": "你当前的套餐是 {{planName}}。",
+    "upgrade": "你已成功升级到 {{planName}} 套餐。",
+    "downgrade": "你已成功降级到 {{planName}} 套餐。"
+  },
+  "billing": {
+    "title": "账单 - EarlyBird",
+    "heading": "账单",
+    "description": "管理你的账单信息和发票。"
+  },
+  "invoice": {
+    "notFound": "You don't have any invoices yet"
+  },
+  "member": {
+    "heading": "成员",
+    "description": "让你的团队成员访问这个落地页，并开始实时协作。",
+    "emailInvitation": {
+      "heading": "发送电子邮件邀请",
+      "send": "发送邀请",
+      "invalid": "电子邮件地址无效",
+      "success": "已发送邀请"
+    },
+    "linkInvitation": {
+      "heading": "你的邀请链接",
+      "copy": "复制链接",
+      "copied": "已复制"
+    },
+    "removeModal": {
+      "heading": "你确定要移除成员 {{member}} 吗？",
+      "description": "一旦你确认移除这个成员，他们将无法访问这个落地页的数据。",
+      "button": "移除"
+    },
+    "leaveModal": {
+      "heading": "你确定要离开这个落地页吗？",
+      "description": "如果你选择离开这个落地页，你将失去对其数据的访问权限。",
+      "button": "离开"
+    },
+    "transferModal": {
+      "heading": "你确定要把这个落地页转移给 {{name}} 吗？",
+      "description": "一旦你确认转移这个落地页，所有权将转移给 {{name}}。",
+      "button": "转移"
+    },
+    "you": "你",
+    "role": {
+      "owner": "所有者",
+      "admin": "管理员",
+      "member": "成员"
+    }
+  },
+  "engagements": {
+    "title": "转化 - {{name}}",
+    "heading": "转化",
+    "description": "开始与潜在买家和社区进行互动。",
+    "payment": "付款",
+    "emailCapture": "电子邮箱",
+    "contacts": "联系人",
+    "pending": "待定",
+    "trialing": "试用中",
+    "active": "活跃",
+    "incomplete": "未完成",
+    "incompleteExpired": "未完成已过期",
+    "pastDue": "过期未付",
+    "canceled": "已取消",
+    "unpaid": "未付款",
+    "succeeded": "成功",
+    "oneTime": "一次性",
+    "recurring": "定期",
+    "notFound": {
+      "title": "你还没有任何转化",
+      "description": "与他人分享你的落地页，并让他们参与进来。"
+    }
+  },
+  "productStats": {
+    "visitors": "访客",
+    "uniqueVisitors": "独立访客",
+    "totalPageviews": "总页面浏览量",
+    "bounceRate": "跳出率",
+    "visitDuration": "访问时长",
+    "today": "今天",
+    "last7Days": "最近7天",
+    "last30Days": "最近30天",
+    "monthToDate": "本月至今",
+    "last6Months": "最近6个月",
+    "last12Months": "最近12个月",
+    "topSources": "主要来源",
+    "source": "来源",
+    "topPages": "热门页面",
+    "pageUrl": "页面URL",
+    "countries": "国家",
+    "country": "国家",
+    "devices": "设备",
+    "operatingSystem": "操作系统"
+  },
+  "productSettings": {
+    "title": "设置 - {{name}}",
+    "heading": "设置",
+    "updated": "落地页设置已成功更新",
+    "general": {
+      "heading": "通用"
+    },
+    "language": {
+      "heading": "语言",
+      "description": "选择访客将查看你的网站的语言。这适用于你未自定义的文本，例如默认按钮，错误等。"
+    },
+    "domain": {
+      "description": "分享到网络的落地页将位于",
+      "copyTip": "点击复制链接",
+      "copiedTip": "已复制链接到剪贴板"
+    },
+    "advanced": {
+      "heading": "高级"
+    },
+    "sitePrivate": {
+      "heading": "将网站设为私有",
+      "description": "使用单个，易记的密码保护你的落地页。所有SEO和社交媒体功能将被停用。",
+      "invalidPassword": "你的密码应在4到16个字符之间。",
+      "placeholder": "设置网站的密码"
+    },
+    "removeBranding": {
+      "heading": "移除EarlyBird品牌",
+      "description": "从你的页面上移除\"由EarlyBird制作\"的标记。"
+    },
+    "metaData": {
+      "heading": "元数据",
+      "description": "设置你的落地页在网络上以及在社交媒体上分享时的显示方式",
+      "title": "元标题",
+      "description2": "元描述",
+      "openGraphImage": "开放图形图像",
+      "uploadTip1": "推荐尺寸：1200x630 | JPG, PNG。",
+      "uploadTip2": "最大尺寸：5MB"
+    },
+    "dangerZone": {
+      "heading": "危险区"
+    },
+    "deleteProduct": {
+      "heading": "删除落地页",
+      "description": "注意！删除落地页将导致所有转化，成员和数据的永久丧失 - 它们无法恢复！",
+      "button": "删除",
+      "success": "落地页已成功删除"
+    },
+    "deleteProductModal": {
+      "warn1": "请注意，此操作不可逆，将永久删除与此落地页相关的所有数据。",
+      "warn2": "一旦你确认删除落地页，你将无法再访问落地页数据。",
+      "button": "删除落地页"
+    }
+  },
+  "builder": {
+    "title": "编辑 - {{name}}",
+    "meta": {
+      "name": "元",
+      "title": "元标题",
+      "description": "元描述"
+    },
+    "socialMedia": "社交媒体",
+    "twitter": "推特",
+    "facebook": "脸书",
+    "instagram": "Instagram",
+    "linkedin": "领英",
+    "youtube": "YouTube",
+    "telegram": "电报",
+    "github": "Github",
+    "bold": "粗体",
+    "italic": "斜体",
+    "strikethrough": "删除线",
+    "underline": "下划线",
+    "link": "链接",
+    "linkOff": "关闭链接",
+    "align": {
+      "left": "左对齐",
+      "center": "居中对齐",
+      "right": "右对齐"
+    },
+    "blocks": "块",
+    "closeBlocks": "关闭块",
+    "leaveBrowserMessage": "你有未保存的更改，确定要离开此页面吗？",
+    "basic": "基本",
+    "addNewBlock": "添加新块",
+    "searchBlockType": "查找块类型",
+    "settings": "块设置",
+    "closeSettings": "关闭块设置",
+    "layout": "布局",
+    "design": {
+      "name": "设计",
+      "theme": "主题",
+      "customize": "自定义",
+      "headline": "标题",
+      "content": "内容",
+      "primary": "主要",
+      "buttonBackground": "按钮背景",
+      "buttonText": "按钮文本",
+      "border": "边框",
+      "background": "背景"
+    },
+    "text": {
+      "name": "富文本",
+      "placeholder": "文本内容"
+    },
+    "heading": {
+      "name": "标题",
+      "placeholder": "标题内容"
+    },
+    "header": {
+      "name": "头部",
+      "settings": "链接"
+    },
+    "heroSection": {
+      "name": "英雄",
+      "heading": "传达你的产品或服务的价值主张",
+      "tagline": "副标题是一种有效的方式来强化你的标题并提供关于你的优惠的额外信息。它有助于阐明和扩展你的标题的主要点。",
+      "button": "在这里写一个行动呼吁",
+      "uploadTip1": "推荐尺寸：1100x640 | JPG, PNG。",
+      "uploadTip2": "最大尺寸：5MB"
+    },
+    "footer": {
+      "name": "页脚",
+      "settings": "社交媒体"
+    },
+    "feature": {
+      "name": "特性",
+      "heading": "突出显示你产品的关键特性",
+      "description": "提供关于你产品的这个关键特性的简洁信息，以及它允许用户实现的内容。",
+      "uploadTip1": "推荐尺寸：500x320 | JPG, PNG。",
+      "uploadTip2": "最大尺寸：5MB"
+    },
+    "payment": {
+      "name": "支付",
+      "heading": "激励你的访客购买",
+      "description": "传达付费功能或服务的价值和优点，并鼓励用户尝试。",
+      "feature": "详述价值和优点",
+      "settings": "支付设置"
+    },
+    "slideGallery": {
+      "name": "轮播",
+      "uploadTip1": "推荐尺寸：1100x640 | JPG, PNG。",
+      "uploadTip2": "最大尺寸：5MB"
+    },
+    "emailCapture": {
+      "name": "电子邮件捕获",
+      "heading": "说服你的访客加入",
+      "description": "强调潜在的领导为什么应该输入电子邮件地址。强化你的产品或服务的价值，以换取电子邮件地址。",
+      "button": "行动呼吁文本",
+      "namePlaceholder": "你的名字",
+      "emailPlaceholder": "电子邮件地址",
+      "nameRequired": "需要名字"
+    },
+    "faq": {
+      "name": "常见问题",
+      "heading": "常见问题",
+      "description": "常见问题通过解决你的客户的需求来改善用户体验。在这里，你可以提供关于业务的典型问题的答案列表，你的客户可能会问。",
+      "question": "一个常问的问题",
+      "answer": "提供有用和相关信息的答案。保持精确。",
+      "addItem": "添加一个项目",
+      "deleteItem": "删除项目"
+    },
+    "testimonial": {
+      "name": "推荐语",
+      "heading": "爱的墙",
+      "description": "不要听我们的话。听听我们的客户怎么说。"
+    }
+  },
+  "invite": {
+    "title": "邀请 - EarlyBird",
+    "heading": "你已被邀请加入{{inviter}}的落地页",
+    "description": "加入落地页，开始一起工作！",
+    "errorTip": "如果你在加入落地页时遇到问题，请联系页面所有者或 EarlyBird 支持。",
+    "join": "加入",
+    "goBack": "返回",
+    "backHome": "返回EarlyBird"
+  },
+  "stripe": {
+    "title": "$t(stripe.connecting) - EarlyBird",
+    "connecting": "Connecting with stripe"
+  },
+  "integrations": {
+    "title": "集成 - EarlyBird",
+    "detailTitle": "{{title}} - 集成 - EarlyBird",
+    "heading": "与应用程序集成",
+    "description": "将你的转化数据与你最喜欢的应用程序连接。",
+    "connecting": "正在连接你最喜欢的应用程序"
+  },
+  "openApp": {
+    "authorize": {
+      "title": "Authorize - EarlyBird",
+      "heading": "To continue, please authorize {{openAppName}} to access the following information from your EarlyBird account:",
+      "account": {
+        "heading": "Account details",
+        "description": "Allows {{openAppName}} to access your name, email and avatar"
+      },
+      "product": {
+        "heading": "Landing pages",
+        "description": "Allows {{openAppName}} to get a list of your landing pages"
+      },
+      "contact": {
+        "heading": "Contacts",
+        "description": "Allows {{openAppName}} to get a list of your conversions contacts"
+      },
+      "payment": {
+        "heading": "Payments",
+        "description": "Allows {{openAppName}} to get a list of your conversions payments"
+      }
+    }
+  }
+}

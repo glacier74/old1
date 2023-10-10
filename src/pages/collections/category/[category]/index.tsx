@@ -25,28 +25,34 @@ const Collection = (props: any): JSX.Element => {
   )
 }
 
-export const getServerSideProps = withTranslations(async ({ query }) => {
-  const category = query.category.toLowerCase()
+export const getServerSideProps = withTranslations(
+  async ({ query }) => {
+    const category = query.category.toLowerCase()
 
-  let records = await CollectionService.records()
-  const categories: string[] = arrayUnique(records.map(t => t.Category))
+    let records = await CollectionService.records()
+    const categories: string[] = arrayUnique(records.map(t => t.Category))
 
-  const limit = 18
-  const page = conv.int(query.page, 1)!
+    const limit = 18
+    const page = conv.int(query.page, 1)!
 
-  // Filter collections
-  records = records.filter(t => t.LowerCaseCategory === category)
+    // Filter collections
+    records = records.filter(t => t.LowerCaseCategory === category)
 
-  return {
-    props: {
-      categories,
-      category,
-      records: records.slice((page - 1) * limit, page * limit),
-      total: records.length,
-      page,
-      limit
+    return {
+      props: {
+        categories,
+        category,
+        records: records.slice((page - 1) * limit, page * limit),
+        total: records.length,
+        page,
+        limit
+      }
     }
+  },
+  [],
+  {
+    redirectOnLocale: true
   }
-})
+)
 
 export default Collection

@@ -1,6 +1,7 @@
 import { isValid } from '@nily/utils'
 import { IconCheck } from '@tabler/icons'
 import clsx from 'clsx'
+import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import { FC, MouseEvent, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 
@@ -46,6 +47,8 @@ const CategoryItem: FC<CategoryItemProps> = ({ category, isSelected, onClick }) 
 }
 
 const TemplateItem: FC<TemplateItemProps> = ({ template, isSelected, onPreview, onClick }) => {
+  const { t } = useTranslation('dashboard')
+
   function handleClick() {
     onClick(template.id)
   }
@@ -75,7 +78,7 @@ const TemplateItem: FC<TemplateItemProps> = ({ template, isSelected, onPreview, 
             className="px-2 py-1 rounded-lg text-emerald-600 text-sm bg-white border border-emerald-600 z-10 shadow-lg transition-colors hover:border-emerald-700 hover:text-emerald-700"
             onClick={handlePreview}
           >
-            Preview
+            {t('createProduct.preview')}
           </button>
         </div>
 
@@ -93,7 +96,7 @@ const TemplateItem: FC<TemplateItemProps> = ({ template, isSelected, onPreview, 
           className="px-2 py-1 rounded-lg text-white text-sm bg-emerald-600 opacity-0 hover:bg-emerald-700 group-hover/container:opacity-100"
           onClick={handleClick}
         >
-          Use this template
+          {t('createProduct.useTemplate')}
         </button>
       </div>
     </div>
@@ -101,6 +104,8 @@ const TemplateItem: FC<TemplateItemProps> = ({ template, isSelected, onPreview, 
 }
 
 export const StepTemplate = () => {
+  const { t } = useTranslation('dashboard')
+
   const { product, setProduct } = useStore()
   const { state, dispatch } = useContext(StepsStoreContext)
 
@@ -146,10 +151,10 @@ export const StepTemplate = () => {
   return (
     <>
       <StepContainer className="w-full md:w-[800px]">
-        <div className="mb-2 text-2xl font-bold text-slate-900">Choose a template</div>
-        <div className="mb-8 text-slate-500">
-          These are hand-picked templates that might suit your demand
+        <div className="mb-2 text-2xl font-bold text-slate-900">
+          {t('createProduct.chooseTemplate')}
         </div>
+        <div className="mb-8 text-slate-500">{t('createProduct.chooseTemplateDesc')}</div>
 
         {state.isTemplateLoading ? (
           <Loading className="h-[50vh]" />

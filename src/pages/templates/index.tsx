@@ -51,7 +51,10 @@ export const getServerSideProps = withTranslations(
       }
     }
   },
-  ['common', 'templates']
+  ['common', 'templates'],
+  {
+    redirectOnLocale: true
+  }
 )
 
 export default Templates

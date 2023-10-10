@@ -65,7 +65,10 @@ export const getServerSideProps = withTranslations(
       }
     }
   },
-  ['common', 'integrations']
+  ['common', 'integrations'],
+  {
+    redirectOnLocale: true
+  }
 )
 
 export default Integrations

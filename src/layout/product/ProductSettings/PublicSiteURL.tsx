@@ -448,7 +448,7 @@ const CustomURL: FC = () => {
 }
 
 export const PublicSiteURL: FC = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const product = useProduct()
 
   const host = useProductURL(product)

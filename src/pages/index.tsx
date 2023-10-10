@@ -67,7 +67,10 @@ export const getServerSideProps = withTranslations(
       }
     }
   },
-  ['common', 'home']
+  ['common', 'home'],
+  {
+    redirectOnLocale: true
+  }
 )
 
 export default Home

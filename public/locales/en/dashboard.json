@@ -1,8 +1,5 @@
 {
   "common": {
-    "shortName": "EarlyBird",
-    "name": "EarlyBird: Your landing page builder for effective lead capture",
-    "description": "EarlyBird is a no-code landing page builder for startups. Effortlessly create customized, high-converting landing pages to validate your startup ideas.",
     "logo": "Logo",
     "change": "Change",
     "cancel": "Cancel",
@@ -24,41 +21,7 @@
     "saveChanges": "Save changes",
     "previous": "Previous",
     "next": "Next",
-    "finish": "Finish",
-    "404": "Page not found - EarlyBird",
-    "500": "Internal server error - EarlyBird"
-  },
-  "features": {
-    "title": "Features - EarlyBird"
-  },
-  "pricing": {
-    "title": "Pricing - EarlyBird"
-  },
-  "collections": {
-    "title": "Collections - EarlyBird",
-    "detailTitle": "{{title}} - Collections - EarlyBird"
-  },
-  "blog": {
-    "title": "Blog - EarlyBird"
-  },
-  "showcase": {
-    "title": "Showcase - EarlyBird"
-  },
-  "microSaasIdeas": {
-    "title": "Micro Saas Ideas - EarlyBird"
-  },
-  "useCase": {
-    "title": "UseCase - EarlyBird"
-  },
-  "about": {
-    "title": "About - EarlyBird"
-  },
-  "templates": {
-    "title": "Landing Page Templates by EarlyBird",
-    "detailTitle": "{{title}} - Landing Page Template by EarlyBird"
-  },
-  "gumroad": {
-    "title": "Free Gumroad Alternative - EarlyBird"
+    "finish": "Finish"
   },
   "login": {
     "title": "Login - EarlyBird",
@@ -132,7 +95,8 @@
     "helpCenter": "Help center",
     "joinCommunity": "Join Discord server",
     "sendEmail": "Send us an email",
-    "twitter": "Tweet @EarlyBirdIM"
+    "twitter": "Tweet @EarlyBirdIM",
+    "language": "Language"
   },
   "product": {
     "title": "{{name}}",
@@ -157,7 +121,15 @@
     "invalidName": "The name is not allowed to be empty",
     "invalidTagline": "The tagline is not allowed to be empty",
     "invalidDescription": "The description is not allowed to be empty",
-    "invalidTemplate": "The template is not allowed to be empty"
+    "invalidTemplate": "The template is not allowed to be empty",
+    "siHeading": "Hooray! Let's take your brilliant idea online.",
+    "siDesc": "Answer a few questions and have your landing page up in minutes.",
+    "snHeading": "I would call the landing page",
+    "snDesc": "Choose a name for your landing page.",
+    "chooseTemplate": "Choose a template",
+    "chooseTemplateDesc": "These are hand-picked templates that might suit your demand",
+    "preview": "Preview",
+    "useTemplate": "Use this template"
   },
   "account": {
     "title": "Account - EarlyBird",
@@ -259,7 +231,7 @@
     "description": "Start engaging with potential buyers and communities.",
     "payment": "Payment",
     "emailCapture": "Email capture",
-    "contacts": "Contacts",
+    "contacts": "Contact",
     "pending": "Pending",
     "trialing": "Trialing",
     "active": "Active",

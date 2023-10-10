@@ -1,6 +1,7 @@
 import { Button } from '@heyforms/ui'
 import { IComponentProps } from '@heyforms/ui/types/typing'
 import { IconArrowLeft } from '@tabler/icons'
+import { useTranslation } from 'next-i18next'
 import { FC, useContext, useMemo } from 'react'
 
 import { StepsStoreContext } from './context'
@@ -18,6 +19,8 @@ export const StepContainer: FC<StepContainerProps> = ({
   onNextButtonClick,
   ...restProps
 }) => {
+  const { t } = useTranslation('dashboard')
+
   const { state, dispatch } = useContext(StepsStoreContext)
   const step = useMemo(
     () => state.steps.find(s => s.value === state.active),
@@ -59,7 +62,7 @@ export const StepContainer: FC<StepContainerProps> = ({
           loading={isNextButtonLoading}
           onClick={handleNext}
         >
-          Next
+          {t('common.next')}
         </Button>
       )}
     </div>

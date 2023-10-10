@@ -23,34 +23,42 @@ const Search = (props: any): JSX.Element => {
   )
 }
 
-export const getServerSideProps = withTranslations(async ({ query }) => {
-  const search = query.query
-  const list = await CollectionService.records()
-  const categories: string[] = arrayUnique(list.map(t => t.Category))
+export const getServerSideProps = withTranslations(
+  async ({ query }) => {
+    const search = query.query
+    const list = await CollectionService.records()
+    const categories: string[] = arrayUnique(list.map(t => t.Category))
 
-  let records: CollectionRecord[] = list
+    let records: CollectionRecord[] = list
 
-  if (isValid(search)) {
-    const searchLower = search!.toLowerCase()
+    if (isValid(search)) {
+      const searchLower = search!.toLowerCase()
 
-    records = list.filter(r => {
-      return r.Name.toLowerCase().includes(searchLower) || r.LowerCaseCategory.includes(searchLower)
-    })
-  }
-
-  const limit = 18
-  const page = conv.int(query.page, 1)!
-
-  return {
-    props: {
-      search: search || null,
-      categories,
-      records: records.slice((page - 1) * limit, page * limit),
-      total: records.length,
-      page,
-      limit
+      records = list.filter(r => {
+        return (
+          r.Name.toLowerCase().includes(searchLower) || r.LowerCaseCategory.includes(searchLower)
+        )
+      })
     }
+
+    const limit = 18
+    const page = conv.int(query.page, 1)!
+
+    return {
+      props: {
+        search: search || null,
+        categories,
+        records: records.slice((page - 1) * limit, page * limit),
+        total: records.length,
+        page,
+        limit
+      }
+    }
+  },
+  [],
+  {
+    redirectOnLocale: true
   }
-})
+)
 
 export default Search

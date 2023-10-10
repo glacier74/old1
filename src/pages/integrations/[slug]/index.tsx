@@ -1,5 +1,4 @@
 import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
 import { FC } from 'react'
 
 import { HomeFooter, HomeHeader, HomeLayout } from '~/layout'
@@ -52,7 +51,10 @@ export const getServerSideProps = withTranslations(
       }
     }
   },
-  ['common', 'integrations']
+  ['common', 'integrations'],
+  {
+    redirectOnLocale: true
+  }
 )
 
 export default IntegrationsDetail
