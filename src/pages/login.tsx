@@ -1,11 +1,11 @@
-import {Checkbox, Form, Input} from '@heyforms/ui'
-import {Trans, useTranslation} from 'next-i18next'
-import {useRouter} from 'next/router'
-import {LoginLayout, SocialLogin} from '~/layout'
-import {AuthService} from '~/service'
-import {useStore} from '~/store'
-import {isResponseError, withTranslations} from '~/utils'
-import {useEffect} from 'react'
+import { Checkbox, Form, Input } from '@heyforms/ui'
+import { Trans, useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
+import { LoginLayout, SocialLogin } from '~/layout'
+import { AuthService } from '~/service'
+import { useStore } from '~/store'
+import { isResponseError, withTranslations } from '~/utils'
+import { useEffect } from 'react'
 
 const Login = (): JSX.Element => {
   const { t } = useTranslation('dashboard')
@@ -29,6 +29,7 @@ const Login = (): JSX.Element => {
 
   useEffect(() => {
     router.prefetch('/confirm-email')
+    router.prefetch('/')
   }, [])
 
   return (

@@ -51,7 +51,7 @@ export class PublicApiService {
       .json()
   }
 
-  static async user(headers: Headers) {
+  static async user(headers: AnyMap<string>) {
     return ky
       .get(`${NEXT_PUBLIC_API_URI}/user`, {
         headers

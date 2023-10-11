@@ -45,7 +45,9 @@ export async function middleware(req: NextRequest) {
   // 检查 token 是否有效
   if (isLogged) {
     try {
-      await PublicApiService.user(req.headers)
+      await PublicApiService.user({
+        cookie: req.headers.get('cookie')!
+      })
     } catch (err: any) {
       if (err.name === 'HTTPError') {
         // 删除 token cookie
