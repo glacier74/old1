@@ -29,7 +29,6 @@ const Login = (): JSX.Element => {
 
   useEffect(() => {
     router.prefetch('/confirm-email')
-    router.prefetch('/')
   }, [])
 
   return (

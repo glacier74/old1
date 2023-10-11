@@ -61,7 +61,7 @@ export const SidebarAccount: FC = () => {
               <span>{t('sidebar.language')}</span>
               <IconChevronRight />
             </button>
-            <Menus className="absolute top-0 left-[220px] !my-0 hidden group-hover:block">
+            <Menus className="absolute top-0 left-[220px] w-[140px] !my-0 hidden group-hover:block">
               {LANGUAGE_OPTIONS.map(row => (
                 <Menus.Item
                   key={row.value}

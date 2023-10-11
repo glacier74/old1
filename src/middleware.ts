@@ -46,7 +46,7 @@ export async function middleware(req: NextRequest) {
   if (isLogged) {
     try {
       await PublicApiService.user({
-        cookie: req.headers.get('cookie')!
+        cookie: req.cookies.toString()
       })
     } catch (err: any) {
       if (err.name === 'HTTPError') {
