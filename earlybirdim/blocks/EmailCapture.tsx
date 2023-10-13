@@ -1,3 +1,4 @@
+import { getRecaptchaToken } from '@earlybirdim/components/utils'
 import { EmptyStates, Spin, preventDefault } from '@heyforms/ui'
 import clsx from 'clsx'
 import { ChangeEvent, FC, FormEvent, useCallback, useState } from 'react'
@@ -87,7 +88,8 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
             blockId,
             settingId: id!,
             name: name!,
-            email: email!
+            email: email!,
+            token: await getRecaptchaToken()
           })
 
           setSubmitted(true)

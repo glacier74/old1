@@ -312,6 +312,14 @@ const PublicSite: FC<PublicSiteProps> = ({
       <PublicSiteHiddenBlocksStyle hiddenBlocks={product.siteSetting.hiddenBlocks} />
 
       <Script
+        dangerouslySetInnerHTML={{ __html: `window.captcha = ${JSON.stringify(product.captcha)}` }}
+        strategy="beforeInteractive"
+      />
+      <Script
+        src={`https://www.google.com/recaptcha/api.js?render=${product.captcha.recaptcha}`}
+        strategy="beforeInteractive"
+      />
+      <Script
         data-domain={product.analyticId}
         src="https://analytics.earlybird.im/js/plausible.js"
       />

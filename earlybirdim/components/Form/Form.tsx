@@ -7,6 +7,7 @@ import { PublicApiService } from '~/service/public-api'
 import { urlBuilder } from '~/utils'
 
 import { useGlobalContext } from '../GlobalContext'
+import { getRecaptchaToken } from '../utils'
 import { FormContext, FormReducer, useFormContext } from './Context'
 import FormButton from './FormButton'
 import FormInput from './FormInput'
@@ -94,6 +95,7 @@ const InternalForm: FC<FormProps> = ({
         } else if (type === 'contact') {
           await PublicApiService.createContact(productId, {
             blockId,
+            token: await getRecaptchaToken(),
             ...values
           })
 
@@ -101,6 +103,7 @@ const InternalForm: FC<FormProps> = ({
         } else {
           await PublicApiService.createEmailCapture(productId, {
             blockId,
+            token: await getRecaptchaToken(),
             ...values
           })
 

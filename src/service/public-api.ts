@@ -10,6 +10,7 @@ interface BaseInput {
 interface CreateEmailCaptureInput extends BaseInput {
   name: string
   email: string
+  token?: string
 }
 
 interface CreateContactInput extends CreateEmailCaptureInput {

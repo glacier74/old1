@@ -198,6 +198,9 @@ declare global {
     canonicalURL: string
     isRestricted: boolean
     isBrandingRemoved: boolean
+    captcha: {
+      recaptcha: string
+    }
     createdAt: string
     updatedAt: string
   }
