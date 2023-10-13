@@ -126,6 +126,11 @@ const InternalForm: FC<FormProps> = ({
       <RCForm onFinish={handleFinish} {...restProps}>
         {children}
       </RCForm>
+      <div className="earlybird-recaptcha">
+        This site is protected by reCAPTCHA and the Google{' '}
+        <a href="https://policies.google.com/privacy">Privacy Policy</a> and{' '}
+        <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+      </div>
       {error && <div className="mt-1 text-red-500 text-sm">{error}</div>}
       {isSubmitted && <FormSuccess successMessage={successMessage} />}
     </>

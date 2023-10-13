@@ -2375,3 +2375,12 @@ button.button-success {
     @apply w-[140px];
   }
 }
+
+// Recaptcha
+.earlybird-recaptcha {
+  @apply mt-2 text-xs text-slate-400;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
