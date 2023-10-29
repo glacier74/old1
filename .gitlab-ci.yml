@@ -11,6 +11,7 @@ cache:
 before_script:
   - /bin/bash -c "$(curl -fsSL https://git.heyooo.com/snippets/2/raw)" $NPM_HOST $USERNAME $PASSWORD
   - npm config set always-auth true
+  - npm pkg delete scripts.prepare
   - pnpm install
 
 development:

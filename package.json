@@ -13,7 +13,7 @@
     "lint:staged": "lint-staged",
     "lint:json": "jsonlint \"public/locales/**/*.json\"",
     "type-check": "tsc --pretty --noEmit",
-    "prepare": "node prepare.js"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@earlybirdim/icons": "^2.3.1",
@@ -62,7 +62,7 @@
     "lexical": "^0.8.1",
     "lodash": "^4.17.21",
     "nanoid": "^4.0.2",
-    "next": "^13.2.1",
+    "next": "^13.5.6",
     "next-i18next": "^12.1.0",
     "next-seo": "^5.15.0",
     "node-html-parser": "^6.1.10",
@@ -81,7 +81,7 @@
     "react-transition-group": "^4.4.5",
     "react-use": "^17.4.0",
     "sanitize-html": "^2.10.0",
-    "sharp": "^0.31.3",
+    "sharp": "^0.32.6",
     "sortablejs": "^1.15.0",
     "swiper": "^9.1.0",
     "timeago.js": "^4.0.2",
