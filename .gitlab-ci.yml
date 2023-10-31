@@ -42,7 +42,6 @@ development:
     cp .env.production tmp/
     cp next.config.js tmp/
     cp next-i18next.config.js tmp/
-    cp prepare.js tmp/
     cp package.json tmp/
     cp pnpm-lock.yaml tmp/
 
@@ -86,7 +85,6 @@ release:
     cp next.config.js tmp/
     cp next-i18next.config.js tmp/
     cp ecosystem.config.js tmp/
-    cp prepare.js tmp/
     cp package.json tmp/
     cp pnpm-lock.yaml tmp/
 

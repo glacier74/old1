@@ -4,11 +4,13 @@ import { useFrame } from 'react-frame-component'
 interface ScrollIntoViewProps {
   selectedOptionName?: string
   selectedCompletionName?: string
+  selectedListId?: string
 }
 
 export const ScrollIntoView: FC<ScrollIntoViewProps> = ({
   selectedOptionName,
-  selectedCompletionName
+  selectedCompletionName,
+  selectedListId
 }) => {
   const { document: doc } = useFrame()
 
@@ -27,6 +29,20 @@ export const ScrollIntoView: FC<ScrollIntoViewProps> = ({
       })
     }
   }, [doc, selectedCompletionName, selectedOptionName])
+
+  useEffect(() => {
+    if (!selectedListId || !doc) {
+      return
+    }
+
+    const el = doc.querySelector(`[data-id="${selectedListId}"]`)
+
+    if (el) {
+      el.scrollIntoView({
+        block: 'start'
+      })
+    }
+  }, [doc, selectedListId])
 
   return null
 }

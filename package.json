@@ -10,10 +10,8 @@
     "start": "pm2 reload ecosystem.config.js",
     "lint": "eslint \"{src,earlybirdim,test}/**/*.{ts,tsx}\" --quiet",
     "lint:fix": "eslint \"{src,test}/**/*.{ts,tsx}\" --fix --quiet",
-    "lint:staged": "lint-staged",
     "lint:json": "jsonlint \"public/locales/**/*.json\"",
-    "type-check": "tsc --pretty --noEmit",
-    "prepare": "husky install"
+    "type-check": "tsc --pretty --noEmit"
   },
   "dependencies": {
     "@earlybirdim/icons": "^2.3.1",
@@ -21,10 +19,12 @@
     "@emoji-mart/react": "^1.1.1",
     "@fortaine/fetch-event-source": "^3.0.6",
     "@headlessui/react": "^1.7.12",
-    "@heyforms/ui": "^2023.10.1",
+    "@heyforms/ui": "^2023.10.3",
+    "@heyooo-inc/utils": "^0.0.10",
     "@nily/utils": "^0.3.6",
     "@reactour/tour": "^3.2.1",
     "@tabler/icons": "^1.119.0",
+    "@tinaryan/dp": "^0.2.2",
     "@tippyjs/react": "^4.2.6",
     "@tiptap/core": "2.0.0-beta.218",
     "@tiptap/extension-bold": "2.0.0-beta.218",
@@ -61,6 +61,7 @@
     "ky": "^0.33.3",
     "lexical": "^0.8.1",
     "lodash": "^4.17.21",
+    "mapbox-gl": "^2.15.0",
     "nanoid": "^4.0.2",
     "next": "^13.5.6",
     "next-i18next": "^12.1.0",
@@ -97,6 +98,7 @@
     "@types/html-to-text": "^9.0.0",
     "@types/js-cookie": "^3.0.3",
     "@types/lodash": "^4.14.191",
+    "@types/mapbox-gl": "^2.7.17",
     "@types/node": "^18.14.1",
     "@types/react": "^18.0.28",
     "@types/react-copy-to-clipboard": "^5.0.4",
@@ -113,8 +115,6 @@
     "eslint-config-next": "^12.3.4",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.1.2",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
     "sass": "^1.58.3",
@@ -123,7 +123,8 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "@tabler/icons@1.119.0": "patches/@tabler__icons@1.119.0.patch"
+      "@tabler/icons@1.119.0": "patches/@tabler__icons@1.119.0.patch",
+      "mapbox-gl@2.15.0": "patches/mapbox-gl@2.15.0.patch"
     }
   }
 }

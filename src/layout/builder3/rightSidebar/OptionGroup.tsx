@@ -15,6 +15,7 @@ import { PaymentOption } from './PaymentOption'
 import { SelectOption } from './SelectOption'
 import { TextListOption } from './TextListOption'
 import { TextOption } from './TextOption'
+import { WidgetListOption } from './WidgetListOption'
 
 export interface OptionProps {
   schema: any
@@ -60,6 +61,9 @@ export const Option: FC<OptionProps> = ({ schema, parentName }) => {
 
     case SchemaTypeEnum.list:
       return <ListOption parentName={parentName} schema={schema} />
+
+    case SchemaTypeEnum.widgetList:
+      return <WidgetListOption parentName={parentName} schema={schema} />
 
     default:
       return null

@@ -1,0 +1,176 @@
+import { FC } from 'react'
+
+export type WidgetSize = '1x1' | '2x1' | '2x2' | '2x0.5'
+export type WidgetType = 'group_title' | 'image' | 'video' | string
+
+export interface WidgetGridData {
+  id: string
+  type?: WidgetType
+  size: WidgetSize
+  url: string
+  data?: WidgetData
+  overrides?: {
+    imageUrl?: string
+    title?: string
+  }
+}
+
+export interface WidgetGridProps extends ComponentProps {
+  itemSize: number
+  gapSize: number
+  list: WidgetGridData[]
+}
+
+export type WidgetItemProps<T = WidgetData> = WidgetConfig<T> & ComponentProps
+
+export interface WidgetIconProps extends ComponentProps {
+  url: string
+  faviconUrl?: string
+}
+
+export interface WidgetContainerProps extends ComponentProps {
+  size: string
+  config: WidgetConfig
+  component: FC<WidgetConfig>
+}
+
+export interface WidgetFollowButtonProps extends ComponentProps {
+  followers: number
+  followText?: string
+}
+
+export interface WidgetPostListProps extends ComponentProps {
+  itemClassNames?: string | string[]
+  maxCount: number
+  posts: WidgetPost[]
+}
+
+export interface WidgetStyles {
+  padding?: string
+  compactPadding?: string
+  bgColor?: string
+  bgHoverColor?: string
+  bgActiveColor?: string
+  followBorderColor?: string
+  followBgColor?: string
+  followBgHoverColor?: string
+  followBgActiveColor?: string
+  followTextColor?: string
+  followersColor?: string
+}
+
+export interface WidgetExtra extends AnyMap<any> {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  styles?: WidgetStyles
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  getComputedData?: (config: WidgetConfig) => AnyMap
+}
+
+export interface WidgetConfig<T = any> {
+  id: string
+  type?: WidgetType
+  size: WidgetSize
+  url: string
+  data: T
+  extra?: WidgetExtra
+}
+
+export interface WidgetPost {
+  title: string
+  thumbnail: string
+  url: string
+}
+
+export interface WidgetOverrides {
+  title?: string
+  imageUrl?: string
+}
+
+export interface WidgetData {
+  name: string
+  followers: number
+  description?: string
+  imageUrl: string
+  posts: WidgetPost[]
+  overrides?: WidgetOverrides
+}
+
+export interface GithubData extends Omit<WidgetData, 'posts'> {
+  numContributions: number
+  contributions: Array<
+    Array<{
+      date: string
+      count: number
+    }>
+  >
+}
+
+export interface GithubContributionRect {
+  x: number
+  y: number
+  fill?: string
+  label?: string
+}
+
+export interface GithubContributionProps extends Pick<GithubData, 'contributions'>, ComponentProps {
+  blockSize?: number
+  columnSize?: number
+  isMonthShow?: boolean
+}
+
+export interface SpotifySong {
+  name: string
+  artists: string[]
+  duration: number
+  previewUrl: string
+  thumbnail: string
+}
+
+export interface SpotifyPlaylistData extends Pick<WidgetData, 'name' | 'imageUrl' | 'overrides'> {
+  artists: string[]
+  numSongs: number
+  songs: SpotifySong[]
+}
+
+export interface SpotifyArtistData extends Omit<WidgetData, 'posts'> {
+  albums: Array<{
+    url: string
+    name: string
+    thumbnail: string
+  }>
+  numAlbums: number
+}
+
+export interface WidgetPlayButtonProps extends ComponentProps {
+  playText?: string
+  pauseText?: string
+}
+
+export interface SteamData extends Omit<WidgetData, 'posts'> {
+  numGames: number
+  games: WidgetPost[]
+}
+
+export interface YoutubeData extends Omit<WidgetData, 'posts'> {
+  videos: WidgetPost[]
+}
+
+export interface WebsiteData extends Pick<WidgetData, 'description' | 'imageUrl' | 'overrides'> {
+  title: string
+  faviconUrl?: string
+}
+
+export interface MapData {
+  latitude: number
+  longitude: number
+  zoom: number
+  overrides?: Pick<WidgetOverrides, 'title'> & {
+    location?: string
+  }
+}
+
+export interface MediaData {
+  overrides?: Pick<WidgetOverrides, 'title' | 'imageUrl'>
+}

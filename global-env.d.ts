@@ -17,7 +17,7 @@ declare global {
   import type { ReactNode, CSSProperties } from 'react'
   import type { NextPageContext } from 'next'
 
-  type AnyMap<V, K = string> = Record<K, T>
+  type AnyMap<V = string, K = string> = Record<K, T>
   type StringMap = AnyMap<string>
 
   interface ComponentProps extends AriaAttributes {
@@ -198,6 +198,7 @@ declare global {
     canonicalURL: string
     isRestricted: boolean
     isBrandingRemoved: boolean
+    isJingleBio: boolean
     captcha: {
       recaptcha: string
     }

@@ -7,6 +7,7 @@ import * as blackMatrix from './black-matrix'
 import * as dove from './dove'
 import * as ebony from './ebony'
 import * as indieFolio from './indie-folio'
+import * as jingleBio from './jingle-bio'
 import * as landingPage01 from './landing-page-01'
 import * as landingPage02 from './landing-page-02'
 import * as minimalLanding from './minimal-landing'
@@ -36,7 +37,8 @@ const templates: AnyMap<Template> = {
   'black-matrix': blackMatrix,
   'black-canvas': blackCanvas,
   'minimal-landing-01': minimalLanding,
-  'panda-zen': pandaZen
+  'panda-zen': pandaZen,
+  'jingle-bio': jingleBio
 }
 
 export default templates

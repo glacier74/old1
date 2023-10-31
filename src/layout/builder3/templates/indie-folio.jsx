@@ -114,7 +114,7 @@ export const schemas = [
           {
             name: 'image',
             title: 'Image',
-            type: 'text'
+            type: 'image'
           }
         ],
         default: [

@@ -25,7 +25,16 @@ export const ImageOption: FC<OptionProps> = ({ parentName, schema }) => {
       <div className="builder-option__title">{schema.title}</div>
       <div className="builder-option__content">
         <div className="flex items-center gap-4">
-          {value && <Image src={value} alt="" width={48} height={48} />}
+          {value && (
+            <Image
+              className="w-[48px] h-[48px] object-contain"
+              src={value}
+              alt=""
+              width={96}
+              height={96}
+              quality={100}
+            />
+          )}
 
           <div className="flex items-center gap-2">
             <Dropdown

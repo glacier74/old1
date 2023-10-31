@@ -3,11 +3,11 @@ import { exclude } from '@nily/utils'
 import { IconGripVertical, IconPlus, IconTrash } from '@tabler/icons'
 import clsx from 'clsx'
 import Image from 'next/image'
-import { FC, useCallback, useMemo, useState } from 'react'
+import { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { ReactSortable } from 'react-sortablejs'
 
 import { SchemaTypeEnum } from '../constants'
-import { useOptions } from '../context'
+import { useBuilderContext, useOptions } from '../context'
 import { schemaFieldsToValue } from '../utils'
 import { Option, OptionProps } from './OptionGroup'
 
@@ -76,6 +76,7 @@ const ListItem: FC<ListItemProps> = ({
       className={clsx('builder-option__list-item', {
         'builder-option__list-item-selected': isSelected
       })}
+      data-id={value.id}
     >
       <div className="builder-option__list-item-title">
         <div className="builder-option__list-item-text" onClick={handleSelect}>
@@ -100,6 +101,8 @@ const ListItem: FC<ListItemProps> = ({
 }
 
 export const ListOption: FC<OptionProps> = ({ parentName, schema }) => {
+  const { dispatch } = useBuilderContext()
+
   const name = [parentName, schema.name].filter(Boolean).join('.')
   const { value: listValue, update } = useOptions<AnyMap<any>[]>(name, [])
 
@@ -132,6 +135,15 @@ export const ListOption: FC<OptionProps> = ({ parentName, schema }) => {
     },
     [update]
   )
+
+  useEffect(() => {
+    dispatch({
+      type: 'updateState',
+      payload: {
+        selectedListId: selected
+      }
+    })
+  }, [selected])
 
   return (
     <div className="builder-option builder-option__list">

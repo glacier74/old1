@@ -96,6 +96,7 @@ export const Preview: FC = () => {
           <ScrollIntoView
             selectedOptionName={state.selectedOptionName}
             selectedCompletionName={state.selectedCompletionName}
+            selectedListId={state.selectedListId}
           />
 
           <GlobalContext.Provider

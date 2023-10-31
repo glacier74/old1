@@ -21,7 +21,6 @@ module.exports = {
     ignoreDuringBuilds: true
   },
   reactStrictMode: true,
-  swcMinify: false,
   poweredByHeader: false,
   images: {
     remotePatterns: [
@@ -60,6 +59,38 @@ module.exports = {
       {
         protocol: 'https',
         hostname: '**.b-cdn.net'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.steamstatic.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.ytimg.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.tiktokcdn.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.figma.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.dribbble.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.behance.net'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.cdninstagram.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.twimg.com'
       }
     ]
   },

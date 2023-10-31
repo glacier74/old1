@@ -13,6 +13,9 @@ export interface IState {
   selectedCompletionName?: string
   selectedCompletionTitle?: string
 
+  // List
+  selectedListId?: string
+
   // Preview anchor link
   selectedOptionName?: string
 
