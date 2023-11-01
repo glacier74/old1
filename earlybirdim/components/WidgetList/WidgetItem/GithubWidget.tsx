@@ -10,6 +10,7 @@ import {
   WidgetData,
   WidgetExtra
 } from '../WidgetProps'
+import { typeNames } from '../constants'
 import BehanceWidget from './BehanceWidget'
 import { WidgetFollowButton } from './WidgetFollowButton'
 
@@ -133,48 +134,21 @@ export default class GithubWidget<T extends GithubData & WidgetData> extends Beh
   // 2x1
   override Render2x1(config: WidgetConfig<T>) {
     return (
-      <div className="flex h-full">
-        <div className="flex flex-col">
-          <WidgetIcon url={config.url} />
-
-          <div className="mt-3 flex-1">
-            <h3 className="line-clamp-2 text-sm text-gray-900">
-              {config.data.overrides?.title || config.data.name}
-            </h3>
-            {config.data.description && (
-              <div className="text-xs text-gray-400">{config.data.description}</div>
-            )}
-          </div>
-
-          <div className="inline-flex">
-            <WidgetFollowButton
-              followers={config.data.followers}
-              followText={config.extra?.followText}
-            />
-          </div>
-        </div>
-
-        <div className="flex-1"></div>
-
-        <div className="ml-6">
-          <Contribution
-            className="aspect-[6/5] h-full"
-            contributions={config.data.contributions?.slice(0, 8)}
-          />
-        </div>
-      </div>
-    )
-  }
-
-  // 2x1
-  override Render2x2(config: WidgetConfig) {
-    return (
-      <div className="flex h-full flex-col">
-        <div>
-          <div className="flex justify-between">
+      <a className="block w-full h-full" href={config.url}>
+        <div className="flex h-full">
+          <div className="flex flex-col">
             <WidgetIcon url={config.url} />
 
-            <div className="flex items-start">
+            <div className="mt-3 flex-1">
+              <h3 className="line-clamp-2 text-sm text-gray-900">
+                {config.data.overrides?.title || config.data.name || typeNames[config.type!]}
+              </h3>
+              {config.data.description && (
+                <div className="text-xs text-gray-400">{config.data.description}</div>
+              )}
+            </div>
+
+            <div className="inline-flex">
               <WidgetFollowButton
                 followers={config.data.followers}
                 followText={config.extra?.followText}
@@ -182,27 +156,58 @@ export default class GithubWidget<T extends GithubData & WidgetData> extends Beh
             </div>
           </div>
 
-          <div className="mt-3">
-            <h3 className="line-clamp-2 text-sm text-gray-900">
-              {config.data.overrides?.title || config.data.name}
-            </h3>
-            {config.data.description && (
-              <div className="text-xs text-gray-400">{config.data.description}</div>
-            )}
+          <div className="flex-1"></div>
+
+          <div className="ml-6">
+            <Contribution
+              className="aspect-[6/5] h-full"
+              contributions={config.data.contributions?.slice(0, 8)}
+            />
           </div>
         </div>
+      </a>
+    )
+  }
 
-        <div className="flex-1"></div>
+  // 2x1
+  override Render2x2(config: WidgetConfig) {
+    return (
+      <a className="block w-full h-full" href={config.url}>
+        <div className="flex h-full flex-col">
+          <div>
+            <div className="flex justify-between">
+              <WidgetIcon url={config.url} />
 
-        <Contribution
-          className="aspect-[11/5] w-full"
-          contributions={config.data.contributions}
-          isMonthShow={true}
-        />
-        <div className="mt-2 text-xs text-black/50">
-          {config.data.numContributions} contributions in the last year
+              <div className="flex items-start">
+                <WidgetFollowButton
+                  followers={config.data.followers}
+                  followText={config.extra?.followText}
+                />
+              </div>
+            </div>
+
+            <div className="mt-3">
+              <h3 className="line-clamp-2 text-sm text-gray-900">
+                {config.data.overrides?.title || config.data.name || typeNames[config.type!]}
+              </h3>
+              {config.data.description && (
+                <div className="text-xs text-gray-400">{config.data.description}</div>
+              )}
+            </div>
+          </div>
+
+          <div className="flex-1"></div>
+
+          <Contribution
+            className="aspect-[11/5] w-full"
+            contributions={config.data.contributions}
+            isMonthShow={true}
+          />
+          <div className="mt-2 text-xs text-black/50">
+            {config.data.numContributions} contributions in the last year
+          </div>
         </div>
-      </div>
+      </a>
     )
   }
 }

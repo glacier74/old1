@@ -186,6 +186,34 @@ export const map: WidgetExtra = {
   }
 }
 
+export const payment: WidgetExtra = {
+  styles: {
+    bgColor: '#fff',
+    bgHoverColor: '#fbfbfb',
+    bgActiveColor: '#fbfbfb',
+    followBorderColor: '#635BFF',
+    followBgColor: '#635BFF',
+    followBgHoverColor: '#635BFF',
+    followBgActiveColor: '#635BFF',
+    followTextColor: '#fff',
+    scale: 0
+  }
+}
+
+export const emailCapture: WidgetExtra = {
+  styles: {
+    bgColor: '#fff',
+    bgHoverColor: '#fbfbfb',
+    bgActiveColor: '#fbfbfb',
+    followBorderColor: '#10b981',
+    followBgColor: '#10b981',
+    followBgHoverColor: '#10b981',
+    followBgActiveColor: '#10b981',
+    followTextColor: '#fff',
+    scale: 0
+  }
+}
+
 export const sizeClassNames: AnyMap = {
   '1x1': 'col-span-2 row-span-2 w-[var(--widget-medium-size)] h-[var(--widget-medium-size)]',
   '2x0.5': 'col-span-4 row-span-1 w-[var(--widget-large-size)] h-[var(--widget-small-size)]',

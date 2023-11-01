@@ -7,7 +7,9 @@ import { useAsyncEffect } from '~/utils'
 
 import { WidgetConfig, WidgetData } from './WidgetProps'
 
-export function useMetadata<T = WidgetData>(url: string) {
+const UNFETCH_TYPES = ['group_title', 'payment', 'email_capture', 'image', 'video']
+
+export function useMetadata<T = WidgetData>(config: WidgetConfig) {
   const { isPreview } = useGlobalContext()
 
   const [isPending, startTransition] = useTransition()
@@ -16,23 +18,30 @@ export function useMetadata<T = WidgetData>(url: string) {
   const intervalRef = useRef<any>()
   const [fetchedAt, setFetchedAt] = useState(0)
 
+  const isFetchType = useMemo(
+    () => config.type && !UNFETCH_TYPES.includes(config.type),
+    [config.type]
+  )
+
   async function fetchData() {
     if (isPending) {
       return
     }
 
-    const newData = (await MetadataService.fetch(url)) as any
+    if (isFetchType) {
+      const newData = (await MetadataService.fetch(config.url)) as any
 
-    if (isValid(newData)) {
-      startTransition(() => {
-        setData(newData)
-      })
+      if (isValid(newData)) {
+        startTransition(() => {
+          setData(newData)
+        })
+      }
     }
   }
 
   useAsyncEffect(async () => {
     await fetchData()
-  }, [url, fetchedAt])
+  }, [config.url, isFetchType, fetchedAt])
 
   useEffect(() => {
     if (isPreview) {

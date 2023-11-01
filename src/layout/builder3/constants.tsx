@@ -101,17 +101,17 @@ export const WIDGET_URL_PROVIDERS: AnyMap<string> = {
   group_title: 'Group Title',
   image: 'Image',
   video: 'Video',
-  website: 'Website'
+  website: 'Website',
+  payment: 'Payment',
+  email_capture: 'Email Capture'
 }
 
 export const CREATE_WIDGET_LABELS: AnyMap<string> = {
   website: 'Add Link',
-  google_map: 'Add Location',
-  image: 'Add Image',
-  group_title: 'Add Group Title'
+  google_map: 'Add Location'
 }
 
-export const WIDGET_SIZE_OPTIONS = [
+export const MAP_MEDIA_SIZE_OPTIONS = [
   {
     label: (
       <div className="flex items-center gap-2.5">
@@ -138,7 +138,11 @@ export const WIDGET_SIZE_OPTIONS = [
       </div>
     ),
     value: '2x2'
-  },
+  }
+]
+
+export const WIDGET_SIZE_OPTIONS = [
+  ...MAP_MEDIA_SIZE_OPTIONS,
   {
     label: (
       <div className="flex items-center gap-2.5">

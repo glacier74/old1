@@ -29,7 +29,7 @@ export const AutomatedEmailOption: FC<AutomatedEmailOptionProps> = ({
   defaultMessage,
   variables
 }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const [visible, open, close] = useVisible()
   const { value, update } = useOptions<AnyMap<any>>(
     [parentName, schema.name].filter(Boolean).join('.')

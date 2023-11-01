@@ -20,6 +20,7 @@ import {
   isReddit,
   isSpotify,
   isSteam,
+  isStripe,
   isSubstack,
   isTiktok,
   isTwitch,
@@ -38,6 +39,7 @@ import { IconBuyMeCoffee } from './IconBuyMeCoffee'
 import { IconDiscord } from './IconDiscord'
 import { IconDribbble } from './IconDribbble'
 import { IconEarlyBird } from './IconEarlyBird'
+import { IconEmailCapture } from './IconEmailCapture'
 import { IconFacebook } from './IconFacebook'
 import { IconFigma } from './IconFigma'
 import { IconGithub } from './IconGithub'
@@ -53,6 +55,7 @@ import { IconProductHunt } from './IconProductHunt'
 import { IconReddit } from './IconReddit'
 import { IconSpotify } from './IconSpotify'
 import { IconSteam } from './IconSteam'
+import { IconStripe } from './IconStripe'
 import { IconSubstack } from './IconSubstack'
 import { IconTiktok } from './IconTiktok'
 import { IconTwitch } from './IconTwitch'
@@ -159,6 +162,10 @@ const websites = [
     icon: IconSteam
   },
   {
+    match: isStripe,
+    icon: IconStripe
+  },
+  {
     match: isSubstack,
     icon: IconSubstack
   },
@@ -180,20 +187,36 @@ const websites = [
   }
 ]
 
-export const WidgetIcon: FC<WidgetIconProps> = ({ className, url, faviconUrl, ...restProps }) => {
+export const WidgetIcon: FC<WidgetIconProps> = ({
+  className,
+  type,
+  url,
+  faviconUrl,
+  ...restProps
+}) => {
   const children = useMemo(() => {
-    const website = websites.find(row => row.match(url))
+    if (type) {
+      switch (type) {
+        case 'payment':
+          return <IconStripe className="h-full w-full" />
 
-    if (website) {
-      return <website.icon className="h-full w-full" />
+        case 'email_capture':
+          return <IconEmailCapture className="h-full w-full" />
+      }
+    } else if (url) {
+      const website = websites.find(row => row.match(url))
+
+      if (website) {
+        return <website.icon className="h-full w-full" />
+      }
+
+      return (
+        <div className="p-1.5">
+          <img className="block h-full w-full object-cover" src={faviconUrl} />
+        </div>
+      )
     }
-
-    return (
-      <div className="p-1.5">
-        <img className="block h-full w-full object-cover" src={faviconUrl} />
-      </div>
-    )
-  }, [faviconUrl, url])
+  }, [faviconUrl, type, url])
 
   return (
     <div

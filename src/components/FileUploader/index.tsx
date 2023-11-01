@@ -39,7 +39,7 @@ export const DragUploader: FC<DragUploaderProps> = ({
   onChange,
   ...restProps
 }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
 
   const [file, setFile] = useState<File | undefined>(value)
   const [fileInputRef, setFileInputRef] = useState<any>()
@@ -121,7 +121,12 @@ export const DragUploader: FC<DragUploaderProps> = ({
               {file!.name} <span>({bytes.stringify(file!.size)})</span>
             </p>
             <div className="flex items-center justify-center text-sm">
-              <Button.Link type="success" loading={loading} onClick={handleOpen}>
+              <Button.Link
+                type="success"
+                loading={loading}
+                loaderClassName="!bg-white"
+                onClick={handleOpen}
+              >
                 {t(loading ? uploadingText : reselectText)}
               </Button.Link>
             </div>

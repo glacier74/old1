@@ -15,7 +15,12 @@ import FormItem from './FormItem'
 import { FormProps } from './FormProps'
 import FormTextarea from './FormTextarea'
 
-const FormSuccess: FC<{ successMessage: string }> = ({ successMessage }) => {
+interface FormSuccessProps {
+  successMessage: string
+  onClose: () => void
+}
+
+export const FormSuccess: FC<FormSuccessProps> = ({ successMessage, onClose }) => {
   useEffect(() => {
     party.confetti(document.querySelector('.payment-success-party')! as HTMLElement, {
       count: party.variation.range(20, 40)
@@ -35,12 +40,12 @@ const FormSuccess: FC<{ successMessage: string }> = ({ successMessage }) => {
           {successMessage || 'You have successfully submitted'}
         </div>
         <div className="text-center mt-8">
-          <a
-            href="/"
+          <button
             className="inline-block px-5 py-1.5 text-emerald-600 border border-emerald-600 rounded-[999px]"
+            onClick={onClose}
           >
             Back
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -49,7 +54,7 @@ const FormSuccess: FC<{ successMessage: string }> = ({ successMessage }) => {
 
 const InternalForm: FC<FormProps> = ({
   type,
-  successMessage = 'You have successfully submitted',
+  successMessage,
   id,
   blockId,
   emailNotificationSubject,
@@ -59,6 +64,7 @@ const InternalForm: FC<FormProps> = ({
   stripeAccount,
   stripeEmail,
   children,
+  onSubmitted,
   ...restProps
 }) => {
   const { state, dispatch } = useFormContext()
@@ -101,6 +107,7 @@ const InternalForm: FC<FormProps> = ({
           })
 
           setSubmitted(true)
+          onSubmitted?.()
         } else {
           await PublicApiService.createEmailCapture(productId, {
             blockId: id,
@@ -109,6 +116,7 @@ const InternalForm: FC<FormProps> = ({
           })
 
           setSubmitted(true)
+          onSubmitted?.()
         }
       } catch (err) {
         setError((err as Error).message)
@@ -121,6 +129,10 @@ const InternalForm: FC<FormProps> = ({
     },
     [isPreview, state.loading, type, successMessage, productId, blockId]
   )
+
+  function handleClose() {
+    setSubmitted(false)
+  }
 
   return (
     <>
@@ -135,7 +147,7 @@ const InternalForm: FC<FormProps> = ({
         </div>
       )}
       {error && <div className="mt-1 text-red-500 text-sm">{error}</div>}
-      {isSubmitted && <FormSuccess successMessage={successMessage} />}
+      {isSubmitted && <FormSuccess successMessage={successMessage} onClose={handleClose} />}
     </>
   )
 }

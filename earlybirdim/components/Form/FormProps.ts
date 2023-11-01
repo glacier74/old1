@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 export interface FormState {
   loading: boolean
   errorMessage?: string
@@ -16,6 +18,7 @@ export interface FormProps extends ComponentProps {
   priceId: string
   stripeAccount: string
   stripeEmail: string
+  onSubmitted?: () => void
 }
 
 export interface FormItemProps extends ComponentProps {
@@ -28,6 +31,7 @@ export interface FormItemProps extends ComponentProps {
 export interface FormInputProps extends ComponentProps {
   type: 'text' | 'email'
   value?: string
+  placeholder?: string
   onChange?: (value?: string) => void
 }
 
@@ -39,5 +43,5 @@ export interface FormTextareaProps extends ComponentProps {
 
 export interface FormButtonProps extends Omit<ComponentProps, 'children'> {
   rootClassName?: string
-  children: JSX.Element
+  children: ReactNode
 }

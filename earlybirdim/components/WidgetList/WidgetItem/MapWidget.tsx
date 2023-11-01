@@ -84,33 +84,35 @@ export default class MapWidget<T extends MapData> extends Widget<T> {
     }, [config.data.latitude, config.data.longitude])
 
     return (
-      <div
-        id={`widget-${config.id}`}
-        className="relative h-full w-full overflow-hidden rounded-3xl"
-      >
-        <div ref={containerRef} className="h-full w-full"></div>
-        <div ref={elemRef} className="absolute left-0 top-0 h-7 w-7">
-          <div className="relative h-full w-full">
-            <div
-              className="absolute -left-3.5 -top-3.5 h-14 w-14 animate-ping rounded-full bg-blue-700 opacity-40"
-              style={{
-                animationDuration: '2s'
-              }}
-            />
-            <div className="absolute inset-0 rounded-full border-[4px] border-white bg-blue-700 shadow-[0_1px_2px_rgba(60,64,67,0.3),0_1px_3px_1px_rgba(60,64,67,0.15)]" />
-          </div>
-        </div>
-
-        <div className="absolute inset-0" />
-
-        {config.data.overrides?.title && (
-          <div className="absolute bottom-0 left-0 right-0 p-6">
-            <div className="inline-block rounded-xl bg-white/70 px-2.5 py-1.5 text-sm shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06)] backdrop-blur-[20px]">
-              {config.data.overrides.title}
+      <a className="block w-full h-full" href={config.url}>
+        <div
+          id={`widget-${config.id}`}
+          className="relative h-full w-full overflow-hidden rounded-3xl"
+        >
+          <div ref={containerRef} className="h-full w-full"></div>
+          <div ref={elemRef} className="absolute left-0 top-0 h-7 w-7">
+            <div className="relative h-full w-full">
+              <div
+                className="absolute -left-3.5 -top-3.5 h-14 w-14 animate-ping rounded-full bg-blue-700 opacity-40"
+                style={{
+                  animationDuration: '2s'
+                }}
+              />
+              <div className="absolute inset-0 rounded-full border-[4px] border-white bg-blue-700 shadow-[0_1px_2px_rgba(60,64,67,0.3),0_1px_3px_1px_rgba(60,64,67,0.15)]" />
             </div>
           </div>
-        )}
-      </div>
+
+          <div className="absolute inset-0" />
+
+          {config.data.overrides?.title && (
+            <div className="absolute bottom-0 left-0 right-0 p-6">
+              <div className="inline-block rounded-xl bg-white/70 px-2.5 py-1.5 text-sm shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06)] backdrop-blur-[20px]">
+                {config.data.overrides.title}
+              </div>
+            </div>
+          )}
+        </div>
+      </a>
     )
   }
 }

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 export type WidgetSize = '1x1' | '2x1' | '2x2' | '2x0.5'
-export type WidgetType = 'group_title' | 'image' | 'video' | string
+export type WidgetType = 'group_title' | 'payment' | 'email_capture' | 'image' | 'video' | string
 
 export interface WidgetGridData {
   id: string
@@ -24,7 +24,8 @@ export interface WidgetGridProps extends ComponentProps {
 export type WidgetItemProps<T = WidgetData> = WidgetConfig<T> & ComponentProps
 
 export interface WidgetIconProps extends ComponentProps {
-  url: string
+  type?: WidgetType
+  url?: string
   faviconUrl?: string
 }
 
@@ -57,6 +58,7 @@ export interface WidgetStyles {
   followBgActiveColor?: string
   followTextColor?: string
   followersColor?: string
+  scale?: number
 }
 
 export interface WidgetExtra extends AnyMap<any> {
@@ -166,11 +168,50 @@ export interface MapData {
   latitude: number
   longitude: number
   zoom: number
-  overrides?: Pick<WidgetOverrides, 'title'> & {
-    location?: string
-  }
+  location?: string
+  overrides?: Pick<WidgetOverrides, 'title'>
 }
 
 export interface MediaData {
   overrides?: Pick<WidgetOverrides, 'title' | 'imageUrl'>
+}
+
+interface EmailCapture {
+  blockId: string
+  buttonText: string
+  successMessage: string
+  isNameRequired?: boolean
+  // Automated email
+  emailNotificationSubject: string
+  emailNotificationMessage: string
+  enableEmailNotification: boolean
+}
+
+interface Payment extends Omit<EmailCapture, 'isNameRequired'> {
+  // Stripe
+  priceId: string
+  stripeAccount: string
+  stripeEmail: string
+}
+
+export interface PaymentData extends Payment {
+  overrides?: Pick<WidgetOverrides, 'title' | 'imageUrl'>
+}
+
+export interface EmailCaptureData extends EmailCapture {
+  overrides?: Pick<WidgetOverrides, 'title' | 'imageUrl'> & EmailCapture
+}
+
+export interface WidgetPaymentButtonProps extends ComponentProps {
+  config: WidgetConfig<PaymentData>
+}
+
+export interface WidgetEmailCaptureButtonProps extends ComponentProps {
+  config: WidgetConfig<EmailCaptureData>
+}
+
+export interface WidgetEmailCaptureModalProps extends WidgetEmailCaptureButtonProps {
+  visible?: boolean
+  onSubmitted: () => void
+  onClose: () => void
 }

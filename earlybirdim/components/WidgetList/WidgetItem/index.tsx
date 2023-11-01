@@ -4,10 +4,12 @@ import { FC, useMemo } from 'react'
 import { WidgetConfig, WidgetGridData, WidgetType } from '../WidgetProps'
 import { parseURL } from '../utils'
 import BehanceWidget from './BehanceWidget'
+import EmailCaptureWidget from './EmailCaptureWidget'
 import GithubWidget from './GithubWidget'
 import { GroupTitleWidget } from './GroupTitleWidget'
 import MapWidget from './MapWidget'
 import MediaWidget from './MediaWidget'
+import PaymentWidget from './PaymentWidget'
 import SpotifyAlbumWidget from './SpotifyAlbumWidget'
 import SpotifyArtistWidget from './SpotifyArtistWidget'
 import SpotifyPlaylistWidget from './SpotifyPlaylistWidget'
@@ -69,6 +71,12 @@ const WidgetItem: FC<WidgetGridData> = ({ id, type, size, url, data = {}, overri
     case 'image':
     case 'video':
       return new MediaWidget(config).getComponent()
+
+    case 'payment':
+      return new PaymentWidget(config).getComponent()
+
+    case 'email_capture':
+      return new EmailCaptureWidget(config).getComponent()
 
     default:
       return new WebsiteWidget(config).getComponent()

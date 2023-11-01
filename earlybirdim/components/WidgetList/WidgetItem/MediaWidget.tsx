@@ -1,3 +1,6 @@
+import { isValid } from '@nily/utils'
+import { FC } from 'react'
+
 import { MediaData, WidgetConfig, WidgetSize } from '../WidgetProps'
 import { map } from '../constants'
 import Widget from './Widget'
@@ -28,13 +31,17 @@ export default class MediaWidget<T extends MediaData> extends Widget<T> {
   }
 
   private static Render(config: WidgetConfig<MediaData>) {
+    const Element = (isValid(config.url) ? 'a' : 'div') as unknown as FC<any>
+
     return (
-      <div className="relative h-full w-full overflow-hidden rounded-3xl">
-        <img
-          className="h-full w-full object-cover"
-          src={config.data.overrides?.imageUrl}
-          alt={config.data.overrides?.title}
-        />
+      <Element className="relative h-full w-full overflow-hidden rounded-3xl" href={config.url}>
+        {config.data.overrides?.imageUrl && (
+          <img
+            className="h-full w-full object-cover"
+            src={config.data.overrides?.imageUrl}
+            alt={config.data.overrides?.title}
+          />
+        )}
 
         {config.data.overrides?.title && (
           <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -43,7 +50,7 @@ export default class MediaWidget<T extends MediaData> extends Widget<T> {
             </div>
           </div>
         )}
-      </div>
+      </Element>
     )
   }
 }

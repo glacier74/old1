@@ -8,11 +8,11 @@ import { IconLogo2 } from '~/components/Icon/IconLogo2'
 import { AuthorizedLayout } from '~/layout'
 import { useStore } from '~/store'
 import { deleteRedirectURL, getRedirectURL } from '~/utils'
-import { withTranslations } from '~/utils'
 
 const productIdKey = process.env.NEXT_PUBLIC_PRODUCT_ID_STORAGE_NAME!
 
 export function HomeAuthorizedLayout() {
+  const { t } = useTranslation('common')
   const router = useRouter()
   const { isReady, products } = useStore()
 
@@ -21,25 +21,23 @@ export function HomeAuthorizedLayout() {
       const redirectURL = getRedirectURL(JsCookie)
 
       if (isValid(redirectURL)) {
-        deleteRedirectURL(JsCookie)
         router.replace(isValid(redirectURL) ? redirectURL! : '/')
-      } else {
-        if (products.length > 0) {
-          const currentProductId = window.localStorage.getItem(productIdKey)
+        return deleteRedirectURL(JsCookie)
+      }
 
-          if (products.some(p => isEqual(p.id, currentProductId))) {
-            router.replace(`/product/${currentProductId}`)
-          } else {
-            router.replace(`/product/${products[0].id}`)
-          }
+      if (products.length > 0) {
+        const currentProductId = window.localStorage.getItem(productIdKey)
+
+        if (products.some(p => isEqual(p.id, currentProductId))) {
+          router.replace(`/product/${currentProductId}`)
         } else {
-          router.replace('/product/create')
+          router.replace(`/product/${products[0].id}`)
         }
+      } else {
+        router.replace('/product/create')
       }
     }
-  }, [isReady])
-
-  const { t } = useTranslation('common')
+  }, [isReady, products])
 
   return (
     <AuthorizedLayout>

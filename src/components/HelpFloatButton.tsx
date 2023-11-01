@@ -1,4 +1,4 @@
-import { Dropdown, Menus, stopPropagation } from '@heyforms/ui'
+import { Dropdown, Menus, Tooltip } from '@heyforms/ui'
 import {
   IconBrandTwitter,
   IconHelp,
@@ -6,8 +6,9 @@ import {
   IconMessageDots,
   TablerIconProps
 } from '@tabler/icons'
+import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
-import { FC, useState } from 'react'
+import { FC } from 'react'
 
 interface LinkButtonProps {
   icon: FC<TablerIconProps>
@@ -32,7 +33,7 @@ const LinkButton = ({ icon: Icon, href, title }: LinkButtonProps) => {
   )
 }
 
-export const HelpFloatButton = () => {
+export const HelpFloatButton: FC<ComponentProps> = ({ className, ...restProps }) => {
   const { t } = useTranslation()
 
   const Overlay = (
@@ -61,14 +62,18 @@ export const HelpFloatButton = () => {
   )
 
   return (
-    <Dropdown className="fixed bottom-8 right-8 z-20" placement="top-end" overlay={Overlay}>
-      <button
-        className="p-1.5 md:p-1 rounded-full bg-white hover:bg-slate-100 hover:text-slate-900 shadow-[rgba(0,0,0,0.08)_0px_2px_4px,rgba(0,0,0,0.06)_0px_2px_12px,rgba(0,0,0,0.04)_0px_8px_14px,rgba(0,0,0,0.02)_0px_12px_16px]"
-        role="button"
-        aria-label="Help Button"
-      >
-        <IconHelp className="w-6 h-6 text-slate-800" />
-      </button>
-    </Dropdown>
+    <Tooltip ariaLabel="Help">
+      <div className={clsx('fixed bottom-8 right-8 z-20', className)}>
+        <Dropdown placement="top-end" overlay={Overlay} {...restProps}>
+          <button
+            className="p-1.5 md:p-1 rounded-full bg-white hover:bg-slate-100 hover:text-slate-900 shadow-[rgba(0,0,0,0.08)_0px_2px_4px,rgba(0,0,0,0.06)_0px_2px_12px,rgba(0,0,0,0.04)_0px_8px_14px,rgba(0,0,0,0.02)_0px_12px_16px]"
+            role="button"
+            aria-label="Help Button"
+          >
+            <IconHelp className="w-6 h-6 text-slate-600" />
+          </button>
+        </Dropdown>
+      </div>
+    </Tooltip>
   )
 }

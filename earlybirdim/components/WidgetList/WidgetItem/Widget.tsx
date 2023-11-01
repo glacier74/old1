@@ -1,4 +1,3 @@
-import { sizeClassNames } from '@earlybirdim/components/WidgetList/constants'
 import { CSSProperties, useMemo } from 'react'
 
 import { WidgetIcon } from '../WidgetIcon'
@@ -9,6 +8,7 @@ import {
   WidgetData,
   WidgetSize
 } from '../WidgetProps'
+import { sizeClassNames } from '../constants'
 import { useMetadata } from '../hook'
 
 export default class Widget<T> {
@@ -50,7 +50,7 @@ export default class Widget<T> {
 
   protected Container({ size, config: rawConfig, component: Component }: WidgetContainerProps) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const data = useMetadata(rawConfig.url)
+    const data = useMetadata(rawConfig)
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const config = useMemo(() => {
@@ -88,7 +88,8 @@ export default class Widget<T> {
         '--widget-follow-bg-hover': extraStyles?.followBgHoverColor || '#f3f4f6',
         '--widget-follow-bg-active': extraStyles?.followBgActiveColor || '#ebecf0',
         '--widget-follow-text': extraStyles?.followTextColor || '#24292f',
-        '--widget-followers-text': extraStyles?.followersColor || '#656d76'
+        '--widget-followers-text': extraStyles?.followersColor || '#656d76',
+        '--widget-scale': extraStyles?.scale === 0 ? undefined : extraStyles?.scale || 0.95
       } as CSSProperties
     }, [config.extra?.styles])
 
@@ -96,16 +97,12 @@ export default class Widget<T> {
       <div
         className={`widget widget-${size.replace(/\./g, '_')} ${sizeClassNames[size]}`}
         data-id={config.id}
+        style={styles}
       >
-        <a
-          className="widget-content relative w-full h-full flex flex-col rounded-3xl shadow-sm group bg-[var(--widget-bg)] p-[var(--widget-padding)] transition-all duration-150 will-change-auto hover:bg-[var(--widget-bg-hover)] active:scale-95 active:bg-[var(--widget-bg-active)]"
-          href={config.url}
-          target="_blank"
-          style={styles}
-        >
+        <div className="widget-content relative w-full h-full rounded-3xl shadow-sm group bg-[var(--widget-bg)] p-[var(--widget-padding)] transition-all duration-150 will-change-auto hover:bg-[var(--widget-bg-hover)] active:scale-[var(--widget-scale)] active:bg-[var(--widget-bg-active)]">
           <Component {...config} />
           <div className="pointer-events-none absolute inset-0 rounded-3xl border border-black/10" />
-        </a>
+        </div>
       </div>
     )
   }
@@ -131,16 +128,18 @@ export default class Widget<T> {
   // 2x0.5
   protected Render2x05(config: WidgetConfig<T>) {
     return (
-      <div className="flex h-full items-center gap-3">
-        <WidgetIcon
-          className="h-7 w-7"
-          url={config.url}
-          faviconUrl={(config.data as unknown as WebsiteData).faviconUrl}
-        />
-        <h3 className="flex-1 truncate text-sm text-gray-900">
-          {(config.data as WidgetData).name || (config.data as unknown as WebsiteData).title}
-        </h3>
-      </div>
+      <a className="block w-full h-full" href={config.url}>
+        <div className="flex h-full items-center gap-3">
+          <WidgetIcon
+            className="h-7 w-7"
+            url={config.url}
+            faviconUrl={(config.data as unknown as WebsiteData).faviconUrl}
+          />
+          <h3 className="flex-1 truncate text-sm text-gray-900">
+            {(config.data as WidgetData).name || (config.data as unknown as WebsiteData).title}
+          </h3>
+        </div>
+      </a>
     )
   }
 }

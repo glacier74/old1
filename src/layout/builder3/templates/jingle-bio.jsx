@@ -16,38 +16,13 @@ export const schemas = [
         name: 'name',
         title: 'User Name',
         type: 'text',
-        default: '˗ˏˋrogieˎˊ'
+        default: 'David. 👋'
       },
       {
         name: 'description',
         title: 'Description',
         type: 'text',
-        default: 'Designer &amp; little big detail hunter. ½ of iconists.'
-      }
-    ]
-  },
-  {
-    name: 'newsletter',
-    title: 'Newsletter',
-    fields: [
-      {
-        name: 'form',
-        title: 'Subscribe Form',
-        type: 'email_capture',
-        fields: [
-          {
-            name: 'label',
-            title: 'Form Label',
-            type: 'text',
-            default: 'Subscribe to my updates'
-          },
-          {
-            name: 'button_text',
-            title: 'Button text',
-            type: 'text',
-            default: 'Subscribe'
-          }
-        ]
+        default: 'I build tiny but cool things.'
       }
     ]
   },
@@ -172,39 +147,16 @@ export function render({ options: { personal_info, newsletter, main } }) {
     <React.Fragment>
       <div className="earlybird-HSqdRg min-h-screen grid lg:grid-cols-2 lg:gap-4 lg:px-24">
         <div className="earlybird-tXXVbP px-8 lg:px-32 py-12 items-center">
-          <div className="earlybird-tMuH8h relative xl:sticky xl:top-16">
-            <div id="personal_info">
-              <div className="earlybird-KDvjAn bioAvator w-48 h-48">
-                <img className="earlybird-yFaZEN rounded-full" src={personal_info.avatar} />
-              </div>
-              <h1 className="earlybird-q9vUAm bioName mt-8 text-5xl font-semibold">
-                {personal_info.name}
-              </h1>
-              <p className="earlybird-LyK1vr bioIntro mt-6 text-xl text-gray-500">
-                {personal_info.description}
-              </p>
+          <div id="personal_info" className="earlybird-tMuH8h relative xl:sticky xl:top-16">
+            <div className="earlybird-KDvjAn bioAvator w-48 h-48">
+              <img className="earlybird-yFaZEN rounded-full" src={personal_info.avatar} />
             </div>
-            <form id="newsletter" className="earlybird-IKARQN w-full mt-8 sm:mt-32">
-              <div className="earlybird-AkCu6S mb-4">
-                <label className="earlybird-fw155l block text-slate-700 mb-2" htmlFor="email">
-                  {newsletter.form.label}
-                </label>
-                <div className="earlybird-dIwDiS flex flex-col md:flex-row gap-4">
-                  <input
-                    className="earlybird-xtkGZT shadow appearance-none border rounded w-full md:w-72 h-10 px-3 text-slate-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="email"
-                    type="text"
-                    placeholder="hello@example.com"
-                  />
-                  <button
-                    className="earlybird-gE4lVn bg-slate-900 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="button"
-                  >
-                    {newsletter.form.button_text}
-                  </button>
-                </div>
-              </div>
-            </form>
+            <h1 className="earlybird-q9vUAm bioName mt-8 text-5xl font-semibold">
+              {personal_info.name}
+            </h1>
+            <p className="earlybird-LyK1vr bioIntro mt-6 text-xl text-gray-500">
+              {personal_info.description}
+            </p>
           </div>
         </div>
         <div id="main" className="earlybird-8JNr1h px-8 py-6 lg:py-12 overflow-x-hidden">

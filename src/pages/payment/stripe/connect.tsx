@@ -6,7 +6,7 @@ import { BaseLayout } from '~/layout'
 import { withTranslations } from '~/utils'
 
 const StripeConnect = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const router = useRouter()
 
   useEffect(() => {
@@ -35,10 +35,13 @@ const StripeConnect = () => {
   )
 }
 
-export const getServerSideProps = withTranslations(async context => {
-  return {
-    props: {}
-  }
-})
+export const getServerSideProps = withTranslations(
+  async context => {
+    return {
+      props: {}
+    }
+  },
+  ['dashboard']
+)
 
 export default StripeConnect

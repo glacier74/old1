@@ -1,6 +1,5 @@
 import { isValid } from '@nily/utils'
 
-import { HelpFloatButton } from '~/components'
 import { useStore } from '~/store'
 
 import { AIModal } from './ai'
@@ -45,8 +44,6 @@ export const Builder3 = () => {
       </div>
 
       {isValid(completions) && <AIModal />}
-
-      <HelpFloatButton />
     </BuilderProvider>
   )
 }

@@ -8,8 +8,6 @@ export const IconPodcast: FC<SVGProps<SVGSVGElement>> = props => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      aria-label="podcast"
       {...props}
     >
       <g clipPath="url(#clip0_2937_240)">
@@ -44,7 +42,7 @@ export const IconPodcast: FC<SVGProps<SVGSVGElement>> = props => {
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#F453FF" />
-          <stop offset="1" stopColor="#832CC1" />
+          <stop offset="1" stopColor="#B349FF" />
         </linearGradient>
         <clipPath id="clip0_2937_240">
           <rect width="16" height="16" fill="white" />

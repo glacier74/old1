@@ -176,7 +176,7 @@ body {
 }
 
 .link-button {
-  @apply px-4 py-2 border border-slate-300 shadow-sm text-base sm:text-sm font-medium rounded-md text-slate-700 text-center bg-white hover:bg-slate-100;
+  @apply px-4 py-2 border border-slate-300 text-base sm:text-sm font-medium rounded-md text-slate-700 text-center bg-white hover:bg-slate-100;
 }
 
 .link-button-success {
@@ -1661,7 +1661,7 @@ button.block-header-button {
 }
 
 .builder-editor {
-  @apply flex-1 bg-slate-50;
+  @apply w-full h-full bg-slate-50;
 
   iframe {
     @apply bg-white;
@@ -2175,6 +2175,22 @@ button.block-header-button {
 
   .builder-option__title {
     @apply text-[13px] text-slate-600;
+  }
+}
+
+.builder-option__widget-content {
+  @apply pt-5 mt-5 border-t border-slate-200;
+
+  .builder-option__list-item {
+    @apply bg-transparent;
+    @apply p-0 hover:bg-transparent #{!important};
+  }
+}
+
+.builder-option__email-capture-content {
+  .builder-option__list-item {
+    @apply bg-transparent;
+    @apply p-0 hover:bg-transparent #{!important};
   }
 }
 
