@@ -50,6 +50,7 @@ const FormSuccess: FC<{ successMessage: string }> = ({ successMessage }) => {
 const InternalForm: FC<FormProps> = ({
   type,
   successMessage = 'You have successfully submitted',
+  id,
   blockId,
   emailNotificationSubject,
   emailNotificationMessage,
@@ -84,7 +85,7 @@ const InternalForm: FC<FormProps> = ({
       try {
         if (type === 'payment') {
           const result = await PublicApiService.checkout(productId, {
-            blockId,
+            blockId: id,
             productUrl: urlBuilder(window.location.href, {
               successMessage
             }),
@@ -94,7 +95,7 @@ const InternalForm: FC<FormProps> = ({
           window.location.href = result.sessionUrl
         } else if (type === 'contact') {
           await PublicApiService.createContact(productId, {
-            blockId,
+            blockId: id,
             token: await getRecaptchaToken(),
             ...values
           })
@@ -102,7 +103,7 @@ const InternalForm: FC<FormProps> = ({
           setSubmitted(true)
         } else {
           await PublicApiService.createEmailCapture(productId, {
-            blockId,
+            blockId: id,
             token: await getRecaptchaToken(),
             ...values
           })
@@ -126,11 +127,13 @@ const InternalForm: FC<FormProps> = ({
       <RCForm onFinish={handleFinish} {...restProps}>
         {children}
       </RCForm>
-      <div className="earlybird-recaptcha mt-2 text-xs text-slate-400">
-        This site is protected by reCAPTCHA and the Google{' '}
-        <a href="https://policies.google.com/privacy">Privacy Policy</a> and{' '}
-        <a href="https://policies.google.com/terms">Terms of Service</a> apply.
-      </div>
+      {type !== 'payment' && (
+        <div className="earlybird-recaptcha mt-2 text-xs text-slate-400">
+          This site is protected by reCAPTCHA and the Google{' '}
+          <a href="https://policies.google.com/privacy">Privacy Policy</a> and{' '}
+          <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+        </div>
+      )}
       {error && <div className="mt-1 text-red-500 text-sm">{error}</div>}
       {isSubmitted && <FormSuccess successMessage={successMessage} />}
     </>

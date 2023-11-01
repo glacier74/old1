@@ -1,7 +1,43 @@
-import { isEmpty, isTrue, isValid, isValidArray, objectPath } from '@nily/utils'
+import {
+  isArray,
+  isEmpty,
+  isPlainObject,
+  isTrue,
+  isValid,
+  isValidArray,
+  objectPath
+} from '@nily/utils'
 import { nanoid } from 'nanoid'
 
 import { SchemaTypeEnum } from '../constants'
+
+const FORM_TYPES = [SchemaTypeEnum.contact, SchemaTypeEnum.emailCapture, SchemaTypeEnum.payment]
+
+export function formOptionWalker(value: any) {
+  const ipo = isPlainObject(value)
+
+  if (!ipo && !isArray(value)) {
+    return
+  }
+
+  let arr = value
+
+  if (ipo) {
+    if (FORM_TYPES.includes(value.type)) {
+      if (!value.id) {
+        value.id = nanoid(8)
+      }
+
+      return
+    }
+
+    arr = Object.values(value)
+  }
+
+  for (const row of arr) {
+    formOptionWalker(row)
+  }
+}
 
 export function schemasToOptions(schemas: AnyMap<any>[]) {
   const options = schemaConverter(schemas)
@@ -46,7 +82,7 @@ function schemaConverter(schemas: AnyMap<any>[], parent: AnyMap<any> = {}): AnyM
           // listSchemaConverter(schema.fields, r)
 
           return {
-            id: nanoid(6),
+            id: nanoid(8),
             ...r
           }
         })
@@ -161,7 +197,7 @@ export function schemaFieldsToValue(fields: any[]): any {
       }
     },
     {
-      id: nanoid(6)
+      id: nanoid(8)
     }
   )
 }

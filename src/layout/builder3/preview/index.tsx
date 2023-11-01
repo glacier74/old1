@@ -2,6 +2,7 @@ import { GlobalContext } from '@earlybirdim/components'
 import { FC, useCallback, useEffect, useMemo } from 'react'
 import Frame from 'react-frame-component'
 
+import { HelpFloatButton } from '~/components'
 import { useProductId } from '~/layout'
 import { PublicSiteDangerouslyHTML } from '~/layout/public-site/PublicSiteDangerouslyHTML'
 import { PublicSiteHiddenBlocksStyle } from '~/layout/public-site/PublicSiteHiddenBlocksStyle'
@@ -11,7 +12,7 @@ import { isResponseError, useVisible } from '~/utils'
 
 import { useBuilderContext } from '../context'
 import templates from '../templates'
-import { Queue } from '../utils'
+import { Queue, formOptionWalker } from '../utils'
 import { AlertModal } from './AlertModal'
 import { ScrollIntoView } from './ScrollIntoView'
 
@@ -31,8 +32,12 @@ export const Preview: FC = () => {
 
   const sync = useCallback(async () => {
     try {
+      // Add id to form type
+      const draft = state.options
+      formOptionWalker(draft)
+
       const result = await SiteSettingsService.updateDraft(productId, {
-        draft: state.options as any,
+        draft,
         version: siteSettings.version
       })
 
@@ -87,7 +92,7 @@ export const Preview: FC = () => {
   }, [])
 
   return (
-    <>
+    <div className="relative w-full h-full">
       <div className={`builder-editor builder-editor-${state.previewMode}`}>
         <Frame
           className="w-full h-full scrollbar"
@@ -116,7 +121,8 @@ export const Preview: FC = () => {
         </Frame>
       </div>
 
+      <HelpFloatButton className="!absolute" />
       <AlertModal visible={alertModalVisible} />
-    </>
+    </div>
   )
 }

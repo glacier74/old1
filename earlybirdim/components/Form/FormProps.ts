@@ -4,6 +4,7 @@ export interface FormState {
 }
 
 export interface FormProps extends ComponentProps {
+  id: string
   type: 'email_capture' | 'contact' | 'payment'
   successMessage: string
   blockId: string

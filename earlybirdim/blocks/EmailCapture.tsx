@@ -179,11 +179,13 @@ export const $EmailCapture: FC<$EmailCaptureProps> = ({
         </form>
       )}
 
-      <div className="earlybird-recaptcha mt-2 text-xs text-slate-400">
-        This site is protected by reCAPTCHA and the Google{' '}
-        <a href="https://policies.google.com/privacy">Privacy Policy</a> and{' '}
-        <a href="https://policies.google.com/terms">Terms of Service</a> apply.
-      </div>
+      {!isPaymentRequired && (
+        <div className="earlybird-recaptcha mt-2 text-xs text-slate-400">
+          This site is protected by reCAPTCHA and the Google{' '}
+          <a href="https://policies.google.com/privacy">Privacy Policy</a> and{' '}
+          <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+        </div>
+      )}
 
       {error && (
         <div className="mt-4 flex items-center text-sm text-red-500">
