@@ -7,7 +7,6 @@ import { v4 as uuidV4 } from 'uuid'
 // Cookie options
 const DOMAIN = process.env.NEXT_PUBLIC_COOKIE_DOMAIN
 const DEFAULT_COOKIE_MAX_AGE = date.milliseconds(process.env.NEXT_PUBLIC_COOKIE_MAX_AGE!)!
-const REDIRECT_URL_MAX_AGE = date.milliseconds('5m')!
 
 // Cookies names
 const REDIRECT_URL_KEY = process.env.NEXT_PUBLIC_REDIRECT_URL_COOKIE_NAME!
@@ -29,7 +28,7 @@ export function setBrowserId(cookies: ResponseCookies | JSCookie) {
 }
 
 export function setRef(cookies: ResponseCookies | JSCookie, value: string) {
-  setCookie(cookies, REF_KEY, value, DEFAULT_COOKIE_MAX_AGE)
+  setCookie(cookies, REF_KEY, value)
 }
 
 export function getToken(cookies: RequestCookies | JSCookie | AnyMap<string>) {
@@ -45,7 +44,7 @@ export function getRedirectURL(cookies: RequestCookies | JSCookie | AnyMap<strin
 }
 
 export function setRedirectURL(cookies: ResponseCookies | JSCookie, value: string) {
-  setCookie(cookies, REDIRECT_URL_KEY, value, REDIRECT_URL_MAX_AGE)
+  setCookie(cookies, REDIRECT_URL_KEY, value)
 }
 
 export function deleteRedirectURL(cookies: ResponseCookies | JSCookie) {
@@ -70,18 +69,20 @@ export function setCookie(
   cookies: ResponseCookies | JSCookie,
   name: string,
   value: string,
-  milliseconds: number
+  milliseconds?: number
 ) {
   const options: AnyMap<any> = {
     httpOnly: false,
     domain: DOMAIN
   }
 
-  // JS cookie
-  if ((cookies as JSCookie).converter) {
-    options.expires = dayjs().add(milliseconds, 'milliseconds').toDate()
-  } else {
-    options.maxAge = milliseconds
+  if (milliseconds) {
+    // JS cookie
+    if ((cookies as JSCookie).converter) {
+      options.expires = dayjs().add(milliseconds, 'milliseconds').toDate()
+    } else {
+      options.maxAge = milliseconds
+    }
   }
 
   cookies.set(name, value, options)
