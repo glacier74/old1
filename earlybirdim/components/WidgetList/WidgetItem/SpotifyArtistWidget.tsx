@@ -21,8 +21,8 @@ export default class SpotifyArtistWidget<T extends SpotifyArtistData> extends Wi
         <div className="flex h-full flex-col">
           <WidgetIcon url={config.url} />
 
-          <div className="mt-3 flex-1">
-            <h3 className="line-clamp-3 text-sm leading-[1.2] text-gray-900">
+          <div className="mt-2 md:mt-3 flex-1">
+            <h3 className="line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] text-gray-900">
               {config.data.overrides?.title || config.data.name}
             </h3>
           </div>
@@ -43,8 +43,8 @@ export default class SpotifyArtistWidget<T extends SpotifyArtistData> extends Wi
           <div className="flex h-full flex-col">
             <WidgetIcon url={config.url} />
 
-            <div className="mt-3 flex-1">
-              <h3 className="line-clamp-3 text-sm leading-[1.2] text-gray-900">
+            <div className="mt-2 md:mt-3 flex-1">
+              <h3 className="line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] text-gray-900">
                 {config.data.overrides?.title || config.data.name}
               </h3>
             </div>
@@ -60,7 +60,7 @@ export default class SpotifyArtistWidget<T extends SpotifyArtistData> extends Wi
             itemClassNames={[
               '!absolute aspect-square left-0 top-0 h-full w-[75%] shadow-[0_0_0_4px_#EDFCF3] group-hover:shadow-[0_0_0_4px_#E7F9EE] z-[20]',
               '!absolute aspect-square left-[12.5%] top-0 h-full w-[75%] shadow-[0_0_0_4px_#EDFCF3] group-hover:shadow-[0_0_0_4px_#E7F9EE] z-[10]',
-              '!absolute aspect-square left-[25%] top-0 h-full w-[75%]'
+              '!hidden md:!absolute aspect-square left-[25%] top-0 h-full w-[75%]'
             ]}
             maxCount={3}
             posts={config.data.albums as unknown as WidgetPost[]}

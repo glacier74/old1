@@ -133,8 +133,8 @@ export const tiktok: WidgetExtra = {
     postMaxCounts: 3,
     postListClassName: 'relative !flex w-full justify-between',
     postItemClassNames: [
-      'relative aspect-[33/50] h-auto w-[45%] -translate-x-[10%] scale-[0.8]',
-      'relative aspect-[33/50] h-auto w-[45%] translate-x-[10%] scale-[0.8]',
+      'relative aspect-[33/50] h-auto w-[42%] -translate-x-[10%] scale-[0.8]',
+      'relative aspect-[33/50] h-auto w-[42%] translate-x-[10%] scale-[0.8]',
       '!absolute left-1/2 top-1/2 aspect-[33/50] z-10 h-auto w-[42%] -translate-x-1/2 -translate-y-1/2 shadow-[0_0_0_4px_#fff]'
     ]
   }
@@ -161,8 +161,8 @@ export const youtube: WidgetExtra = {
   },
   render2x2: {
     postMaxCounts: 4,
-    postListClassName: 'aspect-[1.78] grid-cols-2 grid-rows-2',
-    postItemClassNames: 'aspect-[1.78]'
+    postListClassName: 'aspect-[1.5] grid-cols-2 grid-rows-2',
+    postItemClassNames: 'aspect-[1.5]'
   }
 }
 

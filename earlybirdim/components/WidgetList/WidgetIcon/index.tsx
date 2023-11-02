@@ -220,7 +220,10 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
 
   return (
     <div
-      className={clsx('relative flex h-10 w-10 items-center justify-center rounded-lg', className)}
+      className={clsx(
+        'relative flex max-[400px]:w-8 max-[400px]:h-8 h-10 w-10 items-center justify-center rounded-lg',
+        className
+      )}
       {...restProps}
     >
       {children}

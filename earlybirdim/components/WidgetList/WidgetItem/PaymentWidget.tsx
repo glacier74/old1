@@ -22,7 +22,7 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
         <div className="flex h-full flex-col">
           <WidgetIcon type={config.type} />
 
-          <div className="mt-3 flex-1">
+          <div className="mt-2 md:mt-3 flex-1">
             <h3 className="line-clamp-1 text-sm leading-[1.2] text-gray-900">
               {config.data.overrides?.title}
             </h3>
@@ -44,12 +44,12 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
     return (
       <a className="block w-full h-full" href={config.url}>
         <div className="flex h-full">
-          <div className="flex h-full w-full flex-1 flex-col gap-3">
+          <div className="flex h-full w-full flex-1 flex-col">
             <div className="flex justify-between">
               <WidgetIcon type={config.type} />
             </div>
 
-            <div className="mt-3 flex-1">
+            <div className="mt-2 md:mt-3 flex-1">
               <h3 className="line-clamp-1 text-sm leading-[1.2] text-gray-900">
                 {config.data.overrides?.title}
               </h3>

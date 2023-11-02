@@ -16,8 +16,8 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
         <div className="flex h-full flex-col">
           <WidgetIcon url={config.url} faviconUrl={config.data.faviconUrl} />
 
-          <div className="mt-3 flex-1">
-            <h3 className="line-clamp-3 text-sm leading-[1.2] text-gray-900">
+          <div className="mt-2 md:mt-3 flex-1">
+            <h3 className="line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] text-gray-900">
               {config.data.overrides?.title || config.data.title}
             </h3>
             <div className="mt-1 text-xs text-gray-500">{customURL?.hostname}</div>
@@ -42,12 +42,12 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
     return (
       <a className="block w-full h-full" href={config.url}>
         <div className="flex h-full">
-          <div className="flex h-full w-full flex-1 flex-col gap-3">
+          <div className="flex h-full w-full flex-1 flex-col">
             <div className="flex justify-between">
               <WidgetIcon url={config.url} faviconUrl={config.data.faviconUrl} />
             </div>
             <div className="flex flex-1 flex-col">
-              <h3 className="line-clamp-3 text-sm leading-[1.2] text-gray-900">
+              <h3 className="line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] text-gray-900">
                 {config.data.overrides?.title || config.data.title}
               </h3>
               <div className="mt-1 text-xs text-gray-500">{customURL?.hostname}</div>
@@ -91,7 +91,7 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
               <WidgetIcon url={config.url} faviconUrl={config.data.faviconUrl} />
             </div>
             <div className="flex flex-1 flex-col">
-              <h3 className="line-clamp-3 text-sm leading-[1.2] text-gray-900">
+              <h3 className="line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] text-gray-900">
                 {config.data.overrides?.title || config.data.title}
               </h3>
               <div className="mt-1 text-xs text-gray-500">{customURL?.hostname}</div>

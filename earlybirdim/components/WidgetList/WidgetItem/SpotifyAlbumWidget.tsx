@@ -48,11 +48,13 @@ export default class SpotifyAlbumWidget<T extends SpotifyPlaylistData> extends W
         <div className="flex h-full flex-col">
           <WidgetIcon url={config.url} />
 
-          <div className="mt-3 flex-1">
+          <div className="mt-2 md:mt-3 flex-1">
             <h3 className="line-clamp-1 text-sm leading-[1.2] text-gray-900">
               {config.data.overrides?.title || config.data.name}
             </h3>
-            <div className="mt-1 text-xs text-gray-500">{config.data.artists?.join(', ')}</div>
+            <div className="hidden md:block mt-1 text-xs text-gray-500">
+              {config.data.artists?.join(', ')}
+            </div>
           </div>
 
           <div className="inline-flex">
@@ -71,8 +73,8 @@ export default class SpotifyAlbumWidget<T extends SpotifyPlaylistData> extends W
           <div className="flex h-full flex-col">
             <WidgetIcon url={config.url} />
 
-            <div className="mt-3 flex-1">
-              <h3 className="line-clamp-3 text-sm leading-[1.2] text-gray-900">
+            <div className="mt-2 md:mt-3 flex-1">
+              <h3 className="line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] text-gray-900">
                 {config.data.overrides?.title || config.data.name}
               </h3>
               <div className="mt-1 text-xs text-gray-500">{config.data.artists?.join(', ')}</div>

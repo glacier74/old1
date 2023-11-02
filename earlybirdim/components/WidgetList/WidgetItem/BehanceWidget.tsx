@@ -42,12 +42,14 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
         <div className="flex h-full flex-col">
           <WidgetIcon url={config.url} />
 
-          <div className="mt-3 flex-1">
+          <div className="mt-2 md:mt-3 flex-1">
             <h3 className="line-clamp-2 text-sm text-gray-900">
               {config.data.overrides?.title || config.data.name || typeNames[config.type!]}
             </h3>
             {config.data.description && (
-              <div className="text-xs text-gray-400">{config.data.description}</div>
+              <div className="max-[400px]:hidden text-xs text-gray-400">
+                {config.data.description}
+              </div>
             )}
           </div>
 
@@ -70,12 +72,14 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
           <div className="flex flex-col">
             <WidgetIcon url={config.url} />
 
-            <div className="mt-3 flex-1">
+            <div className="mt-2 md:mt-3 flex-1">
               <h3 className="line-clamp-2 text-sm text-gray-900">
                 {config.data.overrides?.title || config.data.name || typeNames[config.type!]}
               </h3>
               {config.data.description && (
-                <div className="text-xs text-gray-400">{config.data.description}</div>
+                <div className="max-[400px]:hidden text-xs text-gray-400">
+                  {config.data.description}
+                </div>
               )}
             </div>
 
@@ -125,7 +129,9 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
                 {config.data.overrides?.title || config.data.name || typeNames[config.type!]}
               </h3>
               {config.data.description && (
-                <div className="text-xs text-gray-400">{config.data.description}</div>
+                <div className="max-[400px]:hidden text-xs text-gray-400">
+                  {config.data.description}
+                </div>
               )}
             </div>
           </div>
@@ -136,7 +142,7 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
             className={clsx(
               'mt-6 grid gap-2',
               config.extra?.render2x2?.postListClassName ||
-                'aspect-[1.78] grid-cols-3 grid-rows-2 gap-2'
+                'w-full aspect-[1.5] grid-cols-3 grid-rows-2 gap-2'
             )}
             itemClassNames={config.extra?.render2x2?.postItemClassNames || 'aspect-square'}
             maxCount={config.extra?.render2x2?.postMaxCounts || 6}

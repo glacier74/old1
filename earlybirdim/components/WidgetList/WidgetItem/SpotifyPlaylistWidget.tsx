@@ -9,7 +9,7 @@ import { WidgetPlayButton } from './WidgetPlayButton'
 
 const PlayItem: FC<{ index: number; song: SpotifySong }> = ({ song }) => {
   return (
-    <li>
+    <li className="last-of-type:hidden md:last-of-type:block">
       <div
         className="group/item flex w-full flex-row items-center justify-between py-2"
         role="button"
@@ -54,7 +54,7 @@ export default class SpotifyPlaylistWidget<T extends SpotifyPlaylistData> extend
         <div className="flex h-full flex-col">
           <WidgetIcon url={config.url} />
 
-          <div className="mt-3 flex-1">
+          <div className="mt-2 md:mt-3 flex-1">
             <h3 className="line-clamp-1 text-sm leading-[1.2] text-gray-900">
               {config.data.overrides?.title || config.data.name}
             </h3>
@@ -77,8 +77,8 @@ export default class SpotifyPlaylistWidget<T extends SpotifyPlaylistData> extend
           <div className="flex flex-col">
             <WidgetIcon url={config.url} />
 
-            <div className="mt-3 flex-1">
-              <h3 className="line-clamp-3 text-sm leading-[1.2] text-gray-900">
+            <div className="mt-2 md:mt-3 flex-1">
+              <h3 className="line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] text-gray-900">
                 {config.data.overrides?.title || config.data.name}
               </h3>
               <div className="mt-1 text-xs text-gray-500">{config.data.numSongs} songs</div>

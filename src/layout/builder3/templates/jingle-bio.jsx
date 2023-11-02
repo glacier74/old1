@@ -49,14 +49,6 @@ export const schemas = [
             }
           },
           {
-            size: '1x',
-            url: 'https://discord.com/invite/S6sbYd5h8G'
-          },
-          {
-            size: '1x21',
-            url: 'https://www.google.com/maps/@41.894783499999996,12.4963655,13z'
-          },
-          {
             size: '1x1',
             url: 'https://earlybird.im'
           },
@@ -90,21 +82,13 @@ export const schemas = [
           },
           {
             size: '2x2',
-            url: 'https://www.youtube.com/@LarianStudios'
-          },
-          {
-            size: '2x2',
-            url: 'https://www.tiktok.com/@larianstudios'
+            url: 'https://www.youtube.com/@Apple'
           },
           {
             type: 'group_title',
             overrides: {
               title: 'How we developing'
             }
-          },
-          {
-            size: '1x1',
-            url: 'https://github.com/Heyooo-Inc'
           },
           {
             size: '1x1',
@@ -126,15 +110,15 @@ export const schemas = [
           },
           {
             size: '2x1',
-            url: 'https://www.figma.com/@shopify'
+            url: 'https://www.figma.com/@apple'
           },
           {
             size: '1x1',
-            url: 'https://dribbble.com/halolab'
+            url: 'https://dribbble.com/shots/popular'
           },
           {
             size: '1x1',
-            url: 'https://www.behance.net/yagofarova8709'
+            url: 'https://www.behance.net'
           }
         ]
       }
@@ -142,7 +126,7 @@ export const schemas = [
   }
 ]
 
-export function render({ options: { personal_info, newsletter, main } }) {
+export function render({ options: { personal_info, main } }) {
   return (
     <React.Fragment>
       <div className="earlybird-HSqdRg min-h-screen grid lg:grid-cols-2 lg:gap-4 lg:px-24">
