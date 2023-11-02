@@ -253,7 +253,7 @@ export const Webhook: FC<{ integration: Integration }> = ({ integration }) => {
             initialValues={{
               url: integration.webhookUrl
             }}
-            submitText={t('saveChanges')}
+            submitText={t('common.saveChanges')}
             submitOptions={{
               type: 'success'
             }}

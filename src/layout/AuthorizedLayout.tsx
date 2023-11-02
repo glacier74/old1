@@ -80,19 +80,41 @@ export const AuthorizedLayout = ({ seo, children }: LayoutProps) => {
   const router = useRouter()
   const { setUser, setProducts, setIsReady } = useStore()
 
-  async function fetchData() {
+  async function fetchUser() {
+    const user = await UserService.user()
+
+    setUser(user)
+    expireLocalStorage.setItem<User>(userKey, user)
+  }
+
+  async function fetchProducts() {
+    const products = await ProductService.products()
+
+    setProducts(products)
+    expireLocalStorage.setItem<Product[]>(productsKey, products)
+  }
+
+  useAsyncEffect(async () => {
+    const user = expireLocalStorage.getItem<User>(userKey)
+    const products = expireLocalStorage.getItem<Product[]>(productsKey, [])
+
     try {
-      const [user, products] = await Promise.all([UserService.user(), ProductService.products()])
+      if (isValid(user)) {
+        setUser(user)
+        fetchUser()
+      } else {
+        await fetchUser()
+      }
 
-      setUser(user)
-      setProducts(products)
+      if (isValid(products)) {
+        setProducts(products)
+        fetchProducts()
+      } else {
+        await fetchProducts()
+      }
 
-      // Save to localstorage
-      expireLocalStorage.setItem<User>(userKey, user)
-      expireLocalStorage.setItem<Product[]>(productsKey, products)
+      setIsReady(true)
     } catch (err: any) {
-      console.error(err)
-
       if (err.response?.statusCode === 401 || err.statusCode === 401) {
         setRedirectURL(JsCookie, router.asPath)
 
@@ -100,23 +122,6 @@ export const AuthorizedLayout = ({ seo, children }: LayoutProps) => {
         await router.replace('/login')
       }
     }
-  }
-
-  useAsyncEffect(async () => {
-    const user = expireLocalStorage.getItem<User>(userKey)
-    const products = expireLocalStorage.getItem<Product[]>(productsKey, [])
-
-    if (isValid(user) && isValid(products)) {
-      // Re-fetch new data without block
-      fetchData()
-
-      setUser(user)
-      setProducts(products)
-    } else {
-      await fetchData()
-    }
-
-    setIsReady(true)
   }, [])
 
   return (

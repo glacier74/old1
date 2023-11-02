@@ -49,6 +49,7 @@ export function schemasToOptions(schemas: AnyMap<any>[]) {
     const value = objectPath.get(options, row.name) as any
 
     objectPath.set(options, row.name, {
+      id: nanoid(8),
       type: row.type,
       // 兼容 schema v2
       blockId: row.name,
@@ -78,19 +79,22 @@ function schemaConverter(schemas: AnyMap<any>[], parent: AnyMap<any> = {}): AnyM
   schemas.forEach(schema => {
     if (Array.isArray(schema.fields)) {
       if (schema.type === SchemaTypeEnum.list) {
-        parent[schema.name] = schema.default.map((r: any) => {
-          // listSchemaConverter(schema.fields, r)
-
-          return {
-            id: nanoid(8),
-            ...r
-          }
-        })
+        parent[schema.name] = schema.default.map((r: any) => ({
+          id: nanoid(8),
+          ...r
+        }))
       } else {
         parent[schema.name] = schemaConverter(schema.fields, {})
       }
     } else {
-      parent[schema.name] = schema.default
+      if (schema.type === SchemaTypeEnum.widgetList) {
+        parent[schema.name] = schema.default.map((r: any) => ({
+          id: nanoid(8),
+          ...r
+        }))
+      } else {
+        parent[schema.name] = schema.default
+      }
       // if (schema.ai) {
       //   parent[schema.name] = schema.type === SchemaTypeEnum.textList ? [] : ''
       // } else {

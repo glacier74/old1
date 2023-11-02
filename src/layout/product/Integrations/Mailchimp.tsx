@@ -129,7 +129,7 @@ export const Mailchimp: FC<{ integration: Integration }> = ({ integration }) => 
 
           <Form.Custom
             initialValues={integration.settings}
-            submitText={t('saveChanges')}
+            submitText={t('common.saveChanges')}
             submitOptions={{
               type: 'success'
             }}

@@ -162,7 +162,7 @@ export const Sendy: FC<{ integration: Integration }> = ({ integration }) => {
           <Form.Custom
             form={form}
             initialValues={values}
-            submitText={t('saveChanges')}
+            submitText={t('common.saveChanges')}
             submitOptions={{
               type: 'success'
             }}

@@ -1,6 +1,7 @@
 import { arrayUnique, isFalse } from '@nily/utils'
 import { useContext, useEffect, useMemo, useReducer } from 'react'
 
+import { StepJingleBio } from '~/layout/create-product/Steps/StepJingleBio'
 import { ProductService } from '~/service'
 import { useStore } from '~/store'
 import { useAsyncEffect } from '~/utils'
@@ -10,7 +11,7 @@ import { StepName } from './StepName'
 import { StepTemplate } from './StepTemplate'
 import { StepsStoreContext, StepsStoreReducer } from './context'
 
-const STEPS = [
+export const LANDING_PAGE_STEPS = [
   {
     value: 'initial',
     component: StepInitial,
@@ -19,7 +20,6 @@ const STEPS = [
   {
     value: 'template',
     component: StepTemplate,
-    isAllowToPrev: false,
     isNextButtonShow: false
   },
   {
@@ -28,18 +28,35 @@ const STEPS = [
   }
 ]
 
+export const BIO_PAGE_STEPS = [
+  {
+    value: 'initial',
+    component: StepInitial,
+    isAllowToPrev: false
+  },
+  {
+    value: 'jingleBio',
+    component: StepJingleBio
+  }
+]
+
 const StepComponent = () => {
   const { state } = useContext(StepsStoreContext)
+  const { user } = useStore()
 
-  return useMemo(() => {
-    const Component = STEPS.find(s => s.value === state.active)?.component
+  if (user.isJingleBio) {
+    return <StepJingleBio />
+  }
 
-    if (Component) {
-      return <Component />
-    }
+  const Component = (state.type === 'landingPage' ? LANDING_PAGE_STEPS : BIO_PAGE_STEPS).find(
+    s => s.value === state.active
+  )?.component
 
-    return null
-  }, [state.active])
+  if (Component) {
+    return <Component />
+  }
+
+  return null
 }
 
 export const Steps = () => {
@@ -48,12 +65,13 @@ export const Steps = () => {
   const [state, dispatch] = useReducer(StepsStoreReducer, {
     templates: [],
     categories: [],
-    steps: STEPS.map((s: any) => ({
+    steps: LANDING_PAGE_STEPS.map((s: any) => ({
       value: s.value,
       isAllowToPrev: !isFalse(s.isAllowToPrev),
       isNextButtonShow: !isFalse(s.isNextButtonShow)
     })),
-    active: STEPS[0].value
+    type: 'landingPage',
+    active: LANDING_PAGE_STEPS[0].value
   })
   const storeValue = useMemo(() => ({ state, dispatch }), [state])
 

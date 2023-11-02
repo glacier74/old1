@@ -12,6 +12,7 @@ interface IState {
   categories: string[]
   steps: Step[]
   active: string
+  type: string
 }
 
 const actions: any = {

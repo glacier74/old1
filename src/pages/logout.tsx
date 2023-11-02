@@ -6,12 +6,15 @@ import { BaseLayout } from '~/layout'
 import { AuthService } from '~/service'
 import { deleteRedirectURL, useAsyncEffect, withTranslations } from '~/utils'
 
+const productIdKey = process.env.NEXT_PUBLIC_PRODUCT_ID_STORAGE_NAME!
+
 const Logout = (): JSX.Element => {
   const router = useRouter()
 
   useAsyncEffect(async () => {
     await AuthService.logout()
     deleteRedirectURL(JsCookie)
+    window.localStorage.removeItem(productIdKey)
     router.replace('/')
   }, [])
 

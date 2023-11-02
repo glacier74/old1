@@ -68,7 +68,7 @@ const VerifyEmail: FC<IModalProps> = ({ visible, onClose, onComplete }) => {
 }
 
 const DeletionWarning: FC<IModalProps> = ({ visible }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
 
   return (
     <Modal.Confirm

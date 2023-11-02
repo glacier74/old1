@@ -106,7 +106,7 @@
     "viewSite": "View page"
   },
   "createProduct": {
-    "title": "Create a landing page",
+    "title": "Create a page",
     "loggedAs": "Logged in as:",
     "logo": "Logo (optional)",
     "name": "Landing page name",
@@ -124,8 +124,11 @@
     "invalidTemplate": "The template is not allowed to be empty",
     "siHeading": "Hooray! Let's take your brilliant idea online.",
     "siDesc": "Answer a few questions and have your landing page up in minutes.",
+    "siDesc2": "Choose the type of page you want to create",
     "snHeading": "I would call the landing page",
     "snDesc": "Choose a name for your landing page.",
+    "jbHeading": "My name is",
+    "jbDesc": "Choose a name for your Jingle Bio page.",
     "chooseTemplate": "Choose a template",
     "chooseTemplateDesc": "These are hand-picked templates that might suit your demand",
     "preview": "Preview",

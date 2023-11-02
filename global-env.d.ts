@@ -127,6 +127,7 @@ declare global {
     isDeletionScheduled: boolean
     deletionScheduledAt: any
     isSocialAccount: boolean
+    isJingleBio?: boolean
     createdAt: string
     updatedAt: string
   }

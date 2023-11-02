@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ReactNode } from 'react'
@@ -19,8 +18,6 @@ export function CreateProductLayout({
   logoElement,
   children
 }: CreateProductLayoutProps) {
-  const { t } = useTranslation('dashboard')
-
   return (
     <AuthorizedLayout seo={seo}>
       <div className="min-h-screen bg-white flex flex-col py-5 sm:px-6 lg:px-8">

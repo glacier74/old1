@@ -2443,3 +2443,18 @@ button.button-success {
   @apply hidden opacity-0 invisible;
 }
 
+.create-product-radio-group {
+  @apply mb-8;
+
+  .radio-group {
+    @apply space-y-0 flex items-center gap-8;
+  }
+
+  .radio-wrapper {
+    @apply mt-0 flex-1 cursor-pointer border rounded-xl border-slate-200 px-4 py-3.5 hover:bg-slate-50;
+  }
+
+  [type='radio']:focus {
+    @apply ring-[#059669];
+  }
+}

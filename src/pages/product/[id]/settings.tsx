@@ -71,7 +71,7 @@ const ProductSettings = (): JSX.Element => {
                 disabled={!isValueChanged}
                 onClick={handleSubmit}
               >
-                {t('saveChanges')}
+                {t('common.saveChanges')}
               </Button>
             </div>
           </div>
