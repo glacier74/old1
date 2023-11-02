@@ -12,6 +12,7 @@ const REDIRECT_URL_MAX_AGE = date.milliseconds('5m')!
 // Cookies names
 const REDIRECT_URL_KEY = process.env.NEXT_PUBLIC_REDIRECT_URL_COOKIE_NAME!
 const BROWSER_ID_KEY = process.env.NEXT_PUBLIC_BROWSER_ID_COOKIE_NAME!
+const REF_KEY = process.env.NEXT_PUBLIC_REF_COOKIE_NAME!
 const TOKEN_KEY = process.env.NEXT_PUBLIC_TOKEN_COOKIE_NAME!
 
 const PRIVATE_TOKEN_KEY = process.env.NEXT_PUBLIC_PRIVATE_TOKEN_COOKIE_NAME!
@@ -25,6 +26,10 @@ export function getBrowserId(cookies: RequestCookies | JSCookie | AnyMap<string>
 
 export function setBrowserId(cookies: ResponseCookies | JSCookie) {
   setCookie(cookies, BROWSER_ID_KEY, uuidV4({ random: undefined }), DEFAULT_COOKIE_MAX_AGE)
+}
+
+export function setRef(cookies: ResponseCookies | JSCookie, value: string) {
+  setCookie(cookies, REF_KEY, value, DEFAULT_COOKIE_MAX_AGE)
 }
 
 export function getToken(cookies: RequestCookies | JSCookie | AnyMap<string>) {

@@ -1,7 +1,8 @@
+import { isValid } from '@nily/utils'
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
-import { deleteToken, getBrowserId, isLoggedIn, setBrowserId } from '~/utils/cookie'
+import { deleteToken, getBrowserId, isLoggedIn, setBrowserId, setRef } from '~/utils/cookie'
 import { isMatchRoutes } from '~/utils/route'
 
 import { PublicApiService } from './service/public-api'
@@ -40,6 +41,13 @@ export async function middleware(req: NextRequest) {
 
   if (!browserId) {
     setBrowserId(res.cookies)
+  }
+
+  // Save ref to cookies
+  const ref = req.nextUrl.searchParams.get('ref')!
+
+  if (isValid(ref)) {
+    setRef(res.cookies, ref)
   }
 
   // 检查 token 是否有效
