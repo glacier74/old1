@@ -31,5 +31,6 @@
     "sendEmail": "Send us an email",
     "twitter": "Follow us on Twitter"
   },
-  "loading": "Let the little bird fly for a while..."
+  "loading": "Let the little bird fly for a while...",
+  "notFound": "Page not found"
 }

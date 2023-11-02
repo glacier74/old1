@@ -9,7 +9,7 @@ const NotFound = (): JSX.Element => {
   return (
     <HomeLayout
       seo={{
-        title: t('common.404')
+        title: t('notFound')
       }}
     >
       <HomeHeader />
