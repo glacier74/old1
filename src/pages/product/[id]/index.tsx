@@ -3,12 +3,12 @@ import { IconArrowUpRight } from '@tabler/icons'
 import dayjs from 'dayjs'
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { RoundImage } from '~/components'
 import { Breakdown, MainGraph, ProductSidebarLayout, useProduct } from '~/layout'
 import { useStore } from '~/store'
-import { withTranslations } from '~/utils'
+import { useProductURL, withTranslations } from '~/utils'
 
 const Skeleton = () => {
   return (
@@ -35,6 +35,9 @@ const Product = (): JSX.Element => {
 
   const date = dayjs().format('YYYY-MM-DD')
   const [period, setPeriod] = useState<any>('7d')
+
+  const host = useProductURL(product)
+  const siteURL = useMemo(() => `https://${host}`, [host])
 
   const options = [
     {
@@ -64,7 +67,7 @@ const Product = (): JSX.Element => {
   ]
 
   function handleViewSite() {
-    window.open(`https://${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`)
+    window.open(siteURL)
   }
 
   return (
