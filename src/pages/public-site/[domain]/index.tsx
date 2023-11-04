@@ -278,6 +278,7 @@ const PublicSite: FC<PublicSiteProps> = ({
         >
           {isValid(product.siteSetting.blocks)
             ? templates[product.siteSetting.template]?.render({
+                product,
                 options: product.siteSetting.blocks,
                 hiddenBlocks: product.siteSetting.hiddenBlocks
               })
