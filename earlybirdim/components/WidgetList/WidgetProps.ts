@@ -59,6 +59,8 @@ export interface WidgetStyles {
   followTextColor?: string
   followersColor?: string
   scale?: number
+  darkBgColor?: string
+  darkBgHoverColor?: string
 }
 
 export interface WidgetExtra extends AnyMap<any> {

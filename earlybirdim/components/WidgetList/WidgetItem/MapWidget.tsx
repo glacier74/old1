@@ -105,7 +105,7 @@ export default class MapWidget<T extends MapData> extends Widget<T> {
           <div className="absolute inset-0" />
 
           {config.data.overrides?.title && (
-            <div className="absolute bottom-0 left-0 right-0 p-6">
+            <div className="absolute bottom-0 left-0 right-0 p-4">
               <div className="inline-block rounded-xl bg-white/70 px-2.5 py-1.5 text-sm shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06)] backdrop-blur-[20px]">
                 {config.data.overrides.title}
               </div>
