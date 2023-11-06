@@ -96,7 +96,7 @@ export const StripeOption: FC<OptionProps> = ({ parentName, schema }) => {
           </div>
 
           <div className="builder-option__content">
-            <div className="mt-1 text-[13px] text-slate-700">
+            <div className="mt-1 text-[12px] text-slate-500">
               Go to{' '}
               <a
                 className="text-[#10b981] underline"

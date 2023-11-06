@@ -109,6 +109,21 @@ export const WidgetList: FC<WidgetGridProps> = ({
             .mapboxgl-control-container {
               display: none
             }
+            
+            @property --widget-rotating {
+              syntax: '<angle>';
+              inherits: false;
+              initial-value: 0deg;
+            }
+            
+            @keyframes widget-rotating {
+              0% {
+                --widget-rotating: 0deg;
+              }
+              100% {
+                --widget-rotating: 360deg;
+              }
+            }
           `
         }}
       />
