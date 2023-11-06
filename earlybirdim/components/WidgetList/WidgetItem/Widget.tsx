@@ -81,7 +81,9 @@ export default class Widget<T> {
       return {
         '--widget-padding': extraStyles?.padding || '20px',
         '--widget-bg': extraStyles?.bgColor || '#fff',
+        '--widget-dark-bg': extraStyles?.darkBgColor || '#0f172a',
         '--widget-bg-hover': extraStyles?.bgHoverColor || '#fbfbfb',
+        '--widget-dark-bg-hover': extraStyles?.darkBgHoverColor || '#1e293b',
         '--widget-bg-active': extraStyles?.bgActiveColor || '#efefef',
         '--widget-follow-border': extraStyles?.followBorderColor || 'rgba(31,35,40,0.15)',
         '--widget-follow-bg': extraStyles?.followBgColor || '#f6f8fa',
@@ -99,7 +101,7 @@ export default class Widget<T> {
         data-id={config.id}
         style={styles}
       >
-        <div className="widget-content relative w-full h-full rounded-3xl shadow-sm group bg-[var(--widget-bg)] p-[var(--widget-padding)] transition-all duration-150 will-change-auto hover:bg-[var(--widget-bg-hover)] active:scale-[var(--widget-scale)] active:bg-[var(--widget-bg-active)]">
+        <div className="widget-content relative w-full h-full rounded-3xl shadow-sm group bg-[var(--widget-bg)] dark:bg-[var(--widget-dark-bg)] p-[var(--widget-padding)] transition-all duration-150 will-change-auto hover:bg-[var(--widget-bg-hover)] dark:hover:bg-[var(--widget-dark-bg-hover)] active:scale-[var(--widget-scale)] active:bg-[var(--widget-bg-active)]">
           <Component {...config} />
           <div className="pointer-events-none absolute inset-0 rounded-3xl border border-black/10" />
         </div>
@@ -135,7 +137,7 @@ export default class Widget<T> {
             url={config.url}
             faviconUrl={(config.data as unknown as WebsiteData).faviconUrl}
           />
-          <h3 className="flex-1 truncate text-sm text-gray-900">
+          <h3 className="flex-1 truncate text-sm text-gray-900 dark:text-slate-50">
             {(config.data as WidgetData).name || (config.data as unknown as WebsiteData).title}
           </h3>
         </div>

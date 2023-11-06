@@ -23,7 +23,7 @@ export default class EmailCaptureWidget<T extends EmailCaptureData> extends Widg
           <WidgetIcon type={config.type} />
 
           <div className="mt-2 md:mt-3 flex-1">
-            <h3 className="line-clamp-1 text-sm leading-[1.2] text-gray-900">
+            <h3 className="line-clamp-1 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
               {config.data.overrides?.title}
             </h3>
           </div>
@@ -50,7 +50,7 @@ export default class EmailCaptureWidget<T extends EmailCaptureData> extends Widg
             </div>
 
             <div className="mt-2 md:mt-3 flex-1">
-              <h3 className="line-clamp-1 text-sm leading-[1.2] text-gray-900">
+              <h3 className="line-clamp-1 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title}
               </h3>
             </div>
@@ -95,7 +95,7 @@ export default class EmailCaptureWidget<T extends EmailCaptureData> extends Widg
             </div>
 
             <div className="mt-3">
-              <h3 className="line-clamp-2 text-sm text-gray-900">{config.data.overrides?.title}</h3>
+              <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">{config.data.overrides?.title}</h3>
             </div>
           </div>
 

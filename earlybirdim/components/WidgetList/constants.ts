@@ -203,6 +203,7 @@ export const payment: WidgetExtra = {
 export const emailCapture: WidgetExtra = {
   styles: {
     bgColor: '#fff',
+    darkBgColor: '#0f172a',
     bgHoverColor: '#fbfbfb',
     bgActiveColor: '#fbfbfb',
     followBorderColor: '#10b981',

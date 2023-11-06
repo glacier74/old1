@@ -27,11 +27,11 @@ const PlayItem: FC<{ index: number; song: SpotifySong }> = ({ song }) => {
             </div>
           </div>
           <div className="mx-3 flex flex-col text-left">
-            <div className="line-clamp-1 text-sm">{song.name}</div>
-            <div className="line-clamp-1 text-xs text-black/60">{song.artists?.join(', ')}</div>
+            <div className="line-clamp-1 text-sm text-slate-950 dark:text-slate-50">{song.name}</div>
+            <div className="line-clamp-1 text-xs text-black/60 dark:text-slate-400">{song.artists?.join(', ')}</div>
           </div>
         </div>
-        <div className="w-fit flex-none text-sm tabular-nums text-black/40">
+        <div className="w-fit flex-none text-sm tabular-nums text-black/40 dark:text-slate-500">
           {durationToTime(song.duration)}
         </div>
       </div>
@@ -55,10 +55,10 @@ export default class SpotifyPlaylistWidget<T extends SpotifyPlaylistData> extend
           <WidgetIcon url={config.url} />
 
           <div className="mt-2 md:mt-3 flex-1">
-            <h3 className="line-clamp-1 text-sm leading-[1.2] text-gray-900">
+            <h3 className="line-clamp-1 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
               {config.data.overrides?.title || config.data.name}
             </h3>
-            <div className="mt-1 text-xs text-gray-500">{config.data.numSongs} songs</div>
+            <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{config.data.numSongs} songs</div>
           </div>
 
           <div className="inline-flex">
@@ -78,10 +78,10 @@ export default class SpotifyPlaylistWidget<T extends SpotifyPlaylistData> extend
             <WidgetIcon url={config.url} />
 
             <div className="mt-2 md:mt-3 flex-1">
-              <h3 className="line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] text-gray-900">
+              <h3 className="line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title || config.data.name}
               </h3>
-              <div className="mt-1 text-xs text-gray-500">{config.data.numSongs} songs</div>
+              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{config.data.numSongs} songs</div>
             </div>
 
             <div className="inline-flex">
@@ -119,10 +119,10 @@ export default class SpotifyPlaylistWidget<T extends SpotifyPlaylistData> extend
               </div>
             </div>
             <div className="mt-3">
-              <h3 className="line-clamp-2 text-sm text-gray-900">
+              <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title || config.data.name}
               </h3>
-              <div className="mt-1 text-xs text-gray-500">{config.data.numSongs} songs</div>
+              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{config.data.numSongs} songs</div>
             </div>
           </div>
           <div className="flex-1"></div>

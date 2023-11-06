@@ -140,11 +140,11 @@ export default class GithubWidget<T extends GithubData & WidgetData> extends Beh
             <WidgetIcon url={config.url} />
 
             <div className="mt-2 md:mt-3 flex-1">
-              <h3 className="line-clamp-2 text-sm text-gray-900">
+              <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title || config.data.name || typeNames[config.type!]}
               </h3>
               {config.data.description && (
-                <div className="max-[400px]:hidden text-xs text-gray-400">
+                <div className="max-[400px]:hidden text-xs text-slate-500 dark:text-slate-400">
                   {config.data.description}
                 </div>
               )}
@@ -189,11 +189,11 @@ export default class GithubWidget<T extends GithubData & WidgetData> extends Beh
             </div>
 
             <div className="mt-3">
-              <h3 className="line-clamp-2 text-sm text-gray-900">
+              <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title || config.data.name || typeNames[config.type!]}
               </h3>
               {config.data.description && (
-                <div className="max-[400px]:hidden text-xs text-gray-400">
+                <div className="max-[400px]:hidden text-xs text-slate-500 dark:text-slate-400">
                   {config.data.description}
                 </div>
               )}

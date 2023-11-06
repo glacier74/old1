@@ -17,7 +17,7 @@ export class GroupTitleWidget {
 
   private static Render(config: WidgetConfig<WidgetData>) {
     return (
-      <div className="text-lg p-4 mt-8 font-bold first-of-type:mt-0" data-id={config.id}>
+      <div className="text-xl p-4 mt-8 font-bold first-of-type:mt-0 text-slate-950 dark:text-slate-50" data-id={config.id}>
         {config.data.overrides?.title}
       </div>
     )

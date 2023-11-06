@@ -17,10 +17,10 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
           <WidgetIcon url={config.url} faviconUrl={config.data.faviconUrl} />
 
           <div className="mt-2 md:mt-3 flex-1">
-            <h3 className="line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] text-gray-900">
+            <h3 className="line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
               {config.data.overrides?.title || config.data.title}
             </h3>
-            <div className="mt-1 text-xs text-gray-500">{customURL?.hostname}</div>
+            <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{customURL?.hostname}</div>
           </div>
         </div>
       </a>
@@ -47,10 +47,10 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
               <WidgetIcon url={config.url} faviconUrl={config.data.faviconUrl} />
             </div>
             <div className="flex flex-1 flex-col">
-              <h3 className="line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] text-gray-900">
+              <h3 className="line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title || config.data.title}
               </h3>
-              <div className="mt-1 text-xs text-gray-500">{customURL?.hostname}</div>
+              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{customURL?.hostname}</div>
             </div>
           </div>
 
@@ -91,10 +91,10 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
               <WidgetIcon url={config.url} faviconUrl={config.data.faviconUrl} />
             </div>
             <div className="flex flex-1 flex-col">
-              <h3 className="line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] text-gray-900">
+              <h3 className="line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title || config.data.title}
               </h3>
-              <div className="mt-1 text-xs text-gray-500">{customURL?.hostname}</div>
+              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{customURL?.hostname}</div>
             </div>
           </div>
 

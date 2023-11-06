@@ -4,7 +4,7 @@ import React from 'react'
 export const schemas = [
   {
     name: 'personal_info',
-    title: 'Personal Information',
+    title: 'Profile',
     fields: [
       {
         name: 'avatar',
@@ -28,7 +28,7 @@ export const schemas = [
   },
   {
     name: 'main',
-    title: 'Social networks',
+    title: 'Link in bio',
     fields: [
       {
         name: 'socials',
@@ -129,16 +129,16 @@ export const schemas = [
 export function render({ options: { personal_info, main } }) {
   return (
     <React.Fragment>
-      <div className="earlybird-HSqdRg min-h-screen grid lg:grid-cols-2 lg:gap-4 lg:px-24">
+      <div className="earlybird-HSqdRg bg-white dark:bg-slate-950 min-h-screen grid lg:grid-cols-2 lg:gap-4 lg:px-24">
         <div className="earlybird-tXXVbP px-8 lg:px-32 py-12 items-center">
           <div id="personal_info" className="earlybird-tMuH8h relative xl:sticky xl:top-16">
             <div className="earlybird-KDvjAn bioAvator w-48 h-48">
               <img className="earlybird-yFaZEN rounded-full" src={personal_info.avatar} />
             </div>
-            <h1 className="earlybird-q9vUAm bioName mt-8 text-5xl font-semibold">
+            <h1 className="earlybird-q9vUAm bioName text-slate-950 dark:text-slate-50 mt-8 text-5xl font-semibold">
               {personal_info.name}
             </h1>
-            <p className="earlybird-LyK1vr bioIntro mt-6 text-xl text-gray-500">
+            <p className="earlybird-LyK1vr bioIntro mt-6 text-xl text-slate-600 dark:text-gray-50">
               {personal_info.description}
             </p>
           </div>
