@@ -22,6 +22,7 @@ export const schemas = [
         name: 'description',
         title: 'Description',
         type: 'text',
+        defaultRows: 3,
         default: 'I build tiny but cool things.'
       }
     ]

@@ -12,7 +12,7 @@ export const TextOption: FC<OptionProps> = ({ parentName, schema }) => {
     <div className="builder-option">
       <div className="builder-option__title">{schema.title}</div>
       <div className="builder-option__content">
-        <AutoSizeTextarea value={value} onChange={update} />
+        <AutoSizeTextarea value={value} minRows={schema.defaultRows} onChange={update} />
       </div>
     </div>
   )
