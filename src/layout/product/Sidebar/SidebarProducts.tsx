@@ -7,12 +7,12 @@ import type { FC } from 'react'
 import { useEffect, useState } from 'react'
 
 import { RoundImage } from '~/components'
-import { PLAN_LEVELS, PLAN_NAMES } from '~/constants'
-import { UpgradeModal } from '~/layout/builder3/navbar/UpgradeModal'
+import { PLAN_NAMES } from '~/constants'
 import { useStore } from '~/store'
-import { useSubscriptionPlanLevel, useVisible } from '~/utils'
+import { useVisible } from '~/utils'
 
 import { useProduct, useProductId } from '../../hook'
+import { UpgradeModal } from './UpgradeModal'
 
 interface ProductItemProps {
   product: Product
@@ -89,13 +89,12 @@ export const SidebarProducts: FC = () => {
   const { t } = useTranslation('dashboard')
   const router = useRouter()
   const { isReady, user, products } = useStore()
-  const currPlanLevel = useSubscriptionPlanLevel(user.subscription)
 
   const [visible, setVisible] = useState(false)
   const [upgradeModalVisible, openUpgradeModal, closeUpgradeModal] = useVisible()
 
   function handleCreate() {
-    if (products.length > 0 && currPlanLevel === PLAN_LEVELS.plan_free) {
+    if (products.length >= user.subscription.plan.landingPages) {
       return openUpgradeModal()
     }
 
@@ -143,11 +142,7 @@ export const SidebarProducts: FC = () => {
         )}
       </div>
 
-      <UpgradeModal
-        visible={upgradeModalVisible}
-        onPublish={closeUpgradeModal}
-        onClose={closeUpgradeModal}
-      />
+      <UpgradeModal visible={upgradeModalVisible} onClose={closeUpgradeModal} />
     </>
   )
 }

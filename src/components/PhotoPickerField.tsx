@@ -71,7 +71,7 @@ export const ImagePickerField: FC<ImagePickerFieldProps> = ({
   ...restProps
 }) => {
   const [visible, open, close] = useVisible()
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
 
   function handleClick() {
     open()
@@ -152,7 +152,7 @@ export const AvatarPickerField: FC<AvatarPickerFieldProps> = ({
   ...restProps
 }) => {
   const [visible, open, close] = useVisible()
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
 
   function handleClick() {
     open()

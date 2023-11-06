@@ -130,8 +130,8 @@
     "useTemplate": "使用此模板"
   },
   "account": {
-    "title": "账户 - EarlyBird",
-    "heading": "账户",
+    "title": "个人信息 - EarlyBird",
+    "heading": "个人信息",
     "description": "对账户的更改将应用于你的所有产品。",
     "avatar": {
       "heading": "头像",

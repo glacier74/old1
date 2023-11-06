@@ -219,8 +219,12 @@ button.button-link.button-success .button-loader {
   @apply placeholder-slate-400;
 }
 
-button.switch:focus {
-  @apply ring-emerald-500;
+button.switch {
+  @apply bg-slate-300;
+
+  &:focus {
+    @apply ring-emerald-500;
+  }
 }
 
 button.switch-checked {
@@ -324,7 +328,7 @@ button.switch-checked {
 }
 
 .plan-badge {
-  @apply inline-block px-1 py-0.5 text-[11px] leading-[1] font-bold uppercase rounded bg-yellow-500 text-white;
+  @apply inline-block px-1 py-0.5 text-[11px] leading-[1] font-bold uppercase rounded bg-yellow-500 text-white origin-right scale-90;
 }
 
 .plan-check {

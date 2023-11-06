@@ -29,7 +29,7 @@ export const PhotoPicker: FC<PhotoPickerProps> = ({
   onChange,
   ...restProps
 }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
 
   function handleImageChange(src: string) {
     onChange?.(src, 'image')
