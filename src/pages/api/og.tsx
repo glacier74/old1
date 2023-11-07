@@ -8,14 +8,6 @@ export const config = {
   runtime: 'edge'
 }
 
-const interRegularFontFunc = fetch(
-  new URL('../../../public/static/Inter-Regular.ttf', import.meta.url)
-).then(res => res.arrayBuffer())
-
-const interBoldFontFunc = fetch(
-  new URL('../../../public/static/Inter-Bold.ttf', import.meta.url)
-).then(res => res.arrayBuffer())
-
 export default async function handler(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url)
@@ -30,11 +22,6 @@ export default async function handler(req: NextRequest) {
     const payload = AES.decrypt(e, process.env.NEXT_API_VERIFICATION_KEY!).toString(enc.Utf8)
 
     const { name, metaTitle, metaDescription } = conv.json<AnyMap<string>>(payload)!
-
-    const [interRegularFont, interBoldFont] = await Promise.all([
-      interRegularFontFunc,
-      interBoldFontFunc
-    ])
 
     return new ImageResponse(
       (
@@ -74,21 +61,7 @@ export default async function handler(req: NextRequest) {
       ),
       {
         width: 800,
-        height: 420,
-        fonts: [
-          {
-            name: 'Inter',
-            data: interRegularFont,
-            style: 'normal',
-            weight: 400
-          },
-          {
-            name: 'Inter',
-            data: interBoldFont,
-            style: 'normal',
-            weight: 700
-          }
-        ]
+        height: 420
       }
     )
   } catch (e: any) {
