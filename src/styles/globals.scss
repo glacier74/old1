@@ -2364,6 +2364,10 @@ button.button-success {
   .tabs-pane {
     @apply py-6;
   }
+
+  .tabs-nav-list {
+    @apply space-x-4;
+  }
 }
 
 .drag-uploader {

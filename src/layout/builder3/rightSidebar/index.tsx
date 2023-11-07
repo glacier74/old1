@@ -66,7 +66,7 @@ export const RightSidebar: FC = () => {
                 onClick={() => setActiveKey('codeInjection')}
               >
                 <span>Code injection</span>
-                <PlanBadge className="ml-2" minimalLevel={PLAN_LEVELS.plan_shipper} />
+                <PlanBadge className="ml-1" minimalLevel={PLAN_LEVELS.plan_shipper} />
               </button>
             </PlanCheck>
           </div>

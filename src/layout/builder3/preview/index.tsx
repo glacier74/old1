@@ -3,7 +3,7 @@ import { FC, useCallback, useEffect, useMemo } from 'react'
 import Frame from 'react-frame-component'
 
 import { HelpFloatButton } from '~/components'
-import { useProductId } from '~/layout'
+import { useProduct } from '~/layout'
 import { PublicSiteDangerouslyHTML } from '~/layout/public-site/PublicSiteDangerouslyHTML'
 import { PublicSiteHiddenBlocksStyle } from '~/layout/public-site/PublicSiteHiddenBlocksStyle'
 import { SiteSettingsService } from '~/service'
@@ -19,7 +19,7 @@ import { ScrollIntoView } from './ScrollIntoView'
 export const Preview: FC = () => {
   const { siteSettings, updateSiteSettings } = useStore()
   const { state, dispatch } = useBuilderContext()
-  const productId = useProductId()
+  const product = useProduct()
 
   const [alertModalVisible, openAlertModal] = useVisible()
   const queue = useMemo(() => new Queue(), [])
@@ -36,7 +36,7 @@ export const Preview: FC = () => {
       const draft = state.options
       formOptionWalker(draft)
 
-      const result = await SiteSettingsService.updateDraft(productId, {
+      const result = await SiteSettingsService.updateDraft(product.id, {
         draft,
         version: siteSettings.version
       })
@@ -47,7 +47,7 @@ export const Preview: FC = () => {
         openAlertModal()
       }
     }
-  }, [productId, siteSettings.version, state.options])
+  }, [product.id, siteSettings.version, state.options])
 
   function updateSyncing(isSyncing: boolean, lastSyncedAt?: number) {
     const updates: AnyMap<unknown> = {
@@ -96,7 +96,7 @@ export const Preview: FC = () => {
       <div className={`builder-editor builder-editor-${state.previewMode}`}>
         <Frame
           className="w-full h-full scrollbar"
-          initialContent="<!DOCTYPE html><html class='scroll-smooth'><head><script src='https://cdn.tailwindcss.com'></script><script>document.addEventListener('click',function(event){var a=event.target;var depth=3;while(a&&a.tagName!=='A'&&depth-->0){a=a.parentNode}if(a&&a.tagName=='A'){event.preventDefault()}});</script></head><body class='iframe-scrollbar'><div></div></body></html>"
+          initialContent="<!DOCTYPE html><html class='scroll-smooth'><head><script src='https://cdn.tailwindcss.com'></script><script>tailwind.config = {darkMode: 'class'}</script><script>document.addEventListener('click',function(event){var a=event.target;var depth=3;while(a&&a.tagName!=='A'&&depth-->0){a=a.parentNode}if(a&&a.tagName=='A'){event.preventDefault()}});</script></head><body class='iframe-scrollbar'><div></div></body></html>"
         >
           <ScrollIntoView
             selectedOptionName={state.selectedOptionName}
@@ -106,11 +106,12 @@ export const Preview: FC = () => {
 
           <GlobalContext.Provider
             value={{
-              productId,
+              productId: product.id,
               isPreview: true
             }}
           >
             {templates[siteSettings.template]?.render({
+              product,
               options: state.options,
               hiddenBlocks: siteSettings.hiddenBlocks
             })}
