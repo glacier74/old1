@@ -205,3 +205,21 @@ export function schemaFieldsToValue(fields: any[]): any {
     }
   )
 }
+
+export function findSchemaPaths(schemas: any[], schemaType: SchemaTypeEnum, parent?: any) {
+  let result: string[] = []
+
+  schemas.forEach(schema => {
+    const path = [parent, schema.name].filter(Boolean).join('.')
+
+    if (schema.type === schemaType) {
+      result.push(path)
+    }
+
+    if (isValidArray(schema.fields)) {
+      result = [...result, ...findSchemaPaths(schema.fields, schemaType, path)]
+    }
+  })
+
+  return result
+}

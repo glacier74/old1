@@ -1,7 +1,8 @@
 import { GlobalContext } from '@earlybirdim/components'
 import { Form, Input } from '@heyforms/ui'
-import { conv, isValid } from '@nily/utils'
+import { conv, isValid, objectPath } from '@nily/utils'
 import { IconCheck } from '@tabler/icons'
+import { isGoogleMap } from '@tinaryan/dp'
 import AES from 'crypto-js/aes'
 import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
@@ -14,7 +15,9 @@ import { FC, useEffect, useMemo } from 'react'
 import { IconLogo } from '~/components'
 import { PublicSiteLayout } from '~/layout'
 import components from '~/layout/builder2/components'
+import { SchemaTypeEnum } from '~/layout/builder3/constants'
 import templates from '~/layout/builder3/templates'
+import { findSchemaPaths } from '~/layout/builder3/utils'
 import { EmailCapturePreview } from '~/layout/builder/blocks/EmailCapture'
 import { FaqPreview } from '~/layout/builder/blocks/Faq'
 import { FeaturePreview } from '~/layout/builder/blocks/Feature'
@@ -31,6 +34,7 @@ import { TextPreview } from '~/layout/builder/blocks/Text'
 import { PublicSiteDangerouslyHTML } from '~/layout/public-site/PublicSiteDangerouslyHTML'
 import { PublicSiteHiddenBlocksStyle } from '~/layout/public-site/PublicSiteHiddenBlocksStyle'
 import { ProductService } from '~/service'
+import { JingleBioService } from '~/service/jinglebio'
 import { PublicApiService } from '~/service/public-api'
 import { getPrivateToken, setPrivateToken, withTranslations } from '~/utils'
 
@@ -386,6 +390,48 @@ export const getServerSideProps = withTranslations(
       product.openGraphImage = `${process.env.NEXT_PUBLIC_HOMEPAGE}/api/og?e=${encodeURIComponent(
         e
       )}`
+    }
+
+    if (product.isJingleBio) {
+      const widgetListPaths = findSchemaPaths(
+        templates[product.siteSetting.template].schemas,
+        SchemaTypeEnum.widgetList
+      )
+
+      if (isValid(widgetListPaths)) {
+        const urlPaths: any[] = []
+
+        for (const path of widgetListPaths) {
+          objectPath.get(product.siteSetting.blocks, path).forEach((row: any, index: number) => {
+            if (isValid(row.url) && !isGoogleMap(row.url)) {
+              urlPaths.push({
+                url: row.url,
+                path: [path, index].join('.')
+              })
+            }
+          })
+        }
+
+        if (isValid(urlPaths)) {
+          try {
+            const result = await JingleBioService.metadata(
+              product.id,
+              urlPaths.map(p => p.url)
+            )
+
+            urlPaths.forEach((row, index) => {
+              const data = objectPath.get(product.siteSetting.blocks, row.path)
+
+              objectPath.set(product.siteSetting.blocks, row.path, {
+                ...data,
+                ...result[index]
+              })
+            })
+          } catch (err) {
+            console.error(err)
+          }
+        }
+      }
     }
 
     return {
