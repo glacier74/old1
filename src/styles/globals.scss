@@ -2451,6 +2451,10 @@ button.button-success {
   @apply hidden opacity-0 invisible;
 }
 
+.mapboxgl-canvas {
+  @apply rounded-3xl;
+}
+
 .create-product-radio-group {
   @apply mb-8;
 

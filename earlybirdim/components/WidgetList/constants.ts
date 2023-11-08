@@ -156,13 +156,15 @@ export const youtube: WidgetExtra = {
   followText: 'Subscribe',
   render2x1: {
     postMaxCounts: 4,
-    postListClassName: '!ml-4 aspect-[1.5] grid-cols-2 grid-rows-2',
-    postItemClassNames: 'aspect-[1.78]'
+    postListClassName: '!ml-4 aspect-[1.4] grid-cols-2 grid-rows-2',
+    postItemClassNames: 'aspect-[1.5] overflow-hidden',
+    imageClassName: 'scale-[1.2]'
   },
   render2x2: {
     postMaxCounts: 4,
     postListClassName: 'aspect-[1.5] grid-cols-2 grid-rows-2',
-    postItemClassNames: 'aspect-[1.5]'
+    postItemClassNames: 'aspect-[1.5] overflow-hidden',
+    imageClassName: 'scale-[1.2]'
   }
 }
 

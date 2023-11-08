@@ -42,6 +42,7 @@ export interface WidgetFollowButtonProps extends ComponentProps {
 
 export interface WidgetPostListProps extends ComponentProps {
   itemClassNames?: string | string[]
+  imageClassName?: string
   maxCount: number
   posts: WidgetPost[]
 }

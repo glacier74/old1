@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 patchedDependencies:
   '@tabler/icons@1.119.0':
     hash: tjmxjsj7pvvhkhqdp6bmei6com
@@ -40,8 +44,8 @@ dependencies:
     specifier: ^1.119.0
     version: 1.119.0(patch_hash=tjmxjsj7pvvhkhqdp6bmei6com)(react-dom@18.2.0)(react@18.2.0)
   '@tinaryan/dp':
-    specifier: ^0.2.3
-    version: 0.2.3(@heyooo-inc/utils@0.0.10)
+    specifier: ^0.2.5
+    version: 0.2.5(@heyooo-inc/utils@0.0.10)
   '@tippyjs/react':
     specifier: ^4.2.6
     version: 4.2.6(react-dom@18.2.0)(react@18.2.0)
@@ -1125,8 +1129,8 @@ packages:
       mini-svg-data-uri: 1.4.4
       tailwindcss: 3.3.3
 
-  /@tinaryan/dp@0.2.3(@heyooo-inc/utils@0.0.10):
-    resolution: {integrity: sha512-72NN/fXoeGwkLeb4rrM6S88KVxq+512rCyJOwV1Y/pFqsSaV4cL+sjErRrE7pHNNtYZiqy8K6OQEKdXEY0CXtQ==}
+  /@tinaryan/dp@0.2.5(@heyooo-inc/utils@0.0.10):
+    resolution: {integrity: sha512-bQhMgQwF5sNx4gVk75ApUglvnu8Kk83+dq4H+nsKyXO6MQ60+pTwaonP7In9IU0Eb/sW8CJs8hGeNOTeL597bg==}
     peerDependencies:
       '@heyooo-inc/utils': ^0.0.10
     dependencies:
@@ -5902,7 +5906,3 @@ packages:
   /yoga-wasm-web@0.3.0:
     resolution: {integrity: sha512-rD3L4jyMlO1m+RWU60lNwZQK5zmzglCV5fI1gTRikmpv3YzmNIZQbjyfE6cMNb9Xaly/C1SwemYGbsiOekMvnQ==}
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

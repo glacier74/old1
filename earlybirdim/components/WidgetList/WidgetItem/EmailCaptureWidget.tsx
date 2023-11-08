@@ -1,4 +1,5 @@
 import { useGlobalContext } from '@earlybirdim/components'
+import clsx from 'clsx'
 
 import { WidgetIcon } from '../WidgetIcon'
 import { EmailCaptureData, WidgetConfig } from '../WidgetProps'
@@ -44,7 +45,12 @@ export default class EmailCaptureWidget<T extends EmailCaptureData> extends Widg
     return (
       <a className="block w-full h-full" href={config.url}>
         <div className="flex h-full">
-          <div className="flex h-full w-full flex-1 flex-col">
+          <div
+            className={clsx(
+              'flex h-full w-full flex-1 flex-col',
+              config.data.overrides?.imageUrl ? 'aspect-[0.6]' : undefined
+            )}
+          >
             <div className="flex justify-between">
               <WidgetIcon type={config.type} />
             </div>
@@ -95,7 +101,9 @@ export default class EmailCaptureWidget<T extends EmailCaptureData> extends Widg
             </div>
 
             <div className="mt-3">
-              <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">{config.data.overrides?.title}</h3>
+              <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
+                {config.data.overrides?.title}
+              </h3>
             </div>
           </div>
 

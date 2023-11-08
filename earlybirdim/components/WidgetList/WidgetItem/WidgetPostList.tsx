@@ -6,6 +6,7 @@ import { WidgetPostListProps } from '../WidgetProps'
 
 export const WidgetPostList: FC<WidgetPostListProps> = ({
   itemClassNames: rawItemClassNames,
+  imageClassName,
   posts: rawPosts = [],
   maxCount = 0,
   ...restProps
@@ -37,7 +38,7 @@ export const WidgetPostList: FC<WidgetPostListProps> = ({
         >
           {row && (
             <img
-              className="h-full w-full rounded-md object-cover"
+              className={clsx('h-full w-full rounded-md object-cover', imageClassName)}
               src={row.thumbnail}
               alt={row.title}
             />
