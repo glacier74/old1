@@ -47,10 +47,13 @@ const SubdomainURL = () => {
   const { updateProduct } = useStore()
   const [visible, open, close] = useVisible()
 
-  const subdomainURL = useMemo(
-    () => `${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`,
-    [product.domain]
-  )
+  const subdomainURL = useMemo(() => {
+    if (product.isJingleBio) {
+      return `${process.env.NEXT_PUBLIC_JINGLE_BIO_DOMAIN}/${product.domain}`
+    }
+
+    return `${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`
+  }, [product.domain, product.isJingleBio])
 
   async function handleFinish(values: any) {
     await ProductService.updateSubdomain(product.id, values.domain)
