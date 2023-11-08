@@ -22,7 +22,7 @@ const PlayItem: FC<{ index: number; song: SpotifySong }> = ({ song }) => {
                 src={song.thumbnail}
                 alt={song.name}
               />
-              <WidgetPlayButton className="absolute inset-0 flex items-center justify-center !rounded-lg !p-0 opacity-0 transition-opacity group-hover/item:opacity-100" />
+              <WidgetPlayButton className="absolute inset-0 w-full h-full flex items-center justify-center !rounded-lg !p-0 opacity-0 transition-opacity group-hover/item:opacity-100" />
               <div className="pointer-events-none absolute inset-0 border border-black/10 rounded-lg"></div>
             </div>
           </div>

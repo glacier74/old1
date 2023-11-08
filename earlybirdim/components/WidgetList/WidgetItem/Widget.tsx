@@ -101,7 +101,7 @@ export default class Widget<T> {
         data-id={config.id}
         style={styles}
       >
-        <div className="widget-content group/widget-content relative w-full h-full rounded-3xl shadow-sm cursor-pointer group bg-[var(--widget-bg)] dark:bg-[var(--widget-dark-bg)] p-[var(--widget-padding)] transition-all duration-150 will-change-auto hover:bg-[var(--widget-bg-hover)] dark:hover:bg-[var(--widget-dark-bg-hover)] active:scale-[var(--widget-scale)] active:bg-[var(--widget-bg-active)]">
+        <div className="widget-content group/widget-content relative w-full h-full rounded-3xl shadow-sm cursor-pointer group bg-[var(--widget-bg)] dark:bg-[var(--widget-dark-bg)] p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))] transition-all duration-150 will-change-auto hover:bg-[var(--widget-bg-hover)] dark:hover:bg-[var(--widget-dark-bg-hover)] active:scale-[var(--widget-scale)] active:bg-[var(--widget-bg-active)]">
           <div className="w-full h-full dark:group-hover/widget-content:relative dark:group-hover/widget-content:z-10">
             <Component {...config} />
           </div>
