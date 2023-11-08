@@ -7,11 +7,13 @@ import { useCallback, useState } from 'react'
 import templates from '~/layout/builder3/templates'
 import { schemasToOptions } from '~/layout/builder3/utils'
 import { ProductService } from '~/service'
+import { useStore } from '~/store'
 
 import { StepContainer } from './StepContainer'
 
 export const StepJingleBio = () => {
   const { t } = useTranslation('dashboard')
+  const { user } = useStore()
 
   const [name, setName] = useState<string>()
   const [loading, setLoading] = useState(false)
@@ -26,6 +28,7 @@ export const StepJingleBio = () => {
 
       // Update Jingle Bio block
       blocks.personal_info.name = name
+      blocks.personal_info.avatar = user.avatar
 
       const productId = await ProductService.create({
         name,
@@ -42,7 +45,7 @@ export const StepJingleBio = () => {
     }
 
     setLoading(false)
-  }, [name])
+  }, [name, user.avatar])
 
   return (
     <StepContainer
