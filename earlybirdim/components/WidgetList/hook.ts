@@ -1,5 +1,6 @@
 import { useGlobalContext } from '@earlybirdim/components'
 import { date, isValid } from '@nily/utils'
+import { isGoogleMap } from '@tinaryan/dp'
 import { useEffect, useMemo, useRef, useState, useTransition } from 'react'
 
 import { MetadataService } from '~/service'
@@ -19,8 +20,8 @@ export function useMetadata<T = WidgetData>(config: WidgetConfig) {
   const [fetchedAt, setFetchedAt] = useState(0)
 
   const isFetchType = useMemo(
-    () => config.type && !UNFETCH_TYPES.includes(config.type),
-    [config.type]
+    () => config.type && !UNFETCH_TYPES.includes(config.type) && !isGoogleMap(config.url),
+    [config.type, config.url]
   )
 
   async function fetchData() {
