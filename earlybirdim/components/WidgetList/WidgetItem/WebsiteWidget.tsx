@@ -48,7 +48,7 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
           <div
             className={clsx(
               'flex h-full w-full flex-1 flex-col',
-              imageUrl ? 'aspect-[0.6]' : undefined
+              imageUrl ? 'aspect-[0.6] overflow-hidden' : undefined
             )}
           >
             <div className="flex justify-between">
@@ -111,9 +111,9 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
           </div>
 
           {imageUrl ? (
-            <div className="relative mt-6 aspect-[40/21]">
+            <div className="relative mt-6 aspect-[1.9] overflow-hidden">
               <img
-                className="aspect-[40/21] rounded-xl object-cover"
+                className="w-full h-full rounded-xl object-cover"
                 src={imageUrl}
                 alt={config.data.overrides?.title || config.data.title}
               />

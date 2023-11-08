@@ -48,7 +48,7 @@ export default class EmailCaptureWidget<T extends EmailCaptureData> extends Widg
           <div
             className={clsx(
               'flex h-full w-full flex-1 flex-col',
-              config.data.overrides?.imageUrl ? 'aspect-[0.6]' : undefined
+              config.data.overrides?.imageUrl ? 'aspect-[0.6] overflow-hidden' : undefined
             )}
           >
             <div className="flex justify-between">
@@ -110,9 +110,9 @@ export default class EmailCaptureWidget<T extends EmailCaptureData> extends Widg
           <div className="flex-1"></div>
 
           {config.data.overrides?.imageUrl ? (
-            <div className="relative mt-6 aspect-[40/21]">
+            <div className="relative mt-6 aspect-[1.9] overflow-hidden">
               <img
-                className="aspect-[40/21] rounded-xl object-cover"
+                className="w-full h-full rounded-xl object-cover"
                 src={config.data.overrides?.imageUrl}
                 alt={config.data.overrides?.title}
               />

@@ -38,6 +38,11 @@ export const WidgetList: FC<WidgetGridProps> = ({
     }
 
     const win = frameWindow || window
+    const cache = win.localStorage.getItem('item_size')
+
+    if (cache) {
+      setItemSize(Number(cache))
+    }
 
     const innerWidth = win.innerWidth
     const scrollBarWidth = innerWidth < 800 ? 0 : 15
@@ -46,9 +51,14 @@ export const WidgetList: FC<WidgetGridProps> = ({
 
     const width = Math.min(rect.width, win.innerWidth) - scrollBarWidth
     const colNum = Math.round((width + rawGapSize) / (rawItemSize + rawGapSize))
-    const itemSize = (width - (2 * colNum - 1) * rawGapSize) / (2 * colNum)
+    let itemSize = (width - (2 * colNum - 1) * rawGapSize) / (2 * colNum)
+
+    if (width < itemSize * 4 + rawGapSize * 3) {
+      itemSize = (width - rawGapSize * 3) / 4
+    }
 
     setItemSize(itemSize)
+    win.localStorage.setItem('item_size', String(itemSize))
   }
 
   const list = useMemo(() => {
