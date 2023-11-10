@@ -26,6 +26,7 @@ export type WidgetItemProps<T = WidgetData> = WidgetConfig<T> & ComponentProps
 export interface WidgetIconProps extends ComponentProps {
   type?: WidgetType
   url?: string
+  title?: string
   faviconUrl?: string
 }
 
@@ -43,6 +44,7 @@ export interface WidgetFollowButtonProps extends ComponentProps {
 export interface WidgetPostListProps extends ComponentProps {
   itemClassNames?: string | string[]
   imageClassName?: string
+  imageAlt?: string
   maxCount: number
   posts: WidgetPost[]
 }

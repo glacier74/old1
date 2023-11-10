@@ -7,6 +7,7 @@ import { WidgetPostListProps } from '../WidgetProps'
 export const WidgetPostList: FC<WidgetPostListProps> = ({
   itemClassNames: rawItemClassNames,
   imageClassName,
+  imageAlt,
   posts: rawPosts = [],
   maxCount = 0,
   ...restProps
@@ -40,7 +41,7 @@ export const WidgetPostList: FC<WidgetPostListProps> = ({
             <img
               className={clsx('h-full w-full rounded-md object-cover', imageClassName)}
               src={row.thumbnail}
-              alt={row.title}
+              alt={row.title || imageAlt}
             />
           )}
           <div className="pointer-events-none absolute inset-0 border border-black/10 rounded-md"></div>

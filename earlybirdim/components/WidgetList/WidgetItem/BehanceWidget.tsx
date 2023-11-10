@@ -37,15 +37,15 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
   }
 
   override Render1x1(config: WidgetConfig<T>) {
+    const title = config.data.overrides?.title || config.data.name || typeNames[config.type!]
+
     return (
       <a className="block w-full h-full" href={config.url}>
         <div className="flex h-full flex-col">
           <WidgetIcon url={config.url} />
 
           <div className="mt-2 md:mt-3 flex-1">
-            <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
-              {config.data.overrides?.title || config.data.name || typeNames[config.type!]}
-            </h3>
+            <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">{title}</h3>
             {config.data.description && (
               <div className="max-[400px]:hidden text-xs text-slate-500 dark:text-slate-400">
                 {config.data.description}
@@ -66,6 +66,8 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
 
   // 2x1
   override Render2x1(config: WidgetConfig<T>) {
+    const title = config.data.overrides?.title || config.data.name || typeNames[config.type!]
+
     return (
       <a className="block w-full h-full" href={config.url}>
         <div className="flex h-full">
@@ -73,9 +75,7 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
             <WidgetIcon url={config.url} />
 
             <div className="mt-2 md:mt-3 flex-1">
-              <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
-                {config.data.overrides?.title || config.data.name || typeNames[config.type!]}
-              </h3>
+              <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">{title}</h3>
               {config.data.description && (
                 <div className="max-[400px]:hidden text-xs text-slate-500 dark:text-slate-400">
                   {config.data.description}
@@ -100,6 +100,7 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
             )}
             itemClassNames={config.extra?.render2x1?.postItemClassNames || 'aspect-square'}
             imageClassName={config.extra?.render2x1?.imageClassName}
+            imageAlt={title}
             maxCount={config.extra?.render2x1?.postMaxCounts || 4}
             posts={(config.data as AnyMap)[config.extra?.postsKeyName || 'posts']}
           />
@@ -110,6 +111,8 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
 
   // 2x1
   override Render2x2(config: WidgetConfig<T>) {
+    const title = config.data.overrides?.title || config.data.name || typeNames[config.type!]
+
     return (
       <a className="block w-full h-full" href={config.url}>
         <div className="flex h-full flex-col">
@@ -126,9 +129,7 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
             </div>
 
             <div className="mt-3">
-              <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
-                {config.data.overrides?.title || config.data.name || typeNames[config.type!]}
-              </h3>
+              <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">{title}</h3>
               {config.data.description && (
                 <div className="max-[400px]:hidden text-xs text-slate-500 dark:text-slate-400">
                   {config.data.description}
@@ -147,6 +148,7 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
             )}
             itemClassNames={config.extra?.render2x2?.postItemClassNames || 'aspect-square'}
             imageClassName={config.extra?.render2x2?.imageClassName}
+            imageAlt={title}
             maxCount={config.extra?.render2x2?.postMaxCounts || 6}
             posts={(config.data as AnyMap)[config.extra?.postsKeyName || 'posts']}
           />

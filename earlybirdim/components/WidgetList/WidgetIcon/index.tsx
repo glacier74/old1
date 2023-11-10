@@ -191,6 +191,7 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
   className,
   type,
   url,
+  title,
   faviconUrl,
   ...restProps
 }) => {
@@ -212,7 +213,7 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
 
       return (
         <div className="p-1.5">
-          <img className="block h-full w-full object-cover" src={faviconUrl} />
+          <img className="block h-full w-full object-cover" src={faviconUrl} alt={title} />
         </div>
       )
     }

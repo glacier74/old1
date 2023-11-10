@@ -99,7 +99,11 @@ export function render({ product, options: { personal_info, main } }) {
           <div className="earlybird-tXXVbP max-[360px]:px-5 max-[400px]:px-7 px-8 lg:px-32 py-12 items-center">
             <div id="personal_info" className="earlybird-tMuH8h relative xl:sticky xl:top-16">
               <div className="earlybird-KDvjAn bioAvator  max-[360px]:w-28 max-[360px]:h-28 max-[400px]:w-32 max-[400px]:h-32 w-48 h-48">
-                <img className="earlybird-yFaZEN rounded-full" src={personal_info.avatar} />
+                <img
+                  className="earlybird-yFaZEN rounded-full"
+                  src={personal_info.avatar}
+                  alt={personal_info.name}
+                />
               </div>
               <h1 className="earlybird-q9vUAm bioName text-slate-950 dark:text-slate-50 mt-8 text-3xl lg:text-5xl font-semibold">
                 {personal_info.name}

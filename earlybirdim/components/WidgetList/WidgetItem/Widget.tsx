@@ -1,13 +1,7 @@
 import { CSSProperties, useMemo } from 'react'
 
 import { WidgetIcon } from '../WidgetIcon'
-import {
-  WebsiteData,
-  WidgetConfig,
-  WidgetContainerProps,
-  WidgetData,
-  WidgetSize
-} from '../WidgetProps'
+import { WidgetConfig, WidgetContainerProps, WidgetData, WidgetSize } from '../WidgetProps'
 import { sizeClassNames } from '../constants'
 import { useMetadata } from '../hook'
 
@@ -137,10 +131,11 @@ export default class Widget<T> {
           <WidgetIcon
             className="h-7 w-7"
             url={config.url}
-            faviconUrl={(config.data as unknown as WebsiteData).faviconUrl}
+            title={(config.data as any).overrides?.title || (config.data as any).title}
+            faviconUrl={(config.data as any).faviconUrl}
           />
           <h3 className="flex-1 truncate text-sm text-gray-900 dark:text-slate-50">
-            {(config.data as WidgetData).name || (config.data as unknown as WebsiteData).title}
+            {(config.data as WidgetData).name || (config.data as any).title}
           </h3>
         </div>
       </a>
