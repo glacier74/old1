@@ -16,8 +16,8 @@ export const General: FC = () => {
 
       <div className="bg-slate-50 rounded-lg divide-y divide-slate-100">
         <Expandable
-          title="Product"
-          description="The details used to identify your landing page around the web."
+          title={t('productSettings.general.product')}
+          description={t('productSettings.general.productDesc')}
         >
           <Form.Item name="logo">
             <AvatarPickerField namespace="avatar" enableUnsplash={false} />
@@ -33,8 +33,8 @@ export const General: FC = () => {
         <PublicSiteURL />
 
         <Expandable
-          title="Language"
-          description="Choose the language in which visitors will view your site. This applies to text that has not been customized by you, such as default buttons, errors, etc."
+          title={t('productSettings.language.heading')}
+          description={t('productSettings.language.description')}
         >
           <Form.Item name="language">
             <Select className="w-full md:w-[10rem]" options={LANGUAGE_OPTIONS} />
@@ -44,10 +44,9 @@ export const General: FC = () => {
         <div className="px-6 py-5">
           <div className="flex items-start justify-between">
             <div className="text-sm">
-              <h4 className="text-base text-slate-900 font-bold">Conversions notification</h4>
+              <h4 className="text-base text-slate-900 font-bold">{t('productSettings.general.conversionNotification')}</h4>
               <p className="mt-1 text-slate-500 font-normal">
-                When a new conversion action is triggered on your landing page, an email
-                notification will be sent.
+                {t('productSettings.general.conversionNotificationDesc')}
               </p>
             </div>
             <Form.Item name="leadCaptureNotification">

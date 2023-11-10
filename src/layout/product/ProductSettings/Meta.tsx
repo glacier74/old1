@@ -25,15 +25,15 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
 
       <div className="bg-slate-50 rounded-lg divide-y divide-slate-100">
         <Expandable
-          title="Meta title & description"
-          description="The details used to identify your landing page around the web."
+          title={t('productSettings.metaData.heading')}
+          description={t('productSettings.metaData.description')}
         >
           <div className="flex flex-col lg:flex-row justify-start space-y-2 lg:space-x-8 lg:space-y-0">
             <div className="w-full lg:w-1/2 lg:flex-1">
               <Form.Item
                 name="metaTitle"
                 className="mb-4"
-                label="Meta title"
+                label={t('productSettings.metaData.title')}
                 extra={value => (
                   <div className="text-xs text-slate-500">
                     Recommended: <strong>70</strong> characters. You've used{' '}
@@ -47,7 +47,7 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
               <Form.Item
                 name="metaDescription"
                 className="mb-4"
-                label="Meta description"
+                label={t('productSettings.metaData.description2')}
                 extra={value => (
                   <div className="text-xs text-slate-500">
                     Recommended: <strong>156</strong> characters. You've used{' '}
@@ -86,7 +86,7 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
         </Expandable>
 
         <Expandable
-          title="Open graph"
+          title={t('productSettings.metaData.openGraphImage')}
           description="Customize structured data that appears when you post site to your social accounts"
         >
           <div className="flex flex-col lg:flex-row justify-start space-y-2 lg:space-x-8 lg:space-y-0">

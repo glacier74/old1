@@ -91,6 +91,11 @@
     "whatsNew": "更新日志",
     "roadmap": "开发路线",
     "blog": "博客",
+    "helpSupport": "帮助 & 支持",
+    "helpCenter": "帮助中心",
+    "joinCommunity": "加入 Discord 频道",
+    "sendEmail": "给我们发邮件",
+    "twitter": "推特关注 @EarlyBirdIM",
     "language": "语言"
   },
   "product": {
@@ -272,7 +277,11 @@
     "heading": "设置",
     "updated": "落地页设置已成功更新",
     "general": {
-      "heading": "通用"
+      "heading": "通用",
+      "product":"产品",
+      "productDesc": "用于在网络上识别您的 landing page 的详细信息。",
+      "conversionNotification": "转化通知",
+      "conversionNotificationDesc": "当一个新的转化动作在您的 landing page 页面上被触发时，您将会收到一封邮件通知。"
     },
     "language": {
       "heading": "语言",
@@ -288,13 +297,13 @@
     },
     "sitePrivate": {
       "heading": "将网站设为私有",
-      "description": "使用单个，易记的密码保护你的落地页。所有SEO和社交媒体功能将被停用。",
+      "description": "使用单个，易记的密码保护你的落地页。所有 SEO 和社交媒体功能将被停用。",
       "invalidPassword": "你的密码应在4到16个字符之间。",
       "placeholder": "设置网站的密码"
     },
     "removeBranding": {
-      "heading": "移除EarlyBird品牌",
-      "description": "从你的页面上移除\"由EarlyBird制作\"的标记。"
+      "heading": "移除 EarlyBird 品牌",
+      "description": "从你的页面上移除\"由 EarlyBird 制作\"的标记。"
     },
     "metaData": {
       "heading": "元数据",
@@ -328,12 +337,12 @@
       "description": "元描述"
     },
     "socialMedia": "社交媒体",
-    "twitter": "推特",
-    "facebook": "脸书",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
     "instagram": "Instagram",
     "linkedin": "领英",
     "youtube": "YouTube",
-    "telegram": "电报",
+    "telegram": "Telegram",
     "github": "Github",
     "bold": "粗体",
     "italic": "斜体",

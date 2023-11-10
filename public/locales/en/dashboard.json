@@ -277,7 +277,11 @@
     "heading": "Settings",
     "updated": "Landing page settings have been updated successfully",
     "general": {
-      "heading": "General"
+      "heading": "General",
+      "product":"Product",
+      "productDesc": "The details used to identify your landing page around the web.",
+      "conversionNotification": "Conversions notification",
+      "conversionNotificationDesc": "When a new conversion action is triggered on your landing page, an email notification will be sent."
     },
     "language": {
       "heading": "Language",
