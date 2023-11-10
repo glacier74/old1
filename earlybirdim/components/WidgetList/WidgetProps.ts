@@ -45,6 +45,8 @@ export interface WidgetPostListProps extends ComponentProps {
   itemClassNames?: string | string[]
   imageClassName?: string
   imageAlt?: string
+  imageWidth: number
+  imageHeight: number
   maxCount: number
   posts: WidgetPost[]
 }

@@ -1,4 +1,4 @@
-import { Icon, WidgetList } from '@earlybirdim/components'
+import { Icon, Image, WidgetList } from '@earlybirdim/components'
 import React from 'react'
 
 export const schemas = [
@@ -98,10 +98,12 @@ export function render({ product, options: { personal_info, main } }) {
         <div className="earlybird-HSqdRg bg-white dark:bg-slate-950 min-h-screen grid lg:grid-cols-2 lg:gap-4 lg:px-24">
           <div className="earlybird-tXXVbP max-[360px]:px-5 max-[400px]:px-7 px-8 lg:px-32 py-12 items-center">
             <div id="personal_info" className="earlybird-tMuH8h relative xl:sticky xl:top-16">
-              <div className="earlybird-KDvjAn bioAvator  max-[360px]:w-28 max-[360px]:h-28 max-[400px]:w-32 max-[400px]:h-32 w-48 h-48">
-                <img
-                  className="earlybird-yFaZEN rounded-full"
+              <div className="earlybird-KDvjAn bioAvator">
+                <Image
+                  className="earlybird-yFaZEN rounded-full max-[360px]:w-28 max-[360px]:h-28 max-[400px]:w-32 max-[400px]:h-32 w-48 h-48"
                   src={personal_info.avatar}
+                  width={160}
+                  height={160}
                   alt={personal_info.name}
                 />
               </div>

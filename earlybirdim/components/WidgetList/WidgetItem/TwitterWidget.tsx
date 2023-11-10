@@ -1,4 +1,5 @@
 import { useGlobalContext } from '@earlybirdim/components'
+import Image from 'next/image'
 import { useMemo } from 'react'
 
 import { WidgetIcon } from '../WidgetIcon'
@@ -117,9 +118,11 @@ export default class TwitterWidget<T extends WidgetData> extends Widget<T> {
 
           {imageUrl && (
             <div className="relative">
-              <img
+              <Image
                 className="aspect-[40/21] rounded-xl object-cover"
                 src={imageUrl}
+                width={340}
+                height={180}
                 alt={config.data.overrides?.title || config.data.name}
               />
               <div className="pointer-events-none absolute inset-0 border border-black/10 rounded-xl"></div>

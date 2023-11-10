@@ -101,6 +101,8 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
             itemClassNames={config.extra?.render2x1?.postItemClassNames || 'aspect-square'}
             imageClassName={config.extra?.render2x1?.imageClassName}
             imageAlt={title}
+            imageWidth={100}
+            imageHeight={100}
             maxCount={config.extra?.render2x1?.postMaxCounts || 4}
             posts={(config.data as AnyMap)[config.extra?.postsKeyName || 'posts']}
           />
@@ -149,6 +151,8 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
             itemClassNames={config.extra?.render2x2?.postItemClassNames || 'aspect-square'}
             imageClassName={config.extra?.render2x2?.imageClassName}
             imageAlt={title}
+            imageWidth={100}
+            imageHeight={100}
             maxCount={config.extra?.render2x2?.postMaxCounts || 6}
             posts={(config.data as AnyMap)[config.extra?.postsKeyName || 'posts']}
           />

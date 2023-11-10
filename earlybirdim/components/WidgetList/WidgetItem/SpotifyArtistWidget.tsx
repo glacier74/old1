@@ -62,6 +62,8 @@ export default class SpotifyArtistWidget<T extends SpotifyArtistData> extends Wi
               '!absolute aspect-square left-[12.5%] top-0 h-full w-[75%] shadow-[0_0_0_4px_#EDFCF3] group-hover:shadow-[0_0_0_4px_#E7F9EE] z-[10]',
               '!hidden md:!absolute aspect-square left-[25%] top-0 h-full w-[75%]'
             ]}
+            imageWidth={130}
+            imageHeight={130}
             maxCount={3}
             posts={config.data.albums as unknown as WidgetPost[]}
           />
@@ -100,6 +102,8 @@ export default class SpotifyArtistWidget<T extends SpotifyArtistData> extends Wi
               '!absolute aspect-square left-[20%] top-0 h-full w-[60%] shadow-[0_0_0_4px_#EDFCF3] group-hover:shadow-[0_0_0_4px_#E7F9EE] z-[10]',
               '!absolute aspect-square left-[40%] top-0 h-full w-[60%]'
             ]}
+            imageWidth={130}
+            imageHeight={130}
             maxCount={3}
             posts={config.data.albums as unknown as WidgetPost[]}
           />

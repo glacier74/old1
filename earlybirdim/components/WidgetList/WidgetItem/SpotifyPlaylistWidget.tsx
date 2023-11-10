@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { FC } from 'react'
 
 import { WidgetIcon } from '../WidgetIcon'
@@ -17,12 +18,14 @@ const PlayItem: FC<{ index: number; song: SpotifySong }> = ({ song }) => {
         <div className="flex flex-row items-center">
           <div className="relative h-[40px] w-[40px] flex-none">
             <div className="relative rounded-lg">
-              <img
-                className="h-full w-full rounded-lg object-cover"
+              <Image
+                className="rounded-lg object-cover"
+                width={40}
+                height={40}
                 src={song.thumbnail}
                 alt={song.name}
               />
-              <WidgetPlayButton className="absolute inset-0 w-full h-full flex items-center justify-center !rounded-lg !p-0 opacity-0 transition-opacity group-hover/item:opacity-100" />
+              <WidgetPlayButton className="absolute inset-0 w-full h-full flex items-center justify-center !rounded-lg !p-0 !gap-0 opacity-0 transition-opacity group-hover/item:opacity-100" />
               <div className="pointer-events-none absolute inset-0 border border-black/10 rounded-lg"></div>
             </div>
           </div>

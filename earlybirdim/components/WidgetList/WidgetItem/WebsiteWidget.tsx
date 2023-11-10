@@ -1,6 +1,7 @@
 import { useGlobalContext } from '@earlybirdim/components'
 import { toCustomURL } from '@tinaryan/dp'
 import clsx from 'clsx'
+import Image from 'next/image'
 import { useMemo } from 'react'
 
 import { WidgetIcon } from '../WidgetIcon'
@@ -66,9 +67,11 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
 
           {imageUrl ? (
             <div className="relative ml-6 aspect-[1.4] h-full">
-              <img
+              <Image
                 className="h-full w-full rounded-xl object-cover"
                 src={imageUrl}
+                width={180}
+                height={130}
                 alt={config.data.overrides?.title || config.data.title}
               />
               <div className="pointer-events-none absolute inset-0 border border-black/10 rounded-xl"></div>
@@ -115,6 +118,8 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
               <img
                 className="w-full h-full rounded-xl object-cover"
                 src={imageUrl}
+                width={340}
+                height={180}
                 alt={config.data.overrides?.title || config.data.title}
               />
               <div className="pointer-events-none absolute inset-0 border border-black/10 rounded-xl"></div>

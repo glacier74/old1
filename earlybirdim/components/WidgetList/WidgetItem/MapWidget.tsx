@@ -1,12 +1,10 @@
-import mapbox, { LngLatLike } from 'mapbox-gl'
+import { LngLatLike } from 'mapbox-gl'
 import { useEffect, useRef } from 'react'
 import { useFrame } from 'react-frame-component'
 
 import { MapData, WidgetConfig, WidgetSize } from '../WidgetProps'
 import { map } from '../constants'
 import Widget from './Widget'
-
-mapbox.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN as string
 
 export default class MapWidget<T extends MapData> extends Widget<T> {
   override allowSizes: WidgetSize[] = ['1x1', '2x1', '2x2']
@@ -38,10 +36,15 @@ export default class MapWidget<T extends MapData> extends Widget<T> {
 
     const containerRef = useRef<HTMLDivElement>(null)
     const elemRef = useRef<HTMLDivElement>(null)
-    const mapRef = useRef<mapbox.Map>(null)
-    const markerRef = useRef<mapbox.Marker>(null)
+    const mapRef = useRef<any>(null)
+    const markerRef = useRef<any>(null)
 
-    function initMap() {
+    async function initMap() {
+      const mapbox = (await import('mapbox-gl')).default
+
+      // Set mapbox access token
+      mapbox.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN as string
+
       if (frameWindow) {
         ;(mapbox as any).setWindow(frameWindow)
       }
@@ -50,7 +53,6 @@ export default class MapWidget<T extends MapData> extends Widget<T> {
 
       // Add map
       if (!mapRef.current) {
-        // @ts-ignore
         mapRef.current = new mapbox.Map({
           container: containerRef.current!,
           style: process.env.NEXT_PUBLIC_MAPBOX_STYLE as string,
@@ -62,7 +64,6 @@ export default class MapWidget<T extends MapData> extends Widget<T> {
 
       // Add marker
       if (!markerRef.current) {
-        // @ts-ignore
         markerRef.current = new mapbox.Marker(elemRef.current!)
 
         // Move marker to center

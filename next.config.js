@@ -26,71 +26,7 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**.earlybird.im'
-      },
-      {
-        protocol: 'https',
-        hostname: '**.backblazeb2.com'
-      },
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com'
-      },
-      {
-        protocol: 'https',
-        hostname: '**.googleusercontent.com'
-      },
-      {
-        protocol: 'https',
-        hostname: '**.githubusercontent.com'
-      },
-      {
-        protocol: 'https',
-        hostname: '**.twimg.com'
-      },
-      {
-        protocol: 'https',
-        hostname: '**.gravatar.com'
-      },
-      {
-        protocol: 'https',
-        hostname: '**.airtableusercontent.com'
-      },
-      {
-        protocol: 'https',
-        hostname: '**.b-cdn.net'
-      },
-      {
-        protocol: 'https',
-        hostname: '**.steamstatic.com'
-      },
-      {
-        protocol: 'https',
-        hostname: '**.ytimg.com'
-      },
-      {
-        protocol: 'https',
-        hostname: '**.tiktokcdn.com'
-      },
-      {
-        protocol: 'https',
-        hostname: '**.figma.com'
-      },
-      {
-        protocol: 'https',
-        hostname: '**.dribbble.com'
-      },
-      {
-        protocol: 'https',
-        hostname: '**.behance.net'
-      },
-      {
-        protocol: 'https',
-        hostname: '**.cdninstagram.com'
-      },
-      {
-        protocol: 'https',
-        hostname: '**.twimg.com'
+        hostname: '**'
       }
     ]
   },

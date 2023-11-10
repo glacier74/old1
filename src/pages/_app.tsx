@@ -20,6 +20,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_API_URI} />
           <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
           <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+          <link rel="dns-prefetch" href="https://www.gstatic.com" />
+          <link rel="dns-prefetch" href="https://peter.earlybird.im" />
           <meta content="width=device-width,initial-scale=1" name="viewport" />
           <meta content="yes" name="mobile-web-app-capable" />
           <meta content="yes" name="apple-mobile-web-app-capable" />
