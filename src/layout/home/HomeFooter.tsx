@@ -13,6 +13,7 @@ import { i18n } from '~i18next-config'
 
 const navigation = {
   product: [
+    { name: 'jingleBio', href: 'https://jingle.bio' },
     { name: 'features', href: '/features' },
     { name: 'pricing', href: '/pricing' },
     { name: 'whatsNew', href: 'https://changelog.earlybird.im' },
