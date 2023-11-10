@@ -46,7 +46,7 @@ export const WidgetPostList: FC<WidgetPostListProps> = ({
               src={row.thumbnail}
               width={imageWidth}
               height={imageHeight}
-              alt={row.title || imageAlt!}
+              alt={row.title || imageAlt || ''}
             />
           )}
           <div className="pointer-events-none absolute inset-0 border border-black/10 rounded-md"></div>

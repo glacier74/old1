@@ -1,4 +1,5 @@
 import { isValid } from '@nily/utils'
+import Image from 'next/image'
 import { FC } from 'react'
 
 import { MediaData, WidgetConfig, WidgetSize } from '../WidgetProps'
@@ -17,29 +18,36 @@ export default class MediaWidget<T extends MediaData> extends Widget<T> {
   }
 
   override Render1x1(config: WidgetConfig<MediaData>) {
-    return <MediaWidget.Render {...config} />
+    return <MediaWidget.Render imageWidth={150} imageHeight={150} {...config} />
   }
 
   // 2x1
   override Render2x1(config: WidgetConfig<MediaData>) {
-    return <MediaWidget.Render {...config} />
+    return <MediaWidget.Render imageWidth={300} imageHeight={150} {...config} />
   }
 
   // 2x1
   override Render2x2(config: WidgetConfig<MediaData>) {
-    return <MediaWidget.Render {...config} />
+    return <MediaWidget.Render imageWidth={300} imageHeight={300} {...config} />
   }
 
-  private static Render(config: WidgetConfig<MediaData>) {
+  private static Render(
+    config: WidgetConfig<MediaData> & { imageWidth: number; imageHeight: number }
+  ) {
     const Element = (isValid(config.url) ? 'a' : 'div') as unknown as FC<any>
 
     return (
-      <Element className="relative h-full w-full overflow-hidden rounded-3xl" href={config.url}>
+      <Element
+        className="relative block h-full w-full overflow-hidden rounded-3xl"
+        href={config.url}
+      >
         {config.data.overrides?.imageUrl && (
-          <img
-            className="h-full w-full object-cover"
+          <Image
+            className="h-full w-full object-cover rounded-3xl"
+            width={config.imageWidth}
+            height={config.imageHeight}
             src={config.data.overrides?.imageUrl}
-            alt={config.data.overrides?.title}
+            alt={config.data.overrides?.title || ''}
           />
         )}
 

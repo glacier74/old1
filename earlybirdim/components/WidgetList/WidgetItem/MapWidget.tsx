@@ -91,7 +91,7 @@ export default class MapWidget<T extends MapData> extends Widget<T> {
           className="relative h-full w-full overflow-hidden rounded-3xl"
         >
           <div ref={containerRef} className="h-full w-full"></div>
-          <div ref={elemRef} className="absolute left-0 top-0 h-7 w-7">
+          <div ref={elemRef} className="absolute left-0 top-0 h-7 w-7 !opacity-100">
             <div className="relative h-full w-full">
               <div
                 className="absolute -left-3.5 -top-3.5 h-14 w-14 animate-ping rounded-full bg-blue-700 opacity-40"
