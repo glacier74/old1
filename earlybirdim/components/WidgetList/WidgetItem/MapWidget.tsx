@@ -1,4 +1,4 @@
-import { LngLatLike } from 'mapbox-gl'
+import mapbox, { LngLatLike } from 'mapbox-gl'
 import { useEffect, useRef } from 'react'
 import { useFrame } from 'react-frame-component'
 
@@ -40,8 +40,6 @@ export default class MapWidget<T extends MapData> extends Widget<T> {
     const markerRef = useRef<any>(null)
 
     async function initMap() {
-      const mapbox = (await import('mapbox-gl')).default
-
       // Set mapbox access token
       mapbox.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN as string
 
