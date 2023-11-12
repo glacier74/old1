@@ -101,7 +101,7 @@ export function render({ product, options: { personal_info, main } }) {
       >
         <div className="earlybird-8HgKLqR8 bg-white dark:bg-slate-950 min-h-screen">
           <div className="earlybird-HSqdRg lg:max-w-[1600px] lg:mx-auto lg:flex lg:justify-between lg:gap-12 lg:px-16">
-            <div className="earlybird-tXXVbP max-[360px]:px-5 max-[400px]:px-7 px-8 lg:px-0 py-12 items-center">
+            <div className="earlybird-tXXVbP w-auto lg:w-[calc(100%-868px)] lg:max-w-[500px] max-[360px]:px-5 max-[400px]:px-7 px-8 lg:px-0 py-12 items-center">
               <div id="personal_info" className="earlybird-tMuH8h relative xl:sticky xl:top-16">
                 <div className="earlybird-KDvjAn bioAvator">
                   <Image
