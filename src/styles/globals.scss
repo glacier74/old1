@@ -335,6 +335,12 @@ button.switch-checked {
   *:not(.plan-badge) {
     @apply pointer-events-none;
   }
+
+  &:hover {
+    .button {
+      @apply bg-slate-100;
+    }
+  }
 }
 
 .select-popup-content {

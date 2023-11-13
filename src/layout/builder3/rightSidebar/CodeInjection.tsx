@@ -36,7 +36,7 @@ export const CodeInjection = () => {
       onlySubmitOnValueChange
     >
       <Form.Item name="customCode" rules={[{ required: false }]}>
-        <Input.Textarea rows={8} />
+        <Input.Textarea rows={13} />
       </Form.Item>
     </Form.Custom>
   )

@@ -1,13 +1,15 @@
 import { Button, Spin, Switch, Tooltip, notification } from '@heyforms/ui'
 import { isValid } from '@nily/utils'
-import { IconChecks, IconChevronLeft } from '@tabler/icons'
+import { IconChecks, IconChevronLeft, IconCode } from '@tabler/icons'
 import dayjs from 'dayjs'
 import Link from 'next/link'
 import { FC, useCallback, useMemo } from 'react'
 
 import { IconAI, IconSidebar, IconSidebarOpen } from '~/components'
+import { PLAN_LEVELS } from '~/constants'
 import { useProduct } from '~/layout'
 import { ShareModal } from '~/layout/builder/views/Navbar/ShareModal'
+import { PlanCheck } from '~/layout/product/PlanCheck'
 import { SiteSettingsService } from '~/service'
 import { useStore } from '~/store'
 import { isResponseError, useRequest, useVisible } from '~/utils'
@@ -23,7 +25,8 @@ export const Navbar: FC = () => {
     isBuilderSidebarOpen,
     openBuilderSidebar,
     closeBuilderSidebar,
-    openAIModal
+    openAIModal,
+    openCodeInjectionModal
   } = useStore()
   const { state, dispatch } = useBuilderContext()
   const product = useProduct()
@@ -147,6 +150,22 @@ export const Navbar: FC = () => {
               </Tooltip>
             )}
 
+            <Tooltip ariaLabel="Code injection">
+              <div>
+                <PlanCheck
+                  className="cursor-pointer !pointer-events-auto"
+                  minimalLevel={PLAN_LEVELS.plan_shipper}
+                  redirectUrl={`/product/${siteSettings.productId}/edit`}
+                >
+                  <Button
+                    className="!py-1.5"
+                    leading={<IconCode className="w-7 h-7 text-slate-800" />}
+                    onClick={openCodeInjectionModal}
+                  />
+                </PlanCheck>
+              </div>
+            </Tooltip>
+
             <Button className="!py-1.5" onClick={openShareModal}>
               Share
             </Button>
@@ -162,28 +181,32 @@ export const Navbar: FC = () => {
             </Button>
           </div>
 
-          <div className="w-px h-[20px] bg-slate-200"></div>
+          {!product.isJingleBio && (
+            <>
+              <div className="w-px h-[20px] bg-slate-200"></div>
 
-          {isBuilderSidebarOpen ? (
-            <Tooltip ariaLabel="Close sidebar">
-              <div>
-                <Button
-                  className="!py-1.5"
-                  leading={<IconSidebarOpen className="w-7 h-7 text-slate-800" />}
-                  onClick={closeBuilderSidebar}
-                />
-              </div>
-            </Tooltip>
-          ) : (
-            <Tooltip ariaLabel="Open sidebar">
-              <div>
-                <Button
-                  className="!py-1.5"
-                  leading={<IconSidebar className="w-7 h-7 text-slate-800" />}
-                  onClick={openBuilderSidebar}
-                />
-              </div>
-            </Tooltip>
+              {isBuilderSidebarOpen ? (
+                <Tooltip ariaLabel="Close sidebar">
+                  <div>
+                    <Button
+                      className="!py-1.5"
+                      leading={<IconSidebarOpen className="w-7 h-7 text-slate-800" />}
+                      onClick={closeBuilderSidebar}
+                    />
+                  </div>
+                </Tooltip>
+              ) : (
+                <Tooltip ariaLabel="Open sidebar">
+                  <div>
+                    <Button
+                      className="!py-1.5"
+                      leading={<IconSidebar className="w-7 h-7 text-slate-800" />}
+                      onClick={openBuilderSidebar}
+                    />
+                  </div>
+                </Tooltip>
+              )}
+            </>
           )}
         </div>
       </div>

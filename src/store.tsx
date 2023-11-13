@@ -40,6 +40,9 @@ interface Store {
   openAIModal: () => void
   closeAIModal: () => void
   setAIModalClosable: (isAIModalClosable: boolean) => void
+  isCodeInjectionModalOpen: boolean
+  openCodeInjectionModal: () => void
+  closeCodeInjectionModal: () => void
   updateMember: (productId: number, members: Partial<User>[]) => void
 }
 
@@ -63,6 +66,7 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
   const [isBuilderSidebarOpen, openBuilderSidebar, closeBuilderSidebar] = useVisible(true)
   const [isAIModalOpen, openAIModal, closeAIModal] = useVisible()
   const [isAIModalClosable, setAIModalClosable] = useState(true)
+  const [isCodeInjectionModalOpen, openCodeInjectionModal, closeCodeInjectionModal] = useVisible()
 
   const updateUser = useCallback(
     (updates: Partial<User>) => {
@@ -178,6 +182,9 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
     closeAIModal,
     isAIModalClosable,
     setAIModalClosable,
+    isCodeInjectionModalOpen,
+    openCodeInjectionModal,
+    closeCodeInjectionModal,
     updateMember
   }
 

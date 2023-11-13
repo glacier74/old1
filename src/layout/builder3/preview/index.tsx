@@ -2,8 +2,8 @@ import { GlobalContext } from '@earlybirdim/components'
 import { FC, useCallback, useEffect, useMemo } from 'react'
 import Frame from 'react-frame-component'
 
-import { HelpFloatButton } from '~/components'
 import { useProduct } from '~/layout'
+import { CodeInjectionModal } from '~/layout/builder3/preview/CodeInjectionModal'
 import { PublicSiteDangerouslyHTML } from '~/layout/public-site/PublicSiteDangerouslyHTML'
 import { PublicSiteHiddenBlocksStyle } from '~/layout/public-site/PublicSiteHiddenBlocksStyle'
 import { SiteSettingsService } from '~/service'
@@ -122,8 +122,8 @@ export const Preview: FC = () => {
         </Frame>
       </div>
 
-      <HelpFloatButton className="!absolute" />
       <AlertModal visible={alertModalVisible} />
+      <CodeInjectionModal />
     </div>
   )
 }
