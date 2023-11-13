@@ -1,3 +1,4 @@
+import { Button } from '@heyforms/ui'
 import { IComponentProps } from '@heyforms/ui/types/typing'
 import { isValid } from '@nily/utils'
 import { IconUpload } from '@tabler/icons'
@@ -141,8 +142,8 @@ interface AvatarPickerFieldProps extends Omit<ImagePickerFieldProps, 'width' | '
 
 export const AvatarPickerField: FC<AvatarPickerFieldProps> = ({
   className,
-  size = 64,
-  imageSize = 64,
+  size = 48,
+  imageSize = 48,
   text = 'common.logo',
   retainLength = 4,
   enableUnsplash,
@@ -171,11 +172,7 @@ export const AvatarPickerField: FC<AvatarPickerFieldProps> = ({
 
   return (
     <>
-      <div
-        className={clsx('relative group', className)}
-        style={{ width: size, height: size }}
-        onClick={handleClick}
-      >
+      <div className="flex items-center gap-3">
         <RoundImage
           key={value}
           src={value}
@@ -184,9 +181,9 @@ export const AvatarPickerField: FC<AvatarPickerFieldProps> = ({
           text={isValid(text) ? t(text) : undefined}
           retainLength={retainLength}
         />
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 rounded-full opacity-0 transition-opacity cursor-pointer group-hover:opacity-100">
-          <span className="text-xs text-white">{t('common.upload')}</span>
-        </div>
+        <Button className="!py-1 !px-1.5" onClick={handleClick}>
+          Change
+        </Button>
       </div>
 
       {/* Photo picker modal */}

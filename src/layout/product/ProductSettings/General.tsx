@@ -19,7 +19,7 @@ export const General: FC = () => {
           title={t('productSettings.general.product')}
           description={t('productSettings.general.productDesc')}
         >
-          <Form.Item name="logo">
+          <Form.Item name="logo" label="Favicon">
             <AvatarPickerField namespace="avatar" enableUnsplash={false} />
           </Form.Item>
           <Form.Item name="name" label="Name">
@@ -44,7 +44,9 @@ export const General: FC = () => {
         <div className="px-6 py-5">
           <div className="flex items-start justify-between">
             <div className="text-sm">
-              <h4 className="text-base text-slate-900 font-bold">{t('productSettings.general.conversionNotification')}</h4>
+              <h4 className="text-base text-slate-900 font-bold">
+                {t('productSettings.general.conversionNotification')}
+              </h4>
               <p className="mt-1 text-slate-500 font-normal">
                 {t('productSettings.general.conversionNotificationDesc')}
               </p>
