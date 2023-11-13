@@ -129,33 +129,35 @@ background: radial-gradient(52.56% 52.56% at 50% 117.61%,#1c1c21 0,rgba(28,28,33
               </div>
 
               <div id="subscribe" className="earlybird-d2fgt6 mt-8 max-w-sm mx-auto">
-                <Form id="form" {...subscribe.form}>
-                  <div className="earlybird-lsbzn3 flex flex-col mb-6 space-y-3">
-                    <Form.Item name="name">
-                      <Form.Input
-                        className="earlybird-KV1a70 appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:border-gray-500"
-                        type="text"
-                        placeholder="Your Name"
-                      />
-                    </Form.Item>
+                <div id="form">
+                  <Form {...subscribe.form}>
+                    <div className="earlybird-lsbzn3 flex flex-col mb-6 space-y-3">
+                      <Form.Item name="name">
+                        <Form.Input
+                          className="earlybird-KV1a70 appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:border-gray-500"
+                          type="text"
+                          placeholder="Your Name"
+                        />
+                      </Form.Item>
 
-                    <Form.Item name="email">
-                      <Form.Input
-                        className="earlybird-sLwthS appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:border-gray-500"
-                        type="email"
-                        placeholder="Your Email"
-                      />
-                    </Form.Item>
-                  </div>
-                  <div className="earlybird-if4sZE flex justify-center mt-6">
-                    <Form.Button
-                      rootClassName="earlybird-EBF9kL w-full"
-                      className="earlybird-3HJHpE w-full px-4 py-4 bg-slate-900 dark:bg-emerald-500 text-white text-sm font-medium rounded-md focus:outline-none"
-                    >
-                      {subscribe.form.button_text}
-                    </Form.Button>
-                  </div>
-                </Form>
+                      <Form.Item name="email">
+                        <Form.Input
+                          className="earlybird-sLwthS appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:border-gray-500"
+                          type="email"
+                          placeholder="Your Email"
+                        />
+                      </Form.Item>
+                    </div>
+                    <div className="earlybird-if4sZE flex justify-center mt-6">
+                      <Form.Button
+                        rootClassName="earlybird-EBF9kL w-full"
+                        className="earlybird-3HJHpE w-full px-4 py-4 bg-slate-900 dark:bg-emerald-500 text-white text-sm font-medium rounded-md focus:outline-none"
+                      >
+                        {subscribe.form.button_text}
+                      </Form.Button>
+                    </div>
+                  </Form>
+                </div>
 
                 <div id="socials" className="earlybird-oyGFdZ mt-12 flex justify-center">
                   <ul className="earlybird-EukmC3 flex flex-row gap-4 text-slate-700 dark:text-slate-300">

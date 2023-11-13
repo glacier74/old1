@@ -53,9 +53,9 @@ export const FormSuccess: FC<FormSuccessProps> = ({ successMessage, onClose }) =
 }
 
 const InternalForm: FC<FormProps> = ({
+  id,
   type,
   successMessage,
-  id,
   blockId,
   emailNotificationSubject,
   emailNotificationMessage,
@@ -91,7 +91,7 @@ const InternalForm: FC<FormProps> = ({
       try {
         if (type === 'payment') {
           const result = await PublicApiService.checkout(productId, {
-            blockId: id,
+            blockId: id || blockId,
             productUrl: urlBuilder(window.location.href, {
               successMessage
             }),
@@ -101,7 +101,7 @@ const InternalForm: FC<FormProps> = ({
           window.location.href = result.sessionUrl
         } else if (type === 'contact') {
           await PublicApiService.createContact(productId, {
-            blockId: id,
+            blockId: id || blockId,
             token: await getRecaptchaToken(),
             ...values
           })
@@ -110,7 +110,7 @@ const InternalForm: FC<FormProps> = ({
           onSubmitted?.()
         } else {
           await PublicApiService.createEmailCapture(productId, {
-            blockId: id,
+            blockId: id || blockId,
             token: await getRecaptchaToken(),
             ...values
           })
