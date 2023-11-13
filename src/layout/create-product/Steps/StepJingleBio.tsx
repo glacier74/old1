@@ -32,6 +32,7 @@ export const StepJingleBio = () => {
 
       const productId = await ProductService.create({
         name,
+        logo: user.avatar,
         template: 'jingle-bio',
         blocks,
         category: '',
