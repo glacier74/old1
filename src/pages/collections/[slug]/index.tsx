@@ -6,18 +6,17 @@ import { CollectionService } from '~/service/collection'
 import { withTranslations } from '~/utils'
 
 const CollectionDetail = (props: any): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('collections')
 
   return (
     <HomeLayout
       seo={{
-        title: t('collections.detailTitle', { title: props.record.Name }),
+        title: t('detailTitle', { title: props.record.Name }),
         url: `/collections/${props.record.Slug}`
       }}
     >
       <HomeHeader />
       <CollectionDetails {...props} />
-      <PricingCTA />
       <HomeFooter />
     </HomeLayout>
   )
@@ -39,7 +38,7 @@ export const getServerSideProps = withTranslations(
       }
     }
   },
-  [],
+  ['common', 'collections'],
   {
     redirectOnLocale: true
   }
