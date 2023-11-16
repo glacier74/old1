@@ -2,7 +2,6 @@ import { arrayUnique, isEmpty } from '@nily/utils'
 import { useTranslation } from 'next-i18next'
 
 import { GroupCollections, HomeFooter, HomeHeader, HomeLayout } from '~/layout'
-import { PricingCTA } from '~/layout/pricing'
 import { CollectionService } from '~/service/collection'
 import { withTranslations } from '~/utils'
 
