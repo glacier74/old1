@@ -128,7 +128,6 @@ export const HeroSection: FC<HeroSectionProps> = ({ block }) => {
       {/* Image */}
       <div className="block-herosection-image">
         <Image
-          namespace="heroSection"
           block={{
             ...block.image,
             width: IMAGE_WIDTHS[block.layout || 'center']

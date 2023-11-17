@@ -58,7 +58,6 @@ export const Feature: FC<FeatureProps> = ({ block, placeholder, ...restProps }) 
         {/* Left column */}
         <div className="block-feature-col">
           <Image
-            namespace="feature"
             block={{
               ...block.image,
               width: IMAGE_WIDTH

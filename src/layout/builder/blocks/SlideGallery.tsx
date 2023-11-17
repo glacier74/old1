@@ -360,7 +360,6 @@ const SlideGalleryComponent: FC<SlideGalleryProps> = ({ block, ...restProps }) =
       {/* Photo picker modal */}
       <PhotoPicker
         visible={pickerVisible}
-        namespace="slideGallery"
         enableUnsplash={false}
         onClose={closePicker}
         onChange={handleChange}

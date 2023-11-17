@@ -20,7 +20,7 @@ export const General: FC = () => {
           description={t('productSettings.general.productDesc')}
         >
           <Form.Item name="logo" label="Favicon">
-            <AvatarPickerField namespace="avatar" enableUnsplash={false} />
+            <AvatarPickerField enableUnsplash={false} />
           </Form.Item>
           <Form.Item name="name" label="Name">
             <Input />

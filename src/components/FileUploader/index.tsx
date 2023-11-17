@@ -21,7 +21,6 @@ interface DragUploaderProps extends Omit<ComponentProps, 'onChange'> {
 }
 
 interface FileUploaderProps extends Omit<DragUploaderProps, 'value' | 'onChange'> {
-  namespace: string
   value?: string
   onChange?: (src: string) => void
 }
@@ -167,12 +166,7 @@ export const DragUploader: FC<DragUploaderProps> = ({
   )
 }
 
-export const FileUploader: FC<FileUploaderProps> = ({
-  value,
-  namespace,
-  onChange,
-  ...restProps
-}) => {
+export const FileUploader: FC<FileUploaderProps> = ({ value, onChange, ...restProps }) => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<Error | null>()
 
@@ -185,7 +179,7 @@ export const FileUploader: FC<FileUploaderProps> = ({
     setLoading(true)
 
     try {
-      const { downloadURL } = await UploadService.upload(file, namespace)
+      const { downloadURL } = await UploadService.upload(file)
 
       onChange?.(downloadURL)
     } catch (err: any) {

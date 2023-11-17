@@ -11,16 +11,12 @@ import { useBuilderContext } from '../context'
 import { BlockComponent, BlockPreview, BlockProps } from './Block'
 
 export interface ImageProps extends BlockProps {
-  namespace: string
   block: ImageBlock
   tip1: string
   tip2: string
 }
 
-export const ImagePreview: FC<Omit<ImageProps, 'namespace' | 'tip1' | 'tip2'>> = ({
-  block,
-  ...restProps
-}) => {
+export const ImagePreview: FC<Omit<ImageProps, 'tip1' | 'tip2'>> = ({ block, ...restProps }) => {
   const isVideo = useMemo(() => block.mediaType === 'video', [block.mediaType])
 
   return (
@@ -53,7 +49,7 @@ export const ImagePreview: FC<Omit<ImageProps, 'namespace' | 'tip1' | 'tip2'>> =
   )
 }
 
-const ImageComponent: FC<ImageProps> = ({ block, namespace, tip1, tip2, ...resetProps }) => {
+const ImageComponent: FC<ImageProps> = ({ block, tip1, tip2, ...resetProps }) => {
   const { t } = useTranslation()
   const { dispatch } = useBuilderContext()
   const [visible, open, close] = useVisible()
@@ -130,7 +126,6 @@ const ImageComponent: FC<ImageProps> = ({ block, namespace, tip1, tip2, ...reset
       {/* Photo picker modal */}
       <PhotoPicker
         visible={visible}
-        namespace={namespace}
         enableUnsplash={false}
         enableVideo={true}
         onClose={close}

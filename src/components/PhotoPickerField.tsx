@@ -21,7 +21,6 @@ interface ImagePickerButtonProps extends IComponentProps {
 
 interface ImagePickerFieldProps extends Omit<IComponentProps, 'onChange'> {
   pickerButtonClassName?: string
-  namespace: string
   value?: string
   width?: number
   height?: number
@@ -61,7 +60,6 @@ export const ImagePickerField: FC<ImagePickerFieldProps> = ({
   pickerButtonClassName,
   width = 0,
   height = 0,
-  namespace,
   enableUnsplash,
   tip1,
   tip2,
@@ -124,7 +122,6 @@ export const ImagePickerField: FC<ImagePickerFieldProps> = ({
       <PhotoPicker
         visible={visible}
         enableUnsplash={enableUnsplash}
-        namespace={namespace}
         onClose={handleClose}
         onChange={handleChange}
         {...restProps}

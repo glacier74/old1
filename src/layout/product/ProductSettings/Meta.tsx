@@ -109,7 +109,6 @@ export const Meta: FC<{ values: any }> = ({ values }) => {
                   <ImagePickerField
                     className="!w-full !h-[12rem] md:!h-[20rem]"
                     pickerButtonClassName="!bg-white rounded-md border border-slate-300 shadow-sm"
-                    namespace="openGraphImage"
                     width={800}
                     height={420}
                     enableUnsplash={false}
