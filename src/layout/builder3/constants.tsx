@@ -1,3 +1,8 @@
+import { IconSize1x1 } from '@earlybirdim/components/WidgetList/WidgetIcon/IconSize1x1'
+import { IconSize2x05 } from '@earlybirdim/components/WidgetList/WidgetIcon/IconSize2x0.5'
+import { IconSize2x1 } from '@earlybirdim/components/WidgetList/WidgetIcon/IconSize2x1'
+import { IconSize2x2 } from '@earlybirdim/components/WidgetList/WidgetIcon/IconSize2x2'
+
 export const GOOGLE_FONTS = [
   'Inter',
   'Public Sans',
@@ -60,28 +65,6 @@ export enum SchemaTypeEnum {
   widgetList = 'widget_list'
 }
 
-const URL_TYPES: AnyMap<string> = {
-  behance: 'Behance',
-  dribbble: 'Dribbble',
-  figma: 'Figma',
-  instagram: 'Instagram',
-  steam_profiles: 'Steam',
-  steam_id: 'Steam',
-  tiktok: 'TikTok',
-  youtube: 'YouTube',
-  github: 'GitHub',
-  twitter: 'Twitter',
-  spotify_album: 'Spotify Album',
-  spotify_artist: 'Spotify Artist',
-  spotify_playlist: 'Spotify Playlist',
-  spotify_track: 'Spotify Track',
-  google_map: 'Map',
-  group_title: 'Group Title',
-  image: 'Image',
-  video: 'Video',
-  website: 'Website'
-}
-
 export const WIDGET_URL_PROVIDERS: AnyMap<string> = {
   behance: 'Behance',
   dribbble: 'Dribbble',
@@ -97,11 +80,11 @@ export const WIDGET_URL_PROVIDERS: AnyMap<string> = {
   spotify_artist: 'Spotify Artist',
   spotify_playlist: 'Spotify Playlist',
   spotify_track: 'Spotify Track',
-  google_map: 'Map',
+  google_map: 'Location',
   group_title: 'Group Title',
   image: 'Image',
   video: 'Video',
-  website: 'Website',
+  website: 'Link',
   payment: 'Payment',
   email_capture: 'Email Capture'
 }
@@ -115,8 +98,8 @@ export const MAP_MEDIA_SIZE_OPTIONS = [
   {
     label: (
       <div className="flex items-center gap-2.5">
-        <span className="w-2.5 h-2.5 rounded-[2px] bg-slate-300"></span>
-        <span className="ml-3">1x1</span>
+        <IconSize1x1 className="w-5 h-5" />
+        <span>1x1</span>
       </div>
     ),
     value: '1x1'
@@ -124,7 +107,7 @@ export const MAP_MEDIA_SIZE_OPTIONS = [
   {
     label: (
       <div className="flex items-center gap-2.5">
-        <span className="w-5 h-2.5 rounded-[2px] bg-slate-300"></span>
+        <IconSize2x1 className="w-5 h-5" />
         <span>2x1</span>
       </div>
     ),
@@ -133,7 +116,7 @@ export const MAP_MEDIA_SIZE_OPTIONS = [
   {
     label: (
       <div className="flex items-center gap-2.5">
-        <span className="w-5 h-5 rounded-[2px] bg-slate-300"></span>
+        <IconSize2x2 className="w-5 h-5" />
         <span>2x2</span>
       </div>
     ),
@@ -146,7 +129,7 @@ export const WIDGET_SIZE_OPTIONS = [
   {
     label: (
       <div className="flex items-center gap-2.5">
-        <span className="w-5 h-1 rounded-[2px] bg-slate-300"></span>
+        <IconSize2x05 className="w-5 h-5" />
         <span>2x0.5</span>
       </div>
     ),

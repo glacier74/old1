@@ -55,7 +55,7 @@ export const getServerSideProps = withTranslations(
       }
     }
   },
-  ['common', "collections"],
+  ['common', 'collections'],
   {
     redirectOnLocale: true
   }

@@ -29,6 +29,7 @@ import {
   toCustomURL
 } from '@tinaryan/dp'
 import clsx from 'clsx'
+import Image from 'next/image'
 import { FC, useMemo } from 'react'
 
 import { WidgetIconProps } from '../WidgetProps'
@@ -75,117 +76,164 @@ function isEarlyBird(href: string) {
 const websites = [
   {
     match: isAppleMusic,
-    icon: IconAppleMusic
+    icon: IconAppleMusic,
+    fill: '#FE253A'
   },
   {
     match: isAppleStore,
-    icon: IconAppStore
+    icon: IconAppStore,
+    fill: '#2072F3'
   },
   {
     match: isBehance,
-    icon: IconBehance
+    icon: IconBehance,
+    fill: '#0057FF'
   },
   {
     match: isBuyMeCoffee,
-    icon: IconBuyMeCoffee
+    icon: IconBuyMeCoffee,
+    fill: '#FFDD06 '
   },
   {
     match: isDiscord,
-    icon: IconDiscord
+    icon: IconDiscord,
+    fill: '#5865F2'
   },
   {
     match: isDribbble,
-    icon: IconDribbble
+    icon: IconDribbble,
+    fill: '#EA64D9'
   },
   {
     match: isEarlyBird,
-    icon: IconEarlyBird
+    icon: IconEarlyBird,
+    fill: '#fff'
   },
   {
     match: isFacebook,
-    icon: IconFacebook
+    icon: IconFacebook,
+    fill: '#0163E0'
   },
   {
     match: isFigma,
-    icon: IconFigma
+    icon: IconFigma,
+    fill: '#3E3E3E'
   },
   {
     match: isGithub,
-    icon: IconGithub
+    icon: IconGithub,
+    fill: '#000000'
   },
   {
     match: isGooglePlay,
-    icon: IconGooglePlay
+    icon: IconGooglePlay,
+    fill: '#fff '
   },
   {
     match: isGumroad,
-    icon: IconGumroad
+    icon: IconGumroad,
+    fill: '#FF90E8'
   },
   {
     match: isInstagram,
-    icon: IconInstagram
+    icon: IconInstagram,
+    fill: '#C837AB'
   },
   {
     match: isKofi,
-    icon: IconKofi
+    icon: IconKofi,
+    fill: '#fff '
   },
   {
     match: isLayers,
-    icon: IconLayers
+    icon: IconLayers,
+    fill: '#fff '
   },
   {
     match: isLinkedin,
-    icon: IconLinkedin
+    icon: IconLinkedin,
+    fill: '#006699'
   },
   {
     match: isMedium,
-    icon: IconMedium
+    icon: IconMedium,
+    fill: '#000000'
   },
   {
     match: isApplePodcasts,
-    icon: IconPodcast
+    icon: IconPodcast,
+    fill: '#B349FF'
   },
   {
     match: isProducthunt,
-    icon: IconProductHunt
+    icon: IconProductHunt,
+    fill: '#fff'
   },
   {
     match: isReddit,
-    icon: IconReddit
+    icon: IconReddit,
+    fill: '#FF4500'
   },
   {
     match: isSpotify,
-    icon: IconSpotify
+    icon: IconSpotify,
+    fill: '#1ED760'
   },
   {
     match: isSteam,
-    icon: IconSteam
+    icon: IconSteam,
+    fill: '#111D2E'
   },
   {
     match: isStripe,
-    icon: IconStripe
+    icon: IconStripe,
+    fill: '#635BFF'
   },
   {
     match: isSubstack,
-    icon: IconSubstack
+    icon: IconSubstack,
+    fill: '#FF6719'
   },
   {
     match: isTiktok,
-    icon: IconTiktok
+    icon: IconTiktok,
+    fill: '#1D141D'
   },
   {
     match: isTwitch,
-    icon: IconTwitch
+    icon: IconTwitch,
+    fill: '#65459B'
   },
   {
     match: isTwitter,
-    icon: IconTwitter
+    icon: IconTwitter,
+    fill: '#55ACEE'
   },
   {
     match: isYoutube,
-    icon: IconYouTube
+    icon: IconYouTube,
+    fill: '#FF0000'
   }
 ]
+
+export function getWidgetIcon(url: string, type: string) {
+  switch (type) {
+    case 'email_capture':
+      return {
+        fill: '#FCFDF8',
+        icon: IconEmailCapture
+      }
+
+    case 'payment':
+      return {
+        fill: '#635BFF',
+        icon: IconStripe
+      }
+
+    default:
+      return url ? websites.find(row => row.match(url)) : undefined
+  }
+}
 
 export const WidgetIcon: FC<WidgetIconProps> = ({
   className,
@@ -213,7 +261,13 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
 
       return (
         <div className="p-1.5">
-          <img className="block h-full w-full object-cover" src={faviconUrl} alt={title} />
+          <Image
+            className="block h-full w-full object-cover"
+            src={faviconUrl!}
+            alt={title!}
+            width={28}
+            height={28}
+          />
         </div>
       )
     }

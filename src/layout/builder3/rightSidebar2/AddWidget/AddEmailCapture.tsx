@@ -1,0 +1,51 @@
+import { Form, Input } from '@heyforms/ui'
+import { nanoid } from 'nanoid'
+import { FC } from 'react'
+
+import { OptionsContainer } from '../OptionsContainer'
+import { AddLinkProps } from './AddLink'
+import { AddWidgetForm } from './AddWidgetForm'
+
+export const AddEmailCapture: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restProps }) => {
+  function handleFinish(values: any) {
+    onCreate({
+      id: nanoid(8),
+      type: 'email_capture',
+      size: '1x1',
+      data: {
+        emailPlaceholder: 'Enter email address',
+        buttonText: values.buttonText || 'Subscribe',
+        successMessage: values.successMessage || 'Thank you for subscribing!'
+      },
+      overrides: {
+        title: values.title
+      }
+    })
+  }
+
+  return (
+    <OptionsContainer title="Add Email Capture" onGoBack={onGoBack} {...restProps}>
+      <div className="px-5">
+        <AddWidgetForm requiredNames={['title', 'buttonText']} onFinish={handleFinish}>
+          <Form.Item
+            label="Title"
+            name="title"
+            rules={[{ required: true, message: 'The title is not allowed to be empty' }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Button Text"
+            name="buttonText"
+            rules={[{ required: true, message: 'The button text is not allowed to be empty' }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item label="Success message" name="successMessage">
+            <Input />
+          </Form.Item>
+        </AddWidgetForm>
+      </div>
+    </OptionsContainer>
+  )
+}

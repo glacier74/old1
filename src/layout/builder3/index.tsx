@@ -1,5 +1,6 @@
 import { isValid } from '@nily/utils'
 
+import { useProduct } from '~/layout'
 import { useStore } from '~/store'
 
 import { AIModal } from './ai'
@@ -7,6 +8,7 @@ import { BuilderProvider } from './context'
 import { Navbar } from './navbar'
 import { Preview } from './preview'
 import { RightSidebar } from './rightSidebar'
+import { RightSidebar2 } from './rightSidebar2'
 import templates from './templates'
 import { schemasToCompletions } from './utils'
 
@@ -26,6 +28,8 @@ function getCompletions(id: string) {
 
 export const Builder3 = () => {
   const { siteSettings } = useStore()
+  const product = useProduct()
+
   const completions = getCompletions(siteSettings.template)
 
   return (
@@ -37,9 +41,9 @@ export const Builder3 = () => {
     >
       <div className="flex flex-col w-full w-screen h-full h-screen overflow-hidden">
         <Navbar />
-        <div className="builder-main">
+        <div className="builder-main border-t border-slate-200">
           <Preview />
-          <RightSidebar />
+          {product?.isJingleBio ? <RightSidebar2 /> : <RightSidebar />}
         </div>
       </div>
 

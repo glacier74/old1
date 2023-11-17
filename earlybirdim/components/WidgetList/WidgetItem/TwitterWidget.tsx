@@ -119,7 +119,7 @@ export default class TwitterWidget<T extends WidgetData> extends Widget<T> {
           {imageUrl && (
             <div className="relative">
               <Image
-                className="aspect-[40/21] rounded-xl object-cover"
+                className="aspect-[40/21] rounded-xl object-cover pointer-events-none select-none"
                 src={imageUrl}
                 width={340}
                 height={180}

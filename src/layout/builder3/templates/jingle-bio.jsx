@@ -1,4 +1,4 @@
-import { Icon, Image, WidgetList, clsx } from '@earlybirdim/components'
+import { Icon, Image, Section, WidgetList, clsx } from '@earlybirdim/components'
 import React from 'react'
 
 export const schemas = [
@@ -102,27 +102,29 @@ export function render({ product, options: { personal_info, main } }) {
         <div className="earlybird-8HgKLqR8 bg-white dark:bg-slate-950 min-h-screen">
           <div className="earlybird-HSqdRg lg:max-w-[1600px] lg:mx-auto lg:flex lg:justify-between lg:gap-12 lg:px-16">
             <div className="earlybird-tXXVbP w-auto lg:w-[calc(100%-868px)] lg:max-w-[500px] max-[360px]:px-5 max-[400px]:px-7 px-8 lg:px-0 py-12 items-center">
-              <div id="personal_info" className="earlybird-tMuH8h relative xl:sticky xl:top-16">
-                <div className="earlybird-KDvjAn bioAvator">
-                  <Image
-                    className="earlybird-yFaZEN rounded-full max-[360px]:w-28 max-[360px]:h-28 max-[400px]:w-32 max-[400px]:h-32 w-48 h-48"
-                    src={personal_info.avatar}
-                    width={160}
-                    height={160}
-                    alt={personal_info.name}
-                  />
+              <Section id="personal_info" name="personal_info">
+                <div className="earlybird-tMuH8h relative xl:sticky xl:top-16">
+                  <div className="earlybird-KDvjAn">
+                    <Image
+                      className="earlybird-yFaZEN rounded-full max-[360px]:w-28 max-[360px]:h-28 max-[400px]:w-32 max-[400px]:h-32 w-48 h-48"
+                      src={personal_info.avatar}
+                      width={160}
+                      height={160}
+                      alt={personal_info.name}
+                    />
+                  </div>
+                  <h1 className="earlybird-q9vUAm text-slate-950 dark:text-slate-50 mt-8 text-3xl lg:text-5xl font-semibold break-words">
+                    {personal_info.name}
+                  </h1>
+                  <p className="earlybird-LyK1vr max-[360px]:mt-4 max-[400px]:mt-5 mt-6 text-xl text-slate-600 whitespace-pre-line dark:text-gray-50">
+                    {personal_info.description}
+                  </p>
                 </div>
-                <h1 className="earlybird-q9vUAm bioName text-slate-950 dark:text-slate-50 mt-8 text-3xl lg:text-5xl font-semibold">
-                  {personal_info.name}
-                </h1>
-                <p className="earlybird-LyK1vr bioIntro max-[360px]:mt-4 max-[400px]:mt-5 mt-6 text-xl text-slate-600 dark:text-gray-50">
-                  {personal_info.description}
-                </p>
-              </div>
+              </Section>
             </div>
             <div
               id="main"
-              className="earlybird-8JNr1h lg:w-[820px] max-[360px]:px-5 max-[400px]:px-7 py-6 px-8 lg:px-0 lg:py-12 overflow-x-hidden"
+              className="earlybird-8JNr1h lg:w-[820px] max-[360px]:px-5 max-[400px]:px-7 py-6 px-8 lg:px-0 lg:py-12"
             >
               <WidgetList list={main.socials} />
             </div>

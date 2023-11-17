@@ -43,7 +43,7 @@ export default class MediaWidget<T extends MediaData> extends Widget<T> {
       >
         {config.data.overrides?.imageUrl && (
           <Image
-            className="h-full w-full object-cover rounded-3xl"
+            className="h-full w-full object-cover pointer-events-none select-none rounded-3xl"
             width={config.imageWidth}
             height={config.imageHeight}
             src={config.data.overrides?.imageUrl}

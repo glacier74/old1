@@ -90,7 +90,7 @@ export default class SpotifyAlbumWidget<T extends SpotifyPlaylistData> extends W
           <div className="relative aspect-square rounded-xl bg-[#f2f2f2]">
             {config.data.imageUrl && (
               <img
-                className="h-full w-full rounded-xl object-cover"
+                className="h-full w-full rounded-xl object-cover pointer-events-none select-none"
                 src={config.data.imageUrl}
                 alt={config.data.overrides?.title || config.data.name}
               />

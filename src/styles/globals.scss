@@ -1619,7 +1619,7 @@ button.block-header-button {
 .emoji-picker em-emoji-picker,
 .file-uploader {
   --shadow: none;
-  height: 50vh;
+  height: min(50vh, 440px);
   min-height: 400px;
   max-height: 800px;
 }
@@ -2417,27 +2417,9 @@ button.button-success {
 }
 
 .widget-group-title {
-  @apply text-lg p-4 mt-8 font-bold;
-
   &:nth-of-type(1) {
-    @apply mt-0;
+    @apply mt-0 #{!important};
   }
-}
-
-.widget-1x1 {
-  @apply col-span-2 row-span-2 w-[var(--widget-medium-size)] h-[var(--widget-medium-size)];
-}
-
-.widget-2x0_5 {
-  @apply col-span-4 row-span-1 w-[var(--widget-large-size)] h-[var(--widget-small-size)];
-}
-
-.widget-2x1 {
-  @apply col-span-4 row-span-2 w-[var(--widget-large-size)] h-[var(--widget-medium-size)];
-}
-
-.widget-2x2 {
-  @apply col-span-4 row-span-4 w-[var(--widget-large-size)] h-[var(--widget-large-size)];
 }
 
 .widget-content {
@@ -2474,5 +2456,22 @@ button.button-success {
 
   [type='radio']:focus {
     @apply ring-[#059669];
+  }
+}
+
+.share-modal {
+  .modal-mask {
+    @apply bg-transparent;
+  }
+
+  .modal-container {
+    @apply pt-[72px] items-start justify-end;
+  }
+}
+
+.widget-active {
+  .widget-actions,
+  .widget-body {
+    @apply opacity-0;
   }
 }

@@ -17,7 +17,7 @@ declare global {
   import type { ReactNode, CSSProperties } from 'react'
   import type { NextPageContext } from 'next'
 
-  type AnyMap<V = string, K = string> = Record<K, T>
+  type AnyMap<V = any, K = string> = Record<K, T>
   type StringMap = AnyMap<string>
 
   interface ComponentProps extends AriaAttributes {

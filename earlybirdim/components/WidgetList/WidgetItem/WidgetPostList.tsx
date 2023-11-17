@@ -42,7 +42,10 @@ export const WidgetPostList: FC<WidgetPostListProps> = ({
         >
           {row && (
             <Image
-              className={clsx('h-full w-full rounded-md object-cover', imageClassName)}
+              className={clsx(
+                'h-full w-full rounded-md object-cover pointer-events-none select-none',
+                imageClassName
+              )}
               src={row.thumbnail}
               width={imageWidth}
               height={imageHeight}

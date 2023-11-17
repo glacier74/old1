@@ -1,9 +1,8 @@
 import { GlobalContext } from '@earlybirdim/components'
 import { Form, Input } from '@heyforms/ui'
-import { conv, isValid, objectPath } from '@nily/utils'
+import { isValid, objectPath } from '@nily/utils'
 import { IconCheck } from '@tabler/icons'
 import { isGoogleMap } from '@tinaryan/dp'
-import AES from 'crypto-js/aes'
 import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import { NextSeoProps } from 'next-seo'
@@ -376,20 +375,7 @@ export const getServerSideProps = withTranslations(
     }
 
     if (!product.openGraphImage) {
-      const payload = {
-        name: product.name,
-        metaTitle: product.metaTitle?.slice(0, 60),
-        metaDescription: (product.metaDescription || product.tagline)?.slice(0, 120)
-      }
-
-      const e = AES.encrypt(
-        conv.jsonString(payload),
-        process.env.NEXT_API_VERIFICATION_KEY!
-      ).toString()
-
-      product.openGraphImage = `${process.env.NEXT_PUBLIC_HOMEPAGE}/api/og?e=${encodeURIComponent(
-        e
-      )}`
+      product.openGraphImage = `${process.env.NEXT_PUBLIC_HOMEPAGE}/api/og?domain=${product.domain}`
     }
 
     if (product.isJingleBio) {

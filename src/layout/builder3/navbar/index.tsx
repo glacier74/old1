@@ -1,4 +1,4 @@
-import { Button, Spin, Switch, Tooltip, notification } from '@heyforms/ui'
+import { Button, Spin, Switch, Tooltip } from '@heyforms/ui'
 import { isValid } from '@nily/utils'
 import { IconChecks, IconChevronLeft, IconCode } from '@tabler/icons'
 import dayjs from 'dayjs'
@@ -47,9 +47,6 @@ export const Navbar: FC = () => {
         canPublish: false
       })
 
-      notification.success({
-        title: 'Your landing page has been successfully published.'
-      })
       openShareModal()
     } catch (err: any) {
       if (isResponseError(err, 'invalid_draft_version')) {
@@ -100,7 +97,7 @@ export const Navbar: FC = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between h-[3.5rem] px-4 border-b border-slate-200">
+      <div className="flex items-center justify-between h-[3.5rem] px-4">
         <div className="flex-1 flex items-center">
           <Link
             className="inline-flex items-center text-sm -ml-3 pl-1 pr-3 py-1.5 rounded hover:bg-slate-100"

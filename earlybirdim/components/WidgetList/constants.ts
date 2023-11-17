@@ -221,7 +221,8 @@ export const sizeClassNames: AnyMap = {
   '1x1': 'col-span-2 row-span-2 w-[var(--widget-medium-size)] h-[var(--widget-medium-size)]',
   '2x0.5': 'col-span-4 row-span-1 w-[var(--widget-large-size)] h-[var(--widget-small-size)]',
   '2x1': 'col-span-4 row-span-2 w-[var(--widget-large-size)] h-[var(--widget-medium-size)]',
-  '2x2': 'col-span-4 row-span-4 w-[var(--widget-large-size)] h-[var(--widget-large-size)]'
+  '2x2': 'col-span-4 row-span-4 w-[var(--widget-large-size)] h-[var(--widget-large-size)]',
+  full: 'col-span-full pt-12 [&:nth-of-type(1)]:pt-0'
 }
 
 export const typeNames: AnyMap = {
@@ -240,3 +241,5 @@ export const typeNames: AnyMap = {
   twitter: 'Twitter',
   youtube: 'YouTube'
 }
+
+export const widgetListPath = 'main.socials'

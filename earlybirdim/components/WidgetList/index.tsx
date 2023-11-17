@@ -1,36 +1,52 @@
-import { isArray } from '@nily/utils'
-import { CSSProperties, FC, useEffect, useMemo, useRef, useState } from 'react'
+import {
+  DndContext,
+  DragEndEvent,
+  DragOverlay,
+  KeyboardSensor,
+  PointerSensor,
+  TouchSensor,
+  useSensor,
+  useSensors
+} from '@dnd-kit/core'
+import { UniqueIdentifier } from '@dnd-kit/core/dist/types/other'
+import { SortableContext, arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
+import { useGlobalContext } from '@earlybirdim/components'
+import { CSSProperties, FC, useCallback, useEffect, useRef, useState } from 'react'
 import { useFrame } from 'react-frame-component'
 
-import WidgetItem from './WidgetItem'
-import { WidgetGridData, WidgetGridProps } from './WidgetProps'
+import { useBuilderContext } from '~/layout/builder3/context'
 
-const groupTitleType = 'group_title'
-
-const WidgetGroup: FC<{ list: WidgetGridData | WidgetGridData[] }> = ({ list }) => {
-  if (Array.isArray(list)) {
-    return (
-      <div className="widget-grid grid grid-flow-dense grid-cols-[repeat(auto-fill,var(--widget-size))] grid-rows-[repeat(auto-fill,var(--widget-size))] justify-center gap-[var(--widget-gap-size)]">
-        {list.map((row, index) => (
-          <WidgetItem key={index} {...row} />
-        ))}
-      </div>
-    )
-  }
-
-  return <WidgetItem {...list} />
-}
+import WidgetItem, { WidgetActiveItem } from './WidgetItem'
+import { WidgetGridProps } from './WidgetProps'
+import { widgetListPath } from './constants'
 
 export const WidgetList: FC<WidgetGridProps> = ({
   itemSize: rawItemSize = 180,
   gapSize: rawGapSize = 32,
-  list: rawList = [],
+  list = [],
   style,
   ...restProps
 }) => {
+  const { dispatch } = useBuilderContext()
+  const { isPreview } = useGlobalContext()
   const { window: frameWindow } = useFrame()
+
   const gridRef = useRef<HTMLDivElement>(null)
+
+  const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null)
   const [itemSize, setItemSize] = useState(rawItemSize / 2)
+
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        distance: 15
+      }
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates
+    })
+  )
 
   function handleLayout() {
     if (!gridRef.current) {
@@ -45,11 +61,9 @@ export const WidgetList: FC<WidgetGridProps> = ({
     }
 
     const innerWidth = win.innerWidth
-    const scrollBarWidth = innerWidth < 800 ? 0 : 15
-
     const rect = gridRef.current.getBoundingClientRect()
 
-    const width = Math.min(rect.width, win.innerWidth) - scrollBarWidth
+    const width = Math.min(rect.width, innerWidth)
     const colNum = Math.round((width + rawGapSize) / (rawItemSize + rawGapSize))
     let itemSize = (width - (2 * colNum - 1) * rawGapSize) / (2 * colNum)
 
@@ -61,32 +75,44 @@ export const WidgetList: FC<WidgetGridProps> = ({
     win.localStorage.setItem('item_size', String(itemSize))
   }
 
-  const list = useMemo(() => {
-    const result: Array<WidgetGridData | WidgetGridData[]> = []
+  function handleDragStart({ active }: DragEndEvent) {
+    setActiveId(active.id)
+  }
 
-    for (let index = 0; index < rawList.length; index++) {
-      const raw = rawList[index]
-
-      if (raw.type === groupTitleType) {
-        result.push(raw)
-      } else {
-        const last = result[result.length - 1]
-
-        if (!isArray(last)) {
-          result.push([])
-        }
-
-        ;(result[result.length - 1] as WidgetGridData[]).push(raw)
+  const handleDragOver = useCallback(
+    ({ active, over }: DragEndEvent) => {
+      if (!active.id || !over?.id || active.id === over.id) {
+        return
       }
-    }
 
-    return result
-  }, [rawList])
+      const activeIndex = list.findIndex(w => w.id === active.id)
+      const overIndex = list.findIndex(w => w.id === over?.id)
+
+      dispatch({
+        type: 'updateOptions',
+        payload: {
+          options: {
+            [widgetListPath]: arrayMove(list, activeIndex, overIndex)
+          }
+        }
+      })
+    },
+    [list]
+  )
+
+  function handleDragEnd() {
+    setActiveId(null)
+  }
+
+  useEffect(() => {
+    if (gridRef.current) {
+      handleLayout()
+    }
+  }, [gridRef.current])
 
   useEffect(() => {
     const win = frameWindow || window
 
-    handleLayout()
     win.addEventListener('resize', handleLayout)
 
     return () => {
@@ -115,17 +141,17 @@ export const WidgetList: FC<WidgetGridProps> = ({
             .mapboxgl-canvas-container {
               position: relative;
             }
-            
+
             .mapboxgl-control-container {
               display: none
             }
-            
+
             @property --widget-rotating {
               syntax: '<angle>';
               inherits: false;
               initial-value: 0deg;
             }
-            
+
             @keyframes widget-rotating {
               0% {
                 --widget-rotating: 0deg;
@@ -137,9 +163,32 @@ export const WidgetList: FC<WidgetGridProps> = ({
           `
         }}
       />
-      {list.map((row, index) => (
-        <WidgetGroup key={index} list={row} />
-      ))}
+      <div
+        id="widget-grid"
+        className="widget-grid grid grid-cols-[repeat(auto-fill,var(--widget-size))] grid-rows-[repeat(auto-fill,var(--widget-size),min-content)] justify-center gap-[var(--widget-gap-size)]"
+      >
+        {isPreview ? (
+          <DndContext
+            sensors={sensors}
+            autoScroll={true}
+            onDragStart={handleDragStart}
+            onDragOver={handleDragOver}
+            onDragEnd={handleDragEnd}
+          >
+            <SortableContext items={list} strategy={() => null}>
+              {list.map((row, order) => (
+                <WidgetItem key={row.id} activeId={activeId} {...row} />
+              ))}
+            </SortableContext>
+
+            <DragOverlay>
+              <WidgetActiveItem key={undefined} activeId={activeId} list={list} />
+            </DragOverlay>
+          </DndContext>
+        ) : (
+          list.map(row => <WidgetItem key={row.id} activeId={activeId} {...row} />)
+        )}
+      </div>
     </div>
   )
 }

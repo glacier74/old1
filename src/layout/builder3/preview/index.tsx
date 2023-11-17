@@ -1,9 +1,10 @@
 import { GlobalContext } from '@earlybirdim/components'
+import { Tooltip } from '@heyforms/ui'
+import { IconPlus } from '@tabler/icons'
 import { FC, useCallback, useEffect, useMemo } from 'react'
 import Frame from 'react-frame-component'
 
 import { useProduct } from '~/layout'
-import { CodeInjectionModal } from '~/layout/builder3/preview/CodeInjectionModal'
 import { PublicSiteDangerouslyHTML } from '~/layout/public-site/PublicSiteDangerouslyHTML'
 import { PublicSiteHiddenBlocksStyle } from '~/layout/public-site/PublicSiteHiddenBlocksStyle'
 import { SiteSettingsService } from '~/service'
@@ -14,6 +15,7 @@ import { useBuilderContext } from '../context'
 import templates from '../templates'
 import { Queue, formOptionWalker } from '../utils'
 import { AlertModal } from './AlertModal'
+import { CodeInjectionModal } from './CodeInjectionModal'
 import { ScrollIntoView } from './ScrollIntoView'
 
 export const Preview: FC = () => {
@@ -64,6 +66,17 @@ export const Preview: FC = () => {
     })
   }
 
+  function handleAddWidget() {
+    dispatch({
+      type: 'updateState',
+      payload: {
+        selectedSection: {
+          type: 'add-widget'
+        }
+      }
+    })
+  }
+
   queue.on(event => {
     switch (event) {
       case 'start':
@@ -95,9 +108,57 @@ export const Preview: FC = () => {
     <div className="relative w-full h-full">
       <div className={`builder-editor builder-editor-${state.previewMode}`}>
         <Frame
-          className="w-full h-full scrollbar"
-          initialContent="<!DOCTYPE html><html class='scroll-smooth'><head><script src='https://cdn.tailwindcss.com'></script><script>tailwind.config = {darkMode: 'class'}</script><script>document.addEventListener('click',function(event){var a=event.target;var depth=3;while(a&&a.tagName!=='A'&&depth-->0){a=a.parentNode}if(a&&a.tagName=='A'){event.preventDefault()}});</script></head><body class='iframe-scrollbar'><div></div></body></html>"
+          className="w-full h-full"
+          initialContent="<!DOCTYPE html><html class='scroll-smooth'><head><script src='https://cdn.tailwindcss.com'></script><script>tailwind.config = {darkMode: 'class'}</script><script>document.addEventListener('click',function(event){var a=event.target;var depth=10;while(a&&a.tagName!=='A'&&depth-->0){a=a.parentNode}if(a&&a.tagName=='A'){event.preventDefault()}});</script></head><body class='iframe-scrollbar'><div></div></body></html>"
         >
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+              html {
+                width: 100vw;
+                height: 100vh;
+                overflow: hidden;
+              }
+              body {
+                height: 100vh;
+                overflow-x: hidden;
+                overflow-y: auto;
+              }
+              .tooltip {
+                pointer-events: none;
+                z-index: 50;
+                white-space: pre;
+                overflow-wrap: break-word;
+                border-radius: 0.25rem;
+                padding-left: 0.625rem;
+                padding-right: 0.625rem;
+                padding-top: 0.375rem;
+                padding-bottom: 0.375rem;
+                text-align: center;
+                font-size: 0.75rem;
+                line-height: 1rem;
+                color: #fff;
+                text-decoration: none;
+                text-shadow: none;
+                text-transform: none;
+                letter-spacing: normal;
+                background: #1f1f1f;
+              }
+              .widget-active .widget-body,
+              .widget-active .widget-actions {
+                opacity: 0;
+              }
+              .widget-active .widget-content {
+                background: #fbfbfb;
+                box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+              }
+              .dark .widget-active .widget-content {
+                background: #1e293b;
+              }
+              `
+            }}
+          />
+
           <ScrollIntoView
             selectedOptionName={state.selectedOptionName}
             selectedCompletionName={state.selectedCompletionName}
@@ -120,6 +181,18 @@ export const Preview: FC = () => {
           <PublicSiteDangerouslyHTML html={siteSettings.customCode} />
           <PublicSiteHiddenBlocksStyle hiddenBlocks={siteSettings.hiddenBlocks} />
         </Frame>
+      </div>
+
+      <div className="fixed bottom-8 right-8 z-10">
+        <Tooltip ariaLabel="Add Widget">
+          <button
+            type="button"
+            className="p-2 rounded-full bg-white hover:bg-slate-100 hover:text-slate-900 shadow-[rgba(0,0,0,0.08)_0px_2px_4px,rgba(0,0,0,0.06)_0px_2px_12px,rgba(0,0,0,0.04)_0px_8px_14px,rgba(0,0,0,0.02)_0px_12px_16px]"
+            onClick={handleAddWidget}
+          >
+            <IconPlus />
+          </button>
+        </Tooltip>
       </div>
 
       <AlertModal visible={alertModalVisible} />

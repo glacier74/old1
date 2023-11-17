@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-export type WidgetSize = '1x1' | '2x1' | '2x2' | '2x0.5'
+export type WidgetSize = '1x1' | '2x1' | '2x2' | '2x0.5' | 'full'
 export type WidgetType = 'group_title' | 'payment' | 'email_capture' | 'image' | 'video' | string
 
 export interface WidgetGridData {
@@ -16,8 +16,8 @@ export interface WidgetGridData {
 }
 
 export interface WidgetGridProps extends ComponentProps {
-  itemSize: number
-  gapSize: number
+  itemSize?: number
+  gapSize?: number
   list: WidgetGridData[]
 }
 
@@ -31,7 +31,6 @@ export interface WidgetIconProps extends ComponentProps {
 }
 
 export interface WidgetContainerProps extends ComponentProps {
-  size: string
   config: WidgetConfig
   component: FC<WidgetConfig>
 }
@@ -221,4 +220,21 @@ export interface WidgetEmailCaptureModalProps extends WidgetEmailCaptureButtonPr
   visible?: boolean
   onSubmitted: () => void
   onClose: () => void
+}
+
+export type WidgetActionsProps = Omit<WidgetContainerProps, 'size' | 'component'>
+
+export interface WidgetActionItemDivide {
+  type: 'divide'
+}
+
+export interface WidgetActionItemButton {
+  name: string
+  label: string
+  icon: FC<ComponentProps>
+}
+
+export interface WidgetActionItemProps {
+  item: WidgetActionItemDivide | WidgetActionItemButton
+  onClick: (name: string) => void
 }

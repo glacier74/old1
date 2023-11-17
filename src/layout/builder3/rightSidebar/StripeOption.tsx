@@ -8,8 +8,12 @@ import { useRequest, useWindow } from '~/utils'
 import { useOptions } from '../context'
 import { OptionProps } from './OptionGroup'
 
-export const StripeOption: FC<OptionProps> = ({ parentName, schema }) => {
-  const { value, update } = useOptions<any>([parentName, schema.name].filter(Boolean).join('.'))
+interface StripeInfo {
+  stripeAccount: string
+  stripeEmail: string
+}
+
+export function useConnectStripe(callback: (stripeInfo: StripeInfo) => void, deps: any[] = []) {
   const [loading, setLoading] = useState(false)
 
   const authorize = useRequest(async () => {
@@ -24,8 +28,7 @@ export const StripeOption: FC<OptionProps> = ({ parentName, schema }) => {
       try {
         const result = await StripeService.connect(stateQuery, code)
 
-        update({
-          ...value,
+        callback({
           stripeAccount: result.accountId,
           stripeEmail: result.email
         })
@@ -37,7 +40,7 @@ export const StripeOption: FC<OptionProps> = ({ parentName, schema }) => {
 
       setLoading(false)
     },
-    [update, value]
+    [callback, ...deps]
   )
 
   const openWindow = useWindow(
@@ -57,6 +60,25 @@ export const StripeOption: FC<OptionProps> = ({ parentName, schema }) => {
     () => {
       setLoading(false)
     }
+  )
+
+  return {
+    loading,
+    authorize
+  }
+}
+
+export const StripeOption: FC<OptionProps> = ({ parentName, schema }) => {
+  const { value, update } = useOptions<any>([parentName, schema.name].filter(Boolean).join('.'))
+
+  const { loading, authorize } = useConnectStripe(
+    stripeInfo => {
+      update({
+        ...value,
+        ...stripeInfo
+      })
+    },
+    [value]
   )
 
   const handlePriceIdChange = useCallback(

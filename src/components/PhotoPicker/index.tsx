@@ -9,7 +9,6 @@ import { FileUploader } from '../FileUploader'
 import { Unsplash } from './Unsplash'
 
 interface PhotoPickerProps extends Omit<ComponentProps, 'onChange'>, IModalProps {
-  namespace: string
   enableUnsplash?: boolean
   enableVideo?: boolean
   acceptedMimes?: string[]
@@ -20,7 +19,6 @@ interface PhotoPickerProps extends Omit<ComponentProps, 'onChange'>, IModalProps
 export const PhotoPicker: FC<PhotoPickerProps> = ({
   className,
   visible,
-  namespace,
   enableUnsplash = false,
   enableVideo = false,
   acceptedMimes = ['image/jpeg', 'image/png', 'image/bmp', 'image/gif'],
@@ -51,7 +49,7 @@ export const PhotoPicker: FC<PhotoPickerProps> = ({
     >
       <Tabs>
         <Tabs.Pane name="upload" title={t('common.uploadImage')}>
-          <FileUploader namespace={namespace} accept={acceptedMimes} onChange={handleImageChange} />
+          <FileUploader accept={acceptedMimes} onChange={handleImageChange} />
         </Tabs.Pane>
         {enableUnsplash && (
           <Tabs.Pane name="unsplash" title="Unsplash">

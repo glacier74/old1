@@ -1,8 +1,9 @@
+import { useGlobalContext } from '@earlybirdim/components'
+import clsx from 'clsx'
 import { CSSProperties, useMemo } from 'react'
 
 import { WidgetIcon } from '../WidgetIcon'
 import { WidgetConfig, WidgetContainerProps, WidgetData, WidgetSize } from '../WidgetProps'
-import { sizeClassNames } from '../constants'
 import { useMetadata } from '../hook'
 
 export default class Widget<T> {
@@ -39,10 +40,12 @@ export default class Widget<T> {
       }
     })()
 
-    return <this.Container config={this.config} size={this.workableSize} component={Component} />
+    return <this.Container config={this.config} component={Component} />
   }
 
-  protected Container({ size, config: rawConfig, component: Component }: WidgetContainerProps) {
+  protected Container({ config: rawConfig, component: Component }: WidgetContainerProps) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { isPreview } = useGlobalContext()
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const data = useMetadata(rawConfig)
 
@@ -69,7 +72,7 @@ export default class Widget<T> {
     }, [data, rawConfig])
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const styles = useMemo(() => {
+    const style = useMemo(() => {
       const extraStyles = config.extra?.styles
 
       return {
@@ -91,16 +94,20 @@ export default class Widget<T> {
 
     return (
       <div
-        className={`widget widget-${size.replace(/\./g, '_')} ${sizeClassNames[size]}`}
-        data-id={config.id}
-        style={styles}
+        className="widget-content group/widget-content relative w-full h-full rounded-3xl shadow-sm cursor-pointer group bg-[var(--widget-bg)] dark:bg-[var(--widget-dark-bg)] p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))] transition-all duration-150 will-change-auto hover:bg-[var(--widget-bg-hover)] dark:hover:bg-[var(--widget-dark-bg-hover)] active:scale-[var(--widget-scale)] active:bg-[var(--widget-bg-active)]"
+        style={style}
       >
-        <div className="widget-content group/widget-content relative w-full h-full rounded-3xl shadow-sm cursor-pointer group bg-[var(--widget-bg)] dark:bg-[var(--widget-dark-bg)] p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))] transition-all duration-150 will-change-auto hover:bg-[var(--widget-bg-hover)] dark:hover:bg-[var(--widget-dark-bg-hover)] active:scale-[var(--widget-scale)] active:bg-[var(--widget-bg-active)]">
-          <div className="w-full h-full dark:group-hover/widget-content:relative dark:group-hover/widget-content:z-10">
-            <Component {...config} />
-          </div>
-          <div className="pointer-events-none absolute inset-0 rounded-3xl will-change-auto border border-black/10 dark:border-none dark:bg-[conic-gradient(from_var(--widget-rotating),#000_0%,#fff_10%,#000_20%)] dark:opacity-0 dark:group-hover/widget-content:z-0 dark:group-hover/widget-content:opacity-100 dark:group-hover/widget-content:animate-[widget-rotating_3s_linear_infinite] dark:after:absolute dark:after:inset-[1px] dark:after:bg-[var(--widget-dark-bg-hover)] dark:after:rounded-3xl" />
+        <div className="widget-body w-full h-full dark:group-hover/widget-content:relative dark:group-hover/widget-content:z-10">
+          <Component {...config} />
         </div>
+        <div
+          className={clsx(
+            'pointer-events-none absolute inset-0 rounded-3xl will-change-auto border border-black/10',
+            isPreview
+              ? 'group-hover/widget:border-emerald-600'
+              : 'dark:border-none dark:bg-[conic-gradient(from_var(--widget-rotating),#000_0%,#fff_10%,#000_20%)] dark:opacity-0 dark:group-hover/widget-content:z-0 dark:group-hover/widget-content:opacity-100 dark:group-hover/widget-content:animate-[widget-rotating_3s_linear_infinite] dark:after:absolute dark:after:inset-[1px] dark:after:bg-[var(--widget-dark-bg-hover)] dark:after:rounded-3xl'
+          )}
+        />
       </div>
     )
   }

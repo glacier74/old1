@@ -16,6 +16,13 @@ export interface IState {
   // List
   selectedListId?: string
 
+  // Jingle Bio
+  selectedSection?: {
+    type: 'section' | 'widget' | 'add-widget'
+    name?: string
+    id?: string
+  }
+
   // Preview anchor link
   selectedOptionName?: string
 

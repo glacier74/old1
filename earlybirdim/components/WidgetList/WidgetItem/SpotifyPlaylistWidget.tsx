@@ -19,7 +19,7 @@ const PlayItem: FC<{ index: number; song: SpotifySong }> = ({ song }) => {
           <div className="relative h-[40px] w-[40px] flex-none">
             <div className="relative rounded-lg">
               <Image
-                className="rounded-lg object-cover"
+                className="rounded-lg object-cover pointer-events-none select-none"
                 width={40}
                 height={40}
                 src={song.thumbnail}
@@ -105,7 +105,7 @@ export default class SpotifyPlaylistWidget<T extends SpotifyPlaylistData> extend
           <div className="relative aspect-square rounded-xl bg-[#f2f2f2]">
             {config.data.imageUrl && (
               <img
-                className="h-full w-full rounded-xl object-cover"
+                className="h-full w-full rounded-xl object-cover pointer-events-none select-none"
                 src={config.data.imageUrl}
                 alt={config.data.overrides?.title || config.data.name}
               />

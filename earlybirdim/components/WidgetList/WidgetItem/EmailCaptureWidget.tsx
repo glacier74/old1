@@ -69,7 +69,7 @@ export default class EmailCaptureWidget<T extends EmailCaptureData> extends Widg
           {config.data.overrides?.imageUrl ? (
             <div className="relative ml-6 aspect-[1.4] h-full">
               <img
-                className="h-full w-full rounded-xl object-cover"
+                className="h-full w-full rounded-xl object-cover pointer-events-none select-none"
                 src={config.data.overrides?.imageUrl}
                 alt={config.data.overrides?.title}
               />
@@ -112,7 +112,7 @@ export default class EmailCaptureWidget<T extends EmailCaptureData> extends Widg
           {config.data.overrides?.imageUrl ? (
             <div className="relative mt-6 aspect-[1.9] overflow-hidden">
               <img
-                className="w-full h-full rounded-xl object-cover"
+                className="w-full h-full rounded-xl object-cover pointer-events-none select-none"
                 src={config.data.overrides?.imageUrl}
                 alt={config.data.overrides?.title}
               />

@@ -68,7 +68,7 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
           {imageUrl ? (
             <div className="relative ml-6 aspect-[1.4] h-full">
               <Image
-                className="h-full w-full rounded-xl object-cover"
+                className="h-full w-full rounded-xl object-cover pointer-events-none select-none"
                 src={imageUrl}
                 width={180}
                 height={130}
@@ -116,7 +116,7 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
           {imageUrl ? (
             <div className="relative mt-6 aspect-[1.9] overflow-hidden">
               <img
-                className="w-full h-full rounded-xl object-cover"
+                className="w-full h-full rounded-xl object-cover pointer-events-none select-none"
                 src={imageUrl}
                 width={340}
                 height={180}

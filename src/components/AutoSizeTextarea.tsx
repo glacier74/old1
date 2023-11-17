@@ -1,26 +1,40 @@
 import clsx from 'clsx'
-import { ChangeEvent, FC, useRef, useState } from 'react'
-import TextareaAutosize from 'react-textarea-autosize'
-import { TextareaAutosizeProps } from 'react-textarea-autosize/dist/declarations/src'
+import { ChangeEvent, FC, useEffect, useRef, useState } from 'react'
 
-interface AutoSizeTextareaProps extends Omit<TextareaAutosizeProps, 'onChange'> {
+interface AutoSizeTextareaProps extends ComponentProps {
+  placeholder?: string
+  minRows?: number
   value?: string
-  onChange: (value: string) => void
+  onChange?: (value: string) => void
 }
 
 export const AutoSizeTextarea: FC<AutoSizeTextareaProps> = ({
   className,
+  placeholder,
   minRows = 1,
   value: rawValue,
   onChange,
   ...restProps
 }) => {
   const lock = useRef(false)
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null)
+
   const [value, setValue] = useState(rawValue)
+
+  function adjustTextareaHeight() {
+    const textarea = textareaRef.current
+
+    if (textarea) {
+      textarea.style.height = 'auto'
+      textarea.style.height = `${textarea.scrollHeight + 2}px`
+    }
+  }
 
   function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
     const newValue = event.currentTarget.value
+
     setValue(newValue)
+    adjustTextareaHeight()
 
     if (event.type === 'compositionstart') {
       lock.current = true
@@ -36,13 +50,28 @@ export const AutoSizeTextarea: FC<AutoSizeTextareaProps> = ({
     }
   }
 
+  useEffect(() => {
+    const textarea = textareaRef.current
+
+    if (textarea) {
+      adjustTextareaHeight()
+      window.addEventListener('resize', adjustTextareaHeight)
+
+      return () => {
+        window.removeEventListener('resize', adjustTextareaHeight)
+      }
+    }
+  }, [])
+
   return (
-    <TextareaAutosize
+    <textarea
+      ref={textareaRef}
       className={clsx(
-        'input w-full !px-2 !py-[0.34rem] focus:ring-emerald-600 resize-none',
+        'input w-full !px-2 !py-[0.34rem] focus:border-emerald-500 focus:ring-emerald-600 resize-none overflow-y-hidden',
         className
       )}
-      minRows={minRows}
+      placeholder={placeholder}
+      rows={minRows}
       value={value}
       onChange={handleChange}
       {...restProps}

@@ -25,6 +25,8 @@ interface CheckoutInput extends BaseInput {
 
 const NEXT_PUBLIC_API_URI = process.env.NEXT_PUBLIC_API_URI as string
 const NEXT_API_VERIFICATION_KEY = process.env.NEXT_API_VERIFICATION_KEY as string
+const METADATA_API_URL = process.env.NEXT_PUBLIC_METADATA_API_URL as string
+const METADATA_API_SECRET = process.env.NEXT_METADATA_API_SECRET as string
 
 export class PublicApiService {
   static async createEmailCapture(productId: number, input: CreateEmailCaptureInput) {
@@ -72,5 +74,18 @@ export class PublicApiService {
         }
       })
       .json()
+  }
+
+  static async metadata(urls: string[]) {
+    return ky
+      .post(`${METADATA_API_URL}/v1/website/multiple/metadata`, {
+        // https://github.com/vercel/next.js/issues/41531
+        body: JSON.stringify({ urls }),
+        headers: {
+          Authorization: `Bearer ${METADATA_API_SECRET}`,
+          'Content-type': 'application/json'
+        }
+      })
+      .json<any[]>()
   }
 }
