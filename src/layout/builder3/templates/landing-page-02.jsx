@@ -469,7 +469,7 @@ export const schemas = [
 export function render({ options: { header, hero, features, payment, faq, newsletter, footer } }) {
   return (
     <div>
-      <div className="earlybird-iP4jAH antialiased font-[Inter] bg-white">
+      <div className="earlybird-iP4jAH antialiased font-[Inter] bg-white overflow-x-hidden">
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
@@ -549,7 +549,7 @@ export function render({ options: { header, hero, features, payment, faq, newsle
             <div className="earlybird-Y4FPRt mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
               <div className="earlybird-dNtrTU mb-10">
                 <div
-                  className="earlybird-HHgnpi inline-block md:inline rounded-full py-1.5 px-3 text-sm text-center leading-6 border"
+                  className="earlybird-HHgnpi inline-block rounded-full py-1.5 px-3 text-sm text-center leading-6 border"
                   dangerouslySetInnerHTML={{
                     __html: hero.announcement
                   }}
