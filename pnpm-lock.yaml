@@ -53,8 +53,8 @@ dependencies:
     specifier: ^1.119.0
     version: 1.119.0(patch_hash=tjmxjsj7pvvhkhqdp6bmei6com)(react-dom@18.2.0)(react@18.2.0)
   '@tinaryan/dp':
-    specifier: ^0.2.6
-    version: 0.2.6(@heyooo-inc/utils@0.0.10)
+    specifier: ^0.2.7
+    version: 0.2.7(@heyooo-inc/utils@0.0.10)
   '@tippyjs/react':
     specifier: ^4.2.6
     version: 4.2.6(react-dom@18.2.0)(react@18.2.0)
@@ -1195,8 +1195,8 @@ packages:
       mini-svg-data-uri: 1.4.4
       tailwindcss: 3.3.3
 
-  /@tinaryan/dp@0.2.6(@heyooo-inc/utils@0.0.10):
-    resolution: {integrity: sha512-wNy1rp4wvZq9y6Q76z5467U0RoQoKN5gB1bzt7az/Q45Xdvf/NzCHx89YfFBTHMu3CIVO/uSJ/eNES0Vie4N6w==}
+  /@tinaryan/dp@0.2.7(@heyooo-inc/utils@0.0.10):
+    resolution: {integrity: sha512-oNuIxhcMEtVpyYZPZE3tpa9YhuPgS03M/FfEdb2k9cKQihDhylGHMN7cErn/Io5l5TVaIspDB+CC9CAsGKXM/A==}
     peerDependencies:
       '@heyooo-inc/utils': ^0.0.10
     dependencies:
