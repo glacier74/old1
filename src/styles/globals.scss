@@ -2467,6 +2467,10 @@ button.button-success {
   .modal-container {
     @apply pt-[72px] items-start justify-end;
   }
+
+  .modal-content {
+    @apply border border-slate-200;
+  }
 }
 
 .widget-active {

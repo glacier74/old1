@@ -1,8 +1,27 @@
+import { IconBehance } from '@earlybirdim/components/WidgetList/WidgetIcon/IconBehance'
+import { IconBuyMeCoffee } from '@earlybirdim/components/WidgetList/WidgetIcon/IconBuyMeCoffee'
+import { IconDribbble } from '@earlybirdim/components/WidgetList/WidgetIcon/IconDribbble'
+import { IconFigma } from '@earlybirdim/components/WidgetList/WidgetIcon/IconFigma'
+import { IconGithub } from '@earlybirdim/components/WidgetList/WidgetIcon/IconGithub'
+import { IconGumroad } from '@earlybirdim/components/WidgetList/WidgetIcon/IconGumroad'
+import { IconInstagram } from '@earlybirdim/components/WidgetList/WidgetIcon/IconInstagram'
+import { IconKofi } from '@earlybirdim/components/WidgetList/WidgetIcon/IconKofi'
+import { IconLayers } from '@earlybirdim/components/WidgetList/WidgetIcon/IconLayers'
+import { IconLinkedin } from '@earlybirdim/components/WidgetList/WidgetIcon/IconLinkedin'
+import { IconMedium } from '@earlybirdim/components/WidgetList/WidgetIcon/IconMedium'
+import { IconProductHunt } from '@earlybirdim/components/WidgetList/WidgetIcon/IconProductHunt'
+import { IconReddit } from '@earlybirdim/components/WidgetList/WidgetIcon/IconReddit'
+import { IconSubstack } from '@earlybirdim/components/WidgetList/WidgetIcon/IconSubstack'
+import { IconTiktok } from '@earlybirdim/components/WidgetList/WidgetIcon/IconTiktok'
+import { IconTwitch } from '@earlybirdim/components/WidgetList/WidgetIcon/IconTwitch'
+import { IconTwitter } from '@earlybirdim/components/WidgetList/WidgetIcon/IconTwitter'
+import { IconYouTube } from '@earlybirdim/components/WidgetList/WidgetIcon/IconYouTube'
 import { Input } from '@heyforms/ui'
-import { isEmpty } from '@nily/utils'
+import { isValid } from '@nily/utils'
+import { nanoid } from 'nanoid'
 import { useTranslation } from 'next-i18next'
 import router from 'next/router'
-import { useCallback, useState } from 'react'
+import { FC, useCallback, useState } from 'react'
 
 import templates from '~/layout/builder3/templates'
 import { schemasToOptions } from '~/layout/builder3/utils'
@@ -11,13 +30,159 @@ import { useStore } from '~/store'
 
 import { StepContainer } from './StepContainer'
 
+interface SocialItemProps {
+  name: string
+  icon: FC<any>
+  onChange: (name: string, value: string) => void
+}
+
+const SOCIAL_ITEMS = [
+  {
+    name: 'twitter',
+    label: 'Twitter',
+    url: 'https://twitter.com/@{username}',
+    icon: IconTwitter
+  },
+  {
+    name: 'tiktok',
+    label: 'TikTok',
+    url: 'https://www.tiktok.com/@{username}',
+    icon: IconTiktok
+  },
+  {
+    name: 'linkedin',
+    label: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/{username}',
+    icon: IconLinkedin
+  },
+  {
+    name: 'instagram',
+    label: 'Instagram',
+    url: 'https://www.instagram.com/{username}',
+    icon: IconInstagram
+  },
+  {
+    name: 'youtube',
+    label: 'YouTube',
+    url: 'https://www.youtube.com/{username}',
+    icon: IconYouTube
+  },
+  {
+    name: 'twitch',
+    label: 'Twitch',
+    url: 'https://www.twitch.tv/{username}',
+    icon: IconTwitch
+  },
+  {
+    name: 'reddit',
+    label: 'Reddit',
+    url: 'https://www.reddit.com/user/{username}',
+    icon: IconReddit
+  },
+  {
+    name: 'buymecoffee',
+    label: 'Buy Me a Coffee',
+    url: 'https://www.buymeacoffee.com/{username}',
+    icon: IconBuyMeCoffee,
+    className: '!text-[11px]'
+  },
+  {
+    name: 'gumroad',
+    label: 'Gumroad',
+    url: 'https://www.gumroad.com/{username}',
+    icon: IconGumroad
+  },
+  {
+    name: 'medium',
+    label: 'Medium',
+    url: 'https://medium.com/{username}',
+    icon: IconMedium
+  },
+  {
+    name: 'producthunt',
+    label: 'Product Hunt',
+    url: 'https://www.producthunt.com/products/{username}',
+    icon: IconProductHunt
+  },
+  {
+    name: 'dribbble',
+    label: 'Dribbble',
+    url: 'https://dribbble.com/{username}',
+    icon: IconDribbble
+  },
+  {
+    name: 'figma',
+    label: 'Figma',
+    url: 'https://www.figma.com/@{username}',
+    icon: IconFigma
+  },
+  {
+    name: 'behance',
+    label: 'Behance',
+    url: 'https://www.behance.net/{username}',
+    icon: IconBehance
+  },
+  {
+    name: 'github',
+    label: 'Github',
+    url: 'https://github.com/{username}',
+    icon: IconGithub
+  },
+  {
+    name: 'layers',
+    label: 'Layers',
+    url: 'https://layers.to/{username}',
+    icon: IconLayers
+  },
+  {
+    name: 'substack',
+    label: 'Substack',
+    url: 'https://{username}.substack.com',
+    icon: IconSubstack
+  },
+  {
+    name: 'kofi',
+    label: 'Kofi',
+    url: 'https://ko-fi.com/{username}',
+    icon: IconKofi
+  }
+]
+
+const SocialItem: FC<SocialItemProps> = ({ name, icon: Icon, onChange }) => {
+  const social = SOCIAL_ITEMS.find(s => s.name === name)!
+
+  function handleChange(value: string) {
+    onChange(name, social.url.replace('{username}', value))
+  }
+
+  return (
+    <div className="flex items-center gap-4">
+      <div className="relative w-[38px] h-[38px]">
+        <Icon className="w-full h-full" />
+        <div className="pointer-events-none absolute inset-0 border border-black/10 rounded-lg"></div>
+      </div>
+      <Input className="flex-1" leading="@" placeholder="username" onChange={handleChange} />
+    </div>
+  )
+}
+
 export const StepJingleBio = () => {
   const { t } = useTranslation('dashboard')
-  const { user } = useStore()
+  const { user, product } = useStore()
 
-  const [name, setName] = useState<string>()
+  const [socials, setSocials] = useState<AnyMap>({})
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string>()
+
+  const handleChange = useCallback(
+    (name: string, value: string) => {
+      setSocials({
+        ...socials,
+        [name]: value
+      })
+    },
+    [socials]
+  )
 
   const handleCreate = useCallback(async () => {
     setLoading(true)
@@ -27,11 +192,22 @@ export const StepJingleBio = () => {
       const blocks = schemasToOptions(templates['jingle-bio'].schemas)
 
       // Update Jingle Bio block
-      blocks.personal_info.name = name
-      blocks.personal_info.avatar = user.avatar
+      blocks.personal_info = {
+        name: product?.name,
+        avatar: user.avatar,
+        description: ''
+      }
+
+      if (isValid(socials)) {
+        blocks.main.socials = Object.values(socials).map(url => ({
+          id: nanoid(8),
+          url,
+          size: '1x1'
+        }))
+      }
 
       const productId = await ProductService.create({
-        name,
+        name: product?.name,
         logo: user.avatar,
         template: 'jingle-bio',
         blocks,
@@ -46,19 +222,19 @@ export const StepJingleBio = () => {
     }
 
     setLoading(false)
-  }, [name, user.avatar])
+  }, [product?.name, socials, user.avatar])
 
   return (
-    <StepContainer
-      isNextButtonDisabled={isEmpty(name)}
-      isNextButtonLoading={loading}
-      onNextButtonClick={handleCreate}
-    >
-      <div className="flex items-center mb-2 text-3xl font-semibold text-slate-950">
-        {t('createProduct.jbHeading')}{' '}
-        <Input className="create-product-input" value={name} onChange={setName} />
+    <StepContainer isNextButtonLoading={loading} onNextButtonClick={handleCreate}>
+      <div className="flex items-center mb-8 text-3xl font-semibold text-slate-950">
+        {t('createProduct.jbHeading2')}
       </div>
-      <p className="mb-8 text-slate-500 text-xl">{t('createProduct.jbDesc')}</p>
+
+      <div className="space-y-4 mb-8 h-[320px] overflow-y-auto scrollbar">
+        {SOCIAL_ITEMS.map(row => (
+          <SocialItem name={row.name} icon={row.icon} onChange={handleChange} />
+        ))}
+      </div>
 
       {error && <div className="mb-2 text-sm text-red-500">{error}</div>}
     </StepContainer>

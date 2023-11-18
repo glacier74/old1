@@ -10,10 +10,7 @@ import { AddLinkProps } from './AddLink'
 import { AddWidgetForm } from './AddWidgetForm'
 
 export const AddPayment: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restProps }) => {
-  const [value, setValue] = useState<AnyMap>({
-    stripeAccount: 'string',
-    stripeEmail: 'string'
-  })
+  const [value, setValue] = useState<AnyMap>()
 
   const { loading, authorize } = useConnectStripe(
     stripeInfo => {
@@ -44,7 +41,7 @@ export const AddPayment: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restProps 
   return (
     <OptionsContainer title="Add Payment" onGoBack={onGoBack} {...restProps}>
       <div className="px-5">
-        {value.stripeAccount ? (
+        {value?.stripeAccount ? (
           <>
             <div className="mb-5 px-4 py-3 space-y-2 text-[13px] text-slate-700 bg-yellow-50 rounded-lg">
               <p>

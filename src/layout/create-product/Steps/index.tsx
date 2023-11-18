@@ -2,6 +2,7 @@ import { arrayUnique, isFalse } from '@nily/utils'
 import { useContext, useEffect, useMemo, useReducer } from 'react'
 
 import { StepJingleBio } from '~/layout/create-product/Steps/StepJingleBio'
+import { StepJingleBioProfile } from '~/layout/create-product/Steps/StepJingleBioProfile'
 import { ProductService } from '~/service'
 import { useStore } from '~/store'
 import { useAsyncEffect } from '~/utils'
@@ -33,6 +34,10 @@ export const BIO_PAGE_STEPS = [
     value: 'initial',
     component: StepInitial,
     isAllowToPrev: false
+  },
+  {
+    value: 'profile',
+    component: StepJingleBioProfile
   },
   {
     value: 'jingleBio',

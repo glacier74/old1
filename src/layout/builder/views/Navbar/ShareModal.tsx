@@ -48,7 +48,13 @@ ${shareURL}.`
   }
 
   return (
-    <Modal contentClassName="max-w-md" visible={visible} showCloseIcon onClose={onClose}>
+    <Modal
+      className="share-modal"
+      contentClassName="max-w-md"
+      visible={visible}
+      showCloseIcon
+      onClose={onClose}
+    >
       <div className="text-sm text-slate-700 space-y-6">
         <div>
           <h1 className="text-lg leading-6 font-medium text-slate-900">Share</h1>
