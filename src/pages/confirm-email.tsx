@@ -9,7 +9,7 @@ import { useEffect } from 'react'
 import { LoginLayout } from '~/layout'
 
 const ConfirmEmail = (): JSX.Element => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('dashboard')
   const router = useRouter()
   const { email } = useStore()
 
