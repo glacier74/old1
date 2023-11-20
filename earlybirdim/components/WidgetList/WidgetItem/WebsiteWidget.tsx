@@ -1,9 +1,9 @@
 import { useGlobalContext } from '@earlybirdim/components'
 import { toCustomURL } from '@tinaryan/dp'
 import clsx from 'clsx'
-import Image from 'next/image'
 import { useMemo } from 'react'
 
+import { Image } from '../../Image'
 import { WidgetIcon } from '../WidgetIcon'
 import { WebsiteData, WidgetConfig } from '../WidgetProps'
 import Widget from './Widget'
@@ -115,7 +115,7 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
 
           {imageUrl ? (
             <div className="relative mt-6 aspect-[1.9] overflow-hidden">
-              <img
+              <Image
                 className="w-full h-full rounded-xl object-cover pointer-events-none select-none"
                 src={imageUrl}
                 width={340}

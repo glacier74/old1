@@ -1,7 +1,7 @@
 import { useGlobalContext } from '@earlybirdim/components'
-import Image from 'next/image'
 import { useMemo } from 'react'
 
+import { Image } from '../../Image'
 import { WidgetIcon } from '../WidgetIcon'
 import { WidgetConfig, WidgetData, WidgetExtra } from '../WidgetProps'
 import { twitter } from '../constants'

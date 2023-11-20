@@ -1,8 +1,8 @@
 import { isValid } from '@nily/utils'
 import clsx from 'clsx'
-import Image from 'next/image'
 import { FC } from 'react'
 
+import { Image } from '../../Image'
 import { MediaData, WidgetConfig, WidgetSize } from '../WidgetProps'
 import { map } from '../constants'
 import Widget from './Widget'
@@ -54,7 +54,7 @@ export default class MediaWidget<T extends MediaData> extends Widget<T> {
             height={config.imageHeight}
             src={config.data.overrides.imageUrl}
             data-src={config.data.overrides.imageUrl}
-            alt={config.data.overrides?.title || ''}
+            alt={config.data.overrides?.title}
           />
         )}
 

@@ -1,6 +1,7 @@
 import { useGlobalContext } from '@earlybirdim/components'
 import clsx from 'clsx'
 
+import { Image } from '../../Image'
 import { WidgetIcon } from '../WidgetIcon'
 import { PaymentData, WidgetConfig } from '../WidgetProps'
 import { payment } from '../constants'
@@ -68,9 +69,11 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
 
           {config.data.overrides?.imageUrl ? (
             <div className="relative ml-6 aspect-[1.4] h-full">
-              <img
+              <Image
                 className="h-full w-full rounded-xl object-cover pointer-events-none select-none"
                 src={config.data.overrides?.imageUrl}
+                width={180}
+                height={130}
                 alt={config.data.overrides?.title}
               />
               <div className="pointer-events-none absolute inset-0 border border-black/10 rounded-xl"></div>
@@ -111,9 +114,11 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
 
           {config.data.overrides?.imageUrl ? (
             <div className="relative mt-6 aspect-[1.9] overflow-hidden">
-              <img
+              <Image
                 className="w-full h-full rounded-xl object-cover pointer-events-none select-none"
-                src={config.data.overrides?.imageUrl}
+                src={config.data.overrides.imageUrl}
+                width={340}
+                height={180}
                 alt={config.data.overrides?.title}
               />
               <div className="pointer-events-none absolute inset-0 border border-black/10 rounded-xl"></div>

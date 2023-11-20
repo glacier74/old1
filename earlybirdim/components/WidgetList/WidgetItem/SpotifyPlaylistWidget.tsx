@@ -1,6 +1,6 @@
-import Image from 'next/image'
 import { FC } from 'react'
 
+import { Image } from '../../Image'
 import { WidgetIcon } from '../WidgetIcon'
 import { SpotifyPlaylistData, SpotifySong, WidgetConfig } from '../WidgetProps'
 import { spotify } from '../constants'
@@ -104,9 +104,11 @@ export default class SpotifyPlaylistWidget<T extends SpotifyPlaylistData> extend
 
           <div className="relative aspect-square rounded-xl bg-[#f2f2f2]">
             {config.data.imageUrl && (
-              <img
+              <Image
                 className="h-full w-full rounded-xl object-cover pointer-events-none select-none"
                 src={config.data.imageUrl}
+                width={120}
+                height={120}
                 alt={config.data.overrides?.title || config.data.name}
               />
             )}

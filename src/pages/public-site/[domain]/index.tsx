@@ -194,7 +194,7 @@ const PublicSite: FC<PublicSiteProps> = ({
         config: process.env.__NEXT_IMAGE_OPTS as any,
         src: product.logo,
         quality: 95,
-        width: 16
+        width: 32
       })
     }
   }, [product.logo])
@@ -419,8 +419,8 @@ export const getServerSideProps = withTranslations(
                 ...result[index]
               })
             })
-          } catch (err) {
-            console.error(err)
+          } catch (err: any) {
+            console.error(err.message)
           }
         }
       }

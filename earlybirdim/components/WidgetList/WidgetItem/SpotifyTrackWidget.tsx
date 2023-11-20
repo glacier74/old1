@@ -1,3 +1,4 @@
+import { Image } from '../../Image'
 import { WidgetIcon } from '../WidgetIcon'
 import { SpotifyPlaylistData, WidgetConfig } from '../WidgetProps'
 import { spotify } from '../constants'
@@ -62,9 +63,11 @@ export default class SpotifyTrackWidget<T extends SpotifyPlaylistData> extends W
 
           <div className="relative aspect-square rounded-xl bg-[#f2f2f2]">
             {config.data.imageUrl && (
-              <img
+              <Image
                 className="h-full w-full rounded-xl object-cover pointer-events-none select-none pointer-events-none select-none"
                 src={config.data.imageUrl}
+                width={140}
+                height={140}
                 alt={config.data.overrides?.title || config.data.name}
               />
             )}
@@ -99,9 +102,11 @@ export default class SpotifyTrackWidget<T extends SpotifyPlaylistData> extends W
           <div className="flex aspect-[1.78] max-h-[60%] items-center justify-center rounded-xl border border-black/[0.04] bg-black/[0.02] py-3">
             <div className="relative aspect-square max-h-[160px] max-w-[160px] rounded-xl bg-[#f2f2f2]">
               {config.data.imageUrl && (
-                <img
+                <Image
                   className="h-full w-full rounded-xl object-cover pointer-events-none select-none"
                   src={config.data.imageUrl}
+                  width={140}
+                  height={140}
                   alt={config.data.overrides?.title || config.data.name}
                 />
               )}

@@ -257,21 +257,23 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
 
       if (website) {
         return <website.icon className="h-full w-full" />
+      } else if (faviconUrl) {
+        return (
+          <div className="p-1.5">
+            <Image
+              className="block h-full w-full object-cover"
+              src={faviconUrl}
+              alt={title!}
+              width={28}
+              height={28}
+            />
+          </div>
+        )
       }
 
-      return (
-        <div className="p-1.5">
-          <Image
-            className="block h-full w-full object-cover"
-            src={faviconUrl!}
-            alt={title!}
-            width={28}
-            height={28}
-          />
-        </div>
-      )
+      return null
     }
-  }, [faviconUrl, type, url])
+  }, [faviconUrl, title, type, url])
 
   return (
     <div
