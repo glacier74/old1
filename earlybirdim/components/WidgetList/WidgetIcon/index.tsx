@@ -1,3 +1,4 @@
+import { IconWorld } from '@tabler/icons'
 import {
   isAppleMusic,
   isApplePodcasts,
@@ -30,7 +31,7 @@ import {
 } from '@tinaryan/dp'
 import clsx from 'clsx'
 import Image from 'next/image'
-import { FC, useMemo } from 'react'
+import { FC, useMemo, useState } from 'react'
 
 import { WidgetIconProps } from '../WidgetProps'
 import { IconAppStore } from './IconAppStore'
@@ -243,6 +244,8 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
   faviconUrl,
   ...restProps
 }) => {
+  const [isErrored, setErrored] = useState(false)
+
   const children = useMemo(() => {
     if (type) {
       switch (type) {
@@ -260,20 +263,25 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
       } else if (faviconUrl) {
         return (
           <div className="p-1.5">
-            <Image
-              className="block h-full w-full object-cover"
-              src={faviconUrl}
-              alt={title!}
-              width={28}
-              height={28}
-            />
+            {isErrored ? (
+              <IconWorld className="text-slate-500 dark:text-slate-400" />
+            ) : (
+              <Image
+                className="block h-full w-full object-cover"
+                src={faviconUrl}
+                alt={title!}
+                width={28}
+                height={28}
+                onError={() => setErrored(true)}
+              />
+            )}
           </div>
         )
       }
 
       return null
     }
-  }, [faviconUrl, title, type, url])
+  }, [faviconUrl, isErrored, title, type, url])
 
   return (
     <div
@@ -284,7 +292,7 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
       {...restProps}
     >
       {children}
-      <div className="pointer-events-none absolute inset-0 border border-black/10 rounded-lg"></div>
+      <div className="pointer-events-none absolute inset-0 border border-black/10 dark:border-white/40 rounded-lg"></div>
     </div>
   )
 }
