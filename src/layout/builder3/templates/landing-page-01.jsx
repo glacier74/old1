@@ -282,16 +282,47 @@ export const schemas = [
         name: 'products',
         title: 'Products',
         type: 'list',
+        relations: [
+          {
+            name: 'is_one_time',
+            fields: {
+              true: ['one_time_price'],
+              false: ['monthly_price', 'yearly_price']
+            }
+          }
+        ],
         fields: [
           {
-            name: 'monthly_price',
-            title: 'Monthly price',
-            type: 'text'
-          },
-          {
-            name: 'yearly_price',
-            title: 'Yearly price',
-            type: 'text'
+            name: 'payment_type',
+            title: 'Price',
+            type: 'segment',
+            options: {
+              one_time: {
+                label: 'One time',
+                fields: [
+                  {
+                    name: 'one_time_price',
+                    title: 'One time price',
+                    type: 'text'
+                  }
+                ]
+              },
+              subscription: {
+                label: 'Subscription',
+                fields: [
+                  {
+                    name: 'monthly_price',
+                    title: 'Monthly price',
+                    type: 'text'
+                  },
+                  {
+                    name: 'yearly_price',
+                    title: 'Yearly price',
+                    type: 'text'
+                  }
+                ]
+              }
+            }
           },
           {
             name: 'product_name',
@@ -330,6 +361,8 @@ export const schemas = [
           {
             monthly_price: 0,
             yearly_price: 0,
+            one_time_price: 0,
+            is_one_time: false,
             product_name: 'Starter',
             product_headline: 'For new makers who want to fine-tune and test an idea.',
             form: {
@@ -345,6 +378,8 @@ export const schemas = [
           {
             monthly_price: '$9',
             yearly_price: '$90',
+            one_time_price: '$90',
+            is_one_time: false,
             product_name: 'Superior',
             product_headline:
               'For creators with multiple ideas who want to efficiently test and refine them.',
@@ -361,6 +396,8 @@ export const schemas = [
           {
             monthly_price: '$19',
             yearly_price: '$190',
+            one_time_price: '$190',
+            is_one_time: false,
             product_name: 'Shipper',
             product_headline: 'For productive shippers who want to work more efficiently.',
             form: {
@@ -716,39 +753,41 @@ export function render({ options: { header, hero, features, pricing, faq, newsle
               </div>
 
               <Tab defaultActiveKey="monthly">
-                <div className="earlybird-q4DOhw mt-14 flex justify-center">
-                  <Tab.NavList className="earlybird-Z4L4wr flex items-center gap-1 p-1 rounded-[9999px] shadow-[inset_0_0_0_1px_rgba(30,30,30,0.1)]">
-                    {[
-                      {
-                        label: 'Monthly',
-                        key: 'monthly'
-                      },
-                      {
-                        label: 'Yearly',
-                        key: 'yearly'
-                      }
-                    ].map(row => (
-                      <Tab.Nav key={row.key}>
-                        {(isSelected, select) => (
-                          <button
-                            className={`earlybird-cIU6pc py-1 px-2.5 text-sm font-medium rounded-[9999px] ${
-                              isSelected ? 'text-[#fff] bg-[#2563eb]' : 'text-gray-700'
-                            }`}
-                            tabIndex={0}
-                            type="button"
-                            role="tab"
-                            aria-selected="true"
-                            id={`tab-${row.key}`}
-                            aria-controls={`tabpanel-${row.key}`}
-                            onClick={select}
-                          >
-                            {row.label}
-                          </button>
-                        )}
-                      </Tab.Nav>
-                    ))}
-                  </Tab.NavList>
-                </div>
+                {pricing.products.some(row => row.payment_type !== 'one_time') && (
+                  <div className="earlybird-q4DOhw mt-14 flex justify-center">
+                    <Tab.NavList className="earlybird-Z4L4wr flex items-center gap-1 p-1 rounded-[9999px] shadow-[inset_0_0_0_1px_rgba(30,30,30,0.1)]">
+                      {[
+                        {
+                          label: 'Monthly',
+                          key: 'monthly'
+                        },
+                        {
+                          label: 'Yearly',
+                          key: 'yearly'
+                        }
+                      ].map(row => (
+                        <Tab.Nav key={row.key}>
+                          {(isSelected, select) => (
+                            <button
+                              className={`earlybird-cIU6pc py-1 px-2.5 text-sm font-medium rounded-[9999px] ${
+                                isSelected ? 'text-[#fff] bg-[#2563eb]' : 'text-gray-700'
+                              }`}
+                              tabIndex={0}
+                              type="button"
+                              role="tab"
+                              aria-selected="true"
+                              id={`tab-${row.key}`}
+                              aria-controls={`tabpanel-${row.key}`}
+                              onClick={select}
+                            >
+                              {row.label}
+                            </button>
+                          )}
+                        </Tab.Nav>
+                      ))}
+                    </Tab.NavList>
+                  </div>
+                )}
                 <Tab.Panel>
                   {activeKey => (
                     <div
@@ -768,12 +807,22 @@ export function render({ options: { header, hero, features, pricing, faq, newsle
                                   {row.product_headline}
                                 </p>
                                 <div className="earlybird-Jj9Gm1 mt-8">
-                                  <span className="earlybird-VbQJQp text-4xl font-bold">
-                                    {activeKey === 'monthly' ? row.monthly_price : row.yearly_price}
-                                  </span>
-                                  <span className="earlybird-KRYSuV pl-1 text-base font-medium opacity-80">
-                                    /{activeKey === 'monthly' ? 'month' : 'year'}
-                                  </span>
+                                  {row.payment_type === 'one_time' ? (
+                                    <span className="earlybird-VbQJQp text-4xl font-bold">
+                                      {row.one_time_price}
+                                    </span>
+                                  ) : (
+                                    <>
+                                      <span className="earlybird-VbQJQp text-4xl font-bold">
+                                        {activeKey === 'monthly'
+                                          ? row.monthly_price
+                                          : row.yearly_price}
+                                      </span>
+                                      <span className="earlybird-KRYSuV pl-1 text-base font-medium opacity-80">
+                                        /{activeKey === 'monthly' ? 'month' : 'year'}
+                                      </span>
+                                    </>
+                                  )}
                                 </div>
                                 <Form {...row.form}>
                                   <Form.Button className="earlybird-O0kyhP mt-6 block w-full bg-gray-900 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-700">

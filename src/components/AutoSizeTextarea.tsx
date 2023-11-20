@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { ChangeEvent, FC, useEffect, useRef, useState } from 'react'
+import { ChangeEvent, FC, startTransition, useEffect, useRef, useState } from 'react'
 
 interface AutoSizeTextareaProps extends ComponentProps {
   placeholder?: string
@@ -26,7 +26,14 @@ export const AutoSizeTextarea: FC<AutoSizeTextareaProps> = ({
 
     if (textarea) {
       textarea.style.height = 'auto'
-      textarea.style.height = `${textarea.scrollHeight + 2}px`
+
+      startTransition(() => {
+        const rect = textarea.getBoundingClientRect()
+
+        if (rect.height > 30 && textarea.scrollHeight >= rect.height) {
+          textarea.style.height = `${textarea.scrollHeight + 2}px`
+        }
+      })
     }
   }
 

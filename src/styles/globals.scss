@@ -2034,6 +2034,10 @@ button.block-header-button {
   .tabs-nav {
     @apply flex-1 py-1;
   }
+
+  .tabs-pane {
+    @apply p-0 #{!important};
+  }
 }
 
 .earlybird-submit-button {

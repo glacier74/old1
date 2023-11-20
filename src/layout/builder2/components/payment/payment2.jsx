@@ -1,17 +1,18 @@
 import {
   $Block as Block,
-  $List as List,
-  $Text as Text,
-  $Html as Html,
-  $H2 as H2,
   $Group as Group,
-  $Payment as Payment,
+  $H2 as H2,
+  $Html as Html,
   $Icon as Icon,
+  $List as List,
+  $Payment as Payment,
   $Style as Style,
   $SwitchGroup as SwitchGroup,
-  SwitchItem
+  SwitchItem,
+  $Text as Text
 } from '@earlybirdim/blocks'
 import { useState } from 'react'
+
 const render = function ({ productId, block }) {
   const [interval, setInterval] = useState('monthly')
   return (
@@ -23,16 +24,20 @@ const render = function ({ productId, block }) {
             <Html className="payment2__subtitle" {...block.setting.Html1} as="div" />
           </div>
 
-          <div className="payment2__interval-switcher">
-            <SwitchGroup
-              defaultValue="monthly"
-              onChange={setInterval}
-              {...block.setting.SwitchGroup1}
-            >
-              <SwitchItem value="monthly">Monthly</SwitchItem>
-              <SwitchItem value="yearly">Yearly</SwitchItem>
-            </SwitchGroup>
-          </div>
+          {block.setting.List1?.some(
+            List1 => List1.Group1.Segment1?.paymentType !== 'one_time'
+          ) && (
+            <div className="payment2__interval-switcher">
+              <SwitchGroup
+                defaultValue="monthly"
+                onChange={setInterval}
+                {...block.setting.SwitchGroup1}
+              >
+                <SwitchItem value="monthly">Monthly</SwitchItem>
+                <SwitchItem value="yearly">Yearly</SwitchItem>
+              </SwitchGroup>
+            </div>
+          )}
 
           <div className="payment2__plans">
             <List className="payment2__plans-wrapper">
@@ -43,7 +48,9 @@ const render = function ({ productId, block }) {
                     <Text as="p" className="payment2__plan-description" {...List1.Group1.Text2} />
 
                     <Style className="payment2__plan-price" {...List1.Group1.Style2}>
-                      {interval === 'monthly' ? (
+                      {List1.Group1.Segment1?.paymentType === 'one_time' ? (
+                        <Text {...List1.Group1.Text5} />
+                      ) : interval === 'monthly' ? (
                         <>
                           <Text {...List1.Group1.Text3} />
                           <span className="payment2__plan-interval">/month</span>
@@ -190,24 +197,54 @@ const settingSchemas = [
             children: []
           },
           {
-            name: 'Text3',
-            title: 'Monthly price',
-            default: {
-              html: '$0',
-              style: {},
-              type: 'text'
-            },
-            type: 'schema_text'
-          },
-          {
-            name: 'Text4',
-            title: 'Yearly price',
-            default: {
-              html: '$0',
-              style: {},
-              type: 'text'
-            },
-            type: 'schema_text'
+            name: 'Segment1',
+            type: 'schema_segment',
+            title: 'Price',
+            options: {
+              one_time: {
+                label: 'One time',
+                children: [
+                  {
+                    name: 'Text5',
+                    title: 'One time price',
+                    style: 'style2',
+                    default: {
+                      html: '$0',
+                      style: {},
+                      type: 'text'
+                    },
+                    type: 'schema_text'
+                  }
+                ]
+              },
+              subscription: {
+                label: 'Subscription',
+                children: [
+                  {
+                    name: 'Text3',
+                    title: 'Monthly price',
+                    style: 'style2',
+                    default: {
+                      html: '$0',
+                      style: {},
+                      type: 'text'
+                    },
+                    type: 'schema_text'
+                  },
+                  {
+                    name: 'Text4',
+                    title: 'Yearly price',
+                    style: 'style2',
+                    default: {
+                      html: '$0',
+                      style: {},
+                      type: 'text'
+                    },
+                    type: 'schema_text'
+                  }
+                ]
+              }
+            }
           },
           {
             name: 'Payment1',
@@ -409,24 +446,54 @@ const settingSchemas = [
             children: []
           },
           {
-            name: 'Text3',
-            title: 'Monthly price',
-            default: {
-              html: '$9',
-              style: {},
-              type: 'text'
-            },
-            type: 'schema_text'
-          },
-          {
-            name: 'Text4',
-            title: 'Yearly price',
-            default: {
-              html: '$99',
-              style: {},
-              type: 'text'
-            },
-            type: 'schema_text'
+            name: 'Segment1',
+            type: 'schema_segment',
+            title: 'Price',
+            options: {
+              one_time: {
+                label: 'One time',
+                children: [
+                  {
+                    name: 'Text5',
+                    title: 'One time price',
+                    style: 'style2',
+                    default: {
+                      html: '$99',
+                      style: {},
+                      type: 'text'
+                    },
+                    type: 'schema_text'
+                  }
+                ]
+              },
+              subscription: {
+                label: 'Subscription',
+                children: [
+                  {
+                    name: 'Text3',
+                    title: 'Monthly price',
+                    style: 'style2',
+                    default: {
+                      html: '$9',
+                      style: {},
+                      type: 'text'
+                    },
+                    type: 'schema_text'
+                  },
+                  {
+                    name: 'Text4',
+                    title: 'Yearly price',
+                    style: 'style2',
+                    default: {
+                      html: '$99',
+                      style: {},
+                      type: 'text'
+                    },
+                    type: 'schema_text'
+                  }
+                ]
+              }
+            }
           },
           {
             name: 'Payment1',
@@ -659,24 +726,54 @@ const settingSchemas = [
             children: []
           },
           {
-            name: 'Text3',
-            title: 'Monthly price',
-            default: {
-              html: '$19',
-              style: {},
-              type: 'text'
-            },
-            type: 'schema_text'
-          },
-          {
-            name: 'Text4',
-            title: 'Yearly price',
-            default: {
-              html: '$199',
-              style: {},
-              type: 'text'
-            },
-            type: 'schema_text'
+            name: 'Segment1',
+            type: 'schema_segment',
+            title: 'Price',
+            options: {
+              one_time: {
+                label: 'One time',
+                children: [
+                  {
+                    name: 'Text5',
+                    title: 'One time price',
+                    style: 'style2',
+                    default: {
+                      html: '$199',
+                      style: {},
+                      type: 'text'
+                    },
+                    type: 'schema_text'
+                  }
+                ]
+              },
+              subscription: {
+                label: 'Subscription',
+                children: [
+                  {
+                    name: 'Text3',
+                    title: 'Monthly price',
+                    style: 'style2',
+                    default: {
+                      html: '$19',
+                      style: {},
+                      type: 'text'
+                    },
+                    type: 'schema_text'
+                  },
+                  {
+                    name: 'Text4',
+                    title: 'Yearly price',
+                    style: 'style2',
+                    default: {
+                      html: '$199',
+                      style: {},
+                      type: 'text'
+                    },
+                    type: 'schema_text'
+                  }
+                ]
+              }
+            }
           },
           {
             name: 'Payment1',

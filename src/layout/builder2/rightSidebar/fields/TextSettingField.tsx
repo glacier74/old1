@@ -19,14 +19,25 @@ export const TextSettingField: FC<SettingFieldProps> = ({ schema }) => {
 
   return (
     <div className="builder-setting-text space-y-2">
-      <div className="flex items-center justify-between">
-        <div className="builder-text-title">Content</div>
-        <Input
-          className="ml-2 max-w-[11.25rem] !px-2 !py-[0.34rem]"
-          value={setting?.html}
-          onChange={handleChange}
-        />
-      </div>
+      {schema.style === 'style2' ? (
+        <div className="flex flex-col gap-0.5">
+          <div className="builder-text-title">{schema.title}</div>
+          <Input
+            className="w-full !px-2 !py-[0.34rem]"
+            value={setting?.html}
+            onChange={handleChange}
+          />
+        </div>
+      ) : (
+        <div className="flex items-center justify-between gap-2">
+          <div className="builder-text-title">Content</div>
+          <Input
+            className="max-w-[11.25rem] !px-2 !py-[0.34rem]"
+            value={setting?.html}
+            onChange={handleChange}
+          />
+        </div>
+      )}
 
       {setting?.style?.color && (
         <div className="flex items-center justify-between">

@@ -62,7 +62,8 @@ export enum SchemaTypeEnum {
   payment = 'payment',
   textList = 'text_list',
   list = 'list',
-  widgetList = 'widget_list'
+  widgetList = 'widget_list',
+  segment = 'segment'
 }
 
 export const WIDGET_URL_PROVIDERS: AnyMap<string> = {

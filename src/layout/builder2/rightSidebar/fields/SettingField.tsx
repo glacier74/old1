@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
+import { SegmentSettingField } from '~/layout/builder2/rightSidebar/fields/SegmentSettingField'
+
 import { ButtonSettingField } from './ButtonSettingField'
 import { EmailCaptureSettingField } from './EmailCaptureSettingField'
 import { GroupSettingField } from './GroupSettingField'
@@ -66,6 +68,9 @@ export const SettingField: FC<SettingFieldProps> = ({ schema }) => {
 
     case 'schema_switch_group':
       return <SwitchGroupSettingField schema={schema} />
+
+    case 'schema_segment':
+      return <SegmentSettingField schema={schema} />
 
     default:
       return null

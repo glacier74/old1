@@ -12,6 +12,7 @@ import { ImageOption } from './ImageOption'
 import { ListOption } from './ListOption'
 import { ObjectOption } from './ObjectOption'
 import { PaymentOption } from './PaymentOption'
+import { SegmentOption } from './SegmentOption'
 import { SelectOption } from './SelectOption'
 import { TextListOption } from './TextListOption'
 import { TextOption } from './TextOption'
@@ -60,6 +61,9 @@ export const Option: FC<OptionProps> = ({ schema, parentName }) => {
 
     case SchemaTypeEnum.list:
       return <ListOption parentName={parentName} schema={schema} />
+
+    case SchemaTypeEnum.segment:
+      return <SegmentOption parentName={parentName} schema={schema} />
 
     default:
       return null
