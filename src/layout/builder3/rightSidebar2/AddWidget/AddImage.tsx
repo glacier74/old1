@@ -28,7 +28,7 @@ export const AddImage: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restProps })
           <Form.Item
             label="Image"
             name="imageUrl"
-            rules={[{ required: true, message: 'The image is not allowed to be empty' }]}
+            rules={[{ required: true, message: 'The image should not be empty' }]}
           >
             <ImagePickField2 />
           </Form.Item>

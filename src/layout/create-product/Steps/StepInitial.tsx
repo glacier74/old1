@@ -24,7 +24,7 @@ const RADIO_ITEMS = [
     icon: IconLandingPage
   },
   {
-    label: 'Bio Page',
+    label: 'Jingle Bio',
     value: 'bioPage',
     icon: IconBioPage
   }

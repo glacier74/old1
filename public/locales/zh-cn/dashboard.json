@@ -122,14 +122,14 @@
     "invalidTagline": "标语不允许为空",
     "invalidDescription": "描述不允许为空",
     "invalidTemplate": "模板不允许为空",
-    "siHeading": "好极了！让我们把你的绝妙想法带到网上。",
+    "siHeading": "让我们把你的绝妙想法带到网上。",
     "siDesc": "回答几个问题，几分钟内就可以建立你的落地页。",
     "siDesc2": "选择你要创建的页面类型",
     "snHeading": "我会把落地页称为",
     "snDesc": "为你的落地页选择一个名称。",
     "jbHeading": "我的名称是",
     "jbDesc": "为你的 Jingle Bio 页面选择一个名称。",
-    "jbHeading2": "将社交网络帐户添加到你的个人资料页面",
+    "jbHeading2": "将社交网络帐户添加到你的 Jingle Bio 页面",
     "chooseTemplate": "选择模板",
     "chooseTemplateDesc": "这些是精选的模板，可能适合你的需求",
     "preview": "预览模板",
@@ -191,7 +191,7 @@
     "description": "管理你的账单信息和发票。"
   },
   "invoice": {
-    "notFound": "You don't have any invoices yet"
+    "notFound": "目前你暂无任何账单"
   },
   "member": {
     "heading": "成员",

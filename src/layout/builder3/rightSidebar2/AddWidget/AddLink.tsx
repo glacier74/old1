@@ -26,7 +26,7 @@ export const AddLink: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restProps }) 
   }
 
   return (
-    <OptionsContainer title="Add Link" onGoBack={onGoBack} {...restProps}>
+    <OptionsContainer title="Add a link" onGoBack={onGoBack} {...restProps}>
       <div className="px-5">
         <AddWidgetForm requiredNames={['url']} onFinish={handleFinish}>
           <Form.Item
@@ -36,7 +36,7 @@ export const AddLink: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restProps }) 
           >
             <AutoSizeTextarea placeholder="e.g. https://example.com" />
           </Form.Item>
-          <Form.Item label="Caption" name="caption">
+          <Form.Item label="Title" name="caption">
             <Input />
           </Form.Item>
         </AddWidgetForm>

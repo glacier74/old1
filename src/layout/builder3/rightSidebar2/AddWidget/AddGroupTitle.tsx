@@ -21,13 +21,13 @@ export const AddGroupTitle: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restPro
   }
 
   return (
-    <OptionsContainer title="Add Group Title" onGoBack={onGoBack} {...restProps}>
+    <OptionsContainer title="Add a group title" onGoBack={onGoBack} {...restProps}>
       <div className="px-5">
         <AddWidgetForm requiredNames={['title']} onFinish={handleFinish}>
           <Form.Item
             label="Title"
             name="title"
-            rules={[{ required: true, message: 'The title is not allowed to be empty' }]}
+            rules={[{ required: true, message: 'The title should not be empty' }]}
           >
             <AutoSizeTextarea />
           </Form.Item>

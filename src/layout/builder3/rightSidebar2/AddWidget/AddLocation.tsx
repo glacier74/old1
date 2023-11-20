@@ -21,7 +21,7 @@ export const AddLocation: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restProps
   }
 
   return (
-    <OptionsContainer title="Add Location" onGoBack={onGoBack} {...restProps}>
+    <OptionsContainer title="Add a location" onGoBack={onGoBack} {...restProps}>
       <div className="px-5">
         <AddWidgetForm requiredNames={['location']} onFinish={handleFinish}>
           <Form.Item

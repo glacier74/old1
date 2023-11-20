@@ -24,13 +24,13 @@ export const AddEmailCapture: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restP
   }
 
   return (
-    <OptionsContainer title="Add Email Capture" onGoBack={onGoBack} {...restProps}>
+    <OptionsContainer title="Add an email capture card" onGoBack={onGoBack} {...restProps}>
       <div className="px-5">
         <AddWidgetForm requiredNames={['title', 'buttonText']} onFinish={handleFinish}>
           <Form.Item
             label="Title"
             name="title"
-            rules={[{ required: true, message: 'The title is not allowed to be empty' }]}
+            rules={[{ required: true, message: 'The title should not be empty' }]}
           >
             <Input />
           </Form.Item>

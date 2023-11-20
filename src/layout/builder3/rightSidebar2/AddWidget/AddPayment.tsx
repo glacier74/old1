@@ -39,7 +39,7 @@ export const AddPayment: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restProps 
   }
 
   return (
-    <OptionsContainer title="Add Payment" onGoBack={onGoBack} {...restProps}>
+    <OptionsContainer title="Add a payment card" onGoBack={onGoBack} {...restProps}>
       <div className="px-5">
         {value?.stripeAccount ? (
           <>

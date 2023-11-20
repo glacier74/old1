@@ -176,7 +176,7 @@ export const SocialList: FC<Omit<AddLinkProps, 'onCreate'>> = ({
   ...restProps
 }) => {
   return (
-    <OptionsContainer title="Add Social" onGoBack={onGoBack} {...restProps}>
+    <OptionsContainer title="Add a social profile" onGoBack={onGoBack} {...restProps}>
       <ul className="grid grid-cols-3 px-2">
         {SOCIALS.map(s => (
           <SocialItem key={s.name} item={s} onClick={onGoNext} />

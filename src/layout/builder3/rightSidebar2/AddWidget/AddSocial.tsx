@@ -30,7 +30,7 @@ export const AddSocial: FC<AddLinkProps & { type: string }> = ({
           <Form.Item
             label={`${social.label} Username`}
             name="username"
-            rules={[{ required: true, message: 'The username is not allowed to be empty' }]}
+            rules={[{ required: true, message: 'The username should not be empty' }]}
           >
             <Input leading="@" />
           </Form.Item>

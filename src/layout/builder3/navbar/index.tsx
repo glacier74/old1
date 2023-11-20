@@ -147,7 +147,7 @@ export const Navbar: FC = () => {
               </Tooltip>
             )}
 
-            <Tooltip ariaLabel="Code injection">
+            <Tooltip ariaLabel="Insert custom code">
               <div>
                 <PlanCheck
                   className="cursor-pointer !pointer-events-auto"
