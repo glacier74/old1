@@ -12,6 +12,7 @@ import party from 'party-js'
 import { FC, useEffect, useMemo } from 'react'
 
 import { IconLogo } from '~/components'
+import { ClarityAnalytics } from '~/components/ClarityAnalytics'
 import { PublicSiteLayout } from '~/layout'
 import components from '~/layout/builder2/components'
 import { SchemaTypeEnum } from '~/layout/builder3/constants'
@@ -323,6 +324,11 @@ const PublicSite: FC<PublicSiteProps> = ({
         src={`https://www.google.com/recaptcha/api.js?render=${product.captcha.recaptcha}`}
         strategy="beforeInteractive"
       />
+      {product.isJingleBio ? (
+        <ClarityAnalytics productId="jt8qxb2bj4" />
+      ) : (
+        <ClarityAnalytics productId="jt8orupuq5" />
+      )}
       <Script
         data-domain={product.analyticId}
         src="https://analytics.earlybird.im/js/plausible.js"

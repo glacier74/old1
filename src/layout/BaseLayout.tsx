@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import Script from 'next/script'
 import { useEffect } from 'react'
 
+import { ClarityAnalytics } from '~/components/ClarityAnalytics'
 import { getBrowserId, getHomeURL, getPageURL, setBrowserId } from '~/utils'
 import { i18n } from '~i18next-config'
 
@@ -80,6 +81,7 @@ export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
       {/* HTML */}
       <div>{children}</div>
 
+      <ClarityAnalytics productId="jt8orupuq5" />
       <Script data-domain="earlybird.im" src="https://analytics.heyform.net/js/plausible.js" />
     </>
   )
