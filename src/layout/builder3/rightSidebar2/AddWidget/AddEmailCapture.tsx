@@ -14,8 +14,8 @@ export const AddEmailCapture: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restP
       size: '1x1',
       data: {
         emailPlaceholder: 'Enter email address',
-        buttonText: values.buttonText || 'Subscribe',
-        successMessage: values.successMessage || 'Thank you for subscribing!'
+        buttonText: 'Subscribe',
+        successMessage: 'Thank you for subscribing!'
       },
       overrides: {
         title: values.title
@@ -32,16 +32,6 @@ export const AddEmailCapture: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restP
             name="title"
             rules={[{ required: true, message: 'The title is not allowed to be empty' }]}
           >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Button Text"
-            name="buttonText"
-            rules={[{ required: true, message: 'The button text is not allowed to be empty' }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item label="Success message" name="successMessage">
             <Input />
           </Form.Item>
         </AddWidgetForm>

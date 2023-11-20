@@ -29,8 +29,8 @@ export const AddPayment: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restProps 
       size: '1x1',
       data: {
         ...value,
-        buttonText: values.buttonText,
-        successMessage: values.successMessage
+        buttonText: 'Pay',
+        successMessage: 'Thank you for your payment!'
       },
       overrides: {
         title: ''
@@ -68,16 +68,6 @@ export const AddPayment: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restProps 
                 rules={[{ required: true, message: 'The price ID is not valid' }]}
               >
                 <Input placeholder="e.g. price_0MlwwsKRmsNyao" />
-              </Form.Item>
-              <Form.Item
-                label="Button Text"
-                name="buttonText"
-                rules={[{ required: true, message: 'The button text is not allowed to be empty' }]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item label="Success message" name="successMessage">
-                <Input />
               </Form.Item>
             </AddWidgetForm>
           </>
