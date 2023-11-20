@@ -1,4 +1,5 @@
 import { isValid } from '@nily/utils'
+import clsx from 'clsx'
 import Image from 'next/image'
 import { FC } from 'react'
 
@@ -38,7 +39,12 @@ export default class MediaWidget<T extends MediaData> extends Widget<T> {
 
     return (
       <Element
-        className="relative block h-full w-full overflow-hidden rounded-3xl"
+        className={clsx(
+          `widget-${config.type} relative block h-full w-full overflow-hidden rounded-3xl cursor-zoom-in`,
+          {
+            [`widget-${config.type}-link cursor-pointer`]: config.url
+          }
+        )}
         href={config.url}
       >
         {config.data.overrides?.imageUrl && (
@@ -46,7 +52,8 @@ export default class MediaWidget<T extends MediaData> extends Widget<T> {
             className="h-full w-full object-cover pointer-events-none select-none rounded-3xl"
             width={config.imageWidth}
             height={config.imageHeight}
-            src={config.data.overrides?.imageUrl}
+            src={config.data.overrides.imageUrl}
+            data-src={config.data.overrides.imageUrl}
             alt={config.data.overrides?.title || ''}
           />
         )}

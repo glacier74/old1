@@ -76,7 +76,7 @@ export const ImageSwiper: FC<ImageSwiperProps> = ({ selector }) => {
     setImages(elements.map(el => (el as any).getAttribute('data-src') as string))
 
     elements.forEach((el, index) => {
-      ;(el as any).onclick = () => {
+      ;(el as any).parentNode.onclick = () => {
         setVisible(true)
         setActiveIndex(index)
       }
@@ -131,14 +131,15 @@ export const ImageSwiper: FC<ImageSwiperProps> = ({ selector }) => {
         )}
 
         <div className="image_swiper__pagination">
-          {paginations.map((_, index) => (
-            <PaginationDot
-              key={index}
-              index={index}
-              isActive={index === activeIndex}
-              onClick={handleSlideTo}
-            />
-          ))}
+          {paginations.length > 1 &&
+            paginations.map((_, index) => (
+              <PaginationDot
+                key={index}
+                index={index}
+                isActive={index === activeIndex}
+                onClick={handleSlideTo}
+              />
+            ))}
         </div>
         <button type="button" className="image_swiper__close" onClick={handleClose}>
           <IconX />

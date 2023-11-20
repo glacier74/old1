@@ -10,6 +10,7 @@ import {
 } from '@dnd-kit/core'
 import { UniqueIdentifier } from '@dnd-kit/core/dist/types/other'
 import { SortableContext, arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
+import { ImageSwiper } from '@earlybirdim/blocks'
 import { useGlobalContext } from '@earlybirdim/components'
 import { CSSProperties, FC, useCallback, useEffect, useRef, useState } from 'react'
 import { useFrame } from 'react-frame-component'
@@ -188,6 +189,8 @@ export const WidgetList: FC<WidgetGridProps> = ({
         ) : (
           list.map(row => <WidgetItem key={row.id} activeId={activeId} {...row} />)
         )}
+
+        <ImageSwiper selector=".widget-image:not(.widget-image-link) img" />
       </div>
     </div>
   )
