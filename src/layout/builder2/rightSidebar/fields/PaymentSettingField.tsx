@@ -194,7 +194,7 @@ export const PaymentSettingField: FC<SettingFieldProps> = ({ schema }) => {
       <Tabs
         className="builder-setting-payment-methods"
         type="segment"
-        defaultActiveName={setting?.paymentMethod || 'stripe'}
+        activeName={setting?.paymentMethod || 'stripe'}
         onChange={handlePaymentMethodChange}
       >
         <Tabs.Pane name="stripe" title="Stripe">

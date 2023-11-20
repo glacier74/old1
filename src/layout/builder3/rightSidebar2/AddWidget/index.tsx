@@ -5,12 +5,14 @@ import {
   IconLink,
   IconLocation,
   IconMail,
+  IconMusic,
   IconPhoto
 } from '@tabler/icons'
 import { FC, useCallback, useState } from 'react'
 
 import { IconGroupTitle } from '~/components'
 import { useBuilderContext, useOptions } from '~/layout/builder3/context'
+import { AddMusic } from '~/layout/builder3/rightSidebar2/AddWidget/AddMusic'
 
 import { OptionsContainer } from '../OptionsContainer'
 import { AddEmailCapture } from './AddEmailCapture'
@@ -26,43 +28,57 @@ interface WidgetConfig {
   type: string
   label: string
   icon: FC<any>
+  iconClassName: string
 }
 
 const WIDGET_CONFIGS: WidgetConfig[] = [
   {
     type: 'link',
     label: 'Link',
-    icon: IconLink
+    icon: IconLink,
+    iconClassName: 'bg-[#e5e7eb] text-[#334155]'
   },
   {
     type: 'social',
     label: 'Social',
-    icon: IconHash
+    icon: IconHash,
+    iconClassName: 'bg-[#dbeafe] text-[#1d4ed8]'
   },
   {
     type: 'payment',
     label: 'Payment',
-    icon: IconCreditCard
+    icon: IconCreditCard,
+    iconClassName: 'bg-[#fef9c3] text-[#a16207]'
   },
   {
     type: 'google_map',
     label: 'Location',
-    icon: IconLocation
+    icon: IconLocation,
+    iconClassName: 'bg-[#ccfbf1] text-[#0f766e]'
   },
   {
     type: 'email_capture',
     label: 'Email Capture',
-    icon: IconMail
+    icon: IconMail,
+    iconClassName: 'bg-[#fae8ff] text-[#a21caf]'
   },
   {
     type: 'image',
     label: 'Image',
-    icon: IconPhoto
+    icon: IconPhoto,
+    iconClassName: 'bg-[#e0f2fe] text-[#0369a1]'
+  },
+  {
+    type: 'music',
+    label: 'Music',
+    icon: IconMusic,
+    iconClassName: 'bg-[#bbf7d0] text-[#15803d]'
   },
   {
     type: 'group_title',
     label: 'Group Title',
-    icon: IconGroupTitle
+    icon: IconGroupTitle,
+    iconClassName: 'bg-[#fee2e2] text-[#b91c1c]'
   }
 ]
 
@@ -77,10 +93,10 @@ const AddWidgetItem: FC<{
   return (
     <div
       role="button"
-      className="text-slate-700 hover:bg-slate-100 hover:text-slate-900 group flex items-center px-2 py-2.5 text-sm rounded-md"
+      className="text-slate-900 hover:bg-slate-100 group flex items-center px-2 py-2.5 text-sm rounded-md"
       onClick={handleClick}
     >
-      <config.icon className="text-slate-700 mr-3 flex-shrink-0 h-5 w-5" />
+      <config.icon className={`mr-3 flex-shrink-0 h-6 w-6 p-0.5 rounded ${config.iconClassName}`} />
       <span className="truncate">{config.label}</span>
     </div>
   )
@@ -105,6 +121,9 @@ const Panel: FC<{ type: string } & AddLinkProps> = ({ type, ...restProps }) => {
 
     case 'image':
       return <AddImage {...restProps} />
+
+    case 'music':
+      return <AddMusic {...restProps} />
 
     case 'group_title':
       return <AddGroupTitle {...restProps} />

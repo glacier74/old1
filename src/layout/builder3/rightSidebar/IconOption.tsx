@@ -12,7 +12,7 @@ export const IconOption: FC<OptionProps> = ({ parentName, schema }) => {
 
   const Overlay = (
     <Menus className="icon-picker">
-      <Tabs defaultActiveName="icon">
+      <Tabs activeName="icon">
         <Tabs.Pane name="icon" title="Icon">
           <IconPicker onChange={handleChange} />
         </Tabs.Pane>

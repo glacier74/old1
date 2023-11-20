@@ -19,6 +19,7 @@ export const ImagePickField2: FC<ImagePickFieldProps> = ({
   const [visible, setVisible] = useState(false)
 
   function handleChange(_: string, src: string) {
+    setVisible(false)
     onChange?.(src)
   }
 

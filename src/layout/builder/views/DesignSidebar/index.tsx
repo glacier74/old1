@@ -48,7 +48,7 @@ export const DesignSidebar: FC = () => {
               </Tooltip>
             </div>
 
-            <Tabs type="segment" defaultActiveName="theme">
+            <Tabs type="segment" activeName="theme">
               <Tabs.Pane name="theme" title={t('builder.design.theme')}>
                 <ThemePane />
               </Tabs.Pane>

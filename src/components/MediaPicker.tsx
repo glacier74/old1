@@ -24,7 +24,7 @@ export const MediaPicker: FC<MediaPickerProps> = ({ allowed = ['image', 'video']
   return (
     <Menus className="media-picker">
       <div className="h-full" onClick={stopPropagation}>
-        <Tabs className="h-full" defaultActiveName={activeName} onChange={handleActiveNameChange}>
+        <Tabs className="h-full" activeName={activeName} onChange={handleActiveNameChange}>
           {allowed.includes('image') && (
             <Tabs.Pane name="image" title="Image">
               <div className="file-uploader">

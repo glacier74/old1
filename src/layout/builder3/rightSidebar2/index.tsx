@@ -38,7 +38,7 @@ export const RightSidebar2: FC = () => {
 
   return (
     <Transition
-      className="fixed top-[56px] bottom-0 left-0 right-0 z-20"
+      className="fixed top-[57px] bottom-0 left-0 right-0 z-20"
       show={isValid(state.selectedSection)}
     >
       <Transition.Child

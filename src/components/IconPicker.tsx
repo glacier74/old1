@@ -144,7 +144,7 @@ export const IconPicker: FC<IconPickerProps> = ({ onChange, onClose }) => {
   return (
     <Menus className="icon-picker">
       <div onClick={stopPropagation}>
-        <Tabs defaultActiveName={activeName} onChange={handleActiveNameChange}>
+        <Tabs activeName={activeName} onChange={handleActiveNameChange}>
           <Tabs.Pane name="emoji" title="Emoji">
             <EmojiPicker onChange={handleChange} />
           </Tabs.Pane>
