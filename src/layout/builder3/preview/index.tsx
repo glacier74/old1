@@ -3,7 +3,9 @@ import { Tooltip } from '@heyforms/ui'
 import { IconPlus } from '@tabler/icons'
 import { FC, useCallback, useEffect, useMemo } from 'react'
 import Frame from 'react-frame-component'
+import { useLocalStorage } from 'react-use'
 
+import { IconRotatedArrow } from '~/components'
 import { useProduct } from '~/layout'
 import { PublicSiteDangerouslyHTML } from '~/layout/public-site/PublicSiteDangerouslyHTML'
 import { PublicSiteHiddenBlocksStyle } from '~/layout/public-site/PublicSiteHiddenBlocksStyle'
@@ -22,6 +24,8 @@ export const Preview: FC = () => {
   const { siteSettings, updateSiteSettings } = useStore()
   const { state, dispatch } = useBuilderContext()
   const product = useProduct()
+
+  const [value, setValue] = useLocalStorage('jinglebio-tour-v1')
 
   const [alertModalVisible, openAlertModal] = useVisible()
   const queue = useMemo(() => new Queue(), [])
@@ -67,6 +71,7 @@ export const Preview: FC = () => {
   }
 
   function handleAddWidget() {
+    setValue(true)
     dispatch({
       type: 'updateState',
       payload: {
@@ -183,17 +188,31 @@ export const Preview: FC = () => {
         </Frame>
       </div>
 
-      <div className="fixed bottom-8 right-8 z-10">
-        <Tooltip ariaLabel="Add Widget">
-          <button
-            type="button"
-            className="p-2 rounded-full bg-white hover:bg-slate-100 hover:text-slate-900 shadow-[rgba(0,0,0,0.08)_0px_2px_4px,rgba(0,0,0,0.06)_0px_2px_12px,rgba(0,0,0,0.04)_0px_8px_14px,rgba(0,0,0,0.02)_0px_12px_16px]"
-            onClick={handleAddWidget}
-          >
-            <IconPlus />
-          </button>
-        </Tooltip>
-      </div>
+      {product.isJingleBio && (
+        <>
+          <div className="fixed bottom-8 right-8 z-20">
+            <Tooltip ariaLabel="Add Widget">
+              <button
+                type="button"
+                className="p-2 rounded-full bg-white hover:bg-slate-100 hover:text-slate-900 shadow-[rgba(0,0,0,0.08)_0px_2px_4px,rgba(0,0,0,0.06)_0px_2px_12px,rgba(0,0,0,0.04)_0px_8px_14px,rgba(0,0,0,0.02)_0px_12px_16px]"
+                onClick={handleAddWidget}
+              >
+                <IconPlus />
+              </button>
+            </Tooltip>
+          </div>
+          {!value && (
+            <div className="fixed inset-0 pointer-events-none bg-black/50 z-10">
+              <div className="fixed bottom-11 right-20 animate-bounce-x">
+                <div className="flex items-center gap-2 text-white">
+                  <span className="text-sm">Click to add a widget</span>
+                  <IconRotatedArrow className="h-5" />
+                </div>
+              </div>
+            </div>
+          )}
+        </>
+      )}
 
       <AlertModal visible={alertModalVisible} />
       <CodeInjectionModal />
