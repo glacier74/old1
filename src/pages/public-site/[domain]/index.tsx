@@ -375,7 +375,7 @@ export const getServerSideProps = withTranslations(
     }
 
     if (!product.openGraphImage) {
-      product.openGraphImage = `${process.env.NEXT_PUBLIC_HOMEPAGE}/api/og/${product.domain}`
+      product.openGraphImage = `${process.env.NEXT_PUBLIC_HOMEPAGE}/api/og/${product.domain}?v=${product.siteSetting.version}`
     }
 
     if (product.isJingleBio) {
