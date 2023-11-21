@@ -132,7 +132,7 @@ export function render({ product, options: { personal_info, main } }) {
 
           <div className="lg:max-w-[1600px] lg:mx-auto lg:flex lg:justify-between">
             <div className="max-[360px]:px-5 max-[400px]:px-7 px-8 py-12 lg:py-0 lg:px-16 bg-white dark:bg-slate-950">
-              <div className="lg:fixed lg:bottom-12 flex items-center gap-3">
+              <div className="lg:fixed lg:bottom-12 flex items-center">
                 <button
                   type="button"
                   className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-300"
@@ -140,9 +140,11 @@ export function render({ product, options: { personal_info, main } }) {
                 >
                   <Icon className="w-5 h-5" name={isDarkMode ? 'moon-line' : 'sun-line'} />
                 </button>
+
+                {/* Branding */}
                 {!product.isBrandingRemoved && (
                   <>
-                    <div className="h-4 w-px bg-slate-200 dark:bg-slate-700"></div>
+                    <div className="mx-3 h-4 w-px bg-slate-200 dark:bg-slate-700"></div>
                     <div className="text-sm text-slate-500 dark:text-slate-400">
                       Create your own{' '}
                       <a
@@ -154,6 +156,15 @@ export function render({ product, options: { personal_info, main } }) {
                     </div>
                   </>
                 )}
+
+                {/* Report abuse */}
+                <div className="h-4 w-px mx-2 bg-slate-200 dark:bg-slate-700"></div>
+                <a
+                  className="underline text-sm text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-300"
+                  href="mailto:support@jingle.bio?subject=Report%20abuse"
+                >
+                  Report abuse
+                </a>
               </div>
             </div>
           </div>
