@@ -95,6 +95,8 @@ export const WidgetActions: FC<WidgetActionsProps> = ({ className, config, ...re
 
       case 'image':
       case 'google_map':
+      case 'payment':
+      case 'email_capture':
         return [...WIDGET_ACTIONS, ...MAP_IMAGE_ACTIONS]
 
       default:
