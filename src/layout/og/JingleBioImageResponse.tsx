@@ -16,29 +16,34 @@ interface SocialItemProps {
   faviconUrl: string
 }
 
-const SocialItemIcon: FC<SocialItemProps & { icon?: FC<any> }> = ({
+const IMAGE_CONVERT_URL = process.env.NEXT_IMAGE_CONVERT_URL as string
+
+const SocialItemIcon: FC<SocialItemProps & { icon?: FC<any>; style?: any }> = ({
   icon: Icon,
   imageUrl,
-  faviconUrl
+  faviconUrl,
+  style
 }) => {
   if (Icon) {
     return (
       <Icon
         style={{
           width: 76,
-          height: 76
+          height: 76,
+          ...style
         }}
       />
     )
   } else if (imageUrl) {
-    return <img width="76" height="76" src={imageUrl} />
+    return <img width="76" height="76" src={imageUrl} style={style} />
   } else if (faviconUrl) {
     return (
       <img
         tw="p-5"
         width="76"
         height="76"
-        src={`https://image-proxy-nu.vercel.app/?url=${encodeURIComponent(faviconUrl)}`}
+        src={`${IMAGE_CONVERT_URL}/?url=${encodeURIComponent(faviconUrl)}`}
+        style={style}
       />
     )
   }
@@ -48,6 +53,27 @@ const SocialItemIcon: FC<SocialItemProps & { icon?: FC<any> }> = ({
 
 const SocialItem: FC<SocialItemProps & PackerRect> = props => {
   const result = getWidgetIcon(props.url, props.type)
+  const isSize2x05 = props.size === '2x0.5'
+
+  const style = (() => {
+    if (isSize2x05) {
+      return {
+        width: 24,
+        height: 24,
+        marginLeft: 8
+      }
+    } else if (props.type === 'image') {
+      return {
+        width: props.w,
+        height: props.h
+      }
+    } else {
+      return {
+        width: 76,
+        height: 76
+      }
+    }
+  })()
 
   return (
     <div
@@ -60,8 +86,8 @@ const SocialItem: FC<SocialItemProps & PackerRect> = props => {
         backgroundColor: result?.fill || '#fff'
       }}
     >
-      <div tw="flex w-[76px] h-[76px] rounded-2xl overflow-hidden">
-        <SocialItemIcon icon={result?.icon} {...props} />
+      <div tw="flex items-center rounded-2xl overflow-hidden">
+        <SocialItemIcon icon={result?.icon} style={style} {...props} />
       </div>
       <div tw="absolute inset-0 border-[2px] border-black/5 shadow-sm rounded-2xl"></div>
     </div>
