@@ -11,14 +11,12 @@ export const StepJingleBioProfile = () => {
   const { state, dispatch } = useContext(StepsStoreContext)
 
   const handleChange = useCallback((newValue: string) => {
-    if (isValid(newValue)) {
-      dispatch({
-        type: 'setState',
-        payload: {
-          name: newValue.trim()
-        }
-      })
-    }
+    dispatch({
+      type: 'setState',
+      payload: {
+        name: isValid(newValue) ? newValue.trim() : undefined
+      }
+    })
   }, [])
 
   return (

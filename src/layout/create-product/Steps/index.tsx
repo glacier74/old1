@@ -64,7 +64,7 @@ const StepComponent = () => {
 export const Steps = () => {
   const { user } = useStore()
 
-  const type = useMemo(() => (user.isJingleBio ? 'jingleBio' : 'landingPage'), [user.isJingleBio])
+  const type = useMemo(() => (user.isJingleBio ? 'bioPage' : 'landingPage'), [user.isJingleBio])
   const steps = useMemo(() => {
     if (user.isJingleBio) {
       const steps = PAGE_STEPS.filter(s => s.type === 'bioPage')

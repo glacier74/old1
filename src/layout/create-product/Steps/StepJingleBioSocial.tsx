@@ -36,7 +36,7 @@ import { StepsStoreContext } from './context'
 interface SocialItemProps {
   name: string
   icon: FC<any>
-  onChange: (name: string, value: string) => void
+  onChange: (name: string, value?: string) => void
 }
 
 const SOCIAL_ITEMS = [
@@ -155,9 +155,9 @@ const SocialItem: FC<SocialItemProps> = ({ name, icon: Icon, onChange }) => {
   const social = SOCIAL_ITEMS.find(s => s.name === name)!
 
   function handleChange(value: string) {
-    if (isValid(value)) {
-      onChange(name, social.url.replace('{username}', value.trim()))
-    }
+    const url = isValid(value) ? social.url.replace('{username}', value.trim()) : undefined
+
+    onChange(name, url)
   }
 
   return (
@@ -181,7 +181,7 @@ export const StepJingleBioSocial = () => {
   const [error, setError] = useState<string>()
 
   const handleChange = useCallback(
-    (name: string, value: string) => {
+    (name: string, value?: string) => {
       setSocials({
         ...socials,
         [name]: value
@@ -204,8 +204,10 @@ export const StepJingleBioSocial = () => {
         description: ''
       }
 
-      if (isValid(socials)) {
-        blocks.main.socials = Object.values(socials).map(url => ({
+      const urls = Object.values(socials).filter(isValid)
+
+      if (isValid(urls)) {
+        blocks.main.socials = urls.map(url => ({
           id: nanoid(8),
           url,
           size: '1x1'
