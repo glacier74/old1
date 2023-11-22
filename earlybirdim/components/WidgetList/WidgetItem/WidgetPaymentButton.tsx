@@ -6,9 +6,13 @@ import { FC, useState } from 'react'
 import { PublicApiService } from '~/service/public-api'
 import { urlBuilder } from '~/utils'
 
-import { WidgetPaymentButtonProps } from '../WidgetProps'
+import { WidgetPaymentButtonProps, WidgetPaymentTextProps } from '../WidgetProps'
 
-export const WidgetPaymentButton: FC<WidgetPaymentButtonProps> = ({ className, config }) => {
+export const WidgetPaymentButton: FC<WidgetPaymentButtonProps> = ({
+  className,
+  config,
+  onLoading
+}) => {
   const { isPreview, productId } = useGlobalContext()
   const [loading, setLoading] = useState(false)
 
@@ -18,6 +22,7 @@ export const WidgetPaymentButton: FC<WidgetPaymentButtonProps> = ({ className, c
     }
 
     setLoading(true)
+    onLoading(true)
 
     try {
       const result = await PublicApiService.checkout(productId, {
@@ -28,9 +33,13 @@ export const WidgetPaymentButton: FC<WidgetPaymentButtonProps> = ({ className, c
       })
 
       setLoading(false)
+      onLoading(false)
+
       window.location.href = result.sessionUrl
     } catch (err) {
       setLoading(false)
+      onLoading(false)
+
       notification.error({
         title: (err as Error).message
       })
@@ -39,20 +48,23 @@ export const WidgetPaymentButton: FC<WidgetPaymentButtonProps> = ({ className, c
 
   return (
     <button
-      className={clsx(
-        'relative inline-flex items-center gap-1 rounded-full border border-[var(--widget-follow-border)] bg-[var(--widget-follow-bg)] px-4 py-1.5 text-center text-xs font-medium text-[var(--widget-follow-text)] hover:bg-[var(--widget-follow-bg-hover)] active:bg-[var(--widget-follow-bg-active)]',
-        className
-      )}
+      className={clsx('absolute inset-0', className)}
       disabled={loading}
       onClick={handleClick}
-    >
-      {config.data?.buttonText}
+    />
+  )
+}
+
+export const WidgetPaymentText: FC<WidgetPaymentTextProps> = ({ text, loading }) => {
+  return (
+    <div className="relative inline-flex items-center rounded-full border border-[var(--widget-follow-border)] bg-[var(--widget-follow-bg)] px-4 py-1.5 text-center text-xs font-medium text-[var(--widget-follow-text)] hover:bg-[var(--widget-follow-bg-hover)] active:bg-[var(--widget-follow-bg-active)]">
+      {text}
 
       {loading && (
-        <span className="absolute inset-0 rounded-full flex items-center justify-center border border-[var(--widget-follow-border)] bg-[var(--widget-follow-bg)]">
+        <div className="absolute inset-0 rounded-full flex items-center justify-center border border-[var(--widget-follow-border)] bg-[var(--widget-follow-bg)]">
           <Loader />
-        </span>
+        </div>
       )}
-    </button>
+    </div>
   )
 }

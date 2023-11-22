@@ -1,5 +1,6 @@
 import { useGlobalContext } from '@earlybirdim/components'
 import clsx from 'clsx'
+import { useState } from 'react'
 
 import { Image } from '../../Image'
 import { WidgetIcon } from '../WidgetIcon'
@@ -7,7 +8,7 @@ import { PaymentData, WidgetConfig } from '../WidgetProps'
 import { payment } from '../constants'
 import Widget from './Widget'
 import { WidgetImagePlaceholder } from './WidgetImagePlaceholder'
-import { WidgetPaymentButton } from './WidgetPaymentButton'
+import { WidgetPaymentButton, WidgetPaymentText } from './WidgetPaymentButton'
 
 export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
   constructor(config: WidgetConfig) {
@@ -19,8 +20,11 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
   }
 
   override Render1x1(config: WidgetConfig<T>) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [loading, setLoading] = useState(false)
+
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <div className="relative block w-full h-full">
         <div className="flex h-full flex-col">
           <WidgetIcon type={config.type} />
 
@@ -31,10 +35,12 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
           </div>
 
           <div className="inline-flex">
-            <WidgetPaymentButton config={config} />
+            <WidgetPaymentText text={config.data?.buttonText} loading={loading} />
           </div>
         </div>
-      </a>
+
+        <WidgetPaymentButton config={config} onLoading={setLoading} />
+      </div>
     )
   }
 
@@ -42,9 +48,11 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
   override Render2x1(config: WidgetConfig<T>) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { isPreview } = useGlobalContext()
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [loading, setLoading] = useState(false)
 
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <div className="relative block w-full h-full">
         <div className="flex h-full">
           <div
             className={clsx(
@@ -63,7 +71,7 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
             </div>
 
             <div className="inline-flex">
-              <WidgetPaymentButton config={config} />
+              <WidgetPaymentText text={config.data?.buttonText} loading={loading} />
             </div>
           </div>
 
@@ -82,7 +90,9 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
             <WidgetImagePlaceholder className="ml-6 aspect-[1.4] h-full" />
           ) : null}
         </div>
-      </a>
+
+        <WidgetPaymentButton config={config} onLoading={setLoading} />
+      </div>
     )
   }
 
@@ -90,16 +100,18 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
   override Render2x2(config: WidgetConfig<T>) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { isPreview } = useGlobalContext()
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [loading, setLoading] = useState(false)
 
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <div className="relative block w-full h-full">
         <div className="flex h-full flex-col">
           <div>
             <div className="flex justify-between">
               <WidgetIcon type={config.type} />
 
               <div className="flex items-start">
-                <WidgetPaymentButton config={config} />
+                <WidgetPaymentText text={config.data?.buttonText} loading={loading} />
               </div>
             </div>
 
@@ -127,7 +139,9 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
             <WidgetImagePlaceholder className="mt-6 aspect-[40/21]" />
           ) : null}
         </div>
-      </a>
+
+        <WidgetPaymentButton config={config} onLoading={setLoading} />
+      </div>
     )
   }
 }
