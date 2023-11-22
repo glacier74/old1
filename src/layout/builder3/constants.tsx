@@ -1,7 +1,4 @@
-import { IconSize1x1 } from '@earlybirdim/components/WidgetList/WidgetIcon/IconSize1x1'
-import { IconSize2x05 } from '@earlybirdim/components/WidgetList/WidgetIcon/IconSize2x0.5'
-import { IconSize2x1 } from '@earlybirdim/components/WidgetList/WidgetIcon/IconSize2x1'
-import { IconSize2x2 } from '@earlybirdim/components/WidgetList/WidgetIcon/IconSize2x2'
+import { IconSize1x1, IconSize2x05, IconSize2x1, IconSize2x2 } from 'earlybirdim/internalIcons'
 
 export const GOOGLE_FONTS = [
   'Inter',

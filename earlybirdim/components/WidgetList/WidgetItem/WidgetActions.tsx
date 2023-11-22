@@ -2,14 +2,11 @@ import { widgetListPath } from '@earlybirdim/components/WidgetList/constants'
 import { Button, Tooltip } from '@heyforms/ui'
 import { IconPencil, IconTrash } from '@tabler/icons'
 import clsx from 'clsx'
+import { IconSize1x1, IconSize2x05, IconSize2x1, IconSize2x2 } from 'earlybirdim/internalIcons'
 import { FC, useCallback, useMemo } from 'react'
 
 import { useBuilderContext, useOptions } from '~/layout/builder3/context'
 
-import { IconSize1x1 } from '../WidgetIcon/IconSize1x1'
-import { IconSize2x05 } from '../WidgetIcon/IconSize2x0.5'
-import { IconSize2x1 } from '../WidgetIcon/IconSize2x1'
-import { IconSize2x2 } from '../WidgetIcon/IconSize2x2'
 import {
   WidgetActionItemButton,
   WidgetActionItemDivide,

@@ -210,6 +210,12 @@ export interface EmailCaptureData extends EmailCapture {
 
 export interface WidgetPaymentButtonProps extends ComponentProps {
   config: WidgetConfig<PaymentData>
+  onLoading: (loading: boolean) => void
+}
+
+export interface WidgetPaymentTextProps extends ComponentProps {
+  text?: string
+  loading?: boolean
 }
 
 export interface WidgetEmailCaptureButtonProps extends ComponentProps {

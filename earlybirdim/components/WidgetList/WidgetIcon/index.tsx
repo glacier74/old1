@@ -17,6 +17,7 @@ import {
   isLayers,
   isLinkedin,
   isMedium,
+  isOpenAI,
   isProducthunt,
   isReddit,
   isSpotify,
@@ -30,39 +31,42 @@ import {
   toCustomURL
 } from '@tinaryan/dp'
 import clsx from 'clsx'
+import {
+  IconAppStore,
+  IconAppleMusic,
+  IconBehance,
+  IconBuyMeCoffee,
+  IconDiscord,
+  IconDribbble,
+  IconEarlyBird,
+  IconEmailCapture,
+  IconFacebook,
+  IconFigma,
+  IconGithub,
+  IconGooglePlay,
+  IconGumroad,
+  IconInstagram,
+  IconKofi,
+  IconLayers,
+  IconLinkedin,
+  IconMedium,
+  IconOpenAI,
+  IconPodcast,
+  IconProductHunt,
+  IconReddit,
+  IconSpotify,
+  IconSteam,
+  IconStripe,
+  IconSubstack,
+  IconTiktok,
+  IconTwitch,
+  IconTwitter,
+  IconYouTube
+} from 'earlybirdim/internalIcons'
 import Image from 'next/image'
 import { FC, useMemo, useState } from 'react'
 
 import { WidgetIconProps } from '../WidgetProps'
-import { IconAppStore } from './IconAppStore'
-import { IconAppleMusic } from './IconAppleMusic'
-import { IconBehance } from './IconBehance'
-import { IconBuyMeCoffee } from './IconBuyMeCoffee'
-import { IconDiscord } from './IconDiscord'
-import { IconDribbble } from './IconDribbble'
-import { IconEarlyBird } from './IconEarlyBird'
-import { IconEmailCapture } from './IconEmailCapture'
-import { IconFacebook } from './IconFacebook'
-import { IconFigma } from './IconFigma'
-import { IconGithub } from './IconGithub'
-import { IconGooglePlay } from './IconGooglePlay'
-import { IconGumroad } from './IconGumroad'
-import { IconInstagram } from './IconInstagram'
-import { IconKofi } from './IconKofi'
-import { IconLayers } from './IconLayers'
-import { IconLinkedin } from './IconLinkedin'
-import { IconMedium } from './IconMedium'
-import { IconPodcast } from './IconPodcast'
-import { IconProductHunt } from './IconProductHunt'
-import { IconReddit } from './IconReddit'
-import { IconSpotify } from './IconSpotify'
-import { IconSteam } from './IconSteam'
-import { IconStripe } from './IconStripe'
-import { IconSubstack } from './IconSubstack'
-import { IconTiktok } from './IconTiktok'
-import { IconTwitch } from './IconTwitch'
-import { IconTwitter } from './IconTwitter'
-import { IconYouTube } from './IconYouTube'
 
 const earlyBirdDomains = ['help.earlybird.im', 'earlybird.im']
 
@@ -99,6 +103,11 @@ const websites = [
     match: isDiscord,
     icon: IconDiscord,
     fill: '#5865F2'
+  },
+  {
+    match: isOpenAI,
+    icon: IconOpenAI,
+    fill: '#75A99C'
   },
   {
     match: isDribbble,

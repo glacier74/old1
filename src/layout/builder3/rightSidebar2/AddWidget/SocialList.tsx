@@ -1,22 +1,24 @@
-import { IconBehance } from '@earlybirdim/components/WidgetList/WidgetIcon/IconBehance'
-import { IconBuyMeCoffee } from '@earlybirdim/components/WidgetList/WidgetIcon/IconBuyMeCoffee'
-import { IconDribbble } from '@earlybirdim/components/WidgetList/WidgetIcon/IconDribbble'
-import { IconFigma } from '@earlybirdim/components/WidgetList/WidgetIcon/IconFigma'
-import { IconGithub } from '@earlybirdim/components/WidgetList/WidgetIcon/IconGithub'
-import { IconGumroad } from '@earlybirdim/components/WidgetList/WidgetIcon/IconGumroad'
-import { IconInstagram } from '@earlybirdim/components/WidgetList/WidgetIcon/IconInstagram'
-import { IconKofi } from '@earlybirdim/components/WidgetList/WidgetIcon/IconKofi'
-import { IconLayers } from '@earlybirdim/components/WidgetList/WidgetIcon/IconLayers'
-import { IconLinkedin } from '@earlybirdim/components/WidgetList/WidgetIcon/IconLinkedin'
-import { IconMedium } from '@earlybirdim/components/WidgetList/WidgetIcon/IconMedium'
-import { IconProductHunt } from '@earlybirdim/components/WidgetList/WidgetIcon/IconProductHunt'
-import { IconReddit } from '@earlybirdim/components/WidgetList/WidgetIcon/IconReddit'
-import { IconSubstack } from '@earlybirdim/components/WidgetList/WidgetIcon/IconSubstack'
-import { IconTiktok } from '@earlybirdim/components/WidgetList/WidgetIcon/IconTiktok'
-import { IconTwitch } from '@earlybirdim/components/WidgetList/WidgetIcon/IconTwitch'
-import { IconTwitter } from '@earlybirdim/components/WidgetList/WidgetIcon/IconTwitter'
-import { IconYouTube } from '@earlybirdim/components/WidgetList/WidgetIcon/IconYouTube'
 import clsx from 'clsx'
+import {
+  IconBehance,
+  IconBuyMeCoffee,
+  IconDribbble,
+  IconFigma,
+  IconGithub,
+  IconGumroad,
+  IconInstagram,
+  IconKofi,
+  IconLayers,
+  IconLinkedin,
+  IconMedium,
+  IconProductHunt,
+  IconReddit,
+  IconSubstack,
+  IconTiktok,
+  IconTwitch,
+  IconTwitter,
+  IconYouTube
+} from 'earlybirdim/internalIcons'
 import { FC } from 'react'
 
 import { OptionsContainer } from '../OptionsContainer'

@@ -1,7 +1,7 @@
 import clsx from 'clsx'
+import { IconPlay } from 'earlybirdim/internalIcons'
 import { FC } from 'react'
 
-import { IconPlay } from '../WidgetIcon/IconPlay'
 import { WidgetPlayButtonProps } from '../WidgetProps'
 
 export const WidgetPlayButton: FC<WidgetPlayButtonProps> = ({
