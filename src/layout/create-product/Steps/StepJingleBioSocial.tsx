@@ -171,7 +171,7 @@ const SocialItem: FC<SocialItemProps> = ({ name, icon: Icon, onChange }) => {
   )
 }
 
-export const StepJingleBio = () => {
+export const StepJingleBioSocial = () => {
   const { t } = useTranslation('dashboard')
   const { user } = useStore()
   const { state } = useContext(StepsStoreContext)

@@ -4,10 +4,10 @@ import { useTranslation } from 'next-i18next'
 import { FC, useContext } from 'react'
 
 import { IconBioPage, IconLandingPage } from '~/components'
-import { BIO_PAGE_STEPS, LANDING_PAGE_STEPS } from '~/layout'
-import { StepsStoreContext } from '~/layout/create-product/Steps/context'
+import { PAGE_STEPS } from '~/layout'
 
 import { StepContainer } from './StepContainer'
+import { StepsStoreContext } from './context'
 
 interface RadioItemProps {
   value: string
@@ -57,7 +57,7 @@ export const StepInitial = () => {
   const { state, dispatch } = useContext(StepsStoreContext)
 
   function handleChange(type: string) {
-    const steps = type === 'landingPage' ? LANDING_PAGE_STEPS : BIO_PAGE_STEPS
+    const steps = PAGE_STEPS.filter(s => s.type === 'step' || s.type === type)
 
     dispatch({
       type: 'setState',

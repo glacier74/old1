@@ -1,82 +1,91 @@
 import { arrayUnique, isFalse } from '@nily/utils'
-import { useContext, useEffect, useMemo, useReducer } from 'react'
+import { useContext, useMemo, useReducer } from 'react'
 
-import { StepJingleBio } from '~/layout/create-product/Steps/StepJingleBio'
-import { StepJingleBioProfile } from '~/layout/create-product/Steps/StepJingleBioProfile'
 import { ProductService } from '~/service'
 import { useStore } from '~/store'
 import { useAsyncEffect } from '~/utils'
 
 import { StepInitial } from './StepInitial'
+import { StepJingleBioProfile } from './StepJingleBioProfile'
+import { StepJingleBioSocial } from './StepJingleBioSocial'
 import { StepName } from './StepName'
 import { StepTemplate } from './StepTemplate'
-import { StepsStoreContext, StepsStoreReducer } from './context'
+import { Step, StepsStoreContext, StepsStoreReducer } from './context'
 
-export const LANDING_PAGE_STEPS = [
+export const PAGE_STEPS: Step[] = [
   {
+    type: 'step',
     value: 'initial',
-    component: StepInitial,
     isAllowToPrev: false
   },
   {
+    type: 'landingPage',
     value: 'template',
-    component: StepTemplate,
     isNextButtonShow: false
   },
   {
-    value: 'name',
-    component: StepName
-  }
-]
-
-export const BIO_PAGE_STEPS = [
-  {
-    value: 'initial',
-    component: StepInitial,
-    isAllowToPrev: false
+    type: 'landingPage',
+    value: 'name'
   },
   {
-    value: 'profile',
-    component: StepJingleBioProfile
+    type: 'bioPage',
+    value: 'profile'
   },
   {
-    value: 'jingleBio',
-    component: StepJingleBio
+    type: 'bioPage',
+    value: 'social'
   }
 ]
 
 const StepComponent = () => {
   const { state } = useContext(StepsStoreContext)
-  const { user } = useStore()
 
-  if (user.isJingleBio) {
-    return <StepJingleBio />
+  switch (state.active) {
+    case 'initial':
+      return <StepInitial />
+
+    case 'template':
+      return <StepTemplate />
+
+    case 'name':
+      return <StepName />
+
+    case 'profile':
+      return <StepJingleBioProfile />
+
+    case 'social':
+      return <StepJingleBioSocial />
+
+    default:
+      return null
   }
-
-  const Component = (state.type === 'landingPage' ? LANDING_PAGE_STEPS : BIO_PAGE_STEPS).find(
-    s => s.value === state.active
-  )?.component
-
-  if (Component) {
-    return <Component />
-  }
-
-  return null
 }
 
 export const Steps = () => {
-  const { setProduct } = useStore()
+  const { user } = useStore()
+
+  const type = useMemo(() => (user.isJingleBio ? 'jingleBio' : 'landingPage'), [user.isJingleBio])
+  const steps = useMemo(() => {
+    if (user.isJingleBio) {
+      const steps = PAGE_STEPS.filter(s => s.type === 'bioPage')
+
+      steps[0].isAllowToPrev = false
+      return steps
+    }
+
+    return PAGE_STEPS.filter(s => s.type !== 'bioPage')
+  }, [user.isJingleBio])
 
   const [state, dispatch] = useReducer(StepsStoreReducer, {
     templates: [],
     categories: [],
-    steps: LANDING_PAGE_STEPS.map((s: any) => ({
+    steps: steps.map((s: any) => ({
       value: s.value,
       isAllowToPrev: !isFalse(s.isAllowToPrev),
       isNextButtonShow: !isFalse(s.isNextButtonShow)
     })),
-    type: 'landingPage',
-    active: LANDING_PAGE_STEPS[0].value
+    type,
+    active: steps[0].value
   })
   const storeValue = useMemo(() => ({ state, dispatch }), [state])
 
@@ -99,12 +108,6 @@ export const Steps = () => {
         isTemplateLoading: false
       }
     })
-  }, [])
-
-  useEffect(() => {
-    return () => {
-      setProduct(undefined)
-    }
   }, [])
 
   return (

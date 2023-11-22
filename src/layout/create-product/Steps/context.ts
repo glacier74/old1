@@ -1,9 +1,10 @@
 import { createStoreContext, createStoreReducer } from '@heyforms/ui'
 
-interface Step {
+export interface Step {
+  type?: string
   value: string
-  isAllowToPrev: boolean
-  isNextButtonShow: boolean
+  isAllowToPrev?: boolean
+  isNextButtonShow?: boolean
 }
 
 interface IState {
