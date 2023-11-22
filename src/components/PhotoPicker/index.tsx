@@ -47,7 +47,7 @@ export const PhotoPicker: FC<PhotoPickerProps> = ({
       showCloseIcon
       {...restProps}
     >
-      <Tabs>
+      <Tabs activeName="upload">
         <Tabs.Pane name="upload" title={t('common.uploadImage')}>
           <FileUploader accept={acceptedMimes} onChange={handleImageChange} />
         </Tabs.Pane>

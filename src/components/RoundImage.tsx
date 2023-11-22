@@ -33,10 +33,10 @@ export const RoundImage: FC<RoundImageProps> = ({
             className
           )}
           src={src!}
-          quality={95}
+          quality={100}
           alt=""
-          width={imageSize}
-          height={imageSize}
+          width={imageSize * 3}
+          height={imageSize * 3}
         />
       </div>
     )
