@@ -6,7 +6,7 @@ import { WidgetIcon } from '../WidgetIcon'
 import { EmailCaptureData, WidgetConfig } from '../WidgetProps'
 import { emailCapture } from '../constants'
 import Widget from './Widget'
-import { WidgetEmailCaptureButton } from './WidgetEmailCaptureButton'
+import { WidgetEmailCaptureButton, WidgetEmailCaptureText } from './WidgetEmailCaptureButton'
 import { WidgetImagePlaceholder } from './WidgetImagePlaceholder'
 
 export default class EmailCaptureWidget<T extends EmailCaptureData> extends Widget<T> {
@@ -20,7 +20,7 @@ export default class EmailCaptureWidget<T extends EmailCaptureData> extends Widg
 
   override Render1x1(config: WidgetConfig<T>) {
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <div className="relative block w-full h-full">
         <div className="flex h-full flex-col">
           <WidgetIcon type={config.type} />
 
@@ -31,10 +31,12 @@ export default class EmailCaptureWidget<T extends EmailCaptureData> extends Widg
           </div>
 
           <div className="inline-flex">
-            <WidgetEmailCaptureButton config={config} />
+            <WidgetEmailCaptureText text={config.data?.buttonText} />
           </div>
         </div>
-      </a>
+
+        <WidgetEmailCaptureButton config={config} />
+      </div>
     )
   }
 
@@ -44,7 +46,7 @@ export default class EmailCaptureWidget<T extends EmailCaptureData> extends Widg
     const { isPreview } = useGlobalContext()
 
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <div className="relative block w-full h-full">
         <div className="flex h-full">
           <div
             className={clsx(
@@ -63,7 +65,7 @@ export default class EmailCaptureWidget<T extends EmailCaptureData> extends Widg
             </div>
 
             <div className="inline-flex">
-              <WidgetEmailCaptureButton config={config} />
+              <WidgetEmailCaptureText text={config.data?.buttonText} />
             </div>
           </div>
 
@@ -82,7 +84,9 @@ export default class EmailCaptureWidget<T extends EmailCaptureData> extends Widg
             <WidgetImagePlaceholder className="ml-6 aspect-[1.4] h-full" />
           ) : null}
         </div>
-      </a>
+
+        <WidgetEmailCaptureButton config={config} />
+      </div>
     )
   }
 
@@ -92,14 +96,14 @@ export default class EmailCaptureWidget<T extends EmailCaptureData> extends Widg
     const { isPreview } = useGlobalContext()
 
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <div className="relative block w-full h-full">
         <div className="flex h-full flex-col">
           <div>
             <div className="flex justify-between">
               <WidgetIcon type={config.type} />
 
               <div className="flex items-start">
-                <WidgetEmailCaptureButton config={config} />
+                <WidgetEmailCaptureText text={config.data?.buttonText} />
               </div>
             </div>
 
@@ -127,7 +131,9 @@ export default class EmailCaptureWidget<T extends EmailCaptureData> extends Widg
             <WidgetImagePlaceholder className="mt-6 aspect-[40/21]" />
           ) : null}
         </div>
-      </a>
+
+        <WidgetEmailCaptureButton config={config} />
+      </div>
     )
   }
 }

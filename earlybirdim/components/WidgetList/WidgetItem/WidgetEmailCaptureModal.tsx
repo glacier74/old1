@@ -22,13 +22,13 @@ export const WidgetEmailCaptureModal: FC<WidgetEmailCaptureModalProps> = ({
     <Portal visible={visible} container={(frameDocument || document).body}>
       <div className="fixed inset-0 z-[98] flex h-screen w-screen items-center p-5">
         <div className="payment-success-party absolute inset-0 z-[99] bg-black/20"></div>
-        <div className="relative z-[100] mx-auto w-full max-w-[600px] rounded-2xl bg-white px-8 py-10 shadow-2xl space-y-8">
+        <div className="relative z-[100] mx-auto w-full max-w-[540px] rounded-2xl bg-white px-8 py-10 shadow-2xl space-y-8">
           <div className="flex justify-start">
-            <h3 className="flex-1 text-2xl text-slate-800 font-semibold">
+            <h3 className="flex-1 text-xl text-slate-800 font-semibold">
               {config.data.overrides?.title}
             </h3>
 
-            <div className="-mr-1.5">
+            <div className="-mt-1 -mr-1.5">
               <button
                 type="button"
                 className="p-1.5 rounded-full text-slate-600 hover:text-slate-800"
@@ -40,7 +40,7 @@ export const WidgetEmailCaptureModal: FC<WidgetEmailCaptureModalProps> = ({
           </div>
 
           <Form
-            className="space-y-5"
+            className="space-y-6"
             id={config.id}
             isInModal={true}
             onSubmitted={onSubmitted}
