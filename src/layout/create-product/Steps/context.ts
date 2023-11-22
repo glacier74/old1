@@ -13,6 +13,10 @@ interface IState {
   steps: Step[]
   active: string
   type: string
+
+  // product
+  name?: string
+  template?: string
 }
 
 const actions: any = {
@@ -29,12 +33,13 @@ const actions: any = {
     return state
   },
 
-  toNext(state: IState) {
+  toNext(state: IState, updates?: Partial<IState>) {
     const index = state.steps.findIndex(s => s.value === state.active)
 
     if (index < state.steps.length - 1) {
       return {
         ...state,
+        ...updates,
         active: state.steps[index + 1].value
       }
     }

@@ -6,7 +6,6 @@ import Image from 'next/image'
 import { FC, MouseEvent, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 
 import { Loading } from '~/components'
-import { useStore } from '~/store'
 import { useParam } from '~/utils'
 
 import { PreviewModal } from '../PreviewModal'
@@ -105,8 +104,6 @@ const TemplateItem: FC<TemplateItemProps> = ({ template, isSelected, onPreview, 
 
 export const StepTemplate = () => {
   const { t } = useTranslation('dashboard')
-
-  const { product, setProduct } = useStore()
   const { state, dispatch } = useContext(StepsStoreContext)
 
   const template = useParam('template') as string
@@ -122,20 +119,16 @@ export const StepTemplate = () => {
     return state.templates.filter(t => t.categoryId === categoryId)
   }, [categoryId, state.templates])
 
-  const handleSelect = useCallback(
-    (template: string) => {
-      setSelected(undefined)
-      setProduct({
-        ...product,
-        template
-      })
+  const handleSelect = useCallback((template: string) => {
+    setSelected(undefined)
 
-      dispatch({
-        type: 'toNext'
-      })
-    },
-    [state.templates]
-  )
+    dispatch({
+      type: 'toNext',
+      payload: {
+        template
+      }
+    })
+  }, [])
 
   // 当 template 有值时跳过模板选择界面
   useEffect(() => {
@@ -176,7 +169,7 @@ export const StepTemplate = () => {
                 <TemplateItem
                   key={template.id}
                   template={template}
-                  isSelected={product?.template === template.id}
+                  isSelected={state.template === template.id}
                   onPreview={setSelected}
                   onClick={handleSelect}
                 />

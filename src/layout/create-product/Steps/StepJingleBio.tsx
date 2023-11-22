@@ -23,7 +23,7 @@ import {
 import { nanoid } from 'nanoid'
 import { useTranslation } from 'next-i18next'
 import router from 'next/router'
-import { FC, useCallback, useState } from 'react'
+import { FC, useCallback, useContext, useState } from 'react'
 
 import templates from '~/layout/builder3/templates'
 import { schemasToOptions } from '~/layout/builder3/utils'
@@ -31,6 +31,7 @@ import { ProductService } from '~/service'
 import { useStore } from '~/store'
 
 import { StepContainer } from './StepContainer'
+import { StepsStoreContext } from './context'
 
 interface SocialItemProps {
   name: string
@@ -154,7 +155,9 @@ const SocialItem: FC<SocialItemProps> = ({ name, icon: Icon, onChange }) => {
   const social = SOCIAL_ITEMS.find(s => s.name === name)!
 
   function handleChange(value: string) {
-    onChange(name, social.url.replace('{username}', value))
+    if (isValid(value)) {
+      onChange(name, social.url.replace('{username}', value.trim()))
+    }
   }
 
   return (
@@ -170,7 +173,8 @@ const SocialItem: FC<SocialItemProps> = ({ name, icon: Icon, onChange }) => {
 
 export const StepJingleBio = () => {
   const { t } = useTranslation('dashboard')
-  const { user, product } = useStore()
+  const { user } = useStore()
+  const { state } = useContext(StepsStoreContext)
 
   const [socials, setSocials] = useState<AnyMap>({})
   const [loading, setLoading] = useState(false)
@@ -195,7 +199,7 @@ export const StepJingleBio = () => {
 
       // Update Jingle Bio block
       blocks.personal_info = {
-        name: product?.name,
+        name: state.name,
         avatar: user.avatar,
         description: ''
       }
@@ -209,7 +213,7 @@ export const StepJingleBio = () => {
       }
 
       const productId = await ProductService.create({
-        name: product?.name,
+        name: state.name,
         logo: user.avatar,
         template: 'jingle-bio',
         blocks,
@@ -224,7 +228,7 @@ export const StepJingleBio = () => {
     }
 
     setLoading(false)
-  }, [product?.name, socials, user.avatar])
+  }, [socials, state.name, user.avatar])
 
   return (
     <StepContainer isNextButtonLoading={loading} onNextButtonClick={handleCreate}>
