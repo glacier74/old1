@@ -42,7 +42,7 @@ export default class MediaWidget<T extends MediaData> extends Widget<T> {
         className={clsx(
           `widget-${config.type} relative block h-full w-full overflow-hidden rounded-3xl cursor-zoom-in`,
           {
-            [`widget-${config.type}-link cursor-pointer`]: config.url
+            [`widget-${config.type}-link !cursor-pointer`]: config.url
           }
         )}
         href={config.url}
