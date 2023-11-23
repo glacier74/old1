@@ -26,8 +26,14 @@ const parsers = {
   youtube: parseYoutube
 }
 
+const HTTP_REGEX = /^https?:\/\//i
+
 export function parseURL(url: string, type?: string) {
   if (url) {
+    if (!HTTP_REGEX.test(url)) {
+      url = 'https://' + url.replace(/^\/+/, '')
+    }
+
     const providers = Object.keys(parsers) as (keyof typeof parsers)[]
 
     for (let provider of providers) {
