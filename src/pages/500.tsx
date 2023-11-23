@@ -9,7 +9,7 @@ const ServerError = (): JSX.Element => {
   return (
     <HomeLayout
       seo={{
-        title: t('common.500')
+        title: t('serverError')
       }}
     >
       <HomeHeader />

@@ -70,7 +70,8 @@ export const getServerSideProps = withTranslations(
     return {
       props: {}
     }
-  }
+  },
+  ['common', 'dashboard']
 )
 
 export default ConfirmEmail

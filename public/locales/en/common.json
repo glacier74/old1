@@ -34,6 +34,5 @@
   },
   "loading": "Let the little bird fly for a while...",
   "notFound": "Page not found",
-  "404": "Page not found - EarlyBird",
-  "500": "Internal server error - EarlyBird"
+  "serverError": "Internal server error"
 }
