@@ -102,8 +102,8 @@ export function render({ product, options: { personal_info, main } }) {
         <div className="earlybird-8HgKLqR8 bg-white dark:bg-slate-950 min-h-screen">
           <div className="earlybird-HSqdRg lg:max-w-[1600px] lg:mx-auto lg:flex lg:justify-between lg:gap-12 lg:px-16">
             <div className="earlybird-tXXVbP w-auto lg:w-[calc(100%-868px)] lg:max-w-[500px] max-[360px]:px-5 max-[400px]:px-7 px-8 lg:px-0 py-12 items-center">
-              <Section id="personal_info" name="personal_info">
-                <div className="earlybird-tMuH8h relative xl:sticky xl:top-16">
+              <Section id="personal_info" className="xl:sticky xl:top-16" name="personal_info">
+                <div className="earlybird-tMuH8h">
                   <div className="earlybird-KDvjAn">
                     <Image
                       className="earlybird-yFaZEN rounded-full max-[360px]:w-28 max-[360px]:h-28 max-[400px]:w-32 max-[400px]:h-32 w-48 h-48"
@@ -144,7 +144,7 @@ export function render({ product, options: { personal_info, main } }) {
                 {/* Branding */}
                 {!product.isBrandingRemoved && (
                   <>
-                    <div className="mx-3 h-4 w-px bg-slate-200 dark:bg-slate-700"></div>
+                    <div className="mx-2 h-4 w-px bg-slate-200 dark:bg-slate-700"></div>
                     <div className="text-sm text-slate-500 dark:text-slate-400">
                       Create your own{' '}
                       <a
