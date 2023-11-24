@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { CSSProperties, useMemo } from 'react'
 
 import { WidgetIcon } from '../WidgetIcon'
-import { WidgetConfig, WidgetContainerProps, WidgetData, WidgetSize } from '../WidgetProps'
+import { WidgetConfig, WidgetContainerProps, WidgetSize } from '../WidgetProps'
 import { useMetadata } from '../hook'
 
 export default class Widget<T> {
@@ -142,7 +142,9 @@ export default class Widget<T> {
             faviconUrl={(config.data as any).faviconUrl}
           />
           <h3 className="flex-1 truncate text-sm text-gray-900 dark:text-slate-50">
-            {(config.data as WidgetData).name || (config.data as any).title}
+            {(config.data as any).overrides?.title ||
+              (config.data as any).title ||
+              (config.data as any).name}
           </h3>
         </div>
       </a>
