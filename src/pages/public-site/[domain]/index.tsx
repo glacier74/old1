@@ -32,6 +32,7 @@ import { TestimonialPreview } from '~/layout/builder/blocks/Testimonial'
 import { TextPreview } from '~/layout/builder/blocks/Text'
 import { PublicSiteDangerouslyHTML } from '~/layout/public-site/PublicSiteDangerouslyHTML'
 import { PublicSiteHiddenBlocksStyle } from '~/layout/public-site/PublicSiteHiddenBlocksStyle'
+import { PublicSiteUnpublished } from '~/layout/public-site/PublicSiteUnpublished'
 import { ProductService } from '~/service'
 import { JingleBioService } from '~/service/jinglebio'
 import { PublicApiService } from '~/service/public-api'
@@ -279,13 +280,15 @@ const PublicSite: FC<PublicSiteProps> = ({
             productId: product.id
           }}
         >
-          {isValid(product.siteSetting.blocks)
-            ? templates[product.siteSetting.template]?.render({
-                product,
-                options: product.siteSetting.blocks,
-                hiddenBlocks: product.siteSetting.hiddenBlocks
-              })
-            : null}
+          {isValid(product.siteSetting.blocks) ? (
+            templates[product.siteSetting.template]?.render({
+              product,
+              options: product.siteSetting.blocks,
+              hiddenBlocks: product.siteSetting.hiddenBlocks
+            })
+          ) : (
+            <PublicSiteUnpublished />
+          )}
         </GlobalContext.Provider>
       ) : (
         <div className="earlybird-blocks">
@@ -378,7 +381,7 @@ export const getServerSideProps = withTranslations(
       product.openGraphImage = `${process.env.NEXT_PUBLIC_HOMEPAGE}/api/og/${product.domain}?v=${product.siteSetting.version}`
     }
 
-    if (product.isJingleBio) {
+    if (product.isJingleBio && isValid(product.siteSetting.blocks)) {
       const widgetListPaths = findSchemaPaths(
         templates[product.siteSetting.template].schemas,
         SchemaTypeEnum.widgetList
