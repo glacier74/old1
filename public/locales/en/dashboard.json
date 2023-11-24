@@ -46,6 +46,7 @@
     "heading": "Create an account",
     "description": "Get started for free, no credit card required.",
     "name": "Name",
+    "signUpWith": "Sign up with",
     "invalidName": "Name must not be empty",
     "invalidPassword": "Password must be at least 8 characters, and at least 1 uppercase, 1 lowercase and 1 number.",
     "agreeWith": "By signing up, you agree to our <1>terms of service</1> and <3>privacy policy</3>.",
