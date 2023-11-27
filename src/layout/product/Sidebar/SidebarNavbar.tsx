@@ -125,7 +125,7 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
         </h3>
         <div className="mt-1 space-y-1" aria-labelledby="resources-headline">
           <ExternalLink
-            href="https://help.earlybird.im/create-a-landing-page/"
+            href="https://help.earlybird.im/user/get-started/create-a-landing-page.html"
             icon={IconLocation}
             title={t('sidebar.gettingStarted')}
           />
@@ -135,7 +135,7 @@ export const SidebarNavbar: FC<SidebarNavProps> = ({ isMobile = false }) => {
             title={t('sidebar.whatsNew')}
           />
           <ExternalLink
-            href="https://help.earlybird.im/roadmap/"
+            href="https://help.earlybird.im/user/roadmap.html"
             icon={IconMap}
             title={t('sidebar.roadmap')}
           />
