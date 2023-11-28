@@ -26,7 +26,7 @@ export const AddEmailCapture: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restP
   return (
     <OptionsContainer title="Add an email capture card" onGoBack={onGoBack} {...restProps}>
       <div className="px-5">
-        <AddWidgetForm requiredNames={['title', 'buttonText']} onFinish={handleFinish}>
+        <AddWidgetForm requiredNames={['title']} onFinish={handleFinish}>
           <Form.Item
             label="Title"
             name="title"

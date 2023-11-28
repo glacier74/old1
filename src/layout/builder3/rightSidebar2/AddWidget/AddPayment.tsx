@@ -61,7 +61,7 @@ export const AddPayment: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restProps 
                 price_0MlwwsKRmsNyao), then paste it here.
               </p>
             </div>
-            <AddWidgetForm requiredNames={['priceID', 'buttonText']} onFinish={handleFinish}>
+            <AddWidgetForm requiredNames={['priceID']} onFinish={handleFinish}>
               <Form.Item
                 label="Price ID"
                 name="priceID"
