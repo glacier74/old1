@@ -89,7 +89,7 @@ const SOCIALS = [
   {
     name: 'producthunt',
     label: 'Product Hunt',
-    url: 'https://www.producthunt.com/products/{username}',
+    url: 'https://www.producthunt.com/@{username}',
     icon: IconProductHunt
   },
   {
@@ -125,7 +125,7 @@ const SOCIALS = [
   {
     name: 'substack',
     label: 'Substack',
-    url: 'https://{username}.substack.com',
+    url: 'https://substack.com/@{username}',
     icon: IconSubstack
   },
   {
