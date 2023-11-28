@@ -324,7 +324,7 @@ const PublicSite: FC<PublicSiteProps> = ({
       />
       <Script
         src={`https://www.google.com/recaptcha/api.js?render=${product.captcha.recaptcha}`}
-        strategy="beforeInteractive"
+        strategy="afterInteractive"
       />
       <Script
         data-domain={product.analyticId}

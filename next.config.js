@@ -70,6 +70,11 @@ module.exports = {
     config.resolve.fallback = {
       fs: false
     }
+
+    if (config.optimization.splitChunks) {
+      config.optimization.splitChunks.minChunks = 2
+    }
+
     return config
   }
 }

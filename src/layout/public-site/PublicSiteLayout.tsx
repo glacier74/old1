@@ -23,16 +23,18 @@ export function PublicSiteLayout({
       <Head>
         <meta content={shortName} name="application-name" />
         <meta content={shortName} name="apple-mobile-web-app-title" />
-        <link rel="stylesheet" href={fontLink(theme.fontFamily)} />
+
         {schema === 1 && (
-          <style
-            dangerouslySetInnerHTML={{ __html: themeToStyle(theme, { bodyBackground: true }) }}
-          />
-        )}
-        {favicon ? (
           <>
-            <link rel="icon" type="image/png" href={favicon} />
+            <link rel="stylesheet" href={fontLink(theme.fontFamily)} />
+            <style
+              dangerouslySetInnerHTML={{ __html: themeToStyle(theme, { bodyBackground: true }) }}
+            />
           </>
+        )}
+
+        {favicon ? (
+          <link rel="icon" type="image/png" href={favicon} />
         ) : (
           <>
             <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
