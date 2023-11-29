@@ -280,9 +280,9 @@
     "general": {
       "heading": "通用",
       "product":"产品",
-      "productDesc": "用于在网络上识别您的 landing page 的详细信息。",
+      "productDesc": "用于在网络上识别你的 landing page 的详细信息。",
       "conversionNotification": "转化通知",
-      "conversionNotificationDesc": "当一个新的转化动作在您的 landing page 页面上被触发时，您将会收到一封邮件通知。"
+      "conversionNotificationDesc": "当一个新的转化动作在你的 landing page 页面上被触发时，你将会收到一封邮件通知。"
     },
     "language": {
       "heading": "语言",
