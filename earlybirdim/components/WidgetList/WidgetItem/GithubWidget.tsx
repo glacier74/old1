@@ -14,17 +14,17 @@ import { typeNames } from '../constants'
 import BehanceWidget from './BehanceWidget'
 import { WidgetFollowButton } from './WidgetFollowButton'
 
-function getSvgFillColor(count: number) {
+function getSvgClassName(count: number) {
   if (count < 1) {
-    return `rgba(0,0,0,0.05)`
+    return `fill-[rgba(0,0,0,0.05)] dark:fill-[rgba(255,255,255,0.25)]`
   } else if (count <= 5) {
-    return '#9be9a8'
+    return 'fill-[#9be9a8]'
   } else if (count <= 10) {
-    return '#40c463'
+    return 'fill-[#40c463]'
   } else if (count <= 15) {
-    return '#30a14e'
+    return 'fill-[#30a14e]'
   } else {
-    return '#216e39'
+    return 'fill-[#216e39]'
   }
 }
 
@@ -64,7 +64,7 @@ const Contribution: FC<GithubContributionProps> = ({
           return {
             x: xIndex * columnSize,
             y: yIndex * columnSize + monthLabelSize,
-            fill: getSvgFillColor(row.count)
+            className: getSvgClassName(row.count)
           }
         })
       ]
@@ -91,12 +91,12 @@ const Contribution: FC<GithubContributionProps> = ({
         {isMonthShow &&
           monthLabels.map((row, index) => (
             <text
+              className="fill-[rgba(0,0,0,0.5)] dark:fill-[rgba(255,255,255,0.5)]"
               key={index}
               x={row.x}
               y={row.y}
               fontSize="12"
               textAnchor="middle"
-              fill="rgba(0,0,0,0.5)"
             >
               {row.label}
             </text>
@@ -105,21 +105,21 @@ const Contribution: FC<GithubContributionProps> = ({
         {contributions.map((row, index) => (
           <Fragment key={index}>
             <rect
+              className={row.className}
               x={row.x}
               y={row.y}
               width={blockSize}
               height={blockSize}
               rx="2.5"
-              fill={row.fill}
             />
             <rect
+              className="stroke-[rgba(0,0,0,0.05)] dark:stroke-[rgba(255,255,255,0.05)]"
               x={row.x + 0.5}
               y={row.y + 0.5}
               width={blockSize - 1}
               height={blockSize - 1}
               rx="2"
               strokeWidth="1"
-              stroke="rgba(0,0,0,0.05)"
             />
           </Fragment>
         ))}
@@ -207,7 +207,7 @@ export default class GithubWidget<T extends GithubData & WidgetData> extends Beh
             contributions={config.data.contributions}
             isMonthShow={true}
           />
-          <div className="mt-2 text-xs text-black/50">
+          <div className="mt-2 text-xs text-black/50 dark:text-white/50">
             {config.data.numContributions} contributions in the last year
           </div>
         </div>

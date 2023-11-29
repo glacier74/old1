@@ -118,7 +118,7 @@ export interface GithubData extends Omit<WidgetData, 'posts'> {
 export interface GithubContributionRect {
   x: number
   y: number
-  fill?: string
+  className?: string
   label?: string
 }
 
