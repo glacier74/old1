@@ -16,6 +16,7 @@ import * as pandaZen from './panda-zen'
 import * as simpleBio from './simple-bio'
 import * as tinyFolio from './tiny-folio'
 import * as waitlist01 from './waitlist-01'
+import * as waitlist02 from './waitlist-02'
 
 interface Template {
   options: any
@@ -27,6 +28,7 @@ const templates: AnyMap<Template> = {
   'landing-page-02': landingPage02,
   'app-01': app01,
   'waitlist-01': waitlist01,
+  'waitlist-02': waitlist02,
   dove: dove,
   'indie-folio': indieFolio,
   obsidian: obsidian,
