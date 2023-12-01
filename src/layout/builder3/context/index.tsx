@@ -159,6 +159,7 @@ export const BuilderProvider: FC<BuilderProviderProps> = ({
       selectedOptionName: undefined,
       completions: [],
       selectedCompletionName: undefined,
+      widgetIds: [],
       previewMode: 'desktop',
       version: 0,
       isSyncing: false,

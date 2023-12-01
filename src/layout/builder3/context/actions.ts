@@ -22,6 +22,7 @@ export interface IState {
     name?: string
     id?: string
   }
+  widgetIds: string[]
 
   // Preview anchor link
   selectedOptionName?: string

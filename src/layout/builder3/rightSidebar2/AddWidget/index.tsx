@@ -1,4 +1,5 @@
 import { widgetListPath } from '@earlybirdim/components/WidgetList/constants'
+import { deepClone } from '@nily/utils'
 import {
   IconCreditCard,
   IconHash,
@@ -12,7 +13,6 @@ import { FC, useCallback, useState } from 'react'
 
 import { IconGroupTitle } from '~/components'
 import { useBuilderContext, useOptions } from '~/layout/builder3/context'
-import { AddMusic } from '~/layout/builder3/rightSidebar2/AddWidget/AddMusic'
 
 import { OptionsContainer } from '../OptionsContainer'
 import { AddEmailCapture } from './AddEmailCapture'
@@ -20,6 +20,7 @@ import { AddGroupTitle } from './AddGroupTitle'
 import { AddImage } from './AddImage'
 import { AddLink, AddLinkProps } from './AddLink'
 import { AddLocation } from './AddLocation'
+import { AddMusic } from './AddMusic'
 import { AddPayment } from './AddPayment'
 import { AddSocial } from './AddSocial'
 import { SOCIAL_TYPES, SocialList } from './SocialList'
@@ -134,7 +135,7 @@ const Panel: FC<{ type: string } & AddLinkProps> = ({ type, ...restProps }) => {
 }
 
 export const AddWidget = () => {
-  const { dispatch } = useBuilderContext()
+  const { state, dispatch } = useBuilderContext()
   const { value: listValue, update } = useOptions<AnyMap<any>[]>(widgetListPath, [])
 
   const [types, setTypes] = useState<string[]>([])
@@ -148,16 +149,24 @@ export const AddWidget = () => {
 
   const handleCreate = useCallback(
     (newValue: AnyMap) => {
-      update([...listValue, newValue])
+      const newList = deepClone(listValue)
+
+      // 找出屏幕中间的 widget，将新 widget 插入到这里
+      const index = Math.floor(state.widgetIds.length / 2)
+      const widgetIndex = newList.findIndex(w => w.id === state.widgetIds[index])
+
+      newList.splice(widgetIndex, 0, newValue)
+      update(newList)
+
       dispatch({
         type: 'updateState',
         payload: {
-          selectedListId: newValue.id,
+          selectedListId: undefined,
           selectedSection: undefined
         }
       })
     },
-    [listValue]
+    [dispatch, listValue, state.widgetIds, update]
   )
 
   const handleGoNext = useCallback(
@@ -183,6 +192,7 @@ export const AddWidget = () => {
 
       {types.map(type => (
         <Panel
+          key={type}
           type={type}
           onCreate={handleCreate}
           onGoBack={handleGoBack}
