@@ -276,9 +276,9 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
               <IconWorld className="text-slate-500 dark:text-slate-400" />
             ) : (
               <Image
-                className="block h-full w-full object-cover"
+                className="block h-full w-full object-cover rounded-md"
                 src={faviconUrl}
-                alt={title!}
+                alt={title || ''}
                 width={28}
                 height={28}
                 onError={() => setErrored(true)}

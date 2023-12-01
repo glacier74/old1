@@ -8,7 +8,7 @@ import { useAsyncEffect } from '~/utils'
 
 import { WidgetConfig, WidgetData } from './WidgetProps'
 
-const UNFETCH_TYPES = ['group_title', 'payment', 'email_capture', 'image', 'video']
+const UNFETCH_TYPES = ['group_title', 'payment', 'email_capture', 'image', 'video', 'skills']
 
 export function useMetadata<T = WidgetData>(config: WidgetConfig) {
   const { isPreview } = useGlobalContext()

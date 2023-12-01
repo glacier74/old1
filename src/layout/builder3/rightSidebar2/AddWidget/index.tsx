@@ -1,6 +1,7 @@
 import { widgetListPath } from '@earlybirdim/components/WidgetList/constants'
 import { deepClone } from '@nily/utils'
 import {
+  IconBoxModel,
   IconCreditCard,
   IconHash,
   IconLink,
@@ -22,6 +23,7 @@ import { AddLink, AddLinkProps } from './AddLink'
 import { AddLocation } from './AddLocation'
 import { AddMusic } from './AddMusic'
 import { AddPayment } from './AddPayment'
+import { AddSkills } from './AddSkills'
 import { AddSocial } from './AddSocial'
 import { SOCIAL_TYPES, SocialList } from './SocialList'
 
@@ -44,6 +46,12 @@ const WIDGET_CONFIGS: WidgetConfig[] = [
     label: 'Social',
     icon: IconHash,
     iconClassName: 'bg-[#dbeafe] text-[#1d4ed8]'
+  },
+  {
+    type: 'skills',
+    label: 'Skills',
+    icon: IconBoxModel,
+    iconClassName: 'bg-[#fce7f3] text-[#be185d]'
   },
   {
     type: 'payment',
@@ -128,6 +136,9 @@ const Panel: FC<{ type: string } & AddLinkProps> = ({ type, ...restProps }) => {
 
     case 'group_title':
       return <AddGroupTitle {...restProps} />
+
+    case 'skills':
+      return <AddSkills {...restProps} />
 
     default:
       return SOCIAL_TYPES.includes(type) ? <AddSocial type={type} {...restProps} /> : null

@@ -170,6 +170,16 @@ export interface WebsiteData extends Pick<WidgetData, 'description' | 'imageUrl'
   faviconUrl?: string
 }
 
+export interface SkillsData {
+  title: string
+  icon: {
+    type: 'svg' | 'image'
+    svgName: string
+    imageUrl: string
+  }
+  rating: number
+}
+
 export interface MapData {
   latitude: number
   longitude: number

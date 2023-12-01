@@ -1,0 +1,197 @@
+[
+  {
+    "category": "Design",
+    "icons": [
+      {
+        "title": "Photoshop",
+        "name": "photoshop"
+      },
+      {
+        "title": "Figma",
+        "name": "figma"
+      },
+      {
+        "title": "Sketch",
+        "name": "sketch"
+      },
+      {
+        "title": "Adobe XD",
+        "name": "xd"
+      },
+      {
+        "title": "Adobe Illustrator",
+        "name": "illustrator"
+      },
+      {
+        "title": "Lightroom",
+        "name": "lightroom"
+      },
+      {
+        "title": "InDesign",
+        "name": "indesign"
+      },
+      {
+        "title": "After Effects",
+        "name": "aftereffects"
+      },
+      {
+        "title": "Blender",
+        "name": "blender"
+      },
+      {
+        "title": "Cinema 4D",
+        "name": "cinema4d"
+      },
+      {
+        "title": "Autodesk Maya",
+        "name": "autodeskmaya"
+      },
+      {
+        "title": "3ds Max",
+        "name": "3dsmax"
+      },
+      {
+        "title": "ZBrush",
+        "name": "zbrush"
+      },
+      {
+        "title": "SketchUp",
+        "name": "sketchup"
+      }
+    ]
+  },
+  {
+    "category": "Programming",
+    "icons": [
+      {
+        "title": "HTML",
+        "name": "html"
+      },
+      {
+        "title": "CSS",
+        "name": "css"
+      },
+      {
+        "title": "Tailwind",
+        "name": "tailwind"
+      },
+      {
+        "title": "JavaScript",
+        "name": "javascript"
+      },
+      {
+        "title": "TypeScript",
+        "name": "typescript"
+      },
+      {
+        "title": "React",
+        "name": "react"
+      },
+      {
+        "title": "Next",
+        "name": "next"
+      },
+      {
+        "title": "Vue",
+        "name": "vue"
+      },
+      {
+        "title": "Angular",
+        "name": "angular"
+      },
+      {
+        "title": "Python",
+        "name": "python"
+      },
+      {
+        "title": "Java",
+        "name": "java"
+      },
+      {
+        "title": "PHP",
+        "name": "php"
+      },
+      {
+        "title": "Swift",
+        "name": "swift"
+      },
+      {
+        "title": "Kotlin",
+        "name": "kotlin"
+      },
+      {
+        "title": "Flutter",
+        "name": "flutter"
+      },
+      {
+        "title": "Go",
+        "name": "go"
+      },
+      {
+        "title": "Node",
+        "name": "node"
+      },
+      {
+        "title": "C",
+        "name": "c"
+      },
+      {
+        "title": "C++",
+        "name": "cpp"
+      },
+      {
+        "title": "C#",
+        "name": "csharp"
+      },
+      {
+        "title": "Rust",
+        "name": "rust"
+      },
+      {
+        "title": ".NET",
+        "name": "dotnet"
+      },
+      {
+        "title": "Ruby",
+        "name": "ruby"
+      },
+      {
+        "title": "Rails",
+        "name": "rails"
+      }
+    ]
+  },
+  {
+    "category": "Tools",
+    "icons": [
+      {
+        "title": "ChatGPT",
+        "name": "chatgpt"
+      },
+      {
+        "title": "Claude",
+        "name": "claude"
+      },
+      {
+        "title": "Microsoft Office",
+        "name": "microsoftoffice"
+      },
+      {
+        "title": "Adobe Premiere",
+        "name": "premiere"
+      },
+      {
+        "title": "Final Cut Pro",
+        "name": "finalcut"
+      },
+      {
+        "title": "DaVinci Resolve",
+        "name": "davinci"
+      },
+      {
+        "title": "iMovie",
+        "name": "imovie"
+      }
+    ]
+  }
+]

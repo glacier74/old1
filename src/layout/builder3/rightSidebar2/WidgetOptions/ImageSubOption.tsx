@@ -26,7 +26,7 @@ export const ImageSubOption: FC<ImageSubOptionProps> = ({ title, path }) => {
         <div className="flex items-center gap-4">
           {value && (
             <Image
-              className="w-[48px] h-[48px] object-contain"
+              className="w-[48px] h-[48px] object-contain rounded-md"
               src={value}
               alt=""
               width={96}

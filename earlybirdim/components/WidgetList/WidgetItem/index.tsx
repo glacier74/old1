@@ -17,6 +17,7 @@ import { GroupTitleWidget } from './GroupTitleWidget'
 import MapWidget from './MapWidget'
 import MediaWidget from './MediaWidget'
 import PaymentWidget from './PaymentWidget'
+import SkillsWidget from './SkillsWidget'
 import SpotifyAlbumWidget from './SpotifyAlbumWidget'
 import SpotifyArtistWidget from './SpotifyArtistWidget'
 import SpotifyPlaylistWidget from './SpotifyPlaylistWidget'
@@ -151,6 +152,9 @@ const WidgetItem: FC<WidgetItemProps> = ({
 
       case 'email_capture':
         return new EmailCaptureWidget(config).getComponent()
+
+      case 'skills':
+        return new SkillsWidget(config).getComponent()
 
       default:
         return new WebsiteWidget(config).getComponent()

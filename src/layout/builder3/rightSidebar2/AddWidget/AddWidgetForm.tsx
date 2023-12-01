@@ -9,18 +9,24 @@ interface AddWidgetFormProps extends Omit<CustomFormProps, 'request'> {
 }
 
 export const AddWidgetForm: FC<AddWidgetFormProps> = ({
+  form,
+  initialValues,
   requiredNames = [],
   children,
+  onValuesChange,
   onFinish
 }) => {
   const [isSubmitDisabled, setSubmitDisabled] = useState(true)
 
-  function handleValuesChange(_changed: any, allValues: AnyMap) {
+  function handleValuesChange(changed: any, allValues: AnyMap) {
+    onValuesChange?.(changed, allValues)
     setSubmitDisabled(requiredNames.some(n => isEmpty(allValues[n])))
   }
 
   return (
     <Form.Custom
+      form={form}
+      initialValues={initialValues}
       submitText="Add Widget"
       submitOptions={{
         type: 'success',

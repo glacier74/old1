@@ -2,6 +2,8 @@ import { FC, useMemo } from 'react'
 
 import { MAP_MEDIA_SIZE_OPTIONS, WIDGET_SIZE_OPTIONS } from '~/layout/builder3/constants'
 import { useOptions } from '~/layout/builder3/context'
+import { RatingSubOption } from '~/layout/builder3/rightSidebar2/WidgetOptions/RatingSubOption'
+import { SkillsIconSubOption } from '~/layout/builder3/rightSidebar2/WidgetOptions/SkillsIconSubOption'
 
 import { EmailCaptureOption } from '../../rightSidebar/EmailCaptureOption'
 import { PaymentOption } from '../../rightSidebar/PaymentOption'
@@ -160,6 +162,19 @@ const EmailCaptureWidgetOption: FC<Pick<WidgetItemOptionProps, 'parentName' | 'i
   )
 }
 
+const SkillsItemOption: FC<Pick<WidgetItemOptionProps, 'parentName' | 'index'>> = ({
+  parentName,
+  index
+}) => {
+  return (
+    <>
+      <TextSubOption title="Name" path={[parentName, index, 'data.title'].join('.')} />
+      <SkillsIconSubOption title="Icon" path={[parentName, index, 'data.icon'].join('.')} />
+      <RatingSubOption title="Rating" path={[parentName, index, 'data.rating'].join('.')} />
+    </>
+  )
+}
+
 export const WidgetItemOption: FC<WidgetItemOptionProps> = ({ parentName, index, provider }) => {
   const children = useMemo(() => {
     switch (provider) {
@@ -178,6 +193,9 @@ export const WidgetItemOption: FC<WidgetItemOptionProps> = ({ parentName, index,
       case 'image':
       case 'video':
         return <ImageWidgetOption parentName={parentName} index={index} />
+
+      case 'skills':
+        return <SkillsItemOption parentName={parentName} index={index} />
 
       default:
         return <WebsiteWidgetOption parentName={parentName} index={index} provider={provider} />

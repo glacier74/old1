@@ -172,11 +172,7 @@ const SocialItem: FC<SocialItemProps> = ({ item, onClick }) => {
   )
 }
 
-export const SocialList: FC<Omit<AddLinkProps, 'onCreate'>> = ({
-  onGoBack,
-  onGoNext,
-  ...restProps
-}) => {
+export const SocialList: FC<AddLinkProps> = ({ onGoBack, onGoNext, onCreate, ...restProps }) => {
   return (
     <OptionsContainer title="Add a social profile" onGoBack={onGoBack} {...restProps}>
       <ul className="grid grid-cols-3 px-2">

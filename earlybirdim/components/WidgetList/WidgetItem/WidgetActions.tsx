@@ -53,6 +53,22 @@ const ALL_SIZE_ACTIONS: Array<WidgetActionItemDivide | WidgetActionItemButton> =
   }
 ]
 
+const SKILLS_ACTIONS: Array<WidgetActionItemDivide | WidgetActionItemButton> = [
+  {
+    type: 'divide'
+  },
+  {
+    name: '1x1',
+    label: '1x1',
+    icon: IconSize1x1
+  },
+  {
+    name: '2x0.5',
+    label: '2x0.5',
+    icon: IconSize2x05
+  }
+]
+
 const MAP_IMAGE_ACTIONS = ALL_SIZE_ACTIONS.filter(
   a => (a as WidgetActionItemButton).name != '2x0.5'
 )
@@ -95,6 +111,9 @@ export const WidgetActions: FC<WidgetActionsProps> = ({ className, config, ...re
       case 'payment':
       case 'email_capture':
         return [...WIDGET_ACTIONS, ...MAP_IMAGE_ACTIONS]
+
+      case 'skills':
+        return [...WIDGET_ACTIONS, ...SKILLS_ACTIONS]
 
       default:
         return [...WIDGET_ACTIONS, ...ALL_SIZE_ACTIONS]

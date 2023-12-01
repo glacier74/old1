@@ -25,7 +25,7 @@ export const Preview: FC = () => {
   const { state, dispatch } = useBuilderContext()
   const product = useProduct()
 
-  const [value, setValue] = useLocalStorage('jinglebio-tour-v1')
+  const [tourv1, setTourv1] = useLocalStorage('jinglebio-tour-v1')
 
   const [alertModalVisible, openAlertModal] = useVisible()
   const queue = useMemo(() => new Queue(), [])
@@ -71,7 +71,7 @@ export const Preview: FC = () => {
   }
 
   function handleAddWidget() {
-    setValue(true)
+    setTourv1(true)
     dispatch({
       type: 'updateState',
       payload: {
@@ -201,7 +201,7 @@ export const Preview: FC = () => {
               </button>
             </Tooltip>
           </div>
-          {!value && (
+          {!tourv1 && (
             <div className="fixed inset-0 pointer-events-none bg-black/50 z-10">
               <div className="fixed bottom-11 right-20 animate-bounce-x">
                 <div className="flex items-center gap-2 text-white">

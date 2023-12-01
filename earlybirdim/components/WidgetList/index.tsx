@@ -180,7 +180,7 @@ export const WidgetList: FC<WidgetGridProps> = ({
         >
           <SortableContext items={list} strategy={() => null}>
             <Flipper
-              className="widget-grid grid grid-cols-[repeat(auto-fill,var(--widget-size))] grid-rows-[repeat(auto-fill,var(--widget-size),min-content)] justify-center gap-[var(--widget-gap-size)] overflow-x-hidden"
+              className="widget-grid grid grid-cols-[repeat(auto-fill,var(--widget-size))] grid-rows-[repeat(auto-fill,var(--widget-size),min-content)] justify-center gap-[var(--widget-gap-size)] pb-12 -mb-12 overflow-x-hidden"
               flipKey={flipKey}
               staggerConfig={{
                 default: {
