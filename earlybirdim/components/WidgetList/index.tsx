@@ -12,7 +12,8 @@ import { UniqueIdentifier } from '@dnd-kit/core/dist/types/other'
 import { SortableContext, arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
 import { ImageSwiper } from '@earlybirdim/blocks'
 import { useGlobalContext } from '@earlybirdim/components'
-import { CSSProperties, FC, useCallback, useEffect, useRef, useState } from 'react'
+import { CSSProperties, FC, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { Flipper } from 'react-flip-toolkit'
 import { useFrame } from 'react-frame-component'
 
 import { useBuilderContext } from '~/layout/builder3/context'
@@ -49,6 +50,8 @@ export const WidgetList: FC<WidgetGridProps> = ({
     })
   )
 
+  const flipKey = useMemo(() => list.map(a => [a.id, a.size].join('')).join(''), [list])
+
   function handleLayout() {
     if (!gridRef.current) {
       return
@@ -77,6 +80,7 @@ export const WidgetList: FC<WidgetGridProps> = ({
   }
 
   function handleDragStart({ active }: DragEndEvent) {
+    console.log('handleDragStart true', activeId)
     setActiveId(active.id)
   }
 
@@ -102,6 +106,7 @@ export const WidgetList: FC<WidgetGridProps> = ({
   )
 
   function handleDragEnd() {
+    console.log('handleDragEnd false', activeId)
     setActiveId(null)
   }
 
@@ -164,34 +169,47 @@ export const WidgetList: FC<WidgetGridProps> = ({
           `
         }}
       />
-      <div
-        id="widget-grid"
-        className="widget-grid grid grid-cols-[repeat(auto-fill,var(--widget-size))] grid-rows-[repeat(auto-fill,var(--widget-size),min-content)] justify-center gap-[var(--widget-gap-size)]"
-      >
-        {isPreview ? (
-          <DndContext
-            sensors={sensors}
-            autoScroll={true}
-            onDragStart={handleDragStart}
-            onDragOver={handleDragOver}
-            onDragEnd={handleDragEnd}
-          >
-            <SortableContext items={list} strategy={() => null}>
-              {list.map((row, order) => (
+
+      {isPreview ? (
+        <DndContext
+          sensors={sensors}
+          autoScroll={true}
+          onDragStart={handleDragStart}
+          onDragOver={handleDragOver}
+          onDragEnd={handleDragEnd}
+        >
+          <SortableContext items={list} strategy={() => null}>
+            <Flipper
+              className="widget-grid grid grid-cols-[repeat(auto-fill,var(--widget-size))] grid-rows-[repeat(auto-fill,var(--widget-size),min-content)] justify-center gap-[var(--widget-gap-size)] overflow-x-hidden"
+              flipKey={flipKey}
+              staggerConfig={{
+                default: {
+                  speed: 0.1
+                }
+              }}
+            >
+              {list.map(row => (
                 <WidgetItem key={row.id} activeId={activeId} {...row} />
               ))}
-            </SortableContext>
+            </Flipper>
+          </SortableContext>
 
-            <DragOverlay>
-              <WidgetActiveItem key={undefined} activeId={activeId} list={list} />
-            </DragOverlay>
-          </DndContext>
-        ) : (
-          list.map(row => <WidgetItem key={row.id} activeId={activeId} {...row} />)
-        )}
+          <DragOverlay>
+            <WidgetActiveItem activeId={activeId} list={list} isDragOverlay={true} />
+          </DragOverlay>
+        </DndContext>
+      ) : (
+        <div
+          id="widget-grid"
+          className="widget-grid grid grid-cols-[repeat(auto-fill,var(--widget-size))] grid-rows-[repeat(auto-fill,var(--widget-size),min-content)] justify-center gap-[var(--widget-gap-size)]"
+        >
+          {list.map(row => (
+            <WidgetItem key={row.id} activeId={activeId} {...row} />
+          ))}
 
-        <ImageSwiper selector=".widget-image:not(.widget-image-link) img" />
-      </div>
+          <ImageSwiper selector=".widget-image:not(.widget-image-link) img" />
+        </div>
+      )}
     </div>
   )
 }

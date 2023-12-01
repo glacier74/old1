@@ -1,11 +1,11 @@
 import { UniqueIdentifier } from '@dnd-kit/core/dist/types/other'
 import { useSortable } from '@dnd-kit/sortable'
 import { useGlobalContext } from '@earlybirdim/components'
-import { WidgetActions } from '@earlybirdim/components/WidgetList/WidgetItem/WidgetActions'
 import { pickObject } from '@heyooo-inc/utils'
+import { isEmpty } from '@nily/utils'
 import clsx from 'clsx'
-import { motion } from 'framer-motion'
 import { FC, useMemo, useState } from 'react'
+import { Flipped, spring } from 'react-flip-toolkit'
 
 import { WidgetConfig, WidgetGridData, WidgetType } from '../WidgetProps'
 import { sizeClassNames } from '../constants'
@@ -23,18 +23,21 @@ import SpotifyPlaylistWidget from './SpotifyPlaylistWidget'
 import SpotifyTrackWidget from './SpotifyTrackWidget'
 import TwitterWidget from './TwitterWidget'
 import WebsiteWidget from './WebsiteWidget'
+import { WidgetActions } from './WidgetActions'
 
 interface WidgetActiveItemProps {
   activeId?: UniqueIdentifier | null
   list: WidgetGridData[]
+  isDragOverlay?: boolean
 }
 
 interface WidgetItemProps extends WidgetGridData {
   activeId?: UniqueIdentifier | null
   allowActions?: boolean
+  isDragOverlay?: boolean
 }
 
-export const WidgetActiveItem: FC<WidgetActiveItemProps> = ({ activeId, list }) => {
+export const WidgetActiveItem: FC<WidgetActiveItemProps> = ({ activeId, list, isDragOverlay }) => {
   const config = useMemo(() => {
     if (activeId && list) {
       return list.find(w => w.id === activeId)
@@ -45,7 +48,7 @@ export const WidgetActiveItem: FC<WidgetActiveItemProps> = ({ activeId, list }) 
     return null
   }
 
-  return <WidgetItem allowActions={false} {...config} />
+  return <WidgetItem allowActions={false} isDragOverlay={isDragOverlay} {...config} />
 }
 
 const WidgetItem: FC<WidgetItemProps> = ({
@@ -56,7 +59,8 @@ const WidgetItem: FC<WidgetItemProps> = ({
   data = {},
   overrides,
   activeId,
-  allowActions = true
+  allowActions = true,
+  isDragOverlay = false
 }) => {
   const { isPreview } = useGlobalContext()
   const [isHovered, setHovered] = useState(false)
@@ -85,20 +89,24 @@ const WidgetItem: FC<WidgetItemProps> = ({
   }, [customURL, data, id, overrides, size])
 
   const { listeners, setNodeRef, transform, transition } = useSortable({
-    id: config.id
+    id: config.id,
+    transition: {
+      easing: 'ease-in-out',
+      duration: 100
+    }
   })
 
   const isActive = useMemo(() => config.id === activeId, [activeId, config.id])
 
   const style = useMemo(
     () => ({
-      transform: transform ? `translate(${transform.x}px, ${transform.y}px)` : 'none',
+      transform: transform ? `translate(${transform.x}px, ${transform.y}px)` : undefined,
       transition
     }),
     [transform, transition]
   )
 
-  const children = useMemo(() => {
+  const WidgetComponent = useMemo(() => {
     switch (customURL.provider) {
       case 'behance':
       case 'dribbble':
@@ -150,44 +158,82 @@ const WidgetItem: FC<WidgetItemProps> = ({
   }, [config, customURL.provider])
 
   function handleMouseEnter() {
-    if (isPreview && !isActive && allowActions) {
+    if (isPreview && !isActive && allowActions && !isDragOverlay) {
       setHovered(true)
     }
   }
 
   function handleMouseLeave() {
-    setHovered(false)
+    if (!isDragOverlay) {
+      setHovered(false)
+    }
   }
 
-  return (
-    <motion.div
-      transition={{
-        type: 'spring',
-        duration: 0.3
-      }}
-      className={clsx(`widget widget-${size.replace(/\./g, '_')} ${sizeClassNames[size]}`, {
-        'group/widget relative': isPreview,
-        'widget-active': isActive
-      })}
-      data-id={config.id}
-      style={style}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className="w-full h-full" ref={setNodeRef} {...listeners}>
-        {children}
-      </div>
+  const children = useMemo(
+    () => (
+      <div
+        className={clsx(`widget widget-${size.replace(/\./g, '_')} ${sizeClassNames[size]}`, {
+          'group/widget relative': isPreview,
+          'widget-active': isActive,
+          'cursor-grab': isDragOverlay
+        })}
+        data-id={config.id}
+        style={style}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="w-full h-full" ref={setNodeRef} {...listeners}>
+          {WidgetComponent}
+        </div>
 
-      {isHovered && (
-        <WidgetActions
-          className={clsx({
-            '!justify-start left-4': config.type === 'group_title'
-          })}
-          config={config}
-        />
-      )}
-    </motion.div>
+        {isHovered && (
+          <WidgetActions
+            className={clsx({
+              '!justify-start left-4': config.type === 'group_title'
+            })}
+            config={config}
+          />
+        )}
+      </div>
+    ),
+    [WidgetComponent, config, isActive, isHovered, isPreview, listeners, setNodeRef, size, style]
   )
+
+  function handleAppear(el: HTMLElement) {
+    spring({
+      onUpdate(val: any) {
+        el.style.opacity = val
+        el.style.transform = `scale(${val})`
+        el.style.transformOrigin = 'center'
+      }
+    })
+  }
+
+  function handleExit(el: HTMLElement, _index: number, removeElement: () => void) {
+    spring({
+      onUpdate(val: any) {
+        el.style.opacity = String(1 - val)
+        el.style.transform = `scale(${1 - val})`
+        el.style.transformOrigin = 'center'
+      },
+      onComplete: removeElement
+    })
+  }
+
+  if (isPreview && !isDragOverlay) {
+    return (
+      <Flipped
+        flipId={config.id}
+        shouldFlip={() => isEmpty(activeId)}
+        onAppear={handleAppear}
+        onExit={handleExit}
+      >
+        {children}
+      </Flipped>
+    )
+  }
+
+  return children
 }
 
 export default WidgetItem
