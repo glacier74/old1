@@ -27,15 +27,6 @@ export const RightSidebar2: FC = () => {
     }
   }, [state.selectedSection])
 
-  function handleClose() {
-    dispatch({
-      type: 'updateState',
-      payload: {
-        selectedSection: undefined
-      }
-    })
-  }
-
   return (
     <Transition
       className="fixed top-[57px] bottom-0 left-0 right-0 z-20"
@@ -49,7 +40,6 @@ export const RightSidebar2: FC = () => {
         leave="transition-opacity ease-linear duration-150"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
-        onClick={handleClose}
       />
 
       <Transition.Child
