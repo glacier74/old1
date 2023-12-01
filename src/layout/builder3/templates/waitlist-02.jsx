@@ -1,4 +1,4 @@
-import { Form, Icon } from '@earlybirdim/components'
+import { Form, Icon, Image } from '@earlybirdim/components'
 import React from 'react'
 
 export const schemas = [
@@ -90,7 +90,9 @@ export const schemas = [
 export function render({ options: { product_info, waitlist } }) {
   return (
     <React.Fragment>
-      <body className="earlybird-KYAm0V bg-white">
+      <style dangerouslySetInnerHTML={{ __html: `.earlybird-recaptcha{text-align:center}` }} />
+
+      <div className="earlybird-KYAm0V bg-white">
         <div className="earlybird-zwfMaa min-h-screen flex flex-col items-center justify-center px-4">
           <header
             id="product_info"
@@ -142,7 +144,7 @@ export function render({ options: { product_info, waitlist } }) {
             </div>
           </main>
         </div>
-      </body>
+      </div>
     </React.Fragment>
   )
 }
