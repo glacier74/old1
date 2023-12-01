@@ -11,67 +11,59 @@ export const HomeFeature: FC = () => {
 
   return (
     <>
-      <section className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2">
-          <div className="sm:px-16 px-8 pt-8 flex flex-col justify-center">
-            <h3 className="text-2xl md:text-4xl font-bold text-slate-900">
-              {t('feature.headline1')}
-            </h3>
-            <div className="mt-5 mb-7 max-w-xl text-lg md:text-xl text-slate-500">
-              {t('feature.subHeadline1')}
-            </div>
+      <section className="bg-stone-100 py-24">
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="max-w-3xl mb-12">
+              <p className="text-5xl font-bold mt-4">{t('feature.title')}</p>
+              <p className="text-lg text-gray-600 mt-4">{t('feature.desc')}</p>
           </div>
-          <div className="py-0 md:py-16">
-            <Image
-              src={FeatureBuildImage}
-              alt="Create your own minimum-viable-product landing page"
-              className="w-full object-cover rounded-md shadow-lg"
-              quality={100}
-              width={984}
-            />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-white rounded-lg">
+                  <div className="mb-1">
+                  <Image
+                    src={FeatureBuildImage}
+                    alt="Create your own minimum-viable-product landing page"
+                    className="w-full object-cover rounded-md"
+                    quality={100}
+                    width={400}
+                  />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold mb-2">{t('feature.headline1')}</h3>
+                    <p className="text-gray-600">{t('feature.subHeadline1')}</p>
+                  </div>
+              </div>
+              <div className="bg-white rounded-lg">
+                  <div className="mb-1">
+                    <Image
+                      src={FeaturePitchImage}
+                      alt="Channel your idea into a convincing pitch deck for the masses"
+                      className="w-full object-cover rounded-md"
+                      quality={100}
+                      width={984}
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold mb-2">{t('feature.headline2')}</h3>
+                    <p className="text-gray-600">{t('feature.subHeadline2')}</p>
+                  </div>
+              </div>
+              <div className="bg-white rounded-lg">
+                  <div className="mb-1">
+                  <Image
+                    src={FeatureValidateImage}
+                    alt="Start engaging with potential buyers and communities"
+                    className="w-full object-cover rounded-md"
+                    quality={100}
+                    width={984}
+                  />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold mb-2">{t('feature.headline3')}</h3>
+                    <p className="text-gray-600">{t('feature.subHeadline3')}</p>
+                  </div>
+              </div>
           </div>
-        </div>
-      </section>
-
-      <section className="max-w-7xl mx-auto grid md:grid-cols-2">
-        <div className="flex justify-end order-last md:order-first">
-          <div className="py-0 md:py-16">
-            <Image
-              src={FeaturePitchImage}
-              alt="Channel your idea into a convincing pitch deck for the masses"
-              className="w-full object-cover rounded-md shadow-lg"
-              quality={100}
-              width={984}
-            />
-          </div>
-        </div>
-        <div className="flex items-center sm:px-16 px-8 md:pr-32 pt-16 order-first md:order-last">
-          <div className="max-w-xl mx-auto">
-            <div className="text-2xl md:text-4xl font-bold">{t('feature.headline2')}</div>
-            <div className="mt-5 mb-7 w-full text-lg md:text-xl leading-tight text-slate-500">
-              {t('feature.subHeadline2')}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="max-w-7xl mx-auto grid md:grid-cols-2">
-        <div className="flex items-center justify-end sm:pl-16 sm:pr-24 px-8 pt-16 pb-8">
-          <div className="max-w-xl mx-auto">
-            <div className="text-2xl md:text-4xl font-bold ">{t('feature.headline3')}</div>
-            <div className="mt-5 w-full text-lg md:text-xl leading-tight text-slate-500">
-              {t('feature.subHeadline3')}
-            </div>
-          </div>
-        </div>
-        <div className="py-0 md:py-16">
-          <Image
-            src={FeatureValidateImage}
-            alt="Start engaging with potential buyers and communities"
-            className="w-full object-cover rounded-md shadow-lg"
-            quality={100}
-            width={984}
-          />
         </div>
       </section>
     </>

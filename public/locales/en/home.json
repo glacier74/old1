@@ -28,6 +28,8 @@
     "a4": "Read our story 👉 <a>how we built a side project in 16 hours with EarlyBird</a>"
   },
   "feature": {
+    "title":"How EarlyBird works",
+    "desc": "A brief demonstration of how most people would use EarlyBird.",
     "headline1": "Build a landing page",
     "subHeadline1": "Easily build a simple landing page for your idea in minutes from a template. Seek no help from a designer or developer.",
     "headline2": "Market your idea",
@@ -40,7 +42,7 @@
     "subHeadline": "They even put in extra effort to express how much they adore crafting their landing pages on EarlyBird."
   },
   "letter": {
-    "headline": "Founder letter"
+    "headline": "Our Mission"
   },
   "bottom": {
     "headline": "The place for early stage entrepreneurs to bootstrap",
