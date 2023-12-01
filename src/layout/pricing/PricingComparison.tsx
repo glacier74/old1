@@ -284,7 +284,7 @@ export const PricingComparison: FC<{
                   scope="row"
                 >
                   <div>Pricing</div>
-                  <div className="mt-4 relative self-center bg-slate-200 rounded-full p-0.5 flex">
+                  <div className="mt-4 relative self-center bg-slate-200 rounded-full p-1 flex">
                     <button
                       type="button"
                       className={clsx(

@@ -71,7 +71,7 @@ export const PricingPlans: FC<{
     <section>
       <div className="max-w-7xl mx-auto px-4 mt-8">
         <div className="sm:flex sm:flex-col sm:align-center">
-          <div className="relative self-center bg-slate-200 rounded-full p-0.5 flex">
+          <div className="relative self-center bg-slate-200 rounded-full p-1 flex">
             <button
               type="button"
               className={clsx(
@@ -104,7 +104,7 @@ export const PricingPlans: FC<{
                 key={tier.name}
                 className={clsx(
                   'border border-slate-200 rounded-lg shadow-sm divide-y divide-slate-200',
-                  { 'bgSuperior border-cyan-400': tier.name === 'Superior' }
+                  { '!border-2 !border-emerald-500': tier.name === 'Superior' }
                 )}
               >
                 <div className="px-8 py-16">
