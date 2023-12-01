@@ -155,7 +155,15 @@ const SocialItem: FC<SocialItemProps> = ({ name, icon: Icon, onChange }) => {
   const social = SOCIAL_ITEMS.find(s => s.name === name)!
 
   function handleChange(value: string) {
-    const url = isValid(value) ? social.url.replace('{username}', value.trim()) : undefined
+    let url: string | undefined
+
+    if (isValid(value)) {
+      if (/^https?:\/\//i.test(value)) {
+        url = value.trim()
+      } else {
+        url = social.url.replace('{username}', value.trim())
+      }
+    }
 
     onChange(name, url)
   }
