@@ -3,7 +3,7 @@ import { isValid } from '@nily/utils'
 import { IconChecks, IconChevronLeft, IconCode } from '@tabler/icons'
 import dayjs from 'dayjs'
 import Link from 'next/link'
-import { FC, useCallback, useMemo } from 'react'
+import { FC, useMemo } from 'react'
 
 import { IconAI, IconSidebar, IconSidebarOpen } from '~/components'
 import { PLAN_LEVELS } from '~/constants'
@@ -15,7 +15,6 @@ import { useStore } from '~/store'
 import { isResponseError, useRequest, useVisible } from '~/utils'
 
 import { useBuilderContext } from '../context'
-import { UpgradeModal } from '../navbar/UpgradeModal'
 import { AlertModal } from '../preview/AlertModal'
 
 export const Navbar: FC = () => {
@@ -33,7 +32,6 @@ export const Navbar: FC = () => {
 
   const [shareModalVisible, openShareModal, closeShareModal] = useVisible()
   const [alertModalVisible, openAlertModal] = useVisible()
-  const [upgradeModalVisible, openUpgradeModal, closeUpgradeModal] = useVisible()
 
   const { loading, request } = useRequest(async () => {
     try {
@@ -81,19 +79,6 @@ export const Navbar: FC = () => {
       }
     })
   }
-
-  const handleButtonClick = useCallback(() => {
-    if (!product.subscription?.isActive) {
-      return openUpgradeModal()
-    }
-
-    request()
-  }, [product.subscription?.isActive, request])
-
-  const handlePublishCallback = useCallback(() => {
-    closeUpgradeModal()
-    request()
-  }, [request])
 
   return (
     <>
@@ -172,7 +157,7 @@ export const Navbar: FC = () => {
               className="!py-1.5 !bg-[#10b981]"
               loading={loading}
               disabled={!siteSettings.canPublish || state.isSyncing}
-              onClick={handleButtonClick}
+              onClick={request}
             >
               Publish
             </Button>
@@ -210,11 +195,6 @@ export const Navbar: FC = () => {
 
       <ShareModal visible={shareModalVisible} onClose={closeShareModal} />
       <AlertModal visible={alertModalVisible} />
-      <UpgradeModal
-        visible={upgradeModalVisible}
-        onPublish={handlePublishCallback}
-        onClose={closeUpgradeModal}
-      />
     </>
   )
 }
