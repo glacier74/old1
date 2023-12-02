@@ -10,6 +10,6 @@
   "accessSite": "Access site",
   "backTo": "Back to {{name}}",
   "backToHomepage": "Back to homepage",
-  "pageUnpublished": "This page hasn't been published yet",
-  "publishTip": "If you are the maker, make your page live by clicking \"Publish\" in the page builder interface."
+  "pageUnpublished": "Unpublished Page",
+  "publishTip": "If you are the maker, make your page live by clicking \"Publish\" button in the page builder interface."
 }

@@ -15,10 +15,10 @@ export const PublicSiteUnpublished = (): JSX.Element => {
       <section className="w-screen h-screen flex flex-col justify-center">
         <div className="relative text-slate-900 max-w-7xl mx-auto px-8 md:px-12 z-10">
           <div className="text-center">
-            <h1 className="text-4xl leading-tight md:text-6xl font-extrabold md:leading-none">
+            <h1 className="text-5xl tracking-tight max-w-3xl font-semibold mb-4 mt-10">
               {t('pageUnpublished')}
             </h1>
-            <div className="max-w-2xl mx-auto text-slate-700 text-lg md:text-xl mt-8 font-medium">
+            <div className="max-w-2xl mx-auto ml-4 text-gray-500 text-xl">
               {t('publishTip')}
             </div>
           </div>
