@@ -1,13 +1,14 @@
 import { Checkbox, Form, Input } from '@heyforms/ui'
 import { Trans, useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { LoginLayout, SocialLogin } from '~/layout'
-import { AuthService } from '~/service'
-import { useStore } from '~/store'
-import { isResponseError, withTranslations } from '~/utils'
 import { useEffect } from 'react'
 
-const Login = (): JSX.Element => {
+import { JingleBioTip, LoginLayout, SocialLogin } from '~/layout'
+import { AuthService } from '~/service'
+import { useStore } from '~/store'
+import { getRef, isResponseError, withTranslations } from '~/utils'
+
+const Login = ({ referer }: { referer: string }): JSX.Element => {
   const { t } = useTranslation('dashboard')
   const router = useRouter()
   const { setEmail } = useStore()
@@ -37,19 +38,27 @@ const Login = (): JSX.Element => {
         title: t('login.title')
       }}
     >
-
       <div>
-        <h1 className="text-center text-3xl font-bold text-slate-900">
-          {t('login.heading')}
-        </h1>
+        <h1 className="text-center text-3xl font-bold text-slate-900">{t('login.heading')}</h1>
         <p className="mt-2 text-center text-sm text-slate-600">
-          <Trans i18nKey="login.description">
-            Log in to your account or <a href="/sign-up" className="font-medium text-emerald-600 hover:text-emerald-700">create an account</a>
-          </Trans>
+          <Trans
+            i18nKey="login.description"
+            t={t}
+            components={{
+              a: (
+                <a
+                  href="/sign-up"
+                  className="font-medium text-emerald-600 hover:text-emerald-700"
+                />
+              )
+            }}
+          />
         </p>
       </div>
 
-      <div className="mt-8 mx-5 md:mx-0">
+      <JingleBioTip referer={referer} />
+
+      <div className="mt-8 mx-5 md:mx-0 pb-8">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <div>
             <p className="text-sm font-medium text-slate-700"> {t('login.signInWith')}</p>
@@ -113,11 +122,15 @@ const Login = (): JSX.Element => {
   )
 }
 
-export const getServerSideProps = withTranslations(async context => {
-  return {
-    props: {}
-  }
-},
-['common', 'dashboard'])
+export const getServerSideProps = withTranslations(
+  async ({ req, query }) => {
+    return {
+      props: {
+        referer: getRef(req.cookies) || query.ref || null
+      }
+    }
+  },
+  ['common', 'dashboard']
+)
 
 export default Login

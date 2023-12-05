@@ -1,13 +1,14 @@
-import {Form, Input} from '@heyforms/ui'
-import {Trans, useTranslation} from 'next-i18next'
-import {useRouter} from 'next/router'
-import {LoginLayout, SocialLogin} from '~/layout'
-import {AuthService} from '~/service'
-import {useStore} from '~/store'
-import {withTranslations} from '~/utils'
-import {useEffect} from 'react'
+import { Form, Input } from '@heyforms/ui'
+import { Trans, useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
-const SignUp = (): JSX.Element => {
+import { JingleBioTip, LoginLayout, SocialLogin } from '~/layout'
+import { AuthService } from '~/service'
+import { useStore } from '~/store'
+import { getRef, withTranslations } from '~/utils'
+
+const SignUp = ({ referer }: { referer: string }): JSX.Element => {
   const { t } = useTranslation('dashboard')
   const router = useRouter()
   const { setEmail } = useStore()
@@ -30,11 +31,11 @@ const SignUp = (): JSX.Element => {
       }}
     >
       <div className="mt-8 md:mt-0">
-        <h1 className="text-center text-3xl font-bold text-slate-900">
-          {t('signUp.heading')}
-        </h1>
+        <h1 className="text-center text-3xl font-bold text-slate-900">{t('signUp.heading')}</h1>
         <p className="mt-2 text-center text-sm text-slate-600">{t('signUp.description')}</p>
       </div>
+
+      <JingleBioTip referer={referer} />
 
       <div className="mt-8 mx-5 pb-16 md:mx-0">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
@@ -95,9 +96,28 @@ const SignUp = (): JSX.Element => {
 
               <div className="mt-6">
                 <p className="text-sm text-slate-500">
-                  <Trans i18nKey="signUp.agreeWith">
-                    By signing up, you agree to our <a href="https://help.earlybird.im/user/tos.html" className="font-medium text-slate-500 underline hover:text-emerald-700" target="_blank" rel="noreferrer">terms of service</a> and <a href="https://help.earlybird.im/user/privacy.html" className="font-medium text-slate-500 underline hover:text-emerald-700" target="_blank" rel="noreferrer">privacy policy</a>.
-                  </Trans>
+                  <Trans
+                    i18nKey="signUp.agreeWith"
+                    t={t}
+                    components={{
+                      a1: (
+                        <a
+                          href="https://help.earlybird.im/user/tos.html"
+                          className="font-medium text-slate-500 underline hover:text-emerald-700"
+                          target="_blank"
+                          rel="noreferrer"
+                        />
+                      ),
+                      a2: (
+                        <a
+                          href="https://help.earlybird.im/user/privacy.html"
+                          className="font-medium text-slate-500 underline hover:text-emerald-700"
+                          target="_blank"
+                          rel="noreferrer"
+                        />
+                      )
+                    }}
+                  />
                 </p>
               </div>
             </Form.Custom>
@@ -108,11 +128,15 @@ const SignUp = (): JSX.Element => {
   )
 }
 
-export const getServerSideProps = withTranslations(async context => {
-  return {
-    props: {}
-  }
-},
-['common', 'dashboard'])
+export const getServerSideProps = withTranslations(
+  async ({ req, query }) => {
+    return {
+      props: {
+        referer: getRef(req.cookies) || query.ref || null
+      }
+    }
+  },
+  ['common', 'dashboard']
+)
 
 export default SignUp
