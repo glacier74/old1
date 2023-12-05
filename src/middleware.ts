@@ -2,7 +2,14 @@ import { isValid } from '@nily/utils'
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
-import { deleteToken, getBrowserId, isLoggedIn, setBrowserId, setRef } from '~/utils/cookie'
+import {
+  deleteToken,
+  getBrowserId,
+  isLoggedIn,
+  setBrowserId,
+  setDomain,
+  setRef
+} from '~/utils/cookie'
 import { isMatchRoutes } from '~/utils/route'
 
 import { PublicApiService } from './service/public-api'
@@ -48,6 +55,13 @@ export async function middleware(req: NextRequest) {
 
   if (isValid(ref)) {
     setRef(res.cookies, ref)
+  }
+
+  // Save domain to cookies
+  const domain = req.nextUrl.searchParams.get('domain')!
+
+  if (isValid(domain)) {
+    setDomain(res.cookies, domain)
   }
 
   // 检查 token 是否有效

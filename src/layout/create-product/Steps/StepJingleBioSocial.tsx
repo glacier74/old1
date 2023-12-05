@@ -20,6 +20,7 @@ import {
   IconTwitter,
   IconYouTube
 } from 'earlybirdim/internalIcons'
+import JsCookie from 'js-cookie'
 import { nanoid } from 'nanoid'
 import { useTranslation } from 'next-i18next'
 import router from 'next/router'
@@ -29,6 +30,7 @@ import templates from '~/layout/builder3/templates'
 import { schemasToOptions } from '~/layout/builder3/utils'
 import { ProductService } from '~/service'
 import { useStore } from '~/store'
+import { getDomain } from '~/utils'
 
 import { StepContainer } from './StepContainer'
 import { StepsStoreContext } from './context'
@@ -224,6 +226,7 @@ export const StepJingleBioSocial = () => {
 
       const productId = await ProductService.create({
         name: state.name,
+        domain: getDomain(JsCookie),
         logo: user.avatar,
         template: 'jingle-bio',
         blocks,
