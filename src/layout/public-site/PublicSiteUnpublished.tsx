@@ -18,9 +18,7 @@ export const PublicSiteUnpublished = (): JSX.Element => {
             <h1 className="text-5xl tracking-tight max-w-3xl font-semibold mb-4 mt-10">
               {t('pageUnpublished')}
             </h1>
-            <div className="max-w-2xl mx-auto ml-4 text-gray-500 text-xl">
-              {t('publishTip')}
-            </div>
+            <div className="max-w-2xl mx-auto ml-4 text-gray-500 text-xl">{t('publishTip')}</div>
           </div>
           <div className="mt-8 pb-8">
             <div className="flex justify-center flex-col md:flex-row items-center space-y-5 space-x-0 md:space-y-0 md:space-x-5">

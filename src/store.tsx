@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useState } from 'react'
 
+import { isMobile } from '~/layout/builder3/utils'
 import { useVisible } from '~/utils'
 
 interface Store {
@@ -63,7 +64,7 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
   const [isDeletionAlertShow, openDeletionAlert, closeDeletionAlert] = useVisible()
   const [isSidebarOpen, openSidebar, closeSidebar] = useVisible()
   const [product, setProduct] = useState<Partial<Product>>()
-  const [isBuilderSidebarOpen, openBuilderSidebar, closeBuilderSidebar] = useVisible(true)
+  const [isBuilderSidebarOpen, openBuilderSidebar, closeBuilderSidebar] = useVisible(!isMobile())
   const [isAIModalOpen, openAIModal, closeAIModal] = useVisible()
   const [isAIModalClosable, setAIModalClosable] = useState(true)
   const [isCodeInjectionModalOpen, openCodeInjectionModal, closeCodeInjectionModal] = useVisible()

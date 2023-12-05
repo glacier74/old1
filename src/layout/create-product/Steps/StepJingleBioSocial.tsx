@@ -249,7 +249,7 @@ export const StepJingleBioSocial = () => {
         {t('createProduct.jbHeading2')}
       </div>
 
-      <div className="space-y-4 mb-8 h-[320px] overflow-y-auto scrollbar">
+      <div className="space-y-4 mb-8 md:h-[320px] md:overflow-y-auto scrollbar">
         {SOCIAL_ITEMS.map(row => (
           <SocialItem name={row.name} icon={row.icon} onChange={handleChange} />
         ))}

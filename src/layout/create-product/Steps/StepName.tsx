@@ -54,7 +54,7 @@ export const StepName = () => {
       isNextButtonLoading={loading}
       onNextButtonClick={handleCreate}
     >
-      <div className="flex items-center mb-2 text-3xl font-semibold text-slate-950">
+      <div className="md:flex md:items-center mb-2 text-3xl font-semibold text-slate-950">
         {t('createProduct.snHeading')}{' '}
         <Input className="create-product-input" value={state.name} onChange={handleChange} />
       </div>

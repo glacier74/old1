@@ -1,12 +1,13 @@
 import { Form, Input } from '@heyforms/ui'
+import { isEmpty } from '@nily/utils'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { AuthService } from '~/service'
-import { withTranslations } from '~/utils'
-import { useStore } from '~/store'
-import { isEmpty } from '@nily/utils'
 import { useEffect } from 'react'
+
 import { LoginLayout } from '~/layout'
+import { AuthService } from '~/service'
+import { useStore } from '~/store'
+import { withTranslations } from '~/utils'
 
 const ConfirmEmail = (): JSX.Element => {
   const { t } = useTranslation('dashboard')
@@ -37,7 +38,8 @@ const ConfirmEmail = (): JSX.Element => {
           {t('confirmEmail.heading')}
         </h1>
         <p className="mt-2 text-center text-sm text-slate-600">
-          {t('resetPassword.description')} <span className="font-medium text-slate-700">{email}</span>
+          {t('resetPassword.description')}{' '}
+          <span className="font-medium text-slate-700">{email}</span>
         </p>
       </div>
 

@@ -22,23 +22,28 @@ export const BillingPlan = () => {
       <div className="text-2xl font-bold">Plan</div>
       <div className="mt-2">
         {subscription ? (
-          <div className="flex">
-            <div className="flex-1 space-y-2">
+          <div className="flex flex-col md:flex-row">
+            <div className="md:flex-1 space-y-2">
               <div className="text-base font-semibold">{subscription.plan.name}</div>
               <div className="text-sm">
                 {currencyFormatter(subscription.price.currency, subscription.price.price)} /{' '}
                 {user.subscription.price.interval}
               </div>
-              <div className="flex items-center gap-2">
-                <Link className="link-button link-button-success" href="/account/plan">
+              <div className="flex flex-col md:flex-row md:items-center gap-2">
+                <Link
+                  className="w-full md:w-auto link-button link-button-success"
+                  href="/account/plan"
+                >
                   View plans
                 </Link>
                 {!subscription.isCancelled && (
-                  <Button onClick={handleCancelSubscription}>Manage subscription</Button>
+                  <Button className="w-full md:w-auto " onClick={handleCancelSubscription}>
+                    Manage subscription
+                  </Button>
                 )}
               </div>
             </div>
-            <div className="flex-1 space-y-1">
+            <div className="md:flex-1 mt-5 md:mt-0 space-y-1">
               <div className="text-base font-semibold">Billing period</div>
               <div className="text-sm">
                 <span>{PLAN_INTERVALS[subscription.price.interval]}</span>

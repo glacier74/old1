@@ -21,7 +21,7 @@ export const StepJingleBioProfile = () => {
 
   return (
     <StepContainer isNextButtonDisabled={isEmpty(state.name)}>
-      <div className="flex items-center mb-2 text-3xl font-semibold text-slate-950">
+      <div className="md:flex md:items-center mb-2 text-3xl font-semibold text-slate-950">
         {t('createProduct.jbHeading')}{' '}
         <Input className="create-product-input" value={state.name} onChange={handleChange} />
       </div>

@@ -20,7 +20,7 @@ export function CreateProductLayout({
 }: CreateProductLayoutProps) {
   return (
     <AuthorizedLayout seo={seo}>
-      <div className="min-h-screen bg-white flex flex-col py-5 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-white flex flex-col py-5 px-5 sm:px-6 lg:px-8">
         <div className="w-full flex items-center justify-between">
           {logoElement ? (
             logoElement
@@ -33,7 +33,7 @@ export function CreateProductLayout({
         </div>
         <div
           className={clsx(
-            'flex-1 flex flex-col justify-center py-5 sm:mx-auto sm:w-full sm:max-w-md',
+            'flex-1 flex flex-col md:justify-center py-5 sm:mx-auto sm:w-full sm:max-w-md',
             className
           )}
         >

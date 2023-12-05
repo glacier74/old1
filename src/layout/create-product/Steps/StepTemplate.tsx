@@ -164,7 +164,7 @@ export const StepTemplate = () => {
               ))}
             </div>
 
-            <div className="mb-8 grid grid-cols-2 gap-5">
+            <div className="mb-8 space-y-5 md:space-y-0 md:grid md:grid-cols-2 md:gap-5">
               {filteredTemplates.map(template => (
                 <TemplateItem
                   key={template.id}

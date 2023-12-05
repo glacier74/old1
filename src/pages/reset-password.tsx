@@ -1,13 +1,13 @@
-import { Form, Input } from "@heyforms/ui";
-import { isEmpty, isValid } from "@nily/utils";
-import { useTranslation } from "next-i18next";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { Form, Input } from '@heyforms/ui'
+import { isEmpty, isValid } from '@nily/utils'
+import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
-import { LoginLayout } from "~/layout";
-import { AuthService } from "~/service";
-import { useStore } from "~/store";
-import { withTranslations } from "~/utils";
+import { LoginLayout } from '~/layout'
+import { AuthService } from '~/service'
+import { useStore } from '~/store'
+import { withTranslations } from '~/utils'
 
 const ResetPassword = (): JSX.Element => {
   const { t } = useTranslation(['dashboard'])

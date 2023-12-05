@@ -223,3 +223,9 @@ export function findSchemaPaths(schemas: any[], schemaType: SchemaTypeEnum, pare
 
   return result
 }
+
+export function isMobile() {
+  return (
+    typeof window !== 'undefined' && /Android|iPad|iPhone|iPod/i.test(window.navigator.userAgent)
+  )
+}

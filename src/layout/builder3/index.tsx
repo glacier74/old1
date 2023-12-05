@@ -41,7 +41,7 @@ export const Builder3 = () => {
     >
       <div className="flex flex-col w-full w-screen h-full h-screen overflow-hidden">
         <Navbar />
-        <div className="builder-main border-t border-slate-200">
+        <div className="builder-main">
           <Preview />
           {product?.isJingleBio ? <RightSidebar2 /> : <RightSidebar />}
         </div>

@@ -43,13 +43,13 @@ export const RightSidebar2: FC = () => {
       />
 
       <Transition.Child
-        className="absolute top-0 bottom-0 right-0 h-full bg-white border-l border-slate-200 w-[360px] shadow-2xl z-30"
-        enter="transition ease-in-out duration-150 transform"
-        enterFrom="translate-x-full"
-        enterTo="translate-x-0"
-        leave="transition ease-in-out duration-150 transform"
-        leaveFrom="translate-x-0"
-        leaveTo="translate-x-full"
+        className="absolute top-0 bottom-0 right-0 h-full bg-white md:border-l md:border-slate-200 w-full md:w-[360px] shadow-2xl z-30"
+        enter="transition ease-in-out duration-300 md:duration-150 transform"
+        enterFrom="translate-y-full md:translate-x-full"
+        enterTo="translate-y-0 md:translate-x-0"
+        leave="transition ease-in-out duration-300 md:duration-150 transform"
+        leaveFrom="translate-y-0 md:translate-x-0"
+        leaveTo="translate-y-full md:translate-x-full"
       >
         {children}
       </Transition.Child>

@@ -79,7 +79,7 @@ export const StepInitial = () => {
       </div>
       <p className="mb-8 text-slate-500 text-xl">{t('createProduct.siDesc')}</p>
       <p className="mb-4 text-slate-800 text-sm">{t('createProduct.siDesc2')}</p>
-      <div className="mb-8 space-y-0 flex items-center gap-10">
+      <div className="mb-8 space-y-6 md:space-y-0 md:flex md:items-center gap-10">
         {RADIO_ITEMS.map(row => (
           <RadioItem
             key={row.value}

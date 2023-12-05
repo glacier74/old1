@@ -2054,6 +2054,10 @@ button.block-header-button {
   }
 }
 
+.modal-mask {
+  @apply bg-opacity-40;
+}
+
 .upgrade-modal {
   .modal-mask {
     @apply hidden pointer-events-none;
@@ -2259,7 +2263,7 @@ button.block-header-button {
 }
 
 .create-product-input {
-  @apply ml-2 p-0 shadow-none rounded-none border-t-0 border-l-0 border-r-0 border-b-[2px] ring-0 border-slate-900;
+  @apply my-4 ml-0 md:my-0 md:ml-2 p-0 shadow-none rounded-none border-t-0 border-l-0 border-r-0 border-b-[2px] ring-0 border-slate-900;
 
   &,
   input {
@@ -2465,11 +2469,11 @@ button.button-success {
 
 .share-modal {
   .modal-mask {
-    @apply bg-transparent;
+    @apply md:bg-transparent z-[999];
   }
 
   .modal-container {
-    @apply pt-[72px] items-start justify-end;
+    @apply md:pt-[72px] md:items-start md:justify-end z-[999];
   }
 
   .modal-content {
@@ -2490,11 +2494,18 @@ button.button-success {
 
 @keyframes bounce-x {
   0%, 100% {
-    transform: translateX(-5%);
+    transform: translateX(-20%);
     animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
   }
+
   50% {
     transform: translateX(0);
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@layer utilities {
+  .animate-bounce-x {
+    animation: bounce-x 1s infinite;
   }
 }

@@ -1,6 +1,7 @@
 import { Button } from '@heyforms/ui'
 import { IComponentProps } from '@heyforms/ui/types/typing'
 import { IconArrowLeft } from '@tabler/icons'
+import clsx from 'clsx'
 import { useTranslation } from 'next-i18next'
 import { FC, useContext, useMemo } from 'react'
 
@@ -13,6 +14,7 @@ interface StepContainerProps extends IComponentProps {
 }
 
 export const StepContainer: FC<StepContainerProps> = ({
+  className,
   children,
   isNextButtonLoading,
   isNextButtonDisabled,
@@ -44,9 +46,12 @@ export const StepContainer: FC<StepContainerProps> = ({
   }
 
   return (
-    <div {...restProps}>
+    <div className={clsx('mt-8 md:mt-0', className)} {...restProps}>
       {step?.isAllowToPrev && (
-        <button className="mb-8 text-gray-500 hover:text-gray-800" onClick={handlePrev}>
+        <button
+          className="mb-8 p-2 md:p-0 -ml-2 md:ml-0 text-gray-500 hover:text-gray-800"
+          onClick={handlePrev}
+        >
           <IconArrowLeft />
         </button>
       )}
@@ -56,7 +61,7 @@ export const StepContainer: FC<StepContainerProps> = ({
       {step?.isNextButtonShow && (
         <Button
           type="success"
-          className="!px-6 !py-1.5 !rounded-full !text-base"
+          className="w-full md:w-auto !px-6 !py-1.5 !rounded-full !text-base"
           loaderClassName="!rounded-full"
           disabled={isNextButtonDisabled}
           loading={isNextButtonLoading}

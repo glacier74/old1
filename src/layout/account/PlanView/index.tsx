@@ -4,7 +4,7 @@ import { PlanHeader } from './PlanHeader'
 
 export const PlanView = () => {
   return (
-    <table className="w-full mt-12 table-fixed">
+    <table className="w-full mt-12 lg:table-fixed">
       <thead>
         <tr>
           <th className="pb-4 px-6 text-sm font-medium text-slate-700 text-left" scope="col">

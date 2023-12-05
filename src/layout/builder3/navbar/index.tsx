@@ -82,34 +82,36 @@ export const Navbar: FC = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between h-[3.5rem] px-4">
+      <div className="relative flex items-center justify-between h-[3.5rem] px-4 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-px after:bg-slate-200 after:z-[998]">
         <div className="flex-1 flex items-center">
           <Link
-            className="inline-flex items-center text-sm -ml-3 pl-1 pr-3 py-1.5 rounded hover:bg-slate-100"
+            className="inline-flex items-center text-sm -ml-3 p-2 md:pl-1 md:pr-3 md:py-1.5 rounded hover:bg-slate-100"
             href={`/product/${product.id}`}
           >
             <IconChevronLeft className="w-5 h-5 text-slate-500" />
-            <span className="ml-1">{product.name}</span>
+            <span className="hidden md:inline ml-1">{product.name}</span>
           </Link>
 
-          <div className="flex items-center text-xs ml-4 text-slate-500">
+          <div className="flex items-center text-xs ml-0 md:ml-4 text-slate-700">
             {state.isSyncing ? (
               <>
                 <Spin className="mr-1 w-4 h-4 text-slate-400" />
-                <span>Saving changes...</span>
+                <span className="hidden md:inline">Saving changes...</span>
               </>
             ) : state.lastSyncedAt > 0 ? (
               <>
                 <IconChecks className="mr-1 w-4 h-4 text-slate-400" />
-                <span>Saved at {dayjs(state.lastSyncedAt).format('h:mm A')}</span>
+                <span className="hidden md:inline">
+                  Saved at {dayjs(state.lastSyncedAt).format('h:mm A')}
+                </span>
               </>
             ) : (
-              <span>Changes will be saved automatically</span>
+              <span className="hidden md:inline">Changes will be saved automatically</span>
             )}
           </div>
         </div>
 
-        <div className="flex-[2_1_0%] flex items-center justify-center">
+        <div className="hidden flex-[2_1_0%] md:flex items-center justify-center">
           <Switch.Group
             className="builder-mode"
             value={state.previewMode}
@@ -148,13 +150,13 @@ export const Navbar: FC = () => {
               </div>
             </Tooltip>
 
-            <Button className="!py-1.5" onClick={openShareModal}>
+            <Button className="!py-1.5 !text-sm" onClick={openShareModal}>
               Share
             </Button>
 
             <Button
               type="success"
-              className="!py-1.5 !bg-[#10b981]"
+              className="!py-1.5 !text-sm !bg-[#10b981]"
               loading={loading}
               disabled={!siteSettings.canPublish || state.isSyncing}
               onClick={request}
