@@ -26,7 +26,7 @@
   "login": {
     "title": "登录 - EarlyBird",
     "heading": "👋 欢迎回来！",
-    "description": "登录到你的帐户或<1>创建一个账号</1>",
+    "description": "登录到你的帐户或<a>创建一个账号</a>",
     "signInWith": "用以下方式登录",
     "email": "电子邮件地址",
     "invalidEmail": "无效的电子邮件地址",
@@ -38,7 +38,8 @@
     "continueWith": "或者继续使用",
     "loginWithGoogle": "Google",
     "loginWithTwitter": "Twitter",
-    "loginWithGithub": "Github"
+    "loginWithGithub": "Github",
+    "jingleBioTip": "Jingle Bio is actually a use case for EarlyBird - our no-code landing page builder."
   },
   "signUp": {
     "title": "创建账号 - EarlyBird",
@@ -48,7 +49,7 @@
     "name": "名字",
     "invalidName": "名字不能为空",
     "invalidPassword": "密码必须至少有8个字符，至少包含1个大写字母，1个小写字母和1个数字。",
-    "agreeWith": "注册即表示你同意我们的<1>服务条款</1>和<3>隐私政策</3>。",
+    "agreeWith": "注册即表示你同意我们的<a1>服务条款</a1>和<a2>隐私政策</a2>。",
     "submit": "开始"
   },
   "forgotPassword": {

@@ -26,8 +26,8 @@
   "login": {
     "title": "Login - EarlyBird",
     "heading": "👋 Welcome back!",
-    "description": "Log in to your account or <1>create an account</1>",
-    "signInWith": "Sign in with",
+    "description": "Log in to your account or <a>create an account</a>",
+    "signInWith": "Log in with",
     "signUpWith": "Sign up with",
     "email": "Email address",
     "invalidEmail": "Invalid email address",
@@ -39,7 +39,8 @@
     "continueWith": "Or continue with",
     "loginWithGoogle": "Google",
     "loginWithTwitter": "Twitter",
-    "loginWithGithub": "Github"
+    "loginWithGithub": "Github",
+    "jingleBioTip": "Jingle Bio is actually a use case for EarlyBird - our no-code landing page builder."
   },
   "signUp": {
     "title": "$t(signUp.heading) - EarlyBird",
@@ -49,7 +50,7 @@
     "signUpWith": "Sign up with",
     "invalidName": "Name must not be empty",
     "invalidPassword": "Password must be at least 8 characters, and at least 1 uppercase, 1 lowercase and 1 number.",
-    "agreeWith": "By signing up, you agree to our <1>terms of service</1> and <3>privacy policy</3>.",
+    "agreeWith": "By signing up, you agree to our <a1>terms of service</a1> and <a2>privacy policy</a2>.",
     "submit": "Get started"
   },
   "forgotPassword": {
@@ -57,7 +58,7 @@
     "heading": "Forgot password?",
     "description": "We'll send you an email with verification code.",
     "continue": "Continue",
-    "back": "Back to sign in"
+    "back": "Back to log in"
   },
   "resetPassword": {
     "title": "$t(resetPassword.heading) - EarlyBird",
