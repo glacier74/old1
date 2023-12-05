@@ -25,6 +25,7 @@
     "@heyforms/ui": "^2023.11.2",
     "@heyooo-inc/utils": "^0.0.10",
     "@nily/utils": "^0.3.6",
+    "@qrcode-js/browser": "^1.2.0",
     "@reactour/tour": "^3.2.1",
     "@tabler/icons": "^1.119.0",
     "@tinaryan/dp": "^0.2.8",

@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 patchedDependencies:
   '@tabler/icons@1.119.0':
     hash: tjmxjsj7pvvhkhqdp6bmei6com
@@ -42,6 +46,9 @@ dependencies:
   '@nily/utils':
     specifier: ^0.3.6
     version: 0.3.6
+  '@qrcode-js/browser':
+    specifier: ^1.2.0
+    version: 1.2.0
   '@reactour/tour':
     specifier: ^3.2.1
     version: 3.5.0(react@18.2.0)
@@ -1062,6 +1069,16 @@ packages:
 
   /@popperjs/core@2.11.8:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
+    dev: false
+
+  /@qrcode-js/browser@1.2.0:
+    resolution: {integrity: sha512-Xea0Rp7UgN9FdocAyY8/0HhBBY7T4F8r/ww8OsoVcC1ftj1XwD9wn5n2yWCwzuYW3rNmBweJGMaYp5hTvwFscQ==}
+    dependencies:
+      '@qrcode-js/core': 1.2.0
+    dev: false
+
+  /@qrcode-js/core@1.2.0:
+    resolution: {integrity: sha512-ebwoLU3DPne43moTpApKxSnbpGa9MBsGiKObhDKSw/7nKOhc5OkfLYQA7o8OBUaiRvls1ejsmQzBYIoMMedLKQ==}
     dev: false
 
   /@reactour/mask@1.1.0(react@18.2.0):
@@ -5964,7 +5981,3 @@ packages:
   /yoga-wasm-web@0.3.0:
     resolution: {integrity: sha512-rD3L4jyMlO1m+RWU60lNwZQK5zmzglCV5fI1gTRikmpv3YzmNIZQbjyfE6cMNb9Xaly/C1SwemYGbsiOekMvnQ==}
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

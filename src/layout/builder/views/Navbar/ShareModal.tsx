@@ -1,22 +1,33 @@
 import { Modal } from '@heyforms/ui'
-import { IconMail } from '@tabler/icons'
+import { IconChevronRight, IconMail, IconX } from '@tabler/icons'
 import { FC, useMemo } from 'react'
 
-import { CopyButton, IconFacebook, IconLinkedin, IconTwitter } from '~/components'
+import { CopyButton, IconFacebook, IconLinkedin, IconTwitter, QRCode } from '~/components'
 import { useProduct } from '~/layout'
 import { urlBuilder, useProductURL } from '~/utils'
+
+const JINGLEBIO_TEXT = `Just crafted my digital hub with @JingleBio! 🎉
+
+It's my personal slice of the web, made in minutes. Can you check it out? Your thoughts mean the world 🌍 to me.
+
+Here's where you can find it: {url}.
+
+Hope to see you there! 😊`
+const EARLYBIRD_TEXT = `Just built a sleek landing page for my new idea with @EarlyBirdIM! 🚀
+
+It's a no-code solution, crafted in no time, perfect for validating ideas early.
+
+Find it here: {url}, and your feedback is invaluable to me.`
 
 export const ShareModal: FC<IModalProps> = ({ visible, onClose }) => {
   const product = useProduct()
 
   const host = useProductURL(product)
   const shareURL = useMemo(() => `https://${host}`, [host])
-  const shareText = useMemo(() => {
-    return `🚀 Just launched ${product.name} landing page with @EarlyBirdIM in 10 minutes!
-
-I'd really appreciate it if you could take a moment to check it out and let me know what you think:
-${shareURL}.`
-  }, [shareURL, product.name])
+  const shareText = useMemo(
+    () => (product.isJingleBio ? JINGLEBIO_TEXT : EARLYBIRD_TEXT).replace('{url}', shareURL),
+    [product.isJingleBio, shareURL]
+  )
 
   function handleEmail() {
     const url = urlBuilder('mailto:', {
@@ -50,42 +61,79 @@ ${shareURL}.`
   return (
     <Modal
       className="share-modal"
-      contentClassName="max-w-md"
+      contentClassName="max-w-md md:max-w-lg"
       visible={visible}
-      showCloseIcon
       onClose={onClose}
     >
       <div className="text-sm text-slate-700 space-y-6">
-        <div>
-          <h1 className="text-lg leading-6 font-medium text-slate-900">Share</h1>
+        <div className="flex items-center justify-between">
+          <h1 className="text-lg leading-6 font-medium text-slate-900">
+            {product.isJingleBio ? 'Share this bio page' : 'Share this page'}
+          </h1>
+
+          <button onClick={onClose}>
+            <IconX className="text-slate-700 hover:text-slate-900" />
+          </button>
         </div>
 
-        <div>
-          <div className="mb-8 grid grid-cols-4 gap-4 justify-items-center">
-            <button onClick={handleEmail} className="bg-emerald-50 p-4 rounded-full">
-              <IconMail className="w-8 h-8 text-emerald-500" />
+        <div className="flex flex-col md:flex-row md:items-center gap-5">
+          <QRCode
+            className="mx-auto w-[180px] h-[180px] border border-slate-200/80 shadow-sm rounded-lg"
+            canvasClassName="w-full h-full rounded-lg"
+            text={shareURL}
+            icon={product.logo}
+          />
+
+          <div className="flex-1 space-y-3">
+            <button
+              className="group w-full flex items-center justify-between text-slate-700 hover:text-slate-900"
+              onClick={handleTwitter}
+            >
+              <div className="flex flex-1 items-center gap-2">
+                <IconTwitter className="border border-slate-200/80 p-1.5 rounded-full w-8 h-8 text-sky-400" />
+                <span>Share on Twitter </span>
+              </div>
+              <IconChevronRight className="w-5 h-5 text-slate-400 transition-colors group-hover:text-slate-900 group-hover:animate-bounce-x" />
             </button>
 
-            <button onClick={handleFacebook} className="bg-blue-50 p-4 rounded-full">
-              <IconFacebook className="w-8 h-8 text-blue-500" />
+            <button
+              className="group w-full flex items-center justify-between text-slate-700 hover:text-slate-900"
+              onClick={handleFacebook}
+            >
+              <div className="flex flex-1 items-center gap-2">
+                <IconFacebook className="border border-slate-200/80 p-1 rounded-full w-8 h-8 text-blue-500" />
+                <span>Share on Facebook </span>
+              </div>
+              <IconChevronRight className="w-5 h-5 text-slate-400 transition-colors group-hover:text-slate-900 group-hover:animate-bounce-x" />
             </button>
 
-            <button onClick={handleTwitter} className="bg-sky-50 p-4 rounded-full">
-              <IconTwitter className="w-8 h-8 text-sky-400" />
+            <button
+              className="group w-full flex items-center justify-between text-slate-700 hover:text-slate-900"
+              onClick={handleLinkedin}
+            >
+              <div className="flex flex-1 items-center gap-2">
+                <IconLinkedin className="border border-slate-200/80 p-1.5 rounded-full w-8 h-8 text-sky-800" />
+                <span>Share on LinkedIn </span>
+              </div>
+              <IconChevronRight className="w-5 h-5 text-slate-400 transition-colors group-hover:text-slate-900 group-hover:animate-bounce-x" />
             </button>
 
-            <button onClick={handleLinkedin} className="bg-sky-100 p-4 rounded-full">
-              <IconLinkedin className="w-8 h-8 text-sky-800" />
+            <button
+              className="group w-full flex items-center justify-between text-slate-700 hover:text-slate-900"
+              onClick={handleEmail}
+            >
+              <div className="flex flex-1 items-center gap-2">
+                <IconMail className="border border-slate-200/80 p-1.5 rounded-full w-8 h-8 text-emerald-500" />
+                <span>Share via Email </span>
+              </div>
+              <IconChevronRight className="w-5 h-5 text-slate-400 transition-colors group-hover:text-slate-900 group-hover:animate-bounce-x" />
             </button>
           </div>
         </div>
 
-        <div>
-          <div className="text-slate-700 font-semibold mb-2">Landing page link</div>
-          <div className="mt-1 flex items-center">
-            <div className="flex-1 p-2 border border-slate-300 rounded">{shareURL}</div>
-            <CopyButton className="ml-2 !px-4 !py-2 !bg-emerald-500 !text-white" text={shareURL} />
-          </div>
+        <div className="flex items-center">
+          <div className="flex-1 p-2 border border-slate-300 rounded">{shareURL}</div>
+          <CopyButton className="ml-2 !px-4 !py-2 !bg-emerald-500 !text-white" text={shareURL} />
         </div>
       </div>
     </Modal>
