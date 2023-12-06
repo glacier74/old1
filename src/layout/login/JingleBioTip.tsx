@@ -15,7 +15,7 @@ export const JingleBioTip: FC<JingleBioTipProps> = ({ referer }) => {
   }
 
   return (
-    <div className="p-4 mt-8 mx-5 md:mx-0 rounded-lg bg-yellow-50 text-sm text-slate-700">
+    <div className="p-4 mt-8 mx-5 md:mx-0 rounded-lg bg-yellow-50 text-sm text-slate-700 text-center">
       {t('login.jingleBioTip')}
     </div>
   )

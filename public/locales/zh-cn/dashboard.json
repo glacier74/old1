@@ -39,7 +39,7 @@
     "loginWithGoogle": "Google",
     "loginWithTwitter": "Twitter",
     "loginWithGithub": "Github",
-    "jingleBioTip": "Jingle Bio is actually a use case for EarlyBird - our no-code landing page builder."
+    "jingleBioTip": "要创建 Jingle Bio 主页，你需要先创建一个 EarlyBird 账号。"
   },
   "signUp": {
     "title": "创建账号 - EarlyBird",
