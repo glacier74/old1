@@ -140,7 +140,7 @@ const InternalForm: FC<FormProps> = ({
         {children}
       </RCForm>
       {type !== 'payment' && (
-        <div className="earlybird-recaptcha mt-2 text-xs text-slate-400">
+        <div className="earlybird-recaptcha mt-2 text-xs text-[10px] text-slate-400">
           This site is protected by reCAPTCHA and the Google{' '}
           <a href="https://policies.google.com/privacy">Privacy Policy</a> and{' '}
           <a href="https://policies.google.com/terms">Terms of Service</a> apply.

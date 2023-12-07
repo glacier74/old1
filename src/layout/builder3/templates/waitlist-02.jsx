@@ -139,8 +139,14 @@ export function render({ options: { product_info, waitlist } }) {
               </div>
             </div>
 
-            <div id="product_info" className="earlybird-dOoqgQ flex justify-center">
-              <Image src={product_info.screenshot} loading="lazy" decoding="async" />
+            <div id="product_info" className="earlybird-dOoqgQ mt-10 flex justify-center">
+              <Image
+                className="w-auto h-auto"
+                src={product_info.screenshot}
+                width={600}
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </main>
         </div>
