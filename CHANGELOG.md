@@ -9,3 +9,10 @@
 * Newly created widget will be placed in the center of the visible area, rather than at the end
 * Add Skills widget
 * Fix template `waitlist-02` render error
+
+## v1.8.4 (2023-12-07)
+
+* Add custom domain param for creating Jingle Bio
+* Add Jingle Bio tip to login and sign up page
+* Fixed some mobile responsiveness issues
+* Refactor share modal
