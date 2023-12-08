@@ -2469,11 +2469,11 @@ button.button-success {
 
 .share-modal {
   .modal-mask {
-    @apply md:bg-transparent z-[999];
+    @apply md:bg-transparent z-[99];
   }
 
   .modal-container {
-    @apply md:pt-[72px] md:items-start md:justify-end z-[999];
+    @apply md:pt-[72px] md:items-start md:justify-end z-[99];
   }
 
   .modal-content {

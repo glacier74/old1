@@ -82,7 +82,7 @@ export const Navbar: FC = () => {
 
   return (
     <>
-      <div className="relative flex items-center justify-between h-[3.5rem] px-4 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-px after:bg-slate-200 after:z-[998]">
+      <div className="relative flex items-center justify-between h-[3.5rem] px-4 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-px after:bg-slate-200 after:z-[98]">
         <div className="flex-1 flex items-center">
           <Link
             className="inline-flex items-center text-sm -ml-3 p-2 md:pl-1 md:pr-3 md:py-1.5 rounded hover:bg-slate-100"

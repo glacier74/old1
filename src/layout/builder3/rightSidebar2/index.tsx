@@ -29,11 +29,11 @@ export const RightSidebar2: FC = () => {
 
   return (
     <Transition
-      className="fixed top-[57px] bottom-0 left-0 right-0 z-20"
+      className="fixed top-[57px] bottom-0 left-0 right-0 z-[98]"
       show={isValid(state.selectedSection)}
     >
       <Transition.Child
-        className="absolute inset-0 z-20"
+        className="absolute inset-0 z-[98]"
         enter="transition-opacity ease-linear duration-150"
         enterFrom="opacity-0"
         enterTo="opacity-100"
@@ -43,13 +43,13 @@ export const RightSidebar2: FC = () => {
       />
 
       <Transition.Child
-        className="absolute top-0 bottom-0 right-0 h-full bg-white md:border-l md:border-slate-200 w-full md:w-[360px] shadow-2xl z-30"
+        className="absolute top-0 bottom-0 right-0 h-full bg-white md:border-l md:border-slate-200 w-full md:w-[360px] shadow-2xl z-[99]"
         enter="transition ease-in-out duration-300 md:duration-150 transform"
-        enterFrom="translate-y-full md:translate-x-full"
+        enterFrom="translate-y-full md:translate-y-0 md:translate-x-full"
         enterTo="translate-y-0 md:translate-x-0"
         leave="transition ease-in-out duration-300 md:duration-150 transform"
         leaveFrom="translate-y-0 md:translate-x-0"
-        leaveTo="translate-y-full md:translate-x-full"
+        leaveTo="translate-y-full md:translate-y-0 md:translate-x-full"
       >
         {children}
       </Transition.Child>
