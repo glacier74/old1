@@ -2509,3 +2509,17 @@ button.button-success {
     animation: bounce-x 1s infinite;
   }
 }
+
+.payment-method-option {
+  .tabs-pane {
+    @apply pt-2 pb-0;
+  }
+
+  .tabs-nav-list {
+    @apply w-full;
+
+    .tabs-nav {
+      @apply flex-1 text-[13px];
+    }
+  }
+}

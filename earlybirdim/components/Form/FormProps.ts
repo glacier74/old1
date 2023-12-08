@@ -18,6 +18,9 @@ export interface FormProps extends ComponentProps {
   priceId: string
   stripeAccount: string
   stripeEmail: string
+  // Payment link
+  paymentMethod: string
+  paymentLink: string
   onSubmitted?: () => void
 }
 

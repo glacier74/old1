@@ -1,10 +1,9 @@
 import { FC } from 'react'
 
-import { AutomatedEmailOption } from '~/layout/builder3/rightSidebar/AutomatedEmailOption'
-import { StripeOption } from '~/layout/builder3/rightSidebar/StripeOption'
-
-import { Option, OptionProps } from './OptionGroup'
-import { TextOption } from './TextOption'
+import { AutomatedEmailOption } from '../AutomatedEmailOption'
+import { Option, OptionProps } from '../OptionGroup'
+import { TextOption } from '../TextOption'
+import { PaymentMethodOption } from './PaymentMethodOption'
 
 const defaultSubject = 'You got {product.name}'
 const defaultMessage = `
@@ -68,13 +67,8 @@ export const PaymentOption: FC<OptionProps> = ({ parentName, schema }) => {
             <Option key={f.name} parentName={name} schema={f} />
           ))}
 
-          {/* Stripe */}
-          <StripeOption
-            parentName={name}
-            schema={{
-              title: 'Stripe'
-            }}
-          />
+          {/* Payment select */}
+          <PaymentMethodOption parentName={name} schema={schema} />
 
           {/* Payment success tips */}
           <TextOption

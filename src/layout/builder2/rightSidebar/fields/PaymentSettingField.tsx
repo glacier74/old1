@@ -200,7 +200,7 @@ export const PaymentSettingField: FC<SettingFieldProps> = ({ schema }) => {
         <Tabs.Pane name="stripe" title="Stripe">
           <ConnectStripe setting={setting} updateSetting={updateSetting} />
         </Tabs.Pane>
-        <Tabs.Pane name="link" title="Link">
+        <Tabs.Pane name="link" title="Payment Link">
           <Input
             type="url"
             value={setting.paymentLinks?.[0]}

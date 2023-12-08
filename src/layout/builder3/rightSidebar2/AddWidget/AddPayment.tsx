@@ -3,8 +3,7 @@ import { IconArrowUpRight } from '@tabler/icons'
 import { nanoid } from 'nanoid'
 import { FC, useState } from 'react'
 
-import { useConnectStripe } from '~/layout/builder3/rightSidebar/StripeOption'
-
+import { useConnectStripe } from '../../rightSidebar/PaymentOption/StripeOption'
 import { OptionsContainer } from '../OptionsContainer'
 import { AddLinkProps } from './AddLink'
 import { AddWidgetForm } from './AddWidgetForm'

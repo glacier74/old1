@@ -22,7 +22,7 @@
     "@emoji-mart/react": "^1.1.1",
     "@fortaine/fetch-event-source": "^3.0.6",
     "@headlessui/react": "^1.7.12",
-    "@heyforms/ui": "^2023.11.2",
+    "@heyforms/ui": "^2023.12.1",
     "@heyooo-inc/utils": "^0.0.10",
     "@nily/utils": "^0.3.6",
     "@qrcode-js/browser": "^1.2.0",

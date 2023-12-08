@@ -5,8 +5,8 @@ import { FC, useCallback, useState } from 'react'
 import { StripeService } from '~/service'
 import { useRequest, useWindow } from '~/utils'
 
-import { useOptions } from '../context'
-import { OptionProps } from './OptionGroup'
+import { useOptions } from '../../context'
+import { OptionProps } from '../OptionGroup'
 
 interface StripeInfo {
   stripeAccount: string
@@ -95,7 +95,7 @@ export const StripeOption: FC<OptionProps> = ({ parentName, schema }) => {
     <div className="builder-option">
       {!value?.stripeAccount ? (
         <div className="flex items-center justify-between">
-          <div className="builder-option__title">{schema.title}</div>
+          <div className="builder-option__title">Stripe</div>
 
           <Button
             className="!px-2.5 !py-[5px] !border-gray-200"
@@ -108,13 +108,8 @@ export const StripeOption: FC<OptionProps> = ({ parentName, schema }) => {
         </div>
       ) : (
         <div>
-          <div className="flex items-center justify-between">
-            <div className="builder-option__title">{schema.title}</div>
-
-            <div className="text-xs text-slate-700">
-              Connected with:{' '}
-              <span className="font-medium">{value?.stripeEmail || value?.stripeAccount}</span>
-            </div>
+          <div className="text-xs text-slate-700 font-bold">
+            Connected with: {value?.stripeEmail || value?.stripeAccount}
           </div>
 
           <div className="builder-option__content">

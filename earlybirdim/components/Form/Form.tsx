@@ -60,6 +60,8 @@ const InternalForm: FC<FormProps> = ({
   emailNotificationSubject,
   emailNotificationMessage,
   enableEmailNotification,
+  paymentMethod,
+  paymentLink,
   priceId,
   stripeAccount,
   stripeEmail,
@@ -90,6 +92,10 @@ const InternalForm: FC<FormProps> = ({
 
       try {
         if (type === 'payment') {
+          if (paymentMethod === 'link') {
+            return (window.location.href = paymentLink)
+          }
+
           const result = await PublicApiService.checkout(productId, {
             blockId: id || blockId,
             productUrl: urlBuilder(window.location.href, {
