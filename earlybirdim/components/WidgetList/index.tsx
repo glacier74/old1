@@ -80,7 +80,6 @@ export const WidgetList: FC<WidgetGridProps> = ({
   }
 
   function handleDragStart({ active }: DragEndEvent) {
-    console.log('handleDragStart true', activeId)
     setActiveId(active.id)
   }
 
@@ -106,7 +105,6 @@ export const WidgetList: FC<WidgetGridProps> = ({
   )
 
   function handleDragEnd() {
-    console.log('handleDragEnd false', activeId)
     setActiveId(null)
   }
 

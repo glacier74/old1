@@ -160,9 +160,9 @@ export default class GithubWidget<T extends GithubData & WidgetData> extends Beh
 
           <div className="flex-1"></div>
 
-          <div className="ml-6">
+          <div className="ml-6 aspect-[6/5] h-full">
             <Contribution
-              className="aspect-[6/5] h-full"
+              className="w-full h-full"
               contributions={config.data.contributions?.slice(0, 8)}
             />
           </div>
