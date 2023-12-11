@@ -395,7 +395,7 @@ export const getServerSideProps = withTranslations(
             if (isValid(row.url) && !isGoogleMap(row.url)) {
               urlPaths.push({
                 url: row.url,
-                path: [path, index].join('.')
+                path: [path, index, 'data'].join('.')
               })
             }
           })
