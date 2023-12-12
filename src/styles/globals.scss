@@ -2523,3 +2523,11 @@ button.button-success {
     }
   }
 }
+
+.popup-mask {
+  @apply z-[100];
+}
+
+.popup-content {
+  @apply z-[110];
+}
