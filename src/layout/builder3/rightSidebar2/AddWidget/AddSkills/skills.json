@@ -162,7 +162,88 @@
     ]
   },
   {
-    "category": "Tools",
+    "category": "Language",
+    "icons": [
+      {
+        "name": "English",
+        "title": "English"
+      },
+      {
+        "name": "Dutch",
+        "title": "Dutch"
+      },
+      {
+        "name": "French",
+        "title": "French"
+      },
+      {
+        "name": "German",
+        "title": "German"
+      },
+      {
+        "name": "Italian",
+        "title": "Italian"
+      },
+      {
+        "name": "Japanese",
+        "title": "Japanese"
+      },
+      {
+        "name": "Korean",
+        "title": "Korean"
+      },
+      {
+        "name": "Portuguese",
+        "title": "Portuguese"
+      },
+      {
+        "name": "Russian",
+        "title": "Russian"
+      },
+      {
+        "name": "Spanish",
+        "title": "Spanish"
+      },
+      {
+        "name": "Vietnamese",
+        "title": "Vietnamese"
+      },
+      {
+        "name": "Chinese",
+        "title": "Chinese"
+      },
+      {
+        "name": "Turkish",
+        "title": "Turkish"
+      },
+      {
+        "name": "Polish",
+        "title": "Polish"
+      },
+      {
+        "name": "Ukrainian",
+        "title": "Ukrainian"
+      },
+      {
+        "name": "Indonesian",
+        "title": "Indonesian"
+      },
+      {
+        "name": "Arabic",
+        "title": "Arabic"
+      },
+      {
+        "name": "Danish",
+        "title": "Danish"
+      },
+      {
+        "name": "Romanian",
+        "title": "Romanian"
+      }
+    ]
+  },
+  {
+    "category": "Tool",
     "icons": [
       {
         "title": "ChatGPT",

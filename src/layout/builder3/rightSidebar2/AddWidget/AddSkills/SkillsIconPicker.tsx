@@ -1,4 +1,4 @@
-import { Button, Dropdown, Input, Menus, Tabs, stopPropagation } from '@heyforms/ui'
+import { Button, Dropdown, Input, Menus, Tabs, Tooltip, stopPropagation } from '@heyforms/ui'
 import { isValid } from '@nily/utils'
 import { FC, useCallback, useMemo, useState } from 'react'
 
@@ -37,14 +37,15 @@ const SvgIconItem: FC<SvgIconItemProps> = ({ icon, onClick }) => {
   }
 
   return (
-    <button
-      key={icon.name}
-      className="group/picker h-10 w-10 rounded-lg hover:shadow"
-      title={icon.title}
-      onClick={handleClick}
-    >
-      <SkillsIcon iconType="svg" svgName={icon.name} />
-    </button>
+    <Tooltip ariaLabel={icon.title}>
+      <button
+        key={icon.name}
+        className="group/picker h-10 w-10 rounded-lg hover:shadow"
+        onClick={handleClick}
+      >
+        <SkillsIcon iconType="svg" svgName={icon.name} />
+      </button>
+    </Tooltip>
   )
 }
 
@@ -111,8 +112,8 @@ export const SkillsIconPicker: FC<SkillsIconPickerProps> = ({ value, onChange, o
 
   const Overlay = useMemo(
     () => (
-      <Menus className="icon-picker">
-        <div onClick={stopPropagation}>
+      <Menus className="icon-picker skills-icon-picker">
+        <div className="h-full" onClick={stopPropagation}>
           <Tabs activeName={type} onChange={setType}>
             <Tabs.Pane name="svg" title="Icon">
               <SvgIconPicker onChange={handleChange} />

@@ -5,28 +5,39 @@ import { FC, useMemo } from 'react'
 import { Icon3dsmax } from './Icon3dsmax'
 import { IconAftereffects } from './IconAftereffects'
 import { IconAngular } from './IconAngular'
+import { IconArabic } from './IconArabic'
 import { IconAutocad } from './IconAutocad'
 import { IconAutodeskmaya } from './IconAutodeskmaya'
 import { IconBlender } from './IconBlender'
 import { IconC } from './IconC'
 import { IconChatgpt } from './IconChatgpt'
+import { IconChinese } from './IconChinese'
 import { IconCinema4d } from './IconCinema4d'
 import { IconClaude } from './IconClaude'
 import { IconCpp } from './IconCpp'
 import { IconCsharp } from './IconCsharp'
 import { IconCss } from './IconCss'
+import { IconDanish } from './IconDanish'
 import { IconDavinci } from './IconDavinci'
 import { IconDotnet } from './IconDotnet'
+import { IconDutch } from './IconDutch'
+import { IconEnglish } from './IconEnglish'
 import { IconFigma } from './IconFigma'
 import { IconFinalcut } from './IconFinalcut'
 import { IconFlutter } from './IconFlutter'
+import { IconFrench } from './IconFrench'
+import { IconGerman } from './IconGerman'
 import { IconGo } from './IconGo'
 import { IconHtml } from './IconHtml'
 import { IconIllustrator } from './IconIllustrator'
 import { IconImovie } from './IconImovie'
 import { IconIndesign } from './IconIndesign'
+import { IconIndonesian } from './IconIndonesian'
+import { IconItalian } from './IconItalian'
+import { IconJapanese } from './IconJapanese'
 import { IconJava } from './IconJava'
 import { IconJavascript } from './IconJavascript'
+import { IconKorean } from './IconKorean'
 import { IconKotlin } from './IconKotlin'
 import { IconLightroom } from './IconLightroom'
 import { IconMicrosoftoffice } from './IconMicrosoftoffice'
@@ -34,17 +45,25 @@ import { IconNext } from './IconNext'
 import { IconNode } from './IconNode'
 import { IconPhotoshop } from './IconPhotoshop'
 import { IconPhp } from './IconPhp'
+import { IconPolish } from './IconPolish'
+import { IconPortuguese } from './IconPortuguese'
 import { IconPremiere } from './IconPremiere'
 import { IconPython } from './IconPython'
 import { IconRails } from './IconRails'
 import { IconReact } from './IconReact'
+import { IconRomanian } from './IconRomanian'
 import { IconRuby } from './IconRuby'
+import { IconRussian } from './IconRussian'
 import { IconRust } from './IconRust'
 import { IconSketch } from './IconSketch'
 import { IconSketchup } from './IconSketchup'
+import { IconSpanish } from './IconSpanish'
 import { IconSwift } from './IconSwift'
 import { IconTailwind } from './IconTailwind'
+import { IconTurkish } from './IconTurkish'
 import { IconTypescript } from './IconTypescript'
+import { IconUkrainian } from './IconUkrainian'
+import { IconVietnamese } from './IconVietnamese'
 import { IconVue } from './IconVue'
 import { IconXd } from './IconXd'
 import { IconZbrush } from './IconZbrush'
@@ -170,6 +189,63 @@ const Icon: FC<Pick<SkillsIcon, 'svgName'> & ComponentProps> = ({ svgName, ...re
 
     case 'zbrush':
       return <IconZbrush {...restProps} />
+
+    case 'Arabic':
+      return <IconArabic {...restProps} />
+
+    case 'Chinese':
+      return <IconChinese {...restProps} />
+
+    case 'Danish':
+      return <IconDanish {...restProps} />
+
+    case 'Dutch':
+      return <IconDutch {...restProps} />
+
+    case 'English':
+      return <IconEnglish {...restProps} />
+
+    case 'French':
+      return <IconFrench {...restProps} />
+
+    case 'German':
+      return <IconGerman {...restProps} />
+
+    case 'Indonesian':
+      return <IconIndonesian {...restProps} />
+
+    case 'Italian':
+      return <IconItalian {...restProps} />
+
+    case 'Japanese':
+      return <IconJapanese {...restProps} />
+
+    case 'Korean':
+      return <IconKorean {...restProps} />
+
+    case 'Polish':
+      return <IconPolish {...restProps} />
+
+    case 'Portuguese':
+      return <IconPortuguese {...restProps} />
+
+    case 'Romanian':
+      return <IconRomanian {...restProps} />
+
+    case 'Russian':
+      return <IconRussian {...restProps} />
+
+    case 'Spanish':
+      return <IconSpanish {...restProps} />
+
+    case 'Turkish':
+      return <IconTurkish {...restProps} />
+
+    case 'Ukrainian':
+      return <IconUkrainian {...restProps} />
+
+    case 'Vietnamese':
+      return <IconVietnamese {...restProps} />
 
     case 'flutter':
       return <IconFlutter {...restProps} />

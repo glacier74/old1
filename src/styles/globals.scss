@@ -1619,7 +1619,7 @@ button.block-header-button {
 .emoji-picker em-emoji-picker,
 .file-uploader {
   --shadow: none;
-  height: min(50vh, 440px);
+  height: max(min(50vh, 440px), 100%);
   min-height: 400px;
   max-height: 800px;
 }
@@ -2530,4 +2530,15 @@ button.button-success {
 
 .popup-content {
   @apply z-[110];
+}
+
+.skills-icon-picker {
+  .tabs-wrapper,
+  .tabs-pane {
+    @apply h-full;
+  }
+
+  .tabs-pane-group {
+    @apply h-[calc(100%-40px)];
+  }
 }
