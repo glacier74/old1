@@ -3,7 +3,7 @@ import {
   DragEndEvent,
   DragOverlay,
   KeyboardSensor,
-  PointerSensor,
+  MouseSensor,
   TouchSensor,
   useSensor,
   useSensors
@@ -39,10 +39,15 @@ export const WidgetList: FC<WidgetGridProps> = ({
   const [itemSize, setItemSize] = useState(rawItemSize / 2)
 
   const sensors = useSensors(
-    useSensor(PointerSensor),
+    useSensor(MouseSensor, {
+      activationConstraint: {
+        distance: 8
+      }
+    }),
     useSensor(TouchSensor, {
       activationConstraint: {
-        distance: 15
+        delay: 300,
+        tolerance: 8
       }
     }),
     useSensor(KeyboardSensor, {
