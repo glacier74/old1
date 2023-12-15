@@ -3,8 +3,8 @@ import clsx from 'clsx'
 import { useRouter } from 'next/router'
 import { FC, MouseEvent, cloneElement, useEffect } from 'react'
 
-import { PLAN_NAMES } from '~/constants'
-import { useProduct } from '~/layout'
+import { PLAN_LEVEL_NAME_MAPS } from '~/constants'
+import { useJingleBioUser, useProduct } from '~/layout'
 import { urlBuilder, useSubscriptionPlanLevel } from '~/utils'
 
 interface PlanCheckProps extends ComponentProps {
@@ -15,6 +15,7 @@ interface PlanCheckProps extends ComponentProps {
 export const PlanBadge: FC<PlanCheckProps> = ({ className, minimalLevel, ...restProps }) => {
   const product = useProduct()
   const planLevel = useSubscriptionPlanLevel(product.subscription)
+  const isJingleBioUser = useJingleBioUser()
 
   if (planLevelCompare(minimalLevel, planLevel)) {
     return null
@@ -22,7 +23,9 @@ export const PlanBadge: FC<PlanCheckProps> = ({ className, minimalLevel, ...rest
 
   return (
     <div className={clsx('plan-badge', className)} {...restProps}>
-      {PLAN_NAMES[minimalLevel]}
+      {isJingleBioUser
+        ? PLAN_LEVEL_NAME_MAPS.jinglebio[minimalLevel]
+        : PLAN_LEVEL_NAME_MAPS.earlybird[minimalLevel]}
     </div>
   )
 }

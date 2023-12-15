@@ -39,6 +39,41 @@ export const PLAN_TIERS = [
   }
 ]
 
+export const JINGLEBIO_TIERS = [
+  {
+    id: 'jinglebio_free',
+    name: 'Hum',
+    href: '/sign-up',
+    priceMonthly: 0,
+    priceAnnually: 0,
+    description: ''
+  },
+  {
+    id: 'jinglebio_melody',
+    name: 'Melody',
+    href: '/sign-up',
+    priceMonthly: 4,
+    priceAnnually: 3,
+    description: ''
+  },
+  {
+    id: 'jinglebio_harmony',
+    name: 'Harmony',
+    href: '/sign-up',
+    priceMonthly: 10,
+    priceAnnually: 7.5,
+    description: ''
+  },
+  {
+    id: 'jinglebio_crescendo',
+    name: 'Crescendo',
+    href: '/sign-up',
+    priceMonthly: 16,
+    priceAnnually: 12,
+    description: ''
+  }
+]
+
 const sections = [
   {
     name: 'Build',

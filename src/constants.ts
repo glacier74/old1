@@ -385,18 +385,41 @@ export const PLAN_LEVELS: AnyMap<number> = {
   plan_free: 0,
   plan_starter: 1,
   plan_superior: 2,
-  plan_shipper: 3
+  plan_shipper: 3,
+
+  // Jingle Bio
+  jinglebio_free: 0,
+  jinglebio_melody: 1,
+  jinglebio_harmony: 2,
+  jinglebio_crescendo: 3
 }
 
 export const PLAN_NAMES: AnyMap<string, number | string> = {
-  [PLAN_LEVELS.plan_free]: 'Free',
-  [PLAN_LEVELS.plan_starter]: 'Starter',
-  [PLAN_LEVELS.plan_superior]: 'Superior',
-  [PLAN_LEVELS.plan_shipper]: 'Shipper',
   plan_free: 'Free',
   plan_starter: 'Starter',
   plan_superior: 'Superior',
-  plan_shipper: 'Shipper'
+  plan_shipper: 'Shipper',
+
+  // Jingle Bio
+  jinglebio_free: 'Hum',
+  jinglebio_melody: 'Melody',
+  jinglebio_harmony: 'Harmony',
+  jinglebio_crescendo: 'Crescendo'
+}
+
+export const PLAN_LEVEL_NAME_MAPS = {
+  earlybird: {
+    [PLAN_LEVELS.plan_free]: 'Free',
+    [PLAN_LEVELS.plan_starter]: 'Starter',
+    [PLAN_LEVELS.plan_superior]: 'Superior',
+    [PLAN_LEVELS.plan_shipper]: 'Shipper'
+  },
+  jinglebio: {
+    [PLAN_LEVELS.jinglebio_free]: 'Hum',
+    [PLAN_LEVELS.jinglebio_melody]: 'Melody',
+    [PLAN_LEVELS.jinglebio_harmony]: 'Harmony',
+    [PLAN_LEVELS.jinglebio_crescendo]: 'Crescendo'
+  }
 }
 
 export const PLAN_INTERVALS: AnyMap<string> = {

@@ -1,5 +1,6 @@
 import { isEmpty } from '@nily/utils'
-import { FC, useState } from 'react'
+import { debounce } from 'lodash'
+import { FC, useCallback, useState } from 'react'
 import isURL from 'validator/lib/isURL'
 
 import { AutoSizeTextarea } from '~/components'
@@ -12,10 +13,7 @@ interface TextSubOptionProps {
 
 export const TextSubOption: FC<TextSubOptionProps> = ({ title, path }) => {
   const { value, update } = useOptions<string>(path)
-
-  function handleChange(newValue: string) {
-    update(newValue)
-  }
+  const handleChange = useCallback(debounce(update, 1_000), [])
 
   return (
     <div className="builder-option">

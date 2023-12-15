@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 
+import { JINGLEBIO_TIERS, PLAN_TIERS } from '~/layout/pricing'
 import { useStore } from '~/store'
 import { useParam } from '~/utils'
 
@@ -32,4 +33,16 @@ export function useSiteSettings() {
       productId
     } as SiteSettings
   }, [productId, siteSettings])
+}
+
+export function useJingleBioUser() {
+  const { user } = useStore()
+
+  return user.isJingleBio && user.subscription.plan.isJingleBio
+}
+
+export const usePlans = () => {
+  const isJingleBioUser = useJingleBioUser()
+
+  return useMemo(() => (isJingleBioUser ? JINGLEBIO_TIERS : PLAN_TIERS), [isJingleBioUser])
 }

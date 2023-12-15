@@ -90,6 +90,7 @@ declare global {
     customCss: boolean
     teamCollaboration: boolean
     isFree: boolean
+    isJingleBio: boolean
     status: string
   }
 

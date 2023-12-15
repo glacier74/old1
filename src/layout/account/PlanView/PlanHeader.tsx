@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next'
 import { FC, useState } from 'react'
 
 import { PLAN_LEVELS } from '~/constants'
-import { PLAN_TIERS } from '~/layout/pricing'
+import { usePlans } from '~/layout'
 import { SubscriptionService, UserService } from '~/service'
 import { useStore } from '~/store'
 import { useRequest, useSubscriptionPlanLevel } from '~/utils'
@@ -12,6 +12,7 @@ import { useRequest, useSubscriptionPlanLevel } from '~/utils'
 const PricingButton: FC<{ plan: any; interval: string }> = ({ plan, interval }) => {
   const { t } = useTranslation('dashboard')
   const { user, updateUser } = useStore()
+
   const planLevel = PLAN_LEVELS[plan.id]
   const currPlanLevel = useSubscriptionPlanLevel(user.subscription)
 
@@ -88,14 +89,14 @@ const IntervalSwitch: FC<{ interval: string; onChange: (interval: string) => voi
   }
 
   return (
-    <div className="mt-9 relative self-center bg-slate-200 rounded-lg p-0.5 flex">
+    <div className="mt-9 relative self-center bg-slate-100 rounded-lg p-0.5 flex">
       <button
         type="button"
         className={clsx(
           'relative w-1/2 rounded-md py-1.5 text-sm font-medium whitespace-nowrap focus:outline-none sm:px-2',
           interval === 'month'
-            ? 'bg-slate-50 border-slate-50 text-slate-900 shadow-sm'
-            : 'border-transparent text-slate-900'
+            ? 'bg-white border-slate-50 text-emerald-600 shadow-sm'
+            : 'border-transparent text-slate-500'
         )}
         onClick={handleSwitchToMonth}
       >
@@ -106,8 +107,8 @@ const IntervalSwitch: FC<{ interval: string; onChange: (interval: string) => voi
         className={clsx(
           'ml-0.5 relative w-1/2 border rounded-md py-1.5 text-sm font-medium whitespace-nowrap focus:outline-none sm:px-2',
           interval === 'year'
-            ? 'bg-slate-50 border-slate-50 text-slate-900 shadow-sm'
-            : 'border-transparent text-slate-900'
+            ? 'bg-white border-slate-50 text-emerald-600 shadow-sm'
+            : 'border-transparent text-slate-500'
         )}
         onClick={handleSwitchToYear}
       >
@@ -119,6 +120,8 @@ const IntervalSwitch: FC<{ interval: string; onChange: (interval: string) => voi
 
 export const PlanHeader: FC = () => {
   const { user } = useStore()
+  const plans = usePlans()
+
   const [interval, setInterval] = useState(user.subscription?.price?.interval || 'year')
 
   return (
@@ -127,7 +130,7 @@ export const PlanHeader: FC = () => {
         <div>Pricing</div>
         <IntervalSwitch interval={interval} onChange={setInterval} />
       </th>
-      {PLAN_TIERS.map(plan => (
+      {plans.map(plan => (
         <td key={plan.id} className="h-full py-8 px-6 align-top">
           <div className="relative h-full table">
             <p>
