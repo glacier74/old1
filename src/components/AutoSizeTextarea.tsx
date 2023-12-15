@@ -1,10 +1,11 @@
 import clsx from 'clsx'
-import { ChangeEvent, FC, startTransition, useEffect, useRef, useState } from 'react'
+import { ChangeEvent, FC, startTransition, useCallback, useEffect, useRef, useState } from 'react'
 
 interface AutoSizeTextareaProps extends ComponentProps {
   placeholder?: string
   minRows?: number
   value?: string
+  callbackAfterBlur?: boolean
   onChange?: (value: string) => void
 }
 
@@ -12,6 +13,7 @@ export const AutoSizeTextarea: FC<AutoSizeTextareaProps> = ({
   className,
   placeholder,
   minRows = 1,
+  callbackAfterBlur = false,
   value: rawValue,
   onChange,
   ...restProps
@@ -52,10 +54,16 @@ export const AutoSizeTextarea: FC<AutoSizeTextareaProps> = ({
       lock.current = false
     }
 
-    if (!lock.current) {
+    if (!lock.current && !callbackAfterBlur) {
       onChange?.(newValue)
     }
   }
+
+  const handleBlur = useCallback(() => {
+    if (callbackAfterBlur) {
+      onChange?.(value || '')
+    }
+  }, [callbackAfterBlur, value])
 
   useEffect(() => {
     const textarea = textareaRef.current
@@ -80,6 +88,7 @@ export const AutoSizeTextarea: FC<AutoSizeTextareaProps> = ({
       placeholder={placeholder}
       rows={minRows}
       value={value}
+      onBlur={handleBlur}
       onChange={handleChange}
       {...restProps}
     />

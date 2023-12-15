@@ -54,7 +54,7 @@ export const URLSubOption: FC<TextSubOptionProps> = ({ title, path }) => {
     <div className="builder-option">
       <div className="builder-option__title">{title}</div>
       <div className="builder-option__content">
-        <AutoSizeTextarea value={value} onChange={handleChange} />
+        <AutoSizeTextarea value={value} callbackAfterBlur={true} onChange={handleChange} />
         {error && <div className="text-red-500 mt-2 text-sm">{error.message}</div>}
       </div>
     </div>
