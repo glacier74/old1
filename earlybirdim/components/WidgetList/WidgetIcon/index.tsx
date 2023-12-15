@@ -301,7 +301,7 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
       {...restProps}
     >
       {children}
-      <div className="pointer-events-none absolute inset-0 border border-black/10 dark:border-white/40 rounded-lg"></div>
+      <div className="pointer-events-none absolute inset-0 border border-black/10 dark:border-white/20 rounded-lg"></div>
     </div>
   )
 }

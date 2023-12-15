@@ -107,6 +107,7 @@ export const WidgetActions: FC<WidgetActionsProps> = ({ className, config, ...re
         return WIDGET_ACTIONS
 
       case 'image':
+      case 'video':
       case 'google_map':
       case 'payment':
       case 'email_capture':
@@ -169,7 +170,7 @@ export const WidgetActions: FC<WidgetActionsProps> = ({ className, config, ...re
       )}
       {...restProps}
     >
-      <div className="flex items-center border border-gray-300 dark:border-gray-600 px-2 py-2 gap-1 sm:text-sm font-medium bg-white dark:bg-[var(--widget-dark-bg)] text-slate-700 dark:text-slate-50 rounded-lg shadow-lg">
+      <div className="flex items-center border border-gray-300 dark:border-gray-600 px-2 py-2 gap-1 sm:text-sm font-medium bg-white dark:bg-[#0f172a] text-slate-700 dark:text-slate-50 rounded-lg shadow-lg">
         {actions.map((row, index) => (
           <WidgetActionItem key={index} item={row} onClick={handleClick} />
         ))}

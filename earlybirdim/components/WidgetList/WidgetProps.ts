@@ -189,6 +189,8 @@ export interface MapData {
 }
 
 export interface MediaData {
+  imageUrl?: string
+  title?: string
   overrides?: Pick<WidgetOverrides, 'title' | 'imageUrl'>
 }
 

@@ -90,6 +90,24 @@ const ImageWidgetOption: FC<Pick<WidgetItemOptionProps, 'parentName' | 'index'>>
   )
 }
 
+const VideoWidgetOption: FC<Pick<WidgetItemOptionProps, 'parentName' | 'index'>> = ({
+  parentName,
+  index
+}) => {
+  return (
+    <>
+      <URLSubOption title="URL" path={[parentName, index, 'url'].join('.')} />
+      <SelectSubOption
+        title="Size"
+        options={MAP_MEDIA_SIZE_OPTIONS}
+        path={[parentName, index, 'size'].join('.')}
+      />
+      <ImageSubOption title="Image" path={[parentName, index, 'overrides.imageUrl'].join('.')} />
+      <TextSubOption title="Caption" path={[parentName, index, 'overrides.title'].join('.')} />
+    </>
+  )
+}
+
 const PaymentWidgetOption: FC<Pick<WidgetItemOptionProps, 'parentName' | 'index'>> = ({
   parentName,
   index
@@ -191,8 +209,10 @@ export const WidgetItemOption: FC<WidgetItemOptionProps> = ({ parentName, index,
         return <MapWidgetOption parentName={parentName} index={index} />
 
       case 'image':
-      case 'video':
         return <ImageWidgetOption parentName={parentName} index={index} />
+
+      case 'video':
+        return <VideoWidgetOption parentName={parentName} index={index} />
 
       case 'skills':
         return <SkillsItemOption parentName={parentName} index={index} />

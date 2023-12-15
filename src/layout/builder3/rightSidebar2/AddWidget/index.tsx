@@ -2,6 +2,7 @@ import { widgetListPath } from '@earlybirdim/components/WidgetList/constants'
 import { deepClone } from '@nily/utils'
 import {
   IconBoxModel,
+  IconBrandYoutube,
   IconCreditCard,
   IconHash,
   IconLink,
@@ -14,6 +15,7 @@ import { FC, useCallback, useState } from 'react'
 
 import { IconGroupTitle } from '~/components'
 import { useBuilderContext, useOptions } from '~/layout/builder3/context'
+import { AddVideo } from '~/layout/builder3/rightSidebar2/AddWidget/AddVideo'
 
 import { OptionsContainer } from '../OptionsContainer'
 import { AddEmailCapture } from './AddEmailCapture'
@@ -76,6 +78,12 @@ const WIDGET_CONFIGS: WidgetConfig[] = [
     label: 'Image',
     icon: IconPhoto,
     iconClassName: 'bg-[#e0f2fe] text-[#0369a1]'
+  {
+    type: 'video',
+    label: 'Video',
+    icon: IconBrandYoutube,
+    iconClassName: 'bg-[#d1fae5] text-[#059669]'
+  },
   },
   {
     type: 'music',
@@ -140,6 +148,9 @@ const Panel: FC<{ type: string } & AddLinkProps> = ({ type, ...restProps }) => {
     case 'skills':
       return <AddSkills {...restProps} />
 
+
+    case 'video':
+      return <AddVideo {...restProps} />
     default:
       return SOCIAL_TYPES.includes(type) ? <AddSocial type={type} {...restProps} /> : null
   }
