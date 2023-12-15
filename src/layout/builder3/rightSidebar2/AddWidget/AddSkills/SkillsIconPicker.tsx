@@ -112,7 +112,7 @@ export const SkillsIconPicker: FC<SkillsIconPickerProps> = ({ value, onChange, o
 
   const Overlay = useMemo(
     () => (
-      <Menus className="icon-picker skills-icon-picker">
+      <Menus className="icon-picker">
         <div className="h-full" onClick={stopPropagation}>
           <Tabs activeName={type} onChange={setType}>
             <Tabs.Pane name="svg" title="Icon">

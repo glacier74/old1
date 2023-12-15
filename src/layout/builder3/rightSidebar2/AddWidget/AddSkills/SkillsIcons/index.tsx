@@ -21,6 +21,7 @@ import { IconDanish } from './IconDanish'
 import { IconDavinci } from './IconDavinci'
 import { IconDotnet } from './IconDotnet'
 import { IconDutch } from './IconDutch'
+import { IconEducation } from './IconEducation'
 import { IconEnglish } from './IconEnglish'
 import { IconFigma } from './IconFigma'
 import { IconFinalcut } from './IconFinalcut'
@@ -65,6 +66,7 @@ import { IconTypescript } from './IconTypescript'
 import { IconUkrainian } from './IconUkrainian'
 import { IconVietnamese } from './IconVietnamese'
 import { IconVue } from './IconVue'
+import { IconWork } from './IconWork'
 import { IconXd } from './IconXd'
 import { IconZbrush } from './IconZbrush'
 
@@ -271,6 +273,12 @@ const Icon: FC<Pick<SkillsIcon, 'svgName'> & ComponentProps> = ({ svgName, ...re
     case 'premiere':
       return <IconPremiere {...restProps} />
 
+    case 'education':
+      return <IconEducation {...restProps} />
+
+    case 'work':
+      return <IconWork {...restProps} />
+
     default:
       return null
   }
@@ -310,7 +318,7 @@ export const SkillsIcon: FC<SkillsIcon & ComponentProps> = ({
       {...restProps}
     >
       {children}
-      <div className="pointer-events-none absolute inset-0 border border-black/10 dark:border-white/40 rounded-lg group-hover/picker:border-black/20"></div>
+      <div className="pointer-events-none absolute inset-0 border border-black/10 dark:border-white/20 rounded-lg group-hover/picker:border-black/20"></div>
     </div>
   )
 }

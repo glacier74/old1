@@ -2,6 +2,12 @@ import { FC, useMemo } from 'react'
 
 import { MAP_MEDIA_SIZE_OPTIONS, WIDGET_SIZE_OPTIONS } from '~/layout/builder3/constants'
 import { useOptions } from '~/layout/builder3/context'
+import {
+  EXPERIENCE_FIELDS,
+  EXPERIENCE_TYPES
+} from '~/layout/builder3/rightSidebar2/AddWidget/AddExperience'
+import { SkillsIcon } from '~/layout/builder3/rightSidebar2/AddWidget/AddSkills/SkillsIcons'
+import { DateRangeSubOption } from '~/layout/builder3/rightSidebar2/WidgetOptions/DateRangeSubOption'
 import { RatingSubOption } from '~/layout/builder3/rightSidebar2/WidgetOptions/RatingSubOption'
 import { SkillsIconSubOption } from '~/layout/builder3/rightSidebar2/WidgetOptions/SkillsIconSubOption'
 
@@ -193,6 +199,52 @@ const SkillsItemOption: FC<Pick<WidgetItemOptionProps, 'parentName' | 'index'>> 
   )
 }
 
+const ExperienceItemOption: FC<Pick<WidgetItemOptionProps, 'parentName' | 'index'>> = ({
+  parentName,
+  index
+}) => {
+  const { value: experienceType } = useOptions<string>(
+    [parentName, index, 'data.experienceType'].join('.')
+  )
+
+  return (
+    <>
+      <SelectSubOption
+        title=""
+        path={[parentName, index, 'data.experienceType'].join('.')}
+        options={EXPERIENCE_TYPES}
+      />
+
+      <ImageSubOption
+        title="Image"
+        path={[parentName, index, 'data.imageUrl'].join('.')}
+        placeholder={<SkillsIcon iconType="svg" svgName={experienceType!} />}
+        offset={[125, 85]}
+      />
+
+      {(EXPERIENCE_FIELDS[experienceType!] as AnyMap[]).map(row => {
+        switch (row.type) {
+          case 'date':
+            return (
+              <DateRangeSubOption
+                title={row.label}
+                path={[parentName, index, `data.${row.name}`].join('.')}
+              />
+            )
+
+          case 'input':
+            return (
+              <TextSubOption
+                title={row.label}
+                path={[parentName, index, `data.${row.name}`].join('.')}
+              />
+            )
+        }
+      })}
+    </>
+  )
+}
+
 export const WidgetItemOption: FC<WidgetItemOptionProps> = ({ parentName, index, provider }) => {
   const children = useMemo(() => {
     switch (provider) {
@@ -216,6 +268,9 @@ export const WidgetItemOption: FC<WidgetItemOptionProps> = ({ parentName, index,
 
       case 'skills':
         return <SkillsItemOption parentName={parentName} index={index} />
+
+      case 'experience':
+        return <ExperienceItemOption parentName={parentName} index={index} />
 
       default:
         return <WebsiteWidgetOption parentName={parentName} index={index} provider={provider} />

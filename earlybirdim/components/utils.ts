@@ -42,6 +42,13 @@ const parsers = {
 }
 
 export function parseURL(url: string, type?: string) {
+  if (type) {
+    return {
+      provider: type,
+      url
+    }
+  }
+
   if (url) {
     const providers = Object.keys(parsers) as (keyof typeof parsers)[]
 

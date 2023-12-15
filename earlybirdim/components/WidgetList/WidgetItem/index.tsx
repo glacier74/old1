@@ -12,6 +12,7 @@ import { sizeClassNames } from '../constants'
 import { parseURL } from '../utils'
 import BehanceWidget from './BehanceWidget'
 import EmailCaptureWidget from './EmailCaptureWidget'
+import ExperienceWidget from './ExperienceWidget'
 import GithubWidget from './GithubWidget'
 import { GroupTitleWidget } from './GroupTitleWidget'
 import MapWidget from './MapWidget'
@@ -155,6 +156,9 @@ const WidgetItem: FC<WidgetItemProps> = ({
 
       case 'skills':
         return new SkillsWidget(config).getComponent()
+
+      case 'experience':
+        return new ExperienceWidget(config).getComponent()
 
       default:
         return new WebsiteWidget(config).getComponent()

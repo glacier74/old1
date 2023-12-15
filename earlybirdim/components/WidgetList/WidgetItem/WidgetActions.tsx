@@ -69,6 +69,27 @@ const SKILLS_ACTIONS: Array<WidgetActionItemDivide | WidgetActionItemButton> = [
   }
 ]
 
+const EXPERIENCE_ACTIONS: Array<WidgetActionItemDivide | WidgetActionItemButton> = [
+  {
+    type: 'divide'
+  },
+  {
+    name: '1x1',
+    label: '1x1',
+    icon: IconSize1x1
+  },
+  {
+    name: '2x1',
+    label: '2x1',
+    icon: IconSize2x1
+  },
+  {
+    name: '2x0.5',
+    label: '2x0.5',
+    icon: IconSize2x05
+  }
+]
+
 const MAP_IMAGE_ACTIONS = ALL_SIZE_ACTIONS.filter(
   a => (a as WidgetActionItemButton).name != '2x0.5'
 )
@@ -115,6 +136,9 @@ export const WidgetActions: FC<WidgetActionsProps> = ({ className, config, ...re
 
       case 'skills':
         return [...WIDGET_ACTIONS, ...SKILLS_ACTIONS]
+
+      case 'experience':
+        return [...WIDGET_ACTIONS, ...EXPERIENCE_ACTIONS]
 
       default:
         return [...WIDGET_ACTIONS, ...ALL_SIZE_ACTIONS]

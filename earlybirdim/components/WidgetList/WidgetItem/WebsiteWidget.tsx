@@ -70,8 +70,8 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
               <Image
                 className="h-full w-full rounded-xl object-cover pointer-events-none select-none"
                 src={imageUrl}
-                width={180}
-                height={130}
+                width={360}
+                height={260}
                 alt={config.data.overrides?.title || config.data.title}
               />
               <div className="pointer-events-none absolute inset-0 border border-black/10 rounded-xl"></div>
@@ -84,7 +84,7 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
     )
   }
 
-  // 2x1
+  // 2x2
   override Render2x2(config: WidgetConfig<T>) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { isPreview } = useGlobalContext()
@@ -118,8 +118,8 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
               <Image
                 className="w-full h-full rounded-xl object-cover pointer-events-none select-none"
                 src={imageUrl}
-                width={340}
-                height={180}
+                width={600}
+                height={400}
                 alt={config.data.overrides?.title || config.data.title}
               />
               <div className="pointer-events-none absolute inset-0 border border-black/10 rounded-xl"></div>

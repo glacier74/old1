@@ -1,4 +1,5 @@
 @import "../../node_modules/@heyforms/ui/style.css";
+@import "../../node_modules/react-datepicker/dist/react-datepicker.css";
 
 @tailwind base;
 @tailwind components;
@@ -2142,7 +2143,7 @@ button.block-header-button {
   @apply mt-1.5 space-y-3;
 
   .select-button {
-    @apply py-[5px] border-slate-200 shadow-none;
+    @apply py-[6px] border-slate-300 shadow-none;
   }
 }
 
@@ -2532,7 +2533,7 @@ button.button-success {
   @apply z-[110];
 }
 
-.skills-icon-picker {
+.popup {
   .tabs-wrapper,
   .tabs-pane {
     @apply h-full;
@@ -2542,3 +2543,70 @@ button.button-success {
     @apply h-[calc(100%-40px)];
   }
 }
+
+.form-item-content,
+.builder-option__content {
+  .react-datepicker-wrapper {
+    @apply w-full;
+  }
+
+  .react-datepicker__input-container input {
+    @apply cursor-pointer bg-white relative w-full border border-gray-300 rounded-md pl-3 pr-6 py-2 text-left sm:text-sm focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500;
+  }
+
+  .react-datepicker__triangle,
+  .react-datepicker__navigation-icon:before {
+    @apply hidden;
+  }
+
+  .react-datepicker-popper {
+    @apply px-5;
+
+    &,
+    & > div {
+      @apply w-full;
+    }
+  }
+
+  .react-datepicker {
+    @apply w-full border-none bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm;
+  }
+
+  .react-datepicker__month-container {
+    @apply w-full;
+  }
+
+  .react-datepicker__month-wrapper {
+    @apply flex gap-2;
+  }
+
+  .react-datepicker-year-header {
+    @apply bg-white border-transparent;
+  }
+
+  .react-datepicker__month-text {
+    @apply flex-1 py-1.5 bg-white text-slate-900 hover:bg-slate-100;
+  }
+
+  .react-datepicker__month-text--in-range {
+    @apply bg-emerald-50;
+  }
+
+  .react-datepicker__month-text--in-selecting-range-start,
+  .react-datepicker__month-text--in-selecting-range-end,
+  .react-datepicker__month-text--selecting-range-start,
+  .react-datepicker__month-text--selecting-range-end,
+  .react-datepicker__month-text--range-start,
+  .react-datepicker__month-text--range-end {
+    @apply bg-emerald-200 hover:bg-emerald-300;
+  }
+
+  .react-datepicker__month-text--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range) {
+    @apply bg-emerald-50 text-slate-900;
+
+    &.react-datepicker__month-text--selecte {
+      @apply bg-emerald-200;
+    }
+  }
+}
+

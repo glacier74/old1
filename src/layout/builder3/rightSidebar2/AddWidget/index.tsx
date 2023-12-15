@@ -9,7 +9,8 @@ import {
   IconLocation,
   IconMail,
   IconMusic,
-  IconPhoto
+  IconPhoto,
+  IconTopologyStar
 } from '@tabler/icons'
 import { FC, useCallback, useState } from 'react'
 
@@ -19,6 +20,7 @@ import { AddVideo } from '~/layout/builder3/rightSidebar2/AddWidget/AddVideo'
 
 import { OptionsContainer } from '../OptionsContainer'
 import { AddEmailCapture } from './AddEmailCapture'
+import { AddExperience } from './AddExperience'
 import { AddGroupTitle } from './AddGroupTitle'
 import { AddImage } from './AddImage'
 import { AddLink, AddLinkProps } from './AddLink'
@@ -50,22 +52,10 @@ const WIDGET_CONFIGS: WidgetConfig[] = [
     iconClassName: 'bg-[#dbeafe] text-[#1d4ed8]'
   },
   {
-    type: 'skills',
-    label: 'Skills',
-    icon: IconBoxModel,
-    iconClassName: 'bg-[#fce7f3] text-[#be185d]'
-  },
-  {
     type: 'payment',
     label: 'Payment',
     icon: IconCreditCard,
     iconClassName: 'bg-[#fef9c3] text-[#a16207]'
-  },
-  {
-    type: 'google_map',
-    label: 'Location',
-    icon: IconLocation,
-    iconClassName: 'bg-[#ccfbf1] text-[#0f766e]'
   },
   {
     type: 'email_capture',
@@ -74,28 +64,46 @@ const WIDGET_CONFIGS: WidgetConfig[] = [
     iconClassName: 'bg-[#fae8ff] text-[#a21caf]'
   },
   {
+    type: 'skills',
+    label: 'Skills',
+    icon: IconBoxModel,
+    iconClassName: 'bg-[#fee2e2] text-[#b91c1c]'
+  },
+  {
+    type: 'experience',
+    label: 'Experience',
+    icon: IconTopologyStar,
+    iconClassName: 'bg-[#fee2e2] text-[#b91c1c]'
+  },
+  {
     type: 'image',
     label: 'Image',
     icon: IconPhoto,
-    iconClassName: 'bg-[#e0f2fe] text-[#0369a1]'
+    iconClassName: 'bg-[#d1fae5] text-[#059669]'
+  },
   {
     type: 'video',
     label: 'Video',
     icon: IconBrandYoutube,
     iconClassName: 'bg-[#d1fae5] text-[#059669]'
   },
+  {
+    type: 'google_map',
+    label: 'Location',
+    icon: IconLocation,
+    iconClassName: 'bg-[#d1fae5] text-[#059669]'
   },
   {
     type: 'music',
     label: 'Music',
     icon: IconMusic,
-    iconClassName: 'bg-[#bbf7d0] text-[#15803d]'
+    iconClassName: 'bg-[#d1fae5] text-[#059669]'
   },
   {
     type: 'group_title',
     label: 'Group Title',
     icon: IconGroupTitle,
-    iconClassName: 'bg-[#fee2e2] text-[#b91c1c]'
+    iconClassName: 'bg-[#e0f2fe] text-[#0369a1]'
   }
 ]
 
@@ -148,9 +156,12 @@ const Panel: FC<{ type: string } & AddLinkProps> = ({ type, ...restProps }) => {
     case 'skills':
       return <AddSkills {...restProps} />
 
+    case 'experience':
+      return <AddExperience {...restProps} />
 
     case 'video':
       return <AddVideo {...restProps} />
+
     default:
       return SOCIAL_TYPES.includes(type) ? <AddSocial type={type} {...restProps} /> : null
   }

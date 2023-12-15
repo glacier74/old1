@@ -85,7 +85,8 @@ export const WIDGET_URL_PROVIDERS: AnyMap<string> = {
   website: 'Link',
   payment: 'Payment',
   email_capture: 'Email Capture',
-  skills: 'Skills'
+  skills: 'Skills',
+  experience: 'Experience'
 }
 
 export const CREATE_WIDGET_LABELS: AnyMap<string> = {

@@ -180,6 +180,23 @@ export interface SkillsData {
   rating: number
 }
 
+export interface WorkExperience {
+  workName: string
+  workRole: string
+  workDate: [string, string | undefined]
+}
+
+export interface EducationExperience {
+  educationName: string
+  educationField: string
+  educationDate: [string, string | undefined]
+}
+
+export type ExperienceData = (WorkExperience | EducationExperience) & {
+  experienceType: string
+  imageUrl?: string
+}
+
 export interface MapData {
   latitude: number
   longitude: number

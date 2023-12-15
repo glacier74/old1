@@ -29,6 +29,13 @@ const parsers = {
 const HTTP_REGEX = /^https?:\/\//i
 
 export function parseURL(url: string, type?: string) {
+  if (type) {
+    return {
+      provider: type,
+      url
+    }
+  }
+
   if (url) {
     if (!HTTP_REGEX.test(url)) {
       url = 'https://' + url.replace(/^\/+/, '')
