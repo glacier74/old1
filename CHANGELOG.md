@@ -16,3 +16,12 @@
 * Add Jingle Bio tip to login and sign up page
 * Fixed some mobile responsiveness issues
 * Refactor share modal
+
+## v1.8.5 (2023-12-15)
+
+* Add language skills
+* Add video widget
+* Add experience widget
+* Add new plans for Jingle Bio
+* Fix the scrolling problem on Jingle Bio Builder's mobile version
+* For the URL option, submit the updated value after blurred from the input field
