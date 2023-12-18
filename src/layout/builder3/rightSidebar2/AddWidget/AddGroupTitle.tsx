@@ -21,7 +21,7 @@ export const AddGroupTitle: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restPro
   }
 
   return (
-    <OptionsContainer title="Add a group title" onGoBack={onGoBack} {...restProps}>
+    <OptionsContainer title="Add a section title" onGoBack={onGoBack} {...restProps}>
       <div className="px-5">
         <AddWidgetForm requiredNames={['title']} onFinish={handleFinish}>
           <Form.Item

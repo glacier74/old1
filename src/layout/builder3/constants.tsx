@@ -79,7 +79,7 @@ export const WIDGET_URL_PROVIDERS: AnyMap<string> = {
   spotify_playlist: 'Spotify Playlist',
   spotify_track: 'Spotify Track',
   google_map: 'Location',
-  group_title: 'Group Title',
+  group_title: 'Section Title',
   image: 'Image',
   video: 'Video',
   website: 'Link',

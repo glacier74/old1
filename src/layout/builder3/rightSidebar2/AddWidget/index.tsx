@@ -43,65 +43,65 @@ const WIDGET_CONFIGS: WidgetConfig[] = [
     type: 'link',
     label: 'Link',
     icon: IconLink,
-    iconClassName: 'bg-[#e5e7eb] text-[#334155]'
+    iconClassName: 'bg-green-500 text-white'
   },
   {
     type: 'social',
     label: 'Social',
     icon: IconHash,
-    iconClassName: 'bg-[#dbeafe] text-[#1d4ed8]'
+    iconClassName: 'bg-sky-500 text-white'
   },
   {
     type: 'payment',
     label: 'Payment',
     icon: IconCreditCard,
-    iconClassName: 'bg-[#fef9c3] text-[#a16207]'
+    iconClassName: 'bg-orange-500 text-white'
   },
   {
     type: 'email_capture',
     label: 'Email Capture',
     icon: IconMail,
-    iconClassName: 'bg-[#fae8ff] text-[#a21caf]'
+    iconClassName: 'bg-blue-900 text-white'
   },
   {
     type: 'skills',
     label: 'Skills',
     icon: IconBoxModel,
-    iconClassName: 'bg-[#fee2e2] text-[#b91c1c]'
+    iconClassName: 'bg-lime-500 text-white'
   },
   {
     type: 'experience',
     label: 'Experience',
     icon: IconTopologyStar,
-    iconClassName: 'bg-[#fee2e2] text-[#b91c1c]'
+    iconClassName: 'bg-yellow-500 text-white'
   },
   {
     type: 'image',
     label: 'Image',
     icon: IconPhoto,
-    iconClassName: 'bg-[#d1fae5] text-[#059669]'
+    iconClassName: 'bg-rose-500 text-white'
   },
   {
     type: 'video',
     label: 'Video',
     icon: IconBrandYoutube,
-    iconClassName: 'bg-[#d1fae5] text-[#059669]'
+    iconClassName: 'bg-red-600 text-white'
   },
   {
     type: 'google_map',
     label: 'Location',
     icon: IconLocation,
-    iconClassName: 'bg-[#d1fae5] text-[#059669]'
+    iconClassName: 'bg-blue-500 text-white'
   },
   {
     type: 'music',
     label: 'Music',
     icon: IconMusic,
-    iconClassName: 'bg-[#d1fae5] text-[#059669]'
+    iconClassName: 'bg-emerald-400 text-white'
   },
   {
     type: 'group_title',
-    label: 'Group Title',
+    label: 'Section Title',
     icon: IconGroupTitle,
     iconClassName: 'bg-[#e0f2fe] text-[#0369a1]'
   }
