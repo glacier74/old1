@@ -20,6 +20,22 @@ import { AlertModal } from './AlertModal'
 import { CodeInjectionModal } from './CodeInjectionModal'
 import { ScrollIntoView } from './ScrollIntoView'
 
+const INITIAL_FRAME_CONTENT = `<!DOCTYPE html>
+<html class="scroll-smooth">
+
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: "class" }</script>
+  <script>document.addEventListener("click", function (event) { var a = event.target; var depth = 10; while (a && a.tagName !== "A" && depth-- >0){a=a.parentNode}if(a&&a.tagName=="A"){event.preventDefault()}});</script>
+</head>
+
+<body class="iframe-scrollbar">
+  <div></div>
+</body>
+
+</html>`
+
 export const Preview: FC = () => {
   const { siteSettings, updateSiteSettings } = useStore()
   const { state, dispatch } = useBuilderContext()
@@ -112,10 +128,7 @@ export const Preview: FC = () => {
   return (
     <div className="relative w-full h-full">
       <div className={`builder-editor builder-editor-${state.previewMode}`}>
-        <Frame
-          className="w-full h-full"
-          initialContent="<!DOCTYPE html><html class='scroll-smooth'><head><script src='https://cdn.tailwindcss.com'></script><script>tailwind.config = {darkMode: 'class'}</script><script>document.addEventListener('click',function(event){var a=event.target;var depth=10;while(a&&a.tagName!=='A'&&depth-->0){a=a.parentNode}if(a&&a.tagName=='A'){event.preventDefault()}});</script><link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap' rel='stylesheet' /></head><body class='iframe-scrollbar'><div></div></body></html>"
-        >
+        <Frame className="w-full h-full" initialContent={INITIAL_FRAME_CONTENT}>
           <style
             dangerouslySetInnerHTML={{
               __html: `
