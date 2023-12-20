@@ -142,6 +142,9 @@ function getSeoProps(product: Product, isSiteAccessible?: boolean): NextSeoProps
         url: openGraphImage
       }
     ]
+    seo.twitter = {
+      cardType: 'summary_large_image'
+    }
   }
 
   return seo
