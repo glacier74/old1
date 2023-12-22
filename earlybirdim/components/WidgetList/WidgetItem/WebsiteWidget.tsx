@@ -66,7 +66,7 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
           </div>
 
           {imageUrl ? (
-            <div className="relative ml-6 aspect-[1.4] h-full">
+            <div className="widget-og-image relative ml-6 aspect-[1.4] h-full">
               <Image
                 className="h-full w-full rounded-xl object-cover pointer-events-none select-none"
                 src={imageUrl}

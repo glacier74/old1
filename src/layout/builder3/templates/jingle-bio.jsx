@@ -106,7 +106,7 @@ export function render({ product, options: { personal_info, main } }) {
                 <div className="earlybird-tMuH8h">
                   <div className="earlybird-KDvjAn">
                     <Image
-                      className="earlybird-yFaZEN rounded-full max-[360px]:w-28 max-[360px]:h-28 max-[400px]:w-32 max-[400px]:h-32 w-48 h-48"
+                      className="earlybird-yFaZEN rounded-full max-[360px]:w-28 max-[360px]:h-28 max-[400px]:w-32 max-[400px]:h-32 w-48 h-48 object-cover"
                       src={personal_info.avatar}
                       width={160}
                       height={160}

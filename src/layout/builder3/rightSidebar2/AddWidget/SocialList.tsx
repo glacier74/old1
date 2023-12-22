@@ -10,6 +10,7 @@ import {
   IconKofi,
   IconLayers,
   IconLinkedin,
+  IconMastodon,
   IconMedium,
   IconProductHunt,
   IconReddit,
@@ -36,6 +37,12 @@ const SOCIALS = [
     label: 'TikTok',
     url: 'https://www.tiktok.com/@{username}',
     icon: IconTiktok
+  },
+  {
+    name: 'mastodon',
+    label: 'Mastodon',
+    url: 'https://mastodon.social/@{username}',
+    icon: IconMastodon
   },
   {
     name: 'linkedin',

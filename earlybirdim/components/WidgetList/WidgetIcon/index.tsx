@@ -6,16 +6,19 @@ import {
   isBehance,
   isBuyMeCoffee,
   isDiscord,
+  isDouban,
   isDribbble,
   isFacebook,
   isFigma,
   isGithub,
   isGooglePlay,
   isGumroad,
+  isImdb,
   isInstagram,
   isKofi,
   isLayers,
   isLinkedin,
+  isMastodon,
   isMedium,
   isOpenAI,
   isProducthunt,
@@ -37,6 +40,7 @@ import {
   IconBehance,
   IconBuyMeCoffee,
   IconDiscord,
+  IconDouban,
   IconDribbble,
   IconEarlyBird,
   IconEmailCapture,
@@ -45,10 +49,12 @@ import {
   IconGithub,
   IconGooglePlay,
   IconGumroad,
+  IconImdb,
   IconInstagram,
   IconKofi,
   IconLayers,
   IconLinkedin,
+  IconMastodon,
   IconMedium,
   IconOpenAI,
   IconPodcast,
@@ -223,6 +229,21 @@ const websites = [
     match: isYoutube,
     icon: IconYouTube,
     fill: '#FF0000'
+  },
+  {
+    match: isDouban,
+    icon: IconDouban,
+    fill: '#00B51D'
+  },
+  {
+    match: isImdb,
+    icon: IconImdb,
+    fill: '#F5C518'
+  },
+  {
+    match: isMastodon,
+    icon: IconMastodon,
+    fill: '#6364ff'
   }
 ]
 
