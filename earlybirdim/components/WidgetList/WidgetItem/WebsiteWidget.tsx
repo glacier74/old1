@@ -22,6 +22,11 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
             <h3 className="mt-1 line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
               {config.data.overrides?.title || config.data.title}
             </h3>
+            {(config.data.overrides?.description || config.data.description) && (
+              <div className="mt-1 line-clamp-1 md:line-clamp-2 text-sm leading-[1.2] text-slate-500 dark:text-slate-400">
+                {config.data.overrides?.description || config.data.description}
+              </div>
+            )}
             <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 truncate">
               {customURL?.hostname}
             </div>
@@ -59,6 +64,11 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
               <h3 className="mt-1 line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title || config.data.title}
               </h3>
+              {(config.data.overrides?.description || config.data.description) && (
+                <div className="mt-1 line-clamp-1 md:line-clamp-2 text-sm leading-[1.2] text-slate-500 dark:text-slate-400">
+                  {config.data.overrides?.description || config.data.description}
+                </div>
+              )}
               <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 truncate">
                 {customURL?.hostname}
               </div>
@@ -107,6 +117,11 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
               <h3 className="mt-1 line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title || config.data.title}
               </h3>
+              {(config.data.overrides?.description || config.data.description) && (
+                <div className="mt-1 line-clamp-1 md:line-clamp-2 text-sm leading-[1.2] text-slate-500 dark:text-slate-400">
+                  {config.data.overrides?.description || config.data.description}
+                </div>
+              )}
               <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 truncate">
                 {customURL?.hostname}
               </div>

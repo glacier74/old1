@@ -1,6 +1,7 @@
 import { IconChevronLeft, IconChevronRight, IconX } from '@tabler/icons'
 import { HTMLElement } from '@tiptap/core'
 import clsx from 'clsx'
+import Image from 'next/image'
 import { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useFrame } from 'react-frame-component'
 import Swiper from 'swiper'
@@ -114,7 +115,7 @@ export const ImageSwiper: FC<ImageSwiperProps> = ({ selector }) => {
           <div className="swiper-wrapper">
             {images.map((src, index) => (
               <div key={index} className="swiper-slide">
-                <img src={src} loading="lazy" />
+                <Image src={src} alt="" loading="lazy" width={9999} />
               </div>
             ))}
           </div>
