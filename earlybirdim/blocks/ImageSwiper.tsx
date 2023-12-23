@@ -1,3 +1,4 @@
+import { Loader } from '@heyforms/ui'
 import { IconChevronLeft, IconChevronRight, IconX } from '@tabler/icons'
 import { HTMLElement } from '@tiptap/core'
 import clsx from 'clsx'
@@ -34,6 +35,39 @@ const PaginationDot: FC<PaginationDotProps> = ({ index, isActive, onClick }) => 
 
 export interface ImageSwiperProps {
   selector: string
+}
+
+interface ImageSlideProps {
+  src: string
+}
+
+const ImageSlide: FC<ImageSlideProps> = ({ src }) => {
+  const [isLoaded, setLoaded] = useState(false)
+
+  function handleLoad() {
+    setLoaded(true)
+  }
+
+  return (
+    <div className="swiper-slide">
+      <Image
+        className="h-full w-auto"
+        src={src}
+        width={0}
+        height={0}
+        sizes="100vw"
+        loading="lazy"
+        alt=""
+        onLoad={handleLoad}
+      />
+
+      {!isLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <Loader className="scale-150 text-white" />
+        </div>
+      )}
+    </div>
+  )
 }
 
 export const ImageSwiper: FC<ImageSwiperProps> = ({ selector }) => {
@@ -114,9 +148,7 @@ export const ImageSwiper: FC<ImageSwiperProps> = ({ selector }) => {
         <div className="swiper">
           <div className="swiper-wrapper">
             {images.map((src, index) => (
-              <div key={index} className="swiper-slide">
-                <Image src={src} alt="" loading="lazy" width={9999} />
-              </div>
+              <ImageSlide key={index} src={src} />
             ))}
           </div>
         </div>
