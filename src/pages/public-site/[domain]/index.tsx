@@ -395,7 +395,7 @@ export const getServerSideProps = withTranslations(
 
         for (const path of widgetListPaths) {
           objectPath.get(product.siteSetting.blocks, path).forEach((row: any, index: number) => {
-            if (isValid(row.url) && !isGoogleMap(row.url)) {
+            if (isValid(row.url) && !isGoogleMap(row.url) && !row.disableMetadata) {
               urlPaths.push({
                 url: row.url,
                 path: [path, index, 'data'].join('.')

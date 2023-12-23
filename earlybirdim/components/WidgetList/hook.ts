@@ -20,8 +20,12 @@ export function useMetadata<T = WidgetData>(config: WidgetConfig) {
   const [fetchedAt, setFetchedAt] = useState(0)
 
   const isFetchType = useMemo(
-    () => config.type && !UNFETCH_TYPES.includes(config.type) && !isGoogleMap(config.url),
-    [config.type, config.url]
+    () =>
+      config.type &&
+      !UNFETCH_TYPES.includes(config.type) &&
+      !isGoogleMap(config.url) &&
+      !config.disableMetadata,
+    [config.disableMetadata, config.type, config.url]
   )
 
   async function fetchData() {
