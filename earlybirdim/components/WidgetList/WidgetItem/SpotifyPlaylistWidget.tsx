@@ -62,7 +62,7 @@ export default class SpotifyPlaylistWidget<T extends SpotifyPlaylistData> extend
           <WidgetIcon url={config.url} />
 
           <div className="mt-2 md:mt-3 flex-1">
-            <h3 className="line-clamp-1 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+            <h3 className="widget-headline line-clamp-1 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
               {config.data.overrides?.title || config.data.name}
             </h3>
             <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 truncate">
@@ -87,7 +87,7 @@ export default class SpotifyPlaylistWidget<T extends SpotifyPlaylistData> extend
             <WidgetIcon url={config.url} />
 
             <div className="mt-2 md:mt-3 flex-1">
-              <h3 className="mt-1 line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline mt-1 line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title || config.data.name}
               </h3>
               <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 truncate">
@@ -132,7 +132,7 @@ export default class SpotifyPlaylistWidget<T extends SpotifyPlaylistData> extend
               </div>
             </div>
             <div className="mt-3">
-              <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title || config.data.name}
               </h3>
               <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 truncate">

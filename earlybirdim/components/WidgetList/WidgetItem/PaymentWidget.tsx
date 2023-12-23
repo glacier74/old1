@@ -29,7 +29,7 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
           <WidgetIcon type={config.type} />
 
           <div className="mt-2 md:mt-3 flex-1">
-            <h3 className="line-clamp-1 text-sm leading-[1.2] text-gray-900">
+            <h3 className="widget-headline line-clamp-1 text-sm leading-[1.2] text-gray-900">
               {config.data.overrides?.title}
             </h3>
           </div>
@@ -65,7 +65,7 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
             </div>
 
             <div className="mt-2 md:mt-3 flex-1">
-              <h3 className="line-clamp-1 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline line-clamp-1 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title}
               </h3>
             </div>
@@ -116,7 +116,7 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
             </div>
 
             <div className="mt-3">
-              <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title}
               </h3>
             </div>

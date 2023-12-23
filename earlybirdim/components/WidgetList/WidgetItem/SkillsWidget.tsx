@@ -16,7 +16,7 @@ export default class SkillsWidget<T extends SkillsData> extends Widget<T> {
           />
 
           <div className="mt-2 md:mt-3 flex-1 flex flex-col">
-            <h3 className="mt-1 line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+            <h3 className="widget-headline mt-1 line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
               {config.data.title}
             </h3>
             <div className="flex-1"></div>
