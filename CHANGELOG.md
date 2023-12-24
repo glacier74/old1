@@ -25,3 +25,11 @@
 * Add new plans for Jingle Bio
 * Fix the scrolling problem on Jingle Bio Builder's mobile version
 * For the URL option, submit the updated value after blurred from the input field
+
+## v1.8.6 (2023-12-24)
+
+* Stop fetching metadata if `disableMetadata` property set true in widget data
+* Add Douban, IMDB and Mastodon to Jingle Bio
+* Add description to Website widget
+* Add some classes to widget
+* Fix product switcher dropdown style
