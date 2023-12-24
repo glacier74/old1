@@ -34,6 +34,7 @@ interface WidgetActiveItemProps {
 }
 
 interface WidgetItemProps extends WidgetGridData {
+  disableMetadata?: boolean
   activeId?: UniqueIdentifier | null
   allowActions?: boolean
   isDragOverlay?: boolean
@@ -58,6 +59,7 @@ const WidgetItem: FC<WidgetItemProps> = ({
   type,
   size: rawSize,
   url,
+  disableMetadata,
   data = {},
   overrides,
   activeId,
@@ -82,13 +84,14 @@ const WidgetItem: FC<WidgetItemProps> = ({
       type: customURL.provider as WidgetType,
       size,
       url: customURL.url,
+      disableMetadata,
       data: {
         ...data,
         ...pickObject(customURL as AnyMap, ['longitude', 'latitude', 'zoom']),
         overrides
       }
     }
-  }, [customURL, data, id, overrides, size])
+  }, [customURL, data, disableMetadata, id, overrides, size])
 
   const { listeners, setNodeRef, transform, transition } = useSortable({
     id: config.id,
