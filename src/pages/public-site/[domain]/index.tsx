@@ -310,7 +310,7 @@ const PublicSite: FC<PublicSiteProps> = ({
         <PaymentSuccess product={product} successMessage={successMessage} />
       )}
 
-      {!product.isBrandingRemoved && (
+      {!(product.isBrandingRemoved || product.isJingleBio) && (
         <div className="earlybird-branding">
           <a href={process.env.NEXT_PUBLIC_HOMEPAGE}>
             <IconLogo className="w-4 inline" /> Made with EarlyBird

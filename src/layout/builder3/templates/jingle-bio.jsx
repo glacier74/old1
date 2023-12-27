@@ -87,9 +87,6 @@ export function render({ product, options: { personal_info, main } }) {
                 background-color: #020617;
               }
             }
-            .earlybird-branding{
-              display:none;
-            }
           `
         }}
       />
