@@ -51,7 +51,7 @@ const ImageSlide: FC<ImageSlideProps> = ({ src }) => {
   return (
     <div className="swiper-slide">
       <Image
-        className="h-full w-auto"
+        className="h-auto w-auto"
         src={src}
         width={0}
         height={0}
