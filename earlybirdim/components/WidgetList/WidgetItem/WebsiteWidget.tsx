@@ -19,7 +19,7 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
           <WidgetIcon url={config.url} faviconUrl={config.data.faviconUrl} />
 
           <div className="mt-2 md:mt-3 flex-1">
-            <h3 className="widget-headline mt-1 line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+            <h3 className="widget-headline mt-1 line-clamp-2 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
               {config.data.overrides?.title || config.data.title}
             </h3>
             {(config.data.overrides?.description || config.data.description) && (
@@ -61,7 +61,7 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
               <WidgetIcon url={config.url} faviconUrl={config.data.faviconUrl} />
             </div>
             <div className="flex flex-1 flex-col">
-              <h3 className="widget-headline mt-1 line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline mt-1 line-clamp-2 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title || config.data.title}
               </h3>
               {(config.data.overrides?.description || config.data.description) && (
@@ -114,7 +114,7 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
               <WidgetIcon url={config.url} faviconUrl={config.data.faviconUrl} />
             </div>
             <div className="flex flex-1 flex-col">
-              <h3 className="widget-headline mt-1 line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline mt-1 line-clamp-2 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title || config.data.title}
               </h3>
               {(config.data.overrides?.description || config.data.description) && (

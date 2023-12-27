@@ -57,6 +57,7 @@ import {
   IconMastodon,
   IconMedium,
   IconOpenAI,
+  IconPayment,
   IconPodcast,
   IconProductHunt,
   IconReddit,
@@ -257,8 +258,8 @@ export function getWidgetIcon(url: string, type: string) {
 
     case 'payment':
       return {
-        fill: '#635BFF',
-        icon: IconStripe
+        fill: '#0267AB',
+        icon: IconPayment
       }
 
     default:
@@ -280,7 +281,7 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
     if (type) {
       switch (type) {
         case 'payment':
-          return <IconStripe className="h-full w-full" />
+          return <IconPayment className="h-full w-full" />
 
         case 'email_capture':
           return <IconEmailCapture className="h-full w-full" />
@@ -292,7 +293,7 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
         return <website.icon className="h-full w-full" />
       } else if (faviconUrl) {
         return (
-          <div className="p-1.5">
+          <div className="w-full h-full p-1.5">
             {isErrored ? (
               <IconWorld className="text-slate-500 dark:text-slate-400" />
             ) : (

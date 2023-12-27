@@ -193,10 +193,10 @@ export const payment: WidgetExtra = {
     bgColor: '#fff',
     bgHoverColor: '#fbfbfb',
     bgActiveColor: '#fbfbfb',
-    followBorderColor: '#635BFF',
-    followBgColor: '#635BFF',
-    followBgHoverColor: '#635BFF',
-    followBgActiveColor: '#635BFF',
+    followBorderColor: '#0267AB',
+    followBgColor: '#0267AB',
+    followBgHoverColor: '#0267AB',
+    followBgActiveColor: '#0267AB',
     followTextColor: '#fff',
     scale: 0
   }
@@ -208,10 +208,10 @@ export const emailCapture: WidgetExtra = {
     darkBgColor: '#0f172a',
     bgHoverColor: '#fbfbfb',
     bgActiveColor: '#fbfbfb',
-    followBorderColor: '#10b981',
-    followBgColor: '#10b981',
-    followBgHoverColor: '#10b981',
-    followBgActiveColor: '#10b981',
+    followBorderColor: '#FABA22',
+    followBgColor: '#FABA22',
+    followBgHoverColor: '#FABA22',
+    followBgActiveColor: '#FABA22',
     followTextColor: '#fff',
     scale: 0
   }
