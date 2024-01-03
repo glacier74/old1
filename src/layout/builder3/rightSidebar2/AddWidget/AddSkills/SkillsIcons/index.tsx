@@ -292,21 +292,21 @@ export const SkillsIcon: FC<SkillsIcon & ComponentProps> = ({
   ...restProps
 }) => {
   const children = useMemo(() => {
-    if (iconType === 'svg') {
+    if (imageUrl) {
+      return (
+        <Image
+          className="block h-full w-full object-cover rounded-md"
+          src={imageUrl}
+          alt=""
+          width={120}
+          height={120}
+        />
+      )
+    } else if (iconType === 'svg' && svgName) {
       return <Icon className="w-full h-full" svgName={svgName} />
     }
 
-    return (
-      <div className="p-1.5">
-        <Image
-          className="block h-full w-full object-cover rounded-md"
-          src={imageUrl!}
-          alt=""
-          width={28}
-          height={28}
-        />
-      </div>
-    )
+    return null
   }, [svgName, iconType, imageUrl])
 
   return (
