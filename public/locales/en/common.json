@@ -25,7 +25,7 @@
   "dmca": "DMCA",
   "login": "Log in",
   "signUp": "Sign up",
-  "copyright": "Copyright © {{year}} EarlyBird, Inc. All rights reserved.",
+  "copyright": "Copyright © 2022 - {{year}} EarlyBird, Inc. All rights reserved.",
   "sidebar": {
     "helpCenter": "Help center",
     "joinCommunity": "Join our community",
