@@ -142,6 +142,9 @@ function getSeoProps(product: Product, isSiteAccessible?: boolean): NextSeoProps
         url: openGraphImage
       }
     ]
+    seo.twitter = {
+      cardType: 'summary_large_image'
+    }
   }
 
   return seo
@@ -307,7 +310,7 @@ const PublicSite: FC<PublicSiteProps> = ({
         <PaymentSuccess product={product} successMessage={successMessage} />
       )}
 
-      {!product.isBrandingRemoved && (
+      {!(product.isBrandingRemoved || product.isJingleBio) && (
         <div className="earlybird-branding">
           <a href={process.env.NEXT_PUBLIC_HOMEPAGE}>
             <IconLogo className="w-4 inline" /> Made with EarlyBird
@@ -392,7 +395,7 @@ export const getServerSideProps = withTranslations(
 
         for (const path of widgetListPaths) {
           objectPath.get(product.siteSetting.blocks, path).forEach((row: any, index: number) => {
-            if (isValid(row.url) && !isGoogleMap(row.url)) {
+            if (isValid(row.url) && !isGoogleMap(row.url) && !row.disableMetadata) {
               urlPaths.push({
                 url: row.url,
                 path: [path, index, 'data'].join('.')

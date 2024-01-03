@@ -29,7 +29,7 @@ export default async function handler(req: NextRequest) {
             type: parseURL(s.url, s.type).provider,
             size: s.size,
             url: s.url,
-            imageUrl: s.overrides?.imageUrl,
+            imageUrl: s.data?.imageUrl || s.overrides?.imageUrl,
             ...BOX_SIZES[s.size]
           })),
         {

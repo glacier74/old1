@@ -45,7 +45,9 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
           <WidgetIcon url={config.url} />
 
           <div className="mt-2 md:mt-3 flex-1">
-            <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">{title}</h3>
+            <h3 className="widget-headline line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
+              {title}
+            </h3>
             {config.data.description && (
               <div className="max-[400px]:hidden text-xs text-slate-500 dark:text-slate-400">
                 {config.data.description}
@@ -75,7 +77,9 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
             <WidgetIcon url={config.url} />
 
             <div className="mt-2 md:mt-3 flex-1">
-              <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">{title}</h3>
+              <h3 className="widget-headline line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
+                {title}
+              </h3>
               {config.data.description && (
                 <div className="max-[400px]:hidden text-xs text-slate-500 dark:text-slate-400">
                   {config.data.description}
@@ -131,7 +135,9 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
             </div>
 
             <div className="mt-3">
-              <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">{title}</h3>
+              <h3 className="widget-headline line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
+                {title}
+              </h3>
               {config.data.description && (
                 <div className="max-[400px]:hidden text-xs text-slate-500 dark:text-slate-400">
                   {config.data.description}

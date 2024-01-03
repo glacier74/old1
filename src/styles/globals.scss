@@ -486,6 +486,8 @@ button.switch-checked {
 }
 
 .product-dropdown-menus {
+  @apply max-h-[80vh] overflow-auto;
+
   .avatar .avatar-text {
     @apply text-sm;
   }

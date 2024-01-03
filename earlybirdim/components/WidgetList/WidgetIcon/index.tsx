@@ -6,16 +6,19 @@ import {
   isBehance,
   isBuyMeCoffee,
   isDiscord,
+  isDouban,
   isDribbble,
   isFacebook,
   isFigma,
   isGithub,
   isGooglePlay,
   isGumroad,
+  isImdb,
   isInstagram,
   isKofi,
   isLayers,
   isLinkedin,
+  isMastodon,
   isMedium,
   isOpenAI,
   isProducthunt,
@@ -37,6 +40,7 @@ import {
   IconBehance,
   IconBuyMeCoffee,
   IconDiscord,
+  IconDouban,
   IconDribbble,
   IconEarlyBird,
   IconEmailCapture,
@@ -45,12 +49,15 @@ import {
   IconGithub,
   IconGooglePlay,
   IconGumroad,
+  IconImdb,
   IconInstagram,
   IconKofi,
   IconLayers,
   IconLinkedin,
+  IconMastodon,
   IconMedium,
   IconOpenAI,
+  IconPayment,
   IconPodcast,
   IconProductHunt,
   IconReddit,
@@ -223,6 +230,21 @@ const websites = [
     match: isYoutube,
     icon: IconYouTube,
     fill: '#FF0000'
+  },
+  {
+    match: isDouban,
+    icon: IconDouban,
+    fill: '#00B51D'
+  },
+  {
+    match: isImdb,
+    icon: IconImdb,
+    fill: '#F5C518'
+  },
+  {
+    match: isMastodon,
+    icon: IconMastodon,
+    fill: '#6364ff'
   }
 ]
 
@@ -236,8 +258,8 @@ export function getWidgetIcon(url: string, type: string) {
 
     case 'payment':
       return {
-        fill: '#635BFF',
-        icon: IconStripe
+        fill: '#0267AB',
+        icon: IconPayment
       }
 
     default:
@@ -259,7 +281,7 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
     if (type) {
       switch (type) {
         case 'payment':
-          return <IconStripe className="h-full w-full" />
+          return <IconPayment className="h-full w-full" />
 
         case 'email_capture':
           return <IconEmailCapture className="h-full w-full" />
@@ -271,7 +293,7 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
         return <website.icon className="h-full w-full" />
       } else if (faviconUrl) {
         return (
-          <div className="p-1.5">
+          <div className="w-full h-full p-1.5">
             {isErrored ? (
               <IconWorld className="text-slate-500 dark:text-slate-400" />
             ) : (
@@ -295,7 +317,7 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
   return (
     <div
       className={clsx(
-        'relative flex max-[400px]:w-8 max-[400px]:h-8 h-10 w-10 items-center justify-center rounded-lg',
+        'widget-favicon relative flex max-[400px]:w-8 max-[400px]:h-8 h-10 w-10 items-center justify-center rounded-lg',
         className
       )}
       {...restProps}

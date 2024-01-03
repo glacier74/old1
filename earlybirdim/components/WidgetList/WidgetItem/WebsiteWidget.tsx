@@ -19,9 +19,14 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
           <WidgetIcon url={config.url} faviconUrl={config.data.faviconUrl} />
 
           <div className="mt-2 md:mt-3 flex-1">
-            <h3 className="mt-1 line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+            <h3 className="widget-headline mt-1 line-clamp-2 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
               {config.data.overrides?.title || config.data.title}
             </h3>
+            {(config.data.overrides?.description || config.data.description) && (
+              <div className="mt-1 line-clamp-1 md:line-clamp-2 text-sm leading-[1.2] text-slate-500 dark:text-slate-400">
+                {config.data.overrides?.description || config.data.description}
+              </div>
+            )}
             <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 truncate">
               {customURL?.hostname}
             </div>
@@ -56,9 +61,14 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
               <WidgetIcon url={config.url} faviconUrl={config.data.faviconUrl} />
             </div>
             <div className="flex flex-1 flex-col">
-              <h3 className="mt-1 line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline mt-1 line-clamp-2 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title || config.data.title}
               </h3>
+              {(config.data.overrides?.description || config.data.description) && (
+                <div className="mt-1 line-clamp-1 md:line-clamp-2 text-sm leading-[1.2] text-slate-500 dark:text-slate-400">
+                  {config.data.overrides?.description || config.data.description}
+                </div>
+              )}
               <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 truncate">
                 {customURL?.hostname}
               </div>
@@ -66,7 +76,7 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
           </div>
 
           {imageUrl ? (
-            <div className="relative ml-6 aspect-[1.4] h-full">
+            <div className="widget-og-image relative ml-6 aspect-[1.4] h-full">
               <Image
                 className="h-full w-full rounded-xl object-cover pointer-events-none select-none"
                 src={imageUrl}
@@ -104,9 +114,14 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
               <WidgetIcon url={config.url} faviconUrl={config.data.faviconUrl} />
             </div>
             <div className="flex flex-1 flex-col">
-              <h3 className="mt-1 line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline mt-1 line-clamp-2 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title || config.data.title}
               </h3>
+              {(config.data.overrides?.description || config.data.description) && (
+                <div className="mt-1 line-clamp-1 md:line-clamp-2 text-sm leading-[1.2] text-slate-500 dark:text-slate-400">
+                  {config.data.overrides?.description || config.data.description}
+                </div>
+              )}
               <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 truncate">
                 {customURL?.hostname}
               </div>

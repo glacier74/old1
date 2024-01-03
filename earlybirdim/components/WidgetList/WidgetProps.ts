@@ -81,6 +81,7 @@ export interface WidgetConfig<T = any> {
   type?: WidgetType
   size: WidgetSize
   url: string
+  disableMetadata?: boolean
   data: T
   extra?: WidgetExtra
 }
@@ -93,6 +94,7 @@ export interface WidgetPost {
 
 export interface WidgetOverrides {
   title?: string
+  description?: string
   imageUrl?: string
 }
 
@@ -167,6 +169,7 @@ export interface YoutubeData extends Omit<WidgetData, 'posts'> {
 
 export interface WebsiteData extends Pick<WidgetData, 'description' | 'imageUrl' | 'overrides'> {
   title: string
+  description?: string
   faviconUrl?: string
 }
 

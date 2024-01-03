@@ -1395,7 +1395,7 @@
   }
 
   .swiper-slide {
-    @apply flex items-center justify-center;
+    @apply relative flex items-center justify-center;
   }
 }
 

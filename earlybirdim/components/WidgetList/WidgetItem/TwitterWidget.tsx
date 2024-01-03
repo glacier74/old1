@@ -28,7 +28,7 @@ export default class TwitterWidget<T extends WidgetData> extends Widget<T> {
           <WidgetIcon url={config.url} />
 
           <div className="mt-2 md:mt-3 flex-1">
-            <h3 className="line-clamp-1 text-sm text-gray-950 dark:text-slate-50">
+            <h3 className="widget-headline line-clamp-1 text-sm text-gray-950 dark:text-slate-50">
               {config.data.overrides?.title || config.data.name}
             </h3>
             <div className="max-[400px]:hidden text-xs text-gray-400">
@@ -63,7 +63,7 @@ export default class TwitterWidget<T extends WidgetData> extends Widget<T> {
             </div>
           </div>
           <div className="flex flex-1 flex-col">
-            <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
+            <h3 className="widget-headline line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
               {config.data.overrides?.title || config.data.name}
             </h3>
             <div className="max-[400px]:hidden text-xs text-slate-400">
@@ -103,7 +103,7 @@ export default class TwitterWidget<T extends WidgetData> extends Widget<T> {
               </div>
             </div>
             <div className="flex flex-1 flex-col">
-              <h3 className="line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
                 {config.data.overrides?.title || config.data.name}
               </h3>
               <div className="max-[400px]:hidden text-xs text-slate-400">

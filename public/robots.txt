@@ -5,10 +5,13 @@ Disallow: /en/*
 Disallow: /public-site/*
 Disallow: /api/*
 Disallow: /login*
-Disallow: /sign-up
+Disallow: /sign-up*
 Disallow: /logout
 Disallow: /forgot-password
 Disallow: /reset-password
 Disallow: /product/*
+
+User-agent: twitterbot
+Allow: /
 
 Sitemap: https://earlybird.im/sitemap.xml

@@ -22,7 +22,7 @@ export default class ExperienceWidget<T extends ExperienceData> extends Widget<T
           />
 
           <div className="mt-2 md:mt-3 flex-1 flex flex-col space-y-1.5">
-            <h3 className="line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+            <h3 className="widget-headline line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
               {data?.name}
             </h3>
             <div className="text-xs text-slate-500 dark:text-slate-400 truncate">{data?.role}</div>
@@ -49,7 +49,7 @@ export default class ExperienceWidget<T extends ExperienceData> extends Widget<T
           <div className="mt-2 md:mt-3 flex-1">
             <div className="flex items-start justify-between md:mt-2">
               <div className="w-[calc(100%-140px)] space-y-2">
-                <h3 className="line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] break-words text-slate-950 dark:text-slate-50">
+                <h3 className="widget-headline line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] break-words text-slate-950 dark:text-slate-50">
                   {data?.name}
                 </h3>
                 <div className="text-xs text-slate-500 dark:text-slate-400 truncate">
