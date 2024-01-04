@@ -280,7 +280,8 @@ const PublicSite: FC<PublicSiteProps> = ({
       {product.siteSetting.schema === 3 ? (
         <GlobalContext.Provider
           value={{
-            productId: product.id
+            productId: product.id,
+            domain: product.domain
           }}
         >
           {isValid(product.siteSetting.blocks) ? (

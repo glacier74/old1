@@ -2,6 +2,7 @@ import { createContext, useContext } from 'react'
 
 interface IState {
   productId: number
+  domain: string
   isPreview?: boolean
   widgetId?: string
   songId?: string

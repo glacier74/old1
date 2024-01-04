@@ -81,3 +81,11 @@ export function useComputedConfig(config: WidgetConfig) {
     return config
   }, [config])
 }
+
+const NEXT_PUBLIC_SHORT_URL = process.env.NEXT_PUBLIC_SHORT_URL as string
+
+export function useShortLinkURL(widgetId: string) {
+  const { domain } = useGlobalContext()
+
+  return [NEXT_PUBLIC_SHORT_URL, domain, widgetId].join('/')
+}

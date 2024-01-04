@@ -9,6 +9,7 @@ import { Flipped, spring } from 'react-flip-toolkit'
 
 import { WidgetConfig, WidgetGridData, WidgetType } from '../WidgetProps'
 import { sizeClassNames } from '../constants'
+import { useShortLinkURL } from '../hook'
 import { parseURL } from '../utils'
 import BehanceWidget from './BehanceWidget'
 import EmailCaptureWidget from './EmailCaptureWidget'
@@ -78,13 +79,14 @@ const WidgetItem: FC<WidgetItemProps> = ({
   }, [rawSize, type])
 
   const customURL = useMemo(() => parseURL(url, type), [url, type])
+  const shortLinkURL = useShortLinkURL(id)
   const config: WidgetConfig = useMemo(() => {
     return {
       id,
       type: customURL.provider as WidgetType,
       size,
       url: customURL.url,
-      disableMetadata,
+      shortLinkURL,
       data: {
         ...data,
         ...pickObject(customURL as AnyMap, ['longitude', 'latitude', 'zoom']),

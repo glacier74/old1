@@ -86,6 +86,7 @@ export const PreviewModal: FC<PreviewModalProps> = ({ template, onSelect, ...res
             <GlobalContext.Provider
               value={{
                 productId: 0,
+                domain: '-',
                 isPreview: true
               }}
             >

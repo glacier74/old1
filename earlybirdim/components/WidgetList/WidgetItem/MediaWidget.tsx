@@ -56,7 +56,7 @@ export default class MediaWidget<T extends MediaData> extends Widget<T> {
             [`widget-${config.type}-link !cursor-pointer`]: isValid(config.url)
           }
         )}
-        href={config.url}
+        href={config.url ? config.shortLinkURL : undefined}
       >
         {imageUrl && (
           <Image

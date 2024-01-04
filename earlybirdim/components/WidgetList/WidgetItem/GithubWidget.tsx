@@ -134,7 +134,7 @@ export default class GithubWidget<T extends GithubData & WidgetData> extends Beh
   // 2x1
   override Render2x1(config: WidgetConfig<T>) {
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <a className="block w-full h-full" href={config.shortLinkURL}>
         <div className="flex h-full">
           <div className="flex flex-col">
             <WidgetIcon url={config.url} />
@@ -174,7 +174,7 @@ export default class GithubWidget<T extends GithubData & WidgetData> extends Beh
   // 2x1
   override Render2x2(config: WidgetConfig) {
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <a className="block w-full h-full" href={config.shortLinkURL}>
         <div className="flex h-full flex-col">
           <div>
             <div className="flex justify-between">

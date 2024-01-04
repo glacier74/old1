@@ -187,6 +187,7 @@ export const Preview: FC = () => {
           <GlobalContext.Provider
             value={{
               productId: product.id,
+              domain: product.domain,
               isPreview: true
             }}
           >

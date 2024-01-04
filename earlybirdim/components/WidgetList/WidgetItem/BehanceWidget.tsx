@@ -40,7 +40,7 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
     const title = config.data.overrides?.title || config.data.name || typeNames[config.type!]
 
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <a className="block w-full h-full" href={config.shortLinkURL}>
         <div className="flex h-full flex-col">
           <WidgetIcon url={config.url} />
 
@@ -71,7 +71,7 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
     const title = config.data.overrides?.title || config.data.name || typeNames[config.type!]
 
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <a className="block w-full h-full" href={config.shortLinkURL}>
         <div className="flex h-full">
           <div className="flex flex-col">
             <WidgetIcon url={config.url} />
@@ -120,7 +120,7 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
     const title = config.data.overrides?.title || config.data.name || typeNames[config.type!]
 
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <a className="block w-full h-full" href={config.shortLinkURL}>
         <div className="flex h-full flex-col">
           <div>
             <div className="flex justify-between">

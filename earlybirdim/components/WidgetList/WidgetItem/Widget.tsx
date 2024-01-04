@@ -133,7 +133,7 @@ export default class Widget<T> {
   // 2x0.5
   protected Render2x05(config: WidgetConfig<T>) {
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <a className="block w-full h-full" href={config.shortLinkURL}>
         <div className="flex h-full items-center gap-3">
           <WidgetIcon
             className="h-7 w-7"

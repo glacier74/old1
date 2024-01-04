@@ -81,6 +81,7 @@ export interface WidgetConfig<T = any> {
   type?: WidgetType
   size: WidgetSize
   url: string
+  shortLinkURL?: string
   disableMetadata?: boolean
   data: T
   extra?: WidgetExtra

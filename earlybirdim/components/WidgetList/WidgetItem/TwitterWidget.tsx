@@ -23,7 +23,7 @@ export default class TwitterWidget<T extends WidgetData> extends Widget<T> {
 
   override Render1x1(config: WidgetConfig<T>) {
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <a className="block w-full h-full" href={config.shortLinkURL}>
         <div className="flex h-full flex-col">
           <WidgetIcon url={config.url} />
 
@@ -50,7 +50,7 @@ export default class TwitterWidget<T extends WidgetData> extends Widget<T> {
   // 2x1
   override Render2x1(config: WidgetConfig<T>) {
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <a className="block w-full h-full" href={config.shortLinkURL}>
         <div className="flex h-full flex-col gap-3">
           <div className="flex justify-between">
             <WidgetIcon url={config.url} />
@@ -89,7 +89,7 @@ export default class TwitterWidget<T extends WidgetData> extends Widget<T> {
     }, [config.data.imageUrl, config.data.overrides?.imageUrl])
 
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <a className="block w-full h-full" href={config.shortLinkURL}>
         <div className="flex h-full flex-col">
           <div className="flex flex-col gap-3">
             <div className="flex justify-between">

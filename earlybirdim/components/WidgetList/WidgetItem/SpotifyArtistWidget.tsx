@@ -17,7 +17,7 @@ export default class SpotifyArtistWidget<T extends SpotifyArtistData> extends Wi
 
   override Render1x1(config: WidgetConfig<T>) {
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <a className="block w-full h-full" href={config.shortLinkURL}>
         <div className="flex h-full flex-col">
           <WidgetIcon url={config.url} />
 
@@ -38,7 +38,7 @@ export default class SpotifyArtistWidget<T extends SpotifyArtistData> extends Wi
   // 2x1
   override Render2x1(config: WidgetConfig<T>) {
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <a className="block w-full h-full" href={config.shortLinkURL}>
         <div className="flex h-full">
           <div className="flex h-full flex-col">
             <WidgetIcon url={config.url} />
@@ -75,7 +75,7 @@ export default class SpotifyArtistWidget<T extends SpotifyArtistData> extends Wi
   // 2x1
   override Render2x2(config: WidgetConfig<T>) {
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <a className="block w-full h-full" href={config.shortLinkURL}>
         <div className="flex h-full flex-col">
           <div>
             <div className="flex justify-between">

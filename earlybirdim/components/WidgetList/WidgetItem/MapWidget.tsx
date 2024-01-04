@@ -83,7 +83,7 @@ export default class MapWidget<T extends MapData> extends Widget<T> {
     }, [config.data.latitude, config.data.longitude])
 
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <a className="block w-full h-full" href={config.shortLinkURL}>
         <div
           id={`widget-${config.id}`}
           className="relative h-full w-full overflow-hidden rounded-3xl"

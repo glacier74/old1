@@ -14,7 +14,7 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
     const customURL = toCustomURL(config.url)
 
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <a className="block w-full h-full" href={config.shortLinkURL}>
         <div className="flex h-full flex-col">
           <WidgetIcon url={config.url} faviconUrl={config.data.faviconUrl} />
 
@@ -49,7 +49,7 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
     )
 
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <a className="block w-full h-full" href={config.shortLinkURL}>
         <div className="flex h-full">
           <div
             className={clsx(
@@ -107,7 +107,7 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
     )
 
     return (
-      <a className="block w-full h-full" href={config.url}>
+      <a className="block w-full h-full" href={config.shortLinkURL}>
         <div className="flex h-full flex-col">
           <div className="flex flex-1 flex-col gap-3">
             <div className="flex justify-between">
