@@ -4,6 +4,7 @@ import { FC } from 'react'
 import { PackerRect } from '~/utils'
 
 interface JingleBioImageResponseProps {
+  domain: string
   profile: any
   socials: any[]
 }
@@ -17,8 +18,10 @@ interface SocialItemProps {
 }
 
 const IMAGE_CONVERT_URL = process.env.NEXT_IMAGE_CONVERT_URL as string
+const JINGLE_BIO_DOMAIN = process.env.NEXT_PUBLIC_JINGLE_BIO_DOMAIN as string
 
 const SocialItemIcon: FC<SocialItemProps & { icon?: FC<any>; style?: any }> = ({
+  type,
   icon: Icon,
   imageUrl,
   faviconUrl,
@@ -34,14 +37,15 @@ const SocialItemIcon: FC<SocialItemProps & { icon?: FC<any>; style?: any }> = ({
         }}
       />
     )
-  } else if (imageUrl) {
+  } else if (type === 'image' && imageUrl) {
     return <img width="76" height="76" src={imageUrl} style={style} />
   } else if (faviconUrl) {
+    console.log(`${IMAGE_CONVERT_URL}/?url=${encodeURIComponent(faviconUrl)}`, style)
+
     return (
       <img
-        tw="p-5"
-        width="76"
-        height="76"
+        width="24"
+        height="24"
         src={`${IMAGE_CONVERT_URL}/?url=${encodeURIComponent(faviconUrl)}`}
         style={style}
       />
@@ -59,8 +63,7 @@ const SocialItem: FC<SocialItemProps & PackerRect> = props => {
     if (isSize2x05) {
       return {
         width: 24,
-        height: 24,
-        marginLeft: 8
+        height: 24
       }
     } else if (props.type === 'image') {
       return {
@@ -94,7 +97,11 @@ const SocialItem: FC<SocialItemProps & PackerRect> = props => {
   )
 }
 
-export const JingleBioImageResponse: FC<JingleBioImageResponseProps> = ({ profile, socials }) => {
+export const JingleBioImageResponse: FC<JingleBioImageResponseProps> = ({
+  domain,
+  profile,
+  socials
+}) => {
   return (
     <div tw="flex w-full h-full pt-[75px] pb-[95px] px-[75px] bg-white">
       <div tw="flex justify-between items-center w-full h-full">
@@ -109,7 +116,10 @@ export const JingleBioImageResponse: FC<JingleBioImageResponseProps> = ({ profil
               }}
             />
           )}
-          <div tw="w-full text-[36px] mt-[32px] font-bold text-slate-900">{profile.name}</div>
+          <div tw="flex w-full text-[36px] mt-[32px] font-bold text-slate-900">{profile.name}</div>
+          <div tw="flex text-[16px] text-slate-600">
+            {JINGLE_BIO_DOMAIN}/{domain}
+          </div>
         </div>
         <div tw="relative flex w-[340px] h-[252px] overflow-hidden">
           {socials.map((row: any) => (

@@ -54,10 +54,11 @@ export default async function handler(req: NextRequest) {
       }
 
       return new ImageResponse(
-        <JingleBioImageResponse profile={personal_info} socials={socials} />,
+        <JingleBioImageResponse domain={domain} profile={personal_info} socials={socials} />,
         {
           width: 800,
-          height: 420
+          height: 420,
+          debug: false
         }
       )
     }
