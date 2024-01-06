@@ -426,3 +426,5 @@ export const PLAN_INTERVALS: AnyMap<string> = {
   month: 'Monthly',
   year: 'Yearly'
 }
+
+export const JINGLEBIO_REF = 'jinglebio'

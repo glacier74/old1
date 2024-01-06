@@ -3,6 +3,7 @@ import { Trans, useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
+import { JINGLEBIO_REF } from '~/constants'
 import { JingleBioTip, LoginLayout, SocialLogin } from '~/layout'
 import { AuthService } from '~/service'
 import { useStore } from '~/store'
@@ -26,8 +27,9 @@ const SignUp = ({ referer }: { referer: string }): JSX.Element => {
 
   return (
     <LoginLayout
+      referer={referer}
       seo={{
-        title: t('signUp.title')
+        title: referer === JINGLEBIO_REF ? t('signUp.jinglebioTitle') : t('signUp.title')
       }}
     >
       <div className="mt-8 md:mt-0">

@@ -34,6 +34,7 @@ declare global {
 
   interface LayoutProps extends ComponentProps {
     seo?: NextSeoProps & { url?: string }
+    referer?: string
     children: ReactNode
   }
 

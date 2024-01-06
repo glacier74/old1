@@ -8,12 +8,13 @@ import Script from 'next/script'
 import { useEffect } from 'react'
 
 import { ClarityAnalytics } from '~/components/ClarityAnalytics'
+import { JINGLEBIO_REF } from '~/constants'
 import { getBrowserId, getHomeURL, getPageURL, setBrowserId } from '~/utils'
 import { i18n } from '~i18next-config'
 
 const OG_IMAGE_URL = 'https://storage.earlybird.im/static/og.png'
 
-export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
+export function BaseLayout({ referer, seo, children }: LayoutProps): JSX.Element {
   const { t } = useTranslation()
   const router = useRouter()
 
@@ -59,9 +60,16 @@ export function BaseLayout({ seo, children }: LayoutProps): JSX.Element {
       <Head>
         <meta content={t('appName')} name="application-name" />
         <meta content={t('appName')} name="apple-mobile-web-app-title" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
-        <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+
+        {referer === JINGLEBIO_REF ? (
+          <link rel="icon" type="image/x-icon" href="https://jingle.bio/images/favicon.ico" />
+        ) : (
+          <>
+            <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
+            <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
+            <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+          </>
+        )}
 
         <meta httpEquiv="Content-Language" content={locale} />
 

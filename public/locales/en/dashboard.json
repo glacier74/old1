@@ -25,6 +25,7 @@
   },
   "login": {
     "title": "Login - EarlyBird",
+    "jinglebioTitle": "Login - Jingle Bio",
     "heading": "👋 Welcome back!",
     "description": "Log in to your account or <a>create an account</a>",
     "signInWith": "Log in with",
@@ -44,6 +45,7 @@
   },
   "signUp": {
     "title": "$t(signUp.heading) - EarlyBird",
+    "jinglebioTitle": "$t(signUp.heading) - Jingle Bio",
     "heading": "Create an account",
     "description": "Get started for free, no credit card required.",
     "name": "Name",

@@ -10,7 +10,7 @@ interface JingleBioTipProps {
 export const JingleBioTip: FC<JingleBioTipProps> = ({ referer }) => {
   const { t } = useTranslation('dashboard')
 
-  if (referer !== JINGLEBIO_REF) {
+  if (referer !== 'jinglebio') {
     return null
   }
 

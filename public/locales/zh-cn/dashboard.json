@@ -25,6 +25,7 @@
   },
   "login": {
     "title": "登录 - EarlyBird",
+    "jinglebioTitle": "登录 - Jingle Bio",
     "heading": "👋 欢迎回来！",
     "description": "登录到你的帐户或<a>创建一个账号</a>",
     "signInWith": "用以下方式登录",
@@ -43,6 +44,7 @@
   },
   "signUp": {
     "title": "创建账号 - EarlyBird",
+    "jinglebioTitle": "创建账号 - Jingle Bio",
     "heading": "创建一个账号",
     "description": "免费开始，无需信用卡。",
     "signUpWith": "用以下方式注册",
