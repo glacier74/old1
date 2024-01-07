@@ -11,7 +11,12 @@ export const SelectOption: FC<OptionProps> = ({ parentName, schema }) => {
     <div className="builder-option">
       <div className="builder-option__title">{schema.title}</div>
       <div className="builder-option__content">
-        <Select options={schema.options} value={value} onChange={update} />
+        <Select
+          options={schema.options}
+          defaultValue={schema.options[0]?.value}
+          value={value}
+          onChange={update}
+        />
       </div>
     </div>
   )

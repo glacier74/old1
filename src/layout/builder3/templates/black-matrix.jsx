@@ -85,6 +85,7 @@ export const schemas = [
           {
             name: 'status',
             title: 'Status',
+            type: 'select',
             options: [
               {
                 label: 'Active',
@@ -101,6 +102,10 @@ export const schemas = [
               {
                 label: 'Discontinued',
                 value: 'Discontinued'
+              },
+              {
+                label: '🙈 Hide status',
+                value: '🙈 Hide status'
               }
             ]
           },
@@ -379,28 +384,28 @@ background-color: rgba(0, 0, 0, .62);
                         switch (item.status) {
                           case 'Active':
                             return (
-                              <div className="earlybird-P25lnF inline-block px-3 py-1 text-xs bg-emerald-500 shadow-md text-white rounded-2xl">
+                              <div className="earlybird-P25lnF mb-4 inline-block px-3 py-1 text-xs bg-emerald-500 shadow-md text-white rounded-2xl">
                                 {item.status}
                               </div>
                             )
 
                           case 'Paused':
                             return (
-                              <div className="earlybird-YndrIy inline-block px-3 py-1 text-xs bg-orange-500 shadow-md text-white rounded-2xl">
+                              <div className="earlybird-P25lnF mb-4 inline-block px-3 py-1 text-xs bg-orange-500 shadow-md text-white rounded-2xl">
                                 {item.status}
                               </div>
                             )
 
                           case 'Acquired':
                             return (
-                              <div className="earlybird-46O7AS inline-block px-3 py-1 text-xs bg-blue-500 shadow-md text-white rounded-2xl">
+                              <div className="earlybird-P25lnF mb-4 inline-block px-3 py-1 text-xs bg-blue-500 shadow-md text-white rounded-2xl">
                                 {item.status}
                               </div>
                             )
 
                           case 'Discontinued':
                             return (
-                              <div className="earlybird-DLLFrN inline-block px-3 py-1 text-xs bg-slate-700 shadow-md text-white rounded-2xl">
+                              <div className="earlybird-P25lnF mb-4 inline-block px-3 py-1 text-xs bg-slate-700 shadow-md text-white rounded-2xl">
                                 {item.status}
                               </div>
                             )
@@ -409,7 +414,7 @@ background-color: rgba(0, 0, 0, .62);
                             return null
                         }
                       })()}
-                      <h2 className="earlybird-KVMTcr text-2xl font-bold mt-4">{item.title}</h2>
+                      <h2 className="earlybird-KVMTcr text-2xl font-bold">{item.title}</h2>
                       <p className="earlybird-9fhI2q mt-2 text-slate-400 text-base">
                         {item.description}
                       </p>
