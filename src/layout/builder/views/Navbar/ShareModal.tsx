@@ -37,27 +37,6 @@ export const ShareModal: FC<IModalProps> = ({ visible, onClose }) => {
     window.open(url)
   }
 
-  function handleFacebook() {
-    const url = urlBuilder('https://www.facebook.com/sharer/sharer.php', {
-      u: shareURL
-    })
-    window.open(url)
-  }
-
-  function handleLinkedin() {
-    const url = urlBuilder('https://www.linkedin.com/sharing/share-offsite', {
-      url: shareURL
-    })
-    window.open(url)
-  }
-
-  function handleTwitter() {
-    const url = urlBuilder('https://twitter.com/share', {
-      title: shareText
-    })
-    window.open(url)
-  }
-
   return (
     <Modal
       className="share-modal"
@@ -85,38 +64,51 @@ export const ShareModal: FC<IModalProps> = ({ visible, onClose }) => {
           />
 
           <div className="flex-1 space-y-3">
-            <button
+            <a
               className="group w-full flex items-center justify-between text-slate-700 hover:text-slate-900"
-              onClick={handleTwitter}
+              target="_blank"
+              rel="noreferrer"
+              href={urlBuilder('https://twitter.com/share', {
+                title: shareText
+              })}
             >
               <div className="flex flex-1 items-center gap-2">
                 <IconTwitter className="border border-slate-200/80 p-1.5 rounded-full w-8 h-8 text-sky-400" />
                 <span>Share on Twitter </span>
               </div>
               <IconChevronRight className="w-5 h-5 text-slate-400 transition-colors group-hover:text-slate-900 group-hover:animate-bounce-x" />
-            </button>
+            </a>
 
-            <button
+            <a
               className="group w-full flex items-center justify-between text-slate-700 hover:text-slate-900"
-              onClick={handleFacebook}
+              target="_blank"
+              rel="noreferrer"
+              href={urlBuilder('https://www.facebook.com/sharer/sharer.php', {
+                u: shareURL
+              })}
             >
               <div className="flex flex-1 items-center gap-2">
                 <IconFacebook className="border border-slate-200/80 p-1 rounded-full w-8 h-8 text-blue-500" />
                 <span>Share on Facebook </span>
               </div>
               <IconChevronRight className="w-5 h-5 text-slate-400 transition-colors group-hover:text-slate-900 group-hover:animate-bounce-x" />
-            </button>
+            </a>
 
-            <button
+            <a
               className="group w-full flex items-center justify-between text-slate-700 hover:text-slate-900"
-              onClick={handleLinkedin}
+              target="_blank"
+              rel="noreferrer"
+              href={urlBuilder('http://www.linkedin.com/shareArticle?mini=true', {
+                url: shareURL,
+                title: shareText
+              })}
             >
               <div className="flex flex-1 items-center gap-2">
                 <IconLinkedin className="border border-slate-200/80 p-1.5 rounded-full w-8 h-8 text-sky-800" />
                 <span>Share on LinkedIn </span>
               </div>
               <IconChevronRight className="w-5 h-5 text-slate-400 transition-colors group-hover:text-slate-900 group-hover:animate-bounce-x" />
-            </button>
+            </a>
 
             <button
               className="group w-full flex items-center justify-between text-slate-700 hover:text-slate-900"
