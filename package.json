@@ -28,7 +28,7 @@
     "@qrcode-js/browser": "^1.2.0",
     "@reactour/tour": "^3.2.1",
     "@tabler/icons": "^1.119.0",
-    "@tinaryan/dp": "^0.2.12",
+    "@tinaryan/dp": "^0.2.13",
     "@tippyjs/react": "^4.2.6",
     "@tiptap/core": "2.0.0-beta.218",
     "@tiptap/extension-bold": "2.0.0-beta.218",
