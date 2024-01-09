@@ -20,6 +20,8 @@ const PRIVATE_TOKEN_MAX_AGE = date.milliseconds(
   process.env.NEXT_PUBLIC_PRIVATE_TOKEN_COOKIE_MAX_AGE!
 )!
 
+const JINGLE_LOCALE_COOKIE_NAME = process.env.NEXT_PUBLIC_JINGLE_LOCALE_COOKIE_NAME!
+
 export function getBrowserId(cookies: RequestCookies | JSCookie | AnyMap<string>) {
   return getCookie(cookies, BROWSER_ID_KEY)
 }
@@ -76,6 +78,10 @@ export function setPrivateToken(cookies: JSCookie, token: string) {
 
 export function getPrivateToken(cookies: AnyMap<string>) {
   return cookies[PRIVATE_TOKEN_KEY]
+}
+
+export function getJingleBioLocale(cookies: AnyMap<string>) {
+  return cookies[JINGLE_LOCALE_COOKIE_NAME]
 }
 
 export function setCookie(

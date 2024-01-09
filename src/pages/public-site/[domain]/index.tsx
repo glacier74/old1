@@ -36,11 +36,12 @@ import { PublicSiteUnpublished } from '~/layout/public-site/PublicSiteUnpublishe
 import { ProductService } from '~/service'
 import { JingleBioService } from '~/service/jinglebio'
 import { PublicApiService } from '~/service/public-api'
-import { getPrivateToken, setPrivateToken, withTranslations } from '~/utils'
+import { getJingleBioLocale, getPrivateToken, setPrivateToken, withTranslations } from '~/utils'
 
 interface PublicSiteProps {
   isSiteAccessible?: boolean
   product: Product
+  locale: string
   paymentStatus?: 'success'
   successMessage?: string
 }
@@ -186,6 +187,7 @@ const PaymentSuccess: FC<Partial<PublicSiteProps>> = ({ product, successMessage 
 const PublicSite: FC<PublicSiteProps> = ({
   isSiteAccessible,
   product,
+  locale,
   paymentStatus,
   successMessage
 }) => {
@@ -288,7 +290,8 @@ const PublicSite: FC<PublicSiteProps> = ({
             templates[product.siteSetting.template]?.render({
               product,
               options: product.siteSetting.blocks,
-              hiddenBlocks: product.siteSetting.hiddenBlocks
+              hiddenBlocks: product.siteSetting.hiddenBlocks,
+              locale
             })
           ) : (
             <PublicSiteUnpublished />
@@ -430,6 +433,7 @@ export const getServerSideProps = withTranslations(
     return {
       props: {
         product,
+        locale: getJingleBioLocale(context.req.cookies),
         isSiteAccessible: true,
         language: product.language,
         // `undefined` cannot be serialized as JSON

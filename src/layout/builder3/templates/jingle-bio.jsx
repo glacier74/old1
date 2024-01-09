@@ -1,5 +1,5 @@
 import { Icon, Image, Section, WidgetList, clsx } from '@earlybirdim/components'
-import React from 'react'
+import { useEffect, useState } from 'react'
 
 export const schemas = [
   {
@@ -41,9 +41,22 @@ export const schemas = [
   }
 ]
 
-export function render({ product, options: { personal_info, main } }) {
+const LOCALES = {
+  en: {
+    createOwn: 'Create your own',
+    reportAbuse: 'Report abuse'
+  },
+  'zh-hans': { createOwn: '创建你自己的', reportAbuse: '举报滥用行为' },
+  'zh-hant': { createOwn: '創建你自己的', reportAbuse: '舉報濫用行為' },
+  ja: { createOwn: '自分のものを作るために', reportAbuse: '不正行為を報告する' }
+}
+
+export function render({ product, options: { personal_info, main }, locale = 'en' }) {
   const cacheKeyName = 'jinglebio_theme'
-  const [isDarkMode, setDarkMode] = React.useState(false)
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [isDarkMode, setDarkMode] = useState(false)
+
+  const lowerLocale = locale.toLowerCase()
 
   function handleMediaChange(event) {
     setDarkMode(event.matches)
@@ -56,11 +69,13 @@ export function render({ product, options: { personal_info, main } }) {
     window.localStorage.setItem(cacheKeyName, theme)
   }
 
-  React.useEffect(() => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
     isDarkMode ? document.body.classList.add('dark') : document.body.classList.remove('dark')
   }, [isDarkMode])
 
-  React.useEffect(() => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
     const media = window.matchMedia('(prefers-color-scheme:dark)')
     let theme = window.localStorage.getItem(cacheKeyName)
 
@@ -77,7 +92,7 @@ export function render({ product, options: { personal_info, main } }) {
   }, [])
 
   return (
-    <React.Fragment>
+    <>
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -143,7 +158,7 @@ export function render({ product, options: { personal_info, main } }) {
                   <>
                     <div className="mx-2 h-4 w-px bg-slate-200 dark:bg-slate-700"></div>
                     <div className="text-sm text-slate-500 dark:text-slate-400">
-                      Create your own{' '}
+                      {LOCALES[lowerLocale].createOwn}{' '}
                       <a
                         className="underline hover:text-slate-800 dark:hover:text-slate-300"
                         href="https://jingle.bio/?ref=BioBadge"
@@ -160,13 +175,13 @@ export function render({ product, options: { personal_info, main } }) {
                   className="underline text-sm text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-300"
                   href="mailto:support@jingle.bio?subject=Report%20abuse"
                 >
-                  Report abuse
+                  {LOCALES[lowerLocale].reportAbuse}
                 </a>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </>
   )
 }
