@@ -293,7 +293,7 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
         return <website.icon className="h-full w-full" />
       } else if (faviconUrl) {
         return (
-          <div className="w-full h-full p-1.5">
+          <div className={clsx('w-full h-full', isErrored ? 'p-0.5' : 'p-1')}>
             {isErrored ? (
               <IconWorld className="text-slate-500 dark:text-slate-400" />
             ) : (
