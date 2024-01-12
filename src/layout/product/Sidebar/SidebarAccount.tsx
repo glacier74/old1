@@ -11,6 +11,8 @@ import { LANGUAGE_OPTIONS } from '~/constants'
 import { useStore } from '~/store'
 import { setCookie } from '~/utils'
 
+import { UserSubscription } from './UserSubscription'
+
 const Skeleton = () => {
   return (
     <div className="flex items-center">
@@ -93,30 +95,30 @@ export const SidebarAccount: FC = () => {
   return (
     <div className="flex-shrink-0 flex px-4 py-2 bg-slate-50 border-t border-slate-200">
       {isReady ? (
-        <Dropdown
-          className="flex-shrink-0 group block w-full"
-          placement="top-start"
-          overlay={Overlay}
-        >
-          <div className="flex items-center cursor-pointer">
-            <div>
-              <RoundImage
-                className="inline-block h-8 w-8"
-                src={user?.avatar}
-                imageSize={32}
-                size={32}
-              />
+        <div className="flex justify-between items-center w-full">
+          <Dropdown className="group" placement="top-start" overlay={Overlay}>
+            <div className="flex items-center cursor-pointer">
+              <div>
+                <RoundImage
+                  className="inline-block h-8 w-8"
+                  src={user?.avatar}
+                  imageSize={32}
+                  size={32}
+                />
+              </div>
+              <div className="ml-3">
+                <p className="text-sm font-medium text-slate-700 truncate group-hover:text-slate-900">
+                  {user?.name}
+                </p>
+                <p className="text-xs text-slate-500 group-hover:text-slate-700">
+                  {t('sidebar.viewProfile')}
+                </p>
+              </div>
             </div>
-            <div className="ml-3">
-              <p className="text-sm font-medium text-slate-700 truncate group-hover:text-slate-900">
-                {user?.name}
-              </p>
-              <p className="text-xs text-slate-500 group-hover:text-slate-700">
-                {t('sidebar.viewProfile')}
-              </p>
-            </div>
-          </div>
-        </Dropdown>
+          </Dropdown>
+
+          <UserSubscription />
+        </div>
       ) : (
         <Skeleton />
       )}

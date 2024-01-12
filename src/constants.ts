@@ -386,6 +386,7 @@ export const PLAN_LEVELS: AnyMap<number> = {
   plan_starter: 1,
   plan_superior: 2,
   plan_shipper: 3,
+  plan_unlimited: 9,
 
   // Jingle Bio
   jinglebio_free: 0,
@@ -399,6 +400,7 @@ export const PLAN_NAMES: AnyMap<string, number | string> = {
   plan_starter: 'Starter',
   plan_superior: 'Superior',
   plan_shipper: 'Shipper',
+  plan_unlimited: 'Unlimited',
 
   // Jingle Bio
   jinglebio_free: 'Hum',
@@ -412,7 +414,8 @@ export const PLAN_LEVEL_NAME_MAPS = {
     [PLAN_LEVELS.plan_free]: 'Free',
     [PLAN_LEVELS.plan_starter]: 'Starter',
     [PLAN_LEVELS.plan_superior]: 'Superior',
-    [PLAN_LEVELS.plan_shipper]: 'Shipper'
+    [PLAN_LEVELS.plan_shipper]: 'Shipper',
+    [PLAN_LEVELS.plan_unlimited]: 'Unlimited'
   },
   jinglebio: {
     [PLAN_LEVELS.jinglebio_free]: 'Hum',

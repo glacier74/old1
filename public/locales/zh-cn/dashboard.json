@@ -186,7 +186,8 @@
     "heading": "套餐",
     "description": "你当前的套餐是 {{planName}}。",
     "upgrade": "你已成功升级到 {{planName}} 套餐。",
-    "downgrade": "你已成功降级到 {{planName}} 套餐。"
+    "downgrade": "你已成功降级到 {{planName}} 套餐。",
+    "name": "{{planName}} 套餐"
   },
   "billing": {
     "title": "账单 - EarlyBird",

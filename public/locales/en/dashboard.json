@@ -187,7 +187,8 @@
     "heading": "Plans",
     "description": "You are currently on the {{planName}} plan.",
     "upgrade": "You have successfully upgraded to the {{planName}} plan.",
-    "downgrade": "You have successfully downgraded to the {{planName}} plan."
+    "downgrade": "You have successfully downgraded to the {{planName}} plan.",
+    "name": "{{planName}} plan"
   },
   "billing": {
     "title": "Billing - EarlyBird",
