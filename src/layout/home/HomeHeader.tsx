@@ -84,13 +84,13 @@ export const HomeHeader: FC = () => {
               >
                 {t('about')}
               </Link>
-              <Link
+              <a
                 href="/blog"
                 title={t('blog')}
                 className="hidden md:block hover:text-slate-950 hover:opacity-80"
               >
                 {t('blog')}
-              </Link>
+              </a>
             </div>
 
             <div className="hidden items-center font-medium space-x-5 md:flex">
