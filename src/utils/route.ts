@@ -19,8 +19,14 @@ export function isMatchRoutes(req: NextRequest, routes: string[]) {
   return routes.some(m => getRouteRegex(m).test(req.nextUrl.pathname))
 }
 
-export function urlBuilder(uri: string, query: AnyMap<string>) {
-  return uri + (uri.includes('?') ? '&' : '?') + qs.stringify(query)
+export function urlBuilder(url: string, query: AnyMap<string>) {
+  Object.keys(query).forEach(key => {
+    const regex = new RegExp(`[?&]${key}=([^?&]+)`, 'ig')
+
+    url = url.replace(regex, '')
+  })
+
+  return url + (url.includes('?') ? '&' : '?') + qs.stringify(query)
 }
 
 export function getSubdomain(domain: string) {

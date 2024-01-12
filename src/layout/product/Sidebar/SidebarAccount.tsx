@@ -4,12 +4,13 @@ import { IconChevronRight } from '@tabler/icons'
 import JsCookie from 'js-cookie'
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import type { FC } from 'react'
 
 import { RoundImage } from '~/components'
 import { LANGUAGE_OPTIONS } from '~/constants'
 import { useStore } from '~/store'
-import { setCookie } from '~/utils'
+import { setCookie, urlBuilder } from '~/utils'
 
 import { UserSubscription } from './UserSubscription'
 
@@ -29,12 +30,19 @@ const Skeleton = () => {
 const LOCALE_COOKIE_NAME = process.env.NEXT_PUBLIC_LOCALE_COOKIE_NAME as string
 
 export const SidebarAccount: FC = () => {
+  const router = useRouter()
   const { t, i18n } = useTranslation('dashboard')
   const { isReady, user } = useStore()
 
   function handleChangeLocale(locale: string) {
-    i18n.changeLanguage(locale)
     setCookie(JsCookie, LOCALE_COOKIE_NAME, locale, date.milliseconds('1year')!)
+    i18n.changeLanguage(locale)
+
+    router.push(
+      urlBuilder(router.asPath, {
+        locale
+      })
+    )
   }
 
   const Overlay = (
