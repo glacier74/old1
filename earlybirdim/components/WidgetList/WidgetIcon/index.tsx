@@ -27,6 +27,7 @@ import {
   isSteam,
   isStripe,
   isSubstack,
+  isThreads,
   isTiktok,
   isTwitch,
   isTwitter,
@@ -65,6 +66,7 @@ import {
   IconSteam,
   IconStripe,
   IconSubstack,
+  IconThreads,
   IconTiktok,
   IconTwitch,
   IconTwitter,
@@ -245,6 +247,16 @@ const websites = [
     match: isMastodon,
     icon: IconMastodon,
     fill: '#6364ff'
+  },
+  {
+    match: isMastodon,
+    icon: IconMastodon,
+    fill: '#6364ff'
+  },
+  {
+    match: isThreads,
+    icon: IconThreads,
+    fill: '#000000'
   }
 ]
 

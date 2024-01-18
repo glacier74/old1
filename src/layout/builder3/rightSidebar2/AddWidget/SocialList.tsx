@@ -15,6 +15,7 @@ import {
   IconProductHunt,
   IconReddit,
   IconSubstack,
+  IconThreads,
   IconTiktok,
   IconTwitch,
   IconTwitter,
@@ -43,6 +44,12 @@ const SOCIALS = [
     label: 'Mastodon',
     url: 'https://mastodon.social/@{username}',
     icon: IconMastodon
+  },
+  {
+    name: 'threads',
+    label: 'Threads',
+    url: 'https://www.threads.net/@{username}',
+    icon: IconThreads
   },
   {
     name: 'linkedin',

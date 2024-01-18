@@ -32,7 +32,7 @@ export const AddSocial: FC<AddLinkProps & { type: string }> = ({
             name="username"
             rules={[{ required: true, message: 'The username should not be empty' }]}
           >
-            <Input leading="@" />
+            <Input leading="@" placeholder="Paste username here, for example: jack" />
           </Form.Item>
         </AddWidgetForm>
       </div>
