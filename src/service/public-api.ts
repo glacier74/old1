@@ -63,7 +63,11 @@ export class PublicApiService {
   }
 
   static async product(domain: string): Promise<Product> {
-    return ky.get(`${NEXT_PUBLIC_API_URI}/product/${domain}`).json()
+    return ky
+      .get(`${NEXT_PUBLIC_API_URI}/product/${domain}`, {
+        timeout: 30_000
+      })
+      .json()
   }
 
   static async verifyToken(productId: number, token: string): Promise<{ verified: boolean }> {
