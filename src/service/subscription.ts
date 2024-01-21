@@ -15,4 +15,10 @@ export class SubscriptionService {
   static async usage(): Promise<SubscriptionUsage> {
     return axios.get('/subscription/usage')
   }
+
+  static redeem(code: string) {
+    return axios.post('/redeem', {
+      code
+    })
+  }
 }

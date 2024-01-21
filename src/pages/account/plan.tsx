@@ -2,9 +2,9 @@ import dayjs from 'dayjs'
 import { useTranslation } from 'next-i18next'
 
 import { PLAN_NAMES } from '~/constants'
-import { AccountLayout, PlanView } from '~/layout'
+import { AccountLayout, PlanView, Redeem } from '~/layout'
 import { useStore } from '~/store'
-import { useSubscription, useSubscriptionPlanLevel, withTranslations } from '~/utils'
+import { useSubscription, withTranslations } from '~/utils'
 
 const Skeleton = () => {
   return (
@@ -20,25 +20,35 @@ const Plan = (): JSX.Element => {
   const { isReady, user } = useStore()
 
   const subscription = useSubscription(user)
-  const currPlanLevel = useSubscriptionPlanLevel(user.subscription)
-  const planName = PLAN_NAMES[currPlanLevel]
+  const planName = subscription ? PLAN_NAMES[subscription.planId] : PLAN_NAMES.plan_free
 
   return (
     <AccountLayout seo={{ title: t('plan.title') }}>
-      <h1 className="mb-4 text-3xl leading-6 font-bold text-slate-900">{t('plan.heading')}</h1>
-      <div className="mt-4 text-slate-600">
-        {t('plan.description', { planName })}
+      <div className="flex justify-between">
+        <div>
+          <h1 className="mb-4 text-3xl leading-6 font-bold text-slate-900">{t('plan.heading')}</h1>
+          <div className="mt-4 text-slate-600">
+            {t('plan.description', { planName })}
 
-        {subscription &&
-          (subscription.isCancelled ? (
-            <span className="pl-1 text-slate-500">
-              (Canceled, valid until on {dayjs.unix(subscription.endsAt!).format('MMM DD, YYYY')})
-            </span>
-          ) : (
-            <span className="pl-1 text-slate-500">
-              (Renews on {dayjs.unix(subscription.endsAt!).format('MMM DD, YYYY')})
-            </span>
-          ))}
+            {subscription &&
+              (subscription.isCancelled ? (
+                <span className="pl-1 text-slate-500">
+                  (Canceled, valid until on{' '}
+                  {dayjs.unix(subscription.endsAt!).format('MMM DD, YYYY')})
+                </span>
+              ) : (
+                <span className="pl-1 text-slate-500">
+                  (
+                  {subscription.endsAt
+                    ? `Renews on ${dayjs.unix(subscription.endsAt).format('MMM DD, YYYY')}`
+                    : 'Never expires'}
+                  )
+                </span>
+              ))}
+          </div>
+        </div>
+
+        <Redeem />
       </div>
 
       {isReady ? <PlanView /> : <Skeleton />}

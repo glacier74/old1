@@ -59,7 +59,11 @@ export const BillingPlan = () => {
                   </span>
                 ) : (
                   <span className="pl-1 text-slate-500">
-                    (Renews on {dayjs.unix(subscription.endsAt!).format('MMM DD, YYYY')})
+                    (
+                    {subscription.endsAt
+                      ? `Renews on ${dayjs.unix(subscription.endsAt).format('MMM DD, YYYY')}`
+                      : 'Never expires'}
+                    )
                   </span>
                 )}
               </div>
