@@ -10,9 +10,8 @@ import {
   notification
 } from '@heyforms/ui'
 import { TableColumn } from '@heyforms/ui/types/table'
-import { isValid, isValidArray } from '@nily/utils'
+import { isEmpty, isValid, isValidArray } from '@nily/utils'
 import { IconDotsVertical } from '@tabler/icons'
-import { isEmpty } from 'lodash'
 import { useTranslation } from 'next-i18next'
 import React, { FC, useCallback, useMemo, useState } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
@@ -21,7 +20,7 @@ import { Expandable } from '~/components'
 import { PLAN_LEVELS } from '~/constants'
 import { useProduct, useProductId } from '~/layout'
 import { PlanBadge, PlanCheck } from '~/layout/product/PlanCheck'
-import { CustomDomainService, ProductService } from '~/service'
+import { CustomDomainService } from '~/service'
 import { useStore } from '~/store'
 import {
   getDomainName,
@@ -32,6 +31,9 @@ import {
   useVisible
 } from '~/utils'
 
+import { EarlyBirdSubdomainURL } from './EarlyBirdSubdomainURL'
+import { JingleBioSubdomainURL } from './JingleBioSubdomainURL'
+
 const CNAME_RECORD = process.env.NEXT_PUBLIC_PUBLIC_SITE_CNAME_RECORD as string
 const A_RECORD = process.env.NEXT_PUBLIC_PUBLIC_SITE_A_RECORD as string
 
@@ -39,80 +41,6 @@ interface CustomURLItemProps {
   customDomain: CustomDomain
   onSetPrimary: (id: number) => void
   onDelete: (id: number) => void
-}
-
-const SubdomainURL = () => {
-  const { t } = useTranslation('dashboard')
-  const product = useProduct()
-  const { updateProduct } = useStore()
-  const [visible, open, close] = useVisible()
-
-  const subdomainURL = useMemo(() => {
-    if (product.isJingleBio) {
-      return `${process.env.NEXT_PUBLIC_JINGLE_BIO_DOMAIN}/${product.domain}`
-    }
-
-    return `${product.domain}.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`
-  }, [product.domain, product.isJingleBio])
-
-  async function handleFinish(values: any) {
-    await ProductService.updateSubdomain(product.id, values.domain)
-
-    updateProduct(product.id, values)
-    close()
-  }
-
-  const Overlay = (
-    <Menus>
-      <Menus.Item label="Edit URL" onClick={open} />
-    </Menus>
-  )
-
-  return (
-    <div>
-      <div className="form-item-label">My EarlyBird URL</div>
-      <div className="form-item-content">
-        <div className="flex items-center w-full md:w-[32rem] px-4 py-2.5 text-sm text-slate-700 bg-slate-200 rounded">
-          <div className="flex-1">{subdomainURL}</div>
-          <Dropdown className="w-6 h-6" overlay={Overlay}>
-            <Button.Link className="!p-0.5" leading={<IconDotsVertical />} />
-          </Dropdown>
-        </div>
-      </div>
-
-      <Modal contentClassName="max-w-md" visible={visible} showCloseIcon onClose={close}>
-        <div className="space-y-6">
-          <h1 className="text-lg leading-6 font-medium text-slate-900">Edit my EarlyBird URL</h1>
-
-          <Form.Custom
-            initialValues={product}
-            submitText={t('common.saveChanges')}
-            submitOptions={{
-              type: 'success'
-            }}
-            onlySubmitOnValueChange
-            request={handleFinish}
-          >
-            <Form.Item
-              className="!mb-2"
-              name="domain"
-              validateTrigger={['onBlur', 'onChange']}
-              rules={[
-                {
-                  required: true,
-                  async validator(rule, value) {
-                    await ProductService.validateSubdomain(value, product.id)
-                  }
-                }
-              ]}
-            >
-              <Input trailing={`.${process.env.NEXT_PUBLIC_PUBLIC_SITE_DOMAIN}`} />
-            </Form.Item>
-          </Form.Custom>
-        </div>
-      </Modal>
-    </div>
-  )
 }
 
 const CustomURLItem: FC<CustomURLItemProps> = ({ customDomain, onSetPrimary, onDelete }) => {
@@ -478,7 +406,7 @@ export const PublicSiteURL: FC = () => {
       }
     >
       <div className="space-y-4">
-        <SubdomainURL />
+        {product.isJingleBio ? <JingleBioSubdomainURL /> : <EarlyBirdSubdomainURL />}
         <CustomURL />
       </div>
     </Expandable>

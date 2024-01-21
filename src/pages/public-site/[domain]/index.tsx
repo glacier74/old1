@@ -349,7 +349,7 @@ export const getServerSideProps = withTranslations(
     try {
       product = await PublicApiService.product(domain)
     } catch (err: any) {
-      console.error(err)
+      console.error('Failed to fetch product', err)
 
       return {
         notFound: true
@@ -424,7 +424,7 @@ export const getServerSideProps = withTranslations(
               })
             })
           } catch (err: any) {
-            console.error(err.message)
+            console.error('Failed to fetch metadata', err.message)
           }
         }
       }
