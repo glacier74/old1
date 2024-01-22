@@ -53,7 +53,7 @@ export class ProductService {
     const result = await axios.post('/products', {
       ...product,
       // eslint-disable-next-line import/namespace
-      timezone: dayjs.tz.guess()
+      timezone: dayjs.tz.guess() || 'America/New_York'
     })
     return (result as unknown as Product).id
   }
