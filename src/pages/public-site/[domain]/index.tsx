@@ -433,7 +433,7 @@ export const getServerSideProps = withTranslations(
     return {
       props: {
         product,
-        locale: getJingleBioLocale(context.req.cookies),
+        locale: getJingleBioLocale(context.req.cookies) || 'en',
         isSiteAccessible: true,
         language: product.language,
         // `undefined` cannot be serialized as JSON

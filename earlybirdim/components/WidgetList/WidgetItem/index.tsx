@@ -19,6 +19,7 @@ import { GroupTitleWidget } from './GroupTitleWidget'
 import MapWidget from './MapWidget'
 import MediaWidget from './MediaWidget'
 import PaymentWidget from './PaymentWidget'
+import PhoneWidget from './PhoneWidget'
 import SkillsWidget from './SkillsWidget'
 import SpotifyAlbumWidget from './SpotifyAlbumWidget'
 import SpotifyArtistWidget from './SpotifyArtistWidget'
@@ -164,6 +165,9 @@ const WidgetItem: FC<WidgetItemProps> = ({
 
       case 'experience':
         return new ExperienceWidget(config).getComponent()
+
+      case 'phone':
+        return new PhoneWidget(config).getComponent()
 
       default:
         return new WebsiteWidget(config).getComponent()

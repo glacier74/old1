@@ -9,6 +9,7 @@ import {
   IconLocation,
   IconMail,
   IconMusic,
+  IconPhone,
   IconPhoto,
   IconTopologyStar
 } from '@tabler/icons'
@@ -16,7 +17,6 @@ import { FC, useCallback, useState } from 'react'
 
 import { IconGroupTitle } from '~/components'
 import { useBuilderContext, useOptions } from '~/layout/builder3/context'
-import { AddVideo } from '~/layout/builder3/rightSidebar2/AddWidget/AddVideo'
 
 import { OptionsContainer } from '../OptionsContainer'
 import { AddEmailCapture } from './AddEmailCapture'
@@ -27,8 +27,10 @@ import { AddLink, AddLinkProps } from './AddLink'
 import { AddLocation } from './AddLocation'
 import { AddMusic } from './AddMusic'
 import { AddPayment } from './AddPayment'
+import { AddPhone } from './AddPhone'
 import { AddSkills } from './AddSkills'
 import { AddSocial } from './AddSocial'
+import { AddVideo } from './AddVideo'
 import { SOCIAL_TYPES, SocialList } from './SocialList'
 
 interface WidgetConfig {
@@ -61,6 +63,12 @@ const WIDGET_CONFIGS: WidgetConfig[] = [
     type: 'email_capture',
     label: 'Email Capture',
     icon: IconMail,
+    iconClassName: 'bg-blue-900 text-white'
+  },
+  {
+    type: 'phone',
+    label: 'Phone Number',
+    icon: IconPhone,
     iconClassName: 'bg-blue-900 text-white'
   },
   {
@@ -161,6 +169,9 @@ const Panel: FC<{ type: string } & AddLinkProps> = ({ type, ...restProps }) => {
 
     case 'video':
       return <AddVideo {...restProps} />
+
+    case 'phone':
+      return <AddPhone {...restProps} />
 
     default:
       return SOCIAL_TYPES.includes(type) ? <AddSocial type={type} {...restProps} /> : null

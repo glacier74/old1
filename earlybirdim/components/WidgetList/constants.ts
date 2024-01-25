@@ -217,6 +217,21 @@ export const emailCapture: WidgetExtra = {
   }
 }
 
+export const phone: WidgetExtra = {
+  styles: {
+    bgColor: '#fff',
+    darkBgColor: '#0f172a',
+    bgHoverColor: '#fbfbfb',
+    bgActiveColor: '#fbfbfb',
+    followBorderColor: '#28D330',
+    followBgColor: '#28D330',
+    followBgHoverColor: '#28D330',
+    followBgActiveColor: '#28D330',
+    followTextColor: '#fff',
+    scale: 0
+  }
+}
+
 export const sizeClassNames: AnyMap = {
   '1x1': 'col-span-2 row-span-2 w-[var(--widget-medium-size)] h-[var(--widget-medium-size)]',
   '2x0.5': 'col-span-4 row-span-1 w-[var(--widget-large-size)] h-[var(--widget-small-size)]',

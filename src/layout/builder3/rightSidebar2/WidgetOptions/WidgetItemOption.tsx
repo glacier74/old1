@@ -199,6 +199,33 @@ const SkillsItemOption: FC<Pick<WidgetItemOptionProps, 'parentName' | 'index'>> 
   )
 }
 
+const PhoneWidgetOption: FC<Pick<WidgetItemOptionProps, 'parentName' | 'index'>> = ({
+  parentName,
+  index
+}) => {
+  const { value: sizeValue } = useOptions<string>([parentName, index, 'size'].join('.'))
+
+  return (
+    <>
+      <SelectSubOption
+        title="Size"
+        options={WIDGET_SIZE_OPTIONS}
+        path={[parentName, index, 'size'].join('.')}
+      />
+      <TextSubOption
+        title="Phone Number"
+        path={[parentName, index, 'data.phoneNumber'].join('.')}
+      />
+      <TextSubOption title="Title" path={[parentName, index, 'overrides.title'].join('.')} />
+      <TextSubOption title="Button" path={[parentName, index, 'data.buttonText'].join('.')} />
+
+      {(sizeValue === '2x1' || sizeValue === '2x2') && (
+        <ImageSubOption title="Image" path={[parentName, index, 'overrides.imageUrl'].join('.')} />
+      )}
+    </>
+  )
+}
+
 const ExperienceItemOption: FC<Pick<WidgetItemOptionProps, 'parentName' | 'index'>> = ({
   parentName,
   index
@@ -271,6 +298,9 @@ export const WidgetItemOption: FC<WidgetItemOptionProps> = ({ parentName, index,
 
       case 'experience':
         return <ExperienceItemOption parentName={parentName} index={index} />
+
+      case 'phone':
+        return <PhoneWidgetOption parentName={parentName} index={index} />
 
       default:
         return <WebsiteWidgetOption parentName={parentName} index={index} provider={provider} />

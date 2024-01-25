@@ -241,6 +241,15 @@ export interface EmailCaptureData extends EmailCapture {
   overrides?: Pick<WidgetOverrides, 'title' | 'imageUrl'> & EmailCapture
 }
 
+interface Phone {
+  phoneNumber: string
+  buttonText: string
+}
+
+export interface PhoneData extends Phone {
+  overrides?: Pick<WidgetOverrides, 'title' | 'imageUrl'> & Phone
+}
+
 export interface WidgetPaymentButtonProps extends ComponentProps {
   config: WidgetConfig<PaymentData>
   onLoading: (loading: boolean) => void

@@ -59,6 +59,7 @@ import {
   IconMedium,
   IconOpenAI,
   IconPayment,
+  IconPhone,
   IconPodcast,
   IconProductHunt,
   IconReddit,
@@ -274,6 +275,12 @@ export function getWidgetIcon(url: string, type: string) {
         icon: IconPayment
       }
 
+    case 'phone':
+      return {
+        fill: '#28D330',
+        icon: IconPhone
+      }
+
     default:
       return url ? websites.find(row => row.match(url)) : undefined
   }
@@ -297,6 +304,9 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
 
         case 'email_capture':
           return <IconEmailCapture className="h-full w-full" />
+
+        case 'phone':
+          return <IconPhone className="h-full w-full" />
       }
     } else if (url) {
       const website = websites.find(row => row.match(url))
