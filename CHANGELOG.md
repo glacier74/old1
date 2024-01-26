@@ -33,3 +33,14 @@
 * Add description to Website widget
 * Add some classes to widget
 * Fix product switcher dropdown style
+
+## v1.8.7 (2024-01-26)
+
+* Add redemption
+* Add Threads to Jingle Bio
+* Add Phone Number to Jingle Bio
+* Add a plan icon beside to user account
+* Change fetching public site's product API timeout to 30 seconds
+* Fix the change language not working error
+* Fix timezone is empty when creating a product
+* Fix some style issues
