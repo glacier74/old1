@@ -17,6 +17,10 @@ export const AvatarSettings: FC = () => {
 
     await UserService.update(updates)
     updateUser(updates)
+
+    notification.success({
+      title: t('account.avatar.updated')
+    })
   }, [])
 
   useEffect(() => {

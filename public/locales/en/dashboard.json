@@ -147,7 +147,8 @@
       "heading": "Avatar",
       "description": "Gravatar is the default avatar used for EarlyBird, but you can upload your own custom avatar here.",
       "change": "Change",
-      "remove": "Remove"
+      "remove": "Remove",
+      "updated": "You have successfully updated your avatar."
     },
     "user": {
       "heading": "Your name",

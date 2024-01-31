@@ -146,7 +146,8 @@
       "heading": "头像",
       "description": "Gravatar 是 EarlyBird 默认使用的头像，但你可以在这里上传自己的自定义头像。",
       "change": "更改",
-      "remove": "移除"
+      "remove": "移除",
+      "updated": "你已经成功更新了你的头像。"
     },
     "user": {
       "heading": "你的名字",
