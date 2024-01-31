@@ -135,7 +135,7 @@ export const DragUploader: FC<DragUploaderProps> = ({
       ) : (
         <div
           className={clsx(
-            'flex justify-center w-full h-full px-6 pt-5 pb-6 border-2 border-slate-300 border-dashed rounded-md',
+            'flex justify-center w-full h-full px-6 pt-5 pb-6 border-2 border-slate-300 border-dashed rounded-md cursor-pointer',
             {
               'border-emerald-500': dragging
             }
@@ -145,14 +145,13 @@ export const DragUploader: FC<DragUploaderProps> = ({
           onDragOver={handleDrop}
           onDragEnter={handleDrop}
           onDragLeave={handleDrop}
+          onClick={handleOpen}
         >
           <div className="flex flex-col justify-center space-y-1 text-center">
             <IconUpload className="mx-auto h-12 w-12 text-slate-400 non-scaling-stroke" />
             <div className="flex items-center justify-center text-sm text-slate-500">
-              <Button.Link className="drag-uploader-button" type="success" onClick={handleOpen}>
-                {t(selectText)}
-              </Button.Link>
-              <p className="pl-1">{t('common.drag')}</p>
+              <span className="font-medium text-emerald-500">{t(selectText)}</span>
+              <span className="pl-1">{t('common.drag')}</span>
             </div>
             {error || internalError ? (
               <p className="text-xs text-red-700">{error?.message || internalError?.message}</p>
