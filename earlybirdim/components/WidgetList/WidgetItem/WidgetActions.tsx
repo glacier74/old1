@@ -109,7 +109,7 @@ const WidgetActionItem: FC<WidgetActionItemProps> = ({ item, onClick }) => {
     <Tooltip ariaLabel={(item as WidgetActionItemButton).label}>
       <div>
         <Button
-          className="flex items-center p-0.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded"
+          className="flex items-center p-0.5 hover:bg-slate-100 rounded"
           leading={<Icon className="w-5 h-5" />}
           onClick={handleClick}
         />
@@ -194,7 +194,7 @@ export const WidgetActions: FC<WidgetActionsProps> = ({ className, config, ...re
       )}
       {...restProps}
     >
-      <div className="flex items-center border border-gray-300 dark:border-gray-600 px-2 py-2 gap-1 sm:text-sm font-medium bg-white dark:bg-[#0f172a] text-slate-700 dark:text-slate-50 rounded-lg shadow-lg">
+      <div className="flex items-center border border-gray-300 px-2 py-2 gap-1 sm:text-sm font-medium bg-white text-slate-700 rounded-lg shadow-lg">
         {actions.map((row, index) => (
           <WidgetActionItem key={index} item={row} onClick={handleClick} />
         ))}

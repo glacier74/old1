@@ -431,3 +431,142 @@ export const PLAN_INTERVALS: AnyMap<string> = {
 }
 
 export const JINGLEBIO_REF = 'jinglebio'
+
+export const JINGLEBIO_THEMES = [
+  {
+    bgColor: '#fff',
+    bgImage: undefined,
+    bgOpacity: 0,
+    headline: '#020617',
+    subheadline: '#404040',
+    widgetBg: '#fff',
+    widgetBgHover: '#fbfbfb',
+    widgetBgActive: '#efefef',
+    widgetTitle: '#030712',
+    widgetMeta: '#9ca3af',
+    widgetFollowBg: '#171d25',
+    widgetFollowBgHover: '#171d25',
+    widgetFollowBgActive: '#171d25',
+    widgetFollowText: '#fff',
+    behance: {
+      widgetBg: '#e4ebfc',
+      widgetBgHover: '#dce6fe',
+      widgetBgActive: '#cedcff'
+    },
+    dribbble: {
+      widgetBg: '#fdf0fb',
+      widgetBgHover: '#fcecfa',
+      widgetBgActive: '#ecddea'
+    },
+    twitter: {
+      widgetBg: '#F5FAFE',
+      widgetBgHover: '#F0F7FD',
+      widgetBgActive: '#E9F4FC'
+    },
+    youtube: {
+      widgetBg: '#FFF0F0',
+      widgetBgHover: '#FFE8E8',
+      widgetBgActive: '#fbd4d4'
+    },
+    spotify: {
+      widgetBg: '#EDFCF3',
+      widgetBgHover: '#E7F9EE',
+      widgetBgActive: '#DBF3E5'
+    }
+  },
+  {
+    bgColor: 'rgb(222, 192, 255)',
+    bgImage: 'linear-gradient(-225deg, rgb(222, 192, 255) 0%, rgb(255, 245, 175) 100%)',
+    bgOpacity: 0,
+    headline: '#262627',
+    subheadline: '#262627',
+    widgetBg: 'rgba(255,255,255,0.6)',
+    widgetBgHover: 'rgba(255,255,255,0.7)',
+    widgetBgActive: 'rgba(255,255,255,0.7)',
+    widgetTitle: '#030712',
+    widgetMeta: '#9ca3af',
+    widgetFollowBg: '#171d25',
+    widgetFollowBgHover: '#171d25',
+    widgetFollowBgActive: '#171d25',
+    widgetFollowText: '#fff'
+  },
+  {
+    bgColor: '#84fab0',
+    bgImage: 'linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)',
+    bgOpacity: 0,
+    headline: '#262627',
+    subheadline: '#262627',
+    widgetBg: 'rgba(255,255,255,0.6)',
+    widgetBgHover: 'rgba(255,255,255,0.7)',
+    widgetBgActive: 'rgba(255,255,255,0.7)',
+    widgetTitle: '#030712',
+    widgetMeta: '#9ca3af',
+    widgetFollowBg: '#171d25',
+    widgetFollowBgHover: '#171d25',
+    widgetFollowBgActive: '#171d25',
+    widgetFollowText: '#fff'
+  },
+  {
+    bgColor: '#f6d365',
+    bgImage: 'linear-gradient(to right, #f6d365 0%, #fda085 100%)',
+    bgOpacity: 0,
+    headline: '#262627',
+    subheadline: '#262627',
+    widgetBg: 'rgba(255,255,255,0.6)',
+    widgetBgHover: 'rgba(255,255,255,0.7)',
+    widgetBgActive: 'rgba(255,255,255,0.7)',
+    widgetTitle: '#030712',
+    widgetMeta: '#9ca3af',
+    widgetFollowBg: '#171d25',
+    widgetFollowBgHover: '#171d25',
+    widgetFollowBgActive: '#171d25',
+    widgetFollowText: '#fff'
+  },
+  {
+    bgColor: '#f093fb',
+    bgImage: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    bgOpacity: 0,
+    headline: '#262627',
+    subheadline: '#262627',
+    widgetBg: 'rgba(255,255,255,0.6)',
+    widgetBgHover: 'rgba(255,255,255,0.7)',
+    widgetBgActive: 'rgba(255,255,255,0.7)',
+    widgetTitle: '#030712',
+    widgetMeta: '#9ca3af',
+    widgetFollowBg: '#171d25',
+    widgetFollowBgHover: '#171d25',
+    widgetFollowBgActive: '#171d25',
+    widgetFollowText: '#fff'
+  },
+  {
+    bgColor: '#000',
+    bgOpacity: 0,
+    headline: '#008000',
+    subheadline: '#008000',
+    widgetBg: 'rgba(0,0,0,0)',
+    widgetBgHover: 'rgba(0,0,0,0)',
+    widgetBgActive: 'rgba(0,0,0,0)',
+    widgetBorder: '#008000',
+    widgetTitle: '#008000',
+    widgetMeta: '#008000',
+    widgetFollowBg: '#008000',
+    widgetFollowBgHover: '#008000',
+    widgetFollowBgActive: '#008000',
+    widgetFollowText: '#fff'
+  },
+  {
+    bgColor: '#0a0a0a',
+    bgOpacity: 0,
+    headline: '#fff',
+    subheadline: '#cecece',
+    widgetBg: '#262626',
+    widgetBgHover: '#404040',
+    widgetBgActive: '#404040',
+    widgetTitle: '#fff',
+    widgetMeta: '#cecece',
+    widgetFollowBg: '#cecece',
+    widgetFollowBgHover: '#cecece',
+    widgetFollowBgActive: '#cecece',
+    widgetFollowText: '#0a0a0a'
+  }
+]

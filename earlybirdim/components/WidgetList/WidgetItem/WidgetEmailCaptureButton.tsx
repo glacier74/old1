@@ -31,7 +31,11 @@ export const WidgetEmailCaptureButton: FC<WidgetEmailCaptureButtonProps> = ({
 
   return (
     <>
-      <button className={clsx('absolute inset-0', className)} onClick={handleClick} />
+      <button
+        className={clsx('absolute inset-0', className)}
+        aria-label={config.data?.buttonText}
+        onClick={handleClick}
+      />
 
       <WidgetEmailCaptureModal
         visible={visible}
@@ -52,7 +56,7 @@ export const WidgetEmailCaptureButton: FC<WidgetEmailCaptureButtonProps> = ({
 
 export const WidgetEmailCaptureText: FC<{ text?: string }> = ({ text }) => {
   return (
-    <div className="inline-flex items-center gap-1 rounded-full border border-[var(--widget-follow-border)] bg-[var(--widget-follow-bg)] px-4 py-1.5 text-center text-xs font-medium text-[var(--widget-follow-text)] hover:bg-[var(--widget-follow-bg-hover)] active:bg-[var(--widget-follow-bg-active)]">
+    <div className="inline-flex items-center gap-1 rounded-full bg-[var(--jingle-widget-follow-background)] px-4 py-1.5 text-center text-xs font-medium text-[var(--jingle-widget-follow-text)] hover:bg-[var(--jingle-widget-follow-background-hover)] active:bg-[var(--jingle-widget-follow-background-active)]">
       {text}
     </div>
   )

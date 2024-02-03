@@ -17,7 +17,7 @@ export const WidgetPlayButton: FC<WidgetPlayButtonProps> = ({
   return (
     <button
       className={clsx(
-        'flex items-center gap-1.5 rounded-full bg-[var(--widget-follow-bg)] px-5 py-1.5 text-xs font-medium text-[var(--widget-follow-text)] text-white hover:bg-[var(--widget-follow-bg-hover)] active:bg-[var(--widget-follow-bg-active)]',
+        'flex items-center gap-1.5 rounded-full bg-[var(--jingle-widget-follow-background)] px-5 py-1.5 text-xs font-medium text-[var(--jingle-widget-follow-text)] hover:bg-[var(--jingle-widget-follow-background-hover)] active:bg-[var(--jingle-widget-follow-background-active)]',
         className
       )}
       onClick={handleClick}

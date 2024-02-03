@@ -45,6 +45,9 @@ interface Store {
   openCodeInjectionModal: () => void
   closeCodeInjectionModal: () => void
   updateMember: (productId: number, members: Partial<User>[]) => void
+  isThemeModalOpen: boolean
+  openThemeModal: () => void
+  closeThemeModal: () => void
 }
 
 const context = createContext<Store>({} as Store)
@@ -68,6 +71,7 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
   const [isAIModalOpen, openAIModal, closeAIModal] = useVisible()
   const [isAIModalClosable, setAIModalClosable] = useState(true)
   const [isCodeInjectionModalOpen, openCodeInjectionModal, closeCodeInjectionModal] = useVisible()
+  const [isThemeModalOpen, openThemeModal, closeThemeModal] = useVisible()
 
   const updateUser = useCallback(
     (updates: Partial<User>) => {
@@ -97,10 +101,9 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
     [products]
   )
 
-  const updateSiteSettings = useCallback(
-    (updates: Partial<SiteSettings>) => setSiteSettings({ ...siteSettings, ...updates }),
-    [siteSettings]
-  )
+  function updateSiteSettings(updates: Partial<SiteSettings>) {
+    setSiteSettings(s => ({ ...s, ...updates }))
+  }
 
   const updateMember = useCallback(
     (productId: number, members: Partial<User>[]) => {
@@ -186,6 +189,9 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
     isCodeInjectionModalOpen,
     openCodeInjectionModal,
     closeCodeInjectionModal,
+    isThemeModalOpen,
+    openThemeModal,
+    closeThemeModal,
     updateMember
   }
 

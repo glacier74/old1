@@ -6,6 +6,7 @@ import Frame from 'react-frame-component'
 import { useLocalStorage } from 'react-use'
 
 import { IconRotatedArrow } from '~/components'
+import { JINGLEBIO_THEMES } from '~/constants'
 import { useProduct } from '~/layout'
 import { PublicSiteDangerouslyHTML } from '~/layout/public-site/PublicSiteDangerouslyHTML'
 import { PublicSiteHiddenBlocksStyle } from '~/layout/public-site/PublicSiteHiddenBlocksStyle'
@@ -168,11 +169,11 @@ export const Preview: FC = () => {
                 opacity: 0;
               }
               .widget-active .widget-content {
-                background: #fbfbfb;
+                // background: #fbfbfb;
                 box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
               }
               .dark .widget-active .widget-content {
-                background: #1e293b;
+                // background: #1e293b;
               }
               `
             }}
@@ -194,7 +195,8 @@ export const Preview: FC = () => {
             {templates[siteSettings.template]?.render({
               product,
               options: state.options,
-              hiddenBlocks: siteSettings.hiddenBlocks
+              hiddenBlocks: siteSettings.hiddenBlocks,
+              theme: siteSettings.tempTheme || siteSettings.theme || JINGLEBIO_THEMES[0]
             })}
           </GlobalContext.Provider>
 

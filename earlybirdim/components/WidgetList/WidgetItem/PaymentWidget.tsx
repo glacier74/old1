@@ -24,7 +24,7 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
     const [loading, setLoading] = useState(false)
 
     return (
-      <div className="relative block w-full h-full">
+      <div className="relative block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]">
         <div className="flex h-full flex-col">
           <WidgetIcon type={config.type} />
 
@@ -52,7 +52,7 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
     const [loading, setLoading] = useState(false)
 
     return (
-      <div className="relative block w-full h-full">
+      <div className="relative block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]">
         <div className="flex h-full">
           <div
             className={clsx(
@@ -65,7 +65,7 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
             </div>
 
             <div className="mt-2 md:mt-3 flex-1">
-              <h3 className="widget-headline line-clamp-1 md:line-clamp-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline line-clamp-1 md:line-clamp-2 text-sm leading-[1.2] text-[var(--jingle-widget-title)]">
                 {config.data.overrides?.title}
               </h3>
             </div>
@@ -96,7 +96,7 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
     )
   }
 
-  // 2x1
+  // 2x2
   override Render2x2(config: WidgetConfig<T>) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { isPreview } = useGlobalContext()
@@ -104,7 +104,7 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
     const [loading, setLoading] = useState(false)
 
     return (
-      <div className="relative block w-full h-full">
+      <div className="relative block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]">
         <div className="flex h-full flex-col">
           <div>
             <div className="flex justify-between">
@@ -116,7 +116,7 @@ export default class PaymentWidget<T extends PaymentData> extends Widget<T> {
             </div>
 
             <div className="mt-3">
-              <h3 className="widget-headline line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline line-clamp-2 text-sm text-[var(--jingle-widget-title)]">
                 {config.data.overrides?.title}
               </h3>
             </div>

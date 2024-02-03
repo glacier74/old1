@@ -1,9 +1,10 @@
 import { Button, Spin, Switch, Tooltip } from '@heyforms/ui'
 import { isValid } from '@nily/utils'
-import { IconChecks, IconChevronLeft, IconCode } from '@tabler/icons'
+import { IconChecks, IconChevronLeft, IconCode, IconPalette } from '@tabler/icons'
 import dayjs from 'dayjs'
 import Link from 'next/link'
 import { FC, useMemo } from 'react'
+import { useLocalStorage } from 'react-use'
 
 import { IconAI, IconSidebar, IconSidebarOpen } from '~/components'
 import { PLAN_LEVELS } from '~/constants'
@@ -25,13 +26,16 @@ export const Navbar: FC = () => {
     openBuilderSidebar,
     closeBuilderSidebar,
     openAIModal,
-    openCodeInjectionModal
+    openCodeInjectionModal,
+    openThemeModal
   } = useStore()
   const { state, dispatch } = useBuilderContext()
   const product = useProduct()
 
   const [shareModalVisible, openShareModal, closeShareModal] = useVisible()
   const [alertModalVisible, openAlertModal] = useVisible()
+
+  const [tourv2, setTourv2] = useLocalStorage('jinglebio-tour-v2')
 
   const { loading, request } = useRequest(async () => {
     try {
@@ -78,6 +82,11 @@ export const Navbar: FC = () => {
         previewMode
       }
     })
+  }
+
+  function handleOpenThemeModal() {
+    setTourv2(true)
+    openThemeModal()
   }
 
   return (
@@ -147,6 +156,23 @@ export const Navbar: FC = () => {
                     onClick={openCodeInjectionModal}
                   />
                 </PlanCheck>
+              </div>
+            </Tooltip>
+
+            <Tooltip ariaLabel="Customize theme">
+              <div className="relative">
+                <Button
+                  className="!py-1.5"
+                  leading={<IconPalette className="w-7 h-7 text-slate-800" />}
+                  onClick={handleOpenThemeModal}
+                />
+
+                {!tourv2 && (
+                  <div className="flex absolute h-2 w-2 top-0 right-0 -mt-0.5 -mr-0.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+                  </div>
+                )}
               </div>
             </Tooltip>
 

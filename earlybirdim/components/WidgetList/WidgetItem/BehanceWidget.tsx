@@ -40,16 +40,19 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
     const title = config.data.overrides?.title || config.data.name || typeNames[config.type!]
 
     return (
-      <a className="block w-full h-full" href={config.shortLinkURL}>
+      <a
+        className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]"
+        href={config.shortLinkURL}
+      >
         <div className="flex h-full flex-col">
           <WidgetIcon url={config.url} />
 
           <div className="mt-2 md:mt-3 flex-1">
-            <h3 className="widget-headline line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
+            <h3 className="widget-headline line-clamp-2 text-sm text-[var(--jingle-widget-title)]">
               {title}
             </h3>
             {config.data.description && (
-              <div className="max-[400px]:hidden text-xs text-slate-500 dark:text-slate-400">
+              <div className="max-[400px]:hidden text-xs text-[var(--jingle-widget-meta)]">
                 {config.data.description}
               </div>
             )}
@@ -71,17 +74,20 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
     const title = config.data.overrides?.title || config.data.name || typeNames[config.type!]
 
     return (
-      <a className="block w-full h-full" href={config.shortLinkURL}>
+      <a
+        className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]"
+        href={config.shortLinkURL}
+      >
         <div className="flex h-full">
           <div className="flex flex-col">
             <WidgetIcon url={config.url} />
 
             <div className="mt-2 md:mt-3 flex-1">
-              <h3 className="widget-headline line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline line-clamp-2 text-sm text-[var(--jingle-widget-title)]">
                 {title}
               </h3>
               {config.data.description && (
-                <div className="max-[400px]:hidden text-xs text-slate-500 dark:text-slate-400">
+                <div className="max-[400px]:hidden text-xs text-[var(--jingle-widget-meta)]">
                   {config.data.description}
                 </div>
               )}
@@ -115,12 +121,15 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
     )
   }
 
-  // 2x1
+  // 2x2
   override Render2x2(config: WidgetConfig<T>) {
     const title = config.data.overrides?.title || config.data.name || typeNames[config.type!]
 
     return (
-      <a className="block w-full h-full" href={config.shortLinkURL}>
+      <a
+        className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]"
+        href={config.shortLinkURL}
+      >
         <div className="flex h-full flex-col">
           <div>
             <div className="flex justify-between">
@@ -135,11 +144,11 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
             </div>
 
             <div className="mt-3">
-              <h3 className="widget-headline line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline line-clamp-2 text-sm text-[var(--jingle-widget-title)]">
                 {title}
               </h3>
               {config.data.description && (
-                <div className="max-[400px]:hidden text-xs text-slate-500 dark:text-slate-400">
+                <div className="max-[400px]:hidden text-xs text-[var(--jingle-widget-meta)]">
                   {config.data.description}
                 </div>
               )}

@@ -23,16 +23,18 @@ export class GroupTitleWidget {
     const { isPreview } = useGlobalContext()
 
     return (
-      <div
-        className={clsx(
-          'widget-body w-full h-full text-xl px-4 font-bold text-slate-950 dark:text-slate-50',
-          {
-            'relative rounded-3xl will-change-auto bg-white border border-transparent dark:bg-[#020617] group-hover/widget:border-emerald-600':
-              isPreview
-          }
-        )}
-      >
-        {config.data.overrides?.title}
+      <div className="widget-content w-full h-full !shadow-none">
+        <div
+          className={clsx(
+            'widget-body w-full h-full text-xl px-4 font-bold text-[var(--jingle-widget-title)]',
+            {
+              'relative rounded-3xl will-change-auto hover:bg-[var(--jingle-widget-background)] border border-transparent group-hover/widget:border-emerald-600':
+                isPreview
+            }
+          )}
+        >
+          {config.data.overrides?.title}
+        </div>
       </div>
     )
   }

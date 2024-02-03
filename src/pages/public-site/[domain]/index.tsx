@@ -12,6 +12,7 @@ import party from 'party-js'
 import { FC, useEffect, useMemo } from 'react'
 
 import { IconLogo } from '~/components'
+import { JINGLEBIO_THEMES } from '~/constants'
 import { PublicSiteLayout } from '~/layout'
 import components from '~/layout/builder2/components'
 import { SchemaTypeEnum } from '~/layout/builder3/constants'
@@ -276,7 +277,7 @@ const PublicSite: FC<PublicSiteProps> = ({
       favicon={faviconURL}
       seo={seo}
       schema={product.siteSetting.schema}
-      theme={product.siteSetting.theme}
+      theme={product.siteSetting.theme as any}
       integrations={product.integrations}
     >
       {product.siteSetting.schema === 3 ? (
@@ -291,6 +292,7 @@ const PublicSite: FC<PublicSiteProps> = ({
               product,
               options: product.siteSetting.blocks,
               hiddenBlocks: product.siteSetting.hiddenBlocks,
+              theme: product.siteSetting.theme || JINGLEBIO_THEMES[0],
               locale
             })
           ) : (

@@ -57,6 +57,17 @@ export const instagram: WidgetExtra = {
   }
 }
 
+export const github: WidgetExtra = {
+  styles: {
+    followBorderColor: '#171d25',
+    followBgColor: '#171d25',
+    followBgHoverColor: '#171d25',
+    followBgActiveColor: '#171d25',
+    followTextColor: '#fff',
+    followersColor: 'rgba(255,255,255,0.9)'
+  }
+}
+
 export const steam: WidgetExtra = {
   styles: {
     followBorderColor: '#171d25',
@@ -205,28 +216,12 @@ export const payment: WidgetExtra = {
 export const emailCapture: WidgetExtra = {
   styles: {
     bgColor: '#fff',
-    darkBgColor: '#0f172a',
     bgHoverColor: '#fbfbfb',
     bgActiveColor: '#fbfbfb',
     followBorderColor: '#FABA22',
     followBgColor: '#FABA22',
     followBgHoverColor: '#FABA22',
     followBgActiveColor: '#FABA22',
-    followTextColor: '#fff',
-    scale: 0
-  }
-}
-
-export const phone: WidgetExtra = {
-  styles: {
-    bgColor: '#fff',
-    darkBgColor: '#0f172a',
-    bgHoverColor: '#fbfbfb',
-    bgActiveColor: '#fbfbfb',
-    followBorderColor: '#28D330',
-    followBgColor: '#28D330',
-    followBgHoverColor: '#28D330',
-    followBgActiveColor: '#28D330',
     followTextColor: '#fff',
     scale: 0
   }

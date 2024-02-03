@@ -17,7 +17,7 @@ interface ImageItemProps {
 
 const ImageItem: FC<ImageItemProps> = ({ image, onChange }) => {
   function handleClick() {
-    onChange(image.url)
+    onChange(image.src)
     // UnsplashService.trackDownload(image.downloadUrl)
   }
 

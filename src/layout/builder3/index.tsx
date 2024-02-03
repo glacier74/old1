@@ -10,6 +10,7 @@ import { Preview } from './preview'
 import { RightSidebar } from './rightSidebar'
 import { RightSidebar2 } from './rightSidebar2'
 import templates from './templates'
+import { Theme } from './theme'
 import { schemasToCompletions } from './utils'
 
 function getCompletions(id: string) {
@@ -44,6 +45,7 @@ export const Builder3 = () => {
         <div className="builder-main">
           <Preview />
           {product?.isJingleBio ? <RightSidebar2 /> : <RightSidebar />}
+          <Theme />
         </div>
       </div>
 

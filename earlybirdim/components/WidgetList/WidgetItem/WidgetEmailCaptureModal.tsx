@@ -50,7 +50,7 @@ export const WidgetEmailCaptureModal: FC<WidgetEmailCaptureModalProps> = ({
               {config.data?.isNameRequired && (
                 <Form.Item name="name" required>
                   <Form.Input
-                    className="w-full text-gray-700 border border-gray-300 rounded-lg shadow-none py-2.5 px-4 leading-tight focus:outline-none focus:border-gray-500"
+                    className="w-full text-[var(--jingle-widget-meta)] border border-gray-300 rounded-lg shadow-none py-2.5 px-4 leading-tight focus:outline-none focus:border-gray-500"
                     type="text"
                     placeholder="Your Name"
                   />
@@ -59,7 +59,7 @@ export const WidgetEmailCaptureModal: FC<WidgetEmailCaptureModalProps> = ({
 
               <Form.Item name="email" required>
                 <Form.Input
-                  className="w-full text-gray-700 border border-gray-300 rounded-lg shadow-none py-2.5 px-4 leading-tight focus:outline-none focus:border-gray-500"
+                  className="w-full text-[var(--jingle-widget-meta)] border border-gray-300 rounded-lg shadow-none py-2.5 px-4 leading-tight focus:outline-none focus:border-gray-500"
                   type="email"
                   placeholder="Your Email"
                 />

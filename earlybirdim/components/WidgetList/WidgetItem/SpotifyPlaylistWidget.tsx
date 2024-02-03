@@ -30,15 +30,13 @@ const PlayItem: FC<{ index: number; song: SpotifySong }> = ({ song }) => {
             </div>
           </div>
           <div className="mx-3 flex flex-col text-left">
-            <div className="line-clamp-1 text-sm text-slate-950 dark:text-slate-50">
+            <div className="line-clamp-1 text-sm text-[var(--jingle-widget-title)]">
               {song.name}
             </div>
-            <div className="line-clamp-1 text-xs text-black/60 dark:text-slate-400">
-              {song.artists?.join(', ')}
-            </div>
+            <div className="line-clamp-1 text-xs text-black/60">{song.artists?.join(', ')}</div>
           </div>
         </div>
-        <div className="w-fit flex-none text-sm tabular-nums text-black/40 dark:text-slate-500">
+        <div className="w-fit flex-none text-sm tabular-nums text-black/40">
           {durationToTime(song.duration)}
         </div>
       </div>
@@ -57,15 +55,18 @@ export default class SpotifyPlaylistWidget<T extends SpotifyPlaylistData> extend
 
   override Render1x1(config: WidgetConfig<T>) {
     return (
-      <a className="block w-full h-full" href={config.shortLinkURL}>
+      <a
+        className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]"
+        href={config.shortLinkURL}
+      >
         <div className="flex h-full flex-col">
           <WidgetIcon url={config.url} />
 
           <div className="mt-2 md:mt-3 flex-1">
-            <h3 className="widget-headline line-clamp-1 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+            <h3 className="widget-headline line-clamp-1 text-sm leading-[1.2] text-[var(--jingle-widget-title)]">
               {config.data.overrides?.title || config.data.name}
             </h3>
-            <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 truncate">
+            <div className="mt-1 text-xs text-[var(--jingle-widget-meta)] truncate">
               {config.data.numSongs} songs
             </div>
           </div>
@@ -81,16 +82,19 @@ export default class SpotifyPlaylistWidget<T extends SpotifyPlaylistData> extend
   // 2x1
   override Render2x1(config: WidgetConfig<T>) {
     return (
-      <a className="block w-full h-full" href={config.shortLinkURL}>
+      <a
+        className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]"
+        href={config.shortLinkURL}
+      >
         <div className="flex h-full">
           <div className="flex flex-col">
             <WidgetIcon url={config.url} />
 
             <div className="mt-2 md:mt-3 flex-1">
-              <h3 className="widget-headline mt-1 line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline mt-1 line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-[var(--jingle-widget-title)]">
                 {config.data.overrides?.title || config.data.name}
               </h3>
-              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 truncate">
+              <div className="mt-1 text-xs text-[var(--jingle-widget-meta)] truncate">
                 {config.data.numSongs} songs
               </div>
             </div>
@@ -119,10 +123,13 @@ export default class SpotifyPlaylistWidget<T extends SpotifyPlaylistData> extend
     )
   }
 
-  // 2x1
+  // 2x2
   override Render2x2(config: WidgetConfig<T>) {
     return (
-      <a className="block w-full h-full" href={config.shortLinkURL}>
+      <a
+        className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]"
+        href={config.shortLinkURL}
+      >
         <div className="flex h-full flex-col">
           <div>
             <div className="flex justify-between">
@@ -132,10 +139,10 @@ export default class SpotifyPlaylistWidget<T extends SpotifyPlaylistData> extend
               </div>
             </div>
             <div className="mt-3">
-              <h3 className="widget-headline line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline line-clamp-2 text-sm text-[var(--jingle-widget-title)]">
                 {config.data.overrides?.title || config.data.name}
               </h3>
-              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 truncate">
+              <div className="mt-1 text-xs text-[var(--jingle-widget-meta)] truncate">
                 {config.data.numSongs} songs
               </div>
             </div>

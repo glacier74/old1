@@ -23,15 +23,18 @@ export default class TwitterWidget<T extends WidgetData> extends Widget<T> {
 
   override Render1x1(config: WidgetConfig<T>) {
     return (
-      <a className="block w-full h-full" href={config.shortLinkURL}>
+      <a
+        className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]"
+        href={config.shortLinkURL}
+      >
         <div className="flex h-full flex-col">
           <WidgetIcon url={config.url} />
 
           <div className="mt-2 md:mt-3 flex-1">
-            <h3 className="widget-headline line-clamp-1 text-sm text-gray-950 dark:text-slate-50">
+            <h3 className="widget-headline line-clamp-1 text-sm text-[var(--jingle-widget-title)]">
               {config.data.overrides?.title || config.data.name}
             </h3>
-            <div className="max-[400px]:hidden text-xs text-gray-400">
+            <div className="max-[400px]:hidden text-xs text-[var(--jingle-widget-meta)]">
               {(config.data as AnyMap)?.handle}
             </div>
           </div>
@@ -50,7 +53,10 @@ export default class TwitterWidget<T extends WidgetData> extends Widget<T> {
   // 2x1
   override Render2x1(config: WidgetConfig<T>) {
     return (
-      <a className="block w-full h-full" href={config.shortLinkURL}>
+      <a
+        className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]"
+        href={config.shortLinkURL}
+      >
         <div className="flex h-full flex-col gap-3">
           <div className="flex justify-between">
             <WidgetIcon url={config.url} />
@@ -63,13 +69,13 @@ export default class TwitterWidget<T extends WidgetData> extends Widget<T> {
             </div>
           </div>
           <div className="flex flex-1 flex-col">
-            <h3 className="widget-headline line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
+            <h3 className="widget-headline line-clamp-2 text-sm text-[var(--jingle-widget-title)]">
               {config.data.overrides?.title || config.data.name}
             </h3>
-            <div className="max-[400px]:hidden text-xs text-slate-400">
+            <div className="max-[400px]:hidden text-xs text-[var(--jingle-widget-meta)]">
               {(config.data as AnyMap)?.handle}
             </div>
-            <div className="mt-2 max-[400px]:line-clamp-1 line-clamp-2 text-sm text-gray-700 dark:text-slate-300">
+            <div className="mt-2 max-[400px]:line-clamp-1 line-clamp-2 text-sm text-[var(--jingle-widget-meta)]">
               {config.data.description}
             </div>
           </div>
@@ -78,7 +84,7 @@ export default class TwitterWidget<T extends WidgetData> extends Widget<T> {
     )
   }
 
-  // 2x1
+  // 2x2
   override Render2x2(config: WidgetConfig<T>) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { isPreview } = useGlobalContext()
@@ -89,7 +95,10 @@ export default class TwitterWidget<T extends WidgetData> extends Widget<T> {
     }, [config.data.imageUrl, config.data.overrides?.imageUrl])
 
     return (
-      <a className="block w-full h-full" href={config.shortLinkURL}>
+      <a
+        className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]"
+        href={config.shortLinkURL}
+      >
         <div className="flex h-full flex-col">
           <div className="flex flex-col gap-3">
             <div className="flex justify-between">
@@ -103,13 +112,13 @@ export default class TwitterWidget<T extends WidgetData> extends Widget<T> {
               </div>
             </div>
             <div className="flex flex-1 flex-col">
-              <h3 className="widget-headline line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline line-clamp-2 text-sm text-[var(--jingle-widget-title)]">
                 {config.data.overrides?.title || config.data.name}
               </h3>
-              <div className="max-[400px]:hidden text-xs text-slate-400">
+              <div className="max-[400px]:hidden text-xs text-[var(--jingle-widget-meta)]">
                 {(config.data as AnyMap)?.handle}
               </div>
-              <div className="mt-2 line-clamp-2 text-sm text-gray-700 dark:text-slate-300">
+              <div className="mt-2 line-clamp-2 text-sm text-[var(--jingle-widget-meta)]">
                 {config.data.description}
               </div>
             </div>

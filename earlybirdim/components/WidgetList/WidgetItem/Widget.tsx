@@ -77,35 +77,28 @@ export default class Widget<T> {
 
       return {
         '--widget-padding': extraStyles?.padding || '20px',
-        '--widget-bg': extraStyles?.bgColor || '#fff',
-        '--widget-dark-bg': extraStyles?.darkBgColor || '#0f172a',
-        '--widget-bg-hover': extraStyles?.bgHoverColor || '#fbfbfb',
-        '--widget-dark-bg-hover': extraStyles?.darkBgHoverColor || '#1e293b',
-        '--widget-bg-active': extraStyles?.bgActiveColor || '#efefef',
-        '--widget-follow-border': extraStyles?.followBorderColor || 'rgba(31,35,40,0.15)',
-        '--widget-follow-bg': extraStyles?.followBgColor || '#f6f8fa',
-        '--widget-follow-bg-hover': extraStyles?.followBgHoverColor || '#f3f4f6',
-        '--widget-follow-bg-active': extraStyles?.followBgActiveColor || '#ebecf0',
-        '--widget-follow-text': extraStyles?.followTextColor || '#24292f',
-        '--widget-followers-text': extraStyles?.followersColor || '#656d76',
-        '--widget-scale': extraStyles?.scale === 0 ? undefined : extraStyles?.scale || 0.95
+        '--widget-scale': extraStyles?.scale === 0 ? undefined : extraStyles?.scale || 0.98,
+        '--jingle-widget-follow-background': extraStyles?.followBgColor,
+        '--jingle-widget-follow-background-hover': extraStyles?.followBgHoverColor,
+        '--jingle-widget-follow-background-active': extraStyles?.followBgActiveColor,
+        '--jingle-widget-follow-text': extraStyles?.followTextColor
       } as CSSProperties
     }, [config.extra?.styles])
 
     return (
       <div
-        className="widget-content group/widget-content relative w-full h-full rounded-3xl shadow-sm cursor-pointer group bg-[var(--widget-bg)] dark:bg-[var(--widget-dark-bg)] p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))] transition-all duration-150 will-change-auto hover:bg-[var(--widget-bg-hover)] dark:hover:bg-[var(--widget-dark-bg-hover)] active:scale-[var(--widget-scale)] active:bg-[var(--widget-bg-active)]"
+        className="widget-content group/widget-content relative w-full h-full rounded-3xl shadow-sm group bg-[var(--jingle-widget-background)] transition-all duration-150 will-change-auto hover:bg-[var(--jingle-widget-background-hover)] active:scale-[var(--widget-scale)] active:bg-[var(--jingle-widget-background-active)]"
         style={style}
       >
-        <div className="widget-body w-full h-full dark:group-hover/widget-content:relative dark:group-hover/widget-content:z-10">
+        <div className="widget-body w-full h-full">
           <Component {...config} />
         </div>
         <div
           className={clsx(
-            'pointer-events-none absolute inset-0 rounded-3xl will-change-auto border border-black/10',
-            isPreview
-              ? 'group-hover/widget:border-emerald-600'
-              : 'dark:border-none dark:bg-[conic-gradient(from_var(--widget-rotating),#000_0%,#fff_10%,#000_20%)] dark:opacity-0 dark:group-hover/widget-content:z-0 dark:group-hover/widget-content:opacity-100 dark:group-hover/widget-content:animate-[widget-rotating_3s_linear_infinite] dark:after:absolute dark:after:inset-[1px] dark:after:bg-[var(--widget-dark-bg-hover)] dark:after:rounded-3xl'
+            'pointer-events-none absolute inset-0 rounded-3xl will-change-auto border border-[var(--jingle-widget-border,rgba(0,0,0,0.1))]',
+            {
+              'group-hover/widget:border-emerald-600': isPreview
+            }
           )}
         />
       </div>
@@ -133,7 +126,10 @@ export default class Widget<T> {
   // 2x0.5
   protected Render2x05(config: WidgetConfig<T>) {
     return (
-      <a className="block w-full h-full" href={config.shortLinkURL}>
+      <a
+        className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]"
+        href={config.shortLinkURL}
+      >
         <div className="flex h-full items-center gap-3">
           <WidgetIcon
             className="h-7 w-7"
@@ -141,7 +137,7 @@ export default class Widget<T> {
             title={(config.data as any).overrides?.title || (config.data as any).title}
             faviconUrl={(config.data as any).faviconUrl}
           />
-          <h3 className="flex-1 truncate text-sm text-gray-900 dark:text-slate-50">
+          <h3 className="flex-1 truncate text-sm text-[var(--jingle-widget-title)]">
             {(config.data as any).overrides?.title ||
               (config.data as any).title ||
               (config.data as any).name}

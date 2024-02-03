@@ -1606,6 +1606,7 @@ button.block-header-button {
 }
 
 .media-picker,
+.customize-picker,
 .icon-picker {
   @apply h-[30rem];
 
@@ -1615,6 +1616,14 @@ button.block-header-button {
 
   .tabs-nav {
     @apply py-2 #{!important};
+  }
+}
+
+.customize-picker {
+  @apply w-[420px] h-[70vh];
+
+  .tabs-pane {
+    @extend .scrollbar;
   }
 }
 
@@ -1918,7 +1927,7 @@ button.block-header-button {
 }
 
 .color-picker__value {
-  @apply ml-2 text-sm text-slate-800 truncate;
+  @apply flex-1 ml-2 text-sm text-slate-800 truncate;
 }
 
 .sidebar-container {
@@ -2612,3 +2621,31 @@ button.button-success {
   }
 }
 
+.design-customize-form {
+  .form-item-label {
+    @apply text-[13px] text-slate-700 font-medium;
+  }
+
+  .form-item {
+    @apply relative mb-2.5 flex items-center justify-between;
+  }
+
+  .form-item-error {
+    @apply pb-4;
+
+    & > .form-item-error {
+      @apply text-xs absolute bottom-0 left-0 w-full mt-0 pb-0;
+    }
+  }
+
+  .form-item-content {
+    @apply mt-0;
+  }
+
+  .slider-progress-track {
+    &,
+    &:after {
+      @apply bg-emerald-500;
+    }
+  }
+}

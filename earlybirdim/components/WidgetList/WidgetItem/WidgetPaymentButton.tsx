@@ -49,6 +49,7 @@ export const WidgetPaymentButton: FC<WidgetPaymentButtonProps> = ({
   return (
     <button
       className={clsx('absolute inset-0', className)}
+      aria-label={config.data?.buttonText}
       disabled={loading}
       onClick={handleClick}
     />
@@ -57,11 +58,11 @@ export const WidgetPaymentButton: FC<WidgetPaymentButtonProps> = ({
 
 export const WidgetPaymentText: FC<WidgetPaymentTextProps> = ({ text, loading }) => {
   return (
-    <div className="relative inline-flex items-center rounded-full border border-[var(--widget-follow-border)] bg-[var(--widget-follow-bg)] px-4 py-1.5 text-center text-xs font-medium text-[var(--widget-follow-text)] hover:bg-[var(--widget-follow-bg-hover)] active:bg-[var(--widget-follow-bg-active)]">
+    <div className="relative inline-flex items-center rounded-full bg-[var(--jingle-widget-follow-background)] px-4 py-1.5 text-center text-xs font-medium text-[var(--jingle-widget-follow-text)] hover:bg-[var(--jingle-widget-follow-background-hover)] active:bg-[var(--jingle-widget-follow-background-active)]">
       {text}
 
       {loading && (
-        <div className="absolute inset-0 rounded-full flex items-center justify-center border border-[var(--widget-follow-border)] bg-[var(--widget-follow-bg)]">
+        <div className="absolute inset-0 rounded-full flex items-center justify-center bg-[var(--jingle-widget-follow-background)]">
           <Loader />
         </div>
       )}

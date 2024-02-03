@@ -10,13 +10,13 @@ import {
   WidgetData,
   WidgetExtra
 } from '../WidgetProps'
-import { typeNames } from '../constants'
+import { github, typeNames } from '../constants'
 import BehanceWidget from './BehanceWidget'
 import { WidgetFollowButton } from './WidgetFollowButton'
 
 function getSvgClassName(count: number) {
   if (count < 1) {
-    return `fill-[rgba(0,0,0,0.05)] dark:fill-[rgba(255,255,255,0.25)]`
+    return `fill-[rgba(0,0,0,0.05)]`
   } else if (count <= 5) {
     return 'fill-[#9be9a8]'
   } else if (count <= 10) {
@@ -91,7 +91,7 @@ const Contribution: FC<GithubContributionProps> = ({
         {isMonthShow &&
           monthLabels.map((row, index) => (
             <text
-              className="fill-[rgba(0,0,0,0.5)] dark:fill-[rgba(255,255,255,0.5)]"
+              className="fill-[rgba(0,0,0,0.5)] "
               key={index}
               x={row.x}
               y={row.y}
@@ -113,7 +113,16 @@ const Contribution: FC<GithubContributionProps> = ({
               rx="2.5"
             />
             <rect
-              className="stroke-[rgba(0,0,0,0.05)] dark:stroke-[rgba(255,255,255,0.05)]"
+              className="stroke-[rgba(0,0,0,0.1)] "
+              x={row.x + 0.5}
+              y={row.y + 0.5}
+              width={blockSize - 1}
+              height={blockSize - 1}
+              rx="2"
+              strokeWidth="1"
+            />
+            <rect
+              className="stroke-[rgba(255,255,255,0.2)] "
               x={row.x + 0.5}
               y={row.y + 0.5}
               width={blockSize - 1}
@@ -129,22 +138,27 @@ const Contribution: FC<GithubContributionProps> = ({
 }
 
 export default class GithubWidget<T extends GithubData & WidgetData> extends BehanceWidget<T> {
-  override extras: AnyMap<WidgetExtra> = {}
+  override extras: AnyMap<WidgetExtra> = {
+    github
+  }
 
   // 2x1
   override Render2x1(config: WidgetConfig<T>) {
     return (
-      <a className="block w-full h-full" href={config.shortLinkURL}>
+      <a
+        className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]"
+        href={config.shortLinkURL}
+      >
         <div className="flex h-full">
           <div className="flex flex-col">
             <WidgetIcon url={config.url} />
 
             <div className="mt-2 md:mt-3 flex-1">
-              <h3 className="widget-headline line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline line-clamp-2 text-sm text-[var(--jingle-widget-title)]">
                 {config.data.overrides?.title || config.data.name || typeNames[config.type!]}
               </h3>
               {config.data.description && (
-                <div className="max-[400px]:hidden text-xs text-slate-500 dark:text-slate-400">
+                <div className="max-[400px]:hidden text-xs text-[var(--jingle-widget-meta)]">
                   {config.data.description}
                 </div>
               )}
@@ -171,10 +185,13 @@ export default class GithubWidget<T extends GithubData & WidgetData> extends Beh
     )
   }
 
-  // 2x1
+  // 2x2
   override Render2x2(config: WidgetConfig) {
     return (
-      <a className="block w-full h-full" href={config.shortLinkURL}>
+      <a
+        className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]"
+        href={config.shortLinkURL}
+      >
         <div className="flex h-full flex-col">
           <div>
             <div className="flex justify-between">
@@ -189,11 +206,11 @@ export default class GithubWidget<T extends GithubData & WidgetData> extends Beh
             </div>
 
             <div className="mt-3">
-              <h3 className="widget-headline line-clamp-2 text-sm text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline line-clamp-2 text-sm text-[var(--jingle-widget-title)]">
                 {config.data.overrides?.title || config.data.name || typeNames[config.type!]}
               </h3>
               {config.data.description && (
-                <div className="max-[400px]:hidden text-xs text-slate-500 dark:text-slate-400">
+                <div className="max-[400px]:hidden text-xs text-[var(--jingle-widget-meta)]">
                   {config.data.description}
                 </div>
               )}
@@ -207,7 +224,7 @@ export default class GithubWidget<T extends GithubData & WidgetData> extends Beh
             contributions={config.data.contributions}
             isMonthShow={true}
           />
-          <div className="mt-2 text-xs text-black/50 dark:text-white/50">
+          <div className="mt-2 text-xs text-black/50">
             {config.data.numContributions} contributions in the last year
           </div>
         </div>

@@ -113,19 +113,17 @@ export const DragUploader: FC<DragUploaderProps> = ({
         onChange={handleFileChange}
       />
       {file ? (
-        <div className="flex justify-center w-full h-full px-6 pt-5 pb-6 border-2 border-slate-300 border-dashed rounded-md">
+        <div
+          className="flex justify-center w-full h-full px-6 pt-5 pb-6 border-2 border-slate-300 border-dashed rounded-md"
+          onClick={handleOpen}
+        >
           <div className="flex flex-col justify-center space-y-1 text-center">
             <IconFileUpload className="mx-auto h-12 w-12 text-slate-400 non-scaling-stroke" />
             <p className="text-sm text-slate-500">
               {file!.name} <span>({bytes.stringify(file!.size)})</span>
             </p>
             <div className="flex items-center justify-center text-sm">
-              <Button.Link
-                type="success"
-                loading={loading}
-                loaderClassName="!bg-white"
-                onClick={handleOpen}
-              >
+              <Button.Link type="success" loading={loading} loaderClassName="!bg-white">
                 {t(loading ? uploadingText : reselectText)}
               </Button.Link>
             </div>

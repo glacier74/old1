@@ -13,7 +13,7 @@ export default class ExperienceWidget<T extends ExperienceData> extends Widget<T
     const data = useMemo(() => ExperienceWidget._getData(config.data), [config.data])
 
     return (
-      <div className="block w-full h-full">
+      <div className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]">
         <div className="flex h-full flex-col">
           <SkillsIcon
             iconType="svg"
@@ -22,11 +22,11 @@ export default class ExperienceWidget<T extends ExperienceData> extends Widget<T
           />
 
           <div className="mt-2 md:mt-3 flex-1 flex flex-col space-y-1.5">
-            <h3 className="widget-headline line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+            <h3 className="widget-headline line-clamp-2 md:line-clamp-3 md:mt-2 text-sm leading-[1.2] text-[var(--jingle-widget-title)]">
               {data?.name}
             </h3>
-            <div className="text-xs text-slate-500 dark:text-slate-400 truncate">{data?.role}</div>
-            <div className="text-xs text-slate-500 dark:text-slate-400 truncate">{data?.date}</div>
+            <div className="text-xs text-[var(--jingle-widget-meta)] truncate">{data?.role}</div>
+            <div className="text-xs text-[var(--jingle-widget-meta)] truncate">{data?.date}</div>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@ export default class ExperienceWidget<T extends ExperienceData> extends Widget<T
     const data = useMemo(() => ExperienceWidget._getData(config.data), [config.data])
 
     return (
-      <div className="block w-full h-full">
+      <div className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]">
         <div className="flex h-full flex-col">
           <SkillsIcon
             iconType="svg"
@@ -49,14 +49,14 @@ export default class ExperienceWidget<T extends ExperienceData> extends Widget<T
           <div className="mt-2 md:mt-3 flex-1">
             <div className="flex items-start justify-between md:mt-2">
               <div className="w-[calc(100%-140px)] space-y-2">
-                <h3 className="widget-headline line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] break-words text-slate-950 dark:text-slate-50">
+                <h3 className="widget-headline line-clamp-2 md:line-clamp-3 text-sm leading-[1.2] break-words text-[var(--jingle-widget-title)]">
                   {data?.name}
                 </h3>
-                <div className="text-xs text-slate-500 dark:text-slate-400 truncate">
+                <div className="text-xs text-[var(--jingle-widget-meta)] truncate">
                   {data?.role}
                 </div>
               </div>
-              <div className="w-[120px] text-right text-xs text-slate-500 dark:text-slate-400">
+              <div className="w-[120px] text-right text-xs text-[var(--jingle-widget-meta)]">
                 {data?.date}
               </div>
             </div>
@@ -72,7 +72,7 @@ export default class ExperienceWidget<T extends ExperienceData> extends Widget<T
     const data = useMemo(() => ExperienceWidget._getData(config.data), [config.data])
 
     return (
-      <div className="block w-full h-full">
+      <div className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]">
         <div className="flex h-full items-center gap-3">
           <SkillsIcon
             iconType="svg"
@@ -81,8 +81,8 @@ export default class ExperienceWidget<T extends ExperienceData> extends Widget<T
           />
 
           <div className="max-[400px]:max-w-[calc(100%-44px)] max-w-[calc(100%-52px)]">
-            <h3 className="truncate text-sm text-gray-900 dark:text-slate-50">{data?.name}</h3>
-            <div className="text-xs text-slate-500 dark:text-slate-400">{data?.role}</div>
+            <h3 className="truncate text-sm text-gray-900">{data?.name}</h3>
+            <div className="text-xs text-[var(--jingle-widget-meta)]">{data?.role}</div>
           </div>
         </div>
       </div>

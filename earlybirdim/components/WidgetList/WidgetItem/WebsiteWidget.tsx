@@ -14,20 +14,23 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
     const customURL = toCustomURL(config.url)
 
     return (
-      <a className="block w-full h-full" href={config.shortLinkURL}>
+      <a
+        className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]"
+        href={config.shortLinkURL}
+      >
         <div className="flex h-full flex-col">
           <WidgetIcon url={config.url} faviconUrl={config.data.faviconUrl} />
 
           <div className="mt-2 md:mt-3 flex-1">
-            <h3 className="widget-headline mt-1 line-clamp-2 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+            <h3 className="widget-headline mt-1 line-clamp-2 md:mt-2 text-sm leading-[1.2] text-[var(--jingle-widget-title)]">
               {config.data.overrides?.title || config.data.title}
             </h3>
             {(config.data.overrides?.description || config.data.description) && (
-              <div className="mt-1 line-clamp-1 md:line-clamp-2 text-sm leading-[1.2] text-slate-500 dark:text-slate-400">
+              <div className="mt-1 line-clamp-1 md:line-clamp-2 text-sm leading-[1.2] text-[var(--jingle-widget-meta)]">
                 {config.data.overrides?.description || config.data.description}
               </div>
             )}
-            <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 truncate">
+            <div className="mt-1 text-xs text-[var(--jingle-widget-meta)] truncate">
               {customURL?.hostname}
             </div>
           </div>
@@ -49,7 +52,10 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
     )
 
     return (
-      <a className="block w-full h-full" href={config.shortLinkURL}>
+      <a
+        className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]"
+        href={config.shortLinkURL}
+      >
         <div className="flex h-full">
           <div
             className={clsx(
@@ -61,15 +67,15 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
               <WidgetIcon url={config.url} faviconUrl={config.data.faviconUrl} />
             </div>
             <div className="flex flex-1 flex-col">
-              <h3 className="widget-headline mt-1 line-clamp-2 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline mt-1 line-clamp-2 md:mt-2 text-sm leading-[1.2] text-[var(--jingle-widget-title)]">
                 {config.data.overrides?.title || config.data.title}
               </h3>
               {(config.data.overrides?.description || config.data.description) && (
-                <div className="mt-1 line-clamp-1 md:line-clamp-2 text-sm leading-[1.2] text-slate-500 dark:text-slate-400">
+                <div className="mt-1 line-clamp-1 md:line-clamp-2 text-sm leading-[1.2] text-[var(--jingle-widget-meta)]">
                   {config.data.overrides?.description || config.data.description}
                 </div>
               )}
-              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 truncate">
+              <div className="mt-1 text-xs text-[var(--jingle-widget-meta)] truncate">
                 {customURL?.hostname}
               </div>
             </div>
@@ -107,22 +113,25 @@ export default class WebsiteWidget<T extends WebsiteData> extends Widget<T> {
     )
 
     return (
-      <a className="block w-full h-full" href={config.shortLinkURL}>
+      <a
+        className="block w-full h-full p-[var(--widget-padding)] max-[400px]:p-[calc(0.9*var(--widget-padding))] max-[360px]:p-[calc(0.75*var(--widget-padding))]"
+        href={config.shortLinkURL}
+      >
         <div className="flex h-full flex-col">
           <div className="flex flex-1 flex-col gap-3">
             <div className="flex justify-between">
               <WidgetIcon url={config.url} faviconUrl={config.data.faviconUrl} />
             </div>
             <div className="flex flex-1 flex-col">
-              <h3 className="widget-headline mt-1 line-clamp-2 md:mt-2 text-sm leading-[1.2] text-slate-950 dark:text-slate-50">
+              <h3 className="widget-headline mt-1 line-clamp-2 md:mt-2 text-sm leading-[1.2] text-[var(--jingle-widget-title)]">
                 {config.data.overrides?.title || config.data.title}
               </h3>
               {(config.data.overrides?.description || config.data.description) && (
-                <div className="mt-1 line-clamp-1 md:line-clamp-2 text-sm leading-[1.2] text-slate-500 dark:text-slate-400">
+                <div className="mt-1 line-clamp-1 md:line-clamp-2 text-sm leading-[1.2] text-[var(--jingle-widget-meta)]">
                   {config.data.overrides?.description || config.data.description}
                 </div>
               )}
-              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 truncate">
+              <div className="mt-1 text-xs text-[var(--jingle-widget-meta)] truncate">
                 {customURL?.hostname}
               </div>
             </div>

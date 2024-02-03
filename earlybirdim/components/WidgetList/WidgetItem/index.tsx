@@ -189,11 +189,14 @@ const WidgetItem: FC<WidgetItemProps> = ({
   const children = useMemo(
     () => (
       <div
-        className={clsx(`widget widget-${size.replace(/\./g, '_')} ${sizeClassNames[size]}`, {
-          'group/widget relative': isPreview,
-          'widget-active': isActive,
-          'cursor-grab': isDragOverlay
-        })}
+        className={clsx(
+          `widget widget-${size.replace(/\./g, '_')} ${sizeClassNames[size]} widget-${config.type}`,
+          {
+            'group/widget relative': isPreview,
+            'widget-active': isActive,
+            'cursor-grab': isDragOverlay
+          }
+        )}
         data-id={config.id}
         style={style}
         onMouseEnter={handleMouseEnter}

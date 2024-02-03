@@ -26,7 +26,7 @@ export default class MapWidget<T extends MapData> extends Widget<T> {
     return <MapWidget.Render {...config} />
   }
 
-  // 2x1
+  // 2x2
   override Render2x2(config: WidgetConfig<MapData>) {
     return <MapWidget.Render {...config} />
   }
