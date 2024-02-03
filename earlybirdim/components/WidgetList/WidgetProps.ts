@@ -63,8 +63,6 @@ export interface WidgetStyles {
   followTextColor?: string
   followersColor?: string
   scale?: number
-  darkBgColor?: string
-  darkBgHoverColor?: string
 }
 
 export interface WidgetExtra extends AnyMap<any> {
@@ -239,15 +237,6 @@ export interface PaymentData extends Payment {
 
 export interface EmailCaptureData extends EmailCapture {
   overrides?: Pick<WidgetOverrides, 'title' | 'imageUrl'> & EmailCapture
-}
-
-interface Phone {
-  phoneNumber: string
-  buttonText: string
-}
-
-export interface PhoneData extends Phone {
-  overrides?: Pick<WidgetOverrides, 'title' | 'imageUrl'> & Phone
 }
 
 export interface WidgetPaymentButtonProps extends ComponentProps {

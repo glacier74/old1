@@ -2,20 +2,17 @@ import { FC, useMemo } from 'react'
 
 import { MAP_MEDIA_SIZE_OPTIONS, WIDGET_SIZE_OPTIONS } from '~/layout/builder3/constants'
 import { useOptions } from '~/layout/builder3/context'
-import {
-  EXPERIENCE_FIELDS,
-  EXPERIENCE_TYPES
-} from '~/layout/builder3/rightSidebar2/AddWidget/AddExperience'
-import { SkillsIcon } from '~/layout/builder3/rightSidebar2/AddWidget/AddSkills/SkillsIcons'
-import { DateRangeSubOption } from '~/layout/builder3/rightSidebar2/WidgetOptions/DateRangeSubOption'
-import { RatingSubOption } from '~/layout/builder3/rightSidebar2/WidgetOptions/RatingSubOption'
-import { SkillsIconSubOption } from '~/layout/builder3/rightSidebar2/WidgetOptions/SkillsIconSubOption'
 
 import { EmailCaptureOption } from '../../rightSidebar/EmailCaptureOption'
 import { PaymentOption } from '../../rightSidebar/PaymentOption'
+import { EXPERIENCE_FIELDS, EXPERIENCE_TYPES } from '../AddWidget/AddExperience'
+import { SkillsIcon } from '../AddWidget/AddSkills/SkillsIcons'
+import { DateRangeSubOption } from './DateRangeSubOption'
 import { ImageSubOption } from './ImageSubOption'
 import { LocationSubOption } from './LocationSubOption'
+import { RatingSubOption } from './RatingSubOption'
 import { SelectSubOption } from './SelectSubOption'
+import { SkillsIconSubOption } from './SkillsIconSubOption'
 import { SwitchSubOption } from './SwitchSubOption'
 import { TextSubOption, URLSubOption } from './TextSubOption'
 
@@ -199,12 +196,10 @@ const SkillsItemOption: FC<Pick<WidgetItemOptionProps, 'parentName' | 'index'>> 
   )
 }
 
-const PhoneWidgetOption: FC<Pick<WidgetItemOptionProps, 'parentName' | 'index'>> = ({
+const TextWidgetOption: FC<Pick<WidgetItemOptionProps, 'parentName' | 'index'>> = ({
   parentName,
   index
 }) => {
-  const { value: sizeValue } = useOptions<string>([parentName, index, 'size'].join('.'))
-
   return (
     <>
       <SelectSubOption
@@ -212,16 +207,21 @@ const PhoneWidgetOption: FC<Pick<WidgetItemOptionProps, 'parentName' | 'index'>>
         options={WIDGET_SIZE_OPTIONS}
         path={[parentName, index, 'size'].join('.')}
       />
-      <TextSubOption
-        title="Phone Number"
-        path={[parentName, index, 'data.phoneNumber'].join('.')}
+      <TextSubOption title="Text" path={[parentName, index, 'overrides.title'].join('.')} />
+      <URLSubOption
+        title="URL"
+        path={[parentName, index, 'url'].join('.')}
+        allowHyperlink={true}
+        description={
+          <div className="mt-1 text-xs text-slate-500">
+            You can enter a URL address starting with{' '}
+            <span className="text-slate-800">http://</span> or{' '}
+            <span className="text-slate-800">https://</span>, or a hyperlink starting with{' '}
+            <span className="text-slate-800">tel:</span> or{' '}
+            <span className="text-slate-800">mailto:</span>.
+          </div>
+        }
       />
-      <TextSubOption title="Title" path={[parentName, index, 'overrides.title'].join('.')} />
-      <TextSubOption title="Button" path={[parentName, index, 'data.buttonText'].join('.')} />
-
-      {(sizeValue === '2x1' || sizeValue === '2x2') && (
-        <ImageSubOption title="Image" path={[parentName, index, 'overrides.imageUrl'].join('.')} />
-      )}
     </>
   )
 }
@@ -299,8 +299,8 @@ export const WidgetItemOption: FC<WidgetItemOptionProps> = ({ parentName, index,
       case 'experience':
         return <ExperienceItemOption parentName={parentName} index={index} />
 
-      case 'phone':
-        return <PhoneWidgetOption parentName={parentName} index={index} />
+      case 'text':
+        return <TextWidgetOption parentName={parentName} index={index} />
 
       default:
         return <WebsiteWidgetOption parentName={parentName} index={index} provider={provider} />

@@ -155,7 +155,8 @@ declare global {
     completions: string[]
     hiddenBlocks: string[]
     version: number
-    theme: Theme
+    theme: AnyMap
+    tempTheme?: AnyMap
     customCode: string
     schema: number
     canPublish?: boolean
@@ -256,11 +257,19 @@ declare global {
 
   interface UnsplashImage {
     id: string
-    url: string
+    type: 'unsplash'
+    color: string
     thumbUrl: string
-    downloadUrl: string
-    author: string
     authorUrl: string
+    author: string
+    downloadUrl: string
+    src: string
+  }
+
+  interface GradientImage {
+    type: 'gradient'
+    src: string
+    color?: string
   }
 
   interface StripeProduct {

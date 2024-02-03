@@ -275,7 +275,7 @@ export function getWidgetIcon(url: string, type: string) {
         icon: IconPayment
       }
 
-    case 'phone':
+    case 'text':
       return {
         fill: '#28D330',
         icon: IconPhone
@@ -305,7 +305,7 @@ export const WidgetIcon: FC<WidgetIconProps> = ({
         case 'email_capture':
           return <IconEmailCapture className="h-full w-full" />
 
-        case 'phone':
+        case 'text':
           return <IconPhone className="h-full w-full" />
       }
     } else if (url) {

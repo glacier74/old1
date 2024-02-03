@@ -9,13 +9,12 @@ import {
   IconLocation,
   IconMail,
   IconMusic,
-  IconPhone,
   IconPhoto,
   IconTopologyStar
 } from '@tabler/icons'
 import { FC, useCallback, useState } from 'react'
 
-import { IconGroupTitle } from '~/components'
+import { IconGroupTitle, IconText } from '~/components'
 import { useBuilderContext, useOptions } from '~/layout/builder3/context'
 
 import { OptionsContainer } from '../OptionsContainer'
@@ -27,9 +26,9 @@ import { AddLink, AddLinkProps } from './AddLink'
 import { AddLocation } from './AddLocation'
 import { AddMusic } from './AddMusic'
 import { AddPayment } from './AddPayment'
-import { AddPhone } from './AddPhone'
 import { AddSkills } from './AddSkills'
 import { AddSocial } from './AddSocial'
+import { AddText } from './AddText'
 import { AddVideo } from './AddVideo'
 import { SOCIAL_TYPES, SocialList } from './SocialList'
 
@@ -46,6 +45,12 @@ const WIDGET_CONFIGS: WidgetConfig[] = [
     label: 'Link',
     icon: IconLink,
     iconClassName: 'bg-green-500 text-white'
+  },
+  {
+    type: 'text',
+    label: 'Text',
+    icon: IconText,
+    iconClassName: 'bg-blue-500 text-white'
   },
   {
     type: 'social',
@@ -66,14 +71,8 @@ const WIDGET_CONFIGS: WidgetConfig[] = [
     iconClassName: 'bg-blue-900 text-white'
   },
   {
-    type: 'phone',
-    label: 'Phone Number',
-    icon: IconPhone,
-    iconClassName: 'bg-blue-900 text-white'
-  },
-  {
     type: 'skills',
-    label: 'Skills',
+    label: 'Skill',
     icon: IconBoxModel,
     iconClassName: 'bg-lime-500 text-white'
   },
@@ -170,8 +169,8 @@ const Panel: FC<{ type: string } & AddLinkProps> = ({ type, ...restProps }) => {
     case 'video':
       return <AddVideo {...restProps} />
 
-    case 'phone':
-      return <AddPhone {...restProps} />
+    case 'text':
+      return <AddText {...restProps} />
 
     default:
       return SOCIAL_TYPES.includes(type) ? <AddSocial type={type} {...restProps} /> : null

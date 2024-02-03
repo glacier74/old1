@@ -19,12 +19,12 @@ import { GroupTitleWidget } from './GroupTitleWidget'
 import MapWidget from './MapWidget'
 import MediaWidget from './MediaWidget'
 import PaymentWidget from './PaymentWidget'
-import PhoneWidget from './PhoneWidget'
 import SkillsWidget from './SkillsWidget'
 import SpotifyAlbumWidget from './SpotifyAlbumWidget'
 import SpotifyArtistWidget from './SpotifyArtistWidget'
 import SpotifyPlaylistWidget from './SpotifyPlaylistWidget'
 import SpotifyTrackWidget from './SpotifyTrackWidget'
+import TextWidget from './TextWidget'
 import TwitterWidget from './TwitterWidget'
 import WebsiteWidget from './WebsiteWidget'
 import { WidgetActions } from './WidgetActions'
@@ -80,7 +80,7 @@ const WidgetItem: FC<WidgetItemProps> = ({
   }, [rawSize, type])
 
   const customURL = useMemo(() => parseURL(url, type), [url, type])
-  const shortLinkURL = useShortLinkURL(id)
+  const shortLinkURL = useShortLinkURL(id, customURL.url)
   const config: WidgetConfig = useMemo(() => {
     return {
       id,
@@ -166,8 +166,8 @@ const WidgetItem: FC<WidgetItemProps> = ({
       case 'experience':
         return new ExperienceWidget(config).getComponent()
 
-      case 'phone':
-        return new PhoneWidget(config).getComponent()
+      case 'text':
+        return new TextWidget(config).getComponent()
 
       default:
         return new WebsiteWidget(config).getComponent()

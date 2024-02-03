@@ -1,7 +1,8 @@
 import { useGlobalContext } from '@earlybirdim/components'
-import { date, isValid } from '@nily/utils'
+import { date, isEmpty, isValid } from '@nily/utils'
 import { isGoogleMap } from '@tinaryan/dp'
 import { useEffect, useMemo, useRef, useState, useTransition } from 'react'
+import isURL from 'validator/lib/isURL'
 
 import { MetadataService } from '~/service'
 import { useAsyncEffect } from '~/utils'
@@ -15,7 +16,7 @@ const UNFETCH_TYPES = [
   'image',
   'skills',
   'experience',
-  'phone'
+  'text'
 ]
 
 export function useMetadata<T = WidgetData>(config: WidgetConfig) {
@@ -92,8 +93,12 @@ export function useComputedConfig(config: WidgetConfig) {
 
 const NEXT_PUBLIC_SHORT_URL = process.env.NEXT_PUBLIC_SHORT_URL as string
 
-export function useShortLinkURL(widgetId: string) {
+export function useShortLinkURL(widgetId: string, url: string) {
   const { domain } = useGlobalContext()
+
+  if (isEmpty(url) || !isURL(url)) {
+    return url
+  }
 
   return [NEXT_PUBLIC_SHORT_URL, domain, widgetId].join('/')
 }
