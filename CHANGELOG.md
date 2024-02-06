@@ -44,3 +44,11 @@
 * Fix the change language not working error
 * Fix timezone is empty when creating a product
 * Fix some style issues
+
+## v1.8.8 (2024-02-06)
+
+* Remove Phone Number widget
+* Add custom theme support
+* Add Text widget
+* Fix some style issues
+* Add Countly to track Jingle Bio events
