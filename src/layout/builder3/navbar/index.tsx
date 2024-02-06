@@ -159,22 +159,24 @@ export const Navbar: FC = () => {
               </div>
             </Tooltip>
 
-            <Tooltip ariaLabel="Customize theme">
-              <div className="relative">
-                <Button
-                  className="!py-1.5"
-                  leading={<IconPalette className="w-7 h-7 text-slate-800" />}
-                  onClick={handleOpenThemeModal}
-                />
+            {product.isJingleBio && (
+              <Tooltip ariaLabel="Customize theme">
+                <div className="relative">
+                  <Button
+                    className="!py-1.5"
+                    leading={<IconPalette className="w-7 h-7 text-slate-800" />}
+                    onClick={handleOpenThemeModal}
+                  />
 
-                {!tourv2 && (
-                  <div className="flex absolute h-2 w-2 top-0 right-0 -mt-0.5 -mr-0.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
-                  </div>
-                )}
-              </div>
-            </Tooltip>
+                  {!tourv2 && (
+                    <div className="flex absolute h-2 w-2 top-0 right-0 -mt-0.5 -mr-0.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+                    </div>
+                  )}
+                </div>
+              </Tooltip>
+            )}
 
             <Button className="!py-1.5 !text-sm" onClick={openShareModal}>
               Share
