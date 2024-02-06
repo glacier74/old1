@@ -12,13 +12,42 @@ declare module 'i18next' {
   }
 }
 
+declare module 'countly-sdk-web' {
+  interface CountlyConfig {
+    app_key: string
+    url?: string
+    debug?: boolean
+    device_id?: string
+  }
+
+  interface CountlyEvent {
+    key: string
+    count?: number
+    sum?: number
+    dur?: number
+    segmentation?: Record<string, string>
+  }
+
+  interface Countly {
+    init(config: CountlyConfig): void
+    add_event(event: CountlyEvent): void
+  }
+
+  export default Countly
+}
+
 declare global {
   import type { NextSeoProps } from 'next-seo'
   import type { ReactNode, CSSProperties } from 'react'
   import type { NextPageContext } from 'next'
+  import Countly from 'countly-sdk-web'
 
   type AnyMap<V = any, K = string> = Record<K, T>
   type StringMap = AnyMap<string>
+
+  interface Window {
+    Countly: Countly
+  }
 
   interface ComponentProps extends AriaAttributes {
     id?: string

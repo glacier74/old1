@@ -127,6 +127,9 @@ dependencies:
   clsx:
     specifier: ^1.2.1
     version: 1.2.1
+  countly-sdk-web:
+    specifier: ^23.12.5
+    version: 23.12.5
   crypto-js:
     specifier: ^4.1.1
     version: 4.1.1
@@ -2260,6 +2263,10 @@ packages:
   /core-js@3.32.0:
     resolution: {integrity: sha512-rd4rYZNlF3WuoYuRIDEmbR/ga9CeuWX9U05umAvgrrZoHY4Z++cp/xwPQMvUpBB4Ag6J8KfD80G0zwCyaSxDww==}
     requiresBuild: true
+    dev: false
+
+  /countly-sdk-web@23.12.5:
+    resolution: {integrity: sha512-C50Kea3QZZePvd3r9JFXg7eSFfAHEVtIKRtMswJxdXhNy2LHtEm+G/S+T0L4NjnUrJw1JlOG+2D8heQyisfw/w==}
     dev: false
 
   /crelt@1.0.6:

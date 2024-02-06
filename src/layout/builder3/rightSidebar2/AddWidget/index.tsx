@@ -12,10 +12,15 @@ import {
   IconPhoto,
   IconTopologyStar
 } from '@tabler/icons'
-import { FC, useCallback, useState } from 'react'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import Countly from 'countly-sdk-web'
+import JsCookie from 'js-cookie'
+import { FC, useCallback, useEffect, useRef, useState } from 'react'
 
 import { IconGroupTitle, IconText } from '~/components'
 import { useBuilderContext, useOptions } from '~/layout/builder3/context'
+import { getBrowserId } from '~/utils'
 
 import { OptionsContainer } from '../OptionsContainer'
 import { AddEmailCapture } from './AddEmailCapture'
@@ -182,6 +187,7 @@ export const AddWidget = () => {
   const { value: listValue, update } = useOptions<AnyMap<any>[]>(widgetListPath, [])
 
   const [types, setTypes] = useState<string[]>([])
+  const countlyRef = useRef<Countly | null>(null)
 
   const handleClick = useCallback(
     (newType: string) => {
@@ -201,6 +207,14 @@ export const AddWidget = () => {
       newList.splice(widgetIndex, 0, newValue)
       update(newList)
 
+      const [parentType, childType] = types
+
+      countlyRef.current?.add_event({
+        key: `Jingle Bio Widget: ${parentType}`,
+        count: 1,
+        segmentation: childType ? { Name: childType } : undefined
+      })
+
       dispatch({
         type: 'updateState',
         payload: {
@@ -209,7 +223,7 @@ export const AddWidget = () => {
         }
       })
     },
-    [dispatch, listValue, state.widgetIds, update]
+    [dispatch, listValue, state.widgetIds, types]
   )
 
   const handleGoNext = useCallback(
@@ -222,6 +236,16 @@ export const AddWidget = () => {
   const handleGoBack = useCallback(() => {
     setTypes(types.slice(0, -1))
   }, [types])
+
+  useEffect(() => {
+    Countly.init({
+      url: process.env.NEXT_PUBLIC_COUNTLY_URL,
+      app_key: process.env.NEXT_PUBLIC_COUNTLY_APP_KEY,
+      device_id: getBrowserId(JsCookie)
+    })
+
+    countlyRef.current = Countly
+  }, [])
 
   return (
     <>
