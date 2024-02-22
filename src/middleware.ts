@@ -7,8 +7,7 @@ import {
   getBrowserId,
   isLoggedIn,
   setBrowserId,
-  setDomain,
-  setRef
+  setTrackingParam
 } from '~/utils/cookie'
 import { isMatchRoutes } from '~/utils/route'
 
@@ -16,6 +15,9 @@ import { PublicApiService } from './service/public-api'
 
 const authRoutes = ['/login', '/sign-up', '/confirm-email', '/forgot-password', '/reset-password']
 const userRoutes = ['/product/:path*', '/account', '/account/:path*']
+
+const cookiePrefix = process.env.NEXT_PUBLIC_COOKIE_PREFIX as string
+const trackingNames = ['ref', 'domain', 'utm_source', 'utm_campaign']
 
 export async function middleware(req: NextRequest) {
   const isLogged = isLoggedIn(req.cookies)
@@ -50,18 +52,13 @@ export async function middleware(req: NextRequest) {
     setBrowserId(res.cookies)
   }
 
-  // Save ref to cookies
-  const ref = req.nextUrl.searchParams.get('ref')!
+  // Save tracking values to cookies
+  for (const name of trackingNames) {
+    const value = req.nextUrl.searchParams.get(name)!
 
-  if (isValid(ref)) {
-    setRef(res.cookies, ref)
-  }
-
-  // Save domain to cookies
-  const domain = req.nextUrl.searchParams.get('domain')!
-
-  if (isValid(domain)) {
-    setDomain(res.cookies, domain)
+    if (isValid(value)) {
+      setTrackingParam(res.cookies, cookiePrefix + name, value)
+    }
   }
 
   // 检查 token 是否有效
