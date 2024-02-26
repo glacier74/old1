@@ -175,6 +175,23 @@ export const Preview: FC = () => {
               .dark .widget-active .widget-content {
                 // background: #1e293b;
               }
+              .mapboxgl-map {
+                position: relative
+              }
+              .mapboxgl-canvas-container {
+                position: absolute;
+                inset: 0
+              }
+              .mapboxgl-control-container {
+                visibility: hidden;
+                display: none;
+                opacity: 0
+              }
+              .mapboxgl-canvas {
+                width: 100% !important;
+                height: 100% !important;
+                border-radius: 1.5rem
+              }
               `
             }}
           />

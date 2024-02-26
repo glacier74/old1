@@ -67,7 +67,7 @@ export default class SpotifyTrackWidget<T extends SpotifyPlaylistData> extends W
 
           <div className="flex-1"></div>
 
-          <div className="relative aspect-square rounded-xl bg-[#f2f2f2]">
+          <div className="relative h-full aspect-square rounded-xl bg-[#f2f2f2]">
             {config.data.imageUrl && (
               <Image
                 className="h-full w-full rounded-xl object-cover pointer-events-none select-none"

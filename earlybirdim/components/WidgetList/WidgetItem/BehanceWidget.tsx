@@ -106,7 +106,7 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
           <WidgetPostList
             className={clsx(
               'ml-6 grid gap-2',
-              config.extra?.render2x1?.postListClassName || 'aspect-square grid-cols-2 grid-rows-2'
+              config.extra?.render2x1?.postListClassName || 'aspect-square grid-cols-2 grid-rows-2 h-full !gap-1.5'
             )}
             itemClassNames={config.extra?.render2x1?.postItemClassNames || 'aspect-square'}
             imageClassName={config.extra?.render2x1?.imageClassName}
