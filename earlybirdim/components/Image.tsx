@@ -1,9 +1,9 @@
-import NextImage from 'next/image'
-import { FC } from 'react'
+import NextImage, { ImageProps as NextImageProps } from 'next/image'
+import { FC, useState } from 'react'
 
 import { useGlobalContext } from './GlobalContext'
 
-export interface ImageProps extends ComponentProps {
+export interface ImageProps extends Pick<NextImageProps, 'onError'>, ComponentProps {
   src: string
   width: number
   height: number
@@ -22,12 +22,27 @@ export const Image: FC<ImageProps> = ({
   ...restProps
 }) => {
   const { isPreview } = useGlobalContext()
+  const [isLoadFailed, setLoadFailed] = useState(false)
 
   if (!/https?:\/\//.test(src)) {
     return null
   }
 
   const isAdaptiveWidth = width === 0
+
+  function handleError() {
+    setLoadFailed(true)
+  }
+
+  if (isLoadFailed) {
+    return <img src={src} 
+    data-src={src} 
+    width={isAdaptiveWidth ? (isPreview ? 9999 : undefined) : width}
+    height={height} 
+    alt={alt} 
+    {...restProps}
+    />
+  }
 
   return (
     <NextImage
@@ -40,6 +55,7 @@ export const Image: FC<ImageProps> = ({
       alt={alt}
       loading={loading}
       quality={quality}
+      onError={handleError}
       {...restProps}
     />
   )
