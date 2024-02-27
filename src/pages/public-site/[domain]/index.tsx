@@ -328,6 +328,29 @@ const PublicSite: FC<PublicSiteProps> = ({
       <PublicSiteHiddenBlocksStyle hiddenBlocks={product.siteSetting.hiddenBlocks} />
 
       <Script
+        dangerouslySetInnerHTML={{
+          __html: `
+            var gapSize = 32;
+            var widgetItemSize = parseFloat(window.localStorage.getItem('item_size'));
+
+            if (!isNaN(widgetItemSize) && widgetItemSize > 0) {
+              var style = document.createElement('style');
+
+              style.innerHTML = \`:root {
+                --widget-size: \${widgetItemSize}px;
+                --widget-gap-size: \${gapSize}px;
+                --widget-small-size: \${widgetItemSize}px;
+                --widget-medium-size: \${2 * widgetItemSize + gapSize}px;
+                --widget-large-size: \${4 * widgetItemSize + 3 * gapSize}px;
+              }\`
+
+              document.head.appendChild(style)
+            }`
+        }}
+        strategy="beforeInteractive"
+      />
+
+      <Script
         dangerouslySetInnerHTML={{ __html: `window.captcha = ${JSON.stringify(product.captcha)}` }}
         strategy="beforeInteractive"
       />
