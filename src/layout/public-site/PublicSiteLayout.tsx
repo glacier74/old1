@@ -4,6 +4,7 @@ import Head from 'next/head'
 
 import { THEMES } from '~/constants'
 import { fontLink, themeToStyle } from '~/layout/builder/utils'
+import { InjectBodyCode, InjectHeadCode } from '~/layout/public-site/PublicSiteDangerouslyHTML'
 
 import { PublicSiteIntegration } from './PublicSiteIntegration'
 
@@ -14,6 +15,7 @@ export function PublicSiteLayout({
   schema,
   theme: rawTheme,
   integrations = [],
+  customCode,
   children
 }: PublicSiteLayoutProps): JSX.Element {
   const theme = isValid(rawTheme) ? rawTheme! : THEMES[0]
@@ -23,6 +25,8 @@ export function PublicSiteLayout({
       <Head>
         <meta content={shortName} name="application-name" />
         <meta content={shortName} name="apple-mobile-web-app-title" />
+
+        <InjectHeadCode code={customCode} />
 
         {schema === 1 && (
           <>
@@ -53,6 +57,8 @@ export function PublicSiteLayout({
 
       {/* HTML */}
       {children}
+
+      <InjectBodyCode code={customCode} />
     </>
   )
 }

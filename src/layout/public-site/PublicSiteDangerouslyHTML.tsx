@@ -10,15 +10,15 @@ import { loadScriptsAsync } from '~/utils'
 function parseHTML(html: string) {
   const root = parse(html)
 
-  const linkNodes = root.querySelectorAll('link')
+  const headNodes = root.querySelectorAll('link,meta,style')
   const scriptNodes = root.querySelectorAll('script')
 
-  const links: string[] = []
+  const heads: string[] = []
   const scripts: any[] = []
 
-  if (isValidArray(linkNodes)) {
-    linkNodes.forEach(node => {
-      links.push(node.toString())
+  if (isValidArray(headNodes)) {
+    headNodes.forEach(node => {
+      heads.push(node.toString())
       node.remove()
     })
   }
@@ -34,10 +34,42 @@ function parseHTML(html: string) {
   }
 
   return {
-    links: links.join('\n'),
+    heads: heads.join('\n'),
     scripts,
     html: root.toString()
   }
+}
+
+export const InjectHeadCode: FC<{ code?: string }> = ({ code }) => {
+  const { document: frameDocument } = useFrame()
+
+  useEffect(() => {
+    if (isValid(code)) {
+      loadScriptsAsync((frameDocument || document).body, result.scripts)
+    }
+  }, [])
+
+  if (isEmpty(code)) {
+    return null
+  }
+
+  const result = parseHTML(code!)
+
+  if (result.heads) {
+    return <>{HTMLReactParser(result.heads)}</>
+  }
+
+  return null
+}
+
+export const InjectBodyCode: FC<{ code?: string }> = ({ code }) => {
+  if (isEmpty(code)) {
+    return null
+  }
+
+  const result = parseHTML(code!)
+
+  return <>{HTMLReactParser(result.html)}</>
 }
 
 export const PublicSiteDangerouslyHTML: FC<{ html?: string }> = ({ html }) => {
@@ -57,7 +89,7 @@ export const PublicSiteDangerouslyHTML: FC<{ html?: string }> = ({ html }) => {
 
   return (
     <>
-      {isValid(result.links) && <Head>{HTMLReactParser(result.links)}</Head>}
+      {isValid(result.heads) && <Head>{HTMLReactParser(result.heads)}</Head>}
       {HTMLReactParser(result.html)}
     </>
   )

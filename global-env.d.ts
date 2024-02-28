@@ -73,6 +73,7 @@ declare global {
     schema?: number
     theme?: Theme
     integrations?: Integration[]
+    customCode?: string
   }
 
   type NextPageFunction = (

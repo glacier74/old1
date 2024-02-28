@@ -31,7 +31,6 @@ import { PaymentPreview } from '~/layout/builder/blocks/Payment'
 import { SlideGalleryPreview } from '~/layout/builder/blocks/SlideGallery'
 import { TestimonialPreview } from '~/layout/builder/blocks/Testimonial'
 import { TextPreview } from '~/layout/builder/blocks/Text'
-import { PublicSiteDangerouslyHTML } from '~/layout/public-site/PublicSiteDangerouslyHTML'
 import { PublicSiteHiddenBlocksStyle } from '~/layout/public-site/PublicSiteHiddenBlocksStyle'
 import { PublicSiteUnpublished } from '~/layout/public-site/PublicSiteUnpublished'
 import { ProductService } from '~/service'
@@ -279,6 +278,7 @@ const PublicSite: FC<PublicSiteProps> = ({
       schema={product.siteSetting.schema}
       theme={product.siteSetting.theme as any}
       integrations={product.integrations}
+      customCode={product.siteSetting.customCode}
     >
       {product.siteSetting.schema === 3 ? (
         <GlobalContext.Provider
@@ -324,7 +324,6 @@ const PublicSite: FC<PublicSiteProps> = ({
         </div>
       )}
 
-      <PublicSiteDangerouslyHTML html={product.siteSetting.customCode} />
       <PublicSiteHiddenBlocksStyle hiddenBlocks={product.siteSetting.hiddenBlocks} />
 
       <Script
