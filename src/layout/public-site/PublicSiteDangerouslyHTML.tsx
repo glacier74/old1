@@ -41,11 +41,9 @@ function parseHTML(html: string) {
 }
 
 export const InjectHeadCode: FC<{ code?: string }> = ({ code }) => {
-  const { document: frameDocument } = useFrame()
-
   useEffect(() => {
     if (isValid(code)) {
-      loadScriptsAsync((frameDocument || document).body, result.scripts)
+      loadScriptsAsync(document.body, result.scripts)
     }
   }, [])
 
@@ -56,7 +54,7 @@ export const InjectHeadCode: FC<{ code?: string }> = ({ code }) => {
   const result = parseHTML(code!)
 
   if (result.heads) {
-    return <>{HTMLReactParser(result.heads)}</>
+    return <Head>{HTMLReactParser(result.heads)}</Head>
   }
 
   return null
@@ -67,9 +65,7 @@ export const InjectBodyCode: FC<{ code?: string }> = ({ code }) => {
     return null
   }
 
-  const result = parseHTML(code!)
-
-  return <>{HTMLReactParser(result.html)}</>
+  return <>{HTMLReactParser(parseHTML(code!)?.html)}</>
 }
 
 export const PublicSiteDangerouslyHTML: FC<{ html?: string }> = ({ html }) => {

@@ -1,4 +1,4 @@
-import { isEmpty } from '@nily/utils'
+import { isEmpty, isValid } from '@nily/utils'
 
 interface LoadScriptOptions {
   retry: number
@@ -21,7 +21,7 @@ export function loadScript(root: HTMLElement, data: AnyMap<string>, options: Loa
 
   root.appendChild(script)
 
-  if (data.content) {
+  if (isValid(data.content)) {
     script.innerHTML = data.content
 
     return options.onLoad?.()
@@ -63,6 +63,8 @@ export function loadScriptAsync(root: HTMLElement, data: AnyMap<string>, retry =
 
 export async function loadScriptsAsync(root: HTMLElement, scripts: any[]) {
   for (const script of scripts) {
-    await loadScriptAsync(root, script)
+    try {
+      await loadScriptAsync(root, script)
+    } catch {}
   }
 }

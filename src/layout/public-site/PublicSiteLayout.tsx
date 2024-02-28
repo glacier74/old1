@@ -26,8 +26,6 @@ export function PublicSiteLayout({
         <meta content={shortName} name="application-name" />
         <meta content={shortName} name="apple-mobile-web-app-title" />
 
-        <InjectHeadCode code={customCode} />
-
         {schema === 1 && (
           <>
             <link rel="stylesheet" href={fontLink(theme.fontFamily)} />
@@ -55,9 +53,13 @@ export function PublicSiteLayout({
       {/* SEO */}
       <NextSeo {...seo} />
 
+      {/* Inject custom code */}
+      <InjectHeadCode code={customCode} />
+
       {/* HTML */}
       {children}
 
+      {/* Inject custom code */}
       <InjectBodyCode code={customCode} />
     </>
   )
