@@ -52,3 +52,9 @@
 * Add Text widget
 * Fix some style issues
 * Add Countly to track Jingle Bio events
+
+## v1.8.9 (2024-02-28)
+
+* Load original image when Next Image failed to load
+* Utilize cache item size to expedite layouts
+* Fix the meta custom code not working issue
