@@ -28,6 +28,7 @@ import TextWidget from './TextWidget'
 import TwitterWidget from './TwitterWidget'
 import WebsiteWidget from './WebsiteWidget'
 import { WidgetActions } from './WidgetActions'
+import ZhihuWidget from './ZhihuWidget'
 
 interface WidgetActiveItemProps {
   activeId?: UniqueIdentifier | null
@@ -143,6 +144,9 @@ const WidgetItem: FC<WidgetItemProps> = ({
 
       case 'spotify_track':
         return new SpotifyTrackWidget(config).getComponent()
+
+      case 'zhihu':
+        return new ZhihuWidget(config).getComponent()
 
       case 'google_map':
         return new MapWidget(config).getComponent()

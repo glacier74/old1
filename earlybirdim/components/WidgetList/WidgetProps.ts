@@ -116,6 +116,13 @@ export interface GithubData extends Omit<WidgetData, 'posts'> {
   >
 }
 
+export interface ZhihuData extends Pick<WidgetData, 'name' | 'followers'> {
+  thanks: number
+  answers: number
+  articles: number
+  badgeTitle: string
+}
+
 export interface GithubContributionRect {
   x: number
   y: number

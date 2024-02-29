@@ -19,7 +19,8 @@ import {
   IconTiktok,
   IconTwitch,
   IconTwitter,
-  IconYouTube
+  IconYouTube,
+  IconZhihu
 } from 'earlybirdim/internalIcons'
 import { FC } from 'react'
 
@@ -147,6 +148,12 @@ const SOCIALS = [
     label: 'Kofi',
     url: 'https://ko-fi.com/{username}',
     icon: IconKofi
+  },
+  {
+    name: 'zhihu',
+    label: 'Zhihu',
+    url: 'https://www.zhihu.com/people/{username}',
+    icon: IconZhihu
   }
 ]
 

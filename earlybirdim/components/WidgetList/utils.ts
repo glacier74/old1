@@ -9,7 +9,8 @@ import {
   parseSteam,
   parseTiktok,
   parseTwitter,
-  parseYoutube
+  parseYoutube,
+  parseZhihu
 } from '@tinaryan/dp'
 
 const parsers = {
@@ -23,7 +24,8 @@ const parsers = {
   steam: parseSteam,
   tiktok: parseTiktok,
   twitter: parseTwitter,
-  youtube: parseYoutube
+  youtube: parseYoutube,
+  zhihu: parseZhihu
 }
 
 const HTTP_REGEX = /^https?:\/\//i

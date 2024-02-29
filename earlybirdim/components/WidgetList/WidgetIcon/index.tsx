@@ -32,6 +32,7 @@ import {
   isTwitch,
   isTwitter,
   isYoutube,
+  isZhihu,
   toCustomURL
 } from '@tinaryan/dp'
 import clsx from 'clsx'
@@ -71,7 +72,8 @@ import {
   IconTiktok,
   IconTwitch,
   IconTwitter,
-  IconYouTube
+  IconYouTube,
+  IconZhihu
 } from 'earlybirdim/internalIcons'
 import Image from 'next/image'
 import { FC, useMemo, useState } from 'react'
@@ -258,6 +260,11 @@ const websites = [
     match: isThreads,
     icon: IconThreads,
     fill: '#000000'
+  },
+  {
+    match: isZhihu,
+    icon: IconZhihu,
+    fill: '#0066FE'
   }
 ]
 

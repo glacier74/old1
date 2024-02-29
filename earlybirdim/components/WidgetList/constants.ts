@@ -68,6 +68,17 @@ export const github: WidgetExtra = {
   }
 }
 
+export const zhihu: WidgetExtra = {
+  styles: {
+    followBorderColor: '#1772f6',
+    followBgColor: '#1772f6',
+    followBgHoverColor: '#1772f6',
+    followBgActiveColor: '#1772f6',
+    followTextColor: '#fff',
+    followersColor: 'rgba(255,255,255,0.9)'
+  }
+}
+
 export const steam: WidgetExtra = {
   styles: {
     followBorderColor: '#171d25',
@@ -249,7 +260,8 @@ export const typeNames: AnyMap = {
   steam_id: 'steam',
   tiktok: 'TikTok',
   twitter: 'Twitter',
-  youtube: 'YouTube'
+  youtube: 'YouTube',
+  zhihu: 'Zhihu'
 }
 
 export const widgetListPath = 'main.socials'

@@ -142,6 +142,14 @@ export default class GithubWidget<T extends GithubData & WidgetData> extends Beh
     github
   }
 
+  constructor(config: WidgetConfig) {
+    super(config)
+    this.setConfig({
+      ...config,
+      extra: this.extras[config.type as string]
+    })
+  }
+
   // 2x1
   override Render2x1(config: WidgetConfig<T>) {
     return (
