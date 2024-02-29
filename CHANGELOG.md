@@ -58,3 +58,7 @@
 * Load original image when Next Image failed to load
 * Utilize cache item size to expedite layouts
 * Fix the meta custom code not working issue
+
+## v1.8.10 (2024-02-29)
+
+* Add Zhihu widget
