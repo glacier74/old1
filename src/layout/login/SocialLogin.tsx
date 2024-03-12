@@ -2,7 +2,7 @@ import { Button } from '@heyforms/ui'
 import { useTranslation } from 'next-i18next'
 import { FC, SVGProps, useEffect, useState } from 'react'
 
-import { IconGithub, IconGoogle } from '~/components'
+import { IconApple, IconGithub, IconGoogle } from '~/components'
 
 interface SocialLoginItemProps {
   label: string
@@ -43,7 +43,8 @@ export const SocialLogin = () => {
   const { t } = useTranslation('dashboard')
 
   return (
-    <div className="mt-1 grid grid-cols-2 gap-2">
+    <div className="mt-1 grid grid-cols-3 gap-2">
+      <SocialLoginItem provider="apple" icon={IconApple} label={t('login.loginWithApple')} />
       <SocialLoginItem provider="google" icon={IconGoogle} label={t('login.loginWithGoogle')} />
       <SocialLoginItem provider="github" icon={IconGithub} label={t('login.loginWithGithub')} />
     </div>

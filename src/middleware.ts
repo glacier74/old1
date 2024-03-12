@@ -75,7 +75,7 @@ export async function middleware(req: NextRequest) {
         }
       }
 
-      console.error(err)
+      console.error(err.message)
     }
   }
 

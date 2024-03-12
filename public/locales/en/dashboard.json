@@ -38,6 +38,7 @@
     "remember": "Remember me",
     "submit": "Log in",
     "continueWith": "Or continue with",
+    "loginWithApple": "Apple",
     "loginWithGoogle": "Google",
     "loginWithTwitter": "Twitter",
     "loginWithGithub": "Github",

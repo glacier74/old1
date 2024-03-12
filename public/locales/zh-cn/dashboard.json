@@ -37,6 +37,7 @@
     "remember": "记住我",
     "submit": "登录",
     "continueWith": "或者继续使用",
+    "loginWithApple": "Apple",
     "loginWithGoogle": "Google",
     "loginWithTwitter": "Twitter",
     "loginWithGithub": "Github",
