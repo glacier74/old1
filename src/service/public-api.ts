@@ -72,7 +72,7 @@ export class PublicApiService {
 
   static async verifyToken(productId: number, token: string): Promise<{ verified: boolean }> {
     return ky
-      .post(`/product/${productId}/token`, {
+      .post(`${NEXT_PUBLIC_API_URI}/product/${productId}/token`, {
         json: {
           token
         }
