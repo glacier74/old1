@@ -182,23 +182,23 @@ export function render({ product, options: { personal_info, main }, theme = {}, 
             />
           )}
           <div className="earlybird-HgKOR88q relative z-20">
-            <div className="earlybird-HSqdRg lg:max-w-[1600px] lg:mx-auto lg:flex lg:justify-between lg:gap-12 lg:px-16">
-              <div className="earlybird-tXXVbP w-auto lg:w-[calc(100%-868px)] lg:max-w-[500px] max-[360px]:px-5 max-[400px]:px-7 px-8 lg:px-0 py-12 items-center">
+            <div className="earlybird-HSqdRg xl:max-w-[1600px] xl:mx-auto xl:flex xl:justify-between xl:gap-12 xl:px-16">
+              <div className="earlybird-tXXVbP w-auto xl:w-[calc(100%-868px)] xl:max-w-[500px] max-[360px]:px-5 max-[400px]:px-7 px-8 xl:px-0 py-12 items-center">
                 <Section id="personal_info" className="xl:sticky xl:top-16" name="personal_info">
                   <div className="earlybird-tMuH8h">
                     <div className="earlybird-KDvjAn">
                       <Image
-                        className="earlybird-yFaZEN mx-auto lg:mx-0 rounded-full max-[360px]:w-28 max-[360px]:h-28 max-[400px]:w-32 max-[400px]:h-32 w-48 h-48 object-cover"
+                        className="earlybird-yFaZEN xl:mx-0 rounded-full w-32 h-32 xl:w-48 xl:h-48 object-cover"
                         src={personal_info.avatar}
                         width={160}
                         height={160}
                         alt={personal_info.name}
                       />
                     </div>
-                    <h1 className="earlybird-q9vUAm text-center lg:text-left text-[var(--jingle-headline)] mt-8 text-3xl lg:text-5xl font-semibold break-words">
+                    <h1 className="earlybird-q9vUAm text-[var(--jingle-headline)] mt-8 text-3xl xl:text-5xl font-semibold break-words">
                       {personal_info.name}
                     </h1>
-                    <p className="earlybird-LyK1vr text-center lg:text-left max-[360px]:mt-4 max-[400px]:mt-5 mt-6 text-xl text-[var(--jingle-subheadline)] whitespace-pre-line">
+                    <p className="earlybird-LyK1vr max-[360px]:mt-4 max-[400px]:mt-5 mt-6 text-xl text-[var(--jingle-subheadline)] whitespace-pre-line">
                       {personal_info.description}
                     </p>
                   </div>
@@ -206,15 +206,15 @@ export function render({ product, options: { personal_info, main }, theme = {}, 
               </div>
               <div
                 id="main"
-                className="earlybird-8JNr1h lg:w-[820px] max-[360px]:px-5 max-[400px]:px-7 py-6 px-8 lg:px-0 lg:py-12"
+                className="earlybird-8JNr1h xl:w-[820px] max-[360px]:px-5 max-[400px]:px-7 py-6 px-8 xl:px-0 xl:py-12"
               >
                 <WidgetList list={main.socials} />
               </div>
             </div>
 
-            <div className="lg:max-w-[1600px] lg:mx-auto lg:flex lg:justify-between">
-              <div className="max-[360px]:px-5 max-[400px]:px-7 px-8 py-12 lg:py-0 lg:px-16">
-                <div className="lg:fixed lg:bottom-12 flex items-center justify-center lg:justify-start">
+            <div className="xl:max-w-[1600px] xl:mx-auto xl:flex xl:justify-between">
+              <div className="max-[360px]:px-5 max-[400px]:px-7 px-8 py-12 xl:py-0 xl:px-16">
+                <div className="xl:fixed xl:bottom-12 flex items-center justify-center xl:justify-start">
                   {/* Branding */}
                   {!product.isBrandingRemoved && (
                     <div className="text-sm text-[var(--jingle-subheadline)]">
