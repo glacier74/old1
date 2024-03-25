@@ -7,6 +7,7 @@ import {
   parseInstagram,
   parseSpotify,
   parseSteam,
+  parseSuno,
   parseTiktok,
   parseTwitter,
   parseYoutube,
@@ -25,7 +26,8 @@ const parsers = {
   tiktok: parseTiktok,
   twitter: parseTwitter,
   youtube: parseYoutube,
-  zhihu: parseZhihu
+  zhihu: parseZhihu,
+  suno: parseSuno
 }
 
 const HTTP_REGEX = /^https?:\/\//i

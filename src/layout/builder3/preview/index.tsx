@@ -1,4 +1,4 @@
-import { GlobalContext } from '@earlybirdim/components'
+import { GlobalContextProvider } from '@earlybirdim/components'
 import { Tooltip } from '@heyforms/ui'
 import { IconPlus } from '@tabler/icons'
 import { FC, useCallback, useEffect, useMemo } from 'react'
@@ -202,8 +202,8 @@ export const Preview: FC = () => {
             selectedListId={state.selectedListId}
           />
 
-          <GlobalContext.Provider
-            value={{
+          <GlobalContextProvider
+            initialState={{
               productId: product.id,
               domain: product.domain,
               isPreview: true
@@ -215,7 +215,7 @@ export const Preview: FC = () => {
               hiddenBlocks: siteSettings.hiddenBlocks,
               theme: siteSettings.tempTheme || siteSettings.theme || JINGLEBIO_THEMES[0]
             })}
-          </GlobalContext.Provider>
+          </GlobalContextProvider>
 
           <PublicSiteDangerouslyHTML html={siteSettings.customCode} />
           <PublicSiteHiddenBlocksStyle hiddenBlocks={siteSettings.hiddenBlocks} />

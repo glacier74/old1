@@ -1,4 +1,4 @@
-import { GlobalContext } from '@earlybirdim/components'
+import { GlobalContextProvider } from '@earlybirdim/components'
 import { Form, Input } from '@heyforms/ui'
 import { isValid, objectPath } from '@nily/utils'
 import { IconCheck } from '@tabler/icons'
@@ -281,8 +281,8 @@ const PublicSite: FC<PublicSiteProps> = ({
       customCode={product.siteSetting.customCode}
     >
       {product.siteSetting.schema === 3 ? (
-        <GlobalContext.Provider
-          value={{
+        <GlobalContextProvider
+          initialState={{
             productId: product.id,
             domain: product.domain
           }}
@@ -298,7 +298,7 @@ const PublicSite: FC<PublicSiteProps> = ({
           ) : (
             <PublicSiteUnpublished />
           )}
-        </GlobalContext.Provider>
+        </GlobalContextProvider>
       ) : (
         <div className="earlybird-blocks">
           {product.siteSetting.blocks.map((block: any) => (

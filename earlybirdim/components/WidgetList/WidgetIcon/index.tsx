@@ -27,6 +27,7 @@ import {
   isSteam,
   isStripe,
   isSubstack,
+  isSuno,
   isThreads,
   isTiktok,
   isTwitch,
@@ -68,6 +69,7 @@ import {
   IconSteam,
   IconStripe,
   IconSubstack,
+  IconSuno,
   IconThreads,
   IconTiktok,
   IconTwitch,
@@ -265,6 +267,11 @@ const websites = [
     match: isZhihu,
     icon: IconZhihu,
     fill: '#0066FE'
+  },
+  {
+    match: isSuno,
+    icon: IconSuno,
+    fill: '#1A202C'
   }
 ]
 

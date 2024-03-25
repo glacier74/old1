@@ -24,6 +24,7 @@ import SpotifyAlbumWidget from './SpotifyAlbumWidget'
 import SpotifyArtistWidget from './SpotifyArtistWidget'
 import SpotifyPlaylistWidget from './SpotifyPlaylistWidget'
 import SpotifyTrackWidget from './SpotifyTrackWidget'
+import SunoSongWidget from './SunoSongWidget'
 import TextWidget from './TextWidget'
 import TwitterWidget from './TwitterWidget'
 import WebsiteWidget from './WebsiteWidget'
@@ -147,6 +148,9 @@ const WidgetItem: FC<WidgetItemProps> = ({
 
       case 'zhihu':
         return new ZhihuWidget(config).getComponent()
+
+      case 'suno_song':
+        return new SunoSongWidget(config).getComponent()
 
       case 'google_map':
         return new MapWidget(config).getComponent()

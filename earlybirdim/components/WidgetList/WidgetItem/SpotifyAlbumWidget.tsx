@@ -6,7 +6,7 @@ import { SpotifyPlaylistData, SpotifySong, WidgetConfig } from '../WidgetProps'
 import { spotify } from '../constants'
 import { durationToTime } from '../utils'
 import Widget from './Widget'
-import { WidgetPlayButton } from './WidgetPlayButton'
+import { WidgetPlayButton2 } from './WidgetPlayButton'
 
 const PlayItem: FC<{ index: number; song: SpotifySong }> = ({ index, song }) => {
   return (
@@ -18,7 +18,7 @@ const PlayItem: FC<{ index: number; song: SpotifySong }> = ({ index, song }) => 
         <div className="flex flex-row items-center">
           <div className="relative flex h-[16px] w-[20px] items-center text-sm text-black/40">
             <div className="transition-opacity group-hover/item:opacity-0">{index + 1}.</div>
-            <WidgetPlayButton className="absolute inset-0 !rounded-lg !bg-transparent !p-0 !text-[#1ED760] opacity-0 transition-opacity group-hover/item:opacity-100" />
+            <WidgetPlayButton2 className="absolute inset-0 !rounded-lg !bg-transparent !p-0 !text-[#1ED760] opacity-0 transition-opacity group-hover/item:opacity-100" />
           </div>
 
           <div className="mx-3 line-clamp-1 flex-1 text-left text-sm underline-offset-2">
@@ -62,7 +62,7 @@ export default class SpotifyAlbumWidget<T extends SpotifyPlaylistData> extends W
           </div>
 
           <div className="inline-flex">
-            <WidgetPlayButton playText="Play" pauseText="Pause" />
+            <WidgetPlayButton2 playText="Play" />
           </div>
         </div>
       </a>
@@ -88,7 +88,7 @@ export default class SpotifyAlbumWidget<T extends SpotifyPlaylistData> extends W
             </div>
 
             <div className="inline-flex">
-              <WidgetPlayButton playText="Play" pauseText="Pause" />
+              <WidgetPlayButton2 playText="Play" />
             </div>
           </div>
 
@@ -123,7 +123,7 @@ export default class SpotifyAlbumWidget<T extends SpotifyPlaylistData> extends W
             <div className="flex justify-between">
               <WidgetIcon url={config.url} />
               <div className="flex items-start">
-                <WidgetPlayButton playText="Play" pauseText="Pause" />
+                <WidgetPlayButton2 playText="Play" />
               </div>
             </div>
 

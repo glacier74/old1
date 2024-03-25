@@ -6,7 +6,7 @@ import { SpotifyPlaylistData, SpotifySong, WidgetConfig } from '../WidgetProps'
 import { spotify } from '../constants'
 import { durationToTime } from '../utils'
 import Widget from './Widget'
-import { WidgetPlayButton } from './WidgetPlayButton'
+import { WidgetPlayButton2 } from './WidgetPlayButton'
 
 const PlayItem: FC<{ index: number; song: SpotifySong }> = ({ song }) => {
   return (
@@ -25,7 +25,7 @@ const PlayItem: FC<{ index: number; song: SpotifySong }> = ({ song }) => {
                 src={song.thumbnail}
                 alt={song.name}
               />
-              <WidgetPlayButton className="absolute inset-0 w-full h-full flex items-center justify-center !rounded-lg !p-0 !gap-0 opacity-0 transition-opacity group-hover/item:opacity-100" />
+              <WidgetPlayButton2 className="absolute inset-0 w-full h-full flex items-center justify-center !rounded-lg !p-0 !gap-0 opacity-0 transition-opacity group-hover/item:opacity-100" />
               <div className="pointer-events-none absolute inset-0 border border-black/10 rounded-lg"></div>
             </div>
           </div>
@@ -72,7 +72,7 @@ export default class SpotifyPlaylistWidget<T extends SpotifyPlaylistData> extend
           </div>
 
           <div className="inline-flex">
-            <WidgetPlayButton playText="Play" pauseText="Pause" />
+            <WidgetPlayButton2 playText="Play" />
           </div>
         </div>
       </a>
@@ -100,7 +100,7 @@ export default class SpotifyPlaylistWidget<T extends SpotifyPlaylistData> extend
             </div>
 
             <div className="inline-flex">
-              <WidgetPlayButton playText="Play" pauseText="Pause" />
+              <WidgetPlayButton2 playText="Play" />
             </div>
           </div>
 
@@ -135,7 +135,7 @@ export default class SpotifyPlaylistWidget<T extends SpotifyPlaylistData> extend
             <div className="flex justify-between">
               <WidgetIcon url={config.url} />
               <div className="flex items-start">
-                <WidgetPlayButton playText="Play" pauseText="Pause" />
+                <WidgetPlayButton2 playText="Play" />
               </div>
             </div>
             <div className="mt-3">

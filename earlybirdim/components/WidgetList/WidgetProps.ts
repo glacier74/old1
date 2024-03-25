@@ -137,11 +137,30 @@ export interface GithubContributionProps extends Pick<GithubData, 'contributions
 }
 
 export interface SpotifySong {
+  songId: string
   name: string
   artists: string[]
   duration: number
   previewUrl: string
   thumbnail: string
+}
+
+export interface SunoSong {
+  songId: string
+  name: string
+  tags: string
+  playCount: number
+  upvoteCount: number
+  imageUrl: string
+  audioUrl: string
+}
+
+export interface SunoSongData extends Pick<WidgetData, 'name' | 'imageUrl' | 'overrides'> {
+  songId: string
+  tags: string
+  playCount: number
+  upvoteCount: number
+  audioUrl: string
 }
 
 export interface SpotifyPlaylistData extends Pick<WidgetData, 'name' | 'imageUrl' | 'overrides'> {
@@ -152,6 +171,7 @@ export interface SpotifyPlaylistData extends Pick<WidgetData, 'name' | 'imageUrl
 
 export interface SpotifyArtistData extends Omit<WidgetData, 'posts'> {
   albums: Array<{
+    songId: string
     url: string
     name: string
     thumbnail: string
@@ -160,6 +180,9 @@ export interface SpotifyArtistData extends Omit<WidgetData, 'posts'> {
 }
 
 export interface WidgetPlayButtonProps extends ComponentProps {
+  widgetId: string
+  songId: string
+  songURL?: string
   playText?: string
   pauseText?: string
 }

@@ -1,4 +1,4 @@
-import { GlobalContext } from '@earlybirdim/components'
+import { GlobalContextProvider } from '@earlybirdim/components'
 import { Button, Modal, Switch } from '@heyforms/ui'
 import { ModalProps } from '@heyforms/ui/types/modal/Modal'
 import { isValid } from '@nily/utils'
@@ -83,15 +83,15 @@ export const PreviewModal: FC<PreviewModalProps> = ({ template, onSelect, ...res
       <>
         <div className={clsx('template-preview-frame', `template-preview-${mode}`)}>
           <Frame initialContent="<!DOCTYPE html><html class='scroll-smooth'><head><script src='https://cdn.tailwindcss.com'></script></head><body class='iframe-scrollbar'><div></div></body></html>">
-            <GlobalContext.Provider
-              value={{
+            <GlobalContextProvider
+              initialState={{
                 productId: 0,
                 domain: '-',
                 isPreview: true
               }}
             >
               {tmpl.render({ options })}
-            </GlobalContext.Provider>
+            </GlobalContextProvider>
           </Frame>
         </div>
 

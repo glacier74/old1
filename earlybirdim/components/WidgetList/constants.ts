@@ -261,7 +261,8 @@ export const typeNames: AnyMap = {
   tiktok: 'TikTok',
   twitter: 'Twitter',
   youtube: 'YouTube',
-  zhihu: 'Zhihu'
+  zhihu: 'Zhihu',
+  suno: 'Suno'
 }
 
 export const widgetListPath = 'main.socials'
