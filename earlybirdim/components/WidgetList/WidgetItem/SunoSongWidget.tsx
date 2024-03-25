@@ -26,7 +26,7 @@ export default class SunoSongWidget<T extends SunoSongData> extends Widget<T> {
               {config.data.overrides?.title || config.data.name}
             </h3>
             <div className="hidden md:block mt-1 text-xs text-[var(--jingle-widget-meta)] truncate">
-              {config.data.tags}
+              {config.data.overrides?.description || config.data.tags}
             </div>
           </div>
 
@@ -60,7 +60,7 @@ export default class SunoSongWidget<T extends SunoSongData> extends Widget<T> {
                 {config.data.overrides?.title || config.data.name}
               </h3>
               <div className="mt-1 text-xs text-[var(--jingle-widget-meta)] max-w-[160px] truncate">
-                {config.data.tags}
+                {config.data.overrides?.description || config.data.tags}
               </div>
             </div>
 
@@ -119,7 +119,9 @@ export default class SunoSongWidget<T extends SunoSongData> extends Widget<T> {
               <h3 className="widget-headline line-clamp-2 text-sm text-gray-900">
                 {config.data.overrides?.title || config.data.name}
               </h3>
-              <div className="mt-1 text-xs text-gray-500">{config.data.tags}</div>
+              <div className="mt-1 text-xs text-gray-500">
+                {config.data.overrides?.description || config.data.tags}
+              </div>
             </div>
           </div>
           <div className="flex-1"></div>

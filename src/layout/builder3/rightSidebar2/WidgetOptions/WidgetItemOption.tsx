@@ -44,6 +44,10 @@ const WebsiteWidgetOption: FC<Pick<WidgetItemOptionProps, 'parentName' | 'index'
         path={[parentName, index, 'size'].join('.')}
       />
       <TextSubOption title="Title" path={[parentName, index, 'overrides.title'].join('.')} />
+      <TextSubOption
+        title="Description"
+        path={[parentName, index, 'overrides.description'].join('.')}
+      />
       {isImageAllowed && (
         <ImageSubOption title="Image" path={[parentName, index, 'overrides.imageUrl'].join('.')} />
       )}

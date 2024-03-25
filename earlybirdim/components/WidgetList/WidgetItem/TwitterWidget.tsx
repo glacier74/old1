@@ -76,7 +76,7 @@ export default class TwitterWidget<T extends WidgetData> extends Widget<T> {
               {(config.data as AnyMap)?.handle}
             </div>
             <div className="mt-2 max-[400px]:line-clamp-1 line-clamp-2 text-sm text-[var(--jingle-widget-meta)]">
-              {config.data.description}
+              {config.data.overrides?.description || config.data.description}
             </div>
           </div>
         </div>
@@ -119,7 +119,7 @@ export default class TwitterWidget<T extends WidgetData> extends Widget<T> {
                 {(config.data as AnyMap)?.handle}
               </div>
               <div className="mt-2 line-clamp-2 text-sm text-[var(--jingle-widget-meta)]">
-                {config.data.description}
+                {config.data.overrides?.description || config.data.description}
               </div>
             </div>
           </div>

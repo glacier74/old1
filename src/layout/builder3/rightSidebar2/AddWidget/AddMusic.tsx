@@ -28,7 +28,7 @@ export const AddMusic: FC<AddLinkProps> = ({ onCreate, onGoBack, ...restProps })
           >
             <AutoSizeTextarea
               minRows={2}
-              placeholder="Paste a Spotify album, artist, playlist or track URL here"
+              placeholder="Paste a Spotify album, artist, playlist, track URL or Suno song URL here"
             />
           </Form.Item>
         </AddWidgetForm>

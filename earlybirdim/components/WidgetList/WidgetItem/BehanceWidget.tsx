@@ -51,9 +51,9 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
             <h3 className="widget-headline line-clamp-2 text-sm text-[var(--jingle-widget-title)]">
               {title}
             </h3>
-            {config.data.description && (
+            {(config.data.overrides?.description || config.data.description) && (
               <div className="max-[400px]:hidden text-xs text-[var(--jingle-widget-meta)]">
-                {config.data.description}
+                {config.data.overrides?.description || config.data.description}
               </div>
             )}
           </div>
@@ -86,9 +86,9 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
               <h3 className="widget-headline line-clamp-2 text-sm text-[var(--jingle-widget-title)]">
                 {title}
               </h3>
-              {config.data.description && (
+              {(config.data.overrides?.description || config.data.description) && (
                 <div className="max-[400px]:hidden text-xs text-[var(--jingle-widget-meta)]">
-                  {config.data.description}
+                  {config.data.overrides?.description || config.data.description}
                 </div>
               )}
             </div>
@@ -106,7 +106,8 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
           <WidgetPostList
             className={clsx(
               'ml-6 grid gap-2',
-              config.extra?.render2x1?.postListClassName || 'aspect-square grid-cols-2 grid-rows-2 h-full !gap-1.5'
+              config.extra?.render2x1?.postListClassName ||
+                'aspect-square grid-cols-2 grid-rows-2 h-full !gap-1.5'
             )}
             itemClassNames={config.extra?.render2x1?.postItemClassNames || 'aspect-square'}
             imageClassName={config.extra?.render2x1?.imageClassName}
@@ -147,9 +148,9 @@ export default class BehanceWidget<T extends WidgetData> extends Widget<T> {
               <h3 className="widget-headline line-clamp-2 text-sm text-[var(--jingle-widget-title)]">
                 {title}
               </h3>
-              {config.data.description && (
+              {(config.data.overrides?.description || config.data.description) && (
                 <div className="max-[400px]:hidden text-xs text-[var(--jingle-widget-meta)]">
-                  {config.data.description}
+                  {config.data.overrides?.description || config.data.description}
                 </div>
               )}
             </div>
