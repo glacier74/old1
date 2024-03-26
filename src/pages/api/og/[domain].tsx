@@ -1,5 +1,6 @@
 import { parseURL } from '@earlybirdim/components/WidgetList/utils'
 import { isValid } from '@nily/utils'
+import { isGoogleMap } from '@tinaryan/dp'
 import { ImageResponse } from '@vercel/og'
 import { NextRequest } from 'next/server'
 
@@ -12,7 +13,6 @@ export const config = {
 }
 
 const GROUP_TITLE_TYPE = 'group_title'
-const WEBSITE_TYPE = 'website'
 
 export default async function handler(req: NextRequest) {
   try {
@@ -30,6 +30,7 @@ export default async function handler(req: NextRequest) {
             size: s.size,
             url: s.url,
             imageUrl: s.data?.imageUrl || s.overrides?.imageUrl,
+            text: s.overrides?.title,
             ...BOX_SIZES[s.size]
           })),
         {
@@ -39,7 +40,9 @@ export default async function handler(req: NextRequest) {
         }
       ).filter(s => s.y < 252)
 
-      const urls = socials.filter((s: any) => s.type === WEBSITE_TYPE).map((s: any) => s.url)
+      const urls = socials
+        .filter((s: any) => isValid(s.url) && !isGoogleMap(s.url) && !s.disableMetadata)
+        .map((s: any) => s.url)
 
       if (isValid(urls)) {
         const metadata = await PublicApiService.metadata(urls)
@@ -48,7 +51,17 @@ export default async function handler(req: NextRequest) {
           socials
             .filter((s: any) => s.url === url)
             .forEach((s: any) => {
-              s.faviconUrl = metadata[index].faviconUrl
+              const m = metadata[index]
+
+              if (isValid(m.faviconUrl)) {
+                s.faviconUrl = m.faviconUrl
+              }
+
+              if (isValid(m.title)) {
+                s.text = m.title
+              } else if (isValid(m.name)) {
+                s.text = m.name
+              }
             })
         })
       }
@@ -57,8 +70,7 @@ export default async function handler(req: NextRequest) {
         <JingleBioImageResponse domain={domain} profile={personal_info} socials={socials} />,
         {
           width: 800,
-          height: 420,
-          debug: false
+          height: 420
         }
       )
     }
@@ -77,7 +89,7 @@ export default async function handler(req: NextRequest) {
       }
     )
   } catch (err: any) {
-    console.error(err)
+    console.error(err.message)
     console.error(err.stack)
 
     return new Response(`Failed to generate the image`, {

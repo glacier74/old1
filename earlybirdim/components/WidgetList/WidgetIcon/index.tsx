@@ -131,7 +131,8 @@ const websites = [
   {
     match: isEarlyBird,
     icon: IconEarlyBird,
-    fill: '#fff'
+    fill: '#fff',
+    text: '#000'
   },
   {
     match: isFacebook,
@@ -151,7 +152,8 @@ const websites = [
   {
     match: isGooglePlay,
     icon: IconGooglePlay,
-    fill: '#fff '
+    fill: '#fff ',
+    text: '#000'
   },
   {
     match: isGumroad,
@@ -166,12 +168,14 @@ const websites = [
   {
     match: isKofi,
     icon: IconKofi,
-    fill: '#fff '
+    fill: '#fff ',
+    text: '#000'
   },
   {
     match: isLayers,
     icon: IconLayers,
-    fill: '#fff '
+    fill: '#fff ',
+    text: '#000'
   },
   {
     match: isLinkedin,
@@ -191,7 +195,8 @@ const websites = [
   {
     match: isProducthunt,
     icon: IconProductHunt,
-    fill: '#fff'
+    fill: '#fff',
+    text: '#000'
   },
   {
     match: isReddit,
@@ -280,7 +285,8 @@ export function getWidgetIcon(url: string, type: string) {
     case 'email_capture':
       return {
         fill: '#FCFDF8',
-        icon: IconEmailCapture
+        icon: IconEmailCapture,
+        text: '#000'
       }
 
     case 'payment':
@@ -291,8 +297,8 @@ export function getWidgetIcon(url: string, type: string) {
 
     case 'text':
       return {
-        fill: '#28D330',
-        icon: IconPhone
+        fill: '#fff',
+        text: '#000'
       }
 
     default:

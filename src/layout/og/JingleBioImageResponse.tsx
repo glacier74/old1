@@ -15,21 +15,19 @@ interface SocialItemProps {
   url: string
   imageUrl: string
   faviconUrl: string
+  text: string
 }
 
 const IMAGE_CONVERT_URL = process.env.NEXT_IMAGE_CONVERT_URL as string
 const JINGLE_BIO_DOMAIN = process.env.NEXT_PUBLIC_JINGLE_BIO_DOMAIN as string
 
-const SocialItemIcon: FC<SocialItemProps & { icon?: FC<any>; style?: any }> = ({
-  type,
-  icon: Icon,
-  imageUrl,
-  faviconUrl,
-  style
-}) => {
+const SocialItemIcon: FC<
+  Pick<SocialItemProps, 'imageUrl' | 'faviconUrl' | 'type'> & { icon?: FC<any>; style?: any }
+> = ({ type, icon: Icon, imageUrl, faviconUrl, style }) => {
   if (Icon) {
     return (
       <Icon
+        tw="flex"
         style={{
           width: 76,
           height: 76,
@@ -38,12 +36,11 @@ const SocialItemIcon: FC<SocialItemProps & { icon?: FC<any>; style?: any }> = ({
       />
     )
   } else if (type === 'image' && imageUrl) {
-    return <img width="76" height="76" src={imageUrl} style={style} />
+    return <img tw="flex" width="76" height="76" src={imageUrl} style={style} />
   } else if (faviconUrl) {
-    console.log(`${IMAGE_CONVERT_URL}/?url=${encodeURIComponent(faviconUrl)}`, style)
-
     return (
       <img
+        tw="flex"
         width="24"
         height="24"
         src={`${IMAGE_CONVERT_URL}/?url=${encodeURIComponent(faviconUrl)}`}
@@ -63,7 +60,8 @@ const SocialItem: FC<SocialItemProps & PackerRect> = props => {
     if (isSize2x05) {
       return {
         width: 24,
-        height: 24
+        height: 24,
+        marginLeft: 4
       }
     } else if (props.type === 'image') {
       return {
@@ -89,9 +87,37 @@ const SocialItem: FC<SocialItemProps & PackerRect> = props => {
         backgroundColor: result?.fill || '#fff'
       }}
     >
-      <div tw="flex items-center rounded-2xl overflow-hidden">
-        <SocialItemIcon icon={result?.icon} style={style} {...props} />
-      </div>
+      {props.type === 'text' ? (
+        <div tw="flex rounded-2xl px-2 py-1">
+          <div tw="flex w-full h-full items-center overflow-hidden">
+            <div tw="flex text-[14px] text-center text-slate-900">{props.text.slice(0, 12)}</div>
+          </div>
+        </div>
+      ) : (
+        <div
+          tw={`flex w-full h-full items-center rounded-2xl overflow-hidden ${
+            isSize2x05 ? '' : 'justify-center'
+          }`}
+        >
+          <SocialItemIcon
+            icon={result?.icon}
+            type={props.type}
+            faviconUrl={props.faviconUrl}
+            imageUrl={props.imageUrl}
+            style={style}
+          />
+          {isSize2x05 && (
+            <div
+              tw="flex flex-1 text-[14px] ml-1 text-center"
+              style={{
+                color: result?.text || '#fff'
+              }}
+            >
+              {props.text.slice(0, 12)}
+            </div>
+          )}
+        </div>
+      )}
       <div tw="absolute inset-0 border-[2px] border-black/5 shadow-sm rounded-2xl"></div>
     </div>
   )

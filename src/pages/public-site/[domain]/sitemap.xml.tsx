@@ -11,7 +11,7 @@ export async function getServerSideProps({ res, params }: any): Promise<unknown>
   try {
     product = await PublicApiService.product(domain)
   } catch (err: any) {
-    console.error(err)
+    console.error(err.message)
 
     return {
       notFound: true
