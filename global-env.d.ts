@@ -134,6 +134,11 @@ declare global {
     isArchived: boolean
   }
 
+  interface Redemption {
+    id: number
+    updatedAt: boolean
+  }
+
   interface Receipt {
     id: number
     type: string
@@ -155,6 +160,7 @@ declare global {
     avatar: string
     role: string
     subscription: Subscription
+    redemptions: Redemption[]
     plans: Plan[]
     isDeletionScheduled: boolean
     deletionScheduledAt: any

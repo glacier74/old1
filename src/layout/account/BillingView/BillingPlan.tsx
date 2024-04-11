@@ -13,6 +13,7 @@ const JINGLEBIO_PORTAL_URI = process.env.NEXT_PUBLIC_JINGLEBIO_PORTAL_URI as str
 export const BillingPlan = () => {
   const { user } = useStore()
   const subscription = useSubscription(user)
+  const redemptionCount = user.redemptions.length
 
   function handleCancelSubscription() {
     if (subscription?.plan.isJingleBio) {
@@ -31,8 +32,18 @@ export const BillingPlan = () => {
             <div className="md:flex-1 space-y-2">
               <div className="text-base font-semibold">{subscription.plan.name}</div>
               <div className="text-sm">
-                {currencyFormatter(subscription.price.currency, subscription.price.price)} /{' '}
-                {user.subscription.price.interval}
+                {redemptionCount > 0 ? (
+                  redemptionCount === 1 ? (
+                    '$39'
+                  ) : (
+                    '$78'
+                  )
+                ) : (
+                  <>
+                    {currencyFormatter(subscription.price.currency, subscription.price.price)} /{' '}
+                    {user.subscription.price.interval}
+                  </>
+                )}
               </div>
               <div className="flex flex-col md:flex-row md:items-center gap-2">
                 <Link
@@ -41,7 +52,7 @@ export const BillingPlan = () => {
                 >
                   View plans
                 </Link>
-                {!subscription.isCancelled && (
+                {!subscription.isCancelled && redemptionCount < 1 && (
                   <Button className="w-full md:w-auto " onClick={handleCancelSubscription}>
                     Manage subscription
                   </Button>
@@ -51,7 +62,9 @@ export const BillingPlan = () => {
             <div className="md:flex-1 mt-5 md:mt-0 space-y-1">
               <div className="text-base font-semibold">Billing period</div>
               <div className="text-sm">
-                <span>{PLAN_INTERVALS[subscription.price.interval]}</span>
+                <span>
+                  {redemptionCount > 0 ? '∞' : PLAN_INTERVALS[subscription.price.interval]}
+                </span>
                 {subscription.isCancelled ? (
                   <span className="pl-1 text-slate-500">
                     (Canceled, valid until {dayjs.unix(subscription.endsAt!).format('MMM DD, YYYY')}
