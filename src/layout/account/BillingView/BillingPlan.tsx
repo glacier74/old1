@@ -40,8 +40,9 @@ export const BillingPlan = () => {
                   )
                 ) : (
                   <>
-                    {currencyFormatter(subscription.price.currency, subscription.price.price)} /{' '}
-                    {user.subscription.price.interval}
+                    {subscription.price &&
+                      currencyFormatter(subscription.price.currency, subscription.price.price)}{' '}
+                    / {user.subscription.price?.interval}
                   </>
                 )}
               </div>
@@ -63,7 +64,7 @@ export const BillingPlan = () => {
               <div className="text-base font-semibold">Billing period</div>
               <div className="text-sm">
                 <span>
-                  {redemptionCount > 0 ? '∞' : PLAN_INTERVALS[subscription.price.interval]}
+                  {redemptionCount > 0 ? '∞' : PLAN_INTERVALS[subscription.price?.interval]}
                 </span>
                 {subscription.isCancelled ? (
                   <span className="pl-1 text-slate-500">
