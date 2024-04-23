@@ -8,7 +8,6 @@ import { useStore } from '~/store'
 import { currencyFormatter, useSubscription } from '~/utils'
 
 const STRIPE_PORTAL_URI = process.env.NEXT_PUBLIC_STRIPE_PORTAL_URI as string
-const JINGLEBIO_PORTAL_URI = process.env.NEXT_PUBLIC_JINGLEBIO_PORTAL_URI as string
 
 export const BillingPlan = () => {
   const { user } = useStore()
@@ -16,11 +15,7 @@ export const BillingPlan = () => {
   const redemptionCount = user.redemptions.length
 
   function handleCancelSubscription() {
-    if (subscription?.plan.isJingleBio) {
-      window.location.href = JINGLEBIO_PORTAL_URI
-    } else {
-      window.location.href = STRIPE_PORTAL_URI
-    }
+    window.location.href = STRIPE_PORTAL_URI
   }
 
   return (
