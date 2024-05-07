@@ -2,7 +2,7 @@ import { Form, Input } from '@heyforms/ui'
 import { isEmpty } from '@nily/utils'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 
 import { LoginLayout } from '~/layout'
 import { AuthService } from '~/service'
@@ -12,10 +12,15 @@ import { withTranslations } from '~/utils'
 const ConfirmEmail = (): JSX.Element => {
   const { t } = useTranslation('dashboard')
   const router = useRouter()
-  const { email } = useStore()
+  const { email: rawEmail } = useStore()
+
+  const email = useMemo(
+    () => (router.query.email || rawEmail) as string,
+    [router.query.email, rawEmail]
+  )
 
   async function handleFinish(values: StringMap) {
-    await AuthService.verify(email!, values.code)
+    await AuthService.verify(email, values.code)
     router.replace('/')
   }
 
