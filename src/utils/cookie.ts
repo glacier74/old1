@@ -7,6 +7,7 @@ import { v4 as uuidV4 } from 'uuid'
 // Cookie options
 const DOMAIN = process.env.NEXT_PUBLIC_COOKIE_DOMAIN
 const DEFAULT_COOKIE_MAX_AGE = date.milliseconds(process.env.NEXT_PUBLIC_COOKIE_MAX_AGE!)!
+const TOKEN_COOKIE_MAX_AGE = date.milliseconds('30day')!
 
 // Cookies names
 const REDIRECT_URL_KEY = process.env.NEXT_PUBLIC_REDIRECT_URL_COOKIE_NAME!
@@ -25,8 +26,13 @@ export function getBrowserId(cookies: RequestCookies | JSCookie | AnyMap<string>
   return getCookie(cookies, BROWSER_ID_KEY)
 }
 
-export function setBrowserId(cookies: ResponseCookies | JSCookie) {
-  setCookie(cookies, BROWSER_ID_KEY, uuidV4({ random: undefined }), DEFAULT_COOKIE_MAX_AGE)
+export function setBrowserId(cookies: ResponseCookies | JSCookie, browserId?: string) {
+  setCookie(
+    cookies,
+    BROWSER_ID_KEY,
+    browserId || uuidV4({ random: undefined }),
+    DEFAULT_COOKIE_MAX_AGE
+  )
 }
 
 export function setTrackingParam(cookies: ResponseCookies | JSCookie, key: string, value: string) {
@@ -47,6 +53,14 @@ export function getDomain(cookies: ResponseCookies | JSCookie) {
 
 export function getToken(cookies: RequestCookies | JSCookie | AnyMap<string>) {
   return getCookie(cookies, TOKEN_KEY)
+}
+
+export function setToken(cookies: ResponseCookies | JSCookie, token: string) {
+  setCookie(cookies, TOKEN_KEY, token, TOKEN_COOKIE_MAX_AGE)
+}
+
+export function getCookieString(browserId: string, token: string) {
+  return `${BROWSER_ID_KEY}=${browserId}; ${TOKEN_KEY}=${token}`
 }
 
 export function deleteToken(cookies: ResponseCookies) {

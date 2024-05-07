@@ -90,7 +90,6 @@ export default async function handler(req: NextRequest) {
     )
   } catch (err: any) {
     console.error(err.message)
-    console.error(err.stack)
 
     return new Response(`Failed to generate the image`, {
       status: 500

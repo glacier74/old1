@@ -5,8 +5,10 @@ import { NextResponse } from 'next/server'
 import {
   deleteToken,
   getBrowserId,
+  getCookieString,
   isLoggedIn,
   setBrowserId,
+  setToken,
   setTrackingParam
 } from '~/utils/cookie'
 import { isMatchRoutes } from '~/utils/route'
@@ -20,9 +22,8 @@ const cookiePrefix = process.env.NEXT_PUBLIC_COOKIE_PREFIX as string
 const trackingNames = ['ref', 'domain', 'utm_source', 'utm_campaign']
 
 export async function middleware(req: NextRequest) {
-  const isLogged = isLoggedIn(req.cookies)
-
   const res = NextResponse.next()
+  let isLogged = isLoggedIn(req.cookies)
 
   // 登录, 注册等页面
   if (isMatchRoutes(req, authRoutes)) {
@@ -46,7 +47,7 @@ export async function middleware(req: NextRequest) {
   // }
 
   // 检查是否有 browserId
-  const browserId = getBrowserId(req.cookies)
+  const browserId = req.nextUrl.searchParams.get('browserId') || getBrowserId(req.cookies)
 
   if (!browserId) {
     setBrowserId(res.cookies)
@@ -61,11 +62,22 @@ export async function middleware(req: NextRequest) {
     }
   }
 
+  const token = req.nextUrl.searchParams.get('token')
+  let cookieString = req.cookies.toString()
+
+  if (isValid(token)) {
+    setBrowserId(res.cookies, browserId)
+    setToken(res.cookies, token!)
+
+    cookieString = getCookieString(browserId!, token!)
+    isLogged = true
+  }
+
   // 检查 token 是否有效
   if (isLogged) {
     try {
       await PublicApiService.user({
-        cookie: req.cookies.toString()
+        cookie: cookieString
       })
     } catch (err: any) {
       if (err.name === 'HTTPError') {

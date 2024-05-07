@@ -55,8 +55,8 @@ export const getServerSideProps = withTranslations(async context => {
     } else {
       throw new Error('Request failed with status ' + response.status)
     }
-  } catch (error) {
-    console.error(error)
+  } catch (err: any) {
+    console.error(err.message)
   }
 
   return {
