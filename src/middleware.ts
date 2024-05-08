@@ -5,7 +5,6 @@ import { NextResponse } from 'next/server'
 import {
   deleteToken,
   getBrowserId,
-  getCookieString,
   isLoggedIn,
   setBrowserId,
   setToken,
@@ -23,7 +22,7 @@ const trackingNames = ['ref', 'domain', 'utm_source', 'utm_campaign']
 
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next()
-  let isLogged = isLoggedIn(req.cookies)
+  const isLogged = isLoggedIn(req.cookies)
 
   // 登录, 注册等页面
   if (isMatchRoutes(req, authRoutes)) {
@@ -63,21 +62,19 @@ export async function middleware(req: NextRequest) {
   }
 
   const token = req.nextUrl.searchParams.get('token')
-  let cookieString = req.cookies.toString()
 
   if (isValid(token)) {
     setBrowserId(res.cookies, browserId)
     setToken(res.cookies, token!)
 
-    cookieString = getCookieString(browserId!, token!)
-    isLogged = true
+    return NextResponse.redirect(new URL('/login', req.url))
   }
 
   // 检查 token 是否有效
   if (isLogged) {
     try {
       await PublicApiService.user({
-        cookie: cookieString
+        cookie: req.cookies.toString()
       })
     } catch (err: any) {
       if (err.name === 'HTTPError') {
