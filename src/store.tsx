@@ -37,10 +37,8 @@ interface Store {
   openBuilderSidebar: () => void
   closeBuilderSidebar: () => void
   isAIModalOpen: boolean
-  isAIModalClosable: boolean
   openAIModal: () => void
   closeAIModal: () => void
-  setAIModalClosable: (isAIModalClosable: boolean) => void
   isCodeInjectionModalOpen: boolean
   openCodeInjectionModal: () => void
   closeCodeInjectionModal: () => void
@@ -69,7 +67,6 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
   const [product, setProduct] = useState<Partial<Product>>()
   const [isBuilderSidebarOpen, openBuilderSidebar, closeBuilderSidebar] = useVisible(!isMobile())
   const [isAIModalOpen, openAIModal, closeAIModal] = useVisible()
-  const [isAIModalClosable, setAIModalClosable] = useState(true)
   const [isCodeInjectionModalOpen, openCodeInjectionModal, closeCodeInjectionModal] = useVisible()
   const [isThemeModalOpen, openThemeModal, closeThemeModal] = useVisible()
 
@@ -184,8 +181,6 @@ export function StoreProvider({ children }: Omit<LayoutProps, 'seo'>) {
     isAIModalOpen,
     openAIModal,
     closeAIModal,
-    isAIModalClosable,
-    setAIModalClosable,
     isCodeInjectionModalOpen,
     openCodeInjectionModal,
     closeCodeInjectionModal,

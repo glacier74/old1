@@ -69,22 +69,11 @@ const ModalComponent = () => {
 }
 
 export const AIModal = () => {
-  const {
-    siteSettings,
-    isAIModalOpen,
-    openAIModal,
-    closeAIModal,
-    isAIModalClosable,
-    setAIModalClosable
-  } = useStore()
+  const { siteSettings, isAIModalOpen, openAIModal, closeAIModal } = useStore()
 
   useEffect(() => {
     if (siteSettings.version === 0) {
       openAIModal()
-    }
-
-    return () => {
-      setAIModalClosable(true)
     }
   }, [])
 
@@ -94,7 +83,7 @@ export const AIModal = () => {
       visible={isAIModalOpen}
       onClose={closeAIModal}
       maskClosable={false}
-      showCloseIcon={isAIModalClosable}
+      showCloseIcon={true}
     >
       {isAIModalOpen && <ModalComponent />}
     </Modal>

@@ -2,8 +2,6 @@ import { Input, Select } from '@heyforms/ui'
 import { isEmpty } from '@nily/utils'
 import { FC, useContext, useMemo } from 'react'
 
-import { useStore } from '~/store'
-
 import { AIContainer } from './AIContainer'
 import { AIStoreContext } from './context'
 
@@ -23,7 +21,6 @@ interface AIQuestionProps {
 }
 
 export const AIQuestion: FC<AIQuestionProps> = ({ data }) => {
-  const { setAIModalClosable } = useStore()
   const { state, dispatch } = useContext(AIStoreContext)
   const value = useMemo(() => state.answers[data.index], [data.index, state.answers])
 
@@ -60,8 +57,6 @@ export const AIQuestion: FC<AIQuestionProps> = ({ data }) => {
 
   function handleNext() {
     if (data.isLast) {
-      setAIModalClosable(false)
-
       return dispatch({
         type: 'setState',
         payload: {
